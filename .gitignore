@@ -1,0 +1,9 @@
+*.bak
+*.idea/*
+.buildpath
+.project
+.settings/*
+idea/*
+sites/*/settings*.php
+sites/*
+.idea/*
