@@ -1,0 +1,10 @@
+name = SinaWeibo
+description = Allows users to connect with Sina Weibo account
+package = "Authentication"
+core = 7.x
+; Information added by drupal.org packaging script on 2011-10-31
+version = "7.x-1.0"
+core = "7.x"
+project = "weibo"
+datestamp = "1320035736"
+

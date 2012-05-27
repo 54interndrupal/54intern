@@ -1,0 +1,240 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * shixiquan 各种小功能.
+ */
+
+
+/**
+ * 实现钩子hook_block_info().
+ */
+function shixiquan_block_info() {
+  $blocks['search'] = array(
+    'info' => t('定制的搜索区块'),
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+  $blocks['companylogin'] = array(
+    'info' => t('定制的企业用户登录区块'),
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+  $blocks['loginuser'] = array(
+    'info' => t('用户登录后的区块'),
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+  return $blocks;
+}
+
+/**
+ * 实现钩子hook_block_view().
+ */
+function shixiquan_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'search':
+      $block['subject'] = t('定制的搜索区块');
+      $block['content'] = drupal_get_form('shixiquan_search_form');
+      break;
+
+    case 'companylogin':
+      $block['subject'] = t('定制的企业用户登录区块');
+      $block['content'] = drupal_get_form('shixiquan_companylogin_form');
+      break;
+
+    case 'loginuser':
+      $block['subject'] = t('定制的企业用户登录区块');
+      $block['content'] = shixiquan_loginuser_block();
+      break;
+  }
+  return $block;
+}
+
+function shixiquan_search_form() {
+  $default_type = 'all';
+  $default_keywords = '';
+  if (arg(0) == 'search') {
+    $default_type = arg(1);
+  }
+  if (!empty($_GET['keys'])) {
+    $default_keywords = $_GET['keys'];
+  }
+//  $options = array(
+//    'all' => t('全部'),
+//	'group' => t('社团'),
+//	'job' => t('职位'),
+//	'company' => t('企业'),
+//  );
+//  $form['type'] = array(
+//	'#type' => 'select',
+//	'#options' => $options,
+//	'#default_value' => $default_type,
+//	'#required' => TRUE,
+//	'#theme_wrappers' => array(),
+//  );
+  $form['keywords'] = array(
+    '#type' => 'textfield',
+    '#default_value' => $default_keywords,
+    '#theme_wrappers' => array(),
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('搜索'),
+  );
+  $form['#id'] = 'search-form';
+  return $form;
+}
+
+
+function shixiquan_search_form_submit(&$form, &$form_state) {
+  global $user;
+  // drupal_set_message('123456');
+  drupal_goto('search/' . $form_state['values']['type'], array('query' => array('keys' => $form_state['values']['keywords'])));
+  //node_save($micro);
+}
+
+function shixiquan_companylogin_form() {
+
+  $form['company_name'] = array(
+    '#type' => 'textfield',
+    //'#title' => t('企业名称'),
+    '#hint' => t('企业名称'),
+  );
+  $form['name'] = array(
+    '#type' => 'textfield',
+    //  '#title' => t('用户名或电子邮件地址'),
+    '#hint' => t('用户名或电子邮件地址'),
+  );
+  $form['name']['#element_validate'][] = 'userreg_user_login_validate';
+  $form['pass'] = array(
+    '#type' => 'password',
+    // '#title' => t('密码'),
+    '#hint' => t('密码'),
+  );
+
+  $form['remember_me'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('记住密码'),
+  );
+
+  $form['login-form-field'] = array(
+    '#type' => 'hidden'
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t(' '),
+  );
+
+
+  $form['#validate'] = shixiquan_login_default_validators();
+  $form['#submit'][] = 'shixquan_company_user_login_submit';
+  return $form;
+}
+/**
+ * Submit handler for the login form. Load $user object and perform standard login
+ * tasks. The user is then redirected to the My Account page. Setting the
+ * destination in the query string overrides the redirect.
+ */
+function shixquan_company_user_login_submit($form, &$form_state) {
+  global $user;
+  $user = user_load($form_state['uid']);
+  $form_state['redirect'] = 'companycenter';
+
+  user_login_finalize($form_state);
+}
+
+//我们在Drupal自带的验证函数中，加入了自己的一个验证函数
+function shixiquan_login_default_validators() {
+  return array(
+    'user_login_name_validate',
+    'user_login_authenticate_validate',
+    'shixiquan_companylogin_companyname_validate',
+    'user_login_final_validate'
+  );
+}
+
+//企业名称的验证函数
+function shixiquan_companylogin_companyname_validate(&$form, &$form_state) {
+  if (!empty($form_state['uid'])) {
+    //检查该用户是否创建了企业节点，且企业名字和输入的相同
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node');
+    $query->entityCondition('bundle', 'company');
+
+    $query->propertyCondition('uid', $form_state['uid']);
+    $query->propertyCondition('title', $form_state['values']['company_name']);
+    $query->range(0, 1);
+    $result = (bool) $query->count()->execute();
+    //如果不存在这样的企业节点，则表示企业名称输入有误
+    if (empty($result)) {
+      form_set_error('company_name', t('无效的企业名称'));
+    }
+  }
+}
+
+function shixiquan_loginuser_block() {
+  $output = "";
+  $company_role = 4;
+  global $user;
+  //print debug('123456');
+  if (array_key_exists($company_role, $user->roles)) {
+    //print debug($_GET['destination']);
+    $company_id = db_select('node', 'n')
+      ->condition('n.uid', $user->uid)
+      ->condition('n.type', 'company')
+      ->fields('n', array('nid'))
+      ->range(0, 1)
+      ->execute()
+      ->fetchField();
+    $path = '';
+    if (empty($company_id)) {
+      //$path = 'node/add/company';
+    }
+    else {
+      // $path = 'companycenter/'.$company_id;
+      $output .= views_embed_view('company_info', 'panel_pane_3', $company_id);
+    }
+
+
+  }
+  else {
+    //普通用户，
+    $output .= views_embed_view('usercenter_user_info', 'panel_pane_2', $user->uid);
+  }
+  return $output;
+}
+
+
+ /** * Implementation of hook_form_alter(). */
+function shixiquan_form_alter(&$form, $form_state, $form_id) {
+    if(strpos($form["#id"], 'comment-form')===0){
+     // print_r($form) ;
+      hide($form['author']);
+      hide($form['actions']['preview']);
+      $form['actions']['submit']['#value'] = t('发布评论');
+      unset($form['comment_body']['und'][0]['#title']);
+      unset($form['comment_body']['und'][0]['#format']);
+
+    }
+
+    if (isset($form['type']) && isset($form['#node'])) {
+      if ('review_node_form' == $form_id) {
+        $form['title']['#required'] = 0;
+        $form['title']['#type']='hidden';
+        global $user;
+
+        //非网站编辑，不能编辑Group Audience字段
+        if (!in_array(6, array_keys($user->roles))) {
+          $form['og_group_ref']['und'][0]['target_id']['#type']='hidden';
+        }
+      }
+    }
+  }
+
+function shixiquan_comment_form_alter(&$form, $form_state, $form_id) {
+
+    unset($form['author']);
+}

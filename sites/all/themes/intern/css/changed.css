@@ -1,0 +1,98 @@
+#company-reviews .inner .fivestar-average-stars{
+width:120px;
+height:33px;
+float:left;
+margin-top:5px;
+}
+#company-reviews .inner span{
+display:block;
+float:left;
+}
+#company-reviews .inner{
+padding-left:125px;
+}
+
+/*==changed by howard, companycenter VBO actions ==*/
+
+#views-form-companycenter-jobs-panel-pane-1,
+#views-form-companycenter-resumes-panel-pane-1{
+clear: both;
+}
+#views-form-companycenter-jobs-panel-pane-1 fieldset,
+#views-form-companycenter-resumes-panel-pane-1 fieldset{
+border: 0px;
+}
+#views-form-companycenter-jobs-panel-pane-1 fieldset legend,
+#views-form-companycenter-resumes-panel-pane-1 fieldset legend{
+display: none;
+}
+
+#views-form-companycenter-jobs-panel-pane-1  #edit-select,
+#views-form-companycenter-resumes-panel-pane-1  #edit-select{
+float:right;
+width:80%;
+margin-top:5px;
+}
+
+#views-form-companycenter-jobs-panel-pane-1  #edit-select input,
+#views-form-companycenter-resumes-panel-pane-1  #edit-select input{
+margin-right:20px;
+background-color:#328c21;
+color:white;
+}
+#views-form-companycenter-jobs-panel-pane-1  .vbo-select-all-markup,
+#views-form-companycenter-resumes-panel-pane-1  .vbo-select-all-markup{
+float:left;
+width:10%;
+}
+#views-form-companycenter-jobs-panel-pane-1  .vbo-select-all-markup .vbo-fieldset-select-all ,
+#views-form-companycenter-resumes-panel-pane-1  .vbo-select-all-markup .vbo-fieldset-select-all{
+padding:0.6em 0pt;
+text-align:left;
+width:100px;
+padding-left:20px;
+}
+
+#views-form-companycenter-jobs-panel-pane-1 .views-row,
+#views-form-companycenter-resumes-panel-pane-1 .views-row{
+clear: both;
+}
+
+body.page-companycenter #content div.content, body.page-company #content div.content {
+border:1px solid #8FBF7E;
+clear:both;
+padding:25px;
+}
+
+
+#job-info span.flag-wrapper,
+#group-info span.flag-wrapper,
+#releated-company span.flag-wrapper,
+div.company-list span.flag-wrapper,
+div.job-list span.flag-wrapper,
+div.group-list span.flag-wrapper,
+div.resume-list  span.flag-wrapper,
+#follow-company span.flag-wrapper{
+    background: url("img/s.png") no-repeat scroll -480px -170px transparent;
+    height: 26px;
+    line-height: 1.2;
+    padding-left: 25px;
+    position: absolute;
+    right: 1px;
+    top: 35px;
+}
+div.resume-list .views-row {
+    overflow: hidden;
+    padding: 30px 0;
+    position: relative;
+}
+div.resume-list{
+  clear:both;
+}
+#normal-user-login-content .item-list{
+display:none;
+}
+/*#company-user-login-content #shixiquan-companylogin-form .form-type-textfield input,
+#company-user-login-content #shixiquan-companylogin-form .form-type-password input{
+width:150px;
+}*/

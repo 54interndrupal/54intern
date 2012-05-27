@@ -4,6 +4,7 @@
 .project
 .settings/*
 idea/*
-sites/*/settings*.php
-sites/*
+sites/default/settings*.php
+sites/default/*
+sites/example.sites.php
 .idea/*

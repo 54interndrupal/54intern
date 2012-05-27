@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * @file
+ * userreg.module的安装文件.
+ */
+
+function userreg_uninstall() {
+  db_query("DELETE FROM {variable} WHERE name LIKE 'userreg_%%'");
+}
+

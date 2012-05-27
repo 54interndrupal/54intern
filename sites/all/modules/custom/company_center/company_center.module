@@ -1,0 +1,203 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * 定制的企业用户中心.
+ */
+/**
+ * 实现hook_menu钩子
+ */
+function company_center_menu(){
+
+	$items['companycenter'] = array(
+    'title' => '申请实习',
+    'page callback' => 'company_center_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'company_center.pages.inc',
+  );
+
+  return $items;
+
+}
+
+/**
+ * 实现钩子hook_block_info().
+ */
+function company_center_block_info(){
+  $blocks['company_tabs'] = array(
+    'info' => t('企业详细导航'),
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+	$blocks['company_nav'] = array(
+    'info' => t('企业中心导航'),
+		//'cache' => DRUPAL_CACHE_PER_USER,
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+	$blocks['company_center'] = array(
+    'info' => t('企业中心'),
+		'cache' => DRUPAL_CACHE_PER_USER,
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+	$blocks['company_node_add_review'] = array(
+    'info' => t('企业点评表单'),
+		'cache' => DRUPAL_NO_CACHE,
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+	$blocks['company_node_add_share'] = array(
+    'info' => t('企业实习分享表单'),
+		'cache' => DRUPAL_NO_CACHE,
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+	$blocks['company_node_add_job'] = array(
+    'info' => t('企业招聘表单'),
+		'cache' => DRUPAL_NO_CACHE,
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+	$blocks['company_node_add_discussion'] = array(
+    'info' => t('企业讨论表单'),
+		'cache' => DRUPAL_NO_CACHE,
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+	$blocks['company_node_add_event'] = array(
+    'info' => t('企业活动表单'),
+		'cache' => DRUPAL_NO_CACHE,
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+	return $blocks;
+}
+
+/**
+ * 实现钩子hook_block_view().
+ */
+function company_center_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'company_tabs':
+      $block['subject'] = t('企业详细导航');
+      $block['content'] = theme('company_center_tabs_block',array());
+      break;
+
+    case 'company_nav':
+      $block['subject'] = t('企业中心导航');
+      $block['content'] = theme('company_center_nav_block',array());
+      break;
+
+    case 'company_center':
+      $block['subject'] = t('企业中心');
+      $block['content'] = theme('company_center_center_block',array());
+      break;
+
+    case 'company_node_add_review':
+      $block['subject'] = t('企业点评表单');
+      $block['content'] = company_center_get_form_block('review');
+      break;
+
+    case 'company_node_add_share':
+      $block['subject'] = t('企业实习分享表单');
+      $block['content'] = company_center_get_form_block('share');
+      break;
+
+    case 'company_node_add_job':
+      $block['subject'] = t('企业招聘表单');
+      $block['content'] = company_center_get_form_block('job');
+      break;
+
+    case 'company_node_add_discussion':
+      $block['subject'] = t('企业讨论表单');
+      $block['content'] = company_center_get_form_block('company_discussion');
+      break;
+
+    case 'company_node_add_event':
+      $block['subject'] = t('企业活动表单');
+      $block['content'] = company_center_get_form_block('company_event');
+      break;
+  }
+  return $block;
+}
+
+function company_center_get_form_block($nodetype){
+  $gid = arg(1);
+	if(empty($gid)){
+	  $gid = 0;
+	}
+  module_load_include('inc', 'node', 'node.pages');
+	$form = node_add($nodetype);
+	//if(isset($form['field_shortcoming'][und][0][value])){
+	  //$form['field_shortcoming']['und'][0]['value']['#value'] = 123456;
+		//$form['field_shortcoming']['und'][0]['value']['#attributes'] = array('disabled'=>TRUE,);
+		//$form['og_group_ref']['und']['#value'] = $gid;
+		$company = node_load($gid);
+		$form['og_group_ref']['und'][0]['target_id']['#value'] = $company->title.' ('.$gid.')';
+		$form['#action'] = url($_GET['q'],array('query' => drupal_get_destination(),));
+		//$form['og_group_ref']['und']['#default_value'] = 22;
+		//$form['og_group_ref'][und]['#attributes'] = array('disabled'=>TRUE,);
+	//}
+	//debug($form['field_shortcoming']);
+	$output = drupal_render($form);
+	return $output;
+}
+
+/**
+ * 实现hook_theme钩子
+ */
+function company_center_theme(){
+	return array(
+    'company_center_tabs_block' => array(
+      'variables' => array(),
+			'file' => 'company_center.pages.inc',
+    ),
+    'company_center_nav_block' => array(
+      'variables' => array(),
+			'file' => 'company_center.pages.inc',
+    ),
+    'company_center_center_block' => array(
+      'variables' => array(),
+			'file' => 'company_center.pages.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function company_center_user_login(&$edit, $account) {
+
+//  $company_role = 4;
+//	//print debug('123456');
+//	if(array_key_exists($company_role,$account->roles) ){
+//	  //print debug($_GET['destination']);
+//		$company_id = db_select('node','n')
+//		->condition('n.uid',$account->uid)
+//		->condition('n.type','company')
+//		->fields('n',array('nid'))
+//		->range(0,1)
+//		->execute()
+//		->fetchField();
+//		$path = '';
+//		if(empty($company_id)){
+//		  $path = 'node/add/company';
+//		}else{
+//		  $path = 'companycenter/'.$company_id;
+//		}
+//		//$_GET['destination'] = $url = url($path,$options);
+//	  //drupal_goto($path);
+//		$options['absolute'] = TRUE;
+//
+//		$url = url($path,$options);
+//    $_GET['destination']  = url($path,$options);
+//		drupal_goto($path);
+    //header('Location: ' . $url,TRUE);
+
+//	}
+/*
+  if (variable_get('privatemsg_display_loginmessage', TRUE) && privatemsg_user_access()) {
+    $count = privatemsg_unread_count();
+    if ($count) {
+      drupal_set_message(format_plural($count, 'You have <a href="@messages">1 unread message</a>.', 'You have <a href="@messages">@count unread messages</a>', array('@messages' => url('messages'))));
+    }
+  }
+	*/
+}

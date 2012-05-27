@@ -1,0 +1,372 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function ajax_register_menu() {
+
+  $items['ajax_register/%/%ctools_js'] = array(
+    'page callback' => 'ajax_register_page_callback',
+    'page arguments' => array(1, 2),
+    'access callback' => 'ajax_register_page_access',
+    'access arguments' => array(1, 2),
+    'delivery callback' => 'ajax_deliver',
+    'theme callback' => 'ajax_base_page_theme',
+    'type' => MENU_CALLBACK,
+    'file' => 'ajax_register.pages.inc',
+  );
+
+  $items['admin/config/user-interface/ajax_register'] = array(
+    'title' => 'Ajax Register',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ajax_register_admin_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'ajax_register.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Check access to ajax page callback.
+ */
+function ajax_register_page_access($form, $type) {
+  $allowed_forms = array('companylogin', 'login', 'register', 'password');
+  $allowed_types = array('ajax', 'nojs');
+  if (in_array($form, $allowed_forms) && in_array($type, $allowed_types) && user_is_anonymous()) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function ajax_register_block_info() {
+
+  // Block with three links (login, register, restore password).
+  $blocks['ajax_register_block'] = array(
+    'info' => t('Ajax Register links'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function ajax_register_block_configure() {
+
+  // User allowed to disable ajax links.
+  $form['ajax_register_enabled_links'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Enabled links'),
+    '#options' => array(
+      'login' => t('Log In'),
+      'register' => t('Create new account'),
+      'password' => t('Request new password'),
+    ),
+    '#default_value' => variable_get('ajax_register_enabled_links', array('login', 'register', 'password')),
+  );
+
+  $form['ajax_register_show_links_inline'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Display links inline'),
+    '#default_value' => variable_get('ajax_register_show_links_inline', TRUE),
+  );
+
+  return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function ajax_register_block_save($delta = '', $edit = array()) {
+
+  // Remove empty elements from array.
+  $links = $edit['ajax_register_enabled_links'];
+  foreach ($links as $key => $link) {
+    if (!$link) {
+      unset($links[$key]);
+    }
+  }
+
+  // Save variables to database.
+  variable_set('ajax_register_enabled_links', $links);
+  variable_set('ajax_register_show_links_inline', $edit['ajax_register_show_links_inline']);
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function ajax_register_block_view() {
+
+  // Show links only to anonymous users.
+  if (user_is_anonymous()) {
+
+    // Get enabled ajax links.
+    $enabled_links = variable_get('ajax_register_enabled_links', array('login', 'register', 'password'));
+    if (!$enabled_links) {
+      // Hide block if user didn't choose at least one link.
+      return FALSE;
+    }
+
+    // Include css and js for modal dialog.
+    _ajax_register_include_modal();
+
+    // Add a links to the block.
+    $block['content'] = array(
+      '#theme' => 'item_list',
+      '#items' => _ajax_register_ajax_links($enabled_links),
+      '#attributes' => array('class' => array('ajax-register-links'))
+    );
+
+    // Display links inline.
+    if (variable_get('ajax_register_show_links_inline', TRUE)) {
+      $block['content']['#attributes']['class'][] = 'inline';
+    }
+
+    return $block;
+  }
+}
+
+/**
+ * Implements hook_menu_site_status_alter().
+ */
+function ajax_register_menu_site_status_alter(&$menu_site_status, $path) {
+  // Disable offline mode for ajax response for User Login and User Pass forms'.
+  if ($menu_site_status == MENU_SITE_OFFLINE) {
+    if (user_is_anonymous()) {
+      switch ($path) {
+        case 'system/ajax':
+          if (isset($_POST['form_id']) && in_array($_POST['form_id'], array('user_login', 'user_pass'))) {
+            $menu_site_status = MENU_SITE_ONLINE;
+            break;
+          }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ajax_register_form_alter(&$form, &$form_state, $form_id) {
+
+  // Create array with enabled ajax links.
+  $enabled_links = array('companylogin', 'login', 'register', 'password');
+
+  switch ($form_id) {
+//    case 'user_login_block':
+//
+//      // Include css and js for modal dialog.
+//      _ajax_register_include_modal();
+//
+//
+//
+//      // Add links processed with CTools modal.
+//      $form['links'] = array(
+//        '#theme' => 'item_list',
+//        '#items' => _ajax_register_ajax_links($enabled_links, $form_id),
+//        '#attributes' => array('class' => array('ajax-register-links')),
+//      );
+
+    // Do not break here!
+
+    case 'user_login':
+    case 'intern_company_user_login_form':
+    case 'user_pass':
+    case 'user_register_form':
+
+      // Include css and js for modal dialog.
+      _ajax_register_include_modal();
+
+      // Do not process form with AJAX that should be processed with CTools.
+      $modal_links_enabled = variable_get('ajax_register_form_enable_modal_links', TRUE);
+      if (isset($form_state['ajax']) && $form_state['ajax'] == TRUE && $modal_links_enabled) {
+        // Add links processed with CTools modal.
+        $form['links'] = array(
+          '#theme' => 'item_list',
+          '#items' => _ajax_register_ajax_links($enabled_links, $form_id),
+          '#attributes' => array('class' => array('ajax-register-links', 'inline')),
+          '#weight' => -200,
+          '#prefix' => '<div class="ajax-register-links-wrapper">',
+          '#suffix' => '</div>',
+        );
+
+        // Unset captcha from modal form.
+        $hide_captcha = variable_get('ajax_register_hide_captcha', FALSE);
+        if ($hide_captcha) {
+          unset($form['captcha']);
+        }
+        else {
+          // Add html wrapper to form and #ajax to form submit.
+          _ajax_register_add_ajax($form, $form_id);
+        }
+      }
+  }
+}
+
+/**
+ * Add form wrapper and #ajax attribute to forms.
+ */
+function _ajax_register_add_ajax(&$form, $type) {
+
+  // Add ajax wrapper to form.
+  $html_id = str_replace('_', '-', $type);
+  $form['#prefix'] = '<div id="ajax-register-' . $html_id . '-wrapper">';
+  $form['#suffix'] = '</div>';
+
+  // User login block and user login form have same ajax callback;
+  if ($type == 'user_login_block') {
+    $type = 'user_login';
+  }
+
+  // Add ajax functionality to form submit button.
+  $form['actions']['submit']['#ajax'] = array(
+    'callback' => 'ajax_register_' . $type . '_ajax_callback',
+    'wrapper' => 'ajax-register-' . $html_id . '-wrapper',
+  );
+}
+
+/**
+ * Ajax callback for USER LOGIN form.
+ */
+function ajax_register_intern_company_user_login_form_ajax_callback($form, $form_state) {
+
+  if (!form_get_errors()) {
+    // Redirect user after login to user provided url.
+    // If redirect url is empty page will be reloaded.
+    $redirect_url = variable_get('ajax_register_login_form_redirect', '');
+    ctools_include('ajax');
+    $commands = array();
+    $commands[] = ctools_ajax_command_redirect($redirect_url);
+    return array('#type' => 'ajax', '#commands' => $commands);
+  }
+
+  // Reload form if it didn't pass validation.
+  return $form;
+}
+
+/**
+ * Ajax callback for USER LOGIN form.
+ */
+function ajax_register_user_login_ajax_callback($form, $form_state) {
+  if (!form_get_errors()) {
+    // Redirect user after login to user provided url.
+    // If redirect url is empty page will be reloaded.
+    $redirect_url = variable_get('ajax_register_login_form_redirect', '');
+    ctools_include('ajax');
+    $commands = array();
+    $commands[] = ctools_ajax_command_redirect($redirect_url);
+    return array('#type' => 'ajax', '#commands' => $commands);
+  }
+  // Reload form if it didn't pass validation.
+  return $form;
+}
+
+
+/**
+ * Ajax callback for USER PASS form.
+ */
+function ajax_register_user_pass_ajax_callback($form, $form_state) {
+
+  if (!form_get_errors()) {
+    // After successfull password restore replace form with status messages.
+    $commands = array();
+    $commands[] = ajax_command_replace('#ajax-register-user-pass-wrapper', theme('status_messages'));
+    return array('#type' => 'ajax', '#commands' => $commands);
+  }
+
+  // Reload form if it didn't pass validation.
+  return $form;
+}
+
+/**
+ * Ajax callback for USER REGISTER form.
+ */
+function ajax_register_user_register_form_ajax_callback($form, $form_state) {
+
+  if (!form_get_errors()) {
+    $redirect_url = trim(variable_get('ajax_register_register_form_redirect', ''));
+    if ($redirect_url != '<noredirect>') {
+      // Redirect user after login to user provided url.
+      // If redirect url is empty page will be reloaded.
+      ctools_include('ajax');
+      $commands = array();
+      $commands[] = ctools_ajax_command_redirect($redirect_url);
+      return array('#type' => 'ajax', '#commands' => $commands);
+    }
+    else {
+      // If register form should be hidden after successfull registration
+      // just replace it with status messages.
+      $commands = array();
+      $commands[] = ajax_command_replace('#ajax-register-user-register-form-wrapper', theme('status_messages'));
+      return array('#type' => 'ajax', '#commands' => $commands);
+    }
+  }
+
+  // Reload form if it didn't pass validation.
+  return $form;
+}
+
+/**
+ * Return ajax links for user login, register or password request.
+ */
+function _ajax_register_ajax_links($links_enabled, $form_id = NULL) {
+  $links = array();
+  if (in_array('login', $links_enabled) && $form_id == 'user_login') {
+    $links[] = ctools_modal_text_button(t('企业用户登录'), 'ajax_register/companylogin/nojs', '', 'ctools-modal-ctools-ajax-register-style');
+  }
+  else {
+    if (in_array('companylogin', $links_enabled) && $form_id == 'intern_company_user_login_form') {
+      $links[] = ctools_modal_text_button(t('普通用户登录'), 'ajax_register/login/nojs', '', 'ctools-modal-ctools-ajax-register-style');
+    }
+  }
+  return $links;
+}
+
+/**
+ * Add css and javascript for modal dialog.
+ */
+function _ajax_register_include_modal() {
+
+  static $added = FALSE;
+  if ($added == FALSE) {
+
+    // Do not add css and scripts again.
+    $added = TRUE;
+
+    // Include the CTools tools that we need.
+    ctools_include('modal');
+    ctools_include('ajax');
+    ctools_modal_add_js();
+
+    // Create our own javascript that will be used to theme a modal.
+    $ajax_register_style = array(
+      'ctools-ajax-register-style' => array(
+        'modalSize' => array(
+          'type' => 'fixed',
+          'width' => (int) trim(variable_get('ajax_register_modal_width', 850)),
+          'height' => 140,
+          'contentRight' => 30,
+          'contentBottom' => 0,
+        ),
+        'modalOptions' => array(
+          'opacity' => (float) variable_get('ajax_register_modal_background_opacity', '0.8'),
+          'background-color' => '#' . variable_get('ajax_register_modal_background_color', '000000'),
+        ),
+        'closeText' => '',
+        'throbber' => theme('image', array('path' => ctools_image_path('ajax-loader.gif', 'ajax_register'))),
+        'animation' => 'fadeIn',
+        'animationSpeed' => 'fast',
+      ),
+    );
+    drupal_add_js($ajax_register_style, 'setting');
+
+    // Add module css and js.
+    ctools_add_css('ajax-register', 'ajax_register');
+    ctools_add_js('ajax-register', 'ajax_register');
+  }
+}

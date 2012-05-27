@@ -1,0 +1,73 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * 定制的用户中心.
+ */
+
+
+/**
+ * 实现钩子hook_block_info().
+ */
+function zpuser_block_info(){
+  $blocks['resume'] = array(
+    'info' => t('简历完成度区块'),
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+  $blocks['navigation'] = array(
+    'info' => t('个人中心导航区块'),
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+  $blocks['microblog'] = array(
+    'info' => t('分享我的最新动态'),
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
+	return $blocks;
+}
+
+/**
+ * 实现钩子hook_block_view().
+ */
+function zpuser_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'resume':
+      $block['subject'] = t('我的简历');
+      $block['content'] = theme('zpuser_resume_block',array());
+      break;
+    case 'navigation':
+      $block['subject'] = t('个人中心导航');
+      $block['content'] = theme('zpuser_my_account_block',array());
+      break;
+    case 'microblog':
+      $block['subject'] = t('分享我的最新动态');
+      $block['content'] = theme('zpuser_microblog_block',array());
+      break;	  
+		
+  }
+  return $block;
+}
+
+/**
+ * 实现hook_theme钩子
+ */
+function zpuser_theme(){
+	return array(
+    'zpuser_resume_block' => array(
+      'variables' => array(),
+			'file' => 'zpuser.pages.inc',
+    ),
+    'zpuser_my_account_block' => array(
+      'variables' => array(),
+			'file' => 'zpuser.pages.inc',
+    ), 
+    'zpuser_microblog_block' => array(
+      'variables' => array(),
+			'file' => 'zpuser.pages.inc',
+    ), 
+				
+  );
+}
+

@@ -1,0 +1,64 @@
+/**
+*  Style from the new (great!) INTERN THEME for Drupal
+* http://drupal.org/project/intern
+*/
+
+.quicktabs_main.quicktabs-style-intern {
+    clear: both;
+}
+
+ul.quicktabs-tabs.quicktabs-style-intern {
+    margin: 0 0 15px 0;
+    padding: 0 0 12px;
+    font-size: 12px;
+    list-style: none;
+    height: 21px;
+    background: transparent url(images/tab-bar.png) repeat-x left bottom;
+}
+
+*html ul.quicktabs-tabs.quicktabs-style-intern li {
+    margin-bottom: -5px;
+}
+
+ul.quicktabs-tabs.quicktabs-style-intern li {
+    float: left;
+    margin: -2px 1px;
+    line-height: 30px;
+    height: 34px;
+    padding: 0 0 0 5px;
+    background: transparent url(images/tab-left-ie6.png) no-repeat left -39px;
+}
+
+ul.quicktabs-tabs.quicktabs-style-intern li a {
+    font: 12px;
+    line-height: 30px;
+    height: 30px;
+    font-size-adjust: none;
+    display: block;
+    margin: 0;
+    padding: 4px 17px 0px 11px;
+    border-width: 0;
+    text-decoration: none;
+    background: transparent url(images/tab-right-ie6.png) no-repeat right -40px;
+}
+
+ul.quicktabs-tabs.quicktabs-style-intern li:hover a {
+    border-width: 0;
+    background: transparent url(images/tab-right-ie6.png) no-repeat right -41px;
+}
+
+quicktabs-tabs.quicktabs-style-intern li:hover {
+    background: transparent url(images/tab-left-ie6.png) no-repeat left -40px;
+}
+
+ul.quicktabs-tabs.quicktabs-style-intern li.active a,
+ul.quicktabs-tabs.quicktabs-style-intern li.active a:hover {
+    text-decoration: none;
+    border-width: 0;
+    background: transparent url(images/tab-right-ie6.png) no-repeat right -2px;
+    color: white;
+}
+
+ul.quicktabs-tabs.quicktabs-style-intern li.active {
+    background: transparent url(images/tab-left-ie6.png) no-repeat left -2px;
+}

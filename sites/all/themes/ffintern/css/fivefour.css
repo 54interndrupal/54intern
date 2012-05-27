@@ -1,0 +1,4176 @@
+/*==Basic==*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, select, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif;
+}
+form a,form span,form label{
+    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+}
+
+h2 {
+    font-size: 16px;
+    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+}
+
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+.left {
+    float: left;
+}
+.b{
+    font-weight: bold;
+}
+
+.framed img {
+    border: 1px solid #e0e0e0;
+    padding: 2px;
+}
+
+hr {
+    display: none;
+}
+
+label{
+    display: inline-block;
+    color: #666666;
+    font-weight: normal;
+}
+
+a:link {
+    color: #4F832F;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #4F832F;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #4f832f;
+    text-decoration: none;
+}
+
+a:active {
+    color: #4f832f;
+    text-decoration: none;
+}
+
+::selection {
+    background: #4f832f;
+    color: white;
+}
+
+::-moz-selection {
+    background: #4f832f;
+    color: white;
+}
+
+.block-content {
+    position: relative;
+}
+
+/*==model window Begin==*/
+div.ctools-modal-content{
+    border: 4px #4E963C solid;
+
+}
+div.ctools-modal-content .modal-header{
+    background-color: #ffffff;
+    height: 36px;
+    padding: 3px 8px 0 0 ;
+}
+div.ctools-modal-content .modal-header.colored{
+    background-color: #f0f0f0;
+}
+div.ctools-modal-content .modal-title{
+    font-weight: normal;
+    color: #333333;
+    padding: 5px 0 0 10px;
+}
+div.ctools-modal-content .modal-content{
+    padding: 10px 8px 10px 15px;
+}
+
+/*==model window End==*/
+/*==table Begin==*/
+
+/*==table End==*/
+table.views-table{
+
+}
+table.views-table thead{
+   background-color: #7A7876;
+}
+table.views-table thead th{
+    padding: 8px 0 8px 0;
+    color: #ffffff;
+}
+table.views-table tbody tr{
+    border-bottom: 3px solid #ffffff;
+}
+table.views-table tbody td{
+    padding: 12px 0 12px 0;
+    background: #F1F5E6;
+}
+/*==input field==*/
+input {
+
+}
+input.form-text{
+    padding: 5px;
+}
+input.form-text.form-autocomplete{
+   padding: 5px;
+}
+input.form-button{
+    padding: 8px 25px 8px 25px;
+    background-color: rgb(78, 150, 60);
+    border: 1px;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+    font-size: 14px;
+    font-weight: bold;
+}
+input.form-button-cancel{
+    padding: 8px 25px 8px 25px;
+    background-color: #7A7876;
+    border: 1px;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+    font-size: 14px;
+    font-weight: bold;
+}
+select.form-select{
+    padding: 5px;
+}
+input.form-submit{
+    padding: 0;
+}
+.hierarchical-select-wrapper{
+    display: inline-block;
+}
+textarea {
+    padding: 15px;
+}
+
+textarea {
+    overflow-y: auto;
+    border: 2px solid #4D963B;
+}
+
+div.messages,
+div.notice,
+div.error {
+    background: #fffbcf url(img/message.png) no-repeat 2em 1em;
+    padding: 1em 3em 1em 5em;
+    border: #9a9a9a dotted 1px;
+    margin: 1em 0;
+}
+
+div.error {
+    background: #ffcfcf url(img/error.png) no-repeat 2em 1em;
+    padding: 1em 3em 1em 6em;
+}
+
+.item-list {
+    clear: both;
+}
+
+.item-list ul {
+    margin: 0;
+}
+
+.item-list ul li {
+    list-style-type: none;
+    margin: 0;
+}
+
+span.flag-like{
+    background: url(img/site/bt_like_2.gif) no-repeat 3px 3px;
+    padding: 5px 2px 4px 27px;
+    border:1px solid #A7CD81;
+    margin-right: 5px;
+}
+
+/*==comments==*/
+div.comment-wrapper h2.comment-form{
+    background: url(img/site/bt_dp.png) no-repeat;
+    padding: 3px 0 2px 30px;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+div.comment{
+    margin:35px 0 5px 0;
+    padding: 16px 15px 20px 15px;
+    border-top: 1px #EFEFEF solid;
+    background: url(img/site/bg_cmt.gif) repeat-x;
+}
+
+div.comment div.attribution{
+    height: 14px;
+}
+
+div.comment div.user-picture{
+    float: left;
+    margin-right: 10px;
+}
+div.comment div.info{
+    float: left;
+}
+div.comment div.info span.username{
+    color: #1F79A5;
+}
+div.comment div.links{
+    float: right;
+}
+div.comment div.content{
+    padding: 12px 0 0 0;
+}
+
+form.comment-form div.form-actions{
+    text-align: right;
+}
+form.comment-form input.form-submit{
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    width: 86px;
+    height: 34px;
+    background-color: #4E963C;
+    border: 1px;
+    cursor: pointer;
+}
+
+/*==tabs==*/
+.quicktabs-wrapper .more-link {
+    float: right;
+    margin-top: -56px;
+    padding-right: 10px;
+}
+
+.quicktabs-wrapper .more-link a {
+    color: rgb(102, 102, 102);
+    font-size: 12px;
+}
+
+/*==view==*/
+.view {
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.views-row {
+    margin-bottom: 10px;
+}
+
+.field-name-detail{
+    float: right;
+}
+
+.field-name-body ol,
+.field-name-body ul {
+    margin-left: 3em;
+    padding: 0.5em 0;
+}
+
+.field-name-body p {
+    padding-bottom: 0.5em;
+}
+
+.item-list ul.pager {
+    background: #f5f5f5;
+    padding: 5px 10px;
+    border: #cdcdcd 1px solid;
+    margin-top: 20px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.item-list ul.pager li {
+    display: inline;
+    list-style-type: none;
+    padding: 0.5em;
+}
+
+ul.pager .pager-current {
+    color: #333;
+    font-weight: bold;
+}
+
+.node-page .content p {
+    padding-bottom: 1em;
+    display: inline-block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*== common items ==*/
+/*==post-item==*/
+.post-item {
+    width: 400px;
+    min-height: 132px;
+    float: left;
+}
+
+.post-item h2 a {
+    font-size: 20px;
+    font-weight: normal;
+    color: RGB(0, 102, 0);
+}
+
+.post-item .author {
+    height: 25px;
+}
+
+.post-item .author img {
+    margin: 3px 3px 0 0;
+}
+
+.post-item .postInfo {
+    width: 400px;
+}
+
+/*==post-item-2==*/
+.post-item-2{
+    display: inline-block;
+    width: 548px;
+    min-height: 112px;
+    margin-top: -5px;
+    padding-left: 8px;
+}
+.post-item-2 h2{
+    font-weight: normal;
+}
+
+.post-item-2 .d-1{
+    float: left;
+    width: 390px;
+    padding-top: 0px;
+    padding: 6px 0 8px 0;
+
+}
+.post-item-2 .d-2{
+    float: right;
+    width: 150px;
+    padding: 6px 0 8px 0;
+    text-align: right;
+}
+span.icon-share{
+    background: url("img/site/bt_share.gif") no-repeat;
+    padding:0 0 10px 20px;
+    width: 70px
+}
+span.icon-like-s{
+    background: url("img/site/bt_like_s.gif") no-repeat 0 5px;
+    padding:10px 10px 0 30px;
+    width: 80px;
+}
+
+.like-info {
+    width: 80px;
+    display: inline-block;
+    min-height: 132px;
+    margin-right: 10px;
+}
+
+.like-info span.comment-count {
+    background: url(img/site/bt_share.gif) no-repeat;
+    padding-left: 20px;
+    margin: 0 0 15px 15px;
+}
+
+.like-info div.like-icon {
+    background: url(img/site/bt_like.gif) no-repeat;
+    width: 50px;
+    height: 43px;
+    margin: 25px 0 10px 10px;
+}
+
+.like-info span.like-count {
+    margin: 0 0 0 15px;
+}
+
+.post-job .job-content {
+    width: 500px;
+    float: left;
+}
+
+.post-job .job-author {
+    width: 120px;
+    float: right;
+}
+
+.post-job .job-company {
+    float: right;
+    width: 160px;
+    font-weight: bold;
+    padding-right: 8px;
+}
+
+.post-job .pic {
+    margin: 2px 10px 0 0;
+}
+
+.post-job .job-header {
+    padding-bottom: 5px;
+}
+
+.post-job .job-header a {
+    font-size: 14px;
+    font-weight: normal;
+    color: #0066CC;
+    width: 200px;
+}
+
+.post-job .job-header .job-shixi-,
+.post-job .job-header .job-shixi-实习圈 {
+    background: url(img/site/bt_sxq.png) no-repeat 0 1px;
+    width: 41px;
+    height: 15px;
+    display: inline-block;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.post-job .job-header .job-shixi-收录 {
+    background: url(img/site/bt_sl.png) no-repeat 0 1px;
+    width: 28px;
+    height: 15px;
+    display: inline-block;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+/*==form==*/
+.form-required {
+    color: red;
+}
+
+input.form-text,
+select.form-select{
+    border: 1px solid #ddd;
+}
+textarea.hint,
+input.hint {
+    color: rgb(178, 178, 178);
+}
+div.form-item div.form-radios{
+    display: inline-block;
+}
+div.form-item div.form-radios label{
+    float: none;
+}
+div.form-item div.form-radios div.form-item{
+    display: inline-block;
+}
+div.form-item div.description{
+    font-size: 12px;
+    color: #999999;
+}
+div.form-item div.date-date{
+    display: inline-block;
+}
+
+/*==review-node-form==*/
+div.review-node-form-header {
+    margin-top: 20px;
+}
+
+div.review-node-form-header span.form-header-title {
+    background: url(img/site/bt_dp.png) no-repeat;
+    padding: 3px 0 5px 30px;
+    font-weight: bold;
+}
+
+form.node-review-form textarea {
+    border: 2px solid #4D963B;
+}
+
+form.node-review-form div.form-actions {
+    text-align: right;
+}
+
+form.node-review-form div.form-actions input.form-submit {
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    width: 86px;
+    height: 34px;
+    background-color: #4E963C;
+    cursor: pointer;
+    border: 1px;
+}
+/*== node-resume-form==*/
+form.node-resume-form div.form-item{
+    padding: 5px 0 5px 0;
+    height: 30px;
+}
+form.node-resume-form div.field-type-datestamp.form-wrapper{
+    display: none;
+}
+form.node-resume-form div.form-item div.hierarchical-select-wrapper-processed{
+    display:inline-block;
+}
+form.node-resume-form div.form-item.form-type-hierarchical-select{
+    padding: 0px 0 0px 0;
+}
+form.node-resume-form div.form-item input.form-text{
+    height: 20px;
+    width: 204px;
+}
+form.node-resume-form div.form-item select.form-select{
+    height: 30px;
+    width: 216px;
+}
+form.node-resume-form div.form-item div.form-radios{
+    display: inline-block;
+}
+form.node-resume-form div.form-item div.form-radios label{
+    float: none;
+}
+form.node-resume-form div.form-item div.form-radios div.form-item{
+    display: inline-block;
+}
+form.node-resume-form div.form-item div.description{
+    display: inline-block;
+    padding-left: 15px;
+}
+form.node-resume-form label{
+    width: 150px;
+    text-align: right;
+    padding-right: 15px;
+    float: left;
+    padding-top: 7px;
+}
+form.node-resume-form div #user-apply-letter{
+    min-height: 260px;
+}
+form.node-resume-form div #user-attached-resume label,
+form.node-resume-form div #user-apply-letter label{
+    width: 90px;
+}
+form.node-resume-form div #user-apply-letter textarea{
+    display: inline-block;
+    width: 550px;
+}
+
+form.node-resume-form div.field-name-field-contact-address input.form-text{
+    width: 400px;
+}
+form.node-resume-form div.form-item div.file-widget{
+    width: 340px;
+    display: inline-block;
+    float: left;
+}
+
+form.node-resume-form div.field-name-field-resume-attachement input.form-file{
+    width: 254px;
+    height: 30px;
+    background-color: #ffffff;
+}
+form.node-resume-form div.field-name-field-resume-attachement input.form-submit{
+    margin-left: 10px;
+    height: 30px;
+    width: 60px;
+}
+
+form.node-resume-form div.field-name-field-resume-memo input.form-text{
+    width: 520px;
+}
+form.node-resume-form div.form-actions{
+    text-align: center;
+    margin-top: 40px;
+}
+form.node-resume-form div.form-actions input.form-submit{
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+    width: 86px;
+    height: 34px;
+    background-color: #4E963C;
+    cursor: pointer;
+    border: 1px;
+}
+
+/*==/font styles==*/
+.c-1 {
+    color: #858585;
+}
+
+.c-2 {
+    color: rgb(51, 102, 0);
+}
+
+.c-3 {
+    font-size: 14px;
+}
+
+.c-4 {
+    color: rgb(0, 102, 0);
+}
+.c-5 a,
+.c-5 {
+    color: #999999;
+}
+.c-6 a,
+a.c-6,
+.c-6 {
+    color: #1357A2;
+}
+
+a.c-7,
+.c-7 {
+    color: #86B5D7;
+}
+
+.c-8 {
+    color: #E3EAE2;
+}
+
+.c-9 {
+    color: #336327;
+}
+.c-10 a:visited,
+.c-10 a:link,
+.c-10 {
+    color: #666666;
+}
+
+.c-11{
+    color: #989898;
+}
+.c-12{
+   color: #FF3300;
+}
+.c-13 a:link,
+.c-13 a:active,
+.c-13 a:visited,
+.c-13{
+    color: #336699;
+}
+.c-14 a:link,
+.c-14 a:active,
+.c-14 a:visited,
+.c-14{
+    color: #006699;
+}
+.c-15{
+    color: #CC0000;
+}
+.c-16{
+    color: #4C963A;
+}
+.c-17{
+    color: #333333;
+}
+
+span.hot {
+    color: #FF6600;
+    margin-right: 5px;
+}
+
+span.sticky {
+    color: #4C963A;
+    margin-right: 5px;
+}
+
+/*==/Basic==*/
+body {
+    font-size: 14px;
+    font-family: verdana, arial, '微软雅黑';
+    color: #333;
+}
+
+/*==changed by howard, add "#page-wrapper" ==*/
+#admin-menu {
+    font-size: 12px;
+}
+
+body.admin-menu {
+    margin-top: 24px !important;
+    background-position: 0 24px;
+}
+
+#page {
+    width: 960px;
+    margin: 0 auto;
+}
+body.front #header{
+    height:200px;
+}
+#header {
+    width: 100%;
+    position: relative;
+    height: 175px;
+}
+
+#top-toolbar {
+    width: 100%;
+    border-bottom: dashed 1px #CCC;
+    color: #6A6A6A;
+    height: 30px;
+    z-index: 2;
+}
+
+#top-toolbar .block-content {
+    padding-right: 20px;
+    float: right;
+}
+
+#top-toolbar .block-content a:link, #top-toolbar .block-content a:visited {
+    color: #FF6600;
+    text-decoration: none;
+}
+
+#top-toolbar .block-content a:hover {
+    color: #FF6600;
+    text-decoration: underline;
+}
+
+#top-toolbar .block-content span {
+    display: inline-block;
+    float: left;
+    line-height: 30px;
+    height: 30px;
+}
+
+#top-toolbar .block-content .WB {
+    display: inline-block;
+    background: url(img/site/bt_wbxl.gif) no-repeat;
+    width: 76px;
+    height: 20px;
+    margin: 5px 0 2px 5px;
+}
+
+#top-toolbar .block-content .RR {
+    display: inline-block;
+    background: url(img/site/bt_rrxl.gif) no-repeat;
+    width: 76px;
+    height: 20px;
+    margin: 5px 0 2px 5px;
+}
+
+#top-toolbar .block-content .QQ {
+    display: inline-block;
+    background: url(img/site/bt_qqxl.gif) no-repeat;
+    width: 76px;
+    height: 20px;
+    margin: 5px 0 2px 5px;
+}
+
+#search {
+    float: right;
+    margin-top: 63px;
+    line-height: 0;
+    display: block;
+}
+
+#search select {
+    display: none;
+
+}
+
+#search input.form-text {
+    width: 412px;
+    height: 20px;
+    line-height: 30px;
+    border: 2px solid #8DB125;
+    padding: 5px
+}
+
+#search input.form-submit {
+    width: 80px;
+    height: 34px;
+    background: #8DB125;
+    color: #FFF;
+    border: 0;
+    margin-left: -8px;
+    font: bold 15px;
+}
+
+#logo {
+    display: inline-block;
+    float: left;
+    width: 308px;
+    height: 78px;
+    margin-top: 35px;
+}
+
+body.front #block-system-main-menu {
+    margin-bottom: 15px;
+}
+
+#block-system-main-menu {
+    float: right;
+    right: 0;
+    bottom: 43px;
+    margin: 15px 0 10px 0;
+    display: block;
+    text-align: right;
+}
+
+#block-system-main-menu ul.menu li {
+    list-style: none none;
+    float: left;
+    font-size: 18px;
+}
+
+#block-system-main-menu ul.menu li a {
+    display: inline-block;
+}
+
+#block-system-main-menu ul.menu li a span {
+    display: inline-block;
+    height: 26px;
+    line-height: 33px;
+    color: black;
+}
+
+#block-system-main-menu ul.menu li a.active span {
+    display: inline-block;
+    height: 26px;
+    line-height: 33px;
+    color: black;
+    border-bottom:solid 2px #B0D73E;
+}
+
+#block-system-main-menu ul.menu li {
+    height: 24px;
+    padding-right: 0px;
+}
+
+#block-system-main-menu ul.menu span.menu-split{
+    display: inline-block;
+    background: url(img/site/bt_mnu_split.gif) no-repeat 0 1px;
+    width: 19px;
+    height: 26px;
+}
+
+#block-system-main-menu ul.menu span.menu-623 {
+    background: url(img/site/bt_fg.gif) no-repeat;
+    width: 83px;
+}
+
+#block-system-main-menu ul.menu span.menu-625 {
+    background: url(img/site/bt_fi.gif) no-repeat;
+    width: 82px;
+}
+
+#block-system-main-menu ul.menu span.menu-624 {
+    background: url(img/site/bt_cc.gif) no-repeat;
+    width: 119px;
+}
+
+#block-system-main-menu ul.menu span.menu-230 {
+    background: url(img/site/bt_home.gif) no-repeat;
+    width: 36px;
+}
+
+#block-system-main-menu ul.menu span.menu-1436 {
+    background: url(img/site/bt_iwiki.gif) no-repeat;
+    width: 94px;
+}
+
+#block-system-main-menu ul.menu span.menu-626 {
+    background: url(img/site/bt_cpanel.gif) no-repeat;
+    width: 110px;
+}
+
+#block-system-main-menu ul.menu span.menu-638 {
+    background: url(img/site/bt_bpanel.gif) no-repeat;
+    width: 101px;
+}
+
+#breadcrumb {
+    font-size: 14px;
+    margin: 20px 0 2px 0;
+    width: 100%;
+}
+
+#breadcrumb h2.element-invisible {
+    display: inline;
+    font-size: 12px;
+    font-weight: normal;
+    color: #4f832f;
+}
+
+#breadcrumb .breadcrumb {
+    display: inline;
+    width: 100%;
+}
+
+#main {
+    width: 920px;
+    padding: 16px 20px 20px 20px;
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+.column {
+    float: left;
+}
+
+#content {
+    width: 100%;
+}
+
+body.sidebar-first #content {
+    width: 740px;
+    margin-left: 20px;
+}
+
+body.sidebar-second #content {
+    width: 720px;
+    margin-right: 20px;
+}
+
+body.no-sidebars #content {
+    width: 720px;
+    margin-right: 20px;
+}
+
+body.two-sidebars #content {
+    width: 540px;
+    margin: 0 20px;
+}
+
+#sidebar-second {
+    width: 180px;
+}
+
+#sidebar-second .pane-content .item-list li,
+#sidebar-second .block-content .item-list li {
+    list-style: none none;
+    padding: 5px 0 5px 30px;
+    margin-top: 10px;
+    border-bottom: dashed 1px #CCC;
+    background: url(img/site/s.png) no-repeat 10px;
+    background-color: #F7F9FA;
+}
+
+body.group #sidebar-second {
+    padding-top: 7px;
+}
+
+h1#page-title {
+    padding-bottom: 12px;
+    font-size: 16px;
+    font-weight: normal;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 14px;
+}
+
+fieldset.filter-wrapper{
+    display: none;
+}
+/*==node job Begin==*/
+body div.node-job div.content{
+    background-color: #ffffff;
+    border: 1px #CCCCCC solid;
+    padding: 0 22px 0 22px;
+}
+body div.node-job div.content{
+    line-height: 1.8;
+}
+body div.node-job div.content h2{
+    font-size: 24px;
+    font-weight: normal;
+    margin:0 -22px 24px -22px;
+    padding: 35px 0 18px 22px;
+    height: 45px;
+    background-color: #F1F5E6;
+}
+body div.node-job div.content div.info{
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+}
+body div.node-job div.content div.summary{
+    display: inline-block;
+    margin:25px -22px 15px -22px;
+    padding: 0 22px 18px 22px;
+    border-bottom: 1px solid #CCCCCC;
+    width: 100%
+}
+body div.node-job div.content div.summary table tbody{
+    border: 0;
+    width: 100% ;
+    text-align: left;
+}
+body div.node-job div.content div.summary table tbody div.field{
+    width: 150px;
+}
+body div.node-job div.content div.field-name-body{
+    padding-bottom: 80px;
+}
+
+body div.node-job div.content div.d-1 span.flag-collect a.flag-action{
+    background: url(img/site/bt_fav_job_s.gif) no-repeat 4px 0px;
+    width: 102px;
+    height: 27px;
+    display: block;
+    text-indent: -999px;
+    margin-top: -5px;
+    float: right;
+}
+body div.node-job div.content div.d-1 span.flag-collect a.unflag-action{
+    background: url(img/site/bt_cancel_collect.gif) no-repeat 4px 0px;
+    width: 117px;
+    height: 29px;
+    display: block;
+    text-indent: -999px;
+    margin-top: -5px;
+    float: right;
+}
+body div.node-job div.content div.d-1 #ckepop{
+    margin-top: 5px;
+}
+body div.node-job div.content div.ops{
+    text-align: center;
+    margin-bottom: 150px;
+}
+body div.node-job div.content div.ops span.flag-collect a.flag-action{
+    background: url(img/site/bt_addfor_on.png) no-repeat;
+    width: 181px;
+    height: 39px;
+    display: inline-block;
+    text-indent: -999px;
+    margin-right: 10px;
+}
+body div.node-job div.content div.ops span.flag-collect a.unflag-action{
+    background: url(img/site/bt_addfor_off.png) no-repeat;
+    width: 181px;
+    height: 39px;
+    display: inline-block;
+    text-indent: -999px;
+    margin-right: 10px;
+}
+body div.node-job div.content div.ops span.flag-apply a{
+    background: url(img/site/bt_apply_job.gif) no-repeat;
+    width: 181px;
+    height: 39px;
+    display: inline-block;
+    text-indent: -999px;
+    margin-right: 10px;
+}
+body div.node-job div.content div.ops span.flag-apply span.unflag-action{
+    background: url(img/site/bt_apply_off.png) no-repeat;
+    width: 181px;
+    height: 39px;
+    display: inline-block;
+    text-indent: -999px;
+    margin-right: 10px;
+}
+
+body div.node-job div.content div.ops span.resume a{
+    background: url(img/site/bt_write_resume.gif) no-repeat;
+    width: 181px;
+    height: 39px;
+    display: inline-block;
+    text-indent: -9999px;
+    margin-right: 10px;
+}
+body div.node-job div.content span.source-url{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px
+}
+body div.node-job div.content span.source-url a{
+    float: right;
+    display: block;
+    background: url(img/site/bt_ss_apply.gif) no-repeat;
+    width: 95px;
+    height: 29px;
+    text-indent: -999px;
+}
+body div.node-job div.content span.follow{
+    display: inline-block;
+    float: right;
+}
+body div.node-job div.content span.follow a.flag-action{
+    float: right;
+    display: block;
+    background: url(img/site/bt_flw_job.gif) no-repeat;
+    width: 100px;
+    height: 29px;
+    text-indent: -999px;
+}
+body div.node-job div.content span.follow a.unflag-action{
+    float: right;
+    display: block;
+    background: url(img/site/bt_unfollow.gif) no-repeat;
+    width: 113px;
+    height: 29px;
+    text-indent: -999px;
+}
+body div.node-job div.content span.foot-msg{
+    text-align: right;
+    display: inline-block;
+    margin: 10px 0 10px 0;
+    width: 100%;
+    font-size: 16px;
+}
+body div.node-job div.content span.foot-msg a{
+    text-decoration: underline;
+}
+/*==node job End==*/
+
+/*==node article==*/
+body div.node-article div.content{
+    background-color: #F6F6F6;
+    padding: 60px 25px 30px 25px;
+    line-height: 1.8;
+}
+
+body div.node-article div.content{
+    font-size: 14px;
+}
+
+body div.node-article div.content h2{
+    font-size: 28px;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+body div.node-article div.content div.info{
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+}
+body div.node-article div.content div.info a{
+    text-decoration: underline;
+}
+
+body div.node-article div.content div.summary{
+    display: inline-block;
+    background-color: #FBFBFB;
+    padding: 10px 15px 10px 15px;
+    line-height: 1.8;
+    margin:15px 0 15px 0;
+    border:  1px dashed #ddd;
+}
+
+
+body div.node-article div.content div.photo{
+    width: 100%;
+    text-align: center;
+    margin: 5px;
+    display: inline-block;
+}
+body div.node-article div.content .field-type-image{
+    float: none;
+}
+body div.node-article div.tags div.field-items{
+    width: 350px;
+}
+body div.node-article div.tags div.field-label{
+    margin-right: 5px;
+    color: #666666;
+    font-weight: normal;
+}
+body div.node-article div.tags div.field-items div.field-item{
+    float: left;
+    margin-right: 5px;
+}
+
+/*==pane-similar-entries==*/
+div.pane-similar-entries div.panel-pane-title{
+    background: url(img/site/bt_sml_1.gif) no-repeat 1px 2px;
+}
+div.pane-similar-entries div.views-row{
+    background-color: #E3EAE2;
+    padding: 8px;
+}
+div.pane-similar-entries div.views-row .views-field-field-image{
+    float: left;
+    margin-right: 10px;
+}
+div.pane-similar-entries div.views-row .views-field-title{
+    min-height: 20px;
+    font-size: 12px;
+}
+
+
+/*==company-photos==*/
+#company-photos {
+    margin: 10px 0 10px 0;
+}
+
+/*==block==*/
+/*== reg-box Begin==*/
+div.reg div.reg-title{
+    padding: 10px 0 0px 30px;
+    margin: 10px 0 30px 0;
+    border-bottom: 3px solid #999999;
+    background: url(img/site/bt_arrow_2.gif) no-repeat 5px 10px;
+}
+div.reg div.reg-title h2{
+    display: inline-block;
+    font-size: 14px;
+    color: #006600;
+    padding-bottom: 10px;
+}
+div.reg span.s-t{
+    display: block;
+    font-size: 14px;
+    color: #006600;
+    font-weight: bold;
+    text-align: right;
+    width: 140px;
+    padding: 10px 0 8px 0;
+}
+div.reg-box{
+    width: 100%;
+}
+div.reg-form{
+    width: 52%;
+    float: left;
+    border-right: dashed 1px #CCCCCC;
+    padding-bottom: 80px;
+}
+div.reg-showcase{
+    float: left;
+    width: 45%;
+    padding: 48px 0 0 17px ;
+}
+div.reg-showcase div.reg-showcase-title h2{
+    font-size: 25px;
+    font-weight: bold;
+    color: #4C4847;
+}
+div.reg-showcase span.ss{
+    display: block;
+    width: 396px;
+    height: 41px;
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 19px 0 0 71px;
+}
+div.reg-showcase span.s-1{
+     background:url(img/site/bt_cr_1.gif) no-repeat 12px 9px;
+     background-color: #A4C151;
+ }
+div.reg-showcase span.s-2{
+    background:url(img/site/bt_cr_2.gif) no-repeat 12px 9px;
+    background-color: #71AB63;
+}
+div.reg-showcase span.s-3{
+    background:url(img/site/bt_cr_3.gif) no-repeat 12px 9px;
+    background-color: #3385D6;
+}
+div.reg-showcase span.s-4{
+    background:url(img/site/bt_cr_4.gif) no-repeat 12px 9px;
+    background-color: #EC7C4E;
+}
+
+#userreg-company-register-form label{
+    width: 140px;
+    text-align: right;
+    padding-right: 15px;
+    float: left;
+    padding-top: 7px;
+}
+#userreg-company-register-form div.description{
+    display: inline-block;
+    padding-left: 15px;
+}
+#userreg-company-register-form div.confirm-parent,
+#userreg-company-register-form div.password-parent{
+    clear: both;
+    width: 480px;
+    margin-bottom: 1em;
+}
+
+#userreg-company-register-form span.sp{
+    margin: 10px 5px 20px 5px;
+    border-bottom:  1px dashed #CCCCCC;
+    width: 480px;
+    height: 1px;
+    display: inline-block;
+}
+
+#userreg-company-register-form div.password-confirm,
+#userreg-company-register-form div.password-strength{
+    clear: both;
+    width: 120px;
+    float: right;
+}
+#userreg-company-register-form div.password-suggestions{
+   width: 185px;
+   clear: both;
+   margin-left: 116px;
+   padding-left: 18px;
+}
+#userreg-company-register-form input.form-text{
+    width: 204px;
+    height: 20px;
+}
+#userreg-company-register-form div.form-actions{
+    text-align: center;
+    padding-top: 40px;
+}
+#userreg-company-register-form #edit-submit{
+    border:1px;
+    background-color:#4E963C;
+    font-size: 14px;
+    font-weight: bold;
+    width: 166px;
+    height: 30px;
+    color: #ffffff;
+    cursor: pointer;
+}
+#userreg-company-register-form div.d-term{
+    padding-left: 170px;
+}
+/*== reg-box End==*/
+
+/*== user-reg Begin==*/
+
+div.user-reg{
+    float:left;
+    margin-top:2px;
+    font-family: "Microsoft Yahei";
+    padding: 0 0 0 25px;
+}
+div.user-reg div.user-reg-title span.s-1{
+    display: inline-block;
+    color: #666666;
+    font-size: 18px;
+    font-weight: bold;
+}
+div.user-reg div.user-reg-title span.s-2{
+    display: inline-block;
+    color: #96BF40;
+    font-size: 25px;
+    font-weight: bold;
+}
+div.user-reg div.user-reg-title span.s-3{
+    display: block;
+    color: #999999;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 0 25px 0;
+}
+div.user-reg{
+    width: 380px;
+    border-right: 1px #cccccc dashed;
+}
+div.user-reg-form div.form-item label{
+    width: 70px;
+    text-align: right;
+    padding-right: 15px;
+    float: left;
+    padding-top: 7px;
+    font-size: 14px;
+}
+div.user-reg-form div.form-item input.form-text{
+    width: 237px;
+    height: 20px;
+}
+div.user-reg-form div.form-actions{
+    padding-left: 85px;
+}
+div.user-reg-form div.form-actions input.form-submit{
+    text-indent: -999px;
+    display: block;
+    background: url(img/site/bt_usr_rg.gif) no-repeat;
+    width: 168px;
+    height: 48px;
+    border: 0px;
+    cursor: pointer;
+}
+div.user-reg-form div.d-term{
+    padding:10px 0 0 40px;
+}
+div.company-reg-showcase{
+    float:left;
+    padding-left: 40px;
+}
+div.company-reg-showcase .sc{
+    background: url(img/site/bg_cpreg_sc.gif) no-repeat;
+    display: block;
+    width: 292px;
+    height: 377px;
+}
+
+div.company-reg-showcase span.cpy-reg{
+    display: block;
+    background: url(img/site/bt_cpy_rg.gif) no-repeat;
+    width: 213px;
+    height: 48px;
+    margin: -120px 0 0 25px;
+    cursor: pointer;
+    text-indent: -999px;
+}
+div.user-reg-popup div.other-login{
+    margin:20px 0 15px 0;
+    padding: 20px 0 0 0;
+    border-top: 1px dashed #CCCCCC;
+    width: 100%;
+    display: inline-block;
+}
+
+div.user-reg-popup div.other-login span.wbxl{
+    display: inline-block;
+    background: url(img/site/bt_wbxl.gif) no-repeat;
+    width: 76px;
+    height: 20px;
+}
+div.user-reg-popup div.other-login span.rrxl{
+    display: inline-block;
+    background: url(img/site/bt_rrxl.gif) no-repeat;
+    width: 76px;
+    height: 20px;
+}
+div.user-reg-popup div.other-login span.qqxl{
+    display: inline-block;
+    background: url(img/site/bt_qqxl.gif) no-repeat;
+    width: 76px;
+    height: 20px;
+}
+
+/*== user-reg End ==*/
+
+/*== user-login Begin ==*/
+div.user-login-popup{
+    margin-top:2px;
+    font-family: "Microsoft Yahei";
+    float: left;
+    padding: 20px 0 0 0;
+}
+div.user-login-popup div.d-1 span.s-1{
+    display: block;
+    margin-bottom: 25px;
+}
+form div.user-login-popup .form-item  label{
+    width: 70px;
+    text-align: right;
+    padding-right: 15px;
+    padding-top: 7px;
+    font-size: 14px;
+}
+form div.user-login-popup .form-item input.form-text{
+    width: 237px;
+    height: 20px;
+}
+form div.user-login-popup .form-actions input.form-submit{
+    text-indent: -999px;
+    display: block;
+    background: url(img/site/bt_login.gif) no-repeat;
+    width: 104px;
+    height: 30px;
+    border: 0px;
+    cursor: pointer;
+}
+form div.user-login-popup .form-actions{
+    padding-left: 89px;
+    width: 110px;
+    float: left;
+}
+form div.user-login-popup .form-item-remember-me{
+    display: inline-block;
+    padding: 3px 0 0 10px;
+}
+form div.user-login-popup .form-item-remember-me label{
+    font-size: 12px;
+    float: none;
+}
+div.user-login-popup div.d-1{
+    float: left;
+    width: 380px;
+    padding: 0 0 0 20px;
+}
+div.user-login-popup div.d-2{
+    display: inline-block;
+    padding: 5px 0 0 16px;
+    width: 332px;
+    border-left: 1px #cccccc dashed;
+}
+div.user-login-popup div.d-2 span.s-2{
+    font-size: 14px;
+}
+div.user-login-popup div.d-2 span.rrxxl{
+    display: block;
+    background: url(img/site/bt_rrxxl.gif) no-repeat;
+    width: 150px;
+    height: 32px;
+    margin: 20px 0 0 50px;
+}
+div.user-login-popup div.d-2 span.qqxxl{
+    display: block;
+    background: url(img/site/bt_qqxxl.gif) no-repeat;
+    width: 150px;
+    height: 32px;
+    margin: 20px 0 0 50px;
+}
+div.user-login-popup div.d-2 span.wbxxl{
+    display: block;
+    background: url(img/site/bt_wbxxl.gif) no-repeat;
+    width: 150px;
+    height: 32px;
+    margin: 20px 0 0 50px;
+}
+div.user-login-popup div.d-2 span.zhuce{
+    display: block;
+    height: 32px;
+    margin: 50px 0 0 50px;
+}
+div.user-login-popup div.d-2 span.zhuce span.c-5{
+    float: left;
+    width: 120px;
+}
+
+div.user-login-popup div.d-3{
+    display: inline-block;
+    padding: 15px 0 40px 33px;
+    width: 332px;
+    border-left: 1px #cccccc dashed;
+}
+div.user-login-popup div.d-3 span.s-1{
+   font-size: 14px;
+   display: inline-block;
+}
+div.user-login-popup div.d-3 span.s-2{
+    font-size: 13px;
+    display: block;
+    margin-top: 16px;
+    background: url(img/site/bg_memo.gif) no-repeat;
+    width: 255px;
+    height: 142px;
+    padding: 11px 0 0 14px;
+    line-height: 1.8;
+}
+div.user-login-popup div.d-3 span.company-register{
+    background: url(img/site/bt_cpy_reg.gif)  no-repeat;
+    display: block;
+    text-indent: -999px;
+    margin-left: 43px;
+    width: 213px;
+    height: 48px;
+}
+div.user-login-popup div.ajax-register-links-wrapper{
+    /*display: none;*/
+}
+div.user-login-header{
+   display: inline-block;
+   font-size: 14px;
+   font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+   width: 300px;
+}
+div.user-login-header span.active{
+     display: inline-block;
+     float: left;
+     width: 83px;
+     height: 31px;
+     background: url(img/site/bt_arrow_2.gif) no-repeat 10px;
+     background-color: #ffffff;
+     padding: 9px 0 0 36px;
+     margin: 0 0 0 10px;
+ }
+div.user-login-header span.inactive{
+    display: inline-block;
+    width: 83px;
+    height: 31px;
+    padding: 9px 0 0 0px;
+}
+div.user-login-header span.inactive a{
+    color: #000000;
+}
+
+/*== user-login End ==*/
+
+/*==block_top_featured_article==*/
+.view-display-id-block_top_featured_article {
+    background-color: RGB(227, 234, 226);
+    padding: 10px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.view-display-id-block_top_featured_article .views-field-title  a {
+    color: RGB(0, 51, 51);
+    font-size: 20px;
+}
+
+.view-display-id-block_top_featured_article .views-field-name {
+    margin-bottom: 10px;
+}
+
+/*==pane-article-panel-pane-1 热门实习文章==*/
+div.pane-article-panel-pane-1 div.panel-pane-title {
+    background: url(img/site/bt_rsxwz.png) no-repeat 2px 2px;
+}
+
+/*==pane-intern-company-company-more-jobs 企业更多职位==*/
+div.pane-intern-company-company-more-jobs div.panel-pane-title {
+    background: url(img/site/bt_mojb.gif) no-repeat 2px 2px;
+}
+div.pane-intern-company-company-more-jobs div.views-field-changed{
+    display: inline-block;
+    float: right;
+    margin-right: 5px;
+}
+/*==pane-intern-company-company-more-jobs 公司点评==*/
+div.pane-intern-company-company-reviews div.panel-pane-title {
+    background: url(img/site/bt_gsdp.gif) no-repeat 2px 2px;
+}
+div.view-display-id-block_my_company_reviews div.views-row,
+div.pane-intern-company-company-reviews div.views-row{
+    background-color: #F1F5E6;
+    padding: 10px;
+}
+
+/*==pane-right-title-link-panel-pane-5 热门实习职位==*/
+div.pane-right-title-link-panel-pane-5 div.panel-pane-title {
+    background: url(img/site/bt_rmzw.png) no-repeat 2px 2px;
+    margin-top: 6px;
+}
+
+div.pane-right-title-link-panel-pane-5 div.pane-content .views-row {
+    padding-left: 4px;
+    margin:10px 0 5px 0;
+}
+
+/*==pane-right-title-link-panel-pane-10 热门企业==*/
+div.pane-right-title-link-panel-pane-9 div.panel-pane-title {
+    background: url(img/site/bt_rmqy.png) no-repeat 0px 3px;
+}
+
+div.pane-right-title-link-panel-pane-9 div.pane-content .views-row {
+    padding: 6px 6px 6px 12px;
+    margin: 6px 0 12px 0;
+    border-left: #9a9a9a dotted 1px;
+    border-bottom: #9a9a9a dotted 1px;
+}
+
+/*== pane-company-info-panel-pane-2 Begin==*/
+div.pane-company-info-panel-pane-2{
+     margin-bottom: 20px;
+}
+#sidebar-second div.pane-company-info-panel-pane-2 div.panel-pane-title{
+    height: 20px;
+    background-color: #4E963C;
+    padding:10px;
+    font-size: 16px;
+    color: #ffffff;
+    border: 0px;
+    margin-bottom: 10px;
+}
+
+div.pane-company-info-panel-pane-2 div.pane-content{
+    border: 2px solid #4D963B;
+    padding: 0px;
+
+}
+div.pane-company-info-panel-pane-2 div.pane-content div.view{
+   padding: 0 10px 0 10px;
+   margin-bottom: 0px;
+}
+div.pane-company-info-panel-pane-2 div.pane-content div.view img{
+    float: left;
+    margin-right: 5px;
+}
+div.pane-company-info-panel-pane-2 div.pane-content div.view div.views-field-title{
+    min-height: 120px;
+}
+
+div.pane-company-info-panel-pane-2 div.pane-content div.d-1{
+   line-height: 1.8;
+   border-top:1px #8DB126 dashed;
+    margin:  0 -10px 0 -10px;
+    padding: 5px 20px 10px 10px;
+    background-color: #F7F9FA;
+}
+
+div.pane-company-info-panel-pane-2 div.pane-content div.d-1 span{
+   display: block;
+}
+div.pane-company-info-panel-pane-2 div.pane-content div.d-1 a:link{
+   text-decoration: underline;
+}
+/*== pane-company-info-panel-pane-2 End==*/
+
+/*== pane-companycenter-jobs-panel-pane-1 Begin==*/
+div.pane-companycenter-jobs-panel-pane-1 table.views-table td.views-field-title{
+    max-width: 150px;
+}
+div.pane-companycenter-jobs-panel-pane-1 table.views-table td.views-field-title a{
+    color: #F0580F;
+}
+div.pane-companycenter-jobs-panel-pane-1 table.views-table td.views-field-views-bulk-operations{
+    width:30px;
+}
+div.pane-companycenter-jobs-panel-pane-1 span.add-content,add-content-job{
+    background: url(img/site/bt_ad_jb.gif) no-repeat;
+    width: 90px;
+    height: 30px;
+    background-color: #4E963C;
+    padding-left: 20px;
+    text-indent: -999px;
+    display: block;
+}
+div.pane-companycenter-jobs-panel-pane-1 input.form-submit{
+    text-indent: -999px;
+    display: block;
+    width: 67px;
+    height: 28px;
+    background-color: #ffffff;
+    border: 2px solid #4E963C;
+    cursor: pointer
+}
+div.pane-companycenter-jobs-panel-pane-1 input#edit-actionnode-publish-action{
+    background: url(img/site/bt_batch_refresh.gif) no-repeat;
+    margin-right: 5px;
+}
+div.pane-companycenter-jobs-panel-pane-1 input#edit-actionnode-unpublish-action{
+    background: url(img/site/bt_batch_stop.gif) no-repeat;
+}
+div.pane-companycenter-jobs-panel-pane-1 fieldset{
+    border: 0px;
+    float: left;
+    width: 400px;
+    margin: -25px 0 10px 5px;
+}
+div.pane-companycenter-jobs-panel-pane-1 fieldset legend{
+     display: none;
+}
+
+div.pane-companycenter-jobs-panel-pane-1 div.d-add-job{
+    float: right;
+}
+
+/*== pane-companycenter-jobs-panel-pane-1 End==*/
+
+/*== pane-intern-company-company-center-shortcuts Begin ==*/
+div.pane-intern-company-company-center-shortcuts{
+    margin-bottom: 20px;
+}
+div.pane-intern-company-company-center-shortcuts div.pane-content{
+    padding: 12px 0 0 0;
+}
+div.pane-intern-company-company-center-shortcuts span,
+div.pane-intern-company-company-center-shortcuts span a{
+     color: #ffffff;
+}
+
+
+div.pane-intern-company-company-center-shortcuts span.sc-add-job{
+    display: block;
+    width: 220px;
+    height: 24px;
+    background: url("img/site/bt_sc_aj.gif") no-repeat 16px 12px;
+    padding:8px 0 0 40px;
+    background-color: #FF9900;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+div.pane-intern-company-company-center-shortcuts span.sc-inbox{
+    display: block;
+    width: 220px;
+    height: 24px;
+    background: url("img/site/bt_sc_inbox.gif") no-repeat 13px 9px;
+    padding:8px 0 0 40px;
+    background-color: #7A7876;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+div.pane-intern-company-company-center-shortcuts span.sc-search-resume{
+    display: block;
+    width: 220px;
+    height: 24px;
+    background: url("img/site/bt_sc_scrm.gif") no-repeat 12px 5px;
+    padding:8px 0 0 40px;
+    background-color: #F1F5E6;
+    color: #C6C6BA;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+div.pane-intern-company-company-center-shortcuts span.active{
+    float: right;
+    padding-right: 25px;
+}
+div.pane-intern-company-company-center-shortcuts span.inactive{
+    float: right;
+    padding-right: 25px;
+    font-size: 12px;
+    color: #C6C6BA;
+}
+/*== pane-intern-company-company-center-shortcuts End ==*/
+
+/*==pane-intern-company-company-brief-today Begin==*/
+#content div.pane-intern-company-company-brief-today div.panel-pane-title{
+    background: url("img/site/bt_mrtx.gif") no-repeat;
+    padding: 5px 0 5px 25px;
+    border: 0px;
+}
+#content div.pane-intern-company-company-brief-today div.panel-pane-title h2{
+    padding: 0px 0 0 0;
+    font-size: 14px;
+    color: #336326;
+    font-weight: bold;
+}
+#content div.pane-intern-company-company-brief-today div.pane-content{
+    height: 130px;
+    background: url(img/site/bg_mrtx.gif) no-repeat;
+    padding: 35px 15px 0 25px;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed #666666;
+}
+#content div.pane-intern-company-company-brief-today div.pane-content div{
+    display: block;
+    line-height: 1.8;
+}
+#content div.pane-intern-company-company-brief-today a{
+    text-decoration: underline;
+    color: #0033CC;
+}
+/*==pane-intern-company-company-brief-today End==*/
+
+/*==block_company_top_reviews==*/
+.pane-company-reviews-in-blocks .panel-pane-title {
+    background: url(img/site/bt_gsdp.gif) no-repeat 2px 2px;
+}
+
+.view-display-id-block_company_top_reviews .views-field-nothing {
+    margin-bottom: 5px;
+}
+
+.pane-company-reviews-in-blocks .row {
+    width: 22px;
+    height: 45px;
+    color: #ffffff;
+    font-size: 24px;
+    padding-left: 2px;
+    float: left;
+    margin-right: 1px;
+}
+
+.pane-company-reviews-in-blocks .row-1,
+.pane-company-reviews-in-blocks .row-2,
+.pane-company-reviews-in-blocks .row-3 {
+    background-color: RGB(148, 182, 50);
+}
+
+.pane-company-reviews-in-blocks .row-4,
+.pane-company-reviews-in-blocks .row-5 {
+    background-color: RGB(213, 226, 175);
+}
+
+.pane-company-reviews-in-blocks .company-comment {
+    display: inline-block;
+    height: 40px;
+    padding: 5px 0 0 2px;
+    background-color: RGB(240, 251, 230);
+    width: 212px;
+}
+.pane-company-reviews-in-blocks .company-comment span.title{
+    display: inline-block;
+    width: 140px;
+}
+
+
+/**pane-terms-in-blocks**/
+div.pane-terms-in-blocks{
+    border:1px solid  #D6E6E3 ;
+}
+#col-left div.pane-terms-in-blocks .panel-pane-title{
+    background: url(img/site/bt_acl_tm.gif) no-repeat 15px 13px;
+    background-color: #8CB125;
+    height: 20px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 9px 0 7px 38px;
+}
+#col-left div.pane-terms-in-blocks .view{
+    margin: 0px;
+}
+#col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .views-row{
+    height: 25px;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #F3F9F9;
+    border-top: 1px solid #ffffff;
+    padding:5px 0 0 15px;
+    background: url("img/site/bt_arw_1.gif") no-repeat 215px 12px;
+    background-color: #F6F6F6;
+    cursor: pointer;
+}
+#col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .selected{
+    border: 2px solid #B0D73E;
+    font-weight: bold;
+}
+#col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .views-row a{
+     color: #414141;
+ }
+#col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .views-row a.active{
+    color: #EA960B;
+}
+
+/**==pane-article-panel-pane-2==**/
+div.pane-article-panel-pane-2 .panel-pane-title{
+   background: url("img/site/bt_cmt.gif") no-repeat 0px 3px;
+}
+
+/**==pane-intern-company-company-center-shortcuts==**/
+div.pane-intern-company-company-center-shortcuts .panel-pane-title{
+    background: url("img/site/bt_sc.gif") no-repeat 6px 3px;
+}
+
+/**==wiki-welcome-pane==**/
+div.wiki-welcome-pane{
+    background-color:  #E3EAE2;
+}
+div.wiki-welcome-pane .pane-content{
+    padding: 15px 28px 15px 28px;
+    line-height: 1.8;
+}
+div.wiki-welcome-pane .pane-content h2{
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: normal;
+    color:#003333;
+}
+
+/**==pane-tagclouds-1==**/
+div.pane-tagclouds-1{
+    border:1px solid  #EBEBEB ;
+    margin-bottom: 20px;
+}
+#col-left div.pane-tagclouds-1 .panel-pane-title{
+    background: url(img/site/bt_tag.gif) no-repeat 10px 12px;
+    border-bottom: 1px solid  #EBEBEB ;
+    padding: 12px 0 0 40px;
+    height: 32px;
+    background-color: #F9FBF8;
+}
+#col-left div.pane-tagclouds-1 .pane-content{
+    padding: 10px;
+}
+
+/*==groups-in-blocks==*/
+.pane-groups-in-blocks .panel-pane-title {
+    background: url(img/site/bt_r18_c5.gif) no-repeat;
+}
+
+.pane-groups-in-blocks img {
+    float: left;
+}
+
+.pane-groups-in-blocks .views-field-nothing {
+    height: 70px;
+    padding: 5px;
+    background-color: RGB(242, 245, 241);
+    margin-bottom: 8px;
+}
+
+.pane-groups-in-blocks .goup-content {
+    padding: 0px 5px 0px 80px;
+    line-height: 1.8;
+}
+
+/*==block_featured_articles_front==*/
+.view-display-id-block_featured_articles_front img {
+    float: left;
+    margin-top: 8px;
+}
+
+.view-display-id-block_featured_articles_front .views-row {
+    padding-bottom: 15px;
+    border-bottom: 2px dotted #DDD;
+}
+
+.view-display-id-block_featured_articles_front .post-item {
+    display: inline-block;
+    padding-left: 10px;
+    height: 130px;
+    line-height: 1.8;
+}
+
+.view-display-id-block_featured_articles_front .authorA {
+    width: 150px;
+    float: left;
+}
+
+.view-display-id-block_featured_articles_front .authorB {
+    float: left;
+    width: 250px;
+}
+
+.view-display-id-block_featured_articles_front .postInfo {
+    float: none;
+
+}
+
+/*== pane-intern-company-company-info Begin ==*/
+.pane-intern-company-company-info .pane-content{
+    border: 2px solid #4D963B;
+    margin-bottom: 20px;
+}
+.pane-intern-company-company-info .pane-content .view-company-info{
+    margin: 6px;
+}
+.pane-intern-company-company-info .pane-content .view-company-info div.left{
+    padding-right: 5px;
+}
+.pane-intern-company-company-info .pane-content .view-company-info .d-1{
+    min-height: 110px;
+}
+.pane-intern-company-company-info .pane-content .view-company-info .d-1 .title{
+    color: #006699;
+    font-size: 13px;
+}
+.pane-intern-company-company-info .pane-content .view-company-info .d-2{
+    margin: 0 -6px 0 -6px;
+    padding: 0 6px 5px 6px;
+    border-bottom: 2px dashed #8DB126;
+    font-size: 13px;
+}
+.pane-intern-company-company-info .pane-content .view-company-info .d-2 .c-15{
+    display: inline-block;
+}
+.pane-intern-company-company-info .pane-content .view-company-info .d-2 span{
+    display: block;
+    line-height: 1.8;
+}
+
+.pane-intern-company-company-info .pane-content .view-company-info .d-3{
+    padding: 8px 6px 6px 6px;;
+    line-height: 1.8;
+    margin: 0 -6px -10px -6px;
+    background-color: #F7F9FA;
+}
+.pane-intern-company-company-info .pane-content .view-company-info .d-3 span{
+    display: inline-block;
+}
+.pane-intern-company-company-info .pane-content .view-company-info .d-3 span.more{
+    margin-top: 10px;
+    padding-left: 120px;
+
+}
+/*== pane-intern-company-company-info End ==*/
+
+/*== pane-intern-company-company-add-review Begin==*/
+div.pane-intern-company-company-add-review{
+    border: 1px solid #CCCCCC;
+    padding: 22px;
+    margin-bottom: 20px;
+}
+div.pane-intern-company-company-add-review span.title{
+    font-size: 18px;
+}
+div.pane-intern-company-company-add-review span.add-review-pic{
+    background: url(img/site/bt_lsad_rv.gif) no-repeat 30px;
+    width: 200px;
+    height: 71px;
+    display: block;
+    margin-top: 25px;
+}
+div.pane-intern-company-company-add-review span.add-review-btn{
+    background: url(img/site/bt_ad_rv.gif) no-repeat 20px;
+    margin: 35px 0 15px 0;
+    display: block;
+    width: 200px;
+    height: 38px;
+}
+/*== pane-intern-company-company-add-review End ==*/
+
+/*==view-id-_jobs_in_blocks==*/
+.view-id-_jobs_in_blocks  .views-row {
+    border-bottom: 2px dotted #DDD;
+    height: 60px;
+}
+
+/*==view-display-id-block_featured_companies_front==*/
+.view-display-id-block_featured_companies_front td {
+    padding: 10px 20px 10px 0;
+    text-align: center;
+}
+
+.view-display-id-block_featured_companies_front .views-field-nothing {
+    border-left: #9a9a9a dotted 1px;
+    border-bottom: #9a9a9a dotted 1px;
+    padding-bottom: 8px;
+}
+
+.view-display-id-block_featured_companies_front .company-content p {
+    padding-top: 3px;
+
+}
+
+.pane-companies-in-blocks .panel-pane-title {
+    background: url(img/site/bt_company.png) no-repeat;
+}
+
+/*==最新加入企业==*/
+.pane-right-title-link-panel-pane-3 .panel-pane-title {
+    background: url(img/site/bt_nadd.gif) no-repeat;
+}
+
+/*====*/
+#group-info {
+    margin-bottom: 40px;
+}
+
+div.tabs h2.block-title,
+#group-info h2.block-title,
+#forum-block h2.block-title,
+#events-block h2.block-title,
+#job-info h2.block-title,
+#releated-company h2.block-title {
+    display: inline-block;
+    _display: inline;
+    zoom: 1;
+    font-size: 14px;
+    font-weight: normal;
+    color: white;
+    background: #368e25 url(img/s.png) no-repeat left -200px;
+    padding-left: 13px;
+}
+
+div.tabs h2.block-title span,
+#group-info h2.block-title span,
+#forum-block h2.block-title span,
+#events-block h2.block-title span,
+#job-info h2.block-title span,
+#releated-company h2.block-title span {
+    display: inline-block;
+    background: transparent url(img/s.png) no-repeat right -200px;
+    height: 30px;
+    line-height: 30px;
+    padding-right: 13px;
+}
+
+#group-info .block-content {
+    border: #8fbf7e solid 1px;
+    padding: 25px 25px 25px 170px;
+}
+
+#group-info .field-name-pic {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+
+#group-info .field {
+    padding-bottom: 25px;
+}
+
+#group-info .field-items {
+    display: inline;
+}
+
+#group-info .field-name-name {
+    font-size: 16px;
+}
+
+#group-info .field-name-category,
+#group-info .field-name-city,
+#group-info .field-name-number {
+    display: inline-block;
+    _display: inline;
+    zoom: 1;
+    margin-right: 35px;
+}
+
+#group-info .field-name-number {
+    margin-right: 0;
+}
+
+#group-info .field-name-body {
+    padding-bottom: 0;
+    font-size: 12px;
+}
+
+#group-info .field-name-body label {
+    padding-bottom: 10px;
+    font-size: 14px;
+    display: block;
+}
+
+a.join {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    padding-left: 25px;
+    height: 26px;
+    background: url(img/s.png) no-repeat -480px -170px;
+    line-height: 1.2;
+}
+
+#forum-block .block-content,
+#events-block .block-content {
+    border: #8fbf7e solid 1px;
+    padding: 25px;
+}
+
+#forum-block form,
+#events-block form {
+    float: right;
+}
+
+#forum-block table,
+#events-block table {
+    clear: both;
+    margin-top: 40px;
+}
+
+#forum-block table th,
+#events-block table th {
+    border-bottom: #ddd solid 1px;
+    padding: 10px;
+    text-align: left;
+}
+
+#forum-block table td,
+#events-block  table td {
+    padding: 10px;
+}
+
+#forum-block table tr,
+#events-block  table tr {
+    background-color: white;
+    border-bottom: 0px solid #CCCCCC;
+    padding: 0em 0em;
+}
+
+#views-exposed-form-group-discussion-default input.form-text,
+#views-exposed-form-group-event-default input.form-text {
+    border: 1px solid #8fbf7e;
+    height: 23px;
+    width: 145px;
+    vertical-align: top;
+    padding: 0 3px;
+}
+
+#views-exposed-form-group-discussion-default input.form-submit,
+#views-exposed-form-group-event-default input.form-submit {
+    border: 0 none;
+    height: 27px;
+    padding-bottom: 6px;
+    width: 80px;
+    display: inline-block;
+    color: white;
+    background: url(img/s.png) no-repeat 0 0;
+}
+
+#views-exposed-form-group-discussion-default  .views-exposed-widget .form-submit,
+#views-exposed-form-group-event-default .views-exposed-widget .form-submit {
+    margin-top: 0em;
+}
+
+div.tabs div.tabs-title h2,
+div.tabs div.tabs-title  h2 span {
+    cursor: default;
+}
+
+div.tabs div.tabs-title  h2.active {
+    background-color: #da3f1f;
+    background-position: left -230px;
+}
+
+div.tabs div.tabs-title  h2.active span {
+    background-color: #da3f1f;
+    background-position: right -230px;
+}
+
+div.tabs div.block {
+    display: none;
+}
+
+div.tabs div.active {
+    display: block;
+}
+
+
+
+#content .panel-pane-title {
+    border-bottom: 2px solid rgb(203, 217, 200);
+    padding: 0 0 10px 30px;
+}
+
+#content h2.pane-title {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+#manager-block .views-row,
+#member-block .views-row {
+    float: left;
+    width: 50%;
+    text-align: center;
+    height: 90px;
+}
+
+.more-link {
+    clear: both;
+    padding: 5px 10px 0 0;
+    text-align: right;
+    font-size: 12px;
+}
+
+#sina-weibo .block-content {
+    padding: 0;
+}
+
+#sina-weibo a {
+    display: block;
+    padding: 15px;
+    background-color: #f0ffea;
+    border: 1px solid #d3e0cb;
+}
+
+#sina-weibo img {
+    vertical-align: middle;
+}
+
+div.advanced-search {
+    padding: 20px 23px 0px 23px;
+    background-color: #4D963B;
+    margin: 0 0 0 0;
+    height: 185px;
+}
+
+div.advanced-search  #views-exposed-form-companys-panel-pane-1 {
+    margin-top: 45px;
+}
+
+div.advanced-search  #views-exposed-form-companys-panel-pane-1 .total-company-count {
+    float: right;
+    margin-top: -45px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+div.advanced-search  #views-exposed-form-companys-panel-pane-1 .search-hot-review {
+    padding: 70px 0 0 10px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+div.advanced-search  #views-exposed-form-companys-panel-pane-1 .search-hot-key {
+    margin: 10px 0 0 10px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+div.advanced-search  #views-exposed-form-companys-panel-pane-1 #edit-field-company-size-tid-wrapper {
+    clear: both;
+    float: left;
+}
+
+div.advanced-search  select {
+    border: 1px solid #8fbf7e;
+    padding: 3px;
+    width: 125px;
+    height: 29px;
+    margin-right: 20px;
+    float: left;
+}
+
+div.advanced-search input.form-text {
+    border: 1px solid #8fbf7e;
+    padding: 3px;
+    width: 265px;
+    height: 20px;
+    margin-right: 10px;
+    float: left;
+}
+
+div.advanced-search input.form-submit {
+    border: 0 none;
+    height: 52px;
+    padding-bottom: 6px;
+    width: 94px;
+    display: block;
+    color: white;
+    background: url(img/site/bt_cpy_search.gif) no-repeat;
+    cursor: pointer;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+
+}
+
+div.advanced-search {
+    margin-bottom: 30px;
+}
+
+div.advanced-search .adv-option {
+    clear: both;
+    text-align: right;
+}
+
+div.advanced-search .adv-option a {
+    display: inline-block;
+    padding-right: 15px;
+    background: url(img/s.png) no-repeat right -340px;
+}
+
+div.advanced-search .adv-option a.show {
+    background-position: right -380px;
+}
+
+div.advanced-search #adv-option {
+    padding-top: 10px;
+    display: none;
+}
+
+/*==职位搜索==*/
+body.page-jobs div.advanced-search {
+    height: 160px;
+}
+
+div.advanced-search  #views-exposed-form-jobs-panel-pane-1 label {
+    background: url(img/site/bt_arrow.png) no-repeat 0 5px;
+    margin-bottom: 8px;
+    padding-left: 10px;
+    color: white;
+}
+
+div.advanced-search  #views-exposed-form-jobs-panel-pane-1 div.views-exposed-widget {
+    margin-bottom: 8px;
+}
+
+div.advanced-search  #views-exposed-form-jobs-panel-pane-1 input.form-submit {
+    border: 0 none;
+    height: 32px;
+    margin-top: 24px;
+    width: 75px;
+    display: block;
+    color: white;
+    background: url(img/site/bt_job_search.png) no-repeat;
+    cursor: pointer;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+
+}
+
+#resume-block,
+#postjob-block {
+    border: 1px solid #ddd;
+}
+
+#sidebar-second  #resume-block h2.block-title {
+    border-bottom: 0 none;
+    padding: 10px 0 15px 53px;
+    height: 18px;
+    background: url(img/site/bt_jlws.png) no-repeat 15px 13px;
+    background-color: #F7F7F7;
+    font-weight: bold;
+    font-size: 16px;
+    color: #666666;
+}
+
+#sidebar-second  #postjob-block h2.block-title {
+    padding: 15px 0 15px 55px;
+    height: 18px;
+    border-bottom: 1px solid #ddd;
+    background: url(img/site/bt_qyzc.png) no-repeat 28px 19px;
+    font-weight: bold;
+    color: #FF6600;
+}
+
+#sidebar-second  #resume-block .block-content,
+#sidebar-second  #postjob-block  .block-content {
+    padding: 10px 15px 8px 15px;
+    line-height: 1.8;
+}
+
+#sidebar-second  #postjob-block div.company-register a {
+    display: block;
+    background: url(img/site/bt_qyyhzc.png) no-repeat left top;
+    width: 210px;
+    height: 39px;
+    color: white;
+    border: none;
+    text-align: center;
+    text-indent: -999em;
+}
+
+/* 简历完成度区块 */
+div#resume-block div.status {
+    margin-left: 10px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+.resume-status p {
+    font-weight: bold;
+}
+
+.resume-status a {
+    color: #666666;
+    text-decoration: underline;
+}
+
+.resume-status {
+    text-align: center;
+    color: #666666;
+}
+
+.resume-status big {
+    font-size: 17px;
+    color: #8CB125;
+    font-weight: bold;
+}
+
+.resume-status .status {
+    width: 190px;
+    height: 10px;
+    margin: 5px 0;;
+    overflow: hidden;
+    text-align: left;
+    background: url(img/site/bt_bar_jlwzd.png) no-repeat;
+}
+
+.resume-status .status div {
+    height: 10px;
+    background: url(img/site/bt_bar_jlwzd_ywc.png) no-repeat;
+}
+
+.block a.edit {
+    display: inline-block;
+    width: 115px;
+    height: 26px;
+    overflow: hidden;
+    text-align: center;
+    margin-top: 5px;
+    color: white;
+    background: #d43315 url(img/s.png) no-repeat -190px 0;
+}
+
+#postjob-block  a.edit {
+    background-color: #3f7b88;
+    background-position: -310px 0;
+    display: block;
+    margin: 5px auto 0;
+}
+
+#job-info {
+    margin-bottom: 40px;
+}
+
+#job-info .block-content,
+#releated-company .block-content {
+    padding: 25px 30px;
+    border: 1px solid #8FBF7E;
+    overflow: hidden;
+    clear: both;
+}
+
+#job-info .column,
+#releated-company .column {
+    width: 35%;
+}
+
+#job-info .first-column,
+#releated-company .first-column {
+    float: right;
+    width: 65%;
+}
+
+#job-info .field,
+#releated-company .field {
+    margin-bottom: 10px;
+}
+
+#job-info .field-name-name,
+#releated-company .field-name-name {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#job-info .field-items,
+#releated-company .field-items {
+    display: inline;
+}
+
+#job-info .field-name-body .field-items,
+#releated-company  .field-name-body .field-items {
+    display: block;
+    font-size: 12px;
+    padding-top: 10px;
+}
+
+#releated-company  .field-name-logo {
+    padding-left: 30px;
+}
+
+#creat-group-block {
+    background: url(img/s.png) no-repeat -240px -340px;
+}
+
+#creat-group-block a.edit {
+    margin: 5px 0 10px 60px;
+}
+
+/**form**/
+form.node-review-form #edit-body-und-0-format {
+    display: none;
+}
+
+/*==/block==*/
+/*==front==*/
+/*==changed by howard, add "#page-wrapper"==*/
+body.front #page-wrapper {
+    background-image: url(img/body-front.png);
+}
+
+body.front #main-wrapper {
+    background-position: left -127px;
+}
+
+body.front #temp-showcase {
+    height: 219px;
+    width: 708px;
+    background: url(img/site/showcase-1.png) left top no-repeat;
+    margin-bottom: 20px;
+}
+
+#temp-login {
+    border: 3px solid RGB(203, 217, 200);
+}
+
+#temp-login input.form-text {
+    padding-top: 8px;
+    width: 210px;
+    height: 20px;
+}
+
+.user-login-content {
+    padding: 2px 8px 5px 8px;
+}
+
+#geren-zhuce, #qiye-zhuce {
+    border-bottom: dashed 1px #CCC;
+    width: 210px;
+    margin-left: -7px;
+    padding: 0 5px 10px 5px;
+}
+
+#geren-zhuce a {
+    display: block;
+    background: url(img/site/bt_rg.gif) no-repeat left top;
+    width: 219px;
+    height: 40px;
+    color: white;
+    border: none;
+    text-align: center;
+}
+
+#qiye-zhuce a {
+    display: block;
+    background: url(img/site/bt_rg.gif) no-repeat left top;
+    width: 219px;
+    height: 40px;
+    color: white;
+    border: none;
+    text-align: center;
+}
+
+.user-login-content input.form-submit {
+    width: 112px;
+    height: 31px;
+    padding-bottom: 4px;
+    display: block;
+    margin: 20px auto 0;
+    background: url(img/site/bt_lg.gif) no-repeat;
+    color: white;
+    border: 0 none;
+    cursor: pointer;
+    text-indent: -999em;
+}
+
+.user-login-content .zhuce-title {
+    font-size: 16px;
+    padding-top: 10px;
+
+}
+
+.user-login-content .qiehuanrukou {
+    font-size: 14px;
+    padding: 0 0 10px 130px;
+    width: 90px;
+    border-bottom: dashed 1px #CCC;
+}
+
+.user-login-content .qiehuanrukou a {
+    color: rgb(0, 102, 204);
+}
+
+.other-login-type {
+    vertical-align: middle;
+    margin-top: 12px;
+}
+
+#weibo-login-text {
+    width: 220px;
+    font-size: 14px;
+    color: rgb(102, 102, 102);
+    margin-bottom: 12px;
+}
+
+.password .form-item-remember-me {
+    margin: 0 0 0 0;
+    width: 80px;
+    position: absolute;
+}
+
+.password .forget-password {
+    width: 60px;
+    padding-left: 165px;
+}
+
+#showcase-block {
+    width: 520px;
+    height: 300px;
+    overflow: hidden;
+}
+
+#showcase-block .text {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+#showcase-block h4 {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.ad {
+    text-align: center;
+}
+
+/*==/front==*/
+#sort-option {
+    clear: both;
+    margin: -40px 0 19px 0;
+    text-align: right;
+}
+
+#sort-option a {
+    display: inline-block;
+    margin-left: 10px;
+    padding-right: 1em;
+    background: url(img/s.png) no-repeat 4.5em -340px;
+}
+
+div.group-list,
+div.company-list {
+    padding: 0 10px 0 0;
+    overflow: hidden;
+}
+
+div.group-list .views-row,
+div.company-list .views-row {
+    position: relative;
+    padding: 5px 0 15px 160px;
+    min-height: 110px;
+    _height: 135px;
+}
+
+div.company-list .views-row .company-info {
+    margin-left: -155px;
+    margin-top: 158px;
+}
+
+div.company-list div.company-content {
+    margin-top: -188px;
+}
+
+div.company-list div.company-content .body-field a {
+    color: #1357A2;
+}
+
+div.company-list .views-row .company-info .field .field-items {
+    color: #666666;
+}
+
+div.company-list .views-row .company-info .field .field-items a {
+    color: #666666;
+    font-weight: bold;
+}
+
+#hot-company {
+    margin-bottom: 20px;
+}
+
+#hot-company  h2.block-title,
+#hot-group   h2.block-title {
+    padding-bottom: 5px;
+    font-size: 16px;
+    font-weight: normal;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 14px;
+}
+
+#hot-company  .more-link,
+#hot-group  .more-link {
+    padding-right: 50px;
+}
+
+div.company-list .views-row {
+    margin-bottom: 0px;
+}
+
+div.group-list .views-row .field-name-pic,
+div.company-list .views-row .field-name-pic {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    border: 1px solid #e0e0e0;
+    padding-top: 0;
+}
+
+div.group-list .field,
+div.company-list .field {
+    font-size: 12px;
+}
+
+body.front div.group-list .field,
+body.front div.company-list .field {
+    padding-top: 5px;
+}
+
+div.group-list .field-name-name {
+    font-size: 14px;
+    padding-top: 0;
+}
+
+div.company-list .field-name-name {
+    font-size: 12px;
+}
+
+body.front div.group-list .field-name-name,
+body.front div.company-list .field-name-name {
+    text-align: center;
+}
+
+div.group-list .field-items,
+div.company-list .field-items {
+    display: inline;
+}
+/*== facebook status Begin ==*/
+div.statuses-update{
+    display: block;
+}
+#content div.pane-statuses-statuses{
+    background-color: #F5F8F5;
+    padding: 5px 12px 40px 12px;
+    margin-bottom: 20px;
+}
+#content div.pane-statuses-statuses div.panel-pane-title{
+    border-bottom: 0px;
+    padding: 15px 0 0 2px;
+    margin-bottom: -10px;
+}
+div.pane-statuses-statuses h2.pane-title {
+    background: url(img/site/bt_status.gif) no-repeat 0 2px;
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #336327;
+}
+div.pane-statuses-statuses div.status-form{
+    margin-top: -15px;
+}
+div.statuses-update div.statuses-textarea-wrapper{
+    clear: both;
+    border: 2px solid #8fbf7e;
+    box-shadow: none;
+    margin-bottom: 10px;
+}
+
+div.statuses-update input.statuses-submit{
+    background-color: #4E963C;
+    border: 1px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+div.facebook-status-item{
+    min-height: 90px;
+    background-color: #F7F9FA;
+    border: #EBEBEB solid 1px;
+    padding: 10px 30px 10px 15px;
+    margin: 5px 0 0 0;
+}
+div.facebook-status-item div.statuses-comments div.fbss-comments-show-comment-form{
+    margin-top: -20px;
+     float: right;
+}
+div.facebook-status-item .views-field-picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+div.facebook-status-item .views-field-body {
+    min-height: 70px
+}
+#content div.fbss-comments-comment{
+    background-color: #ffffff;
+    background: url(img/site/bg_cmt.gif) repeat-x;
+}
+
+div.statuses-textarea-wrapper{
+    border:0px;
+    box-shadow: none;
+}
+
+div.statuses-textarea-wrapper textarea{
+    overflow-style: auto;
+    height: 68px;
+
+}
+
+#content div.fbss-comments-comment div.content{
+    padding: 0 0 0 0;
+}
+
+#content div.fbss-comments-comment div.fbss-comments-closure {
+    color: #858585;
+    display: block;
+    float: left;
+}
+
+/*== facebook status End*/
+#content #newest-status .views-row,
+#content #newest-status .view-empty,
+#content div.view-id-company_reviews_in_blocks .views-row,
+#content div.view-id-company_reviews_in_blocks .view-empty {
+    min-height: 90px;
+    background-color: #F7F9FA;
+    border: #EBEBEB solid 1px;
+    padding: 10px 30px 10px 15px;
+}
+.views-row div.author-info {
+    width: 50px;
+    float: left;
+}
+
+#content div.view-id-company_reviews_in_blocks .views-row  div.views-field-nothing {
+    margin: 0 0 10px 50px;
+    line-height: 1.8;
+    min-height: 60px
+}
+
+#content div.view-id-company_reviews_in_blocks .views-row  div.views-field-timestamp {
+    width: 85%;
+    float: left;
+}
+
+#content div.view-id-company_reviews_in_blocks .views-row  div.views-field-gid,
+#content div.view-id-company_reviews_in_blocks .views-row  div.views-field-nid {
+    float: right;
+    width: 70px;
+}
+
+#content div.view-id-company_reviews_in_blocks div.add-review {
+    clear: both;
+    background: url(img/site/bt_add_review.png) no-repeat;
+    padding-left: 30px;
+    margin: -50px 15px 0 0;
+    float: right;
+
+}
+
+/*==company_ad_slides==*/
+div.view-display-id-block_company_ad_slides {
+    margin-top: 0px;
+}
+
+a.follow {
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    padding-left: 25px;
+    height: 26px;
+    background: url(img/s.png) no-repeat -480px -170px;
+    line-height: 1.2;
+}
+
+div.group-list a.join {
+    top: 20px;
+    right: 0;
+}
+
+div.job-list div.views-row {
+    border-bottom: 1px dotted #DDD;
+}
+div.job-list div.views-row-last {
+    border-bottom: none;
+}
+
+div.job-list {
+    padding: 0 20px;
+}
+
+div.job-list .views-row {
+    position: relative;
+    padding-bottom: 8px;
+    overflow: hidden;
+}
+
+div.job-list .field {
+    font-size: 12px;
+    padding-top: 6px;
+    float: left;
+    width: 33%;
+}
+
+div.job-list .field-name-name {
+    float: none;
+    font-size: 14px;
+    padding-top: 0;
+    width: 100%;
+}
+
+div.job-list .field-name-company {
+    width: 60%;
+}
+
+div.job-list .field-items {
+    display: inline;
+}
+
+div.job-list .field-name-body {
+    clear: both;
+    font-size: 12px;
+    padding-top: 10px;
+    width: 100%;
+}
+
+div.job-list a.join {
+    top: 30px;
+    right: 0;
+}
+
+/*====*/
+
+/*==company==*/
+#main-content div.content #company-info {
+    padding: 10px 13px 10px 13px;
+    background-color: #E3EAE2;
+    margin-bottom: 20px;
+}
+
+#main-content div.content .company-brief-info {
+    background-color: #FFFFFF;
+    padding: 13px 10px 13px 10px;
+}
+
+#main-content div.content .company-brief-info label {
+    display: inline-block;
+    font-weight: normal;
+    color: rgb(51, 102, 0);
+}
+
+#main-content div.content .company-brief-info #show-detail {
+    float: right;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+body.page-companys #main-content h1#page-title {
+    background: url("img/site/bt_company.png") no-repeat;
+    padding-left: 30px;
+}
+
+ul#company-center-tabs li {
+    list-style: none none;
+    float: left;
+}
+
+ul#company-center-tabs li a {
+    display: inline-block;
+    background: #368E25 url(img/s.png) no-repeat left -200px;
+    color: white;
+    font-size: 14px;
+    font-weight: normal;
+    padding-left: 15px;
+}
+
+ul#company-center-tabs li a span {
+    display: inline-block;
+    background: url(img/s.png) no-repeat right -200px;
+    height: 30px;
+    line-height: 30px;
+    padding-right: 15px;
+}
+
+ul#company-center-tabs li a.active {
+    background-position: left -230px;
+}
+
+ul#company-center-tabs li a.active span {
+    background-position: right -230px;
+}
+
+#company-info .block-content {
+    padding-left: 145px;
+}
+
+#company-info .field-name-pic {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#company-info .field {
+    padding-bottom: 10px;
+    float: left;
+    width: 33%;
+    font-size: 12px;
+}
+
+#company-info .field-items {
+    display: inline;
+}
+
+#company-info .field-name-name {
+    font-size: 18px;
+    padding-bottom: 12px;
+    float: left;
+    width: 380px;
+}
+
+#company-info .field-name-number {
+    margin-right: 0;
+}
+
+#company-info .field-name-body {
+    padding-bottom: 0;
+    font-size: 12px;
+    float: none;
+    clear: both;
+    width: 100%;
+}
+
+#company-info .field-name-website {
+    width: 66%;
+}
+
+#company-info .field-name-body label {
+    padding-bottom: 10px;
+    font-size: 14px;
+    display: block;
+}
+
+#company-info a.follow {
+    top: 0;
+}
+
+body.page-company #content .content h2.block-title {
+    background: url(img/h2-1.png) no-repeat left top;
+    padding-left: 20px;
+    font: normal normal 14px/30px '微软雅黑', '黑体';
+    text-align: center;
+    margin: 25px 0;
+}
+
+body.page-company #content .content h2.block-title span {
+    background: url(img/h2-1.png) no-repeat right top;
+    padding-right: 5%;
+    display: inline-block;
+    height: 33px;
+    width: 95%;
+}
+
+.jcarousel-prev {
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    top: 36px;
+    left: -30px;
+    background: url(img/prev-horizontal.png) no-repeat -40px 0;
+    cursor: pointer;
+}
+
+.jcarousel-prev-disabled {
+    background-position: 0 0;
+    cursor: default;
+}
+
+.jcarousel-next {
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    top: 36px;
+    right: -30px;
+    background: url(img/next-horizontal.png) no-repeat -40px 0;
+    cursor: pointer;
+}
+
+.jcarousel-next-disabled {
+    background-position: 0 0;
+    cursor: default;
+}
+
+/* 公司环境照片 */
+body.node-type-company div#company-photos {
+    margin-bottom: 20px;
+}
+
+body.node-type-company div#company-photos div.jcarousel-container {
+    width: 630px;
+    height: 110px;
+}
+
+#company-photos .jcarousel-container {
+    width: 615px;
+    margin: 0 auto;
+}
+
+#company-photos ul li {
+    width: 138px;
+    margin-right: 10px;
+}
+
+#company-reviews .block-content .views-row,
+#company-discuss .block-content .views-row {
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+    font-size: 12px;
+}
+
+#company-reviews  .views-field-title,
+#company-discuss  .views-field-title {
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+#company-reviews .views-field-picture,
+#company-discuss .views-field-picture {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+}
+
+#company-reviews .fivestar-static-form-item,
+#company-discuss .fivestar-static-form-item {
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+
+#company-reviews .views-field-advantage,
+#company-discuss .views-field-advantage {
+    margin-top: 10px;
+}
+
+#company-reviews .views-field-advantage,
+#company-reviews .views-field-shortcoming,
+#company-reviews .views-field-body,
+#company-discuss .views-field-advantage,
+#company-discuss .views-field-shortcoming,
+#company-discuss .views-field-body {
+    padding: 0 0 5px 100px;
+}
+
+#company-reviews .views-field-advantage .field-items,
+#company-reviews .views-field-shortcoming .field-items,
+#company-reviews .views-field-body .field-items,
+#company-discuss .views-field-advantage .field-items,
+#company-discuss .views-field-shortcoming .field-items,
+#company-discuss .views-field-body  .field-items {
+    display: inline;
+}
+
+body.page-company #content .content div.title {
+    background: url(img/h2-1.png) no-repeat left top;
+    padding-left: 20px;
+    font: normal normal 14px/30px '微软雅黑', '黑体';
+    text-align: center;
+    margin: 0 0 25px 0;
+    height: 33px;
+    width: 670px;
+}
+
+body.page-company #content .content div.title div.inner {
+    /*background:url(img/h2-1.png) no-repeat right top;
+   height: 33px;
+   width: 100%;*/
+}
+
+body.page-company #content .content div.title .fivestar-static-form-item {
+    position: relative;
+    display: inline-block;
+    _display: inline;
+    zoom: 1;
+    width: 90px;
+    margin: 0 10px;
+    top: 3px;
+
+}
+
+body.page-company div.form  h2.title {
+    font: normal normal 16px/30px '微软雅黑', '黑体';
+    border-bottom: 1px solid #ddd;
+}
+
+body.page-company div.form  form {
+    padding: 20px 50px;
+}
+
+body.page-company div.form .form-item {
+    clear: both;
+    padding: 10px 0;
+}
+
+#review-form .form-item-field-rating-und-0-rating label {
+    float: left;
+    margin-right: 10px;
+}
+
+#review-form .form-item-field-rating-und-0-rating,
+#review-form div.fivestar-widget {
+    display: inline;
+    clear: none;
+    float: none;
+}
+
+#review-form .form-item  input,
+#review-form .form-item  textarea {
+    width: 100%;
+    clear: both;
+    border: 1px solid #8fbf7e;
+}
+
+#review-form .form-item  textarea {
+    height: 100px;
+}
+
+#review-form .form-actions {
+    text-align: center;
+}
+
+#review-form .form-actions input {
+    width: 103px;
+    height: 27px;
+    background: #237c16 url(img/s.png) no-repeat -80px 0;
+    border: 0 none;
+    margin: 0 5px;
+    color: white;
+}
+
+#experience-share .block-content .views-row {
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+    font-size: 12px;
+}
+
+#experience-share .block-content .views-field-title {
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+#experience-share .block-content .views-field-postdate {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+#experience-share .block-content .views-field-picture {
+    position: absolute;
+    top: 70px;
+    left: 0px;
+}
+
+#experience-share .block-content .views-field-body {
+    padding: 10px 0 0 80px;
+}
+
+#share-form .form-item  input,
+#share-form .form-item  textarea {
+    width: 100%;
+    clear: both;
+    border: 1px solid #8fbf7e;
+}
+
+#share-form .form-item  textarea {
+    height: 100px;
+}
+
+#share-form .form-actions {
+    text-align: center;
+}
+
+#share-form div.start,
+#share-form div.end {
+    display: inline;
+    padding: 0 10px;
+}
+
+#share-form select {
+    padding: 2px;
+    border: 1px solid #8fbf7e;
+    width: 50px;
+}
+
+#share-form select.year {
+    width: 80px;
+}
+
+#share-form .form-actions input {
+    width: 103px;
+    height: 27px;
+    background: #237c16 url(img/s.png) no-repeat -80px 0;
+    border: 0 none;
+    margin: 0 5px;
+    color: white;
+}
+
+#company-center-block {
+    border: 1px solid #ddd;
+}
+
+#company-center-block h2.block-title {
+    background: url(img/s.png) no-repeat 0 -30px;
+    border-bottom: 0 none;
+    height: 25px;
+    padding: 2px 0 0 10px;
+}
+
+#company-center-block .block-content{
+    padding: 20px 10px;
+    text-align: center;
+}
+
+#company-center-block  .follow {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#company-center-block .block-content div.views-field {
+    padding: 3px 0;
+}
+
+#company-center-block .views-field-follow a,
+#company-center-block .views-field-job a,
+#company-center-block .views-field-message a {
+    display: inline-block;
+    padding-left: 23px;
+    background: url(img/s.png) no-repeat -20px -125px;
+}
+
+#company-center-block .views-field-message a {
+    background-position: -20px -150px;
+}
+
+#company-center-block .views-field-follow a {
+    background-position: -20px -175px;
+}
+
+#company-center-block a.button span {
+    width: 90px;
+}
+
+#company-center-block .views-field-edit a.button {
+    background-position: left -30px
+}
+
+#company-center-block .views-field-edit a.button span {
+    background-position: right -30px;
+}
+
+#company-info-block .block-content {
+    padding: 10px 15px;
+}
+
+#company-info-block .block-content p {
+    padding-bottom: 0.5em;
+}
+
+div.admin-list  .views-row {
+    padding: 10px;
+    margin: 0 0 1px 0;
+    overflow: hidden;
+}
+
+div.admin-list  div.selected {
+    background-color: #f6fff2;
+}
+
+.admin-list .widget {
+    /*float: left;*/
+    width: 7%;
+    text-align: right;
+    padding-right: 3%;
+}
+
+body.page-company #content .admin-list div.content {
+    border: 0 none;
+    float: left;
+    clear: none;
+    width: 90%;
+    padding: 0 0 20px 0;
+}
+
+div.admin-list .field-name-status {
+    position: absolute;
+    top: -3px;
+    right: 30px;
+    width: auto;
+}
+
+div.admin-list .operation {
+    padding-top: 15px;
+}
+
+div.admin-list .operation .widget {
+    width: 8%;
+}
+
+div.admin-list .operation .button {
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+body.page-company #content #admin-event div.content {
+    padding-bottom: 0;
+}
+
+div.event-list .views-row .content .field {
+    float: left;
+}
+
+div.event-list .views-row .content .field-name-title {
+    width: 46%;
+}
+
+div.event-list .views-row .content .field-name-time,
+div.event-list .views-row .content .field-name-replycount,
+div.event-list .views-row .content .field-name-lastreply {
+    width: 18%;
+}
+
+div.resume-list  .field {
+    font-size: 12px;
+    padding-top: 6px;
+    float: left;
+    width: 33%;
+}
+
+div.resume-list .field-items {
+    display: inline;
+}
+
+div.resume-list  .field-name-name {
+    float: none;
+    font-size: 14px;
+    padding-top: 0;
+    width: 100%;
+}
+
+div.resume-list  .field-name-time {
+    float: none;
+    width: 100%;
+}
+
+/*==/company==*/
+/*==user==*/
+#share-status{
+    background-color: #F5F8F5;
+    padding: 10px 12px 15px 12px;
+    margin-bottom: 20px;
+}
+
+
+
+#share-status .block-content {
+    font-size: 14px;
+    font-weight: normal;
+    padding: 2px 0 2px 0;
+    overflow: hidden;
+}
+
+#share-status div.form-item {
+    padding: 8px 0 0 0;
+    margin: 0;
+}
+
+#share-status input.form-submit {
+    margin-top: 10px;
+    width: 76px;
+    height: 30px;
+    font-size: 14px;
+    float: right;
+    background-color: #4E963C;
+    border: 1px;
+    cursor: pointer;
+    color: #ffffff;
+}
+#share-status textarea{
+    border: 2px #D9EBAA solid;
+}
+
+body.user div.tabs {
+    margin-bottom: 40px;
+}
+
+body.user div.tabs .block {
+    border: #8fbf7e solid 1px;
+    padding: 25px;
+    clear: both;
+}
+/*== newest status ==*/
+#newest-status .views-row {
+    padding: 0 0 30px 1px;
+    overflow: hidden;
+    position: relative;
+    font-size: 12px;
+}
+#newest-status .views-field-picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#newest-status .views-field-body {
+    min-height: 70px
+}
+
+a.reply {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+/*== user-center-block Begin ==*/
+body.page-user #sidebar-second div.pane-usercenter-user-info-panel-pane-1  div.panel-pane-title{
+    height: 20px;
+    background-color: #4E963C;
+    padding:10px;
+    font-size: 16px;
+    color: #ffffff;
+    border: 0px;
+    margin-bottom: 10px;
+}
+#user-center-block{
+    border: 2px #8DB125 solid;
+}
+#user-center-block .user-info{
+    background-color: #F7F9FA;
+    padding: 10px 10px;
+}
+#user-center-block .user-picture{
+    float: left;
+    margin-right: 10px;
+}
+#user-center-block .block-content div.views-field-name{
+    border-bottom: 2px dashed #8DB126;
+    padding: 8px 0 10px 14px;
+}
+#user-center-block .block-content div.views-field-name .field-content{
+    background: url(img/site/bt_star.gif) no-repeat 0 2px;
+    padding-left: 20px;
+}
+#user-center-block div.block{
+    margin-bottom: 0px;
+    border: 0px;
+}
+
+#user-center-block .block-content{
+    line-height: 1.7;
+    padding:0;
+}
+
+
+
+#user-center-block  .follow {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#user-center-block .block-content div.views-field {
+    padding: 3px 0;
+}
+
+#user-center-block .views-field-follow a,
+#user-center-block .views-field-point a,
+#user-center-block .views-field-message a {
+    display: inline-block;
+}
+
+#user-center-block .views-field-message a {
+    background-position: -20px -150px;
+}
+
+#user-center-block .views-field-follow a {
+    background-position: -20px -175px;
+}
+/*== user-center-block End==*/
+
+/*== invite block Begin ==*/
+#invite .block-content{
+    border: 2px #8DB125 solid;
+    line-height: 1.7;
+    padding:10px 10px 15px 10px;
+    text-align: center;
+}
+#invite h2.block-title{
+    border: none;
+    background: url(img/site/bt_invite.gif) no-repeat;
+    padding-left: 35px;
+}
+#invite #edit-email{
+    border: 2px solid #EBEBEB;
+    width: 200px;
+    height: 35px;
+}
+#invite .form-submit{
+    width: 86px;
+    height: 30px;
+    background-color: #4E963C;
+    border: 1px;
+    cursor: pointer;
+    color: #ffffff;
+}
+/*== invite block End ==*/
+
+a.button {
+    display: inline-block;
+    padding-left: 10px;
+    height: 27px;
+    text-align: center;
+    background: #237c16 url(img/button.png) no-repeat left 0;
+}
+
+a.button span {
+    display: inline-block;
+    padding-right: 10px;
+    height: 27px;
+    line-height: 23px;
+    background: url(img/button.png) no-repeat right 0;
+    color: white;
+}
+
+#user-center-block a.button span {
+    width: 90px;
+}
+
+#user-center-block .views-field-edit a.button {
+    background-position: left -30px
+}
+/*== page-resume Begin==*/
+body.node-type-resume #header{
+    height: 70px;
+}
+body.node-type-resume #header .resume{
+    margin-top: 60px;
+}
+body.node-type-resume #page.resume-node-view #main,
+body.node-type-resume #page.resume-node-view,
+body.node-type-resume #footer,
+body.node-type-resume #footer .section{
+    width: 650px;
+}
+
+body.node-type-resume  #page.resume-node-view #main-bottom{
+    margin-top:15px;
+    text-align: center;
+}
+
+body.node-type-resume div.pane-resume-node-view-panel-pane-1{
+    border:2px solid #4E963C;
+    padding: 0 12px 10px 12px;
+    display: block;
+}
+div.pane-resume-node-view-panel-pane-1 .views-field{
+    color: #333;
+}
+div.pane-resume-node-view-panel-pane-1 .views-field .field-content{
+    display: inline-block;
+}
+div.pane-resume-node-view-panel-pane-1 .d-1{
+    background-color: #F7FCF5;
+    border: 1px solid #B8DFAE;
+    padding: 8px;
+}
+div.pane-resume-node-view-panel-pane-1 .d-2{
+    display: block;
+    padding: 15px 0 6px 0;
+    line-height: 2.2;
+}
+div.pane-resume-node-view-panel-pane-1 .d-2 label{
+    width: 60px;
+}
+div.pane-resume-node-view-panel-pane-1 .d-3{
+    display: inline-block;
+    padding: 0 0 8px 0;
+}
+div.pane-resume-node-view-panel-pane-1 .d-3 .views-field{
+    display: inline-block;
+    color: #3C722E;
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+div.pane-resume-node-view-panel-pane-1 .views-field.views-field-real-name{
+    display: block;
+    font-size:25px;
+    font-weight: bold;
+    padding: 0 0 8px 0;
+    border-bottom: 1px dashed #B8DFAE;
+}
+div.pane-resume-node-view-panel-pane-1 .views-field.views-field-picture{
+    float: right;
+    display: block;
+}
+div.pane-resume-node-view-panel-pane-1 .d-4,
+div.pane-resume-node-view-panel-pane-1 .d-5{
+    margin-top: 10px;
+    line-height: 2.2;
+    border-bottom: 1px solid #CCCCCC;
+    padding: 0 0 10px 0;
+}
+div.pane-resume-node-view-panel-pane-1 .d-6{
+    margin-top: 10px;
+    line-height: 2.2;
+    padding: 0 0 10px 0;
+}
+div.pane-resume-node-view-panel-pane-1 .d-4 .s-1,
+div.pane-resume-node-view-panel-pane-1 .d-5 .s-1,
+div.pane-resume-node-view-panel-pane-1 .d-6 .s-1{
+    color: #3C722E;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 2px solid #b8dfae;
+    width: 100%;
+    padding: 0 0 3px 0;
+    margin-bottom: 10px;
+    display: block;
+}
+div.pane-resume-node-view-panel-pane-1 .d-5 .s-1 .field-content,
+div.pane-resume-node-view-panel-pane-1 .d-6 .s-1 .field-content{
+    display: inline-block;
+    color: #333333;
+}
+div.pane-resume-node-view-panel-pane-1 .d-4-1{
+    width: 46%;
+    display: inline-block;
+}
+div.pane-resume-node-view-panel-pane-1 .d-4-2{
+    width: 48%;
+    display: inline-block;
+    padding-left: 20px;
+    border-left: 1px solid #CCCCCC;
+}
+div.pane-resume-node-view-panel-pane-1 .d-6 .field-content{
+    width: 48%;
+    display: inline-block;
+}
+div.pane-resume-node-view-panel-pane-1 .d-6 .file{
+    font-size: 14px;
+    font-weight: bold;
+}
+/*== page-resume End==*/
+
+#user-center-block .views-field-edit a.button span {
+    background-position: right -30px;
+}
+
+/*== followers block==*/
+#followers h2.block-title{
+    background: url(img/site/bt_flw_usr.gif) no-repeat 1px 2px;
+    padding-left: 30px;
+}
+#followers div.block-content{
+    padding: 10px 5px 0px 5px;
+}
+#followers .views-row {
+    padding: 10px;
+    height: 90px;
+    text-align: center;
+    width: 50%;
+}
+
+/*== Company Node Form Begin ==*/
+div.pane-company-node-form{
+    padding:20px 10px 20px 20px;
+}
+div.pane-company-node-form fieldset{
+    display: none;
+}
+div.pane-company-node-form input.form-text{
+    width: 204px;
+    height: 20px;
+}
+div.pane-company-node-form select.form-select{
+    width: 215px;
+    height: 30px;
+}
+div.pane-company-node-form label{
+   width: 90px;
+   text-align: right;
+   padding:7px 15px 0 0;
+    float: left;
+}
+div.pane-company-node-form .form-item{
+   display: block;
+   min-height: 34px;
+   margin-top: 0;
+}
+div.pane-company-node-form .form-item div.description{
+   display: inline-block;
+   padding-left: 5px;
+}
+
+div.pane-company-node-form .form-textarea-wrapper textarea{
+    width: 517px;
+    border: 1px solid #dddddd;
+}
+div.pane-company-node-form .basic-info-title,
+div.pane-company-node-form .contact-info-title{
+    font-size: 14px;
+    font-weight: bold;
+    color: #006600;
+}
+div.pane-company-node-form .basic-info-content{
+    padding: 10px 0 15px 0;
+    border-bottom: 1px solid #dddddd;
+}
+div.pane-company-node-form .contact-info-content{
+    padding: 15px 0 15px 0;
+    border-bottom: 1px solid #dddddd;
+    margin-bottom: 25px;
+}
+div.pane-company-node-form .contact-info{
+     margin-top: 15px;
+}
+div.pane-company-node-form div.form-actions{
+    text-align: center;
+}
+div.pane-company-node-form div.field-name-field-work-days,
+div.pane-company-node-form div.field-name-field-work-months{
+    display: inline-block;
+}
+div.pane-company-node-form .form-item-field-work-months-und-0-value,
+div.pane-company-node-form .form-item-field-work-days-und-0-value{
+    width: 200px;
+}
+div.pane-company-node-form .form-item-field-work-months-und-0-value input.form-text,
+div.pane-company-node-form .form-item-field-work-days-und-0-value input.form-text{
+    width: 40px;
+}
+div.pane-company-node-form .form-actions input.form-submit{
+    padding: 8px 25px 8px 25px;
+    background-color: rgb(78, 150, 60);
+    border: 1px;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+div.pane-company-node-form .field-type-text,
+div.pane-company-node-form .field-type-image,
+div.pane-company-node-form .field-type-text-with-summary,
+div.pane-company-node-form .field-type-taxonomy-term-reference{
+    display: inline-block;
+    width: 680px;
+}
+div.pane-company-node-form .field-widget-taxonomy-hs{
+    height: 34px;
+}
+div.pane-company-node-form .field-type-taxonomy-term-reference .form-item{
+    height: 30px;
+}
+div.pane-company-node-form div.image-widget{
+     width: 350px;
+     display: inline-block;
+     float: left;
+     min-height: 30px;
+ }
+div.pane-company-node-form div.image-widget .image-widget-data{
+    display: inline-block;
+}
+div.pane-company-node-form div.image-widget .image-widget-data .file-size,
+div.pane-company-node-form div.image-widget .image-widget-data .file{
+    display: none;
+}
+div.pane-company-node-form input.form-file{
+    width: 218px;
+    height: 30px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+}
+div.pane-company-node-form div.image-widget #edit-field-logo-und-0-remove-button,
+div.pane-company-node-form div.image-widget #edit-field-logo-und-0-upload-button{
+    padding: 5px 25px 5px 25px;
+    background-color: #7A7876;
+    border: 1px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
+    height: 30px;
+    display: inline-block;
+    width: 100px;
+}
+/*== Company Node Form End ==*/
+/*==Job Node Form　Begin ==*/
+div.pane-company-node-form  .form-actions #edit-submit{
+    background-color:#FF9900;
+}
+/*==Job Node Form　End ==*/
+/*==/user==*/
+
+#footer {
+    margin-top: 24px;
+    border-top: #9a9a9a dotted 1px;
+}
+
+#footer .section {
+    width: 960px;
+    margin: 0 auto;
+    padding: 23px 0;
+}
+
+#footer a {
+    color: #333;
+}
+
+
+
+/*==fivestar==*/
+/* Plain HTML Version */
+form.fivestar-widget {
+    clear: both;
+    display: block;
+}
+
+form.fivestar-widget select,
+form.fivestar-widget input {
+    margin: 0;
+}
+
+/* Combo Static and Rate Widget */
+.fivestar-combo-stars .fivestar-static-form-item {
+    float: left; /* RTL */
+    margin-right: 40px; /* RTL */
+}
+
+.fivestar-combo-stars .fivestar-form-item {
+    float: left; /* RTL */
+}
+
+/* Fivestar form items */
+.fivestar-static-form-item .form-item,
+.fivestar-form-item .form-item {
+    margin: 0;
+}
+
+/* Static View-only Star Version */
+div.fivestar-widget-static {
+    display: block;
+}
+
+div.fivestar-widget-static br {
+    clear: left; /* RTL */
+}
+
+div.fivestar-widget-static .star {
+    float: left; /* RTL */
+    width: 17px;
+    height: 15px;
+    overflow: hidden;
+    text-indent: -999em;
+    background: url(img/s.png) no-repeat 0 -125px; /* RTL */
+}
+
+div.fivestar-widget-static .star span.on {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(img/s.png) no-repeat 0 -155px; /* RTL */
+}
+
+div.fivestar-widget-static .star span.off {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(img/s.png) no-repeat 0 -125px; /* RTL */
+}
+
+/* Javascript Star Version */
+div.fivestar-widget {
+    display: block;
+}
+
+div.fivestar-widget .cancel, div.fivestar-widget .star {
+    float: left; /* RTL */
+    width: 17px;
+    height: 15px;
+    overflow: hidden;
+    text-indent: -999em;
+}
+
+div.fivestar-widget .cancel, div.fivestar-widget .cancel a {
+    background: url(../widgets/default/delete.gif) no-repeat 0 -140px; /* RTL */
+    text-decoration: none;
+}
+
+div.fivestar-widget .star, div.fivestar-widget .star a {
+    background: url(img/s.png) no-repeat 0 -125px; /* RTL */
+    text-decoration: none;
+}
+
+div.fivestar-widget .cancel a, div.fivestar-widget .star a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-position: 0 -125px; /* RTL */
+    cursor: pointer;
+}
+
+div.fivestar-widget div.on a {
+    background-position: 0 -140px; /* RTL */
+}
+
+div.fivestar-widget div.hover a, div.rating div a:hover {
+    background-position: 0 -140px; /* RTL */
+}
+
+form.fivestar-widget div.description {
+    margin-bottom: 0;
+}
+
+html.js .fivestar-submit {
+    display: none;
+}
+
+.fivestar-combo-stars .form-type-fivestar .form-item {
+    float: left;
+}
+
+/*==/fivestar==*/
+.activeTab {
+    background: url(img/site/tab_on_l.gif) no-repeat;
+}
+
+.activeTab .a
+
+
+

@@ -1,0 +1,27 @@
+<?php
+/**
+ * Created by JetBrains PhpStorm.
+ * User: Edison
+ * Date: 12-5-27
+ * Time: 下午4:47
+ * To change this template use File | Settings | File Templates.
+ */
+
+
+function intern_job_form_node_form_alter(&$form, $form_state) {
+  $type = $form['#node']->type;
+  Global $user;
+  if ($type == 'job' && intern_user_is_company_user()) {
+    //非网站编辑，不能编辑Group Audience字段
+    if (!in_array(6, array_keys($user->roles))) {
+      $form['og_group_ref']['und'][0]['target_id']['#type']='hidden';
+    }
+    hide($form["actions"]["delete"]);
+    $form["actions"]["submit"]["#value"] =t('提交发布');
+    $form["actions"]["draft"] = array(
+      '#type' => 'button',
+      '#value' => t('保存草稿'),
+    );
+  }
+
+}

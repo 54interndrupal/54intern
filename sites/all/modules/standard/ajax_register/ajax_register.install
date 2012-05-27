@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the AJAX REGISTER module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function ajax_register_install() {
+  //Make sure we're heavy so our form_alter hook gets executed last.
+  db_update('system')
+    ->fields(array('weight' => 1000))
+    ->condition('name', 'ajax_register')
+    ->execute();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function ajax_register_uninstall() {
+  db_query("DELETE FROM {variable} WHERE name LIKE 'ajax_register_%'");
+  cache_clear_all('variables', 'cache_bootstrap');
+}
+
+/**
+ * Make sure we're heavy so our form_alter hook gets executed last.
+ */
+function ajax_register_update_7406() {
+  db_update('system')
+    ->fields(array('weight' => 1000))
+    ->condition('name', 'ajax_register')
+    ->execute();
+}

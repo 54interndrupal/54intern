@@ -1,0 +1,356 @@
+<?php
+/**
+ * Created by JetBrains PhpStorm.
+ * User: Edison
+ * Date: 12-5-12
+ * Time: 下午2:16
+ * To change this template use File | Settings | File Templates.
+ */
+/**
+ * 实现钩子hook_block_info().
+ */
+function intern_company_block_info() {
+  $blocks['company info'] = array(
+    'info' => t('Intern Company -- 企业信息区块')
+  );
+  $blocks['company add review'] = array(
+    'info' => t('Intern Company -- 企业点评—快来抢沙发')
+  );
+  $blocks['company more jobs'] = array(
+    'info' => t('Intern Company -- 企业更多职位')
+  );
+  $blocks['company reviews'] = array(
+    'info' => t('Intern Company -- 公司点评')
+  );
+  $blocks['company share status'] = array(
+    'info' => t('Intern Company -- 分享企业动态')
+  );
+  $blocks['company brief today'] = array(
+    'info' => t('Intern Company -- 今日提醒')
+  );
+  $blocks['company center tabs'] = array(
+    'info' => t('Intern Company -- 企业中心导航')
+  );
+  $blocks['company center resume tabs'] = array(
+    'info' => t('Intern Company -- 企业中心简历管理导航')
+  );
+  $blocks['company center welcome'] = array(
+    'info' => t('Intern Company -- 企业中心欢迎访问')
+  );
+  $blocks['company center shortcuts'] = array(
+    'info' => t('Intern Company -- 企业中心快速通道')
+  );
+  $blocks['company center reviews'] = array(
+    'info' => t('Intern Company -- @企业点评台')
+  );
+  $blocks['company center showcase'] = array(
+    'info' => t('Intern Company -- 企业中心Showcase')
+  );
+  $blocks['company center setting tabs'] = array(
+    'info' => t('Intern Company -- 企业中心设置中心导航')
+  );
+  return $blocks;
+}
+
+/**
+ * 实现钩子hook_block_view().
+ */
+function intern_company_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'company info':
+      $block['subject'] = t('企业信息区块');
+      $block['content'] = intern_company_info_block();
+      break;
+    case 'company add review':
+      $block['subject'] = t('企业点评—快来抢沙发');
+      $block['content'] = intern_company_add_review_block();
+      break;
+    case 'company more jobs':
+      $block['subject'] = t('企业更多职位');
+      $block['content'] = intern_company_more_jobs_block();
+      break;
+    case 'company reviews':
+      $block['subject'] = t('公司点评');
+      $block['content'] = intern_company_reviews_block();
+      break;
+    case 'company brief today':
+      $block['subject'] = t('今日提醒');
+      $block['content'] = intern_company_brief_today_block();
+      break;
+    case 'company center tabs':
+      $block['subject'] = t('企业中心tabs');
+      $block['content'] = intern_company_center_tabs_block();
+      break;
+    case 'company center resume tabs':
+      $block['subject'] = t('企业中心简历管理tabs');
+      $block['content'] = intern_company_center_resume_tabs_block();
+      break;
+    case 'company center welcome':
+      $block['subject'] = t('欢迎访问实习圈');
+      $block['content'] = intern_company_center_welcome_block();
+      break;
+    case 'company center shortcuts':
+      $block['subject'] = t('快速通道');
+      $block['content'] = intern_company_center_shortcuts_block();
+      break;
+    case 'company center reviews':
+      $block['subject'] = t('@企业点评台');
+      $block['content'] = intern_company_center_reviews_block();
+      break;
+    case 'company center showcase':
+      $block['subject'] = t('企业中心showcase');
+      $block['content'] = intern_company_center_showcase_block();
+      break;
+    case 'company center setting tabs':
+      $block['subject'] = t('企业中心设置中心tabs');
+      $block['content'] = intern_company_center_setting_tabs_block();
+      break;
+  }
+
+  return $block;
+}
+/**
+ * 企业中心今日提醒Block
+ */
+function intern_company_brief_today_block(){
+
+
+  $gid = _intern_company_get_company_group_id();
+
+
+  $sql = "select count(*) as count from {og_membership} og_ms,{node} nd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.type='job'";
+  $total_job_count = db_query($sql,array(':gid' => $gid))->fetchField();
+
+  $sql = "select count(*) as count from {og_membership} og_ms,{node} nd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.type='job'and nd.status=1";
+  $published_job_count = db_query($sql,array(':gid' => $gid))->fetchField();
+
+  $sql = "select count(*) as count from {og_membership} og_ms,{node} nd,{field_revision_field_deadline} fd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.nid = fd.entity_id and nd.type='job'and nd.status=1 and fd.field_deadline_value<(now()+2)";
+  $near_deadline_job_count = db_query($sql,array(':gid' => $gid))->fetchField();
+
+  $sql = "select count(*) as count from {flag_content} fc where fc.timestamp>now()-7 and fc.content_id in (select nd.nid from {og_membership} og_ms,{node} nd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.type='job')";
+  $received_resume_count = db_query($sql,array(':gid' => $gid))->fetchField();
+
+  $sql = "select count(etid) as count from {og_membership} og_ms,{node} nd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.type='review'";
+  $total_review_count = db_query($sql,array(':gid' => $gid))->fetchField();
+
+  $sql = "select count(etid) as count from {og_membership} og_ms,{node} nd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.type='review' and nd.changed>UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 7 DAY))";
+  $review_count_this_week = db_query($sql,array(':gid' => $gid))->fetchField();
+  $output ='<div class="c-10">';
+  $output .= '<div>- 您共发布职位 <span class="hot">'.$total_job_count.'</span>个，其中有<span class="hot"> '.$published_job_count.'</span>个正在发布中，有 '.$near_deadline_job_count.' 个职位即将到期 ';
+  $output.= l('[职位管理]',url('/companycenter/'.$gid.'/job')).'</div>';
+  $output.= '<div>- 您最近一周收到<span class="hot"> '.$received_resume_count.'</span>份简历 ';
+  $output .= l('[简历管理]',url('/companycenter/'.$gid.'/resumes')).'</div>';
+  $output .= '<div>- 企业点评台有关于您公司<span class="hot"> '.$total_review_count.'</span>条点评，最近一周有<span class="hot"> '.$review_count_this_week.'</span>条点评 ';
+  $output .= l('[@企业点评台]','#quicktabs-tab-company_center_home_tabs-1').'</div>';
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * 获取Company Group Id
+ */
+function _intern_company_get_company_group_id(){
+  if((arg(0)=='company'||(arg(0)=='companycenter')&& arg(1)>0) ||(arg(0)=='node'&& arg(1)>0)){
+    $gid = arg(1);
+    return $gid;
+  }
+}
+
+
+/**
+ *
+ * 公司信息区块Block
+ */
+function intern_company_info_block() {
+  $gid =  _intern_get_company_id_from_url();
+  $output = views_embed_view('company_info', 'panel_pane_4', $gid);
+  return $output;
+}
+
+/*
+ * 企业中心魂欢迎访问Block
+ */
+function intern_company_center_welcome_block(){
+  Global $user;
+  $output = '<div class="d-1">';
+  $output.= '<span class="c-14">'.$user->name.'，您好！</span>';
+  $output.= '<span class="c-5">欢迎访问实习圈，您最近登录时间为：'.date('Y-m-d H:i:s',$user->login).'</span>';
+  $output .=  '<span class="c-5">如您使用中有任何问题，请联系：  <a href="mailto:service@54intern.com">service@54intern.com</a></span>';
+  $output .=  '</div>';
+
+  return $output;
+}
+
+/**
+ *
+ * 企业中心 tabs Block
+ */
+function intern_company_center_tabs_block() {
+  $gid =  arg(1);
+  Global $user;
+  //企业用户设置
+  if(arg(0)!='companycenter'){
+    $gid = intern_user_get_company_id($user->uid);
+  }
+
+  $output = "";
+  if(((arg(0)=='companycenter'||arg(0)=='node'||arg(0)=='user')&& $gid>0)){
+//    $output .='<div id="quicktabs-front_main_tabs" class="quicktabs-wrapper quicktabs-style-intern">';
+//    $output .='<div class="item-list"> ';
+    $output .= '<ul class="quicktabs-tabs quicktabs-style-intern">';
+    $output .= '<li class="'.(arg(2)==''?'active':'').'">'.  l(t('首页'),'companycenter/'.$gid, array('html' => TRUE,)). '</li>';
+    $output .= '<li class="'.((arg(2)=='jobs'||(arg(1)=='add'&&arg(2)=='job')||($node->type=='job'))?'active':'').'">'.  l(t('职位管理'),'companycenter/'.$gid.'/jobs', array('html' => TRUE,)). '</li>';
+    $output .= '<li class="'.(arg(2)=='resumes'?'active':'').'">'.  l(t('简历管理'),'companycenter/'.$gid.'/resumes', array('html' => TRUE,)). '</li>';
+    $output .= '<li class="'.((arg(2)=='edit'&&($node->type!='job'))?'active':'').'">'.  l(t('设置中心'),'node/'.$gid.'/edit', array('html' => TRUE,)). '</li>';
+
+    $output .= '</ul>';
+  }
+  return $output;
+}
+
+/**
+ *
+ * 企业中心 简历管理 tabs Block
+ */
+function intern_company_center_resume_tabs_block() {
+  $gid =  arg(1);
+  $output = "";
+  if((arg(0)=='companycenter'&& $gid>0)){
+//    $output .='<div id="quicktabs-front_main_tabs" class="quicktabs-wrapper quicktabs-style-intern">';
+//    $output .='<div class="item-list"> ';
+    $output .= '<ul class="quicktabs-tabs quicktabs-style-intern2">';
+    $output .= '<li class="first active">'.  l(t('简历管理'),'companycenter/'.$gid.'/resumes', array('html' => TRUE,)). '</li>';
+    $output .= '<li>'.  l(t('搜索简历库'),'resumes', array('html' => TRUE,)). '</li>';
+    $output .= '</ul>';
+  }
+  return $output;
+}
+
+/**
+ *
+ * 企业点评—快来抢沙发Block
+ */
+function intern_company_add_review_block() {
+  global $base_url;
+  $gid =  _intern_get_company_id_from_url();
+  $output = '<span class="title c-5">'.t("还没做点评，快来抢沙发吧~").'</span>';
+  $output = $output.'<span class="add-review-pic"></span>';
+  $output = $output.'<a href="'.$base_url.'/company/'.$gid.'#review-node-form"><span class="add-review-btn"></span></a>';
+  return $output;
+}
+
+/**
+ * 企业更多职位Block
+ */
+function intern_company_more_jobs_block(){
+  $gid =  _intern_get_company_id_from_url();
+  $output = views_embed_view('right_title_link', 'panel_pane_10', $gid);
+  return $output;
+}
+
+/**
+ * 公司点评Block
+ */
+function intern_company_reviews_block(){
+  $gid =  _intern_get_company_id_from_url();
+  $output = views_embed_view('company_reviews_in_blocks', 'block_company_reviews', $gid);
+  return $output;
+}
+
+/**
+ * 企业中心——快速通道Block
+ */
+function intern_company_center_shortcuts_block(){
+  Global $user;
+  $uid = $user -> uid;
+  $gid =  intern_user_get_company_id($uid);
+  $output = '<div class="company-shortcuts">'.
+     '<span class="sc-add-job"><a href="'.base_path().'node/add/job?og_group_ref='.$gid.'">新增职位 <span class="active"> >> </span></span></a>'.
+     '<span class="sc-inbox">'.l(' 查看应聘简历',"/companycenter/".$gid."/resumes").'<span class="active"> >> </span></span>'.
+    '<span class="sc-search-resume"> '.' 搜索简历库'.' <span class="inactive"> >> </span></span> '.
+   '</div>
+  ';
+  return $output;
+}
+/**
+ *
+ */
+function intern_company_center_setting_tabs_block(){
+  $gid =  arg(1);
+  Global $user;
+  //企业用户设置
+  if(arg(0)!='companycenter'){
+    $gid = intern_user_get_company_id($user->uid);
+  }
+
+  Global $user;
+  $output = "";
+  $output .= '<ul class="quicktabs-tabs quicktabs-style-intern2">';
+  $output .= '<li class="first '.(arg(0)=='node'?'active':'').'">'.  l(t('公司基本信息设置'),'node/'.$gid.'/edit', array('html' => TRUE,)). '</li>';
+  $output .= '<li class="'.(arg(0)=='user'?'active':'').'">'.  l(t('企业用户登录设置'),'user/'.$user->uid.'/edit', array('html' => TRUE,)). '</li>';
+  $output .= '</ul>';
+  return $output;
+}
+/**
+ * @企业中心首页——@企业点评台
+ */
+function intern_company_center_reviews_block(){
+  $gid =  _intern_get_company_id_from_url();
+  $output = views_embed_view('company_reviews_in_blocks', 'panel_pane_2', $gid);
+  return $output;
+}
+/**
+ * @企业中心首页——@企业点评台
+ */
+function intern_company_center_showcase_block(){
+  global $base_url;
+  $output= '
+    <div class="company-center-showcase"><img src="'.$base_url.'/'.drupal_get_path('theme', 'ffintern') .'/css/img/site/showcase-company-center.gif"></div>
+  ';
+  return $output;
+}
+
+function _intern_get_company_id_from_url(){
+  $uri = $_SERVER['REQUEST_URI'];
+  $params = explode('/', $uri);
+  $gid = $params[3];
+  return $gid;
+}
+
+/**
+ *
+ * 获取company Id
+ */
+function intern_company_get_company_id(){
+  global $user;
+  $company_role = 4;
+  //print debug('123456');
+  if(array_key_exists($company_role,$user->roles) ){
+    //print debug($_GET['destination']);
+    $company_id = db_select('node','n')
+      ->condition('n.uid',$user->uid)
+      ->condition('n.type','company')
+      ->fields('n',array('nid'))
+      ->range(0,1)
+      ->execute()
+      ->fetchField();
+  }
+  return $company_id;
+}
+
+function intern_company_form_node_form_alter(&$form, $form_state){
+  $type = $form['#node']->type;
+  Global $user;
+  if($type=='company' && intern_user_is_company_user()){
+    hide($form["field_source_company_name"]) ;
+    hide($form["field_company_images"]) ;
+    hide($form["field_license"]) ;
+    $form["title"]["#type"] = "hidden";
+    hide($form["actions"]["delete"]);
+  }
+
+}
+
+
+

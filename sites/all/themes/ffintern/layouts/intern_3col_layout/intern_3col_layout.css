@@ -1,0 +1,67 @@
+/* $Id: 3col.css,v 1.1.2.1 2008/12/16 21:27:58 merlinofchaos Exp $ */
+
+div#main-content div#col-left{
+    width: 240px;
+    margin: 0 15px 0 0;
+}
+div#main-content div#col-main{
+    width: 705px;
+}
+div#main-content div#col-content{
+    width: 100%;
+
+}
+div#main-content div#col-right{
+    width: 200px;
+    margin-left: 16px
+}
+div#main-content div#col-highlighted{
+    width: 100%;
+    padding-bottom: 25px;
+}
+
+#col-left .block {
+    clear: both;
+    margin-bottom: 20px;
+}
+
+#col-left h2.block-title {
+    font-size: 14px;
+    font-weight: normal;
+    border-bottom: 2px solid rgb(203, 217, 200);
+    padding: 0 0 8px 10px;
+}
+
+#col-left .panel-pane-title {
+    border-bottom: 2px solid rgb(203, 217, 200);
+    color: RGB(100, 100, 100);
+    padding: 0 0 6px 30px;
+}
+
+#col-left h2.pane-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#col-left .block,
+#col-left .panel-pane{
+    margin-bottom: 20px;
+}
+
+#col-left .block-content {
+    padding: 5px 0 5px 0;
+    overflow: hidden;
+}
+
+#col-left div.item-list ul li{
+    padding: 3px 0 3px 1px;
+    border-bottom: 1px dashed #D1D1D1;
+    line-height: 1.8;
+}
+
+#col-content .view-content .views-row{
+    border-bottom:  1px dashed #D1D1D1;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+

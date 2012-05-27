@@ -1,0 +1,4 @@
+; $Id$
+name = apply
+description = 会员申请实习企业
+core = 7.x

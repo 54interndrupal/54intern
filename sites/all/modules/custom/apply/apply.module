@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @file
+ * 定制的用户实习工作申请.
+ */
+ 
+/**
+ * Implements hook_permission().
+ */
+ /*
+function apply_permission() {
+  return array(
+    'apply job' =>  array(
+      'title' => t('申请实习工作'),
+    ),
+		
+    'view own apply records' => array(
+      'title' => t('查看自己的申请记录'),
+    ),
+    'view company apply records' => array(
+      'title' => t('查看公司的申请记录'),
+    ),
+		
+  );
+}
+*/
+/**
+ * 实现hook_menu钩子
+ */
+function apply_menu(){
+ 
+	$items['apply/job/%'] = array(
+    'title' => '申请实习',
+    'page callback' => 'apply_apply_job_page',
+		'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'apply.pages.inc',
+  );
+	/*
+  $items['user/%user/job/apply'] = array(
+    'title' => '职务申请记录',
+    'page callback' => 'apply_user_job_apply_record',
+		'page arguments' => array(1),
+    'access arguments' => array('view own apply records'),
+    'type' => MENU_CALLBACK,
+    'file' => 'apply.pages.inc',
+  );
+	$items['company/%/job/apply'] = array(
+    'title' => '我的简历',
+    'page callback' => 'apply_company_job_apply_record',
+		'page arguments' => array(1),
+    'access arguments' => array('view company apply records'),
+    'type' => MENU_CALLBACK,
+    'file' => 'apply.pages.inc',
+  );
+*/
+  return $items;
+
+}
+
+/**
+ * 申请工作表单页面
+ */
+function apply_is_applyed($job_id){
+  $flag = FALSE;
+	global $user;
+	$query = new EntityFieldQuery();
+	$result = $query->entityCondition('entity_type', 'apply')
+	   ->entityCondition('bundle', 'apply')
+	   ->fieldCondition('field_job_id','target_id',$job_id)
+	   ->propertyCondition('uid', $user->uid)
+	   ->range(0,1)
+		 ->count()
+	   ->execute();
+	if(!empty($result)){
+	  $flag = TRUE;
+	}
+	return $flag;
+}
+
+
+

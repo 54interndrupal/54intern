@@ -1,0 +1,17 @@
+<?php
+/**
+ * @file
+ * Integration module for Heartbeat and Organic Groups.
+ */
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function heartbeat_og_ctools_plugin_api($module, $api) {
+  if ($module == 'heartbeat' && $api == 'heartbeat') {
+    return array('version' => 1);
+  }
+  if ($module == 'ds' && $api == 'ds') {
+    return array('version' => 1);
+  }
+}

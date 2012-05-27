@@ -1,0 +1,34 @@
+/* $Id: twocol.css,v 1.1.2.1 2008/12/16 21:27:58 merlinofchaos Exp $ */
+#sidebar-second .block {
+    clear: both;
+    margin-bottom: 20px;
+}
+
+#sidebar-second h2.block-title {
+    font-size: 14px;
+    border-bottom: 2px solid rgb(203, 217, 200);
+    padding: 2px 0 8px 10px;
+}
+
+#sidebar-second .panel-pane-title {
+    border-bottom: 2px solid rgb(203, 217, 200);
+    color: RGB(100, 100, 100);
+    padding: 2px 0 6px 30px;
+}
+
+#sidebar-second h2.pane-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#sidebar-second .block-content {
+    padding: 5px 0 5px 0;
+    overflow: hidden;
+}
+
+#sidebar-second  .block-content,
+#manager-block .views-row a,
+#member-block .views-row a {
+    color: #333;
+    font-size: 12px;
+}

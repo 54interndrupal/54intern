@@ -1,0 +1,74 @@
+<?php
+
+/**
+ * @file
+ * shenqing installation file
+ */
+
+/**
+ * Implements hook_schema().
+ */
+ /*
+function apply_schema() {
+  $schema['apply'] = array(
+    'description' => 'Stores apply record',
+    'fields' => array(
+      'id' => array(
+        'type' => 'serial',
+        'description' => 'Unique identifier for a rule',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'type' => 'int',
+        'description' => 'User ID of this apply',
+				'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+			'resume_id' => array(
+        'type' => 'int',
+        'description' => 'Resume ID of this apply',
+				'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+			'job_id' => array(
+        'type' => 'int',
+        'description' => 'Job ID of this apply',
+				'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+			'company_id' => array(
+        'type' => 'int',
+        'description' => 'Company ID of this apply',
+				'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+			'created' => array(
+        'description' => 'The Unix timestamp when the apply was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+			'delete' => array(
+        'description' => 'Boolean indicating whether the apply be deleted.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+    'indexes' => array(
+      'uid'  => array('uid'),
+			'resume_id'  => array('resume_id'),
+			'job_id'  => array('job_id'),
+			'company_id'  => array('company_id'),
+    ),
+  );
+
+  return $schema;
+}
+ */

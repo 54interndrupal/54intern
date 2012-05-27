@@ -1,0 +1,213 @@
+<?php
+
+
+/**
+ * @file
+ *
+ * This module enable the users connect with Sina Weibo.
+ *
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function sinaweibo_menu() {
+  $items = array();
+  $items['weibo/redirect'] = array(
+    'type' => MENU_CALLBACK,
+    'description' => 'Connect the user with their Weibo account',
+    'page callback' => 'weibo_signin_redirect',
+    'access callback' => TRUE,
+  );
+  $items['weibo/disconnect'] = array(
+    'type' => MENU_CALLBACK,
+    'description' => 'Disconnect the user with their Weibo account',
+    'page callback' => 'weibo_disconnect',
+    'access callback' => TRUE,
+  );
+  $items['weibo/callback'] = array(
+    'type' => MENU_CALLBACK,
+    'description' => 'Connect the user with their Weibo account callback',
+    'page callback' => 'weibo_auth_callback',
+    'access callback' => TRUE,
+  );
+  $items['admin/config/people/sinaweibo'] = array(
+    'title' => 'Sina Weibo Connect',
+    'description' => 'Configure required settings for Sina Weibo integration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('sinaweibo_settings_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'sinaweibo.pages.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_user_categories().
+ */
+function sinaweibo_user_categories() {
+  return array(
+    array(
+      'name' => 'weibo',
+      'title' => 'Sina Weibo',
+      'weight' => 2,
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function sinaweibo_menu_alter(&$callbacks) {
+  $callbacks['user/%user_category/edit/weibo']['page callback'] = 'sinaweibo_user_settings';
+  $callbacks['user/%user_category/edit/weibo']['module'] = 'sinaweibo';
+  $callbacks['user/%user_category/edit/weibo']['page arguments'] = array(1);
+  $callbacks['user/%user_category/edit/weibo']['file'] = 'sinaweibo.pages.inc';
+}
+
+/**
+ * The callback function for auth.
+ */
+function weibo_auth_callback() {
+  global $user;
+  module_load_include('php', 'sinaweibo', 'weibooauth');
+  $key = variable_get('weibo_consumer_key', '');
+  $secret = variable_get('weibo_consumer_secret', '');
+  if ($_REQUEST['oauth_verifier']) {
+    $o = new WeiboOAuth($key, $secret, $_SESSION['weibooauth']['oauth_token'], $_SESSION['weibooauth']['oauth_token_secret']  );
+    $last_key = $o->getAccessToken($_REQUEST['oauth_verifier']);
+    $_SESSION['weibooauth_last_key'] = $last_key;
+    $weibo_uid = $last_key['user_id'];
+
+    if ($user->uid == 0) {
+      if ($uid = db_select('weibo_account')
+			->fields('weibo_account', array('uid'))
+			->condition('weibo_uid', $weibo_uid)
+			->execute()
+			->fetchField()) {
+        // Sign in with Sina Weibo account.
+        $user = user_load($uid);
+      }
+      else {
+        // Sign up with Sina Weibo account.
+        sinaweibo_user_signup(TRUE);
+      }
+    }
+    elseif ($user->uid > 0 && $weibo_uid > 0) {
+      // Connect the account to Sina Weibo.
+      $uid = db_select('weibo_account')
+			->fields('weibo_account', array('uid'))
+			->condition('weibo_uid', $weibo_uid)
+			->execute()
+			->fetchField();
+      if (!$uid) {
+        sinaweibo_user_signup(FALSE);
+        drupal_set_message(t('You have connected with Sina Weibo account.'));
+      }
+      else {
+        $username = user_load($uid)->name;
+        drupal_set_message(t('The Sina Weibo account already connected with @name. You should disconnect that account firstly.', array('@name' => $username)), 'error');
+      }
+    }
+    drupal_goto($_SESSION['ref']);
+  }
+}
+
+/**
+ * Begin the auth process.
+ */
+function weibo_signin_redirect() {
+  if (!isset($_GET['token']) || !drupal_valid_token($_GET['token'], 'weibo/connect', TRUE)) {
+      return drupal_access_denied();
+  }
+  $_SESSION['ref'] = $_SERVER['HTTP_REFERER'];
+  global $base_url;
+  module_load_include('php', 'sinaweibo', 'weibooauth');
+  $key = variable_get('weibo_consumer_key', '');
+  $secret = variable_get('weibo_consumer_secret', '');
+  $o = new WeiboOAuth($key, $secret);
+  $keys = $o->getRequestToken($base_url . '/weibo/callback');
+
+  $_SESSION['weibooauth'] = $keys;
+  $aurl = $o->getAuthorizeURL($keys['oauth_token'], TRUE, $base_url . '/weibo/callback');
+  drupal_goto($aurl);
+}
+
+function weibo_signin_button() {
+  $img = variable_get('weibo_button_url', 'http://www.sinaimg.cn/blog/developer/wiki/240.png');
+  return l(theme('image', array('path' => $img, 'alt' => t('Sign in with Weibo'))), 'weibo/redirect', array('html' => TRUE, 'query' => array('token' => 'login')));
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function sinaweibo_form_alter(&$form, $form_state, $form_id) {
+  if ($form_id == 'user_login' || $form_id == 'user_login_block' || $form_id == 'user_register_form') {
+    $items = array();
+    $items[] = weibo_signin_button();
+    $form['weibo_signin'] = array(
+      '#markup' => theme('item_list', array('items' => $items)),
+    );
+  }
+}
+
+/**
+ * Connect the account with Sina Weibo.
+ */
+function sinaweibo_user_signup($signup = FALSE) {
+  if (isset($_SESSION['weibooauth_last_key'])) {
+    global $user;
+    module_load_include('php', 'sinaweibo', 'weibooauth');
+    $key = variable_get('weibo_consumer_key', '');
+    $secret = variable_get('weibo_consumer_secret', '');
+
+    $c = new WeiboClient($key, $secret, $_SESSION['weibooauth_last_key']['oauth_token'], $_SESSION['weibooauth_last_key']['oauth_token_secret']  );
+    $response = $c->verify_credentials();
+    if ($signup) {
+      $count = db_select('users')
+			->fields(‘users’)
+			->condition('name', $response['name'] . '%', 'like')
+			->countQuery()
+			->execute()
+			->fetchField();
+      $suf = ($count > 0) ? $count : '';
+      $edit = array(
+        'name' => $response['name'] . $suf,
+        'pass' => user_password(),
+        'init' => '',
+        'status' => 1,
+        'access' => REQUEST_TIME,
+        'roles' => array(2 => 'authenticated user'),
+      );
+      $user = user_save(NULL, $edit);
+    }
+    db_merge('weibo_account')
+    	->key(array('weibo_uid' => $_SESSION['weibooauth_last_key']['user_id']))
+    	->fields(array(
+      'uid' => $user->uid,
+      'oauth_token' => $_SESSION['weibooauth_last_key']['oauth_token'],
+      'oauth_token_secret' => $_SESSION['weibooauth_last_key']['oauth_token_secret'],
+      'screen_name' => $response['screen_name'],
+      'name' => $response['name'],
+    ))
+    	->execute();
+  }
+}
+
+/**
+ * Disconnect the account with Sina Weibo.
+ */
+function weibo_disconnect() {
+  global $user;
+  if (!isset($_GET['token']) || !drupal_valid_token($_GET['token'], 'weibo/disconnect/'. $user->uid)) {
+      return drupal_access_denied();
+  }
+  if ($user->uid > 0) {
+    db_delete('weibo_account')
+			->condition('uid', $user->uid)
+			->execute();
+    drupal_set_message(t('Sina Weibo connection have been reset'));
+  }
+  drupal_goto($_SESSION['ref']);
+}
+

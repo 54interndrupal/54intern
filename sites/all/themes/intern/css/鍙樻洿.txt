@@ -1,0 +1,74 @@
+1,
+body.root {
+  background:#f2f2f3 url(img/body.png) repeat-x 0 0;
+}
+
+改为了:
+body.root #page-wrapper{
+  background:#f2f2f3 url(img/body.png) repeat-x 0 0;
+}
+
+2, 
+在
+body.sidebar-second #content {
+  width:720px;
+  margin-right:20px;
+}
+下面添加CSS：
+body.no-sidebars #content {
+  width:720px;
+  margin-right:20px;
+}
+
+
+3，
+body.front {
+  background-image:url(img/body-front.png);
+}
+改为了:
+body.front #page-wrapper{
+  background-image:url(img/body-front.png);
+}
+
+4,添加
+body.front #highlighted #login-block label{
+  display:inline;
+  font-weight:normal;
+}
+
+用来覆写系统自带的CSS。
+
+5,添加
+div.advanced-search #views-exposed-form-companys-panel-pane-1 #edit-keys-wrapper{
+  padding-right:77px;
+}
+用来控制companys页面的高级搜索样式
+
+6,美化登录区块
+body.front #highlighted #login-block .form-required{
+  display:none;
+}
+
+7
+
+#search-forum input.form-text {
+  border:1px solid #8fbf7e;
+  height:23px;
+  width:145px;
+  vertical-align:top;
+  padding:0 3px;
+}
+...
+修改为了
+#views-exposed-form-group-discussion-default input.form-text {
+  border:1px solid #8fbf7e;
+  height:23px;
+  width:145px;
+  vertical-align:top;
+  padding:0 3px;
+}
+...
+
+8,添加
+,
+#events-block form

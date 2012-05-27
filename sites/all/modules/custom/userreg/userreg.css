@@ -1,0 +1,92 @@
+#userreg-form {
+         margin-top:5px;
+}
+#userreg-form .form-item{
+	position:relative;
+	left:0px;
+  top:5px;
+	margin-bottom:5px;
+  overflow:hidden;
+	height:26px;
+}
+
+#userreg-form .form-item label{
+	float: left;
+  position:relative;
+	width: 96px;
+	height:24px;
+	font-size:12px;
+	text-align:right;
+}
+
+#userreg-form .form-submit{
+  position:relative;
+  float: left;
+  left:150px;
+  top:6px;
+  margin-bottom: 10px;
+}
+
+#userreg-form .form-item .description{
+	float: left;
+	height:24px;
+	width: 310px;
+	font-size:12px;
+	display:inline;
+}
+
+
+
+#userreg-form .form-item input{
+	width: 180px;
+	height:24px;
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#userreg-form .form-item select{
+	width: 180px;
+	height:24px;
+	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#userreg-form  #edit-legal-agreement-wrapper label {
+width: 100%;
+padding-left: 100px;
+text-align:left;
+
+}
+#userreg-form  #edit-legal-agreement-wrapper label input{
+width: 20px;
+float: left;
+height:16px;
+}
+#userreg-form #mail-check-button-suffix{
+clear:both;
+}
+.reg_box #user-reg-email-msg{
+  padding:10px;
+  margin:0px auto;
+}
+.reg_box #user-reg-email-msg p{
+  height:30px;
+  text-align: center;
+}
+#userreg-form .mail-check-message {
+  color: #FF0000;
+  font-weight: normal;
+  display:none;
+	margin-left:100px;
+}
+#userreg-form .mail-check-message-progress {
+  color: #3E4A54;
+  font-weight: bold;
+}
+#userreg-form .mail-check-message-accepted {
+  color: #417C12;
+}
+#userreg-form .mail-check-message-rejected {
+  color: #FF0000;
+}
+

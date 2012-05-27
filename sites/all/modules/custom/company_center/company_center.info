@@ -1,0 +1,4 @@
+; $Id$
+name = company center
+description = 定制的企业用户中心
+core = 7.x

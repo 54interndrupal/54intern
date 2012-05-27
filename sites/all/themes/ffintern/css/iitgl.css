@@ -1,0 +1,1494 @@
+/* iitgl的样式 */
+
+/* body style */
+
+body {
+    font-size: 12px;
+}
+
+#group-info .field-name-body label {
+    font-size: 12px;
+}
+
+/* Jquery UI dialog 头部样式 */
+
+.ui-dialog {
+    background: -moz-linear-gradient(top, #FFF, #DDD);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#FFFFFF', endColorstr = '#DDDDDD');
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD));
+}
+
+.ui-widget-header {
+    background: url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") repeat-x scroll 50% 50% #CCCCCC;
+    border: 1px solid #AAAAAA;
+    color: #222222;
+    font-weight: bold;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #333;
+}
+
+/*********************/
+/* jQuery UI dialog */
+/*******************/
+
+/**
+ * 消息对话框 
+ */
+div.messages {
+    /*background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    text-align:center;*/
+}
+
+/* 表单样式：用户注册、用户登录、企业注册、简历编辑、意见箱 */
+
+#userreg-user-register-form input,
+#user-login input
+#webform-client-form-52 input {
+    border: 1px solid #8fbf7e;
+    margin-top: 5px;
+    height: 25px;
+}
+#resume-node-form textarea,
+#webform-client-form-52 textarea {
+    border: 1px solid #8fbf7e;
+}
+
+#userreg-company-register-form select,
+#resume-node-form select {
+    border: 1px solid #8fbf7e;
+}
+
+/**
+ * 	个人注册表单
+ */
+
+#userreg-user-register-form label {
+    display: block;
+}
+
+#userreg-user-register-form #edit-name {
+    width: 310px;
+}
+
+#userreg-user-register-form #edit-mail,
+#userreg-user-register-form #edit-pass-pass2 {
+    width: 310px;
+}
+
+#userreg-user-register-form #edit-pass-pass1 {
+    width: 310px;
+}
+
+/* 个人注册表单END */
+
+
+
+#webform-client-form-52 #edit-submitted-yjx-title {
+    width: 310px;
+}
+
+#userreg-user-register-form #edit-submit,
+#webform-client-form-52 #edit-submit {
+    text-align: center;
+    background: url('img/iitgl/dialog/anniu.png') no-repeat;
+    width: 104px;
+    height: 30px;
+    line-height: 30px;
+    padding-bottom: 4px;
+    border: none;
+    margin-left: 110px;
+    color: white;
+    font-weight: bolder;
+}
+
+/* 企业详细页面样式 */
+#company-reviews .block-title,
+#company-discuss .block-title {
+    background: url('img/h2-1.png') no-repeat;
+    margin: 30px 0 20px 0;
+    font-size: 16px;
+    width: 600px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+}
+
+/* 隐藏首页登录区块多余的QQ登录 */
+
+body.page-frontpage div#temp-login div#edit-qq-login {
+    display: none;
+}
+
+/* 暂时隐藏用户注册区块 */
+
+/*#join-block {
+	display: none;
+	border: 1px solid red;
+}*/
+
+#showcase-block {
+    display: none;
+}
+
+/* 个人中心的样式 */
+
+.pane-shoutbox-shoutbox .pane-title,
+.pane-heartbeat-useractivity .pane-title {
+    font-size: 16px;
+    border-bottom: 1px #DDD solid;
+    margin: 16px 0;
+    padding-bottom: 8px;
+}
+
+/* wrapper style*/
+
+body.front #page-wrapper {
+    background-image: none;
+}
+
+body.root #page-wrapper {
+    background: #FFFFFF;
+}
+
+/* top-toolbar style */
+
+#top-toolbar {
+    font-size: 12px;
+}
+
+/* header style*/
+
+
+#search ul.option {
+    /*background: url("img/search.png") no-repeat scroll left 0 transparent;
+    background:none;*/
+    padding-left: 20px;
+    position: absolute;
+    right: 175px;
+    top: 0;
+    width: auto;
+    width: 60px;
+    background: #d9d9e9;
+    color: #333;
+}
+
+#search ul.option li {
+    /*background: url("img/search.png") no-repeat scroll right 0 transparent;*/
+    cursor: pointer;
+    font-size: 12px;
+    height: 21px;
+    line-height: 21px;
+    list-style: none outside none;
+    padding-right: 30px;
+    padding: 0;
+    width: 60px;
+}
+
+/* logo style */
+
+a#logo {
+    left: 20px;
+}
+
+/* breadcrumb style */
+
+#breadcrumb .breadcrumb {
+    display: inline;
+    margin-right: 10px;
+}
+
+/* main style */
+
+#main-wrapper {
+    background: none;
+}
+
+#main {
+    width: 960px;
+    padding: 5px 0 20px 0;
+    /*background:transparent url(img/main-center.png) center repeat-y;*/
+    overflow: hidden;
+    background: white;
+}
+#main.refreshed {
+    padding: 5px 0 20px 0;
+}
+
+.front-page-main-wrapper #main {
+    border-top: none;
+    margin-top: -5px;
+}
+
+.inside-page-main-wrapper {
+    margin-top: -10px;
+}
+
+/* highlight style */
+
+body.front #highlighted #join-block, body.front #highlighted #login-block {
+    background: none;
+    height: 250px;
+    margin-top: -15px;
+    padding: 30px 35px;
+    width: 150px;
+}
+
+body.front #highlighted {
+    height: 339px;
+    width: 1012px;
+    margin-bottom: 3px;
+    margin-top: -48px;
+    margin-left: -26px;
+    border-top: 5px solid #97c043;
+
+}
+
+/* highlight log in style */
+
+div#temp-login div.views-field {
+    width: 120px;
+    padding-bottom: 2px;
+}
+
+div#temp-login div.views-field-picture {
+    padding-left: 50px;
+}
+
+div#temp-login div.views-field-name {
+    padding-left: 90px;
+}
+
+div#temp-login div.views-field-follow,
+div#temp-login div.views-field-point,
+div#temp-login div.views-field-message {
+    padding-left: 70px;
+}
+
+div#temp-login div.views-field-send,
+div#temp-login div.views-field-edit {
+    padding-left: 65px;
+}
+
+/* node style*/
+
+body.sidebar-first #content {
+    margin-left: 30px;
+    width: 648px;
+}
+
+body.sidebar-second #content {
+    margin-right: 30px;
+    width: 648px;
+}
+
+body.no-sidebars #content {
+    margin-right: 20px;
+    width: 700px;
+}
+
+/* user center */
+#newest-status {
+    margin-bottom: 20px;
+}
+
+#newest-status .node-resume {
+    margin-left: -60px;
+}
+
+#newest-status .node-resume .field {
+    padding: 8px;
+}
+
+#newest-status .node-resume .field-name-field-real-name {
+    padding-top: 20px;
+}
+
+#newest-status .node-resume h2 {
+    padding-left: 8px;
+}
+
+/* company center */
+
+
+body.page-companycenter #content #views-form-companycenter-jobs-panel-pane-1 div.content,
+body.page-companycenter #content #views-form-companycenter-resumes-panel-pane-1 div.content {
+    border: none;
+    position: relative;
+    top: -33px;
+    left: 25px;
+    padding: 0;
+}
+
+body.page-companycenter #content #views-form-companycenter-jobs-panel-pane-1 div.views-row,
+body.page-companycenter #content #views-form-companycenter-resumes-panel-pane-1 div.views-row {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+}
+
+
+div.job-list {
+    padding: 0;
+}
+
+.admin-list .widget {
+    padding-right: 0;
+    text-align: left;
+    width: auto;
+}
+
+/* sidebar style */
+
+#sidebar-second {
+    width: 240px;
+}
+
+/* footer style */
+
+#footer {
+    width: 960px;
+    position: relative;
+    left: 50%;
+    margin-left: -480px;
+    margin-top: 0;
+}
+
+/* views */
+
+.field-items {
+    line-height: 1.8em;
+}
+
+.views-exposed-form .views-exposed-widget {
+    padding-right: 0;
+}
+
+body.front div.group-list .views-row, body.front div.company-list .views-row {
+    float: left;
+    height: 260px;
+    padding: 10px 3%;
+    position: relative;
+    width: 27%;
+}
+
+/* 社团搜索表单 的样式 */
+
+form#views-exposed-form-groups-panel-pane-1 div.views-exposed-widget {
+    padding-top: 0;
+    padding-right: 0;
+}
+
+form#views-exposed-form-groups-panel-pane-1 div#edit-keys-wrapper input {
+    width: 185px;
+}
+
+/* 创建社团区块的样式 */
+
+div#creat-group-block a.edit {
+    margin-top: 10px;
+    margin-left: 70px;
+}
+
+/* 实习职位搜索表单的样式 */
+
+form#views-exposed-form-jobs-panel-pane-1 div.views-exposed-widget {
+    padding-top: 0;
+    padding-right: 0;
+}
+
+form#views-exposed-form-jobs-panel-pane-1 div.views-exposed-widget select {
+    width: 132px;
+}
+
+form#views-exposed-form-jobs-panel-pane-1 div#edit-keys-wrapper input {
+    width: 458px;
+}
+
+div.adv-option {
+    width: 100px;
+    padding-left: 485px;
+}
+
+/* 企业点评台搜索表单的样式 */
+form#views-exposed-form-companys-panel-pane-1 label {
+    display: none;
+}
+
+form#views-exposed-form-companys-panel-pane-1 #edit-keys {
+    width: 532px;
+    height: 35px;
+    border: 5px solid #75B13C;
+}
+
+form#views-exposed-form-companys-panel-pane-1 div#edit-keys-wrapper {
+    padding-right: 0;
+}
+
+form#views-exposed-form-companys-panel-pane-1 div.views-exposed-widgets {
+    padding: 0;
+}
+
+form#views-exposed-form-companys-panel-pane-1 div#edit-field-industry-tid-wrapper {
+    position: absolute;
+    top: 165px;
+    left:-20px;
+    width: 700px;
+    display: block;
+}
+
+form#views-exposed-form-companys-panel-pane-1 div#edit-field-industry-tid-wrapper label {
+    font-size: 16px;
+    font-weight: normal;
+    display: block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #DDD;
+    background: url(img/site/bt_catgry.gif) no-repeat 2px 3px;
+    padding-left: 30px;
+}
+
+form#views-exposed-form-companys-panel-pane-1 div#edit-field-industry-tid-wrapper .bef-select-as-links {
+    padding-left: 5px;
+}
+
+form#views-exposed-form-companys-panel-pane-1 div#edit-field-industry-tid-wrapper div.form-item {
+    padding: 5px 0px 5px 0;
+    font-size: 14px;
+    float: left;
+    min-width: 172px;
+    margin-right: 1px;
+}
+
+form#views-exposed-form-companys-panel-pane-1 div.form-item-sort-bef-combine {
+    position: absolute;
+    margin-top: 373px;
+    left: 530px;
+}
+
+form#views-exposed-form-companys-panel-pane-1 div.form-item-sort-bef-combine div.form-item {
+    float: left;
+    padding-left: 15px;
+}
+
+form#views-exposed-form-companys-panel-pane-1 div.form-item-sort-bef-combine label {
+    display: none;
+}
+
+body.page-companys h1#page-title {
+    margin-top: 240px;
+}
+
+/* 寻社团、找实习、企业点评台 关注按钮样式 */
+
+body.page-companys span.flag-wrapper {
+    top: 24px;
+}
+
+body.page-groups span.flag-wrapper {
+    top: 22px;
+}
+
+body.page-jobs span.flag-wrapper {
+    top: 33px;
+}
+
+/* 在实习圈发布实习职位区块 */
+
+/* 首页热门社团view */
+
+div.front-page-main-wrapper div.field-name-grouptype {
+    position: relative;
+}
+
+div.front-page-main-wrapper div.field-name-grouptype label {
+    ` float: left;
+}
+
+div.front-page-main-wrapper div.field-name-grouptype div.field-items {
+    float: left;
+    position: absolute;
+    top: 3px;
+}
+
+div.front-page-main-wrapper div.field-name-location {
+    clear: both;
+}
+
+/* 关注微博 */
+
+div#sina-weibo div.block-content {
+    text-align: center;
+}
+
+/* 在实习圈发布实习职位区块 */
+
+div#postjob-block div.block-content p {
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+/* 个人中心我关注的人 */
+
+div#follow-user td {
+    width: 50px;
+}
+
+/* views og 用户 群组  table*/
+
+div.view-og-user-groups table.views-table {
+    margin-top: 16px;
+}
+
+div.view-og-user-groups table.views-table thead th,
+div.view-og-user-groups table.views-table tbody td {
+    padding: 5px;
+}
+
+div.view-og-user-groups table.views-table tbody tr.even,
+div.view-og-user-groups table.views-table tbody tr.odd,
+div.view-og-user-groups table.views-table tbody tr {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 企业中心活动管理 */
+
+div#experience-share div.add-content {
+    font-size: 14px;
+}
+
+form#views-form-company-events-panel-pane-2 {
+    margin-top: 10px;
+}
+
+form#views-form-company-events-panel-pane-2 fieldset#edit-select {
+    padding: 8px;
+    border: #eee 1px solid;
+}
+
+form#views-form-company-events-panel-pane-2 {
+    background: url("img/anniu_lv.png") no-repeat scroll left top transparent;
+    border: medium none;
+    color: white;
+    height: 28px;
+    padding-bottom: 5px;
+    width: 81px;
+}
+
+form#views-form-company-events-panel-pane-2 table.views-table {
+    margin-top: 10px;
+}
+
+form#views-form-company-events-panel-pane-2 table.views-table thead th,
+form#views-form-company-events-panel-pane-2 table.views-table tbody td {
+    padding: 5px;
+}
+
+form#views-form-company-events-panel-pane-2 table.views-table tbody tr.even,
+form#views-form-company-events-panel-pane-2 table.views-table tbody tr.odd,
+form#views-form-company-events-panel-pane-2 table.views-table tbody tr {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 企业中心收件箱tab */
+
+body.page-companycenter #content #views-form-companycenter-resumes-panel-pane-1 div.views-row {
+    margin-left: 10px;
+}
+
+#views-form-companycenter-resumes-panel-pane-1 #edit-select input {
+    margin-left: -30px;
+}
+
+form#views-form-companycenter-resumes-panel-pane-1 fieldset#edit-select {
+    margin-bottom: 10px;
+}
+
+
+
+/**
+ * 首页 
+ */
+
+/**
+* 寻社团页面
+*/
+
+/***** 创建社团表单 *****/
+
+/* 创建社团表单标题 */
+body.page-node-add-group div#group-node-form h2 {
+    font-size: 14px;
+    padding-left: 15px;
+}
+
+/* 创建社团表单的边框 */
+body.page-node-add-group form#group-node-form input,
+body.page-node-add-group form#group-node-form textarea {
+    border: 1px solid #DDD;
+}
+
+/* 创建社团表单的label元素 */
+body.page-node-add-group form#group-node-form label {
+    font-size: 14px;
+    display: block;
+}
+
+/* 创建社团表单input元素 */
+body.page-node-add-group form#group-node-form input {
+    height: 24px;
+    margin-top: 5px;
+}
+
+body.page-node-add-group form#group-node-form input#edit-title {
+    width: 916px;
+}
+
+/* 创建社团表单textarea元素 */
+body.page-node-add-group form#group-node-form textarea {
+    margin-top: 5px;
+}
+
+/* 隐藏 编辑摘要 */
+body.page-node-add-group form#group-node-form div.field-type-text-with-summary span.field-edit-link {
+    display: none;
+}
+
+/* 隐藏 input format */
+body.page-node-add-group form#group-node-form fieldset#edit-body-und-0-format {
+    display: none;
+}
+
+/* 关键字，社团网址 */
+body.page-node-add-group form#group-node-form div#edit-field-tags,
+body.page-node-add-group form#group-node-form div#edit-field-group-website {
+    width: 50%;
+    float: left;
+}
+
+/* 表单提交按钮 */
+body.page-node-add-group form#group-node-form div#edit-actions input {
+    background: url(img/anniu_lv.png) no-repeat left top;
+    width: 81px;
+    height: 28px;
+    padding-bottom: 5px;
+    color: white;
+    border: none;
+    margin-right: 20px;
+}
+
+body.page-node-add-group form#group-node-form div#edit-actions {
+    text-align: center;
+}
+
+/*** view ***/
+
+body.page-groups div.group-list .views-row .field-name-pic {
+    top: 27px;
+}
+
+body.page-groups div.field-name-grouptype {
+    position: relative;
+}
+
+body.page-groups div.field-name-grouptype div.field-items {
+    position: absolute;
+    margin-left: 0;
+    top: 9px;
+}
+
+/*** block ***/
+
+/* 关注实习圈微博 */
+
+body.page-groups div#sidebar-second div.pane-2 h2 {
+    display: none;
+}
+
+/*****************/
+/* 实习圈官方活动 */
+/****************/
+
+/***** block *****/
+
+/* 区块标题 */
+body.page-frontpage div.pane-view-official-activities-block h2.pane-title {
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 1px solid #DDD;
+    padding: 0 0 10px 10px;
+    margin-bottom: 10px;
+}
+
+body.page-frontpage div.views-field-field-sxq-gfhd-image {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+/***** node *****/
+
+/* 活动标题 */
+body.node-type-shixiquan-gfhd h2.node-title {
+    font-size: 16px;
+    border-bottom: 1px solid #DDD;
+    padding-bottom: 5px;
+}
+
+/* 作者信息 */
+body.node-type-shixiquan-gfhd div.submitted {
+    padding: 10px 0;
+}
+
+/* 活动图片 */
+body.node-type-shixiquan-gfhd div.field-name-field-sxq-gfhd-image {
+    width: 165px;
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+/* 活动内容 */
+body.node-type-shixiquan-gfhd div.field-name-body {
+    border-bottom: 1px solid #DDD;
+}
+
+/* 隐藏文章浏览计数器 */
+body.node-type-shixiquan-gfhd li.statistics_counter {
+    display: none;
+}
+
+/* 评论列表标题 */
+body.node-type-shixiquan-gfhd div#comments h2.title {
+    font-size: 16px;
+}
+
+/* 评论列表项 */
+body.node-type-shixiquan-gfhd div#comments div.comment {
+    margin: 20px 0;
+}
+
+/* 评论列表项用户图片 */
+body.node-type-shixiquan-gfhd div#comments div.user-picture {
+    float: left;
+    margin-right: 10px;
+}
+
+/* 评论列表项 标题 */
+body.node-type-shixiquan-gfhd div#comments h3 {
+
+}
+
+/* 评论列表项段落内容 */
+body.node-type-shixiquan-gfhd div#comments div.comment-text p {
+    margin-bottom: 5px;
+    padding: 10px;
+    background: #FFFFFF;
+}
+
+/* 添加新评论表单标题*/
+body.node-type-shixiquan-gfhd div#comments h2.comment-form {
+    margin-top: 20px;
+}
+
+/***** view list page *****/
+
+/* 活动views-row */
+body.page-official-activities- div.view-view-official-activities div.views-row {
+    position: relative;
+}
+
+/* 活动列表标题 */
+body.page-official-activities- div.view-view-official-activities h2 {
+    font-size: 16px;
+    padding: 10px 0 10px 0;
+    clear: left;
+}
+
+/* 活动列表发布者 */
+body.page-official-activities- div.view-view-official-activities div.views-field-name {
+    position: absolute;
+}
+
+/* 活动列表发布日期 */
+body.page-official-activities- div.view-view-official-activities div.views-field-created {
+    position: absolute;
+    left: 110px;
+}
+
+/* 活动列表评论数量 */
+body.page-official-activities- div.view-view-official-activities div.views-field-comment-count {
+    margin-left: 320px;
+}
+
+/* 活动列表图片 */
+body.page-official-activities- div.view-view-official-activities div.views-field-field-sxq-gfhd-image {
+    float: left;
+    padding: 10px 10px 10px 0;
+}
+
+/* 活动列表内容 */
+body.page-official-activities- div.view-view-official-activities div.views-field-body {
+    padding: 10px 0;
+}
+
+/* 活动列表间隔虚线 */
+
+body.page-official-activities- div.view-id-view_official_activities div.views-row {
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #DDD;
+}
+
+body.page-official-activities- div.view-id-view_official_activities div.views-row-last {
+    border-bottom: none;
+}
+
+/**************/
+/* 寻社团页面 */
+/************/
+
+/***** view ******/
+
+/* 列表的虚线 */
+body.page-groups div.group-list div.views-row {
+    border-bottom: 1px dotted #DDD;
+}
+
+body.page-groups div.group-list div.views-row-last {
+    border-bottom: none;
+}
+
+/**
+  * 社团详细页面 
+  */
+
+/*** page ***/
+body.node-type-group div#group-info span.flag-wrapper {
+    top: 30px;
+    right: 20px;
+}
+
+/* 隐藏node标题 */
+body.node-type-group h1#page-title {
+    display: none;
+}
+
+/* 社团成员区块 成员列表 */
+body.node-type-group div#member-bloc div.views-row {
+    float: left;
+    padding: 10px;
+}
+
+/* 社团成员区块 成员列表用户名 */
+body.node-type-group div#member-bloc div.views-field-name {
+    text-align: center;
+}
+
+/*** 创建社团讨论表单 ***/
+
+body.page-node-add-discussion input {
+    height: 24px;
+    width: 916px;
+    border: 1px solid #DDD;
+}
+
+body.page-node-add-discussion span.field-edit-link {
+    display: none;
+}
+
+body.page-node-add-discussion fieldset#edit-body-und-0-format {
+    display: none;
+}
+
+body.page-node-add-discussion div#edit-actions {
+    text-align: center;
+}
+
+body.page-node-add-discussion div#edit-actions input {
+    background: url(img/anniu_lv.png) no-repeat left top;
+    width: 81px;
+    height: 28px;
+    padding-bottom: 5px;
+    color: white;
+    border: none;
+}
+
+/**************/
+/* 找实习页面 */
+/************/
+
+/***** view ******/
+
+
+/**
+ * 企业点评台页面 
+ */
+
+/***** view ******/
+
+/* view expose */
+body.page-companys div#edit-field-industry-tid-all {
+    display: none;
+}
+
+/*************************/
+/* 企业点评台企业详细页面 */
+/***********************/
+
+/***** 企业首页tab *****/
+/* 关注企业 div */
+body.node-type-company div#flag-company {
+    padding-top: 2px;
+    float: right;
+}
+div.pane-intern-company-company-info span.flag-bookmarks{
+    display: block;
+    margin-top:20px;
+}
+
+/* 关注企业flag link */
+body.node-type-job  span.flag-bookmarks a.unflag-action,
+body.node-type-company  span.flag-bookmarks a.unflag-action {
+    background: url("img/site/bt_unfollow.gif") no-repeat ;
+    height: 29px;
+    display: block;
+    width: 115px;
+    text-indent: -999px;
+    float: right;
+}
+/* 关注企业flag link */
+body.node-type-job  span.flag-bookmarks a.flag-action,
+body.node-type-company  span.flag-bookmarks a.flag-action {
+    background: url("img/site/bt_follow.gif") no-repeat ;
+    height: 29px;
+    display:inline-block;
+    text-indent: -999px;
+    width: 78px;
+    float: right;
+}
+
+/***** 企业点评tab *****/
+
+/* “我要点评”按钮 */
+body.page-company-reviews div#company-reviews a {
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+/* 没有点评时的说明文本 */
+body.page-company-reviews div#company-reviews p {
+    padding: 10px 0 10px 16px;
+}
+
+/* 企业点评表单外部div */
+body.page-company-reviews div#review-form {
+    margin-top: 15px
+}
+
+/* 企业点评表单标题 */
+body.page-company-reviews div#review-form h2 {
+    font-size: 14px;
+    padding-left: 15px;
+}
+
+/* 企业点评表单的边框 */
+body.page-company-reviews form#review-node-form input,
+body.page-company-reviews form#review-node-form textarea {
+    border: 1px solid #DDD;
+}
+
+/* 企业点评表单的label元素 */
+body.page-company-reviews form#review-node-form label {
+    font-size: 14px;
+}
+
+/* 企业点评表单input元素 */
+body.page-company-reviews form#review-node-form input {
+    height: 24px;
+    margin-top: 5px;
+}
+
+/* 企业点评表单textarea元素 */
+body.page-company-reviews form#review-node-form textarea {
+    margin-top: 5px;
+}
+
+/* 隐藏 编辑摘要 */
+body.page-company-reviews form#review-node-form div.field-type-text-with-summary span.field-edit-link {
+    display: none;
+}
+
+/* 隐藏 input format */
+body.page-company-reviews form#review-node-form fieldset#edit-body-und-0-format {
+    display: none;
+}
+
+/* 隐藏 Groups audience */
+body.page-company-reviews form#review-node-form div#og-group-ref-add-more-wrapper {
+    display: none;
+}
+
+/* 表单提交按钮 */
+body.page-company-reviews form#review-node-form div#edit-actions input {
+    background: url(img/anniu_lv.png) no-repeat left top;
+    width: 81px;
+    height: 28px;
+    padding-bottom: 5px;
+    color: white;
+    border: none;
+}
+
+/***** 实习经历分享tab *****/
+
+/* “我要点评”按钮 */
+body.page-company-shares div#experience-share a {
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+/* 没有点评时的说明文本 */
+body.page-company-shares div#experience-share p {
+    padding: 10px 0 10px 16px;
+}
+
+/* 实习经历分享表单外部div */
+body.page-company-shares div#share-form {
+    margin-top: 15px
+}
+
+/* 实习经历分享表单标题 */
+body.page-company-shares div#share-form h2 {
+    font-size: 14px;
+    padding-left: 15px;
+}
+
+/* 实习经历分享表单的边框 */
+body.page-company-shares form#share-node-form input,
+body.page-company-shares form#share-node-form textarea,
+body.page-company-shares form#share-node-form select {
+    border: 1px solid #DDD;
+}
+
+/* 实习经历分享表单的label元素 */
+body.page-company-shares form#share-node-form label {
+    font-size: 14px;
+}
+
+/* 实习经历分享表单input元素 */
+body.page-company-shares form#share-node-form input {
+    height: 24px;
+    margin-top: 5px;
+}
+
+/* 实习经历分享表单textarea元素 */
+body.page-company-shares form#share-node-form textarea {
+    margin-top: 5px;
+}
+
+/* 实习经历分享表单select元素 */
+body.page-company-shares form#share-node-form select {
+    width: 80px;
+    margin-top: 5px;
+}
+
+/* 实习经历分享表单实习日期 div边框*/
+body.page-company-shares div#field-internship-date-add-more-wrapper fieldset.form-wrapper {
+    border: none;
+}
+
+/* 实习经历分享表单实习日期标题 */
+body.page-company-shares div#field-internship-date-add-more-wrapper legend {
+    font-size: 14px;
+    padding: 20px 0 5px 0;
+}
+
+/* 实习经历分享表单实习起始日期 */
+body.page-company-shares div#field-internship-date-add-more-wrapper div.start-date-wrapper {
+    position: absolute;
+    width: 210px;
+}
+
+/* 实习经历分享表单实习结束日期 */
+body.page-company-shares div#field-internship-date-add-more-wrapper div.end-date-wrapper {
+    margin-left: 220px;
+}
+
+/* 实习经历分享表单实习城市 */
+body.page-company-shares div#edit-field-internship-city {
+    position: absolute;
+}
+
+/* 实习经历分享表单实习职位 */
+body.page-company-shares div#edit-field-intern-position {
+    margin-left: 220px;
+}
+
+/* 实习经历分享表单实习图片文件浏览输入框*/
+body.page-company-shares div#edit-field-internship-images input#edit-field-internship-images-und-0-upload {
+    position: absolute;
+}
+
+body.page-company-shares div#edit-field-internship-images input#edit-field-internship-images-und-0-upload-button {
+    margin-left: 240px;
+    width: 60px;
+}
+
+/* 隐藏 编辑摘要 */
+body.page-company-shares form#share-node-form div.field-type-text-with-summary span.field-edit-link {
+    display: none;
+}
+
+/* 隐藏 input format */
+body.page-company-shares form#share-node-form fieldset#edit-body-und-0-format {
+    display: none;
+}
+
+/* 隐藏 Groups audience */
+body.page-company-shares form#share-node-form div#og-group-ref-add-more-wrapper {
+    display: none;
+}
+
+/* 表单提交按钮 */
+body.page-company-shares form#share-node-form div#edit-actions input {
+    background: url(img/anniu_lv.png) no-repeat left top;
+    width: 81px;
+    height: 28px;
+    padding-bottom: 5px;
+    color: white;
+    border: none;
+}
+
+/***** 企业讨论区tab *****/
+
+/* “我要点评”按钮 */
+body.page-company-discussions div#experience-share a {
+    font-size: 14px;
+    padding: 10px 0;
+}
+
+/* 没有点评时的说明文本 */
+body.page-company-discussions div#experience-share p {
+    padding: 10px 0 10px 16px;
+}
+
+/* 企业讨论区表单外部div */
+body.page-company-discussions div#share-form {
+    margin-top: 15px
+}
+
+/* 企业讨论区表单标题 */
+body.page-company-discussions div#share-form h2 {
+    font-size: 14px;
+    padding-left: 15px;
+}
+
+/* 企业讨论区表单的边框 */
+body.page-company-discussions form#company-discussion-node-form input,
+body.page-company-discussions form#company-discussion-node-form textarea {
+    border: 1px solid #DDD;
+}
+
+/* 企业讨论区表单的label元素 */
+body.page-company-discussions form#company-discussion-node-form label {
+    font-size: 14px;
+}
+
+/* 企业讨论区表单input元素 */
+body.page-company-discussions form#company-discussion-node-form input {
+    height: 24px;
+    margin-top: 5px;
+}
+
+/* 企业讨论区表单textarea元素 */
+body.page-company-discussions form#company-discussion-node-form textarea {
+    margin-top: 5px;
+}
+
+/* 隐藏 编辑摘要 */
+body.page-company-discussions form#company-discussion-node-form div.field-type-text-with-summary span.field-edit-link {
+    display: none;
+}
+
+/* 隐藏 input format */
+body.page-company-discussions form#company-discussion-node-form fieldset#edit-body-und-0-format {
+    display: none;
+}
+
+/* 隐藏 Groups audience */
+body.page-company-discussions form#company-discussion-node-form div#og-group-ref-add-more-wrapper {
+    display: none;
+}
+
+/* 表单提交按钮 */
+body.page-company-discussions form#company-discussion-node-form div#edit-actions input {
+    background: url(img/anniu_lv.png) no-repeat left top;
+    width: 81px;
+    height: 28px;
+    padding-bottom: 5px;
+    color: white;
+    border: none;
+}
+
+/***** 企业活动tab *****/
+
+/****************/
+/* 企业中心页面 */
+/**************/
+
+/***** 职位管理tab *****/
+
+
+/***** 已购简历tab *****/
+
+/* 已购简历列表包含框div */
+body.page-companycenter-buyresumes div.resume-list {
+    border: 1px solid #8FBF7E;
+    padding: 25px;
+}
+
+/* 已购简历列表项 */
+body.page-companycenter-buyresumes div.resume-list div.views-row {
+    padding: 0 0 15px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px dotted #DDD;
+}
+
+/* 已购简历最后一个列表项 */
+body.page-companycenter-buyresumes div.resume-list div.views-row-last {
+    border-bottom: none;
+}
+
+/***** 添加活动表单 *****/
+
+/* 添加职位表单的边框 */
+body.page-node-add-company-event form#company-event-node-form input,
+body.page-node-add-company-event form#company-event-node-form textarea {
+    border: 1px solid #DDD;
+}
+
+/* 添加职位表单的label元素 */
+body.page-node-add-company-event form#company-event-node-form label {
+    font-size: 14px;
+}
+
+/* 添加职位表单input元素 */
+body.page-node-add-company-event form#company-event-node-form input {
+    height: 24px;
+    margin-top: 5px;
+}
+
+/* 添加职位表单textarea元素 */
+body.page-node-add-company-event form#company-event-node-form textarea {
+    margin-top: 5px;
+}
+
+/* 添加职位表单fieldset元素 */
+body.page-node-add-company-event form#company-event-node-form fieldset {
+    border: none;
+}
+
+/* 添加职位表单legend元素 */
+body.page-node-add-company-event form#company-event-node-form legend {
+    font-size: 14px;
+}
+
+/* 添加职位表单select元素 */
+body.page-node-add-company-event form#company-event-node-form select {
+    height: 24px;
+}
+
+/* 添加职位表单学历要求选项 */
+body.page-node-add-company-event form#company-event-node-form div#edit-field-education-requirement-und div.form-item {
+    float: left;
+    padding-right: 20px;
+}
+
+/* 添加职位表单学历要求选项 input元素 */
+body.page-node-add-company-event form#company-event-node-form div#edit-field-education-requirement-und div.form-item input {
+    margin-top: 0;
+}
+
+/* 添加职位表单学历要求选项 */
+body.page-node-add-company-event form#company-event-node-form div#edit-field-education-requirement-und div.form-item label {
+    padding-left: 5px;
+}
+
+/* 添加职位表单招聘人数 */
+body.page-node-add-company-event form#company-event-node-form div#edit-field-number {
+    clear: left;
+}
+
+/* 添加职位表单月薪 */
+body.page-node-add-company-event form#company-event-node-form div#edit-field-salary {
+    position: absolute;
+}
+
+/* 添加职位表单学习年限 */
+body.page-node-add-company-event form#company-event-node-form div#edit-field-study-years {
+    margin-left: 200px;
+}
+
+/* 隐藏 编辑摘要 */
+body.page-node-add-company-event form#company-event-node-form div.field-type-text-with-summary span.field-edit-link {
+    display: none;
+}
+
+/* 隐藏 input format */
+body.page-node-add-company-event form#company-event-node-form fieldset#edit-body-und-0-format,
+body.page-node-add-company-event form#company-event-node-form fieldset#edit-field-event-introduction-und-0-format {
+    display: none;
+}
+
+/* 添加职位表单提交按钮 */
+body.page-node-add-company-event form#company-event-node-form div#edit-actions input {
+    background: url(img/anniu_lv.png) no-repeat left top;
+    width: 81px;
+    height: 28px;
+    padding-bottom: 5px;
+    color: white;
+    border: none;
+    margin-right: 20px;
+}
+
+/************/
+/* 简历页面 */
+/**********/
+
+/* 字段margin */
+body.node-type-resume div.content div.field {
+    margin: 15px 0;
+}
+
+/* 取消购买 */
+body.node-type-resume div.link-wrapper {
+    position: absolute;
+}
+
+/* 下载链接 */
+body.node-type-resume div.download-link {
+    margin-left: 80px;
+}
+
+/**
+ * 用户中心 
+ */
+
+/***** 用户中心页面 ******/
+
+/* 隐藏分享我的简历的$tabs */
+body.page-user ul.tabs.primary {
+    display: none;
+}
+
+/****** 编辑简历表单 ******/
+
+/* 表单元素边框颜色 */
+body.node-type-resume form#resume-node-form input,
+body.node-type-resume form#resume-node-form select,
+body.node-type-resume form#resume-node-form textarea {
+    border: 1px solid #ddd;
+}
+
+/* 隐藏输入格式 */
+body.node-type-resume form#resume-node-form fieldset.filter-wrapper {
+    display: none;
+}
+
+/*** 添加教育经历表单 ***/
+
+/* label */
+body.page-field-collection-field-education-experience-add-node- label {
+    display: block;
+}
+
+/* input */
+body.page-field-collection-field-education-experience-add-node- input {
+    height: 24px;
+}
+
+/* 学校名称，专业 */
+body.page-field-collection-field-education-experience-add-node- div#edit-field-school,
+body.page-field-collection-field-education-experience-add-node- div#edit-field-discipline {
+    float: left;
+    width: 50%;
+}
+
+/* 学历 */
+body.page-field-collection-field-education-experience-add-node- div#edit-field-education-record {
+    float: left;
+    width: 15%;
+}
+
+/* 学位 */
+body.page-field-collection-field-education-experience-add-node- div#edit-field-degree {
+    float: left;
+    width: 85%;
+}
+
+/* 日期 包含框 */
+body.page-field-collection-field-education-experience-add-node- div#edit-field-duration {
+    clear: left;
+}
+
+/* 日期 fieldset */
+body.page-field-collection-field-education-experience-add-node- div#edit-field-duration fieldset {
+    border: none;
+}
+
+/* 日期 fieldset wrapper */
+body.page-field-collection-field-education-experience-add-node- div.fieldset-wrapper {
+    position: relative;
+}
+
+/* 是否显示结束日期 */
+body.page-field-collection-field-education-experience-add-node- div.date-float {
+    position: absolute;
+    top: 19px;
+}
+
+body.page-field-collection-field-education-experience-add-node- div.date-float label {
+    display: inline;
+}
+
+/* 开始日期 */
+body.page-field-collection-field-education-experience-add-node- div.start-date-wrapper {
+    position: absolute;
+    left: 126px;
+}
+
+/* 结束日期 */
+body.page-field-collection-field-education-experience-add-node- div.end-date-wrapper {
+    position: relative;
+    left: 300px;
+    top: 18px;
+}
+
+/* 隐藏结束日期“to” */
+body.page-field-collection-field-education-experience-add-node- div.end-date-wrapper label {
+    display: none;
+}
+
+/* 隐藏日期边框 */
+body.page-field-collection-field-education-experience-add-node- div.form-type-date-popup {
+    border: none;
+}
+
+/* 提交按钮 */
+body.page-field-collection-field-education-experience-add-node- div#edit-actions input {
+    background: url(img/anniu_lv.png) no-repeat left top;
+    width: 81px;
+    height: 28px;
+    padding-bottom: 5px;
+    color: white;
+    border: none;
+}
+
+body.page-field-collection-field-education-experience-add-node- div#edit-actions {
+    text-align: center;
+}
+
+
+

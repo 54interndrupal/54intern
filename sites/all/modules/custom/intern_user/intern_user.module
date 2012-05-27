@@ -1,0 +1,133 @@
+<?php
+
+function intern_user_block_info() {
+  $blocks['user share status'] = array(
+    'info' => t('Intern User -- 分享我的最新动态')
+  );
+  $blocks['user center showcase'] = array(
+    'info' => t('Intern User -- 个人中心Showcase')
+  );
+  return $blocks;
+}
+
+function intern_company_user_login_form() {
+  $form = array();
+  $form['company_name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('企业名称'),
+    '#required' => 1,
+  );
+  $form['name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('用户名'),
+    '#required' => 1,
+  );
+  $form['name']['#element_validate'][] = 'userreg_user_login_validate';
+  $form['pass'] = array(
+    '#type' => 'password',
+    '#title' => t('密码'),
+    '#required' => 1,
+  );
+
+  $form['remember_me'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('记住密码'),
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array('#type' => 'submit', '#value' => t('Log in'));
+  $form['#validate'] = shixiquan_login_default_validators();
+//  $form['#validate'] = user_login_default_validators();
+  $form['#submit'][] = 'user_login_submit';
+  return $form;
+}
+
+/**
+ * 实现钩子hook_block_view().
+ */
+function intern_user_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'user share status':
+      $block['subject'] = t('分享我的最新动态');
+      $block['content'] = intern_user_share_status_block();
+      break;
+    case 'user center showcase':
+      $block['subject'] = t('个人中心showcase');
+      $block['content'] = intern_user_center_showcase_block();
+      break;
+    case 'user resume tabs':
+      $block['subject'] = '';
+      $block['content'] = intern_user_resume_tabs_block();
+  }
+  return $block;
+}
+
+/**
+ * 分享我的最新动态 Block
+ */
+function intern_user_share_status_block() {
+  $output = '<div id="userShareStatus"></div>';
+  $output .= '<script type="text/javascript">';
+  $output .= '(function ($) {';
+  $output .= '$(document).ready(function () { ';
+  $output .= '$(".view-id-statuses_stream").prependTo($("#userShareStatus"));';
+  $output .= '$("#main").addClass("refreshed");';
+  $output .= '});';
+  $output .= '})(jQuery)';
+  $output .= '</script>';
+  return $output;
+}
+
+/**
+ * @个人中心——showcase
+ */
+function intern_user_center_showcase_block() {
+  global $base_url;
+  $output = '
+    <div class="company-center-showcase"><img src="' . $base_url . '/' . drupal_get_path('theme', 'ffintern') . '/css/img/site/showcase-company-center.gif"></div>
+  ';
+  return $output;
+}
+
+/**
+ *
+ * 个人简历编辑 tabs block
+ */
+function intern_user_resume_tabs_block() {
+  $gid = arg(1);
+  $output = "";
+  $output .= '<ul class="quicktabs-tabs quicktabs-style-intern">';
+  $output .= '<li class="active" id="user-basic-info-tab"><a href="#">个人基本资料</a></li>';
+  $output .= '<li id="user-attached-resume-tab"><a href="#">上传简历</a></li>';
+  $output .= '<li id="user-apply-letter-tab"><a href="#">求职信</a></li>';
+
+  $output .= '</ul>';
+
+  return $output;
+}
+
+/**
+ * 判断是否为企业用户
+ */
+function intern_user_is_company_user() {
+   Global $user;
+  if (in_array(4, array_keys($user->roles))) {
+    return true;
+  }else{
+    return false;
+  }
+}
+
+/** 获取用户对应的company nid */
+function intern_user_get_company_id($uid){
+  $company_id = db_select('node', 'n')
+    ->condition('n.uid', $uid)
+    ->condition('n.type', 'company')
+    ->fields('n', array('nid'))
+    ->range(0, 1)
+    ->execute()
+    ->fetchField();
+  return $company_id;
+}
+

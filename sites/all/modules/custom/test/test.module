@@ -1,0 +1,41 @@
+<?php
+// $Id$
+
+/**
+ * Implements hook_menu().
+ */
+function test_menu(){
+
+	$items['test'] = array(
+    'title' => '企业用户注册',
+    'page callback'    => 'test_test_page',
+		'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+
+  );
+	
+  return $items;
+}
+
+function test_test_page(){
+$output = "";
+$output .= '123456';
+$values = array();
+$to = '55381091@qq.com';
+$from = 'g089h515r806@hotmail.com';
+ drupal_mail('test', 'test', $to, language_default(), $values, $from);
+return $output;
+}
+
+function test_mail($key, &$message, $params) {
+  $language = $message['language'];
+  switch ($key) {
+    case 'test':
+	  $subject = '测试邮件发送';	
+      $message['subject'] = $subject;
+      $message['body'][] = $subject;
+			//drupal_set_message($body);
+			break;
+
+  }
+}

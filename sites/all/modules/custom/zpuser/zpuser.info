@@ -1,0 +1,4 @@
+; $Id$
+name = zpuser
+description = 定制的用户中心
+core = 7.x

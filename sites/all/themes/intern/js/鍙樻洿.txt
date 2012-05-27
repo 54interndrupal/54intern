@@ -1,0 +1,5 @@
+1,将
+$('body.group #forum-block').appendTo('div.tabs');
+修改为
+$('body.node-type-group #forum-block').appendTo('div.tabs');
+这里改了3处.社团页面的tabs切换效果.
