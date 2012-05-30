@@ -131,3 +131,20 @@ function intern_user_get_company_id($uid){
   return $company_id;
 }
 
+
+function intern_user_get_age($dob){
+  if(!empty($dob)){
+  $now = time();
+  $then = strtotime($dob);
+  $diff = date('Y', $now) - date('Y', $then);
+  if($diff <= 0) {
+    return;
+  }
+  if(($diff > 0) && (date('z',$now) < date('z',$then)))
+    $diff --;
+  return  $diff;
+  }
+
+  return "";
+}
+

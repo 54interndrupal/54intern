@@ -4,6 +4,7 @@
     $nid = intern_user_get_company_id($uid) ;
     unset($form["field_job_source"]);
     unset($form["field_source_url"]);
+//   print_r($form["field_job_sub_status"]);
 //    print_r($form['field_deadline']["und"][0]["value"]["date"]);
     $form['field_deadline']["und"][0]["value"]["date"]["#title"] = '职位有效期';
   ?>
@@ -14,7 +15,11 @@
     <div class="pane-content pane-company-node-form pane-job-node-form">
       <div class="basic-info">
         <div class="basic-info-title">
-          <span class="title">新增职位</span><span></span>
+          <?php if(empty($form["title"]["#value"])){?>
+            <span class="title">新增职位</span><span></span>
+          <?php }else{?>
+            <span class="title">编辑职位</span><span></span>
+          <?php }?>
         </div>
         <div class="basic-info-content">
 

@@ -23,11 +23,21 @@
  */
 ?>
 <?php
-$nid = trim($output);
-
-$output = '<a href=\"javascript:refresh_job('.$nid.')\">刷新</a>  ';
-$output.= '<a href=\"javascript:refresh_job('.$nid.')\">暂停</a>  ';
-$output.='<a href=\"javascript:refresh_job('.$nid.')\">再发布</a>';
-
+// print($output);
+$str = explode('^', trim($output));
+$nid = $str[1];
+$sub_status = $str[0];
+$destination = drupal_get_destination();
+$output = '';
+if ($sub_status == JOB_SUB_STATUS_PUBLISHED) {
+//  $output.= '<a href="' . url('job/actions/' . JOB_ACTION_REFRESH . '/' . $nid) . '?'.$_SERVER["QUERY_STRING"].'">刷新</a>  ';
+     print l("刷新 ",'job/actions/'.JOB_ACTION_REFRESH.'/'.$nid,array('query' => drupal_get_destination()));
+}
+if ($sub_status == JOB_SUB_STATUS_PUBLISHED) {
+  print l("暂停 ",'job/actions/'.JOB_ACTION_STOP.'/'.$nid,array('query' => drupal_get_destination()));
+}
+if ($sub_status == JOB_SUB_STATUS_STOPPED || $sub_status == JOB_SUB_STATUS_EXPIRED) {
+  print l("再发布 ",'job/actions/'.JOB_ACTION_REPUBLISH.'/'.$nid,array('query' => drupal_get_destination()));
+}
 print $output;
 ?>

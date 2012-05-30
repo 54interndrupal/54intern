@@ -6,22 +6,195 @@
  * Time: 下午4:47
  * To change this template use File | Settings | File Templates.
  */
+//草稿
+define(JOB_SUB_STATUS_DRAFT, 0);
+//已暂停
+define(JOB_SUB_STATUS_STOPPED, 1);
+//已过期
+define(JOB_SUB_STATUS_EXPIRED, 2);
+//待审核
+define(JOB_SUB_STATUS_REQUIRE_APPROVAL, 3);
+//发布中
+define(JOB_SUB_STATUS_PUBLISHED, 4);
+//即将到期
+define(JOB_SUB_STATUS_NEARLY_EXPIRED, 10);
 
+define('JOB_ACTION_REFRESH', '0');
+define('JOB_ACTION_STOP', '1');
+define('JOB_ACTION_REPUBLISH', '2');
+
+define("DATE_ONE_MONTH", 3600 * 24 * 30);
+/**
+ * Implements hook_menu().
+ */
+function intern_job_menu() {
+  $items['job/actions/%/%'] = array(
+    'title' => 'Job Actions',
+    'page callback' => 'intern_job_action_page',
+    'page arguments' => array(2, 3),
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function intern_job_action_page($action_type, $nid) {
+  $node = node_load($nid);
+  if ($action_type == JOB_ACTION_REFRESH) {
+    _intern_job_refresh($node);
+    node_save($node);
+    drupal_set_message(t("刷新操作成功。"));
+  }
+  else {
+    if ($action_type == JOB_ACTION_STOP) {
+      _intern_job_stop($node);
+      node_save($node);
+      drupal_set_message(t("职位已暂停。"));
+    }
+    else {
+      if ($action_type == JOB_ACTION_REPUBLISH) {
+        _intern_job_republish($node);
+        node_save($node);
+        drupal_set_message(t("职位再发布成功。"));
+      }
+    }
+  }
+
+
+  drupal_goto();
+}
+
+/**
+ * @param $node
+ * refresh job
+ */
+function _intern_job_refresh(&$node) {
+  $sub_status = $node->field_job_sub_status[LANGUAGE_NONE][0]["value"];
+  if ($sub_status == JOB_SUB_STATUS_PUBLISHED) {
+    $node->changed = REQUEST_TIME;
+    $deadline = $node->field_deadline[LANGUAGE_NONE][0]["value"];
+    if ($node->changed >= $deadline - DATE_ONE_MONTH) {
+      $node->field_deadline[LANGUAGE_NONE][0]["value"] = $node->changed + DATE_ONE_MONTH;
+    }
+  }
+}
+
+/**
+ * @param $node
+ * stop job
+ */
+function _intern_job_stop(&$node) {
+  $sub_status = $node->field_job_sub_status[LANGUAGE_NONE][0]["value"];
+  if ($sub_status == JOB_SUB_STATUS_PUBLISHED) {
+    $node->status = NODE_NOT_PUBLISHED;
+    $node->field_job_sub_status[LANGUAGE_NONE][0]["value"] = JOB_SUB_STATUS_STOPPED;
+  }
+}
+
+/**
+ * @param $node
+ * republish job
+ */
+function _intern_job_republish(&$node) {
+  $sub_status = $node->field_job_sub_status[LANGUAGE_NONE][0]["value"];
+  if ($sub_status == JOB_SUB_STATUS_STOPPED || $sub_status == JOB_SUB_STATUS_EXPIRED) {
+    $node->status = NODE_PUBLISHED;
+    $node->field_job_sub_status[LANGUAGE_NONE][0]["value"] = JOB_SUB_STATUS_PUBLISHED;
+    _intern_job_refresh($node);
+  }
+}
 
 function intern_job_form_node_form_alter(&$form, $form_state) {
   $type = $form['#node']->type;
   Global $user;
+
   if ($type == 'job' && intern_user_is_company_user()) {
     //非网站编辑，不能编辑Group Audience字段
     if (!in_array(6, array_keys($user->roles))) {
-      $form['og_group_ref']['und'][0]['target_id']['#type']='hidden';
+      $form['og_group_ref']['und'][0]['target_id']['#type'] = 'hidden';
     }
     hide($form["actions"]["delete"]);
-    $form["actions"]["submit"]["#value"] =t('提交发布');
-    $form["actions"]["draft"] = array(
-      '#type' => 'button',
-      '#value' => t('保存草稿'),
-    );
-  }
+    hide($form["field_job_sub_status"]);
 
+    $form["actions"]["submit"]["#value"] = t('提交发布');
+    $form["actions"]["draft"] = array(
+      '#type' => 'submit',
+      '#value' => t('保存草稿'),
+      '#validate' => array('node_form_validate', 'intern_job_node_form_ant_submit'),
+      '#submit' => array('node_form_submit', 'intern_job_node_form_post_submit'),
+    );
+
+    $form['#validate'][] = 'intern_job_node_form_ant_submit';
+    $form['#submit'][] = 'intern_job_node_form_post_submit';
+  }
 }
+
+function intern_job_node_form_ant_submit($form, &$form_state) {
+  $values = $form_state['values'];
+  $op = isset($values['op']) ? $values['op'] : '';
+
+  if ($op == t('保存草稿')) {
+    $form_state['values']["field_job_sub_status"][LANGUAGE_NONE][0]['value'] = JOB_SUB_STATUS_DRAFT;
+    $form_state['values']['status'] = NODE_NOT_PUBLISHED;
+  }
+  else {
+    if ($op == t('提交发布')) {
+      $form_state['values']["field_job_sub_status"][LANGUAGE_NONE][0]['value'] = JOB_SUB_STATUS_REQUIRE_APPROVAL;
+    }
+  }
+}
+
+function intern_job_node_form_post_submit($form, &$form_state) {
+  $nid = $form_state['nid'];
+  $values = $form_state['values'];
+  $op = isset($values['op']) ? $values['op'] : '';
+
+  $form_state['redirect'] = 'node/' . $nid . '/edit';
+}
+
+/**
+ * Implements hook_action_info().
+ */
+function intern_job_action_info() {
+  return array(
+    'intern_job_stop_action' => array(
+      'type' => 'node',
+      'label' => t('暂停职位发布'),
+      'configurable' => FALSE,
+      'behavior' => array('changes_property'),
+      'triggers' => array('node_presave'),
+    ),
+    'intern_job_refresh_action' => array(
+      'type' => 'node',
+      'label' => t('刷新职位'),
+      'configurable' => FALSE,
+      'behavior' => array('changes_property'),
+      'triggers' => array('node_presave'),
+    ),
+    'intern_job_republish_action' => array(
+      'type' => 'node',
+      'label' => t('再发布职位'),
+      'configurable' => FALSE,
+      'behavior' => array('changes_property'),
+      'triggers' => array('node_presave'),
+    ),
+  );
+}
+
+/**
+ * Sets the status of a node to 1 (published).
+ *
+ * @ingroup actions
+ */
+function intern_job_stop_action($node, $context = array()) {
+  _intern_job_stop($node);
+}
+
+function intern_job_refresh_action($node, $context = array()) {
+  _intern_job_refresh($node);
+}
+
+function intern_job_republish_action($node, $context = array()) {
+  _intern_job_republish($node);
+}
+

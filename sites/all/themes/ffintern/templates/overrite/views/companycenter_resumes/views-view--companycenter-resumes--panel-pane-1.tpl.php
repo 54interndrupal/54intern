@@ -32,22 +32,33 @@
 <div id="admin-resume" class="block">
 <div class="block-content">
 	<div class="admin-list resume-list">
-	
-		 <?php if ($rows): ?>
 
-      <?php print $rows; ?>
-
-		 <?php elseif ($empty): ?>
-
-		<?php print $empty; ?>
-
-<?php endif; ?>
+      <?php if ($rows): ?>
+      <div class="view-content">
+        <?php print $rows; ?>
+      </div>
+      <?php elseif ($empty): ?>
+      <div class="view-empty">
+        <?php print $empty; ?>
+      </div>
+      <?php endif; ?>
+      <?php if ($pager): ?>
+      <?php print $pager; ?>
+      <?php endif; ?>
 	
  </div>
 		<?php print $more; ?>
 </div>
 </div><!-- /#manager-resume -->
 </div>
+<script type="text/javascript">
+  (function ($) {
+    $(document).ready(function () {
+      $(".pane-companycenter-resumes-panel-pane-1 .views-table").after( $(".pane-companycenter-resumes-panel-pane-1 .pager").parent(".item-list"));
+
+    });
+  })(jQuery);
+</script>
 
 
 

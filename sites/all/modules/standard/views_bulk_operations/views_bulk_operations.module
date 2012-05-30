@@ -419,6 +419,7 @@ function views_bulk_operations_form($form, &$form_state, $vbo) {
     '#title' => t('Operations'),
     '#collapsible' => TRUE,
     '#attributes' => array('class' => array('container-inline')),
+    '#weight' => 200,
   );
   if ($vbo->options['vbo']['display_type'] == 0) {
     $options = array(0 => t('- Choose an operation -'));
@@ -467,9 +468,10 @@ function views_bulk_operations_form($form, &$form_state, $vbo) {
       '#markup' => theme('views_bulk_operations_select_all', array('view' => $vbo->view, 'enable_select_all_pages' => $enable_select_all_pages)),
     );
   }
-
   return $form;
 }
+
+
 
 /**
  * Validation callback for the first step of the VBO form.

@@ -188,6 +188,7 @@ function intern_company_center_welcome_block(){
  */
 function intern_company_center_tabs_block() {
   $gid =  arg(1);
+  global $base_path;
   Global $user;
   //企业用户设置
   if(arg(0)!='companycenter'){
@@ -200,7 +201,7 @@ function intern_company_center_tabs_block() {
 //    $output .='<div class="item-list"> ';
     $output .= '<ul class="quicktabs-tabs quicktabs-style-intern">';
     $output .= '<li class="'.(arg(2)==''?'active':'').'">'.  l(t('首页'),'companycenter/'.$gid, array('html' => TRUE,)). '</li>';
-    $output .= '<li class="'.((arg(2)=='jobs'||(arg(1)=='add'&&arg(2)=='job')||($node->type=='job'))?'active':'').'">'.  l(t('职位管理'),'companycenter/'.$gid.'/jobs', array('html' => TRUE,)). '</li>';
+    $output .= '<li class="'.((arg(2)=='jobs'||(arg(1)=='add'&&arg(2)=='job')||($node->type=='job'))?'active':'').'"><a href="'.$base_path.'companycenter/'.$gid.'/jobs?sub_status=4">'.t('职位管理').'</a></li>';
     $output .= '<li class="'.(arg(2)=='resumes'?'active':'').'">'.  l(t('简历管理'),'companycenter/'.$gid.'/resumes', array('html' => TRUE,)). '</li>';
     $output .= '<li class="'.((arg(2)=='edit'&&($node->type!='job'))?'active':'').'">'.  l(t('设置中心'),'node/'.$gid.'/edit', array('html' => TRUE,)). '</li>';
 
@@ -220,7 +221,7 @@ function intern_company_center_resume_tabs_block() {
 //    $output .='<div id="quicktabs-front_main_tabs" class="quicktabs-wrapper quicktabs-style-intern">';
 //    $output .='<div class="item-list"> ';
     $output .= '<ul class="quicktabs-tabs quicktabs-style-intern2">';
-    $output .= '<li class="first active">'.  l(t('简历管理'),'companycenter/'.$gid.'/resumes', array('html' => TRUE,)). '</li>';
+    $output .= '<li class="first active">'.  l(t('收件箱'),'companycenter/'.$gid.'/resumes', array('html' => TRUE,)). '</li>';
     $output .= '<li>'.  l(t('搜索简历库'),'resumes', array('html' => TRUE,)). '</li>';
     $output .= '</ul>';
   }

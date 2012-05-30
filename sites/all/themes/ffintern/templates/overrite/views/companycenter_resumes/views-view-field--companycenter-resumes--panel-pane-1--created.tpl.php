@@ -22,13 +22,6 @@
  * the view is modified.
  */
 ?>
-
-<?php
-$str = explode('^', trim($output));
-$status = $str[1];
-$sub_status = $str[0];
-
-if($status=='已发表'){
-print '发布中';}else{
-  print '已暂停';
-} ?>
+<span class="c-5">
+<?php print date ('Y-m-d',$output); ?>
+</span>

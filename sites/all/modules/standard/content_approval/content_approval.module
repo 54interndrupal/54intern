@@ -154,7 +154,7 @@ function content_approval_form_alter(&$form, &$form_state, $form_id) {
       // Add callback functions to process the case of 'skip publishing approval'
       // permission.
       $node = $form['#node'];
-      if (empty($node->nid) && !user_access("skip $node->type content approval prior their publication")) {
+      if ( !user_access("skip $node->type content approval prior their publication")) {
         $form['#validate'][] = 'content_approval_node_form_ante_submit';
         $form['actions']['submit']['#submit'][] = 'content_approval_node_form_post_submit';        
       }
@@ -181,14 +181,10 @@ function content_approval_node_form_post_submit($form, &$form_state) {
   // Display an information to tell the user that his submission is queued for 
   // approval
   $node_types = node_type_get_types();
-  drupal_set_title(t('@ntype submission queued for approval', array('@ntype' => check_plain($node_types[$node->type]->name))));
+  //drupal_set_title(t('@ntype submission queued for approval', array('@ntype' => check_plain($node_types[$node->type]->name))));
   $message = t('Your submission has been queued for review by site administrators and will be published after approval.');
-  // Prevent form redirection (which do a reload from index.php) on submit so 
-  // that content_approval_page_delivery_callback_alter() will read the setted 
-  // static var done here.
-  $form_state['no_redirect'] = TRUE;
-  $callback = create_function('$page_callback_result', "{print drupal_render_page('$message');}");
-  content_approval_page_delivery_callback_alter($callback, TRUE);
+  drupal_set_message($message);
+  $form_state['redirect'] = 'node/'.$node->nid.'/edit';
   
   // Allow to hook here
   module_invoke_all('submitted_content_need_approval', $node);

@@ -117,6 +117,10 @@ table.views-table tbody td{
     padding: 12px 0 12px 0;
     background: #F1F5E6;
 }
+table.views-table .form-item.form-type-checkbox{
+    text-align: center;
+    min-width: 20px;
+}
 /*==input field==*/
 input {
 
@@ -1716,15 +1720,24 @@ div.pane-company-info-panel-pane-2 div.pane-content div.d-1 a:link{
 }
 /*== pane-company-info-panel-pane-2 End==*/
 
-/*== pane-companycenter-jobs-panel-pane-1 Begin==*/
+/*== pane-companycenter-jobs-panel-pane-1 , pane-companycenter-resumes-panel-pane-1Begin==*/
 div.pane-companycenter-jobs-panel-pane-1 table.views-table td.views-field-title{
     max-width: 150px;
 }
-div.pane-companycenter-jobs-panel-pane-1 table.views-table td.views-field-title a{
+div.pane-companycenter-resumes-panel-pane-1 table.views-table td.views-field-field-job-id{
+    max-width: 100px;
+}
+div.pane-companycenter-jobs-panel-pane-1 table.views-table td.views-field-title a,
+div.pane-companycenter-resumes-panel-pane-1 table.views-table td.views-field-field-real-name a{
     color: #F0580F;
 }
 div.pane-companycenter-jobs-panel-pane-1 table.views-table td.views-field-views-bulk-operations{
     width:30px;
+}
+div.pane-companycenter-jobs-panel-pane-1 .item-list .pager,
+div.pane-companycenter-resumes-panel-pane-1 .item-list .pager{
+    margin: 0 0 0 0;
+    background-color: #CCCCCC;
 }
 div.pane-companycenter-jobs-panel-pane-1 span.add-content,add-content-job{
     background: url(img/site/bt_ad_jb.gif) no-repeat;
@@ -1735,38 +1748,53 @@ div.pane-companycenter-jobs-panel-pane-1 span.add-content,add-content-job{
     text-indent: -999px;
     display: block;
 }
-div.pane-companycenter-jobs-panel-pane-1 input.form-submit{
+div.pane-companycenter-jobs-panel-pane-1 input.form-submit,
+div.pane-companycenter-resumes-panel-pane-1 input.form-submit{
     text-indent: -999px;
-    display: block;
+    display: inline-block;
     width: 67px;
     height: 28px;
     background-color: #ffffff;
     border: 2px solid #4E963C;
-    cursor: pointer
-}
-div.pane-companycenter-jobs-panel-pane-1 input#edit-actionnode-publish-action{
-    background: url(img/site/bt_batch_refresh.gif) no-repeat;
+    cursor: pointer;
     margin-right: 5px;
 }
-div.pane-companycenter-jobs-panel-pane-1 input#edit-actionnode-unpublish-action{
+div.pane-companycenter-jobs-panel-pane-1 input#edit-actionintern-job-refresh-action{
+    background: url(img/site/bt_batch_refresh.gif) no-repeat;
+}
+div.pane-companycenter-jobs-panel-pane-1 input#edit-actionintern-job-stop-action{
     background: url(img/site/bt_batch_stop.gif) no-repeat;
 }
-div.pane-companycenter-jobs-panel-pane-1 fieldset{
+div.pane-companycenter-jobs-panel-pane-1 input#edit-actionintern-job-republish-action{
+    background: url(img/site/bt_batch_publish.gif) no-repeat;
+}
+div.pane-companycenter-resumes-panel-pane-1 input#edit-actionviews-bulk-operations-delete-item{
+    background: url(img/site/bt_batch_delete_resume.gif) no-repeat;
+}
+div.pane-companycenter-jobs-panel-pane-1 fieldset,
+div.pane-companycenter-resumes-panel-pane-1 fieldset{
     border: 0px;
     float: left;
     width: 400px;
-    margin: -25px 0 10px 5px;
+    margin: 0 0 10px 0;
 }
-div.pane-companycenter-jobs-panel-pane-1 fieldset legend{
+div.pane-companycenter-jobs-panel-pane-1 fieldset legend,
+div.pane-companycenter-resumes-panel-pane-1 fieldset legend{
      display: none;
 }
 
 div.pane-companycenter-jobs-panel-pane-1 div.d-add-job{
     float: right;
+    display: block;
+    margin-bottom: 8px;
 }
 
-/*== pane-companycenter-jobs-panel-pane-1 End==*/
-
+/*== pane-companycenter-jobs-panel-pane-1, pane-companycenter-resumes-panel-pane-1 End==*/
+/*== company-center-showcase begin==*/
+div.company-center-showcase{
+    margin-bottom: 15px;
+}
+/*== company-center-showcase end==*/
 /*== pane-intern-company-company-center-shortcuts Begin ==*/
 div.pane-intern-company-company-center-shortcuts{
     margin-bottom: 20px;
@@ -2660,7 +2688,7 @@ body.front #temp-showcase {
 
 #temp-login input.form-text {
     padding-top: 8px;
-    width: 210px;
+    width: 206px;
     height: 20px;
 }
 
