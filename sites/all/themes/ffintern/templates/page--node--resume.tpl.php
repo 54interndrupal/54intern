@@ -88,7 +88,7 @@
   <div id="header"><div class="section clearfix resume">
      <img src="<?php print url(drupal_get_path('theme','ffintern').'/logo_s.png'); ?>" alt="$site_slogan" />
   </div></div> <!-- /.section, /#header -->
-
+<!--  --><?php //print_r($page); ?>
   <div id="main-wrapper" class="inside-page-main-wrapper">
     <?php if ($messages): ?>
     <div id="messages"><div class="section clearfix">
@@ -109,7 +109,3 @@
 </div> <!-- /#main, /#main-wrapper -->
 
 </div></div> <!-- /#page, /#page-wrapper -->
-
-<!--<div id="footer"><div class="section">-->
-<!--<!--  -->--><?php ////print render($page['footer']); ?>
-<!--</div></div> <!-- /.section, /#footer -->-->

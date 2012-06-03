@@ -2921,7 +2921,7 @@ div.statuses-update{
     margin-bottom: -10px;
 }
 div.pane-statuses-statuses h2.pane-title {
-    background: url(img/site/bt_status.gif) no-repeat 0 2px;
+    background: url(img/site/bt_status.gif) no-repeat 0 5px;
     padding-left: 20px;
     font-size: 12px;
     font-weight: bold;
@@ -3693,7 +3693,7 @@ a.reply {
     right: 0;
 }
 /*== user-center-block Begin ==*/
-body.page-user #sidebar-second div.pane-usercenter-user-info-panel-pane-1  div.panel-pane-title{
+#sidebar-second div.pane-usercenter-user-info-panel-pane-1  div.panel-pane-title{
     height: 20px;
     background-color: #4E963C;
     padding:10px;
@@ -3812,6 +3812,10 @@ a.button span {
 /*== page-resume Begin==*/
 body.node-type-resume #header{
     height: 70px;
+    display: inline-block;
+    width: 250px;
+    float: left;
+    padding-bottom: 20px;
 }
 body.node-type-resume #header .resume{
     margin-top: 60px;
@@ -3820,7 +3824,7 @@ body.node-type-resume #page.resume-node-view #main,
 body.node-type-resume #page.resume-node-view,
 body.node-type-resume #footer,
 body.node-type-resume #footer .section{
-    width: 650px;
+    width: 680px;
 }
 
 body.node-type-resume  #page.resume-node-view #main-bottom{
@@ -3832,12 +3836,15 @@ body.node-type-resume div.pane-resume-node-view-panel-pane-1{
     border:2px solid #4E963C;
     padding: 0 12px 10px 12px;
     display: block;
+    float: left;
+    width: 650px;
 }
+
 div.pane-resume-node-view-panel-pane-1 .views-field{
     color: #333;
 }
 div.pane-resume-node-view-panel-pane-1 .views-field .field-content{
-    display: inline-block;
+    display: inline;
 }
 div.pane-resume-node-view-panel-pane-1 .d-1{
     background-color: #F7FCF5;
@@ -3852,12 +3859,16 @@ div.pane-resume-node-view-panel-pane-1 .d-2{
 div.pane-resume-node-view-panel-pane-1 .d-2 label{
     width: 60px;
 }
+div.pane-resume-node-view-panel-pane-1 .d-2 .views-field-location,
+div.pane-resume-node-view-panel-pane-1 .d-2 .views-field-cell-phone{
+
+}
 div.pane-resume-node-view-panel-pane-1 .d-3{
     display: inline-block;
     padding: 0 0 8px 0;
 }
 div.pane-resume-node-view-panel-pane-1 .d-3 .views-field{
-    display: inline-block;
+    display: inline;
     color: #3C722E;
     font-weight: bold;
     padding-right: 5px;
@@ -3900,12 +3911,13 @@ div.pane-resume-node-view-panel-pane-1 .d-6 .s-1{
 }
 div.pane-resume-node-view-panel-pane-1 .d-5 .s-1 .field-content,
 div.pane-resume-node-view-panel-pane-1 .d-6 .s-1 .field-content{
-    display: inline-block;
+    display: inline;
     color: #333333;
 }
 div.pane-resume-node-view-panel-pane-1 .d-4-1{
     width: 46%;
     display: inline-block;
+    float: left;
 }
 div.pane-resume-node-view-panel-pane-1 .d-4-2{
     width: 48%;
@@ -3920,6 +3932,14 @@ div.pane-resume-node-view-panel-pane-1 .d-6 .field-content{
 div.pane-resume-node-view-panel-pane-1 .d-6 .file{
     font-size: 14px;
     font-weight: bold;
+}
+
+div.pane-node-links{
+    display: inline-block;
+    float: right;
+    height: 20px;
+    float: right;
+    padding:0px 0 5px 0;
 }
 /*== page-resume End==*/
 

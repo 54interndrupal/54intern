@@ -1,0 +1,156 @@
+<?php
+
+/**
+ * @file
+ * Generate a PDF for the print_pdf module using the TCPDF library.
+ *
+ * @ingroup print
+ */
+
+define('PRINT_PDF_TCPDF_FONT_FAMILY_DEFAULT', 'dejavusans');
+define('PRINT_PDF_TCPDF_FONT_SIZE_DEFAULT', 10);
+define('PRINT_PDF_TCPDF_FONT_SUBSETTING_DEFAULT', FALSE);
+
+/**
+ * Implements hook_theme().
+ */
+function print_pdf_tcpdf_theme() {
+  return array(
+    'print_pdf_tcpdf_header' => array(
+      'variables' => array('pdf' => NULL, 'html' => '', 'font' => array()),
+      'file' => 'print_pdf_tcpdf.pages.inc',
+    ),
+    'print_pdf_tcpdf_page' => array(
+      'variables' => array('pdf' => NULL),
+      'file' => 'print_pdf_tcpdf.pages.inc',
+    ),
+    'print_pdf_tcpdf_content' => array(
+      'variables' => array('pdf' => NULL, 'html' => '', 'font' => array()),
+      'file' => 'print_pdf_tcpdf.pages.inc',
+    ),
+    'print_pdf_tcpdf_footer' => array(
+      'variables' => array('pdf' => NULL, 'html' => '', 'font' => array()),
+      'file' => 'print_pdf_tcpdf.pages.inc',
+    ),
+    'print_pdf_tcpdf_footer2' => array(
+      'variables' => array('pdf' => NULL),
+      'file' => 'print_pdf_tcpdf.pages.inc',
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function print_pdf_tcpdf_menu() {
+  $items = array();
+
+  $items['admin/config/user-interface/print/pdf/tcpdf'] = array(
+    'title' => 'TCPDF',
+    'description' => 'Configure the TCPDF options.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('print_pdf_tcpdf_settings'),
+    'access arguments'  => array('administer print'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'print_pdf_tcpdf.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function print_pdf_tcpdf_requirements($phase) {
+  $requirements = array();
+  $t = get_t();
+  switch ($phase) {
+    // At runtime, make sure that a PDF generation tool is selected
+    case 'runtime':
+      $print_pdf_pdf_tool = variable_get('print_pdf_pdf_tool', PRINT_PDF_PDF_TOOL_DEFAULT);
+
+      if (!empty($print_pdf_pdf_tool)) {
+        $tool = explode('|', $print_pdf_pdf_tool);
+
+        if (is_file($tool[1]) && is_readable($tool[1])) {
+          if (basename($tool[1]) == 'tcpdf.php') {
+            $version = _print_pdf_tcpdf_version($tool[1]);
+
+            if (version_compare($version, '5.9.001', '<')) {
+              $requirements['print_pdf_tool_version'] = array(
+                'title' => $t('Printer, email and PDF versions - PDF generation library'),
+                'value' => $t('Unsupported TCPDF version'),
+                'description' => $t('The currently selected version of TCPDF (@version) is not supported. Please update to a !url.', array('@version' => $version, '!url' => l($t('newer version'), 'http://sourceforge.net/projects/tcpdf/files/latest'))),
+                'severity' => REQUIREMENT_ERROR,
+              );
+            }
+            else {
+              $requirements['print_pdf_tool_version'] = array(
+                'title' => $t('Printer, email and PDF versions - PDF generation library'),
+                'value' => $t('TCPDF') . ' ' . $version,
+              );
+            }
+
+            if (variable_get('print_pdf_autoconfig', PRINT_PDF_AUTOCONFIG_DEFAULT)) {
+              foreach (array('cache', 'images') as $dir) {
+                $directory = dirname($tool[1]) . '/' . $dir;
+                if (!is_dir($directory) || !is_writable($directory)) {
+                  $requirements['print_pdf_tool_' . $dir] = array(
+                    'title' => $t('TCPDF directory'),
+                    'value' => $t('Non-writable permissions'),
+                    'description' => $t('You must change the %libdir permissions to be writable, as %lib requires write-access to that directory.', array('%lib' => 'TCPDF', '%libdir' => $directory)),
+                    'severity' => REQUIREMENT_ERROR,
+                  );
+                }
+              }
+            }
+          }
+        }
+      }
+      break;
+  }
+  return $requirements;
+}
+
+/**
+ * Find out the version of the TCPDF library
+ *
+ * @param string $pdf_tool
+ *   Filename of the tool to be analysed.
+ *
+ * @return string
+ *   version number of the tcpdf library
+ */
+function _print_pdf_tcpdf_version($pdf_tool) {
+  if (variable_get('print_pdf_autoconfig', PRINT_PDF_AUTOCONFIG_DEFAULT)) {
+    // prevent TCPDF default configs
+    define('K_TCPDF_EXTERNAL_CONFIG', TRUE);
+  }
+  require_once(DRUPAL_ROOT . '/' . $pdf_tool);
+
+  // Hide warnings, as some TCPDF constants may still be undefined
+  @$pdf = new TCPDF();
+
+  if (method_exists($pdf, 'getTCPDFVersion')) {
+    return $pdf->getTCPDFVersion();
+  }
+  elseif (defined('PDF_PRODUCER')) {
+    sscanf(PDF_PRODUCER, "TCPDF %s", $version);
+
+    return $version;
+  }
+  else {
+    return 'unknown';
+  }
+}
+
+/**
+ * Implements hook_print_pdf_available_libs_alter().
+ */
+function print_pdf_tcpdf_print_pdf_available_libs_alter(&$pdf_tools) {
+  $tools = _print_scan_libs('tcpdf', '!^tcpdf.php$!');
+
+  foreach ($tools as $tool) {
+    $pdf_tools['print_pdf_tcpdf|' . $tool] = 'TCPDF (' . dirname($tool) . ')';
+  }
+}

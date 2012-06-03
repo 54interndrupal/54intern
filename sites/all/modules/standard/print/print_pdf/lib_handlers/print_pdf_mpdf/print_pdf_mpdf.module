@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * @file
+ * Generate a PDF for the print_pdf module using the mPDF library.
+ *
+ * @ingroup print
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function print_pdf_mpdf_requirements($phase) {
+  $requirements = array();
+  $t = get_t();
+  switch ($phase) {
+    // At runtime, make sure that a PDF generation tool is selected
+    case 'runtime':
+      $print_pdf_pdf_tool = variable_get('print_pdf_pdf_tool', PRINT_PDF_PDF_TOOL_DEFAULT);
+
+      if (!empty($print_pdf_pdf_tool)) {
+        $tool = explode('|', $print_pdf_pdf_tool);
+
+        if (is_file($tool[1]) && is_readable($tool[1])) {
+          if (basename($tool[1]) == 'mpdf.php') {
+            $version = _print_pdf_mpdf_version($tool[1]);
+
+            $requirements['print_pdf_tool_version'] = array(
+              'title' => $t('Printer, email and PDF versions - PDF generation library'),
+              'value' => $t('mPDF') . ' ' . $version,
+            );
+
+            foreach (array('graph_cache', 'ttfontdata', 'tmp') as $dir) {
+              $directory = dirname($tool[1]) . '/' . $dir;
+              if (!is_dir($directory) || !is_writable($directory)) {
+                $requirements['print_pdf_tool_' . $dir] = array(
+                  'title' => $t('mPDF library'),
+                  'value' => $t('Non-writable permissions'),
+                  'description' => $t('You must change the %libdir permissions to be writable, as %lib requires write-access to that directory.', array('%lib' => 'mPDF', '%libdir' => $directory)),
+                  'severity' => REQUIREMENT_ERROR,
+                );
+              }
+            }
+          }
+        }
+      }
+      break;
+  }
+  return $requirements;
+}
+
+/**
+ * Find out the version of the mpdf library
+ *
+ * @param string $pdf_tool
+ *   Filename of the tool to be analysed.
+ *
+ * @return string
+ *   version number of the mpdf library
+ */
+function _print_pdf_mpdf_version($pdf_tool) {
+  require_once(DRUPAL_ROOT . '/' . $pdf_tool);
+
+  if (defined('mPDF_VERSION')) {
+    return mPDF_VERSION;
+  }
+  else {
+    return 'unknown';
+  }
+}
+
+/**
+ * Implements hook_print_pdf_available_libs_alter().
+ */
+function print_pdf_mpdf_print_pdf_available_libs_alter(&$pdf_tools) {
+  $tools = _print_scan_libs('mpdf', '!^mpdf.php$!');
+
+  foreach ($tools as $tool) {
+    $pdf_tools['print_pdf_mpdf|' . $tool] = 'mPDF (' . dirname($tool) . ')';
+  }
+}

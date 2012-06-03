@@ -1,0 +1,9 @@
+name = Export node to word
+description = A custom module for export node to word document
+core = 7.x
+dependencies[] = print
+dependencies[] = views_bulk_operations
+version = "7.x-netivism"
+
+
+

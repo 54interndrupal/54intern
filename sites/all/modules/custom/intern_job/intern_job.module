@@ -7,17 +7,17 @@
  * To change this template use File | Settings | File Templates.
  */
 //草稿
-define(JOB_SUB_STATUS_DRAFT, 0);
+define("JOB_SUB_STATUS_DRAFT", 0);
 //已暂停
-define(JOB_SUB_STATUS_STOPPED, 1);
+define("JOB_SUB_STATUS_STOPPED", 1);
 //已过期
-define(JOB_SUB_STATUS_EXPIRED, 2);
+define("JOB_SUB_STATUS_EXPIRED", 2);
 //待审核
-define(JOB_SUB_STATUS_REQUIRE_APPROVAL, 3);
+define("JOB_SUB_STATUS_REQUIRE_APPROVAL", 3);
 //发布中
-define(JOB_SUB_STATUS_PUBLISHED, 4);
+define("JOB_SUB_STATUS_PUBLISHED", 4);
 //即将到期
-define(JOB_SUB_STATUS_NEARLY_EXPIRED, 10);
+define("JOB_SUB_STATUS_NEARLY_EXPIRED", 10);
 
 define('JOB_ACTION_REFRESH', '0');
 define('JOB_ACTION_STOP', '1');
