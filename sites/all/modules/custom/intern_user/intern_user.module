@@ -85,7 +85,7 @@ function intern_user_share_status_block() {
 function intern_user_center_showcase_block() {
   global $base_url;
   $output = '
-    <div class="company-center-showcase"><img src="' . $base_url . '/' . drupal_get_path('theme', 'ffintern') . '/css/img/site/showcase-company-center.gif"></div>
+    <div class="company-center-showcase"><img src="' . $base_url . '/' . drupal_get_path('theme', 'ffintern') . '/css/img/site/showcase-user-center.gif"></div>
   ';
   return $output;
 }
