@@ -3818,24 +3818,24 @@ a.button span {
     background-position: left -30px
 }
 /*== page-resume Begin==*/
-body.node-type-resume #header{
+#page.resume-node-view #header{
     height: 70px;
     display: inline-block;
     width: 250px;
     float: left;
     padding-bottom: 20px;
 }
-body.node-type-resume #header .resume{
+#page.resume-node-view #header .resume{
     margin-top: 60px;
 }
-body.node-type-resume #page.resume-node-view #main,
-body.node-type-resume #page.resume-node-view,
-body.node-type-resume #footer,
-body.node-type-resume #footer .section{
+#page.resume-node-view #main,
+#page.resume-node-view,
+#page.resume-node-view #footer,
+#page.resume-node-view#footer .section{
     width: 680px;
 }
 
-body.node-type-resume  #page.resume-node-view #main-bottom{
+#page.resume-node-view #main-bottom{
     margin-top:15px;
     text-align: center;
 }
