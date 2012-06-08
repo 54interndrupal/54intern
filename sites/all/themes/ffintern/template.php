@@ -7,6 +7,16 @@ function ffintern_preprocess_html() {
     'group' => CSS_THEME, 'browsers' =>
     array('IE' => 'IE', '!IE' => FALSE), 'preprocess' => FALSE
   ));
+  // Add conditional CSS for IE8 and below.
+  drupal_add_css(path_to_theme() . '/css/ie9.css', array(
+    'group' => CSS_THEME, 'browsers' =>
+    array('IE' => 'IE 9', '!IE' => FALSE), 'preprocess' => FALSE
+  ));
+  // Add conditional CSS for IE6.
+  drupal_add_css(path_to_theme() . '/css/ie7.css', array(
+    'group' => CSS_THEME, 'browsers' =>
+    array('IE' => 'lt IE 7', '!IE' => FALSE), 'preprocess' => FALSE
+  ));
 }
 
 /**
@@ -248,8 +258,8 @@ function ffintern_preprocess_invite_form(&$variables) {
   $variables['form'] = drupal_render_children($variables['form']);
 }
 
-function ffintern_preprocess_user_profile_form(&$variables){
-    drupal_add_css();
+function ffintern_preprocess_user_profile_form(&$variables) {
+  drupal_add_css();
 }
 
 function ffintern_review_node_form(&$variables) {
@@ -405,11 +415,11 @@ function ffintern_textarea($variables) {
 }
 
 function ffintern_company_center_right_column($nid) {
-  drupal_add_css(drupal_get_path('theme','ffintern').'/layouts/intern_layout/intern_layout.css');
+  drupal_add_css(drupal_get_path('theme', 'ffintern') . '/layouts/intern_layout/intern_layout.css');
   $compnay_info_view = views_embed_view("company_info", 'panel_pane_2', $nid);
   $user_follow_company = views_embed_view("user_follow_company", 'panel_pane_1', $nid);
   $shortcuts_block = module_invoke('intern_company', 'block_view', 'company center shortcuts');
-  $company_reviews_block = views_embed_view('company_reviews_in_blocks', 'block_my_company_reviews',$nid);
+  $company_reviews_block = views_embed_view('company_reviews_in_blocks', 'block_my_company_reviews', $nid);
   $output = '
     <div class="panel-pane pane-views-panes pane-company-info-panel-pane-2">
       <div class="panel-pane-title">
@@ -426,18 +436,18 @@ function ffintern_company_center_right_column($nid) {
     <div class="panel-pane-title">
        <h2 class="pane-title">快速通道</h2>
     </div>
-    <div class="pane-content">'.$shortcuts_block["content"].'
+    <div class="pane-content">' . $shortcuts_block["content"] . '
     </div>
   </div>
   ';
-  $output.=$user_follow_company;
-  $output.='
+  $output .= $user_follow_company;
+  $output .= '
   <div class="panel-separator"></div><div class="panel-pane pane-views pane-company-reviews-in-blocks" >
     <div class="panel-pane-title">
       <h2 class="pane-title">关于我的最新点评</h2>
     </div>
     <div class="pane-content">
-    '.$company_reviews_block.
+    ' . $company_reviews_block .
     '
     </div>
   </div>
@@ -445,17 +455,18 @@ function ffintern_company_center_right_column($nid) {
 
   return $output;
 }
+
 function ffintern_company_center_main_header($nid) {
   _ffintern_add_quicktab_css();
   $showcase_block = module_invoke('intern_company', 'block_view', 'company center showcase');
 
   $output = '
-  <div class="pane-content">'.$showcase_block['content'].
-  '</div>
+  <div class="pane-content">' . $showcase_block['content'] .
+    '</div>
   ';
   $nav_block = module_invoke('intern_company', 'block_view', 'company center tabs');
   $output .= '
-  <div class="pane-content">'.$nav_block['content'].
+  <div class="pane-content">' . $nav_block['content'] .
     '</div>
   ';
   return $output;

@@ -198,3 +198,28 @@ function intern_job_republish_action($node, $context = array()) {
   _intern_job_republish($node);
 }
 
+/**
+ * Implements hook_cron().
+ *
+ * Expire jobs.
+ */
+function intern_job_cron() {
+  $nids = db_query('SELECT fd.entity_id FROM {field_data_field_deadline} fd INNER JOIN {node} n ON fd.entity_id = n.nid  WHERE n.status=1 AND fd.field_deadline_value <= :request_time AND fd.bundle = :entity_type', array(':request_time' => REQUEST_TIME, ':entity_type' => 'job'))->fetchCol();
+  $nids_srt = implode(',',$nids);
+  watchdog("cron",$nids_srt);
+  if (!empty($nids)) {
+    db_update('field_data_field_job_sub_status')
+      ->fields(array('field_job_sub_status_value' => 2))
+      ->condition('entity_id', $nids, 'IN')
+      ->execute();
+    db_update('field_revision_field_job_sub_status')
+      ->fields(array('field_job_sub_status_value' => 2))
+      ->condition('entity_id', $nids, 'IN')
+      ->execute();
+    db_update('node')
+      ->fields(array('status' => 0))
+      ->condition('nid', $nids, 'IN')
+      ->execute();
+  }
+}
+

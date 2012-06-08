@@ -41,7 +41,7 @@ label{
 }
 
 a:link {
-    color: #4F832F;
+    color: #2A623A;
     text-decoration: none;
 }
 
@@ -126,6 +126,7 @@ input {
 
 }
 input.form-text{
+    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
     padding: 5px;
 }
 input.form-text.form-autocomplete{
@@ -257,7 +258,7 @@ form.comment-form input.form-submit{
 /*==tabs==*/
 .quicktabs-wrapper .more-link {
     float: right;
-    margin-top: -56px;
+    margin-top: -48px;
     padding-right: 10px;
 }
 
@@ -470,6 +471,7 @@ select.form-select{
 textarea.hint,
 input.hint {
     color: rgb(178, 178, 178);
+    font-weight: bold;
 }
 div.form-item div.form-radios{
     display: inline-block;
@@ -1882,7 +1884,7 @@ div.pane-intern-company-company-center-shortcuts span.inactive{
 
 /*==block_company_top_reviews==*/
 .pane-company-reviews-in-blocks .panel-pane-title {
-    background: url(img/site/bt_gsdp.gif) no-repeat 2px 2px;
+    background: url(img/site/bt_gsdp.gif) no-repeat 2px 5px;
 }
 
 .view-display-id-block_company_top_reviews .views-field-nothing {
@@ -1913,15 +1915,14 @@ div.pane-intern-company-company-center-shortcuts span.inactive{
 .pane-company-reviews-in-blocks .company-comment {
     display: inline-block;
     height: 40px;
-    padding: 5px 0 0 2px;
+    padding: 5px 0 0 6px;
     background-color: RGB(240, 251, 230);
-    width: 212px;
+    width: 208px;
 }
 .pane-company-reviews-in-blocks .company-comment span.title{
     display: inline-block;
     width: 140px;
 }
-
 
 /**pane-terms-in-blocks**/
 div.pane-terms-in-blocks{
@@ -2687,9 +2688,9 @@ body.front #temp-showcase {
 }
 
 #temp-login input.form-text {
-    padding-top: 8px;
     width: 206px;
     height: 20px;
+    padding: 10px 5px 4px 5px;
 }
 
 .user-login-content {
@@ -2722,7 +2723,7 @@ body.front #temp-showcase {
     border: none;
     text-align: center;
 }
-
+/*==user login Begin==*/
 .user-login-content input.form-submit {
     width: 112px;
     height: 31px;
@@ -2737,9 +2738,9 @@ body.front #temp-showcase {
 }
 
 .user-login-content .zhuce-title {
+    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
     font-size: 16px;
     padding-top: 10px;
-
 }
 
 .user-login-content .qiehuanrukou {
@@ -2759,6 +2760,7 @@ body.front #temp-showcase {
 }
 
 #weibo-login-text {
+    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
     width: 220px;
     font-size: 14px;
     color: rgb(102, 102, 102);
@@ -3012,20 +3014,26 @@ div.statuses-textarea-wrapper textarea{
 
 #content div.view-id-company_reviews_in_blocks .views-row  div.views-field-timestamp {
     width: 85%;
-    float: left;
+    display: inline-block;
 }
-
-#content div.view-id-company_reviews_in_blocks .views-row  div.views-field-gid,
-#content div.view-id-company_reviews_in_blocks .views-row  div.views-field-nid {
+#content div.view-id-company_reviews_in_blocks .views-row  div.views-field-nid{
     float: right;
     width: 70px;
+    display: inline-block;
+    margin-top: 7px;
+}
+#content div.view-id-company_reviews_in_blocks .views-row  div.views-field-gid
+ {
+    float: right;
+    width: 70px;
+    display: inline-block;
 }
 
 #content div.view-id-company_reviews_in_blocks div.add-review {
     clear: both;
     background: url(img/site/bt_add_review.png) no-repeat;
     padding-left: 30px;
-    margin: -50px 15px 0 0;
+    margin: -43px 15px 0 0;
     float: right;
 
 }

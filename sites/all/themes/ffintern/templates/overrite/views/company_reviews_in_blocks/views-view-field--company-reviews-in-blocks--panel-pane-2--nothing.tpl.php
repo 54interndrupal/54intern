@@ -24,11 +24,13 @@
 ?>
 
 <?php
-$str = explode('^', trim($output));
-$status = $str[1];
-$sub_status = $str[0];
-
-if($status=='已发表'){
-print '发布中';}else{
-  print '已暂停';
-} ?>
+if (drupal_strlen($output) > 120) {
+  $body_sub_content = drupal_substr($output, 0, 120);
+  $body_sub_content = rtrim(preg_replace('/(?:<(?!.+>)|&(?!.+;)).*$/us', '', $body_sub_content)) . '...';
+?>
+  <div class="sub-content" style="display: block"><?php print $body_sub_content?></div>
+  <div class="full-content" style="display: none"><?php print $output?></div>
+  <div class="views-field views-field-nid"> <span class="field-content"><a href="#" class="toggleReviewDetail">查看详细>></a></span>  </div>
+<?php
+} else{print $output;}
+?>

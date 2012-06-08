@@ -158,9 +158,11 @@
       print flag_create_link('apply', $nid);
     }
     ?>
+    <?php if(!user_is_anonymous()){?>
     <span class="resume">
-    <?php print l('填写简历',$_SESSION['resume_path']) ?>
+    <?php print l('填写简历',$_SESSION['resume_path']);?>
       </span>
+      <?php }?>
     </div>
     <?php $source_url = trim($field_source_url[0]['value']);?>
     <?php if(!empty($source_url)){?>

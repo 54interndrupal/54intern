@@ -353,5 +353,11 @@ function intern_company_form_node_form_alter(&$form, $form_state){
 
 }
 
+function intern_company_get_company_review_count($company_id){
+  $sql = "select count(etid) as count from {og_membership} og_ms,{node} nd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.type='review' ";
+  $review_count = db_query($sql,array(':gid' => $company_id))->fetchField();
+  return $review_count;
+}
+
 
 
