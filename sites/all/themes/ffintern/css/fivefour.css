@@ -131,6 +131,10 @@ input.form-text{
 }
 input.form-text.form-autocomplete{
    padding: 5px;
+
+}
+HTML.js input.form-autocomplete{
+    background-position: 100% 10px;
 }
 input.form-button{
     padding: 8px 25px 8px 25px;
