@@ -161,6 +161,7 @@ select.form-select{
 }
 input.form-submit{
     padding: 0;
+    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
 }
 .hierarchical-select-wrapper{
     display: inline-block;
@@ -173,7 +174,6 @@ textarea {
     overflow-y: auto;
     border: 2px solid #4D963B;
 }
-
 div.messages,
 div.notice,
 div.error {
@@ -524,7 +524,7 @@ form.node-review-form div.form-actions input.form-submit {
     border: 1px;
 }
 /*== node-resume-form==*/
-form.node-resume-form div.form-item{
+#content form.node-resume-form div.form-item{
     padding: 5px 0 5px 0;
     height: 30px;
 }
@@ -1334,7 +1334,7 @@ div.reg-showcase span.s-4{
    padding-left: 18px;
 }
 #userreg-company-register-form select.form-select{
-    width: 216px;
+    width: 100px;
     height: 30px;
 }
 #userreg-company-register-form input.form-text{

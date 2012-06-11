@@ -362,6 +362,11 @@ function tagclouds_display_term_link_weight($name, $tid, $weight, $description) 
     $uri['options']['attributes']['class'][] = 'level' . $weight;
     $uri['options']['attributes']['rel'] = 'tag';
     $uri['options']['attributes']['title'] = $description;
+
+    if($term->vid == 1){
+      $uri['path'] = 'wikis/all/'.$term->tid;
+    }
+
     return l($name, $uri['path'], $uri['options']) . " \n";
   }
 }

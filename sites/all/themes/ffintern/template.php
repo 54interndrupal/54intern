@@ -293,12 +293,23 @@ function ffintern_menu_link__main_menu(array $variables) {
   if ($element['#below']) {
     $sub_menu = drupal_render($element['#below']);
   }
+  $params = explode('/', request_uri());
+//  print_r($params);
+  $attributes = array();
+  if($element['#href']=='user'&& arg(0) == $element['#href']){
+   $attributes['class'][] = 'active';
+  }else if($element['#href']=='companycenter'&& arg(0) == $element['#href']){
+    $attributes['class'][] = 'active';
+  }else if($element['#href']=='companys'&& $params[2] == 'company'){
+    $attributes['class'][] = 'active';
+  } else if($element['#href']=='jobs'&& $params[2] == 'job'){
+    $attributes['class'][] = 'active';
+  }
 
-  $output = l('<span class=menu-' . $element['#original_link']['mlid'] . '></span>', $element['#href'], array('html' => TRUE,));
+  $output = l('<span class=menu-' . $element['#original_link']['mlid'] . '></span>', $element['#href'], array('html' => TRUE,'attributes'=>$attributes));
   if ($element['#href'] != '<front>') {
     $output = '<span class="menu-split"></span>' . $output;
   }
-
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 

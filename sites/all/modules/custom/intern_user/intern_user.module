@@ -148,3 +148,20 @@ function intern_user_get_age($dob){
   return "";
 }
 
+function intern_user_form_node_form_alter(&$form, $form_state) {
+  $type = $form['#node']->type;
+  Global $user;
+
+  if ($type == 'resume' && user_is_logged_in()) {
+    drupal_add_css(path_to_theme().'/layouts/intern_layout/intern_layout.css');
+    drupal_add_js(path_to_theme().'/js/maintain_resume.js');
+    $form['actions']['submit']['#submit'][] = 'intern_user_resume_form_post_submit';
+//    print_r($form);
+  }
+}
+
+function intern_user_resume_form_post_submit($form, &$form_state) {
+    $nid = $form_state['nid'];
+    $form_state['redirect'] = 'node/' . $nid . '/edit';
+}
+

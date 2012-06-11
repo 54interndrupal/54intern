@@ -75,43 +75,17 @@
 
   <div id="sidebar-second" class="column sidebar">
     <div class="section">
+      <div class="panel-pane pane-views-panes pane-usercenter-user-info-panel-pane-1" >
+      <div class="panel-pane-title">
+        <h2 class="pane-title">欢迎来到实习圈</h2>
+      </div>
       <?php  print(views_embed_view("usercenter_user_info", 'panel_pane_1', $user->uid))?>
+      </div>
 
+      <?php $follow_block = views_embed_view('usercenter_user_followed', 'panel_pane_1',  $user->uid);?>
+      <?php print $follow_block?>
     </div>
   </div>
-
-  <script type="text/javascript">
-    (function ($) {
-      $(document).ready(function () {
-        $("#user-basic-info-tab").click(function () {
-          $("#user-basic-info-tab").addClass("active");
-          $("#user-basic-info").show();
-          $("#user-attached-resume-tab").removeClass("active");
-          $("#user-attached-resume").hide();
-          $("#user-apply-letter-tab").removeClass("active");
-          $("#user-apply-letter").hide();
-        });
-        $("#user-attached-resume-tab").click(function () {
-          $("#user-attached-resume-tab").addClass("active");
-          $("#user-attached-resume").show();
-          $("#user-basic-info-tab").removeClass("active");
-          $("#user-basic-info").hide();
-          $("#user-apply-letter-tab").removeClass("active");
-          $("#user-apply-letter").hide();
-        });
-        $("#user-apply-letter-tab").click(function () {
-          $("#user-apply-letter-tab").addClass("active");
-          $("#user-apply-letter").show();
-          $("#user-attached-resume-tab").removeClass("active");
-          $("#user-attached-resume").hide();
-          $("#user-basic-info-tab").removeClass("active");
-          $("#user-basic-info").hide();
-        });
-
-      });
-    })(jQuery);
-
-  </script>
 
 
 

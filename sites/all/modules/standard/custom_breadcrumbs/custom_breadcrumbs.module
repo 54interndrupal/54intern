@@ -810,7 +810,10 @@ function custom_breadcrumbs_set_menu_breadcrumb() {
   }
   $menu_links = $menu_id_cache[$ckey];
   $use_menus = variable_get('custom_breadcrumbs_menu_list', array());
+  print_r($use_menus);
+
   foreach ($menu_links as $mlid => $menu_name) {
+    print($menu_name);
     if (in_array($menu_name, $use_menus)) {
       menu_set_active_menu_names($menu_name);
       $breadcrumb = menu_get_active_breadcrumb();

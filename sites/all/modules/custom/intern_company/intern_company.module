@@ -138,11 +138,11 @@ function intern_company_brief_today_block(){
   $review_count_this_week = db_query($sql,array(':gid' => $gid))->fetchField();
   $output ='<div class="c-10">';
   $output .= '<div>- 您共发布职位 <span class="hot">'.$total_job_count.'</span>个，其中有<span class="hot"> '.$published_job_count.'</span>个正在发布中，有 '.$near_deadline_job_count.' 个职位即将到期 ';
-  $output.= l('[职位管理]',url('/companycenter/'.$gid.'/job')).'</div>';
+  $output.= '<a href="'.url('companycenter/'.$gid.'/jobs').'?sub_status=4">[职位管理]</a></div>';
   $output.= '<div>- 您最近一周收到<span class="hot"> '.$received_resume_count.'</span>份简历 ';
-  $output .= l('[简历管理]',url('/companycenter/'.$gid.'/resumes')).'</div>';
+  $output .=  '<a href="'.url('companycenter/'.$gid.'/resumes').'">[简历管理]</a></div>';
   $output .= '<div>- 企业点评台有关于您公司<span class="hot"> '.$total_review_count.'</span>条点评，最近一周有<span class="hot"> '.$review_count_this_week.'</span>条点评 ';
-  $output .= l('[@企业点评台]','#quicktabs-tab-company_center_home_tabs-1').'</div>';
+  $output .= '<a href="#quicktabs-tabpage-company_center_home_tabs-1" onclick="javascript:document.getElementById(\''.'quicktabs-tab-company_center_home_tabs-1'.'\').click();">[@企业点评台]</a></div>';
   $output .= '</div>';
   return $output;
 }
@@ -193,6 +193,7 @@ function intern_company_center_tabs_block() {
   //企业用户设置
   if(arg(0)!='companycenter'){
     $gid = intern_user_get_company_id($user->uid);
+//    print($gid.','.arg(1));
   }
 
   $output = "";
@@ -201,9 +202,9 @@ function intern_company_center_tabs_block() {
 //    $output .='<div class="item-list"> ';
     $output .= '<ul class="quicktabs-tabs quicktabs-style-intern">';
     $output .= '<li class="'.(arg(2)==''?'active':'').'">'.  l(t('首页'),'companycenter/'.$gid, array('html' => TRUE,)). '</li>';
-    $output .= '<li class="'.((arg(2)=='jobs'||(arg(1)=='add'&&arg(2)=='job'))?'active':'').'"><a href="'.$base_path.'companycenter/'.$gid.'/jobs?sub_status=4">'.t('职位管理').'</a></li>';
+    $output .= '<li class="'.((arg(2)=='jobs'||(arg(1)=='add'&&arg(2)=='job')||(arg(0)=='node'&&arg(2)=='edit'&&arg(1)!=$gid))?'active':'').'"><a href="'.$base_path.'companycenter/'.$gid.'/jobs?sub_status=4">'.t('职位管理').'</a></li>';
     $output .= '<li class="'.(arg(2)=='resumes'?'active':'').'">'.  l(t('简历管理'),'companycenter/'.$gid.'/resumes', array('html' => TRUE,)). '</li>';
-    $output .= '<li class="'.((arg(2)=='edit'&&($node->type!='job'))?'active':'').'">'.  l(t('设置中心'),'node/'.$gid.'/edit', array('html' => TRUE,)). '</li>';
+    $output .= '<li class="'.(((arg(2)=='edit'&& $gid == arg(1))||arg(0)=='user')?'active':'').'">'.  l(t('设置中心'),'node/'.$gid.'/edit', array('html' => TRUE,)). '</li>';
 
     $output .= '</ul>';
   }
@@ -349,8 +350,14 @@ function intern_company_form_node_form_alter(&$form, $form_state){
     hide($form["field_license"]) ;
     $form["title"]["#type"] = "hidden";
     hide($form["actions"]["delete"]);
-  }
 
+    $form['actions']['submit']['#submit'][] = 'intern_company_company_form_post_submit';
+  }
+}
+
+function intern_company_company_form_post_submit($form, &$form_state) {
+  $nid = $form_state['nid'];
+  $form_state['redirect'] = 'node/' . $nid . '/edit';
 }
 
 function intern_company_get_company_review_count($company_id){

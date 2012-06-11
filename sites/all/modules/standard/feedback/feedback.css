@@ -1,0 +1,116 @@
+
+/**
+ * Styles for the feedback form.
+ */
+/* Reset commonly set styles */
+#block-feedback-form,
+#block-feedback-form .feedback-link,
+#block-feedback-form .feedback-link *,
+#block-feedback-form .content,
+#block-feedback-form form {
+  float: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  color: inherit;
+}
+
+#block-feedback-form {
+  display: none;
+  position: fixed;
+  top: 40%;
+  right: 20px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+#block-feedback-form h2{
+    background-color:#4C973C;
+    height: 25px;
+    color: white;
+    padding: 0px 0px 0px 5px;
+}
+/* IE6 seems to be unable to handle fixed */
+* html #block-feedback-form {
+  position: absolute;
+}
+#block-feedback-form .feedback-link {
+  padding: 0.3em 0;
+  text-align: right;
+  font-size: 12px;
+  font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+  font-weight: bold;
+}
+#block-feedback-form .feedback-link.closed{
+    width: 342px; /* 300 + 42 */
+    height: 96px;
+    color: #FFF;
+    cursor:pointer;
+    overflow:hidden;
+    position: fixed;
+    display: block;
+    z-index: 100000;
+    margin-left: -13px;
+    text-decoration: none !important;
+    background-color: #4C973C;
+    background-repeat: no-repeat;
+    /* @todo Store this image locally, and add 'Suggestion' image.  Make image localizable. */
+    background-image: url(images/feedback_trans_tab.png);
+    /* Some IE6 stuff. */
+    _position: absolute;
+    _background-image: url(https://s3.amazonaws.com/getsatisfaction.com/feedback/feedback_tab_ie6.png);
+}
+#block-feedback-form .feedback-link * {
+  display: inline;
+  font-size: 12px;
+}
+#block-feedback-form form {
+  border: 2px solid #4C973C;
+  padding: 6px;
+  background-color: #fff;
+  opacity: 1;
+  max-width: 400px;
+}
+/* IE6 doesn't support max-width. */
+* html #block-feedback-form form {
+  width: 400px;
+}
+#block-feedback-form .feedback-help {
+  margin: 0 0 0.5em;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #666666;
+}
+#block-feedback-form .feedback-message {
+  height: 15ex;
+  border: 1px solid #ccc;
+  margin-top: 2px;
+  padding: 5px;
+}
+#block-feedback-form .ajax-progress .throbber {
+  background: transparent url(images/throbber.gif) no-repeat left center;
+  height: 16px;
+  width: 16px;
+}
+
+#block-feedback-form  input.form-submit{
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    width: 86px;
+    height: 30px;
+    background-color: #4E963C;
+    border: 1px;
+    cursor: pointer;
+}
+
+/**
+ * Styles for existing feedback messages.
+ */
+#block-feedback-form .feedback-submitted {
+  margin-top: 0.2em;
+  font-size: 10px;
+}
+
