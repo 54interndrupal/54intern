@@ -355,7 +355,7 @@ table {
 /*==post-item-2==*/
 .post-item-2{
     display: inline-block;
-    width: 548px;
+    width: 546px;
     min-height: 112px;
     margin-top: -5px;
     padding-left: 8px;
@@ -995,13 +995,17 @@ body div.node-job div.content{
 body div.node-job div.content{
     line-height: 1.8;
 }
+body div.node-job div.d-1{
+    background-color: #F1F5E6;
+}
 body div.node-job div.content h2{
+    background-color: #F1F5E6;
     font-size: 24px;
     font-weight: normal;
     margin:0 -22px 24px -22px;
     padding: 35px 0 18px 22px;
     height: 45px;
-    background-color: #F1F5E6;
+
 }
 body div.node-job div.content div.info{
     width: 100%;
@@ -1052,11 +1056,14 @@ body div.node-job div.content div.ops{
     text-align: center;
     margin-bottom: 150px;
 }
+body div.node-job div.content div.ops span {
+    display:inline-block;
+}
 body div.node-job div.content div.ops span.flag-collect a.flag-action{
     background: url(img/site/bt_addfor_on.png) no-repeat;
     width: 181px;
     height: 39px;
-    display: inline-block;
+    display: block;
     text-indent: -999px;
     margin-right: 10px;
 }
@@ -1064,7 +1071,7 @@ body div.node-job div.content div.ops span.flag-collect a.unflag-action{
     background: url(img/site/bt_addfor_off.png) no-repeat;
     width: 181px;
     height: 39px;
-    display: inline-block;
+    display: block;
     text-indent: -999px;
     margin-right: 10px;
 }
@@ -1072,7 +1079,7 @@ body div.node-job div.content div.ops span.flag-apply a{
     background: url(img/site/bt_apply_job.gif) no-repeat;
     width: 181px;
     height: 39px;
-    display: inline-block;
+    display: block;
     text-indent: -999px;
     margin-right: 10px;
 }
@@ -1080,7 +1087,7 @@ body div.node-job div.content div.ops span.flag-apply span.unflag-action{
     background: url(img/site/bt_apply_off.png) no-repeat;
     width: 181px;
     height: 39px;
-    display: inline-block;
+    display: block;
     text-indent: -999px;
     margin-right: 10px;
 }
@@ -1089,7 +1096,7 @@ body div.node-job div.content div.ops span.resume a{
     background: url(img/site/bt_write_resume.gif) no-repeat;
     width: 181px;
     height: 39px;
-    display: inline-block;
+    display: block;
     text-indent: -9999px;
     margin-right: 10px;
 }
@@ -1654,6 +1661,19 @@ div.view-display-id-block_my_company_reviews div.views-row,
 div.pane-intern-company-company-reviews div.views-row{
     background-color: #F1F5E6;
     padding: 10px;
+    line-height: 1.8;
+}
+
+/*==view-id-company_reviews_in_blocks view-display-id-block_1 最新企业实习点评==*/
+div.view-id-company_reviews_in_blocks.view-display-id-block_1 .views-row{
+    background-color: #F9FDED;
+    padding: 10px;
+    line-height: 1.8;
+}
+div.view-id-company_reviews_in_blocks.view-display-id-block_1 .views-row .d-1{
+    border-bottom: 1px dashed #CCCCCC;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 /*==pane-right-title-link-panel-pane-5 热门实习职位==*/
@@ -2826,18 +2846,30 @@ div.company-list {
 div.group-list .views-row,
 div.company-list .views-row {
     position: relative;
-    padding: 5px 0 15px 160px;
-    min-height: 110px;
+    padding: 10px 0 0 160px;
+    min-height: 150px;
     _height: 135px;
+    border-bottom: 1px dashed #CCCCCC;
+    margin: 5px 0 0 0;
+}
+
+body.not-logged-in div.company-list .views-row{
+    min-height: 240px;
+}
+body.logged-in div.company-list .views-row{
+    min-height: 265px;
 }
 
 div.company-list .views-row .company-info {
-    margin-left: -155px;
-    margin-top: 158px;
+    position: absolute;
+    left: 0px;
+    margin: 150px 0 0 0;
+    display: block;
+    padding-bottom: 5px;
 }
 
 div.company-list div.company-content {
-    margin-top: -188px;
+
 }
 
 div.company-list div.company-content .body-field a {
@@ -2851,6 +2883,16 @@ div.company-list .views-row .company-info .field .field-items {
 div.company-list .views-row .company-info .field .field-items a {
     color: #666666;
     font-weight: bold;
+}
+div.company-list .views-row .company-info .field-name-jobs{
+    margin-top: 10px;
+}
+div.company-list .views-row .company-info .field-name-jobs a{
+    background: url(img/site/bt_company_jobs.gif) no-repeat;
+    padding-left: 25px;
+    color: #1357A0;
+    font-weight: normal;
+
 }
 
 #hot-company {
@@ -2878,7 +2920,6 @@ div.company-list .views-row {
 div.group-list .views-row .field-name-pic,
 div.company-list .views-row .field-name-pic {
     position: absolute;
-    top: 20px;
     left: 0;
     border: 1px solid #e0e0e0;
     padding-top: 0;

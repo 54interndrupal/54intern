@@ -23,7 +23,9 @@
  * @ingroup views_templates
  */
 ?>
-
+<?php
+$company_vid = (string) $fields['vid']->content;
+?>
 <div class="field field-name-pic">
   <div class="field-items">
     <?php print $fields['field_logo']->content ?>
@@ -40,12 +42,25 @@
       关注人数： <?php print $fields['count']->content ?>人
     </div>
   </div>
+  <div class="field field-name-ops">
+    <div class="field-items">
+      <?php print $fields['ops']->content ?>
+    </div>
+  </div>
+  <div class="field field-name-jobs">
+    <?php if (intern_company_get_company_job_count($company_vid) > 0) { ?>
+    <a href="<?php print url("company/" . $company_vid); ?>?requestTab=jobs">实习机会</a>
+    <?php }
+  else { ?>
+    <span class="c-1"> 未发布实习机会</span>
+    <?php }?>
+  </div>
 </div>
 
-<div class='company-content'><span class='c-9'>企业简介:</span> <span class="c-1"><?php print $fields['body']->content ?> </span>
-<?php
-$company_vid = (string) $fields['vid']->content;
-print views_embed_view('company_reviews_in_blocks', 'panel_pane_1', $company_vid);?>  </div>
+<div class='company-content'><span class='c-9'>企业简介:</span> <span
+  class="c-1"><?php print $fields['body']->content ?> </span>
+  <?php
+  print views_embed_view('company_reviews_in_blocks', 'panel_pane_1', $company_vid);?>  </div>
 <?php
 
 /*
@@ -55,7 +70,7 @@ array(
 'query' => array('token' => flag_get_token($fields['nid']->content))
 )); 
 */
-  ?>
+?>
 
 <?php
 global $user;
@@ -63,7 +78,7 @@ global $user;
 if (in_array(4, array_keys($user->roles))) {
 }
 else {
- // print $fields['ops']->content;
+  // print $fields['ops']->content;
 }
 ?>
 

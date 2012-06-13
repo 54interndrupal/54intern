@@ -145,7 +145,7 @@
       <span class="b" style="display:block;margin-bottom: 6px">职位简介</span>
       <?php print $body[0]['safe_value']; ?>
     </div>
-
+    <?php if(!user_is_anonymous()&&!intern_user_is_company_user()){?>
     <div class="ops">
     <?php print flag_create_link('collect', $nid); ?>
     <?php
@@ -158,12 +158,12 @@
       print flag_create_link('apply', $nid);
     }
     ?>
-    <?php if(!user_is_anonymous()){?>
+
     <span class="resume">
     <?php print l('填写简历',$_SESSION['resume_path']);?>
       </span>
-      <?php }?>
     </div>
+    <?php }?>
     <?php $source_url = trim($field_source_url[0]['value']);?>
     <?php if(!empty($source_url)){?>
      <span class="source-url">

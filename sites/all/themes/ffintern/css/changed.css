@@ -18,23 +18,6 @@ padding-left:125px;
 #views-form-companycenter-resumes-panel-pane-1{
 clear: both;
 }
-
-#job-info span.flag-wrapper,
-#group-info span.flag-wrapper,
-#releated-company span.flag-wrapper,
-div.company-list span.flag-wrapper,
-div.job-list span.flag-wrapper,
-div.group-list span.flag-wrapper,
-div.resume-list  span.flag-wrapper,
-#follow-company span.flag-wrapper{
-    background: url("img/s.png") no-repeat scroll -480px -170px transparent;
-    height: 26px;
-    line-height: 1.2;
-    padding-left: 25px;
-    position: absolute;
-    right: 1px;
-    top: 35px;
-}
 div.resume-list .views-row {
     overflow: hidden;
     padding: 30px 0;

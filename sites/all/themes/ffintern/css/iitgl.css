@@ -942,7 +942,7 @@ div.pane-intern-company-company-info span.flag-bookmarks{
 
 /* 关注企业flag link */
 body.node-type-job  span.flag-bookmarks a.unflag-action,
-body.node-type-company  span.flag-bookmarks a.unflag-action {
+body.node-type-company  span.flag-bookmarks a.unflag-action{
     background: url("img/site/bt_unfollow.gif") no-repeat ;
     height: 29px;
     display: block;
@@ -950,15 +950,31 @@ body.node-type-company  span.flag-bookmarks a.unflag-action {
     text-indent: -999px;
     float: right;
 }
+div.company-list a.unflag-action{
+    background: url("img/site/bt_unfollow.gif") no-repeat ;
+    height: 29px;
+    display: block;
+    width: 115px;
+    text-indent: -999px;
+    margin-top: 3px;
+}
 /* 关注企业flag link */
 body.node-type-job  span.flag-bookmarks a.flag-action,
-body.node-type-company  span.flag-bookmarks a.flag-action {
+body.node-type-company  span.flag-bookmarks a.flag-action{
     background: url("img/site/bt_follow.gif") no-repeat ;
     height: 29px;
     display:inline-block;
     text-indent: -999px;
     width: 78px;
     float: right;
+}
+div.company-list a.flag-action{
+    background: url("img/site/bt_follow.gif") no-repeat ;
+    height: 29px;
+    display:inline-block;
+    text-indent: -999px;
+    width: 78px;
+    margin-top: 3px;
 }
 
 /***** 企业点评tab *****/
