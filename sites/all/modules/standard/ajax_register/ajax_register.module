@@ -271,14 +271,12 @@ function ajax_register_user_login_ajax_callback($form, $form_state) {
  * Ajax callback for USER PASS form.
  */
 function ajax_register_user_pass_ajax_callback($form, $form_state) {
-
   if (!form_get_errors()) {
     // After successfull password restore replace form with status messages.
     $commands = array();
     $commands[] = ajax_command_replace('#ajax-register-user-pass-wrapper', theme('status_messages'));
     return array('#type' => 'ajax', '#commands' => $commands);
   }
-
   // Reload form if it didn't pass validation.
   return $form;
 }
@@ -343,12 +341,14 @@ function _ajax_register_include_modal() {
     ctools_include('ajax');
     ctools_modal_add_js();
 
+    $popup_width = 850;
+
     // Create our own javascript that will be used to theme a modal.
     $ajax_register_style = array(
       'ctools-ajax-register-style' => array(
         'modalSize' => array(
           'type' => 'fixed',
-          'width' => (int) trim(variable_get('ajax_register_modal_width', 850)),
+          'width' => (int) trim(variable_get('ajax_register_modal_width', $popup_width)),
           'height' => 140,
           'contentRight' => 30,
           'contentBottom' => 0,
@@ -364,6 +364,27 @@ function _ajax_register_include_modal() {
       ),
     );
     drupal_add_js($ajax_register_style, 'setting');
+
+    $ajax_pass_style = array(
+      'ctools-ajax-pass-style' => array(
+        'modalSize' => array(
+          'type' => 'fixed',
+          'width' => 550,
+          'height' => 140,
+          'contentRight' => 30,
+          'contentBottom' => 0,
+        ),
+        'modalOptions' => array(
+          'opacity' => (float) variable_get('ajax_register_modal_background_opacity', '0.8'),
+          'background-color' => '#' . variable_get('ajax_register_modal_background_color', '000000'),
+        ),
+        'closeText' => '',
+        'throbber' => theme('image', array('path' => ctools_image_path('ajax-loader.gif', 'ajax_register'))),
+        'animation' => 'fadeIn',
+        'animationSpeed' => 'fast',
+      ),
+    );
+    drupal_add_js($ajax_pass_style, 'setting');
 
     // Add module css and js.
     ctools_add_css('ajax-register', 'ajax_register');

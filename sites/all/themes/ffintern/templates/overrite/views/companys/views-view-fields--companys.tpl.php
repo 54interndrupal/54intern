@@ -58,7 +58,7 @@ $company_vid = (string) $fields['vid']->content;
 </div>
 
 <div class='company-content'><span class='c-9'>企业简介:</span> <span
-  class="c-1"><?php print $fields['body']->content ?> </span>
+  class="c-10"><?php print $fields['body']->content ?> </span>
   <?php
   print views_embed_view('company_reviews_in_blocks', 'panel_pane_1', $company_vid);?>  </div>
 <?php

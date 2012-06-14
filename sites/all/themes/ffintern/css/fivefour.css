@@ -201,9 +201,15 @@ div.error {
     margin: 0;
 }
 
-span.flag-like{
-    background: url(img/site/bt_like_2.gif) no-repeat 3px 3px;
-    padding: 5px 2px 4px 27px;
+span.flag-like a.flag-action{
+    background: url(img/site/bt_like_2.gif) no-repeat 7px 3px;
+    padding: 5px 7px 4px 31px;
+    border:1px solid #A7CD81;
+    margin-right: 5px;
+}
+span.flag-like a.unflag-action{
+    background: url(img/site/bt_unlike_2.gif) no-repeat 7px 3px;
+    padding: 5px 7px 4px 31px;
     border:1px solid #A7CD81;
     margin-right: 5px;
 }
@@ -617,7 +623,7 @@ form.node-resume-form div.form-actions input.form-submit{
 
 /*==/font styles==*/
 .c-1 {
-    color: #858585;
+    color: #666666;
 }
 
 .c-2 {
@@ -640,7 +646,8 @@ a.c-6,
 .c-6 {
     color: #1357A2;
 }
-
+a.c-7:visited,
+a.c-7:link,
 a.c-7,
 .c-7 {
     color: #86B5D7;
@@ -653,8 +660,6 @@ a.c-7,
 .c-9 {
     color: #336327;
 }
-.c-10 a:visited,
-.c-10 a:link,
 .c-10 {
     color: #666666;
 }
@@ -1192,7 +1197,7 @@ body div.node-article div.content .field-type-image{
     float: none;
 }
 body div.node-article div.tags div.field-items{
-    width: 350px;
+
 }
 body div.node-article div.tags div.field-label{
     margin-right: 5px;
@@ -1203,6 +1208,8 @@ body div.node-article div.tags div.field-items div.field-item{
     float: left;
     margin-right: 5px;
 }
+
+
 
 /*==pane-similar-entries==*/
 div.pane-similar-entries div.panel-pane-title{
@@ -1472,6 +1479,36 @@ div.user-reg-popup div.other-login span.qqxl{
     height: 20px;
 }
 
+/*== user-reg End ==*/
+
+/*== user-pass Begin ==*/
+div.user-pass-popup{
+    font-family: "Microsoft Yahei";
+    font-size: 14px;
+    color: #666666;
+    padding: 0 15px 20px 15px;
+}
+div.user-pass-popup span.s-1{
+    display: block;
+    color: #4D963B;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+div.user-pass-popup span.s-2{
+    margin-bottom: 10px;
+}
+div.user-pass-popup input.form-text{
+    width: 300px;
+}
+div.user-pass-popup input.form-submit{
+    padding: 8px 25px 8px 25px;
+    background: #4E963C;
+    color: #FFF;
+    border: 0;
+    font: bold 15px;
+    cursor: pointer;
+}
 /*== user-reg End ==*/
 
 /*== user-login Begin ==*/

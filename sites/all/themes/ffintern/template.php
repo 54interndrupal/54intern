@@ -134,6 +134,11 @@ function ffintern_theme() {
     'intern_company_user_login_form' => array(
       'render element' => 'form',
     ),
+    'user_pass' => array(
+      'template' => 'user-pass-form',
+      'render element' => 'form',
+      'path' => drupal_get_path('theme', 'ffintern') . '/templates/overrite/form',
+    ),
     // other theme registration code...
   );
 }

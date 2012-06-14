@@ -110,7 +110,7 @@
   </div>
 
   <div style="margin-top: 15px">
-     <div class="tags" style="width: 400px;float: left;">
+     <div class="tags" style="float: left;">
        <?php print(render($content['field_tags'])); ?>
      </div>
 
@@ -124,6 +124,7 @@
       if ($teaser || !empty($content['comments']['comment_form'])) {
         unset($content['links']['comment']['#links']['comment-add']);
       }
+//      print_r($content['links']);
       // Only display the wrapper div if there are links.
       $links = render($content['links']);
       if ($links):
@@ -136,8 +137,6 @@
     </div>
   </div>
 </div>
-
-
-  <?php print render($content['comments']); ?>
+<?php print render($content['comments']); ?>
 
 
