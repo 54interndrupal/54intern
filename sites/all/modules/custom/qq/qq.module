@@ -153,7 +153,7 @@ function qq_form_validate($form, &$form_state) {
     form_set_error('mail', $error);
   }
   elseif ((bool) db_select('users')->fields('users', array('uid'))->condition('uid', $user->uid, '<>')->condition('mail', db_like($form_state['values']['mail']), 'LIKE')->range(0, 1)->execute()->fetchField()) {
-      form_set_error('mail', t('The e-mail address %email is already registered. <a href="@password">Have you forgotten your password?</a>', array('%email' => $form_state['values']['mail'], '@password' => url('user/password'))));
+      form_set_error('mail', t('The e-mail address %email is already registered. <a href="@password">Have you forgotten your password?</a>', array('%email' => $form_state['values']['mail'], '@password' => url('ajax_register/password/nojs'))));
   }
 }
 /**

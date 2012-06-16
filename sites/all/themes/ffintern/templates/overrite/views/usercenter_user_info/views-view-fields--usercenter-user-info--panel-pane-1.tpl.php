@@ -23,7 +23,11 @@
  * @ingroup views_templates
  */
 ?>
-<?php //print debug($fields['field_company_type']) ?>
+<?php _ajax_register_include_modal();
+drupal_add_css(drupal_get_path('module', 'avatar_selection') . '/avatar_selection.css');
+$js_file = drupal_get_path('module', 'avatar_selection') . '/js/avatar_selection.js';
+drupal_add_js($js_file);
+?>
 <div class="user-info">
 <div class="views-field views-field-picture user-picture"><?php print $fields['picture']->content ?></a></div>
 <div class="views-field user-badge c-10">
@@ -40,8 +44,9 @@
   </div>
 </div>
 <div class="views-field views-field-edit">
-  <div class="field-content"><a
-    href="<?php print url('user/' . $fields['uid']->content . '/edit') ?>"><span>帐号编辑</span></a>
+  <div class="field-content">
+    <a href="<?php print url("ajax_register/profile/nojs");?>" class="ctools-use-modal ctools-modal-ctools-ajax-register-style"><span>帐号编辑</span></a>
+
   </div>
 </div>
 </div>

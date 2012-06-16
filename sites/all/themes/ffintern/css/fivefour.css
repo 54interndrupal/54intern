@@ -96,6 +96,23 @@ div.ctools-modal-content .modal-content{
     padding: 10px 8px 10px 15px;
 }
 
+div.model-header-title{
+    display: inline-block;
+    font-size: 14px;
+    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+    width: 300px;
+}
+div.model-header-title span.active{
+    display: inline-block;
+    float: left;
+    width: 83px;
+    height: 31px;
+    background: url(img/site/bt_arrow_2.gif) no-repeat 10px;
+    background-color: #ffffff;
+    padding: 9px 0 0 36px;
+    margin: 0 0 0 10px;
+}
+
 /*==model window End==*/
 /*==table Begin==*/
 
@@ -433,6 +450,10 @@ span.icon-like-s{
     width: 160px;
     font-weight: bold;
     padding-right: 8px;
+}
+
+.post-job .job-company a{
+    color: #666666;
 }
 
 .post-job .pic {
@@ -814,7 +835,9 @@ body.front #header{
     border: 0;
     margin-left: -8px;
     font: bold 15px;
+    cursor: pointer;
 }
+
 
 #logo {
     display: inline-block;
@@ -3908,10 +3931,10 @@ a.button span {
     padding-bottom: 20px;
 }
 #page.resume-node-view #header .resume{
-    margin-top: 60px;
+    margin-top: 30px;
 }
-#page.resume-node-view #main,
 #page.resume-node-view,
+#page.resume-node-view #main,
 #page.resume-node-view #footer,
 #page.resume-node-view#footer .section{
     width: 680px;
@@ -4059,6 +4082,24 @@ div.pane-company-node-form{
 div.pane-company-node-form fieldset{
     display: none;
 }
+div.pane-company-node-form .user-picture-info fieldset{
+    display: block;
+    border: 0px;
+}
+div.pane-company-node-form .user-picture-info legend{
+    display: none;
+}
+div.pane-company-node-form .user-picture-info .user-picture{
+    padding: 0 0 20px 108px;
+    display: inline-block;
+}
+div.pane-company-node-form .user-picture-info .form-item-picture-delete{
+    display: inline-block;
+    min-height: 0px;
+}
+div.pane-company-node-form .user-picture-info .form-item-picture-delete label{
+    padding-top: 0px;
+}
 div.pane-company-node-form input.form-text{
     width: 204px;
     height: 20px;
@@ -4067,7 +4108,7 @@ div.pane-company-node-form select.form-select{
     width: 215px;
     height: 30px;
 }
-div.pane-company-node-form label{
+div.pane-company-node-form .form-item label{
    width: 90px;
    text-align: right;
    padding:7px 15px 0 0;
@@ -4176,6 +4217,33 @@ div.pane-company-node-form div.image-widget #edit-field-logo-und-0-upload-button
     height: 30px;
     display: inline-block;
     width: 100px;
+}
+div.pane-company-node-form div.user-profile-title{
+    padding: 10px 0 0px 30px;
+    margin: 10px 0 30px 0;
+    border-bottom: 3px solid #999999;
+    background: url(img/site/bt_arrow_2.gif) no-repeat 5px 10px;
+}
+div.pane-company-node-form  div.user-profile-title h2{
+    display: inline-block;
+    font-size: 14px;
+    color: #006600;
+    padding-bottom: 10px;
+}
+div.pane-company-node-form div.user-base-info{
+    display: inline-block;
+    float: left;
+    width: 350px;
+    border-right: 1px dashed #CCCCCC;
+}
+div.pane-company-node-form div.user-picture-info{
+    padding-left: 15px;
+    display: inline-block;
+    width: 350px;
+    height: 300px;
+}
+div.pane-company-node-form div.user-picture-info .form-item-select-avatar{
+    float: left;
 }
 /*== Company Node Form End ==*/
 /*==Job Node Form　Begin ==*/

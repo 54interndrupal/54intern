@@ -15,7 +15,7 @@
 <?php  print  drupal_render($form['pass']); ?>
 <div class="password">
   <?php  print  drupal_render($form['remember_me']); ?>
-  <div class="forget-password"><?php 	print l(t('忘记密码'),'user/password') ;?></div>
+  <div class="forget-password"><a href="<?php print url("ajax_register/password/nojs") ?>" class="ctools-use-modal ctools-modal-ctools-ajax-pass-style"><?php print t('忘记密码');?></a></div>
 </div>
 <?php  print  drupal_render($form['submit']); ?><br/>
 <?php     print drupal_render_children($form);?>

@@ -120,7 +120,7 @@ function userreg_company_register_form_validate_handler(&$form, &$form_state) {
     else {
       form_set_error('mail', t('The e-mail address %email is already registered. <a href="@password">Have you forgotten your password?</a>', array(
         '%email' => $form_state['values']['mail'],
-        '@password' => url('user/password')
+        '@password' => url('ajax_register/password/nojs')
       )));
     }
   }
@@ -241,7 +241,7 @@ function userreg_user_register_form_validate(&$form, &$form_state) {
     else {
       form_set_error('mail', t('The e-mail address %email is already registered. <a href="@password">Have you forgotten your password?</a>', array(
         '%email' => $form_state['values']['mail'],
-        '@password' => url('user/password')
+        '@password' => url('ajax_register/password/nojs')
       )));
     }
   }

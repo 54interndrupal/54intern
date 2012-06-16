@@ -31,9 +31,9 @@ function ajax_register_menu() {
  * Check access to ajax page callback.
  */
 function ajax_register_page_access($form, $type) {
-  $allowed_forms = array('companylogin', 'login', 'register', 'password');
+  $allowed_forms = array('companylogin', 'login', 'register', 'password','profile');
   $allowed_types = array('ajax', 'nojs');
-  if (in_array($form, $allowed_forms) && in_array($type, $allowed_types) && user_is_anonymous()) {
+  if (in_array($form, $allowed_forms) && in_array($type, $allowed_types) ) {
     return TRUE;
   }
   return FALSE;
@@ -177,7 +177,9 @@ function ajax_register_form_alter(&$form, &$form_state, $form_id) {
     case 'user_login':
     case 'intern_company_user_login_form':
     case 'user_pass':
+    case 'user_profile_form':
     case 'user_register_form':
+
 
       // Include css and js for modal dialog.
       _ajax_register_include_modal();
@@ -229,7 +231,20 @@ function _ajax_register_add_ajax(&$form, $type) {
     'wrapper' => 'ajax-register-' . $html_id . '-wrapper',
   );
 }
+/**
+ * Ajax callback for USER Profile form.
+ */
+function ajax_register_user_profile_form_ajax_callback($form, $form_state) {
 
+  if (!form_get_errors()) {
+    // After successfull password restore replace form with status messages.
+    $commands = array();
+    $commands[] = ajax_command_replace('#ajax-register-user-profile-wrapper', theme('status_messages'));
+    return array('#type' => 'ajax', '#commands' => $commands);
+  }
+  // Reload form if it didn't pass validation.
+  return $form;
+}
 /**
  * Ajax callback for USER LOGIN form.
  */

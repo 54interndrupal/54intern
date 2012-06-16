@@ -111,16 +111,17 @@ function intern_user_resume_tabs_block() {
  * 判断是否为企业用户
  */
 function intern_user_is_company_user() {
-   Global $user;
+  Global $user;
   if (in_array(4, array_keys($user->roles))) {
-    return true;
-  }else{
-    return false;
+    return TRUE;
+  }
+  else {
+    return FALSE;
   }
 }
 
 /** 获取用户对应的company nid */
-function intern_user_get_company_id($uid){
+function intern_user_get_company_id($uid) {
   $company_id = db_select('node', 'n')
     ->condition('n.uid', $uid)
     ->condition('n.type', 'company')
@@ -132,17 +133,18 @@ function intern_user_get_company_id($uid){
 }
 
 
-function intern_user_get_age($dob){
-  if(!empty($dob)){
-  $now = time();
-  $then = strtotime($dob);
-  $diff = date('Y', $now) - date('Y', $then);
-  if($diff <= 0) {
-    return;
-  }
-  if(($diff > 0) && (date('z',$now) < date('z',$then)))
-    $diff --;
-  return  $diff;
+function intern_user_get_age($dob) {
+  if (!empty($dob)) {
+    $now = time();
+    $then = strtotime($dob);
+    $diff = date('Y', $now) - date('Y', $then);
+    if ($diff <= 0) {
+      return;
+    }
+    if (($diff > 0) && (date('z', $now) < date('z', $then))) {
+      $diff--;
+    }
+    return $diff;
   }
 
   return "";
@@ -153,15 +155,75 @@ function intern_user_form_node_form_alter(&$form, $form_state) {
   Global $user;
 
   if ($type == 'resume' && user_is_logged_in()) {
-    drupal_add_css(path_to_theme().'/layouts/intern_layout/intern_layout.css');
-    drupal_add_js(path_to_theme().'/js/maintain_resume.js');
+    drupal_add_css(path_to_theme() . '/layouts/intern_layout/intern_layout.css');
+    drupal_add_js(path_to_theme() . '/js/maintain_resume.js');
     $form['actions']['submit']['#submit'][] = 'intern_user_resume_form_post_submit';
 //    print_r($form);
   }
 }
 
 function intern_user_resume_form_post_submit($form, &$form_state) {
-    $nid = $form_state['nid'];
-    $form_state['redirect'] = 'node/' . $nid . '/edit';
+  $nid = $form_state['nid'];
+  $form_state['redirect'] = 'node/' . $nid . '/edit';
 }
 
+/**
+ * Implements hook_theme().
+ */
+function intern_user_theme() {
+  return array(
+    'intern_comment_user_picture' => array(
+      'variables' => array('account' => NULL),
+      'template' => 'intern-comment-user-picture',
+    ),
+  );
+}
+
+/**
+ * Process variables for user-picture.tpl.php.
+ *
+ * The $variables array contains the following arguments:
+ * - $account: A user, node or comment object with 'name', 'uid' and 'picture'
+ *   fields.
+ *
+ * @see user-picture.tpl.php
+ */
+function template_preprocess_intern_comment_user_picture(&$variables) {
+  $variables['user_picture'] = '';
+  if (variable_get('user_pictures', 0)) {
+    $account = $variables['account'];
+    if (!empty($account->picture)) {
+      // @TODO: Ideally this function would only be passed file objects, but
+      // since there's a lot of legacy code that JOINs the {users} table to
+      // {node} or {comments} and passes the results into this function if we
+      // a numeric value in the picture field we'll assume it's a file id
+      // and load it for them. Once we've got user_load_multiple() and
+      // comment_load_multiple() functions the user module will be able to load
+      // the picture files in mass during the object's load process.
+      if (is_numeric($account->picture)) {
+        $account->picture = file_load($account->picture);
+      }
+      if (!empty($account->picture->uri)) {
+        $filepath = $account->picture->uri;
+      }
+    }
+    elseif (variable_get('user_picture_default', '')) {
+      $filepath = variable_get('user_picture_default', '');
+    }
+    if (isset($filepath)) {
+      $alt = t("@user's picture", array('@user' => format_username($account)));
+      // If the image does not have a valid Drupal scheme (for eg. HTTP),
+      // don't load image styles.
+      if (module_exists('image') && file_valid_uri($filepath) && $style = '40_40') {
+        $variables['user_picture'] = theme('image_style', array('style_name' => $style, 'path' => $filepath, 'alt' => $alt, 'title' => $alt));
+      }
+      else {
+        $variables['user_picture'] = theme('image', array('path' => $filepath, 'alt' => $alt, 'title' => $alt));
+      }
+      if (!empty($account->uid) && user_access('access user profiles')) {
+        $attributes = array('attributes' => array('title' => t('View user profile.')), 'html' => TRUE);
+        $variables['user_picture'] = l($variables['user_picture'], "user/$account->uid", $attributes);
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@
         attach:function (context) {
             if ($("#user-login-header").size() > 0) {
                 if ($("div.modal-header .user-login-header").size() == 0) {
-                    $("div.modal-header").addClass("colored").prepend($('#user-login-header'));
+                    $("div.modal-header").addClass("colored").append($('#user-login-header'));
                 } else {
                     $("#user-login-header").hide();
                 }

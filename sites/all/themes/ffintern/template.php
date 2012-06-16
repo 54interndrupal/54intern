@@ -489,6 +489,17 @@ function ffintern_company_center_main_header($nid) {
 }
 
 
+  /**
+   * Process variables for comment.tpl.php.
+   *
+   * @see comment.tpl.php
+   */
+function ffintern_preprocess_comment(&$variables) {
+  $comment = $variables['elements']['#comment'];
+  $variables['picture']   = theme_get_setting('toggle_comment_user_picture') ? theme('intern_comment_user_picture', array('account' => $comment)) : '';
+}
+
+
 
 
 

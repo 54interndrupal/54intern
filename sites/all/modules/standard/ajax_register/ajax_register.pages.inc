@@ -13,7 +13,7 @@
  *   Show whether user has enabled js in his browser.
  */
 function ajax_register_page_callback($form_type, $js) {
-
+  Global $user;
   // Check whether js is enabled.
   if ($js) {
 
@@ -48,6 +48,12 @@ function ajax_register_page_callback($form_type, $js) {
       // Show COMPANY USER LOGIN form.
 //      $form_state['title'] = t('Log In');
       $commands = ctools_modal_form_wrapper('intern_company_user_login_form', $form_state);
+    }
+    elseif ($form_type == 'profile') {
+      // Show USER profile form.
+      module_load_include('pages.inc', 'user');
+      $form_state['build_info']['args'] = array($user);
+      $commands = ctools_modal_form_wrapper('user_profile_form', $form_state);
     }
 //    print($form_state['executed']);
     // If form was submited.
@@ -90,6 +96,9 @@ function ajax_register_page_callback($form_type, $js) {
         // If redirect url is empty page will be reloaded.
         $redirect_url = variable_get('ajax_register_login_form_redirect', '');
         $commands[] = ctools_ajax_command_redirect($redirect_url);
+      }
+      elseif ($form_type == 'profile') {
+        $commands[] = ctools_modal_command_display(t('Profile update successful'), theme('status_messages'));
       }
     }
 
