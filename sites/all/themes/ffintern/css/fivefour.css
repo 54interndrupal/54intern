@@ -3923,28 +3923,28 @@ a.button span {
     background-position: left -30px
 }
 /*== page-resume Begin==*/
-#page.resume-node-view #header{
+#page-resume #header .resume{
+    margin-top: 30px;
+}
+#page-resume,
+#page-resume #main,
+#page-resume #footer,
+#page-resume #footer .section{
+    width: 680px;
+    margin: 0 auto;
+}
+
+#page-resume #main-bottom{
+    margin-top:15px;
+    text-align: center;
+}
+#page-resume #header{
     height: 70px;
     display: inline-block;
     width: 250px;
     float: left;
     padding-bottom: 20px;
 }
-#page.resume-node-view #header .resume{
-    margin-top: 30px;
-}
-#page.resume-node-view,
-#page.resume-node-view #main,
-#page.resume-node-view #footer,
-#page.resume-node-view#footer .section{
-    width: 680px;
-}
-
-#page.resume-node-view #main-bottom{
-    margin-top:15px;
-    text-align: center;
-}
-
 body.node-type-resume div.pane-resume-node-view-panel-pane-1{
     border:2px solid #4E963C;
     padding: 0 12px 10px 12px;

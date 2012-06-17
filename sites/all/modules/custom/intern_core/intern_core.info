@@ -1,5 +1,5 @@
 ; $Id$
-name = "Intern Job"
+name = "Intern Core"
 description = "54intern核心功能模块"
 core = "7.x"
 package="54intern"

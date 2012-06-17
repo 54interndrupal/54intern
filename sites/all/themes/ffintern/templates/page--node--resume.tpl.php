@@ -84,7 +84,7 @@
  * @see bartik_process_page()
  */
 ?>
-<div id="page-wrapper"><div id="page" class="resume-node-view">
+<div id="page-wrapper"><div id="page-resume" class="resume-node-view">
   <div id="header"><div class="section clearfix resume">
      <img src="<?php print url(drupal_get_path('theme','ffintern').'/logo_s.png'); ?>" alt="$site_slogan" />
   </div></div> <!-- /.section, /#header -->

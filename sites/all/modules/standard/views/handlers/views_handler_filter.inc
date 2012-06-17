@@ -534,7 +534,8 @@ class views_handler_filter extends views_handler {
         $this->prepare_filter_select_options($options[$value]);
       }
       else {
-        $options[$value] = strip_tags(decode_entities($label));
+          if(is_string($label)){
+        $options[$value] = strip_tags(decode_entities($label));}
       }
     }
   }
