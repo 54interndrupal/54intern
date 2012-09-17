@@ -1,5 +1,5 @@
 <div class='user-login-content'>
-<div id="geren-zhuce"><a href="user/userregister" title="没有账号？立即加入实习圈！"></a></div>
+<div id="geren-zhuce"><a href="<?php 	print base_path();?>ajax_register/register/nojs" title="没有账号？立即加入实习圈！" class="ctools-use-modal ctools-modal-ctools-ajax-register-style"></a></div>
 <div class="zhuce-title"><?php print '> '.t('个人用户登录') ?></div>
 <?php  print  $name; ?>
 <?php  print $pass; ?>
