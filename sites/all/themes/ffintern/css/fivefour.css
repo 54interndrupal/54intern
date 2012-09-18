@@ -8,6 +8,10 @@ form a,form span,form label{
     font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
 }
 
+form textarea{
+    font-size: 16px;
+}
+
 h2 {
     font-size: 16px;
     font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";

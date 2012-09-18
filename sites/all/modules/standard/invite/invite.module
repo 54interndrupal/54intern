@@ -1299,9 +1299,10 @@ function invite_form_submit($form, &$form_state) {
   if ($num_failed) {
     $message = format_plural($num_failed, 'The entered e-mail address is invalid. Please correct it.', '@count entered e-mail addresses are invalid. Please correct them.');
     drupal_set_message($message, 'error');
+    $form_state['redirect'] = "user/$user->uid";
   }
   elseif (!$show_only && user_access('track invitations') && $user->uid) {
-    $form_state['redirect'] = "user/$user->uid/invites/pending";
+    $form_state['redirect'] = "user/$user->uid";
   }
 }
 

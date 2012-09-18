@@ -50,18 +50,22 @@ function theme_zpuser_resume_block() {
       $i = 0;
       $j = 0;
       $instances = field_info_instances('node', 'resume');
+      //print_r($instances);
       foreach ($instances as $name => $instance) {
-        $field = field_get_items('node', $resume, $instance['field_name']);
-        $j++;
-        if ($field) {
-          $i++;
+        if ($instance["display"]["default"]["type"]!= 'hidden') {
+//          print(','.$instance['label']);
+          $field = field_get_items('node', $resume, $instance['field_name']);
+          $j++;
+          if ($field) {
+            $i++;
+          }
         }
       }
-
+//      print($i.','.$j);
       $percent = round(($i / $j) * 100);
       $path = 'node/' . $resume->nid . '/edit';
 
-      $_SESSION['resume_path'] =$path;
+      $_SESSION['resume_path'] = $path;
     }
 
     $output .= '<div class="resume-status">';

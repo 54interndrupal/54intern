@@ -372,5 +372,11 @@ function intern_company_get_company_job_count($company_id){
   return $job_count;
 }
 
+function intern_company_get_company_user_id($company_id){
+  $sql = "select uid from {node} where nid=:nid";
+  $company_user_id = db_query($sql,array(':nid' => $company_id))->fetchField();
+  return $company_user_id;
+}
+
 
 

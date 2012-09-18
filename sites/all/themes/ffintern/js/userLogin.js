@@ -12,7 +12,7 @@
                 if ($("div.modal-header .user-login-header").size() == 0) {
                     $("div.modal-header").addClass("colored").append($('#user-login-header'));
                 } else {
-                    $("#user-login-header").hide();
+                    $("div.modal-content .user-login-header").hide();
                 }
             }
         }

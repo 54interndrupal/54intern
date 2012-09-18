@@ -17,7 +17,7 @@ $form['account']['mail']['#title'] = t('邮箱');
       </div>
       <div class="user-reg-form">
         <?php print drupal_render_children($form)?>
-        <div class="c-1 d-term"><span>点击注册即表示已阅读并同意<?php print(l("《实习圈用户使用协议》", "node/127"))?></span></div>
+        <div class="c-1 d-term"><span>点击注册即表示已阅读并同意<?php print(l("《实习圈用户使用协议》", "node/127",array('attributes' => array('target' => "blank"))))?></span></div>
       </div>
 
     </div>
@@ -29,7 +29,7 @@ $form['account']['mail']['#title'] = t('邮箱');
   <div class="other-login">
     <span style="display: inline-block;padding:0 10px 0 0;vertical-align: top">  使用合作网站账号登录 </span>
     <a href="weibo/redirect?token=login"><span class="wbxl"></span></a>
-    <a href="<?php print url('qq_login/response');?>"><span class="rrxl"></span></a>
+    <!--<a href="<?php print url('qq_login/response');?>"><span class="rrxl"></span></a>-->
     <a href="<?php print url('qq_login/response');?>"><span class="qqxl"></span></a>
   </div>
 </div>

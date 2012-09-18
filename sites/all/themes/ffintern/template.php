@@ -179,7 +179,7 @@ function ffintern_user_login(&$variables) {
   $output .= '</div>
   <div class="d-2">
     <span class="s-2">使用合作网站帐户登录</span>
-    <span class="rrxxl"></span>
+    <!--<span class="rrxxl"></span>-->
     <span class="qqxxl"></span>
     <span class="wbxxl"></span>
     <span class="zhuce"><span class="c-5">还不是实习圈用户？</span>' . $register_link . '</div>
