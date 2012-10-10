@@ -51,17 +51,19 @@
     <ul class="quicktabs-tabs quicktabs-style-intern">
       <li
         class="last <?php if (!isset($_GET['field_work_place_tid']) || $_GET['field_work_place_tid'] == 'All') print 'active';?>"><a href="javascript:resetCity('All');"
-        id="quicktabs-tab-jobs_tabs-5" class="active">所有</a></li>
-      <li class="first <?php if (isset($_GET['field_work_place_tid']) && $_GET['field_work_place_tid'] == '38') print 'active';?>"><a href="javascript:resetCity('38')"
+        id="quicktabs-tab-jobs_tabs-5" class="active">全国</a></li>
+      <li class="first <?php if (isset($_GET['field_work_place_tid']) && $_GET['field_work_place_tid'] == '520') print 'active';?>"><a href="javascript:resetCity('520')"
                            id="quicktabs-tab-jobs_tabs-0" class="active">上海</a></li>
-      <li class="last <?php if (isset($_GET['field_work_place_tid']) && $_GET['field_work_place_tid'] == '36') print 'active';?>"><a href="javascript:resetCity('36')"
+      <li class="last <?php if (isset($_GET['field_work_place_tid']) && $_GET['field_work_place_tid'] == '519') print 'active';?>"><a href="javascript:resetCity('519')"
                           id="quicktabs-tab-jobs_tabs-1" class="active">北京</a></li>
-      <li class="last  <?php if (isset($_GET['field_work_place_tid']) && $_GET['field_work_place_tid'] == '265') print 'active';?>"><a href="javascript:resetCity('265')"
-                           id="quicktabs-tab-jobs_tabs-2" class="active">广东</a></li>
-      <li class="last  <?php if (isset($_GET['field_work_place_tid']) && $_GET['field_work_place_tid'] == '266') print 'active';?>"><a href="javascript:resetCity('266')"
-                          id="quicktabs-tab-jobs_tabs-3" class="active">浙江</a></li>
-      <li class="last <?php if (isset($_GET['field_work_place_tid']) && $_GET['field_work_place_tid'] == '263') print 'active';?>"><a href="javascript:resetCity('263')"
-                          id="quicktabs-tab-jobs_tabs-4" class="active">江苏</a></li>
+      <li class="last  <?php if (isset($_GET['field_work_place_tid']) && $_GET['field_work_place_tid'] == '521') print 'active';?>"><a href="javascript:resetCity('521')"
+                           id="quicktabs-tab-jobs_tabs-2" class="active">深圳</a></li>
+      <li class="last  <?php if (isset($_GET['field_work_place_tid']) && $_GET['field_work_place_tid'] == '522') print 'active';?>"><a href="javascript:resetCity('522')"
+                          id="quicktabs-tab-jobs_tabs-3" class="active">广州</a></li>
+      <li class="last <?php if (isset($_GET['field_work_place_tid']) && $_GET['field_work_place_tid'] == '523') print 'active';?>"><a href="javascript:resetCity('523')"
+                          id="quicktabs-tab-jobs_tabs-4" class="active">杭州</a></li>
+      <li class="last <?php if (isset($_GET['field_work_place_tid']) && $_GET['field_work_place_tid'] == '524') print 'active';?>"><a href="javascript:resetCity('524')"
+                          id="quicktabs-tab-jobs_tabs-6" class="active">西安</a></li>
     </ul>
   </div>
   <?php if ($rows): ?>

@@ -294,20 +294,24 @@ function ffintern_menu_link__main_menu(array $variables) {
   $element = $variables['element'];
 
   $sub_menu = '';
+  $mlid = $element['#original_link']['mlid'];
 
   if ($element['#below']) {
     $sub_menu = drupal_render($element['#below']);
   }
   $params = explode('/', request_uri());
-//  print_r($params);
+
   $attributes = array();
-  if($element['#href']=='user'&& arg(0) == $element['#href']){
+//   print($params[2]);
+  if($mlid==626 && arg(0) == $element['#href']){
    $attributes['class'][] = 'active';
-  }else if($element['#href']=='companycenter'&& arg(0) == $element['#href']){
+  }else if($mlid==638 && arg(0) == $element['#href']){
     $attributes['class'][] = 'active';
-  }else if($element['#href']=='companys'&& $params[2] == 'company'){
+  }else if($mlid ==624 &&  ($params[2]== 'company'||arg(0)=='companys')){
     $attributes['class'][] = 'active';
-  } else if($element['#href']=='jobs'&& $params[2] == 'job'){
+  } else if($mlid ==625 && $params[2] == 'job'){
+    $attributes['class'][] = 'active';
+  } else if($mlid ==1436 && $params[2] == 'article'){
     $attributes['class'][] = 'active';
   }
 

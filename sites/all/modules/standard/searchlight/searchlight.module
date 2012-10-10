@@ -1,0 +1,1350 @@
+<?php
+
+include_once 'includes/SearchlightDatasource.inc';
+include_once 'includes/SearchlightEnvironment.inc';
+
+/**
+ * Implements hook_init().
+ * Forcibly disable core search indexing if present.
+ */
+function searchlight_init() {
+  if (module_exists('search') && !variable_get('searchlight_buddysystem', FALSE)) {
+    global $conf;
+    $conf['search_cron_limit'] = 0;
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function searchlight_menu() {
+  $items = array();
+  $items['admin/config/search/settings/datasource'] = array(
+    'title' => 'Datasource',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('searchlight_admin_datasource'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'searchlight.admin.inc',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+  $items['admin/config/search/settings/datasource/%searchlight_datasource'] = array(
+    'title' => 'Datasource',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('searchlight_admin_datasource_edit', 5),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'searchlight.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -10,
+  );
+  $items['admin/config/search/settings/datasource/%searchlight_datasource/edit'] = array(
+    'title' => 'Edit',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('searchlight_admin_datasource_edit', 5),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'searchlight.admin.inc',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+  $items['admin/config/search/settings/datasource/%searchlight_datasource/delete'] = array(
+    'title' => 'Delete',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('searchlight_admin_confirm', 'searchlight_datasource', 5, 'revert'),
+    'access callback' => 'searchlight_task_access',
+    'access arguments' => array(5, 'delete'),
+    'file' => 'searchlight.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['admin/config/search/settings/datasource/%searchlight_datasource/revert'] = array(
+    'title' => 'Revert',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('searchlight_admin_confirm', 'searchlight_datasource', 5, 'revert'),
+    'access callback' => 'searchlight_task_access',
+    'access arguments' => array(5, 'revert'),
+    'file' => 'searchlight.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['admin/config/search/settings/environment'] = array(
+    'title' => 'Environment',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('searchlight_admin_environment'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'searchlight.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -5,
+  );
+  $items['admin/config/search/settings/environment/%searchlight_environment'] = array(
+    'title' => 'Environment',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('searchlight_admin_environment_edit', 5),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'searchlight.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -10,
+  );
+  $items['admin/config/search/settings/environment/%searchlight_environment/edit'] = array(
+    'title' => 'Edit',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('searchlight_admin_environment_edit', 5),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'searchlight.admin.inc',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+  $items['admin/config/search/settings/environment/%searchlight_environment/delete'] = array(
+    'title' => 'Delete',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('searchlight_admin_confirm', 'searchlight_environment', 5, 'revert'),
+    'access callback' => 'searchlight_task_access',
+    'access arguments' => array(5, 'delete'),
+    'file' => 'searchlight.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['admin/config/search/settings/environment/%searchlight_environment/revert'] = array(
+    'title' => 'Revert',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('searchlight_admin_confirm', 'searchlight_environment', 5, 'revert'),
+    'access callback' => 'searchlight_task_access',
+    'access arguments' => array(5, 'revert'),
+    'file' => 'searchlight.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  $items['admin/config/search/settings/backend'] = array(
+    'title' => 'Backend',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('searchlight_admin_backend'),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'searchlight.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function searchlight_menu_alter(&$items) {
+  $items['admin/config/search/settings'] = $items['admin/config/search/settings/datasource'];
+  $items['admin/config/search/settings']['title'] = 'Search';
+  $items['admin/config/search/settings']['description'] = 'Configure relevance settings for search and other indexing options.';
+  $items['admin/config/search/settings']['type'] = MENU_NORMAL_ITEM;
+  unset($items['admin/config/search/settings']['weight']);
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function searchlight_block_info() {
+  if (TRUE) {
+    $list = array();
+    foreach (searchlight_environment_load() as $environment) {
+      $list['facets_' . $environment->name] = array('info' => t('@name: Search facets', array('@name' => $environment->name)));
+    }
+    return $list;
+  }
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function searchlight_block_view($delta) {
+  if (TRUE && strpos($delta, '_') !== FALSE) {
+    list($delta, $name) = explode('_', $delta, 2);
+    if (in_array($delta, array('facets'), TRUE) && $environment = searchlight_environment_load($name)) {
+      return $environment->getBlock($delta);
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_insert().
+ * Add an entry in searchlight_search to be matched by the kill-list query in case of new entity.
+ */
+function searchlight_entity_insert($entity, $type) {
+  _searchlight_update_searchlight_search($entity, $type, 0);
+}
+
+/**
+ * Implements hook_entity_update().
+ * Add an entry in searchlight_search to be matched by the kill-list query in case of update.
+ */
+function searchlight_entity_update($entity, $type) {
+  _searchlight_update_searchlight_search($entity, $type, 1);
+}
+
+/**
+ * Implements hook_entity_delete().
+ * Add an entry in searchlight_search to be matched by the kill-list query in case of deletion.
+ */
+function searchlight_entity_delete($entity, $type) {
+  _searchlight_update_searchlight_search($entity, $type, -1);
+}
+
+/**
+ * Add an entry in searchlight_search to be matched by the kill-list query in case of deletion or update.
+ */
+function _searchlight_update_searchlight_search($entity, $type, $status) {
+  // No need to add an entry if there is no datasource for the specified entity type
+  $entity_info = entity_get_info($type);
+  if (isset($entity_info['base table'], $entity->{$entity_info['entity keys']['id']}) && (searchlight_get_datasource($entity_info['base table']) !== FALSE)) {
+    db_merge('searchlight_search')
+      ->key(array('type' => $entity_info['base table'], 'id' => $entity->{$entity_info['entity keys']['id']}))
+      ->fields(array('status' => $status))
+      ->execute();
+    // Update changed variable so that indexing will not be skipped.
+    $changes = variable_get('searchlight_search_changes', array());
+    $changes[$entity_info['base table']] = REQUEST_TIME;
+    variable_set('searchlight_search_changes', $changes);
+    return;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function searchlight_theme() {
+  $path = drupal_get_path('module', 'searchlight') . '/theme';
+
+  return array(
+    'searchlight_search_form' => array(
+      'path' => $path,
+      'file' => 'searchlight.theme.inc',
+    ),
+    'searchlight_sphinx_conf' => array(
+      'template' => 'searchlight-sphinx-conf',
+      'variables' => array('searchd' => array()),
+      'path' => $path,
+      'file' => 'searchlight.theme.inc',
+    ),
+    'searchlight_sphinx_index_conf' => array(
+      'template' => 'searchlight-sphinx-index-conf',
+      'variables' => array('datasource' => array()),
+      'path' => $path,
+      'file' => 'searchlight.theme.inc',
+    ),
+    'searchlight_solr_schema' => array(
+      'template' => 'searchlight-solr-schema',
+      'variables' => array('datasource' => array()),
+      'path' => $path,
+      'file' => 'searchlight.theme.inc',
+    ),
+    'searchlight_solr_config' => array(
+      'template' => 'searchlight-solr-config',
+      'path' => $path,
+      'file' => 'searchlight.theme.inc',
+    ),
+    'searchlight_solr_cores' => array(
+      'template' => 'searchlight-solr-cores',
+      'variables' => array('cores' => array()),
+      'path' => $path,
+      'file' => 'searchlight.theme.inc',
+    ),
+    'searchlight_plugin_display_datasource' => array(
+      'render element' => 'form',
+      'path' => $path,
+      'file' => 'searchlight.theme.inc',
+    ),
+    'searchlight_facet' => array(
+      'path' => $path,
+      'variables' => array('facet' => array()),
+      'file' => 'searchlight.theme.inc',
+    ),
+    'searchlight_facet_link' => array(
+      'path' => $path,
+      'variables' => array('field' => NULL, 'item' => array()),
+      'file' => 'searchlight.theme.inc',
+    ),
+    'searchlight_facet_active' => array(
+      'path' => $path,
+      'variables' => array('field' => NULL, 'item' => array()),
+      'file' => 'searchlight.theme.inc',
+    ),
+    'searchlight_admin_list' => array(
+      'path' => $path,
+      'render element' => 'form',
+      'file' => 'searchlight.theme.inc',
+    ),
+    'searchlight_admin_datasource' => array(
+      'template' => 'searchlight-admin-datasource',
+      'render element' => 'form',
+      'path' => $path,
+      'file' => 'searchlight.theme.inc',
+    ),
+    'searchlight_admin_datasource_fields' => array(
+      'render element' => 'form',
+      'path' => $path,
+      'file' => 'searchlight.theme.inc',
+    ),
+    'searchlight_admin_environment' => array(
+      'template' => 'searchlight-admin-environment',
+      'render element' => 'form',
+      'path' => $path,
+      'file' => 'searchlight.theme.inc',
+    ),
+  );
+}
+
+
+
+/**
+ * Preprocessor for theme('page').
+function searchlight_preprocess_page(&$vars) {
+  if ($global_search = variable_get('searchlight_global_search', FALSE)) {
+    list($path, $identifier) = explode(':', $global_search);
+    $form_state = array(
+      'path' => $path,
+      'identifier' => $identifier,
+      'method' => 'get',
+      'rerender' => TRUE,
+      'no_redirect' => TRUE,
+      'input' => array(),
+    );
+    //   $vars['search_box'] = drupal_build_form('searchlight_search_form', $form_state);
+  }
+
+}
+
+ */
+
+/**
+ * Form builder for Searchlight GET form. Should be used with
+ * drupal_build_form(), the function used in Views for exposed filter forms.
+ */
+function searchlight_search_form(&$form_state) {
+  $form['#info'] = array();
+  $form['#action'] = url($form_state['path']);
+  $form['#id'] = 'searchlight-search-form';
+
+  if (!variable_get('clean_url', FALSE)) {
+    $form['q'] = array(
+      '#type' => 'hidden',
+      '#value' => $form_state['path'],
+    );
+  }
+
+  $form[$form_state['identifier']] = array(
+    '#type' => 'textfield',
+    '#default_value' => '',
+  );
+
+  $form['submit'] = array(
+    '#name' => '', // prevent from showing up in $_GET.
+    '#type' => 'submit',
+    '#value' => t('Search'),
+    '#id' => drupal_clean_css_identifier('edit-submit-searchlight-search-form'),
+  );
+  return $form;
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function searchlight_views_api() {
+  return array(
+    'api' => '3.0',
+    'path' => drupal_get_path('module', 'searchlight') . '/views',
+  );
+}
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function searchlight_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module === 'searchlight') {
+    switch ($api) {
+      case 'plugins':
+        return array('version' => 1);
+      case 'datasource':
+        return array('version' => 1);
+      case 'environment':
+        return array('version' => 1);
+    }
+  }
+}
+
+/**
+ * Implements hook_ctools_plugin_type().
+ */
+function searchlight_ctools_plugin_type() {
+  return array(
+    'plugins' => array(
+      'cache' => TRUE,
+      'use hooks' => TRUE,
+      'classes' => array('handler'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_searchlight_plugins().
+ *
+ * This is a CTools plugin API hook.
+ */
+function searchlight_searchlight_plugins() {
+  return array(
+    'SearchlightBackend' => array(
+      'handler' => 'SearchlightBackend',
+    ),
+    'SearchlightBackendSphinx' => array(
+      'handler' => 'SearchlightBackendSphinx',
+    ),
+    'SearchlightBackendSphinx2' => array(
+      'handler' => 'SearchlightBackendSphinx2',
+    ),
+    'SearchlightBackendSolr' => array(
+      'handler' => 'SearchlightBackendSolr',
+    ),
+    'SearchlightFacet' => array(
+      'handler' => 'SearchlightFacet',
+    ),
+    'SearchlightFacetSearchQuery' => array(
+      'handler' => 'SearchlightFacetSearchQuery',
+    ),
+    'SearchlightFacetTerm' => array(
+      'handler' => 'SearchlightFacetTerm',
+    ),
+    'SearchlightFacetDatatypeTimestamp' => array(
+      'handler' => 'SearchlightFacetDatatypeTimestamp',
+    ),
+    'SearchlightFacetLanguage' => array(
+      'handler' => 'SearchlightFacetLanguage',
+    ),
+  );
+}
+
+/**
+ * Implements hook_searchlight_registry().
+ */
+function searchlight_searchlight_registry() {
+  return array(
+    'backend' => array(
+      'sphinx' => array(
+        'title' => t('Sphinx 0.9.9'),
+        'plugin' => 'SearchlightBackendSphinx',
+      ),
+      'sphinx2' => array(
+        'title' => t('Sphinx 2.0.x'),
+        'plugin' => 'SearchlightBackendSphinx2',
+      ),
+      'solr' => array(
+        'title' => t('Solr'),
+        'plugin' => 'SearchlightBackendSolr',
+      ),
+    ),
+    'facet' => array(
+      'default' => array(
+        'title' => t('Default'),
+        'plugin' => 'SearchlightFacet',
+      ),
+      'search_query' => array(
+        'title' => t('Search query'),
+        'plugin' => 'SearchlightFacetSearchQuery',
+      ),
+      'taxonomy_index_tid' => array(
+        'title' => t('Taxonomy term'),
+        'plugin' => 'SearchlightFacetTerm',
+      ),
+      'datatype_timestamp' => array(
+        'title' => t('Date'),
+        'plugin' => 'SearchlightFacetDatatypeTimestamp',
+      ),
+      'users_language' => array(
+        'title' => t('Language'),
+        'plugin' => 'SearchlightFacetLanguage',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_alter() for 'views_exposed_form'().
+ * Ensure that Searchlight facet components are preserved when Views exposed
+ * filters are submitted.
+ */
+function searchlight_form_views_exposed_form_alter(&$form, &$form_state) {
+  $key = variable_get('searchlight_facet_key', 'sl');
+  if (!isset($form[$key]) && isset($_GET[$key])) {
+    $form[$key] = array(
+      '#type' => 'hidden',
+      '#value' => $_GET[$key],
+    );
+  }
+}
+
+/**
+ * Implements hook_ajax_render_alter().
+ */
+function searchlight_ajax_render_alter(&$commands) {
+  $environment = searchlight_environment_active();
+  if ($environment) {
+    $block = $environment->getBlock('facets');
+    $commands[] = ajax_command_replace(".searchlight-environment-{$environment->name}", $block['content']);
+  }
+}
+
+/**
+ * Implements hook_searchlight_node_access_realms_alter().
+ * Provide realms for commonly used node_access modules.
+ */
+function searchlight_searchlight_node_access_realms_alter(&$realms) {
+  // Standard node access realm.
+  $realms['all'] = 'all';
+
+  // OG access.
+  if (module_exists('og_access')) {
+    $realms['og_admin'] = 'og_admin';
+    $realms['og_public'] = 'og_public';
+    $realms['og_subscriber'] = 'og_subscriber';
+  }
+}
+
+/**
+ * Retrieves & caches the searchlight registry.
+ */
+function searchlight_registry($key = NULL, $reset = FALSE) {
+  static $registry;
+  if (!isset($registry) || $reset) {
+    if (!$reset && $cache = cache_get('searchlight_registry')) {
+      $registry = $cache->data;
+    }
+    else {
+      $registry = module_invoke_all('searchlight_registry');
+      drupal_alter('searchlight_registry', $registry);
+      cache_set('searchlight_registry', $registry);
+    }
+  }
+  if (isset($key)) {
+    return isset($registry[$key]) ? $registry[$key] : array();
+  }
+  return $registry;
+}
+
+/**
+ * Retrieve an instance of a backend class. Note: this is a singleton.
+ * If no backend is specified by $id, the default backend is returned.
+ */
+function searchlight_get_backend($id = NULL, $reset = FALSE) {
+  static $loaded;
+  ctools_include('plugins');
+
+  // Use default backend if no backend was specified.
+  $id = isset($id) ? $id : variable_get('searchlight_backend', 'sphinx');
+
+  if (!isset($loaded[$id]) || $reset) {
+    $loaded[$id] = FALSE;
+    $registry = searchlight_registry('backend');
+    if (isset($registry[$id]) && $info = $registry[$id]) {
+      $plugins = ctools_get_plugins('searchlight', 'plugins');
+      if (isset($plugins[$info['plugin']]) && $class = ctools_plugin_get_class($plugins[$info['plugin']], 'handler')) {
+        $loaded[$id] = new $class($id);
+      }
+    }
+  }
+  return $loaded[$id];
+}
+
+/**
+ * Retrieve an instance of a facet plugin class.
+ */
+function searchlight_get_facet($datasource, $name) {
+  // Build array of suggestion plugin registry names.
+  $suggestions = array();
+  $field = isset($datasource->fields[$name]) ? $datasource->fields[$name] : NULL;
+  // Allow facets to be defined by table/field.
+  if ($field) {
+    $suggestions[] = "{$field['table']}_{$field['field']}";
+  }
+  // Allow facets to be defined by alias.
+  $suggestions[] = $name;
+  // Allow facets to be defined by datatype.
+  if ($field) {
+    $suggestions[] = "datatype_{$field['datatype']}";
+  }
+  // Fallback to default plugin.
+  $suggestions[] = 'default';
+
+  // Iterate through facet registry until a suitable plugin class is found.
+  ctools_include('plugins');
+  $registry = searchlight_registry('facet');
+  foreach ($suggestions as $id) {
+    if (isset($registry[$id]) && $info = $registry[$id]) {
+      $plugins = ctools_get_plugins('searchlight', 'plugins');
+      if (isset($plugins[$info['plugin']]) && $class = ctools_plugin_get_class($plugins[$info['plugin']], 'handler')) {
+        return new $class($id);
+      }
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Retrieve full datasource information for a given base table.
+ */
+function searchlight_get_datasource($base_table = NULL) {
+  if (!isset($base_table)) {
+    views_include('admin');
+    $active_datasources = array();
+    foreach (array_keys(views_fetch_base_tables()) as $base_table) {
+      $name = variable_get("searchlight_datasource_{$base_table}", "search_{$base_table}");
+      if (!empty($name) && $datasource = searchlight_datasource_load($name)) {
+        $active_datasources[$name] = $datasource;
+      }
+    }
+    return $active_datasources;
+  }
+  else {
+    $name = variable_get("searchlight_datasource_{$base_table}", "search_{$base_table}");
+    if (!empty($name) && $datasource = searchlight_datasource_load($name)) {
+      return $datasource;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Retrieve a new inited Searchlight query.
+ */
+function searchlight_get_query($base_table, $base_field, $options = array(), $backend = NULL) {
+  $backend = !isset($backend) ? searchlight_get_backend() : $backend;
+  if ($backend) {
+    $query = views_get_plugin('query', 'searchlight');
+    $query->init($base_table, $base_field, $options, $backend);
+    return $query;
+  }
+  return FALSE;
+}
+
+/**
+ * Parse and build a view from a "$view_name:$view_display" string.
+ * @TODO: Deprecate this function. It's primarily used atm for building a view
+ * associated with a multivalue field. Once the multivalue field is represented
+ * as a proper class object, it should handle this itself.
+ */
+function searchlight_build_view($identifier) {
+  $split = explode(':', $identifier);
+  if (count($split) === 2 && $view = views_get_view($split[0])) {
+    $view->set_display($split[1]);
+    $view->build();
+    return $view;
+  }
+  return FALSE;
+}
+
+/**
+ * Load & crud functions ==============================================
+ */
+
+/**
+ * Create a new datasource object.
+ */
+function searchlight_datasource_new($name, $base_table) {
+  ctools_include('export');
+  $datasource = ctools_export_new_object('searchlight_datasource');
+  $datasource->name = $name;
+  $datasource->base_table = $base_table;
+  $datasource->construct();
+  return $datasource;
+}
+
+/**
+ * Datasource loader.
+ *
+ * @param $name
+ *   The name for this datasource.
+ *
+ * @return
+ *   Returns a fully-loaded datasource.
+ */
+function searchlight_datasource_load($name = NULL, $reset = FALSE) {
+  ctools_include('export');
+  static $datasources;
+  if (!isset($datasources) || $reset) {
+    if ($reset) {
+      ctools_export_load_object_reset('searchlight_datasource');
+    }
+    $datasources = ctools_export_load_object('searchlight_datasource', 'all');
+    foreach ($datasources as $datasource) {
+      // Would love to use __construct() here but CTools export.inc has already
+      // blown away properties in its unpack step.
+      $datasource->construct();
+    }
+  }
+  if (isset($name)) {
+    return isset($datasources[$name]) ? $datasources[$name] : FALSE;
+  }
+  return $datasources;
+}
+
+/**
+ * Inserts or updates a datasource object into the database.
+ *
+ * @param $datasource
+ *   The datasource object to be saved.
+ * @param $editing
+ *   Boolean flag for whether this datasource is still being edited. Allows for
+ *   quick saves without invalidating the datasource index repeatedly.
+ *
+ * @return
+ *   Returns true on success, false on failure.
+ */
+function searchlight_datasource_save($datasource, $editing = FALSE) {
+  $existing = searchlight_datasource_load($datasource->name, TRUE);
+  if ($existing && ($existing->export_type & EXPORT_IN_DATABASE)) {
+    drupal_write_record('searchlight_datasource', $datasource, 'name');
+  }
+  else {
+    drupal_write_record('searchlight_datasource', $datasource);
+  }
+  searchlight_datasource_load(NULL, TRUE);
+
+  if (!$editing) {
+    // Invalidate configuration, cache, and index.
+    variable_set('searchlight_config_changed', TRUE);
+    searchlight_invalidate_cache();
+    searchlight_invalidate_index($datasource->base_table);
+  }
+  return TRUE;
+}
+
+/**
+ * Deletes an existing datasource.
+ *
+ * @param $datasource
+ *   The datasource to be deleted.
+ *
+ * @return
+ *   Returns true on success, false on failure.
+ */
+function searchlight_datasource_delete($datasource) {
+  if (isset($datasource->name) && ($datasource->export_type & EXPORT_IN_DATABASE)) {
+    // TODO Please review the conversion of this statement to the D7 database API syntax.
+    /* db_query("DELETE FROM {searchlight_datasource} WHERE name = '%s'", $datasource->name) */
+    db_delete('searchlight_datasource')
+      ->condition('name', $datasource->name)
+      ->execute();
+    searchlight_invalidate_cache();
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Environment facet querystring packer.
+ */
+function searchlight_environment_pack($value) {
+  $keyvals = array();
+  foreach ($value as $k => $v) {
+    if (is_array($v)) {
+      $v = implode(':', $v);
+    }
+    $keyvals[] = "{$k}-{$v}";
+  }
+  return urlencode(implode(',', $keyvals));
+}
+
+/**
+ * Environment facet querystring unpacker.
+ */
+function searchlight_environment_unpack($value) {
+  $value = urldecode($value);
+  $parsed = array();
+  $split = explode(',', $value);
+  foreach ($split as $chunk) {
+    $keyval = explode('-', $chunk, 2);
+    if (count($keyval) === 2) {
+      if ($keyval[0] === 'environment') {
+        $parsed[$keyval[0]] = $keyval[1];
+      }
+      else {
+        $val = explode(':', $keyval[1]);
+        $parsed[$keyval[0]] = count($val) === 1 ? $val[0] : $val;
+      }
+    }
+  }
+  return $parsed;
+}
+
+/**
+ * Environment init.
+ */
+function searchlight_environment_init($packed = NULL) {
+  // Retrieve facet query string from $_GET if no input is provided.
+  if (!isset($packed)) {
+    $key = variable_get('searchlight_facet_key', 'sl');
+    $packed = isset($_GET[$key]) ? $_GET[$key] : NULL;
+  }
+  if (!empty($packed) && is_string($packed)) {
+    $values = searchlight_environment_unpack($packed);
+    if (!empty($values['environment']) && $environment = searchlight_environment_load($values['environment'])) {
+      $environment->initValues($values);
+      return searchlight_environment_active($environment);
+    }
+  }
+}
+
+/**
+ * Static cache/lazy retrieval of the current active environment.
+ * If an environment is already active , return that environment.
+ * Otherwise, try to locate an environment "relevant" to the specified view
+ * using the view name and display id.
+ */
+function searchlight_environment_active($environment = NULL, $view = NULL, $display = NULL, $reset = FALSE) {
+  static $active;
+
+  // Setting.
+  if (!isset($active) || $reset) {
+    $active = NULL;
+  }
+  if (isset($environment)) {
+    $active = $environment;
+  }
+
+  // Retrieval.
+  if (isset($active)) {
+    return $active;
+  }
+  // Match both view & display. Note that a lazy matched environment is not
+  // static cached as multiple may be active on the same page.
+  // EXCEPTION: In the context of an views AJAX response do static cache the
+  // active environment to allow the AJAX payload to be altered.
+  // See searchlight_ajax_render_alter().
+  else if (isset($view, $display)) {
+    foreach (searchlight_environment_load() as $environment) {
+      list($environment_view, $environment_display) = explode(':', $environment->view_display);
+      if ($environment->view_display === "{$view}:{$display}") {
+        $active = isset($_REQUEST['view_name'], $_REQUEST['view_display_id']) ? $environment : $active;
+        return $environment;
+      }
+      else if ($environment_view === $view) {
+        $active = isset($_REQUEST['view_name'], $_REQUEST['view_display_id']) ? $environment : $active;
+        return $environment;
+      }
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Create a new environment object.
+ */
+function searchlight_environment_new($name, $view_display) {
+  ctools_include('export');
+  $environment = ctools_export_new_object('searchlight_environment');
+  $environment->name = $name;
+  $environment->view_display = $view_display;
+  $environment->construct();
+  return $environment;
+}
+
+/**
+ * Datasource loader.
+ *
+ * @param $name
+ *   The name for this environment.
+ *
+ * @return
+ *   Returns a fully-loaded environment.
+ */
+function searchlight_environment_load($name = NULL, $reset = FALSE) {
+  ctools_include('export');
+  static $environments;
+  if (!isset($environments) || $reset) {
+    if ($reset) {
+      ctools_export_load_object_reset('searchlight_environment');
+    }
+    $environments = ctools_export_load_object('searchlight_environment', 'all');
+    foreach ($environments as $environment) {
+      // Would love to use __construct() here but CTools export.inc has already
+      // blown away properties in its unpack step.
+      $environment->construct();
+    }
+  }
+  if (isset($name)) {
+    return isset($environments[$name]) ? $environments[$name] : FALSE;
+  }
+  return $environments;
+}
+
+/**
+ * Inserts or updates a environment object into the database.
+ *
+ * @param $environment
+ *   The environment object to be saved.
+ *
+ * @return
+ *   Returns true on success, false on failure.
+ */
+function searchlight_environment_save($environment) {
+  $existing = searchlight_environment_load($environment->name, TRUE);
+  if ($existing && ($existing->export_type & EXPORT_IN_DATABASE)) {
+    drupal_write_record('searchlight_environment', $environment, 'name');
+  }
+  else {
+    drupal_write_record('searchlight_environment', $environment);
+  }
+  searchlight_environment_load(NULL, TRUE);
+  searchlight_invalidate_cache();
+  return TRUE;
+}
+
+/**
+ * Deletes an existing environment.
+ *
+ * @param $environment
+ *   The environment to be deleted.
+ *
+ * @return
+ *   Returns true on success, false on failure.
+ */
+function searchlight_environment_delete($environment) {
+  if (isset($environment->name) && ($environment->export_type & EXPORT_IN_DATABASE)) {
+    // TODO Please review the conversion of this statement to the D7 database API syntax.
+    /* db_query("DELETE FROM {searchlight_environment} WHERE name = '%s'", $environment->name) */
+    db_delete('searchlight_environment')
+      ->condition('name', $environment->name)
+      ->execute();
+    searchlight_invalidate_cache();
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Menu access callback for config object-related tasks.
+ */
+function searchlight_task_access($object, $op) {
+  if (user_access('administer site configuration')) {
+    switch ($op) {
+      case 'revert':
+        return ($object->export_type & EXPORT_IN_DATABASE) && ($object->export_type & EXPORT_IN_CODE);
+      case 'delete':
+        return ($object->export_type & EXPORT_IN_DATABASE) && !($object->export_type & EXPORT_IN_CODE);
+      case 'disable':
+        return empty($object->disabled);
+      case 'enable':
+        return !empty($object->disabled);
+    }
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Invalidate cached data.
+ */
+function searchlight_invalidate_cache() {
+  cache_clear_all('searchlight', 'cache', TRUE);
+}
+
+/**
+ * Invalidate & rebuild search index records.
+ */
+function searchlight_invalidate_index($base_table = NULL) {
+  $datasources = array();
+  if (isset($base_table)) {
+    if ($datasource = searchlight_get_datasource($base_table)) {
+      $datasources[] = $datasource;
+    }
+  }
+  else {
+    $datasources = searchlight_get_datasource();
+    db_truncate('searchlight_search');
+  }
+  if ($backend = searchlight_get_backend()) {
+    foreach ($datasources as $datasource) {
+      // Let the backend respond to a rebuild index command.
+      $backend->invalidateIndex($datasource);
+
+      // TODO Please review the conversion of this statement to the D7 database API syntax.
+      /* db_query("DELETE FROM {searchlight_search} WHERE type = '%s'", $datasource->base_table) */
+      db_delete('searchlight_search')
+          ->condition('type', $datasource->base_table)
+          ->execute();
+      $views_data = views_fetch_data($datasource->base_table);
+      $base_field = $views_data['table']['base']['field'];
+      // TODO Please convert this statement to the D7 database API syntax.
+      db_query("INSERT INTO {searchlight_search} (type, id, status) SELECT '" . $datasource->base_table . "', " . $base_field . ", 0 FROM {" . $datasource->base_table . "}");
+    }
+  }
+}
+
+/**
+ * Helper functions ===================================================
+ */
+
+/**
+ * Dump a query.
+ *
+ * @see function views_ui_preview().
+ */
+function searchlight_dump_query($query, $indent = '  ') {
+  if (!($query instanceof SelectQueryInterface)) {
+    return '';
+  }
+
+  $connection = Database::getConnection();
+  $sql = $connection->prepareQuery((string)$query)->queryString;
+
+  $replace = array();
+  foreach ($query->getArguments() as $key => $val) {
+    if (is_array($val)) {
+      $replace[$key] = implode(', ', array_map(array($connection, 'quote'), $val));
+    }
+    else {
+      $replace[$key] = $connection->quote($val);
+    }
+  }
+  $replace["\n"] = " \\\n{$indent}";
+
+  return strtr($sql, $replace);
+}
+
+/**
+ * Actions ============================================================
+ */
+
+/**
+ * Implements hook_action_info().
+ */
+function searchlight_action_info() {
+  return array(
+    'searchlight_index_action' => array(
+      'type' => 'searchlight',
+      'label' => t('Index documents'),
+      'configurable' => TRUE,
+      'triggers' => array('any'),
+    ),
+  );
+}
+
+/**
+ * Action: Index documents
+ */
+function searchlight_index_action($entity, $context, $a1, $a2) {
+  $job = array(
+    'base_table' => $context['base_table'],
+    'indexes' => $context['indexes'],
+  );
+  searchlight_queue_add(array($job));
+}
+
+/**
+ * Action: Configuration form
+ */
+function searchlight_index_action_form($context) {
+  $form = array();
+
+  $datasources = array();
+  foreach (searchlight_get_datasource() as $datasource) {
+    $datasources[$datasource->base_table] = $datasource->name;
+  }
+
+  $form['base_table'] = array(
+    '#title' => t('Datasource'),
+    '#type' => 'select',
+    '#options' => $datasources,
+    '#default_value' => isset($context['base_table']) ? $context['base_table'] : '',
+    '#required' => TRUE,
+  );
+
+  $backend = searchlight_get_backend();
+  $indexes = $backend->getIndexes();
+
+  $form['indexes'] = array(
+    '#title' => t('Indexes'),
+    '#type' => 'checkboxes',
+    '#options' => $indexes,
+    '#default_value' => isset($context['indexes']) ? $context['indexes'] : array(),
+    '#required' => TRUE,
+  );
+
+  return $form;
+}
+
+/**
+ * Action: Configuration form submit
+ */
+function searchlight_index_action_submit($form, &$form_state) {
+  return array(
+    'base_table' => $form_state['values']['base_table'],
+    'indexes' => array_filter($form_state['values']['indexes']),
+  );
+}
+
+/**
+ * Indexing functions =================================================
+ */
+
+/**
+ * Index everything.
+ */
+function searchlight_index_all() {
+  // Reset indexing timestamps.
+  variable_del('searchlight_indexed');
+
+  // Empty queue
+  searchlight_queue_empty();
+
+  // Get indexes
+  $backend = searchlight_get_backend();
+  $indexes = $backend->getIndexes();
+
+  // Create a job for each datasource
+  $datasources = searchlight_get_datasource();
+  if (!empty($datasources)) {
+    $jobs = array();
+    foreach ($datasources as $datasource) {
+      $jobs[] = array(
+        'base_table' => $datasource->base_table,
+        'indexes' => $indexes,
+      );
+    }
+    searchlight_queue_add($jobs);
+  }
+}
+
+/**
+ * Create a batch indexing process or queue the indexing job.
+ */
+function searchlight_index($jobs) {
+  // If indexing is locked we queue the job and skip.
+  if (searchlight_indexing_locked()) {
+    searchlight_queue_add($jobs);
+    watchdog('searchlight', "Indexing is locked. Jobs queued.");
+  }
+  else {
+    foreach ($jobs as $key => $job) {
+      $base_table = $job['base_table'];
+      // Remove job from the queue.
+      searchlight_queue_delete(searchlight_queue_get($job));
+
+      // Check changes occured, skip the indexing if not.
+      if (!searchlight_datasource_changed($base_table, $job['indexes'])) {
+        unset($jobs[$key]);
+        watchdog('searchlight', "No change on {$base_table}. Indexing skipped.");
+      }
+    }
+
+    if (!empty($jobs)) {
+      // Lock indexing.
+      searchlight_lock_indexing();
+
+      // Create the batch
+      $param = serialize($jobs);
+      // If called from drush
+      if (function_exists('drush_backend_fork')) {
+        // @TODO: create a new process to handle the jobs?
+        drush_backend_fork('searchlight-batch-index ' . $param, array());
+        //searchlight_create_batch_indexing($param, TRUE);
+      }
+      else {
+        searchlight_create_batch_indexing($param, FALSE);
+      }
+    }
+    else {
+      watchdog('searchlight', 'Nothing to index. Skipping.');
+    }
+  }
+}
+
+/**
+ * Get if something has changed and indexing should occur.
+ */
+function searchlight_datasource_changed($base_table, $indexes) {
+  $changes = variable_get('searchlight_search_changes', array());
+  $indexed = variable_get('searchlight_indexed', array());
+
+  if (isset($changes[$base_table], $indexed[$base_table])) {
+    $last_change = $changes[$base_table];
+    // If at least one index has to be updated we proceed.
+    foreach ($indexes as $index) {
+      if (!isset($indexed[$base_table][$index]) || ($indexed[$base_table][$index] < $last_change)) {
+        return TRUE;
+      }
+    }
+    return FALSE;
+  }
+  return TRUE;
+}
+
+/**
+ * Update indexing timestamps.
+ */
+function searchlight_update_indexing_timestamps($jobs) {
+  // Note: we don't use REQUEST_TIME as this function may be called
+  // after tasks with a long execution time.
+  $time = time();
+  $indexed = variable_get('searchlight_indexed', array());
+  foreach ($jobs as $job) {
+    foreach ($job['indexes'] as $index) {
+      $indexed[$job['base_table']][$index] = $time;
+    }
+  }
+  variable_set('searchlight_indexed', $indexed);
+}
+
+/**
+ * Lock indexing.
+ */
+function searchlight_lock_indexing() {
+  variable_set('searchlight_indexing_locked', time());
+  watchdog('searchlight', 'Locked indexing.');
+}
+
+/**
+ * Unlock indexing.
+ */
+function searchlight_unlock_indexing() {
+  variable_del('searchlight_indexing_locked');
+  watchdog('searchlight', "Unlocked indexing.");
+}
+
+/**
+ * Check if indexing is locked.
+ */
+function searchlight_indexing_locked() {
+  $locked = variable_get('searchlight_indexing_locked', FALSE);
+  return !empty($locked);
+}
+
+/**
+ * Get items from searchlight queue.
+ */
+function searchlight_queue_get($data = NULL) {
+  $queue = DrupalQueue::get('searchlight_queue');
+  $items = array();
+  $result = array();
+  // Get the items.
+  while ($item = $queue->claimItem()) {
+    $items[] = $item;
+  }
+  // Release them and filter.
+  $empty_data = empty($data);
+  foreach ($items as $item) {
+    $queue->releaseItem($item);
+    if ($empty_data || $item->data == $data) {
+      $result[] = $item;
+    }
+  }
+  return $result;
+}
+
+/**
+ * Delete items from searchlight queue.
+ */
+function searchlight_queue_delete($items) {
+  $queue = DrupalQueue::get('searchlight_queue');
+  foreach ($items as $item) {
+    $queue->deleteItem($item);
+  }
+}
+
+/**
+ * Add jobs to the queue.
+ */
+function searchlight_queue_add($jobs) {
+  if (!empty($jobs)) {
+    // Remove jobs already in queue.
+    $items = searchlight_queue_get();
+    foreach ($jobs as $key => $job) {
+      foreach ($items as $item) {
+        if ($item->data == $job) {
+          unset($jobs[$key]);
+          break;
+        }
+      }
+    }
+    // Queue the jobs.
+    $queue = DrupalQueue::get('searchlight_queue');
+    foreach ($jobs as $job) {
+      $queue->createItem($job);
+    }
+  }
+}
+
+/**
+ * Empty the queue.
+ */
+function searchlight_queue_empty() {
+  $queue = DrupalQueue::get('searchlight_queue');
+  while ($item = $queue->claimItem()) {
+    $queue->deleteItem($item);
+  }
+}
+
+/**
+ * Batch operation - Start indexing.
+ */
+function searchlight_indexing_start($jobs, &$context) {
+  watchdog('searchlight', 'Starting indexing.');
+
+  // Save the jobs so they can be used in finished function
+  $context['results']['jobs'] = $jobs;
+
+  // Start indexing
+  $backend = searchlight_get_backend();
+  $backend->index($jobs, $context);
+
+  // Indexing can take a long time and cause the connection to the DB to be dropped.
+  // So we force a reconnection.
+  Database::closeConnection();
+  Database::getConnection();
+  watchdog('searchlight', 'Reopen database connection');
+}
+
+/**
+ * Batch finished callback - Indexing finished.
+ */
+function searchlight_indexing_finished($success, $results, $operations) {
+  $jobs = $results['jobs'];
+  $result = isset($results['result']) ? implode("\n", (array)$results['result']) : '';
+
+  // Update indexing timestamps.
+  searchlight_update_indexing_timestamps($jobs);
+
+  // Unlock indexing.
+  searchlight_unlock_indexing();
+
+  // Clear caches so that sphinx id -> facet name mapping is updated.
+  searchlight_invalidate_cache();
+
+  watchdog('searchlight', "Finished batch indexing process.\n\n{$result}");
+}
+
+/**
+ * Create indexing batch.
+ */
+function searchlight_create_batch_indexing($jobs, $drush = FALSE) {
+  if (!empty($jobs)) {
+    $jobs = unserialize($jobs);
+    watchdog('searchlight', 'Starting ' . ($drush ? 'drush' : 'web') . " batch indexing process.");
+
+    $batch = array(
+      'title' => t('Searchlight indexing.'),
+      'operations' => array(
+        array('searchlight_indexing_start', array($jobs)),
+      ),
+      'finished' => 'searchlight_indexing_finished',
+      'file' => drupal_get_path('module', 'searchlight') . '/searchlight.module',
+    );
+
+    batch_set($batch);
+    if ($drush) {
+      drush_backend_batch_process();
+    }
+    else {
+       batch_process();
+    }
+  }
+  else {
+    watchdog('searchlight', "Invalid indexing jobs.");
+  }
+}

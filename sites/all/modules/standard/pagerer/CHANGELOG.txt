@@ -1,0 +1,38 @@
+Pagerer 7.x-1.0-beta2, 2012-09-17
+---------------------------------
+- module: simplified logic for itemisation of first/prev/next/ last nav
+  links.
+- module: fixed - pager was showing up in some cases when no items were
+  in the pager.
+- module: slider degradation when no jQuery - added nav links.
+- module: corrected generation of HTML title attributes - display absolute
+  values always also for relative mode progressive/adaptive pagers.
+- module: corrected adaptive slider behaviour - when no l/r adaptive locks
+  exist then release lock.
+- example.module: added pagerer version to the example page title, small
+  layout cosmetics.
+- Issue #1745056 by mondrake: Introduced more options for the jQuery slider.
+- Issue #1757264 by mondrake: Fixed Views preview navigation.
+- css: fine tuning.
+- module: t-ed item range string building.
+
+Pagerer 7.x-1.0-beta1, 2012-08-21
+---------------------------------
+- module: improved handling of the 'page_ak' querystring fragment for the
+  adaptive theme.
+- module: removed bypass for theme_pagerer() that was forcing a separator
+  item when configured to 'none', adjusted CSS to keep visual consistency.
+- js: added management of 'home', 'end' and 'esc' keys in widget, will go
+  to first/last/current page respectively.
+- js: added integration with Views AJAX.
+- README.txt: corrected formatting.
+- module: more graceful degradation if jQuery elements are not available.
+- module: added additional separators between first/last label and first/last
+  page to keep visualization consistent.
+- example.module: changed example not to display potentially sensitive
+  information, added a third query to improve demo.
+- module: jQuery update module needed also for mini pager.
+
+Pagerer 7.x-1.0-alpha1, 2012-07-06
+----------------------------------
+- First release.

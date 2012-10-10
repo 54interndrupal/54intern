@@ -1,0 +1,26 @@
+core = 7.x
+dependencies[] = "searchlight"
+description = "Basic default configuration for Searchlight indexing and views."
+features[ctools][] = "searchlight_datasource"
+features[ctools][] = "searchlight_environment"
+features[searchlight_datasource][] = "search_node"
+features[searchlight_environment][] = "search_node"
+features[views][] = "search_node"
+name = "Searchlight basic"
+package = "Search"
+
+
+
+
+
+files[] = searchlight_basic.defaults.inc
+files[] = searchlight_basic.features.inc
+files[] = searchlight_basic.features.views.inc
+files[] = searchlight_basic.module
+
+; Information added by drupal.org packaging script on 2012-03-07
+version = "7.x-1.0-alpha1+33-dev"
+core = "7.x"
+project = "searchlight"
+datestamp = "1331124717"
+

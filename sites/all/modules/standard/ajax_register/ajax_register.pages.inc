@@ -79,23 +79,25 @@ function ajax_register_page_callback($form_type, $js) {
       }
       elseif ($form_type == 'login') {
         // Set message about successfull login.
-        drupal_set_message(t('Login was successfull. Now page will be reloaded.'));
-        $commands[] = ctools_modal_command_display('', theme('status_messages'));
+        drupal_set_message(t('Login was successfull. Page has been reloaded.'));
+//        $commands[] = ctools_modal_command_display('', theme('status_messages'));
 
         // Redirect user after login to user provided url.
         // If redirect url is empty page will be reloaded.
-        $redirect_url = variable_get('ajax_register_login_form_redirect', '');
-        $commands[] = ctools_ajax_command_redirect($redirect_url);
+//        $redirect_url = variable_get('ajax_register_login_form_redirect', '');
+//        $commands[] = ctools_ajax_command_redirect($redirect_url);
+        $commands[] = ctools_ajax_command_reload();
       }
       elseif ($form_type == 'companylogin') {
         // Set message about successfull login.
-        drupal_set_message(t('Login was successfull. Now page will be reloaded.'));
-        $commands[] = ctools_modal_command_display('', theme('status_messages'));
+        drupal_set_message(t('Login was successfull. Page has been reloaded.'));
+//        $commands[] = ctools_modal_command_display('', theme('status_messages'));
 
         // Redirect user after login to user provided url.
         // If redirect url is empty page will be reloaded.
-        $redirect_url = variable_get('ajax_register_login_form_redirect', '');
-        $commands[] = ctools_ajax_command_redirect($redirect_url);
+//        $redirect_url = variable_get('ajax_register_login_form_redirect', '');
+//        $commands[] = ctools_ajax_command_redirect($redirect_url);
+        $commands[] = ctools_ajax_command_reload();
       }
       elseif ($form_type == 'profile') {
         $commands[] = ctools_modal_command_display(t('Profile update successful'), theme('status_messages'));

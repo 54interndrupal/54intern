@@ -324,10 +324,10 @@ form.comment-form input.form-submit{
 
 .item-list ul.pager {
     background: #f5f5f5;
-    padding: 5px 10px;
+    padding: 8px 10px;
     border: #cdcdcd 1px solid;
     margin-top: 20px;
-    font-size: 13px;
+    font-size: 14px;
     text-align: center;
 }
 
@@ -335,6 +335,10 @@ form.comment-form input.form-submit{
     display: inline;
     list-style-type: none;
     padding: 0.5em;
+}
+
+.item-list ul.pager li.widget input{
+    width:15px;
 }
 
 ul.pager .pager-current {
@@ -1036,7 +1040,7 @@ body div.node-job div.content h2{
     font-weight: normal;
     margin:0 -22px 24px -22px;
     padding: 35px 0 18px 22px;
-    height: 45px;
+    min-height: 45px;
 
 }
 body div.node-job div.content div.info{

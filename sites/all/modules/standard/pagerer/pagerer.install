@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ * Pagerer install
+ *
+ * Pagerer installation hooks.
+ *
+ * Drupal core 7.x
+ *
+ * @package  User interface
+ * @author   mondrake <mondrake@mondrake.org>
+ */
+
+/**
+ * Implements hook_install().
+ */
+function pagerer_install() {
+  $t = get_t();
+  drupal_set_message($t('The Pagerer module has been installed. Visit <a href="@url">configure</a> for configuration.',
+                     array('@url' => url('admin/config/user-interface/pagerer'))));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function pagerer_uninstall() {
+  // Removes all variables whose name begins with 'pagerer'.
+  $res = db_select('variable', 'v')
+      ->fields('v')
+      ->condition('name', 'pagerer%', 'LIKE')
+      ->execute();
+  if ($res) {
+    foreach ($res as $row) {
+      variable_del($row->name);
+      drupal_set_message(t('Variable %var has been deleted.', array('%var' => $row->name)));
+    }
+  }
+}

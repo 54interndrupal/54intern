@@ -109,11 +109,12 @@
         <tr>
           <td>学历要求：</td>
           <td>
-            <div class="field field-name-degree c-16"><?php print $field_education_requirement[0]['taxonomy_term']->name; ?></div>
+            <div class="field field-name-degree c-16">
+              <?php print $field_education_requirement[0]['taxonomy_term']->name==''?'不限':$field_education_requirement[0]['taxonomy_term']->name; ?></div>
           </td>
           <td>岗位性质：</td>
           <td><div class="field field-name-jobnature c-16">
-            <?php print $field_job_type[0]['taxonomy_term']->name; ?>
+            <?php print $field_job_type[0]['taxonomy_term']->name==''?'实习':$field_job_type[0]['taxonomy_term']->name; ?>
           </div></td>
           <td>工作地点：</td>
           <td><div class="field field-name-joblocation c-16">
@@ -124,12 +125,12 @@
           <td>学习年限：</td>
           <td>
             <div class="field field-name-years c-16">
-              <?php print $field_study_years[0]['taxonomy_term']->name; ?>
+              <?php print $field_study_years[0]['taxonomy_term']->name==''?'不限':$field_study_years[0]['taxonomy_term']->name; ?>
             </div>
           </td>
           <td> 每月薪水：</td>
           <td><div class="field field-name-salary c-16">
-            <?php print $field_salary[0]['taxonomy_term']->name; ?>
+            <?php print $field_salary[0]['taxonomy_term']->name==''?'面议': $field_salary[0]['taxonomy_term']->name; ?>
           </div></td>
           <td>招聘人数：</td>
           <td> <div class="field field-name-number c-16">

@@ -1,0 +1,13 @@
+name = Pagerer
+description = "Extended pager themes."
+package = User interface
+core = 7.x
+
+configure = admin/config/user-interface/pagerer
+
+; Information added by drupal.org packaging script on 2012-09-17
+version = "7.x-1.0-beta2"
+core = "7.x"
+project = "pagerer"
+datestamp = "1347862982"
+

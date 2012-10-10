@@ -33,7 +33,11 @@
                 );
                 $block.find('form').hide();
                 $block.show();
+
+                $('#footerContactLink').click(function(){Drupal.feedbackFormToggle($block, true);});
             });
+
+
         }
     };
 
@@ -48,12 +52,11 @@
             }
             // Collapse the form.
             $('#block-feedback-form .feedback-link').click();
-            // Blend out and remove status message.
-            window.setTimeout(function () {
-                $context.fadeOut('slow', function () {
+
+            $context.fadeOut('fast', function () {
                     $context.remove();
-                });
-            }, 3000);
+            });
+
         }
     };
 
@@ -63,18 +66,20 @@
     Drupal.feedbackFormToggle = function ($block, enable) {
         if (!enable) {
             $block.find("span.feedback-link").toggleClass("closed");
-            $block.find('form').slideToggle(400);
+            $block.find('form').slideToggle(20);
         } else {
-            $block.find('form').slideToggle(400, function () {
+            $block.find('form').slideToggle(20, function () {
                 $block.find("span.feedback-link").toggleClass("closed");
             });
         }
         if (enable) {
-            $('#feedback-form-toggle', $block).html('[ + ]');
+            $('#feedback-form-toggle', $block).html('[ - ]');
         }
         else {
             $('#feedback-form-toggle', $block).html('[ &minus; ]');
         }
     };
+
+
 
 })(jQuery);

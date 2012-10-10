@@ -8,11 +8,7 @@
     Drupal.behaviors.hint.attach = function (content) {
         // Even though it's unlikely that another class name would be used, we ensure
         // that the behavior uses the default class names used in the module.
-        jQuery('input.hint-enabled:not(input.hint):not(input.hinted)', content).hint({
-            hintClass:'hint',
-            triggerClass:'hint-enabled'
-        });
-        jQuery('textarea.hint-enabled:not(input.hint):not(input.hinted)', content).hint({
+        jQuery('(input[@type="text"],input[@type="password"],textarea).hint-enabled:not(input.hint):not(input.hinted)', content).hint({
             hintClass:'hint',
             triggerClass:'hint-enabled'
         });
