@@ -119,7 +119,6 @@ function drupal_get_form($form_id) {
   // Remove $form_id from the arguments.
   array_shift($args);
   $form_state['build_info']['args'] = $args;
-
   return drupal_build_form($form_id, $form_state);
 }
 
