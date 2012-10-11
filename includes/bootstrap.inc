@@ -1303,7 +1303,10 @@ function drupal_serve_page_from_cache(stdClass $cache) {
   // Negotiate whether to use compression.
   $page_compression = variable_get('page_compression', TRUE) && extension_loaded('zlib');
   $return_compressed = $page_compression && isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== FALSE;
-
+  $header_content_type = $cache->data['headers']['Content-Type'];
+  if($return_compressed && isset($header_content_type) &&  strpos($header_content_type, 'text/html') !== FALSE){
+      $return_compressed = false;
+  }
   // Get headers set in hook_boot(). Keys are lower-case.
   $hook_boot_headers = drupal_get_http_header();
 
