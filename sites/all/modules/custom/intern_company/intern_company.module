@@ -321,7 +321,7 @@ function _intern_get_company_id_from_url() {
   $uri = $_SERVER['REQUEST_URI'];
   $params = explode('/', $uri);
 //  print(strpos($uri, '54intern'));
-  if (strpos($uri, '54intern') > 0) {
+  if (strpos($uri, '54intern') > 0 || strpos($uri, 'dev') > 0) {
     $gid = $params[3];
   }else{
     $gid = $params[2];
