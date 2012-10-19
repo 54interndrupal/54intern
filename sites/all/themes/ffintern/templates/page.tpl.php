@@ -129,6 +129,16 @@
 	</div> <!-- /#main, /#main-wrapper -->
 	
 </div></div> <!-- /#page, /#page-wrapper -->
+<DIV style="DISPLAY: none" id=maskLayer><IFRAME
+  style="FILTER: alpha(opacity=50)" id=maskLayer_iframe src="about:blank"
+  frameBorder=0 scrolling=no></IFRAME>
+  <DIV style="FILTER: alpha(opacity=50); -moz-opacity: 0.5; opacity: 0.5"
+       id=alphadiv></DIV>
+  <DIV id=drag>
+    <H3 id=drag_h></H3>
+    <DIV id=drag_con></DIV><!-- drag_con end --></DIV></DIV><!-- maskLayer end -->
+<DIV></DIV><!-- alpha div end -->
+<DIV style="DISPLAY: none" id=sublist></DIV>
 
 <div id="footer"><div class="section">
  <?php print render($page['footer']); ?>

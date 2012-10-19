@@ -1,0 +1,258 @@
+#btn {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 183px; BORDER-TOP-STYLE: none; BACKGROUND: url(btn.png) no-repeat; HEIGHT: 21px; BORDER-LEFT-STYLE: none; CURSOR: pointer
+}
+#btn_residency {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 183px; BORDER-TOP-STYLE: none; BACKGROUND: url(btn.png) no-repeat; HEIGHT: 21px; BORDER-LEFT-STYLE: none; CURSOR: pointer
+}
+#btn_jobArea {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 183px; BORDER-TOP-STYLE: none; BACKGROUND: url(btn.png) no-repeat; HEIGHT: 21px; BORDER-LEFT-STYLE: none; CURSOR: pointer
+}
+#btn_FuntypeID {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 183px; BORDER-TOP-STYLE: none; BACKGROUND: url(btn.png) no-repeat; HEIGHT: 21px; BORDER-LEFT-STYLE: none; CURSOR: pointer
+}
+#btn_FuntypeID_2 {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 183px; BORDER-TOP-STYLE: none; BACKGROUND: url(btn.png) no-repeat; HEIGHT: 21px; BORDER-LEFT-STYLE: none; CURSOR: pointer
+}
+#btn_IndustryID {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 183px; BORDER-TOP-STYLE: none; BACKGROUND: url(btn.png) no-repeat; HEIGHT: 21px; BORDER-LEFT-STYLE: none; CURSOR: pointer
+}
+#btn_IndustryID_2 {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 183px; BORDER-TOP-STYLE: none; BACKGROUND: url(btn.png) no-repeat; HEIGHT: 21px; BORDER-LEFT-STYLE: none; CURSOR: pointer
+}
+#btn_hukou {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 183px; BORDER-TOP-STYLE: none; BACKGROUND: url(btn.png) no-repeat; HEIGHT: 21px; BORDER-LEFT-STYLE: none; CURSOR: pointer
+}
+#btn_nation {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 183px; BORDER-TOP-STYLE: none; BACKGROUND: url(btn.png) no-repeat; HEIGHT: 21px; BORDER-LEFT-STYLE: none; CURSOR: pointer
+}
+#btn_MajorID {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 183px; BORDER-TOP-STYLE: none; BACKGROUND: url(btn.png) no-repeat; HEIGHT: 21px; BORDER-LEFT-STYLE: none; CURSOR: pointer
+}
+#btn_MajorID_2 {
+	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 183px; BORDER-TOP-STYLE: none; BACKGROUND: url(btn.png) no-repeat; HEIGHT: 21px; BORDER-LEFT-STYLE: none; CURSOR: pointer
+}
+#residencyAlpha {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; PADDING-TOP: 10px
+}
+#residencyAlpha H4 {
+	COLOR: #4D963B; FONT-SIZE: 14px
+}
+#residencyAlpha DL {
+	LINE-HEIGHT: 25px; ZOOM: 1; OVERFLOW: hidden
+}
+#residencyAlpha DT {
+	WIDTH: 80px; FLOAT: left; FONT-WEIGHT: bold
+}
+#residencyAlpha DD {
+	WIDTH: 492px; FLOAT: left
+}
+#residencyAlpha DD LI {
+	TEXT-INDENT: 4px; WIDTH: 82px; FLOAT: left; HEIGHT: 25px; OVERFLOW: hidden; CURSOR: pointer
+}
+#residencyAlpha DD LI.over {
+	BACKGROUND: #75b13c; COLOR: #fff
+}
+#allProv {
+	MARGIN-TOP: 6px; BORDER-TOP: #ccc 1px dashed; PADDING-TOP: 10px
+}
+#sub_city {
+	BORDER-BOTTOM: #4D963A 1px solid; TEXT-ALIGN: left; BORDER-LEFT: #4D963A 1px solid; LINE-HEIGHT: 25px; BORDER-TOP: #4D963A 1px solid; BORDER-RIGHT: #4D963A 1px solid
+}
+#sub_city H4 {
+	BORDER-BOTTOM: #ccc 1px dashed
+}
+#sub_city UL {
+	ZOOM: 1; OVERFLOW: hidden
+}
+#sub_city UL LI {
+	WIDTH: 60px; FLOAT: left; HEIGHT: 25px
+}
+#sub_city UL A {
+	TEXT-INDENT: 4px; DISPLAY: block; HEIGHT: 25px; COLOR: #000; TEXT-DECORATION: none
+}
+#sub_city UL A:hover {
+	BACKGROUND: #75b13c; COLOR: #fff
+}
+#jobAreaAlpha {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; PADDING-TOP: 10px
+}
+#jobAreaAlpha H4 {
+	COLOR: #4D963B; FONT-SIZE: 14px
+}
+#jobAreaAlpha DL {
+	LINE-HEIGHT: 25px; ZOOM: 1; OVERFLOW: hidden
+}
+#jobAreaAlpha DT {
+	WIDTH: 80px; FLOAT: left; FONT-WEIGHT: bold
+}
+#jobAreaAlpha DD {
+	WIDTH: 492px; FLOAT: left
+}
+#jobAreaAlpha DD LI {
+	TEXT-INDENT: 16px; WIDTH: 82px; FLOAT: left; HEIGHT: 25px; OVERFLOW: hidden; CURSOR: pointer
+}
+#jobAreaAlpha DD LI.over {
+	BACKGROUND-COLOR: #75b13c; COLOR: #fff
+}
+#jobAreSelected {
+	BORDER-BOTTOM: #ccc 1px dashed; PADDING-BOTTOM: 6px; MARGIN-BOTTOM: 10px
+}
+#jobAreSelected DT {
+	COLOR: #4D963B; FONT-SIZE: 14px
+}
+#maincity2 LI {
+	BACKGROUND-IMAGE: url(chk_off.gif); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 2px 6px
+}
+#jobAreSelected LI {
+	BACKGROUND-IMAGE: url(chk_off.gif); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 2px 6px
+}
+#maincity2 LI.chkON {
+	BACKGROUND-IMAGE: url(chk_on.gif)
+}
+#jobAreSelected LI.chkON {
+	BACKGROUND-IMAGE: url(chk_on.gif)
+}
+#allProv2 {
+	MARGIN-TOP: 6px; BORDER-TOP: #ccc 1px dashed; PADDING-TOP: 10px
+}
+#sub_jobArea {
+	BORDER-BOTTOM: #4D963A 1px solid; TEXT-ALIGN: left; BORDER-LEFT: #4D963A 1px solid; LINE-HEIGHT: 25px; BORDER-TOP: #4D963A 1px solid; BORDER-RIGHT: #4D963A 1px solid
+}
+#sub_jobArea H4 {
+	BORDER-BOTTOM: #ccc 1px dashed
+}
+#sub_jobArea UL {
+	ZOOM: 1; OVERFLOW: hidden
+}
+#sub_jobArea UL LI {
+	WIDTH: 80px; FLOAT: left; HEIGHT: 25px
+}
+#sub_jobArea UL A {
+	BACKGROUND-IMAGE: url(chk_off.gif); TEXT-INDENT: 16px; DISPLAY: block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 2px 6px; HEIGHT: 25px; COLOR: #000; TEXT-DECORATION: none
+}
+#sub_jobArea UL A:hover {
+	BACKGROUND-COLOR: #75b13c; COLOR: #fff
+}
+#sub_jobArea UL A.chkON {
+	BACKGROUND-IMAGE: url(chk_on.gif)
+}
+#IndustryAlpha {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; PADDING-TOP: 10px
+}
+#IndustryAlpha DL {
+	BORDER-BOTTOM: #ccc 1px dashed; LINE-HEIGHT: 25px; ZOOM: 1; OVERFLOW: hidden
+}
+#IndustryAlpha DT {
+	WIDTH: 200px; FLOAT: left; COLOR: #4D963B; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+#IndustryAlpha DD {
+	WIDTH: 450px; FLOAT: left
+}
+#IndustryAlpha UL {
+	PADDING-BOTTOM: 8px; LINE-HEIGHT: 25px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; ZOOM: 1; OVERFLOW: hidden; PADDING-TOP: 8px
+}
+#IndustryAlpha LI {
+	BACKGROUND-IMAGE: url(chk_off.gif); TEXT-INDENT: 20px; WIDTH: 220px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 6px 6px; FLOAT: left; HEIGHT: 25px; OVERFLOW: hidden; CURSOR: pointer
+}
+#IndustryAlpha LI.over {
+	BACKGROUND-COLOR: #75b13c; COLOR: #fff
+}
+#IndustryAlpha LI.chkON {
+	BACKGROUND-IMAGE: url(chk_on.gif)
+}
+#IndustryAlpha .radio LI {
+	BACKGROUND-IMAGE: none
+}
+#FuntypeAlpha {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; PADDING-TOP: 10px
+}
+#FuntypeAlpha DL {
+	BORDER-BOTTOM: #ccc 1px dashed; LINE-HEIGHT: 25px; ZOOM: 1; OVERFLOW: hidden
+}
+#FuntypeAlpha DT {
+	WIDTH: 200px; FLOAT: left; COLOR: #4D963B; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+#FuntypeAlpha DD {
+	WIDTH: 450px; FLOAT: left
+}
+#FuntypeAlpha UL {
+	PADDING-BOTTOM: 8px; LINE-HEIGHT: 25px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; ZOOM: 1; OVERFLOW: hidden; PADDING-TOP: 8px
+}
+#FuntypeAlpha LI {
+	TEXT-INDENT: 20px; WIDTH: 180px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 6px 6px; FLOAT: left; HEIGHT: 25px; OVERFLOW: hidden; CURSOR: pointer
+}
+#FuntypeAlpha LI.over {
+	BACKGROUND-COLOR: #75b13c; COLOR: #fff
+}
+#FuntypeAlpha LI.chkON {
+	BACKGROUND-IMAGE: url(chk_on.gif)
+}
+#sub_funtype {
+	BORDER-BOTTOM: #4D963A 1px solid; TEXT-ALIGN: left; BORDER-LEFT: #4D963A 1px solid; LINE-HEIGHT: 25px; BORDER-TOP: #4D963A 1px solid; BORDER-RIGHT: #4D963A 1px solid
+}
+#sub_funtype H4 {
+	BORDER-BOTTOM: #ccc 1px dashed
+}
+#sub_funtype UL {
+	ZOOM: 1; OVERFLOW: hidden
+}
+#sub_funtype UL LI {
+	WIDTH: 180px; FLOAT: left; HEIGHT: 25px; OVERFLOW: hidden
+}
+#sub_funtype UL A {
+	BACKGROUND-IMAGE: url(chk_off.gif); TEXT-INDENT: 16px; DISPLAY: block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 2px 6px; HEIGHT: 25px; COLOR: #000; TEXT-DECORATION: none
+}
+#sub_funtype UL A:hover {
+	BACKGROUND-COLOR: #75b13c; COLOR: #fff
+}
+#sub_funtype UL A.chkON {
+	BACKGROUND-IMAGE: url(chk_on.gif)
+}
+#sublist .radio A {
+	BACKGROUND-IMAGE: none
+}
+#nationAlpha {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; PADDING-TOP: 10px
+}
+#nationAlpha UL {
+	PADDING-BOTTOM: 8px; LINE-HEIGHT: 25px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; ZOOM: 1; OVERFLOW: hidden; PADDING-TOP: 8px
+}
+#nationAlpha LI {
+	TEXT-INDENT: 20px; WIDTH: 90px; FLOAT: left; HEIGHT: 25px; OVERFLOW: hidden; CURSOR: pointer
+}
+#nationAlpha LI.over {
+	BACKGROUND: #75b13c; COLOR: #fff
+}
+#MajorAlpha {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; PADDING-TOP: 10px
+}
+#MajorAlpha UL {
+	PADDING-BOTTOM: 8px; LINE-HEIGHT: 25px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; ZOOM: 1; OVERFLOW: hidden; PADDING-TOP: 8px
+}
+#MajorAlpha LI {
+	TEXT-INDENT: 20px; WIDTH: 220px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 6px 6px; FLOAT: left; HEIGHT: 25px; OVERFLOW: hidden; CURSOR: pointer
+}
+#MajorAlpha LI.over {
+	BACKGROUND-COLOR: #75b13c; COLOR: #fff
+}
+#sub_major {
+	BORDER-BOTTOM: #4D963A 1px solid; TEXT-ALIGN: left; BORDER-LEFT: #4D963A 1px solid; LINE-HEIGHT: 25px; BORDER-TOP: #4D963A 1px solid; BORDER-RIGHT: #4D963A 1px solid
+}
+#sub_major H4 {
+	BORDER-BOTTOM: #ccc 1px dashed
+}
+#sub_major UL {
+	ZOOM: 1; OVERFLOW: hidden
+}
+#sub_major UL LI {
+	WIDTH: 220px; FLOAT: left; HEIGHT: 25px; OVERFLOW: hidden
+}
+#sub_major UL A {
+	BACKGROUND-IMAGE: url(chk_off.gif); TEXT-INDENT: 16px; DISPLAY: block; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 2px 6px; HEIGHT: 25px; COLOR: #000; TEXT-DECORATION: none
+}
+#sub_major UL A:hover {
+	BACKGROUND-COLOR: #75b13c; COLOR: #fff
+}
+#sublist .radio A {
+	BACKGROUND-IMAGE: none
+}

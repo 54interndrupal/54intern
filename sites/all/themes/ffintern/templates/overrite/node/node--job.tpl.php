@@ -118,7 +118,7 @@
           </div></td>
           <td>工作地点：</td>
           <td><div class="field field-name-joblocation c-16">
-            <?php print $field_work_place[0]['taxonomy_term']->name; ?>
+            <?php print $field_location[0]['taxonomy_term']->name; ?>
           </div></td>
         </tr>
         <tr>

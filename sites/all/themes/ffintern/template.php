@@ -17,6 +17,7 @@ function ffintern_preprocess_html() {
     'group' => CSS_THEME, 'browsers' =>
     array('IE' => 'lt IE 7', '!IE' => FALSE), 'preprocess' => FALSE
   ));
+
 }
 
 /**
@@ -303,19 +304,34 @@ function ffintern_menu_link__main_menu(array $variables) {
 
   $attributes = array();
 //   print($params[2]);
-  if($mlid==626 && arg(0) == $element['#href']){
-   $attributes['class'][] = 'active';
-  }else if($mlid==638 && arg(0) == $element['#href']){
-    $attributes['class'][] = 'active';
-  }else if($mlid ==624 &&  ($params[2]== 'company'||arg(0)=='companys')){
-    $attributes['class'][] = 'active';
-  } else if($mlid ==625 && $params[2] == 'job'){
-    $attributes['class'][] = 'active';
-  } else if($mlid ==1436 && $params[2] == 'article'){
+  if ($mlid == 626 && arg(0) == $element['#href']) {
     $attributes['class'][] = 'active';
   }
+  else {
+    if ($mlid == 638 && arg(0) == $element['#href']) {
+      $attributes['class'][] = 'active';
+    }
+    else {
+      if ($mlid == 624 && ($params[2] == 'company' || arg(0) == 'companys')) {
+        $attributes['class'][] = 'active';
+      }
+      else {
+        if ($mlid == 625 && $params[2] == 'job') {
+          $attributes['class'][] = 'active';
+        }
+        else {
+          if ($mlid == 1436 && $params[2] == 'article') {
+            $attributes['class'][] = 'active';
+          }
+        }
+      }
+    }
+  }
 
-  $output = l('<span class=menu-' . $element['#original_link']['mlid'] . '></span>', $element['#href'], array('html' => TRUE,'attributes'=>$attributes));
+  $output = l('<span class=menu-' . $element['#original_link']['mlid'] . '></span>', $element['#href'], array(
+    'html' => TRUE,
+    'attributes' => $attributes
+  ));
   if ($element['#href'] != '<front>') {
     $output = '<span class="menu-split"></span>' . $output;
   }
@@ -434,6 +450,64 @@ function ffintern_textarea($variables) {
   return $output;
 }
 
+function ffintern_select($variables) {
+  $element = $variables['element'];
+
+  if ($element['#parents'][0] == 'field_location_tid' || $element['#parents'][0] == 'job_category'
+    || $element['#parents'][0] == 'field_location' || $element['#parents'][0] == 'field_job_category'
+    ||$element['#parents'][0] == 'field_industry_tid' || $element['#parents'][0] == 'field_industry') {
+    $selectValue = $element['#value'];
+    if (is_array($selectValue)) {
+      $selectValue = $selectValue[0];
+    }
+
+    $selectOption = '不限';
+    foreach ($element['#options'] as $index => $choice) {
+      if ($index == $selectValue) {
+        $selectOption = $choice;
+        break;
+      }
+
+      if (is_array($choice)) {
+      }
+      elseif (is_object($choice)) {
+        if (isset($choice->option[$selectValue])) {
+          $selectOption = $choice->option[$selectValue];
+          break;
+        }
+
+      }
+    }
+    drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/drag.js");
+    drupal_add_css(drupal_get_path('theme', "ffintern") . "/popups/alpha.css");
+    drupal_add_css(drupal_get_path('theme', "ffintern") . "/popups/css.css");
+    $output = '<input type="hidden" name="' . $element['#name'] . '" id="' . $element['#id'] . '" value="' . $selectValue . '">';
+    if ($element['#parents'][0] == 'field_location_tid' || $element['#parents'][0] == 'field_location') {
+      drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/city_func.js");
+      drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/city_arr.js");
+      $output .= '<div><input type="text" name="citySelect" onclick="residencySelect(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search" value="' . $selectOption . '"></div>';
+    }
+    else {
+      if ($element['#parents'][0] == 'job_category' || $element['#parents'][0] == 'field_job_category') {
+        drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/funtype_func.js");
+        drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/funtype_arr.js");
+        $output .= '<div><input type="text" name="jobCategorySelect"  onclick="funtypeSelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search" value="' . $selectOption . '"></div>';
+      } else if($element['#parents'][0] == 'field_industry_tid'||$element['#parents'][0] == 'field_industry'){
+        drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/industry_func.js");
+        drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/industry_arr.js");
+        $output .= '<div><input type="text" name="industrySelect"  onclick="IndustrySelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search" value="' . $selectOption . '"></div>';
+      }
+    }
+    return $output;
+  }
+  else {
+    element_set_attributes($element, array('id', 'name', 'size'));
+    _form_set_class($element, array('form-select'));
+    return '<select' . drupal_attributes($element['#attributes']) . '>' . form_select_options($element) . '</select>';
+  }
+
+}
+
 function ffintern_company_center_right_column($nid) {
   drupal_add_css(drupal_get_path('theme', 'ffintern') . '/layouts/intern_layout/intern_layout.css');
   $compnay_info_view = views_embed_view("company_info", 'panel_pane_2', $nid);
@@ -493,15 +567,17 @@ function ffintern_company_center_main_header($nid) {
 }
 
 
-  /**
-   * Process variables for comment.tpl.php.
-   *
-   * @see comment.tpl.php
-   */
+/**
+ * Process variables for comment.tpl.php.
+ *
+ * @see comment.tpl.php
+ */
 function ffintern_preprocess_comment(&$variables) {
   $comment = $variables['elements']['#comment'];
-  $variables['picture']   = theme_get_setting('toggle_comment_user_picture') ? theme('intern_comment_user_picture', array('account' => $comment)) : '';
+  $variables['picture'] = theme_get_setting('toggle_comment_user_picture') ? theme('intern_comment_user_picture', array('account' => $comment)) : '';
 }
+
+
 
 
 

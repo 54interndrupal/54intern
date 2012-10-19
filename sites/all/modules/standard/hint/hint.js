@@ -12,6 +12,7 @@
             hintClass:'hint',
             triggerClass:'hint-enabled'
         });
+
     };
 
     /**
@@ -63,6 +64,7 @@
                 });
 
                 $element.addClass("hinted");
+
             }
         });
     };

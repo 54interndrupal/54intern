@@ -24,7 +24,7 @@
  */
 ?>
 <?php
-$company_vid = (string) $fields['vid']->content;
+$company_nid = (string) $fields['nid']->content;
 ?>
 <div class="field field-name-pic">
   <div class="field-items">
@@ -48,11 +48,11 @@ $company_vid = (string) $fields['vid']->content;
     </div>
   </div>
   <div class="field field-name-jobs">
-    <?php if (intern_company_get_company_job_count($company_vid) > 0) { ?>
-    <a href="<?php print url("company/" . $company_vid); ?>?requestTab=jobs">实习机会</a>
+    <?php if (intern_company_get_company_job_count($company_nid) > 0) { ?>
+    <a href="<?php print url("company/" . $company_nid); ?>?requestTab=jobs">实习机会</a>
     <?php }
   else { ?>
-    <span class="c-1"> 未发布实习机会</span>
+    <span class="c-1"> 未发布实习机会<?php print $company_nid?></span>
     <?php }?>
   </div>
 </div>
@@ -60,7 +60,7 @@ $company_vid = (string) $fields['vid']->content;
 <div class='company-content'><span class='c-9'>企业简介:</span> <span
   class="c-10"><?php print $fields['body']->content ?> </span>
   <?php
-  print views_embed_view('company_reviews_in_blocks', 'panel_pane_1', $company_vid);?>  </div>
+  print views_embed_view('company_reviews_in_blocks', 'panel_pane_1', $company_nid);?>  </div>
 <?php
 
 /*

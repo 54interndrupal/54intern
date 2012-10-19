@@ -26,7 +26,7 @@
           <?php print drupal_render($form["field_company_type"])?>
           <?php print drupal_render($form["field_company_size"])?>
           <?php print drupal_render($form["field_industry"])?>
-          <?php print drupal_render($form["field_group_city"])?>
+          <?php print drupal_render($form["field_location"])?>
           <?php print drupal_render($form["field_contact_address"])?>
           <?php print drupal_render($form["field_post_code"])?>
           <?php print drupal_render($form["field_website"])?>

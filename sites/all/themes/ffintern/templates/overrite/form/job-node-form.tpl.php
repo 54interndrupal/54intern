@@ -30,7 +30,7 @@
           <?php print drupal_render($form["field_department"])?>
           <?php print drupal_render($form["field_number"])?>
           <?php print drupal_render($form["field_job_category"])?>
-          <?php print drupal_render($form["field_work_place"])?>
+          <?php print drupal_render($form["field_location"])?>
           <?php print drupal_render($form["field_salary"])?>
           <?php print drupal_render($form["field_job_type"])?>
           <?php print drupal_render($form["field_work_months"])?>

@@ -179,7 +179,7 @@ class SearchlightBackendSphinx extends SearchlightBackend {
         '!link' => l(t('Sphinx: charset_table'), 'http://www.sphinxsearch.com/docs/current.html#conf-charset-table'),
         '!charset' => l(t('Unicode character set tables'), 'http://sphinxsearch.com/wiki/doku.php?id=charset_tables'),
       )),
-      '#type' => 'textfield',
+      '#type' => 'textarea',
       '#default_value' => $this->settings['index']['charset_table'],
     );
     $form['index']['ngram_len'] = array(
@@ -196,7 +196,7 @@ class SearchlightBackendSphinx extends SearchlightBackend {
         '!link' => l(t('Sphinx: ngram_chars'), 'http://www.sphinxsearch.com/docs/current.html#ngram_chars'),
         '!charset' => l(t('CJK n-gram characters'), 'http://sphinxsearch.com/wiki/doku.php?id=charset_tables#cjk_ngram_characters'),
       )),
-      '#type' => 'textfield',
+      '#type' => 'textarea',
       '#default_value' => $this->settings['index']['ngram_chars'],
     );
 

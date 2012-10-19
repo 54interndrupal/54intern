@@ -104,6 +104,18 @@ function _intern_job_republish(&$node) {
   }
 }
 
+/**
+ * @param $node
+ * approve job
+ */
+function _intern_job_approve(&$node) {
+  $sub_status = $node->field_job_sub_status[LANGUAGE_NONE][0]["value"];
+  $node->status = NODE_PUBLISHED;
+  $node->field_job_sub_status[LANGUAGE_NONE][0]["value"] = JOB_SUB_STATUS_PUBLISHED;
+  $node->field_content_approval[LANGUAGE_NONE][0]["value"] = 0;
+   _intern_job_refresh($node);
+}
+
 function intern_job_form_node_form_alter(&$form, $form_state) {
   $type = $form['#node']->type;
   Global $user;
@@ -178,6 +190,14 @@ function intern_job_action_info() {
       'behavior' => array('changes_property'),
       'triggers' => array('node_presave'),
     ),
+    'intern_job_approve_action' => array(
+      'type' => 'node',
+      'label' => t('审核职位'),
+      'configurable' => FALSE,
+      'behavior' => array('changes_property'),
+      'triggers' => array('node_presave'),
+    ),
+
   );
 }
 
@@ -198,6 +218,10 @@ function intern_job_republish_action($node, $context = array()) {
   _intern_job_republish($node);
 }
 
+function intern_job_approve_action($node, $context = array()) {
+  _intern_job_approve($node);
+}
+
 /**
  * Implements hook_cron().
  *
@@ -205,8 +229,6 @@ function intern_job_republish_action($node, $context = array()) {
  */
 function intern_job_cron() {
   $nids = db_query('SELECT fd.entity_id FROM {field_data_field_deadline} fd INNER JOIN {node} n ON fd.entity_id = n.nid  WHERE n.status=1 AND fd.field_deadline_value <= :request_time AND fd.bundle = :entity_type', array(':request_time' => REQUEST_TIME, ':entity_type' => 'job'))->fetchCol();
-  $nids_srt = implode(',',$nids);
-  watchdog("cron",$nids_srt);
   if (!empty($nids)) {
     db_update('field_data_field_job_sub_status')
       ->fields(array('field_job_sub_status_value' => 2))
@@ -218,6 +240,29 @@ function intern_job_cron() {
       ->execute();
     db_update('node')
       ->fields(array('status' => 0))
+      ->condition('nid', $nids, 'IN')
+      ->execute();
+  }
+  $nids = db_query('SELECT ca.entity_id FROM {field_data_field_content_approval} ca INNER JOIN {node} n ON ca.entity_id = n.nid  WHERE n.status=1 AND ca.field_content_approval_value = :need_approval AND ca.bundle = :entity_type', array(':need_approval' => 1, ':entity_type' => 'job'))->fetchCol();
+  if (!empty($nids)) {
+    db_update('field_data_field_job_sub_status')
+      ->fields(array('field_job_sub_status_value' => JOB_SUB_STATUS_PUBLISHED))
+      ->condition('entity_id', $nids, 'IN')
+      ->execute();
+    db_update('field_revision_field_job_sub_status')
+      ->fields(array('field_job_sub_status_value' => JOB_SUB_STATUS_PUBLISHED))
+      ->condition('entity_id', $nids, 'IN')
+      ->execute();
+    db_update('field_data_field_content_approval')
+      ->fields(array('field_content_approval_value' => 0))
+      ->condition('entity_id', $nids, 'IN')
+      ->execute();
+    db_update('field_revision_field_content_approval')
+      ->fields(array('field_content_approval_value' => 0))
+      ->condition('entity_id', $nids, 'IN')
+      ->execute();
+    db_update('node')
+      ->fields(array('status' => 1))
       ->condition('nid', $nids, 'IN')
       ->execute();
   }

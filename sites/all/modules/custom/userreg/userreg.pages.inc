@@ -48,7 +48,7 @@ function userreg_company_register_form($form, &$form_state) {
   hide($form["body"]);
   hide($form["group_group"]);
   hide($form["field_logo"]);
-  hide($form["field_industry"]);
+//  hide($form["field_industry"]);
   hide($form["field_company_type"]);
   hide($form["field_company_size"]);
   hide($form["field_email"]);

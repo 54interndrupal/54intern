@@ -28,7 +28,9 @@ function hint_menu() {
  * Implementation of hook_init().
  */
 function hint_init() {
+  if(drupal_is_front_page()){
   drupal_add_js(drupal_get_path('module', 'hint') . '/hint.js');
+  }
 }
 
 /**
