@@ -181,8 +181,8 @@ function ffintern_user_login(&$variables) {
   <div class="d-2">
     <span class="s-2">使用合作网站帐户登录</span>
     <!--<span class="rrxxl"></span>-->
-    <span class="qqxxl"></span>
-    <span class="wbxxl"></span>
+    <a href="'.base_path().'weibo/redirect?token=login" title="新浪微博账号登陆"><span class="wbxxl"></span> </a>
+    <a href='.url("qq_login/response").'" title="QQ账号登陆"><span class="qqxxl"></span></a>
     <span class="zhuce"><span class="c-5">还不是实习圈用户？</span>' . $register_link . '</div>
   </div>
   </div>';
