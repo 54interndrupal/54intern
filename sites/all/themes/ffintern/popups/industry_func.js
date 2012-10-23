@@ -75,16 +75,16 @@ var Industry = {
             } else{
                 output+='<tr>';
             }
-            output+='<td style="width: 168px;font-size: 14px;padding-left: 3px;font-weight: bold;color: #4d963b;">'+indcategory[i][0]+'</td>';
+            output+='<td style="width: 185px;font-size: 14px;padding-left: 3px;font-weight: bold;color: #4d963b;">'+indcategory[i][0]+'</td>';
             var ind_a_2 =indcategory[i][1];
-            output+='<td style="width: 540px;">'
+            output+='<td style="width:720px;">'
             for (var j in ind_a_2){
                 output+='<li onclick="Industry.Chk2(\''+ind_a_2[j]+'\')">'+ind_a[ind_a_2[j]]+'</li>';
             }
             output+='</td></tr>'
         }
         output+='</tbody></table>';
-        jQuery('#drag').width('940px');
+        jQuery('#drag').width('905px');
 
         jQuery('#IndustryList').html('<ul>'+output+'</ul>');
         // 鼠标悬停变色
@@ -92,7 +92,8 @@ var Industry = {
     },
     Chk2 : function(id){
         jQuery('#'+ind_element_id).val(id);
-        jQuery('#sel-'+ind_element_id).val(ind_a[id]);
+        var inputObject = jQuery('#sel-'+ind_element_id);
+        setSearchValue(inputObject, ind_a[id]);
         boxAlpha();
     }
 }
@@ -118,10 +119,18 @@ function IndustrySelect_2(elementId){
     var dragHtml ='<div id="IndustryAlpha">';		//行业
     dragHtml+='		<div id="IndustryList" class="radio"></div>';//行业列表
     dragHtml+='</div>';
-    jQuery('#drag_h').html('<b>请选择行业</b><span onclick="boxAlpha()">[关闭]</span>');
+    jQuery('#drag_h').html('<b>请选择行业</b><span onclick="boxAlpha()">[关闭]</span> &nbsp; <span onclick="IndustryReset()">[不限]</span>');
     jQuery('#drag_con').html(dragHtml);
 
     Industry.Show2();
     boxAlpha();
     draglayer();
+}
+
+function IndustryReset(){
+    jQuery('#'+ind_element_id).val('All');
+    var inputObject = jQuery('#sel-'+ind_element_id);
+    inputObject.val('不限');
+    inputObject.attr('title','');
+    boxAlpha();
 }

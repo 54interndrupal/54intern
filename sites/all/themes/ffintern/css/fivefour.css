@@ -879,70 +879,74 @@ body.front #block-system-main-menu {
     list-style: none none;
     float: left;
     font-size: 18px;
+    margin: 0px;
+    padding: 0px;
 }
 
 #block-system-main-menu ul.menu li a {
-    display: inline-block;
-}
-
-#block-system-main-menu ul.menu li a span {
-    display: inline-block;
+    display: block;
     height: 26px;
     line-height: 33px;
     color: black;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    text-indent: -999px;
 }
 
-#block-system-main-menu ul.menu li a.active span {
-    display: inline-block;
+
+
+#block-system-main-menu ul.menu li a.active {
+    display: block;
     height: 26px;
     line-height: 33px;
     color: black;
     border-bottom:solid 2px #B0D73E;
+    overflow: hidden;
+    text-indent: -999px;
 }
 
-#block-system-main-menu ul.menu li {
-    height: 24px;
-    padding-right: 0px;
-}
 
 #block-system-main-menu ul.menu span.menu-split{
     display: inline-block;
+    float: left;
     background: url(img/site/bt_mnu_split.gif) no-repeat 0 1px;
-    width: 19px;
+    width: 11px;
     height: 26px;
+    margin: 0px 8px;
 }
 
-#block-system-main-menu ul.menu span.menu-623 {
+#block-system-main-menu ul.menu a.menu-623 {
     background: url(img/site/bt_fg.gif) no-repeat;
     width: 83px;
 }
 
-#block-system-main-menu ul.menu span.menu-625 {
+#block-system-main-menu ul.menu a.menu-625 {
     background: url(img/site/bt_fi.gif) no-repeat;
     width: 103px;
 }
 
-#block-system-main-menu ul.menu span.menu-624 {
+#block-system-main-menu ul.menu a.menu-624 {
     background: url(img/site/bt_cc.gif) no-repeat;
     width: 119px;
 }
 
-#block-system-main-menu ul.menu span.menu-230 {
+#block-system-main-menu ul.menu a.menu-230 {
     background: url(img/site/bt_home.gif) no-repeat;
     width: 36px;
 }
 
-#block-system-main-menu ul.menu span.menu-1436 {
+#block-system-main-menu ul.menu a.menu-1436 {
     background: url(img/site/bt_iwiki.gif) no-repeat;
     width: 94px;
 }
 
-#block-system-main-menu ul.menu span.menu-626 {
+#block-system-main-menu ul.menu a.menu-626 {
     background: url(img/site/bt_cpanel.gif) no-repeat;
     width: 110px;
 }
 
-#block-system-main-menu ul.menu span.menu-638 {
+#block-system-main-menu ul.menu a.menu-638 {
     background: url(img/site/bt_bpanel.gif) no-repeat;
     width: 101px;
 }

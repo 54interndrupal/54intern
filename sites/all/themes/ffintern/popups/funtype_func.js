@@ -121,7 +121,7 @@ var Funtype = {
             } else{
                 output+='<tr>';
             }
-            output+='<td style="width: 168px;font-size: 14px;padding-left: 3px;font-weight: bold;color: #4d963b;">'+funcategory[i][0]+'</td>';
+            output+='<td style="width: 185px;font-size: 14px;padding-left: 3px;font-weight: bold;color: #4d963b;">'+funcategory[i][0]+'</td>';
             var fun_a_2 =funcategory[i][1];
             output+='<td style="width: 540px;">'
             for (var j in fun_a_2){
@@ -130,7 +130,7 @@ var Funtype = {
             output+='</td></tr>'
         }
         output+='</tbody></table>';
-        jQuery('#drag').width('720px');
+        jQuery('#drag').width('760px');
         jQuery('#FuntypeList').html('<ul>'+output+'</ul>');
         // 鼠标悬停变色
         jQuery('#FuntypeAlpha li').hover(function(){jQuery(this).addClass('over')},function(){jQuery(this).removeClass('over')});
@@ -158,7 +158,8 @@ var Funtype = {
     },
     Chk2 : function(id){
         jQuery('#'+fun_element_id).val(id);
-        jQuery('#sel-'+fun_element_id).val(fun_a[id]);
+        var inputObject = jQuery('#sel-'+fun_element_id);
+        setSearchValue(inputObject, fun_a[id]);
         jQuery("#sublist").empty().hide();
         boxAlpha();
     }
@@ -184,9 +185,17 @@ function funtypeSelect_2(elementId){
     var dragHtml ='<div id="FuntypeAlpha">';			//职能类别
     dragHtml+='		<div id="FuntypeList"></div>';	//职能类别列表
     dragHtml+='</div>';
-    jQuery('#drag_h').html('<b>请选择职能类别</b><span onclick="boxAlpha()">[关闭]</span>');
+    jQuery('#drag_h').html('<b>请选择职能类别</b><span onclick="boxAlpha()">[关闭]</span> &nbsp; <span onclick="funtypeReset()">[不限]</span>');
     jQuery('#drag_con').html(dragHtml);
     Funtype.Show2();
     boxAlpha();
     draglayer();
+}
+
+function funtypeReset(){
+    jQuery('#'+fun_element_id).val('All');
+    var inputObject = jQuery('#sel-'+fun_element_id);
+    inputObject.val('不限');
+    inputObject.attr('title','');
+    boxAlpha();
 }

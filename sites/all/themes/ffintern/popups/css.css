@@ -66,7 +66,7 @@ H6 {
 	FLOAT: left
 }
 #drag H3 SPAN {
-	FLOAT: right; CURSOR: pointer; FONT-WEIGHT: normal
+	FLOAT: right; CURSOR: pointer; FONT-WEIGHT: normal;margin-right: 5px;
 }
 #sublist {
 	Z-INDEX: 2100; POSITION: absolute; BACKGROUND: #fff

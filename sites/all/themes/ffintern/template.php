@@ -293,7 +293,7 @@ function ffintern_review_node_form(&$variables) {
 
 function ffintern_menu_link__main_menu(array $variables) {
   $element = $variables['element'];
-
+//    print_r($element);
   $sub_menu = '';
   $mlid = $element['#original_link']['mlid'];
 
@@ -328,7 +328,9 @@ function ffintern_menu_link__main_menu(array $variables) {
     }
   }
 
-  $output = l('<span class=menu-' . $element['#original_link']['mlid'] . '></span>', $element['#href'], array(
+  $attributes['class'][] = 'menu-'.$element['#original_link']['mlid'];
+
+  $output = l($element['#title'], $element['#href'], array(
     'html' => TRUE,
     'attributes' => $attributes
   ));

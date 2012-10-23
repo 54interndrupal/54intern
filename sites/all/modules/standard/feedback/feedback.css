@@ -38,13 +38,24 @@
 }
 #block-feedback-form .feedback-link {
   padding: 0.3em 0;
-  text-align: right;
   font-size: 12px;
   font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
   font-weight: bold;
 }
+
+#block-feedback-form .feedback-link #feedback-form-toggle{
+    display: block;
+    padding-top: 5px;
+}
+
+#block-feedback-form .feedback-link.closed #feedback-form-toggle{
+    display: none;
+    padding-top: 5px;
+}
 #block-feedback-form .feedback-link.closed{
-    width: 342px; /* 300 + 42 */
+    top: 40%;
+    right: -6px;
+    width: 42px;
     height: 96px;
     color: #FFF;
     cursor:pointer;

@@ -93,6 +93,8 @@ class DrupalFileCache implements DrupalCacheInterface {
   function get($cid) {
     $filename = $this->prefix . $this->encode_cid($cid);
 
+    watchdog('filecache',$cid.','.REQUEST_TIME.',');
+
     // XXX should be in getMultiple() and get() to call getMultiple()
     $this->delete_flushed();
 
@@ -102,6 +104,27 @@ class DrupalFileCache implements DrupalCacheInterface {
       return FALSE;
     }
     $cache = @unserialize($content);
+
+    //add logic to clear some special page caches
+    if(strpos($cid,'jobs')!=FALSE){
+      if(REQUEST_TIME>$cache->created+30*60){
+        $this->clear($cid);
+      }
+    }else if(strpos($cid,'companys')!=FALSE){
+      if(REQUEST_TIME>$cache->created+30*60){
+        $this->clear($cid);
+      }
+    }else if(strpos($cid,'search')!=FALSE){
+      if(REQUEST_TIME>$cache->created+30*60){
+        $this->clear($cid);
+      }
+    }else{
+      if(REQUEST_TIME>$cache->created+2*60*60){
+        $this->clear($cid);
+      }
+    }
+
+
     if ($cache === FALSE) {
       // we are in the middle of cache_set
       $fh = fopen($filename, 'rb');
@@ -338,6 +361,7 @@ class DrupalFileCache implements DrupalCacheInterface {
       } // foreach $filename
       chdir($cwd);
     } // if $cache_flush
+
 
     $recursion = FALSE;
   }

@@ -65,7 +65,7 @@ function residencySelect(elementId){
     dragHtml+='		<div id="maincity"></div>';	//主要城市
     dragHtml+='		<div id="allProv"></div>';	//所有省市
     dragHtml+='</div>';
-    jQuery('#drag_h').html('<b>请选择居住地</b><span onclick="boxAlpha()">[关闭]</span>');
+    jQuery('#drag_h').html('<b>请选择居住地</b><span onclick="boxAlpha()">[关闭]</span>&nbsp; <span onclick="jobAreaReset()">[不限]</span>');
     jQuery('#drag_con').html(dragHtml);
     residency.Show();
     boxAlpha();
@@ -220,4 +220,12 @@ function jobAreaSelect(){
     jobArea.Show();
     boxAlpha();
     draglayer();
+}
+
+function jobAreaReset(){
+    jQuery('#'+residency_element_id).val('All');
+    var inputObject = jQuery('#sel-'+residency_element_id);
+    inputObject.val('不限');
+    inputObject.attr('title','');
+    boxAlpha();
 }

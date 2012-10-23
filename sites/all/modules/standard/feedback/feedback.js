@@ -21,9 +21,6 @@
             $('#block-feedback-form', context).once('feedback', function () {
                 var $block = $(this);
                 $block.find('span.feedback-link')
-                    .prepend('<span id="feedback-form-toggle">[ + ]</span> ')
-                    .css('cursor', 'pointer')
-                    .addClass("closed")
                     .toggle(function () {
                         Drupal.feedbackFormToggle($block, false);
                     },
@@ -73,10 +70,10 @@
             });
         }
         if (enable) {
-            $('#feedback-form-toggle', $block).html('[ - ]');
+            $('#feedback-form-toggle', $block).html('[ - ] 网站反馈');
         }
         else {
-            $('#feedback-form-toggle', $block).html('[ &minus; ]');
+            $('#feedback-form-toggle', $block).html('[ &minus; ] 网站反馈');
         }
     };
 
