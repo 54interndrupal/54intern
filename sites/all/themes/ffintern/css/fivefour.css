@@ -892,6 +892,7 @@ body.front #block-system-main-menu {
     margin: 0px;
     overflow: hidden;
     text-indent: -999px;
+    float: left;
 }
 
 

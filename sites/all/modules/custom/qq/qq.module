@@ -196,12 +196,4 @@ function qq_reg() {
   drupal_add_js('jQuery(document).ready(function () {$("#edit-name").val("' . $user->name . '");});', 'inline');
   return $output;
 }
-/**
- * Alter user login form
- */
-function qq_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'user_login_block' || $form_id == 'user_login') {
-      $items[] = '<a href="qq/login" title="' . t('QQ acount log in drupal') . '"><img src="' . drupal_get_path('module', 'qq') . '/images/Connect_logo.png"></a>';
-      $form['url'] = array('#markup' => theme('item_list', array('items' => $items)));
-  }
-}
+

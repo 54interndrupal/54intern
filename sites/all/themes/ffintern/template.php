@@ -17,7 +17,6 @@ function ffintern_preprocess_html() {
     'group' => CSS_THEME, 'browsers' =>
     array('IE' => 'lt IE 7', '!IE' => FALSE), 'preprocess' => FALSE
   ));
-
 }
 
 /**

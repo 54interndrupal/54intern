@@ -164,6 +164,18 @@
     <?php print l('填写简历',$_SESSION['resume_path']);?>
       </span>
     </div>
+    <?php }else if(user_is_anonymous()){?>
+    <div class="ops">
+    <span class="flag-wrapper flag-collect flag-collect-44312">
+      <a href="<?php print base_path();?>/ajax_register/login/nojs" title="" class="ctools-use-modal ctools-modal-ctools-ajax-register-style flag flag-action flag-link-toggle" rel="nofollow">收藏</a>
+    </span>
+    <span class="flag-wrapper flag-apply flag-apply-44312">
+      <a href="<?php print base_path();?>/ajax_register/login/nojs" title="" class="ctools-use-modal ctools-modal-ctools-ajax-register-style flag flag-action flag-link-normal" rel="nofollow">申请职位</a>
+    </span>
+
+    <span class="resume">
+    <a class="ctools-use-modal ctools-modal-ctools-ajax-register-style" href="<?php print base_path();?>/ajax_register/login/nojs">填写简历</a>      </span>
+    </div>
     <?php }?>
     <?php $source_url = trim($field_source_url[0]['value']);?>
     <?php if(!empty($source_url)){?>

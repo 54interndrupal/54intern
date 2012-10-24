@@ -2,3 +2,4 @@ name = userreg
 description = 定制的用户注册.
 core = 7.x
 php = 5.0
+package="54intern"
