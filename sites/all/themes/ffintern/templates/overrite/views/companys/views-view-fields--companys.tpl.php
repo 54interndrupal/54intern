@@ -42,11 +42,11 @@ $company_nid = (string) $fields['nid']->content;
       关注人数： <?php print $fields['count']->content ?>人
     </div>
   </div>
-  <div class="field field-name-ops">
-    <div class="field-items">
-      <?php print $fields['ops']->content ?>
-    </div>
-  </div>
+<!--  <div class="field field-name-ops">-->
+<!--    <div class="field-items">-->
+<!--      --><?php //print $fields['ops']->content ?>
+<!--    </div>-->
+<!--  </div>-->
   <div class="field field-name-jobs">
     <?php if (intern_company_get_company_job_count($company_nid) > 0) { ?>
     <a href="<?php print url("company/" . $company_nid); ?>?requestTab=jobs">实习机会</a>

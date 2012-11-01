@@ -320,7 +320,7 @@ function _authcache_shutdown_save_page() {
       && !$is_cached_nonhtml
   ) {
     $js  = '<script type="text/javascript">
-      if (!Authcache) Authcache = {};
+      if (typeof Authcache=="undefined") Authcache = {};
       Authcache.info = ' . drupal_json_encode($_authcache_info) .'</script>';
       
     

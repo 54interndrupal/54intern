@@ -180,8 +180,8 @@ function ffintern_user_login(&$variables) {
   <div class="d-2">
     <span class="s-2">使用合作网站帐户登录</span>
     <!--<span class="rrxxl"></span>-->
-    <a href="'.base_path().'weibo/redirect?token=login" title="新浪微博账号登陆"><span class="wbxxl"></span> </a>
-    <a href="'.base_path().'qq_login/response" title="QQ账号登陆"><span class="qqxxl"></span></a>
+    <a href="' . base_path() . 'weibo/redirect?token=login" title="新浪微博账号登陆"><span class="wbxxl"></span> </a>
+    <a href="' . base_path() . 'qq_login/response" title="QQ账号登陆"><span class="qqxxl"></span></a>
     <span class="zhuce"><span class="c-5">还不是实习圈用户？</span>' . $register_link . '</div>
   </div>
   </div>';
@@ -327,7 +327,7 @@ function ffintern_menu_link__main_menu(array $variables) {
     }
   }
 
-  $attributes['class'][] = 'menu-'.$element['#original_link']['mlid'];
+  $attributes['class'][] = 'menu-' . $element['#original_link']['mlid'];
 
   $output = l($element['#title'], $element['#href'], array(
     'html' => TRUE,
@@ -453,14 +453,17 @@ function ffintern_textarea($variables) {
 
 function ffintern_select($variables) {
   $element = $variables['element'];
+//  print_r($element);
 
   if ($element['#parents'][0] == 'field_location_tid' || $element['#parents'][0] == 'job_category'
     || $element['#parents'][0] == 'field_location' || $element['#parents'][0] == 'field_job_category'
-    ||$element['#parents'][0] == 'field_industry_tid' || $element['#parents'][0] == 'field_industry') {
+    || $element['#parents'][0] == 'field_industry_tid' || $element['#parents'][0] == 'field_industry'
+  ) {
     $selectValue = $element['#value'];
     if (is_array($selectValue)) {
       $selectValue = $selectValue[0];
     }
+
 
     $selectOption = '不限';
     foreach ($element['#options'] as $index => $choice) {
@@ -479,6 +482,11 @@ function ffintern_select($variables) {
 
       }
     }
+    $error_class = '';
+    if (isset($element['#parents']) && form_get_error($element)) {
+      $error_class = 'error';
+    }
+
     drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/drag.js");
     drupal_add_css(drupal_get_path('theme', "ffintern") . "/popups/alpha.css");
     drupal_add_css(drupal_get_path('theme', "ffintern") . "/popups/css.css");
@@ -486,17 +494,20 @@ function ffintern_select($variables) {
     if ($element['#parents'][0] == 'field_location_tid' || $element['#parents'][0] == 'field_location') {
       drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/city_func.js");
       drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/city_arr.js");
-      $output .= '<div><input type="text" name="citySelect" onclick="residencySelect(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search" value="' . $selectOption . '"></div>';
+      $output .= '<div><input type="text" name="citySelect" onclick="residencySelect(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search '.$error_class.'" value="' . $selectOption . '"></div>';
     }
     else {
       if ($element['#parents'][0] == 'job_category' || $element['#parents'][0] == 'field_job_category') {
         drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/funtype_func.js");
         drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/funtype_arr.js");
-        $output .= '<div><input type="text" name="jobCategorySelect"  onclick="funtypeSelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search" value="' . $selectOption . '"></div>';
-      } else if($element['#parents'][0] == 'field_industry_tid'||$element['#parents'][0] == 'field_industry'){
-        drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/industry_func.js");
-        drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/industry_arr.js");
-        $output .= '<div><input type="text" name="industrySelect"  onclick="IndustrySelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search" value="' . $selectOption . '"></div>';
+        $output .= '<div><input type="text" name="jobCategorySelect"  onclick="funtypeSelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search '.$error_class.'" value="' . $selectOption . '"></div>';
+      }
+      else {
+        if ($element['#parents'][0] == 'field_industry_tid' || $element['#parents'][0] == 'field_industry') {
+          drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/industry_func.js");
+          drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/industry_arr.js");
+          $output .= '<div><input type="text" name="industrySelect"  onclick="IndustrySelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search '.$error_class.'" value="' . $selectOption . '"></div>';
+        }
       }
     }
     return $output;

@@ -52,7 +52,6 @@ function imagecache_profiles_preprocess_user_picture(&$variables) {
     elseif (isset($account->user_picture_style)) {
       $style = $account->user_picture_style;
     }
-
     if (isset($filepath) && file_valid_uri($filepath) && !empty($style) && $style != variable_get('user_picture_style', '')) {
       $alt = t("@user's picture", array('@user' => format_username($account)));
       $variables['user_picture'] = theme('image_style', array(

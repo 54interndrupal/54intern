@@ -42,6 +42,7 @@ global $user;
 if (!$user->uid && isset($_COOKIE['authcache'])) {
   setcookie('drupal_user', "", time() - 86400, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
   setcookie('drupal_uid', "", time() - 86400, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
+  setcookie('drupal_user_picture', "", time() - 86400, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
   setcookie('authcache', "", time() - 86400, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
   setcookie('nocache', "", time() - 86400, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
 }
@@ -49,7 +50,7 @@ if (!$user->uid && isset($_COOKIE['authcache'])) {
 // Initialize configuration variables, using values from settings.php if available.
 $conf = variable_initialize(isset($conf) ? $conf : array());
 
-$is_ajax_authcache = true;
+$is_ajax_authcache = TRUE;
 
 // Add your own custom functions to authcache_custom.php and place in your settings.php directory.
 if (file_exists($authcache_custom_inc = conf_path() . '/authcache_custom.php')) {
@@ -86,7 +87,7 @@ if (variable_get('dev_query', FALSE)) {
 if (isset($SOURCE['max_age']) && is_numeric($SOURCE['max_age'])) {
   // Tell browser to cache response for 'max_age' seconds
   header("Cache-Control: max-age={$SOURCE['max_age']}, must-revalidate");
-  header('Expires: ' . gmdate('D, d M Y H:i:s', time()+24*60*60) . ' GMT'); // 1 day
+  header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 24 * 60 * 60) . ' GMT'); // 1 day
 }
 
 header("Content-type: text/javascript");
@@ -159,7 +160,7 @@ function _authcache_forum_topic_new($vars) {
   $new = array();
 
   drupal_bootstrap(DRUPAL_BOOTSTRAP_PATH);
-  include_once './modules/node/node.module';  // Need NODE_NEW_LIMIT definition
+  include_once './modules/node/node.module'; // Need NODE_NEW_LIMIT definition
   include_once './modules/forum/forum.module';
   include_once './modules/filter/filter.module'; // XSS filter for l()
 
@@ -181,13 +182,13 @@ function _authcache_forum_topic_info($vars) {
   $info = array();
 
   drupal_bootstrap(DRUPAL_BOOTSTRAP_PATH);
-  include_once './modules/node/node.module';  // Need NODE_NEW_LIMIT definition
+  include_once './modules/node/node.module'; // Need NODE_NEW_LIMIT definition
   include_once './modules/forum/forum.module';
   include_once './modules/comment/comment.module';
 
   foreach ($vars as $nid => $timestamp) {
     $history = _forum_user_last_visit($nid);
-    $new_topics = (int)comment_num_new($nid, $history);
+    $new_topics = (int) comment_num_new($nid, $history);
     if ($new_topics) {
       $info[$nid] = format_plural($new_topics, '1 new', '@count new');
     }
@@ -293,16 +294,21 @@ function _authcache_blocks($blocks) {
 // Authcache reserved/internal functions
 //
 
-function _authcache_q($vars) { }        // query string
-function _authcache_max_age($vars) { }  // cache time (seconds)
-function _authcache_time($vars) { }     // cache invalidation
+function _authcache_q($vars) {
+} // query string
+function _authcache_max_age($vars) {
+} // cache time (seconds)
+function _authcache_time($vars) {
+} // cache invalidation
 
 /**
  * Database benchmarks for Authcache Ajax phase
  */
 function _authcache_dev_query() {
   global $queries;
-  if (!$queries) return;
+  if (!$queries) {
+    return;
+  }
 
   $time_query = 0;
   foreach ($queries as $q) {
@@ -332,7 +338,8 @@ function _authcache_shutdown() {
  * @see authcache_example.module
  */
 function _authcache_authcache_example($vars) {
-  include_once './includes/common.inc';
+  include_once DRUPAL_ROOT . '/includes/common.inc';
+  require_once DRUPAL_ROOT . '/includes/common.inc';
   drupal_bootstrap(DRUPAL_BOOTSTRAP_PATH); // Use FULL if needed for additional functions
 
   include_once dirname(drupal_get_filename('module', 'authcache_example')) . '/authcache_example.module';
@@ -340,6 +347,58 @@ function _authcache_authcache_example($vars) {
 }
 
 
+function _authcache_intern_user_resume_status($vars) {
+  include_once './includes/common.inc';
+  drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL); // Use FULL if needed for additional functions
+
+  include_once dirname(drupal_get_filename('module', 'intern_user')) . '/intern_user.module';
+
+  return intern_user_resume_status_block_view();
+
+}
+
+function _authcache_intern_job_flags($vars) {
+  include_once './includes/common.inc';
+  drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL); // Use FULL if needed for additional functions
+
+  include_once dirname(drupal_get_filename('module', 'intern_job')) . '/intern_job.module';
+  include_once dirname(drupal_get_filename('module', 'intern_company')) . '/intern_company.module';
+  $result["job_flags"] = intern_job_flags($vars["jobId"]);
+  $result["company_info_flags"] = intern_company_info_flags($vars["companyId"]);
+  return $result;
+}
+
+function _authcache_intern_company_flags($vars) {
+  include_once './includes/common.inc';
+  drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL); // Use FULL if needed for additional functions
+
+  include_once dirname(drupal_get_filename('module', 'intern_company')) . '/intern_company.module';
+
+  $result["company_info_flags"] = intern_company_info_flags($vars["companyId"]);
+  return $result;
+}
+
+function _authcache_intern_article_flags($vars) {
+  include_once './includes/common.inc';
+  drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL); // Use FULL if needed for additional functions
+
+  include_once dirname(drupal_get_filename('module', 'intern_article')) . '/intern_article.module';
+
+  $result["article_flags"] = intern_article_flags($vars["articleId"]);
+  return $result;
+}
+
+function _authcache_intern_company_user_info($vars) {
+  global $user;
+  include_once './includes/common.inc';
+  drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL); // Use FULL if needed for additional functions
+
+  include_once dirname(drupal_get_filename('module', 'intern_company')) . '/intern_company.module';
+  $block = views_embed_view('company_info', 'panel_pane_2');
+  $result["company_user_info"] = $block;
+
+  return $result;
+}
 /**
  * @todo Add support for additional contributed modules!
  ********************************************************/

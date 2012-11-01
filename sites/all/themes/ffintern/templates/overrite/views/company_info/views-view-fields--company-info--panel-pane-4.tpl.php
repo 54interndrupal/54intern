@@ -24,11 +24,12 @@
  * @ingroup views_templates
  */
 ?>
-
+<?php global $is_page_authcache;?>
 <?php print $fields['field_logo']->content ?>
 <div class="d-1">
   <span class="title"><?php print $fields['title']->content ?></span>
-  <?php print $fields['ops']->content ?>
+  <div id="company_info_ops">
+  </div>
 </div>
 <div class="d-2 c-10">
   <span><span class='c-15' style=‘text-decoration: underline’><?php print $fields['count']->content ?></span> 关注&nbsp;  <span class='c-15' style=‘text-decoration: underline’><?php print $fields['nid']->content ?></span> 点评

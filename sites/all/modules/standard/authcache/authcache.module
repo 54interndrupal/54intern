@@ -195,6 +195,12 @@ function authcache_init() {
     }
   }
 }
+/**
+ * Implements hook_user_update().
+ */
+function authcache_user_update(&$edit, $account, $category){
+   authcache_user_login($edit, $account);
+}
 
 
 /**
@@ -225,6 +231,13 @@ function authcache_user_login(&$edit, $account) {
   // Required to differentiate from anonymous users
   setcookie('drupal_user', $account->name, $expires, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
   setcookie('drupal_uid', $account->uid, $expires, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
+
+  $image_vars = array('account' => $account);
+  if (module_exists('imagecache_profiles')) {
+    $image_vars['user_picture_style'] = '100_100';
+  }
+
+  setcookie('drupal_user_picture',theme('user_picture', $image_vars), $expires, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
 }
 
 function authcache_user_logout($account) {
@@ -232,6 +245,7 @@ function authcache_user_logout($account) {
 
   setcookie('drupal_user', "", REQUEST_TIME - 86400, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
   setcookie('drupal_uid', "", REQUEST_TIME - 86400, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
+  setcookie('drupal_user_picture', "", REQUEST_TIME - 86400, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
   setcookie('authcache', "", REQUEST_TIME - 86400, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
 
   if (isset($_COOKIE['nocache'])) {

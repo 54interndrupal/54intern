@@ -81,6 +81,7 @@
 <?php //print debug($field_company_images); ?>
 <div class="content">
 
+  <input type="hidden" id="companyId" name="companyId" value="<?php print $nid?>"/>
 
   <div class="block" id="company-info">
 
@@ -95,16 +96,13 @@
         <div class="field field-name-name">
           <div class="field-items c-9"><?php print $title; ?></div>
         </div>
-        <div id="flag-company">
-          <?php
-          global $user;
-          //企业用户不能访问
-          if (in_array(4, array_keys($user->roles))) {
-          }
-          else {
-            print flag_create_link('bookmarks', $node->nid);
-          }
+
+        <div id="company_info_ops">
+          <?php if (!user_is_anonymous() && !intern_user_is_company_user()) {
+          drupal_add_js(drupal_get_path('module', 'intern_company') . '/js/intern_company.js');
+        }
           ?>
+
         </div>
         <div class="field field-name-industry">
           <label> 行业：</label>
@@ -121,8 +119,8 @@
 
           <div class="field-items"><?php print $field_company_type[0]['taxonomy_term']->name; ?></div>
         </div>
-        <div class="field field-name-ceo">
-          <label>CEO：</label>
+        <div class="field field-name-contact">
+          <label>联系人：</label>
 
           <div class="field-items"><?php print $field_contact[0]['safe_value']; ?></div>
         </div>
@@ -152,14 +150,9 @@
         </div>
       </div>
     </div>
-    <!-- <?php print l(t('关注这个企业'), 'flag/flag/bookmarks/' . $nid,
-      array(
-        'attributes' => array('class' => array('follow')),
-        'query' => array('token' => flag_get_token($nid))
-      )); ?> -->
   </div>
 </div>
-<?php if (count($field_company_images) > 0) {?>
+<?php if (count($field_company_images) > 0) { ?>
 <div class="block" id="company-photos"><!-- 需要载入 jquery.jcarousel.min.js -->
   <div class="block-content">
     <ul>
@@ -191,7 +184,7 @@
     </ul>
   </div>
 </div>
-<?php }?>
+<?php } ?>
 
 </div><!-- /.content -->
 <script type="text/javascript">

@@ -84,8 +84,6 @@ function userreg_company_register_form($form, &$form_state) {
   $form['#validate'][] = 'userreg_company_register_form_validate_handler';
   $form['#submit'][] = 'userreg_company_register_form_submit_handler';
 
-
-
   return $form;
 
 }
@@ -168,7 +166,8 @@ function userreg_company_register_form_submit_handler(&$form, &$form_state) {
 
 function userreg_company_register_success_page() {
   $output = '';
-  $output .= t('您已成功注册企业用户，请耐心等待审批。');
+//  TODO
+  $output .= t('TODO: 注册成功页面。');
   return $output;
 }
 

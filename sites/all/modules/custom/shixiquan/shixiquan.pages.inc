@@ -26,9 +26,12 @@ function theme_zpuser_my_account_block() {
  * 订单管理区块的主题函数
  */
 function theme_zpuser_resume_block() {
-  global $user;
+  global $user,$is_page_authcache;
   $output = "";
+
   if ($user->uid > 0) {
+
+
     $percent = 0;
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node');

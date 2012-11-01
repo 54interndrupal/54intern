@@ -113,7 +113,7 @@ function _intern_job_approve(&$node) {
   $node->status = NODE_PUBLISHED;
   $node->field_job_sub_status[LANGUAGE_NONE][0]["value"] = JOB_SUB_STATUS_PUBLISHED;
   $node->field_content_approval[LANGUAGE_NONE][0]["value"] = 0;
-   _intern_job_refresh($node);
+  _intern_job_refresh($node);
 }
 
 function intern_job_form_node_form_alter(&$form, $form_state) {
@@ -228,7 +228,10 @@ function intern_job_approve_action($node, $context = array()) {
  * Expire jobs.
  */
 function intern_job_cron() {
-  $nids = db_query('SELECT fd.entity_id FROM {field_data_field_deadline} fd INNER JOIN {node} n ON fd.entity_id = n.nid  WHERE n.status=1 AND fd.field_deadline_value <= :request_time AND fd.bundle = :entity_type', array(':request_time' => REQUEST_TIME, ':entity_type' => 'job'))->fetchCol();
+  $nids = db_query('SELECT fd.entity_id FROM {field_data_field_deadline} fd INNER JOIN {node} n ON fd.entity_id = n.nid  WHERE n.status=1 AND fd.field_deadline_value <= :request_time AND fd.bundle = :entity_type', array(
+    ':request_time' => REQUEST_TIME,
+    ':entity_type' => 'job'
+  ))->fetchCol();
   if (!empty($nids)) {
     db_update('field_data_field_job_sub_status')
       ->fields(array('field_job_sub_status_value' => 2))
@@ -243,7 +246,10 @@ function intern_job_cron() {
       ->condition('nid', $nids, 'IN')
       ->execute();
   }
-  $nids = db_query('SELECT ca.entity_id FROM {field_data_field_content_approval} ca INNER JOIN {node} n ON ca.entity_id = n.nid  WHERE n.status=1 AND ca.field_content_approval_value = :need_approval AND ca.bundle = :entity_type', array(':need_approval' => 1, ':entity_type' => 'job'))->fetchCol();
+  $nids = db_query('SELECT ca.entity_id FROM {field_data_field_content_approval} ca INNER JOIN {node} n ON ca.entity_id = n.nid  WHERE n.status=1 AND ca.field_content_approval_value = :need_approval AND ca.bundle = :entity_type', array(
+    ':need_approval' => 1,
+    ':entity_type' => 'job'
+  ))->fetchCol();
   if (!empty($nids)) {
     db_update('field_data_field_job_sub_status')
       ->fields(array('field_job_sub_status_value' => JOB_SUB_STATUS_PUBLISHED))
@@ -268,3 +274,29 @@ function intern_job_cron() {
   }
 }
 
+function intern_job_flags($jobId) {
+
+  global $user;
+  $_GET['destination'] = "node/" . $jobId;
+
+  $output = '';
+  if (!user_is_anonymous() && !intern_user_is_company_user()) {
+    $output .= flag_create_link('collect', $jobId);
+    //企业用户不能访问
+    if (in_array(4, array_keys($user->roles))) {
+    }
+    else {
+      $output .= flag_create_link('apply', $jobId);
+    }
+
+    $output .= '<span class="resume">';
+    $path = 'node/add/resume';
+    if (!empty($_SESSION['user_resume_id'])) {
+        $path = 'node/' . $_SESSION['user_resume_id'] . '/edit';
+    }
+    $output .= l('填写简历', $path);
+    $output .= '</span>';
+  }
+
+  return $output;
+}

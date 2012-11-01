@@ -52,6 +52,7 @@ function ajax_register_page_callback($form_type, $js) {
     elseif ($form_type == 'profile') {
       // Show USER profile form.
       module_load_include('pages.inc', 'user');
+      $user = user_load($user->uid);
       $form_state['build_info']['args'] = array($user);
       $commands = ctools_modal_form_wrapper('user_profile_form', $form_state);
     }
@@ -100,7 +101,7 @@ function ajax_register_page_callback($form_type, $js) {
         $commands[] = ctools_ajax_command_reload();
       }
       elseif ($form_type == 'profile') {
-        $commands[] = ctools_modal_command_display(t('Profile update successful'), theme('status_messages'));
+        $commands[] = ctools_modal_command_display('', theme('status_messages').'<script>jQuery(".authcache-user-picture").html(jQuery.cookie("drupal_user_picture").replace(/\+/g," "));jQuery(".authcache-user").html(jQuery.cookie("drupal_user"));</script>');
       }
     }
 

@@ -7,6 +7,18 @@ function intern_user_block_info() {
   $blocks['user center showcase'] = array(
     'info' => t('Intern User -- 个人中心Showcase')
   );
+  $blocks['user top link'] = array(
+    'info' => t('Intern User -- 用户顶部链接'),
+    'cache' => BLOCK_NO_CACHE
+  );
+  $blocks['user resume status'] = array(
+    'info' => t('Intern User -- 简历完整度'),
+    'cache' => BLOCK_NO_CACHE
+  );
+  $blocks['company user info'] = array(
+    'info' => t('Intern User -- 企业用户信息'),
+    'cache' => BLOCK_NO_CACHE
+  );
   return $blocks;
 }
 
@@ -59,6 +71,20 @@ function intern_user_block_view($delta = '') {
     case 'user resume tabs':
       $block['subject'] = '';
       $block['content'] = intern_user_resume_tabs_block();
+      break;
+    case 'user top link':
+      $block['subject'] = '';
+      $block['content'] = intern_user_top_link_block();
+      break;
+    case 'user resume status':
+      $block['subject'] = '我的简历';
+      $block['content'] = intern_user_resume_status_block();
+      break;
+    case 'company user info':
+      $block['subject'] = '欢迎访问实习圈';
+      $block['content'] = intern_user_company_user_info_block();
+      break;
+
   }
   return $block;
 }
@@ -76,6 +102,68 @@ function intern_user_share_status_block() {
   $output .= '});';
   $output .= '})(jQuery)';
   $output .= '</script>';
+  return $output;
+}
+
+/**
+ * 企业用户信息区块
+ */
+function intern_user_company_user_info_block() {
+
+  drupal_add_js(drupal_get_path('module', 'intern_user') . '/js/intern_company_user.js');
+  return '&nbsp;';
+}
+
+/**
+ * 用户简历完整度 Block
+ */
+function intern_user_resume_status_block() {
+  global $user, $is_page_authcache;
+  if ($user->uid > 0) {
+    $output = '<div class="block" id="resume-block">';
+    $output .= '<h2 class="block-title"><span>我的简历</span></h2>';
+    $output .= '<div class="block-content"><div class="resume-status">';
+    $output .= '</div></div></div>';
+    // Use JS to retrieve block content
+    drupal_add_js(drupal_get_path('module', 'intern_user') . '/js/intern_user.js');
+  }
+  return $output;
+}
+
+function intern_user_resume_status_block_view() {
+
+  global $user;
+  $output = '';
+  $percent = 0;
+
+  if ($user->uid > 0) {
+    $path = 'node/add/resume';
+    if (!empty($_SESSION['user_resume_id'])) {
+      $resume = node_load($_SESSION['user_resume_id']);
+      $path = 'node/' . $resume->nid . '/edit';
+      $i = 0;
+      $j = 0;
+      $instances = field_info_instances('node', 'resume');
+
+      foreach ($instances as $name => $instance) {
+        if ($instance["display"]["default"]["type"] != 'hidden') {
+          $field = field_get_items('node', $resume, $instance['field_name']);
+          $j++;
+          if ($field) {
+            $i++;
+          }
+        }
+      }
+
+      $percent = round(($i / $j) * 100);
+
+    }
+
+    $output .= '<p>完整度：<big>' . $percent . '%</big></p>';
+    $output .= '<div class="status"><div style="width:' . $percent . '%;"></div></div>';
+    $output .= '<a href="' . url($path) . '">继续完善简历</a>';
+
+  }
   return $output;
 }
 
@@ -104,6 +192,31 @@ function intern_user_resume_tabs_block() {
 
   $output .= '</ul>';
 
+  return $output;
+}
+
+/**
+ * 用户顶部链接
+ */
+function intern_user_top_link_block() {
+  global $user, $is_page_authcache;
+  $output = '<div id="top-toolbar" class="block">
+           <div class="block-content">';
+  if (!$user->uid) {
+    $output .= '<span>欢迎 <a href="' . url("ajax_register/register/nojs") . '" class="ctools-use-modal ctools-modal-ctools-ajax-register-style">注册</a> 或 <a href="' . url("ajax_register/login/nojs") . '" class="ctools-use-modal ctools-modal-ctools-ajax-register-style" title="登录">登陆</a> 实习圈 或</span>
+              <a href="' . base_path() . 'weibo/redirect?token=login" class="WB" title="新浪微博账号登陆"></a><a href="' . url("qq_login/response") . '" class="QQ" title="QQ账号登陆"></a>';
+  }
+  else {
+    $output .= '<span>Hi,&nbsp;</span> <span class="authcache-user">' . $user->name . '</span><span>&nbsp; 实习圈欢迎你！
+              <a  href="' . url("user") . '" class="channel-login" name="user-login" title="个人帐户管理" >我的帐户</a> |
+	          <a  href="' . url("user/logout") . '" class="channel-login" name="user-login" title="退出登录" >注销登录</a></span>';
+  }
+  $output .= '  </div>
+           </div>';
+
+  if (user_is_anonymous()) {
+    _ajax_register_include_modal();
+  }
   return $output;
 }
 
@@ -155,6 +268,11 @@ function intern_user_form_node_form_alter(&$form, $form_state) {
   Global $user;
 
   if ($type == 'resume' && user_is_logged_in()) {
+    if ($form['field_real_name']['und'][0]['value']['#default_value'] == '') {
+      $user = user_load($user->uid);
+      $form['field_real_name']['und'][0]['value']['#default_value'] = $user->field_real_name['und'][0]['safe_value'];
+    }
+
     drupal_add_css(path_to_theme() . '/layouts/intern_layout/intern_layout.css');
     drupal_add_js(path_to_theme() . '/js/maintain_resume.js');
     $form['actions']['submit']['#submit'][] = 'intern_user_resume_form_post_submit';
@@ -215,7 +333,12 @@ function template_preprocess_intern_comment_user_picture(&$variables) {
       // If the image does not have a valid Drupal scheme (for eg. HTTP),
       // don't load image styles.
       if (module_exists('image') && file_valid_uri($filepath) && $style = '40_40') {
-        $variables['user_picture'] = theme('image_style', array('style_name' => $style, 'path' => $filepath, 'alt' => $alt, 'title' => $alt));
+        $variables['user_picture'] = theme('image_style', array(
+          'style_name' => $style,
+          'path' => $filepath,
+          'alt' => $alt,
+          'title' => $alt
+        ));
       }
       else {
         $variables['user_picture'] = theme('image', array('path' => $filepath, 'alt' => $alt, 'title' => $alt));
@@ -226,4 +349,27 @@ function template_preprocess_intern_comment_user_picture(&$variables) {
       }
     }
   }
+}
+
+function intern_user_user_login(&$edit, $account) {
+
+  $query = db_select('node', 'n');
+  $result = $query
+    ->condition('n.type', 'resume')
+    ->condition('n.uid', $account->uid)
+    ->fields('n', array('nid'))
+    ->range(0, 1)
+    ->execute()
+    ->fetchField();
+
+  if (!empty($result)) {
+    $_SESSION['user_resume_id'] = $result;
+  }
+  else {
+    $_SESSION['user_resume_id'] = NULL;
+  }
+}
+
+function intern_user_user($type, &$edit, &$account, $category = NULL){
+
 }

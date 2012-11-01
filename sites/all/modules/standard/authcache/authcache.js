@@ -36,7 +36,9 @@ Authcache.init = function() {
  * Look over HTML DOM
  */
 Authcache.init.preprocess = function() {
-
+// Display logged-in user picture
+  if(jQuery.cookie("drupal_user_picture"))
+  jQuery(".authcache-user-picture").html(jQuery.cookie("drupal_user_picture").replace(/\+/g,' '));
   // Display logged-in username
   jQuery(".authcache-user").html(jQuery.cookie("drupal_user"));
 

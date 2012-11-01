@@ -1,0 +1,20 @@
+<?php
+/**
+ * Created by JetBrains PhpStorm.
+ * User: Edison
+ * Date: 12-10-31
+ * Time: 下午12:28
+ * To change this template use File | Settings | File Templates.
+ */
+function intern_article_flags($articleId){
+
+  global $user;
+  $_GET['destination'] = "node/" . $articleId;
+
+  $output = '';
+  if (!user_is_anonymous()) {
+    $output .= flag_create_link('like', $articleId).'人喜欢&nbsp;';
+    $output .= flag_create_link('collect', $articleId).'&nbsp;';
+  }
+  return $output;
+}

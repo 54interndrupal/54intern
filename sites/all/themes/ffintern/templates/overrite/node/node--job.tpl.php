@@ -84,7 +84,7 @@
 ?>
 <?php $node = node_load($node->nid); ?>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-
+  <input type="hidden" value="<?php print $node->nid?>" id="jobId"/>
   <div class="content clearfix"<?php print $content_attributes; ?>>
     <div class='d-1'>
       <div style="float: right;margin: 10px 0 0 0;padding: 5px 0 5px 0;vertical-align: middle;">
@@ -147,22 +147,8 @@
       <?php print $body[0]['safe_value']; ?>
     </div>
     <?php if(!user_is_anonymous()&&!intern_user_is_company_user()){?>
-    <div class="ops">
-    <?php print flag_create_link('collect', $nid); ?>
-    <?php
-    global $user;
-
-    //企业用户不能访问
-    if (in_array(4, array_keys($user->roles))) {
-    }
-    else {
-      print flag_create_link('apply', $nid);
-    }
-    ?>
-
-    <span class="resume">
-    <?php print l('填写简历',$_SESSION['resume_path']);?>
-      </span>
+    <div class="ops" id="job_ops">
+    <?php drupal_add_js(drupal_get_path('module', 'intern_job') . '/js/intern_job.js');?>
     </div>
     <?php }else if(user_is_anonymous()){?>
     <div class="ops">

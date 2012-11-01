@@ -54,13 +54,10 @@ div.messages {
     margin-top: 5px;
     height: 25px;
 }
-#resume-node-form textarea,
-#webform-client-form-52 textarea {
-    border: 1px solid #8fbf7e;
+#resume-node-form textarea{
+    border: 1px solid #ddd;
 }
-#resume-node-form select {
-    border: 1px solid #8fbf7e;
-}
+
 
 /**
  * 	个人注册表单

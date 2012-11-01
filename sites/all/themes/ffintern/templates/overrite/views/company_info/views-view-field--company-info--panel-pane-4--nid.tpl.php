@@ -25,7 +25,7 @@
 
 <?php
 $gid = (int)(trim($output));
-$gid = (int)$output;
 $sql = "select count(etid) as count from {og_membership} og_ms,{node} nd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.type='review'";
 $count = db_query($sql,array(':gid' => $gid))->fetchField();
+print '<input type="hidden" id="companyId" name="companyId" value="'.$gid.'"/>';
 print $count; ?>

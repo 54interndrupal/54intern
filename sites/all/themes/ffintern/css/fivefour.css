@@ -511,6 +511,7 @@ span.icon-like-s{
 }
 
 input.form-text,
+input.form-file,
 select.form-select{
     border: 1px solid #ddd;
 }
@@ -1780,10 +1781,12 @@ div.pane-right-title-link-panel-pane-9 div.pane-content .views-row {
 }
 
 /*== pane-company-info-panel-pane-2 Begin==*/
-div.pane-company-info-panel-pane-2{
+div.pane-company-info-panel-pane-2,
+div.pane-intern-user-company-user-info{
      margin-bottom: 20px;
 }
-#sidebar-second div.pane-company-info-panel-pane-2 div.panel-pane-title{
+#sidebar-second div.pane-company-info-panel-pane-2 div.panel-pane-title,
+#sidebar-second div.pane-intern-user-company-user-info div.panel-pane-title{
     height: 20px;
     background-color: #4E963C;
     padding:10px;
@@ -1793,24 +1796,29 @@ div.pane-company-info-panel-pane-2{
     margin-bottom: 10px;
 }
 
-div.pane-company-info-panel-pane-2 div.pane-content{
+div.pane-company-info-panel-pane-2 div.pane-content,
+div.pane-intern-user-company-user-info div.pane-content{
     border: 2px solid #4D963B;
     padding: 0px;
 
 }
-div.pane-company-info-panel-pane-2 div.pane-content div.view{
+div.pane-company-info-panel-pane-2 div.pane-content div.view,
+div.pane-intern-user-company-user-info div.pane-content div.view{
    padding: 0 10px 0 10px;
    margin-bottom: 0px;
 }
-div.pane-company-info-panel-pane-2 div.pane-content div.view img{
+div.pane-company-info-panel-pane-2 div.pane-content div.view img,
+div.pane-intern-user-company-user-info div.pane-content div.view img{
     float: left;
     margin-right: 5px;
 }
-div.pane-company-info-panel-pane-2 div.pane-content div.view div.views-field-title{
+div.pane-company-info-panel-pane-2 div.pane-content div.view div.views-field-title,
+div.pane-intern-user-company-user-info div.pane-content div.view div.views-field-title{
     min-height: 120px;
 }
 
-div.pane-company-info-panel-pane-2 div.pane-content div.d-1{
+div.pane-company-info-panel-pane-2 div.pane-content div.d-1,
+div.pane-intern-user-company-user-info div.pane-content div.d-1{
    line-height: 1.8;
    border-top:1px #8DB126 dashed;
     margin:  0 -10px 0 -10px;
@@ -1818,10 +1826,12 @@ div.pane-company-info-panel-pane-2 div.pane-content div.d-1{
     background-color: #F7F9FA;
 }
 
-div.pane-company-info-panel-pane-2 div.pane-content div.d-1 span{
+div.pane-company-info-panel-pane-2 div.pane-content div.d-1 span,
+div.pane-intern-user-company-user-info div.pane-content div.d-1 span{
    display: block;
 }
-div.pane-company-info-panel-pane-2 div.pane-content div.d-1 a:link{
+div.pane-company-info-panel-pane-2 div.pane-content div.d-1 a:link,
+div.pane-intern-user-company-user-info div.pane-content div.d-1 a:link{
    text-decoration: underline;
 }
 /*== pane-company-info-panel-pane-2 End==*/
@@ -2941,7 +2951,7 @@ body.not-logged-in div.company-list .views-row{
     min-height: 240px;
 }
 body.logged-in div.company-list .views-row{
-    min-height: 265px;
+    min-height: 240px;
 }
 
 div.company-list .views-row .company-info {

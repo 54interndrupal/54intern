@@ -50,6 +50,10 @@ function zpuser_block_view($delta = '') {
   return $block;
 }
 
+function zpuser_dd(){
+  return 'dddd';
+}
+
 /**
  * 实现hook_theme钩子
  */

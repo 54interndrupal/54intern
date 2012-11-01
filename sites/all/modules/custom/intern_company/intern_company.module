@@ -387,5 +387,18 @@ function intern_company_get_company_user_id($company_id) {
   return $company_user_id;
 }
 
+function intern_company_info_flags($companyId){
+
+    global $user;
+    $_GET['destination'] = "node/" . $companyId;
+
+    $output = '';
+    if (!user_is_anonymous() && !intern_user_is_company_user()) {
+      $output .= flag_create_link('bookmarks', $companyId);
+    }
+
+    return $output;
+}
+
 
 

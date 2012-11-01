@@ -24,57 +24,33 @@
  */
 ?>
 <?php _ajax_register_include_modal();
+global $_authcache_is_cacheable;
 drupal_add_css(drupal_get_path('module', 'avatar_selection') . '/avatar_selection.css');
 $js_file = drupal_get_path('module', 'avatar_selection') . '/js/avatar_selection.js';
 drupal_add_js($js_file);
 ?>
 <div class="user-info">
-<div class="views-field views-field-picture user-picture"><?php print $fields['picture']->content ?></a></div>
-<div class="views-field user-badge c-10">
-  <span>等级：<span class="c-12">1</span></span>
-</div>
-<div class="views-field views-field-follow">
-  <div class="field-content c-10"><a
-    href="#">关注：<span class="c-12"><?php $counts = flag_get_counts('user', $fields['uid']->content); print isset($counts['guanzhu']) ? $counts['guanzhu'] : 0; ?></span>
-    人</a></div>
-</div>
-<div class="views-field views-field-point">
-  <div class="field-content c-10"><a
-    href="<?php print url('user/' . $fields['uid']->content . '/points') ?>">积分：<span class="c-12"><?php print userpoints_get_current_points($fields['uid']->content) ?></span></a>
-  </div>
-</div>
-<div class="views-field views-field-edit">
-  <div class="field-content">
-    <a href="<?php print url("ajax_register/profile/nojs");?>" class="ctools-use-modal ctools-modal-ctools-ajax-register-style"><span>帐号编辑</span></a>
 
+  <div class="views-field views-field-picture user-picture authcache-user-picture"><?php if(!$_authcache_is_cacheable)print $fields['picture']->content;?></div>
+  <div class="views-field">
+    <a href="<?php print base_path() . 'user?qt-user_center_tab=0#qt-user_center_tab' ?>"><span>最新动态</span></a>
   </div>
-</div>
+  <div class="views-field">
+    <a href="<?php print base_path() . 'user?qt-user_center_tab=1#qt-user_center_tab' ?>"><span>关注的企业</span></a>
+  </div>
+  <div class="views-field">
+    <a href="<?php print base_path() . 'user?qt-user_center_tab=2#qt-user_center_tab' ?>"><span>收藏的职位</span></a>
+  </div>
+  <div class="views-field views-field-edit">
+    <div class="field-content">
+      <a href="<?php print url("ajax_register/profile/nojs");?>"
+         class="ctools-use-modal ctools-modal-ctools-ajax-register-style"><span>帐号编辑</span></a>
+
+    </div>
+  </div>
 </div>
 <div class="views-field-name">
-  <div class="field-content"><?php print $fields['name']->content ?></div>
+  <div class="field-content "><a class="authcache-user-link"><?php if(!$_authcache_is_cacheable){ print $fields['name']->content;}else{print '!username';}?></a></div>
 </div>
-<?php $block = module_invoke('zpuser', 'block_view','resume');?>
-<div class="block" id="resume-block">
-  <h2 class="block-title"><span><?php print( $block['subject']);?></span></h2>
-  <div class="block-content"><?php print( $block['content']);?></div>
-</div>
-
-<?php //print drupal_render($content['links']['flag']); 
-print flag_create_link('guanzhu', $fields['uid']->content);
-?>
-
-
-
-
-<!--
-<div class="views-field views-field-message">
-  <div class="field-content"><a
-    href="<?php print url('messages') ?>">我的消息：<?php $account = new stdClass(); $account->uid = $fields['uid']->content;print privatemsg_unread_count($account); ?>
-    个</a></div>
-</div>
-
-<div class="views-field views-field-send">
-  <div class="field-content"><a class="button" href="<?php print url('messages/new') ?>"><span>我要发送消息</span></a></div>
-</div> -->
-
-
+<?php $block = module_invoke('intern_user', 'block_view', 'user resume status'); ?>
+<?php print($block['content']);?>

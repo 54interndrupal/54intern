@@ -210,7 +210,9 @@ function shixiquan_loginuser_block() {
 
  /** * Implementation of hook_form_alter(). */
 function shixiquan_form_alter(&$form, $form_state, $form_id) {
-    if(strpos($form["#id"], 'comment-form')===0){
+
+
+   if(strpos($form["#id"], 'comment-form')===0){
      // print_r($form) ;
       hide($form['author']);
       hide($form['actions']['preview']);
