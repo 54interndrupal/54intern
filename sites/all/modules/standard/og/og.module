@@ -1733,6 +1733,7 @@ function og_get_best_group_audience_field($entity_type, $entity, $group_type, $g
   $bundle = $entity_wrapper->getBundle();
 
   $field_names = og_get_group_audience_fields($entity_type, $bundle);
+
   if (!$field_names) {
     return;
   }

@@ -13,13 +13,13 @@ function userreg_company_register_page() {
   $output .= '</div>
 	 	<div class="reg-showcase">
 	 	   <div class="reg-showcase-title">
-	 	    <h2>'.t('欢迎加入实习圈').'</h2>'.
-	 	   '</div>
+	 	    <h2>' . t('欢迎加入实习圈') . '</h2>' .
+    '</div>
 	 	   <div class="reg-showcase-box">
-	 	     <span class="ss s-1">'.t('为您提供实习候选人').'</span>
-	 	     <span class="ss s-2">'.t('帮您展现企业优势').'</span>
-	 	     <span class="ss s-3">'.t('助您在实习生群体中树立良好口碑').'</span>
-	 	     <span class="ss s-4">'.t('为您构建实习生项目在线工作管理平台').'</span>
+	 	     <span class="ss s-1">' . t('为您提供实习候选人') . '</span>
+	 	     <span class="ss s-2">' . t('帮您展现企业优势') . '</span>
+	 	     <span class="ss s-3">' . t('助您在实习生群体中树立良好口碑') . '</span>
+	 	     <span class="ss s-4">' . t('为您构建实习生项目在线工作管理平台') . '</span>
 	 	   </div>
 	 	</div>
 	 	</div>
@@ -85,22 +85,37 @@ function userreg_company_register_form($form, &$form_state) {
   $form['#submit'][] = 'userreg_company_register_form_submit_handler';
 
   return $form;
-
 }
 
 function userreg_company_register_form_validate_handler(&$form, &$form_state) {
+  $form_state['values']["group_group"][LANGUAGE_NONE][0]['value']="1";
   $pseudo_entity = (object) $form_state['values'];
   $pseudo_entity->type = 'company';
   field_attach_form_validate('node', $pseudo_entity, $form, $form_state);
+  //company name validate
+  if (isset($form_state['values']['title'])) {
+    if ((bool) db_select('node')->fields('node', array('nid'))
+      ->condition('title', db_like($form_state['values']['title']), 'LIKE')->range(0, 1)->execute()->fetchField()
+    ) {
+      form_set_error('title', t("企业 %title 已经注册，无法重复注册。", array('%title' => $form_state['values']['title'])));
+    }
+  }
 
+
+  //user name validate
   if (isset($form_state['values']['name'])) {
     if ($error = user_validate_name($form_state['values']['name'])) {
       form_set_error('name', $error);
     }
-    elseif ((bool) db_select('users')->fields('users', array('uid'))
-      ->condition('name', db_like($form_state['values']['name']), 'LIKE')->range(0, 1)->execute()->fetchField()
-    ) {
-      form_set_error('name', t('The name %name is already taken.', array('%name' => $form_state['values']['name'])));
+    else {
+      $orig_user_name = $form_state['values']['name'];
+      $form_state['values']['name'] = $form_state['values']['title'].'^'.$form_state['values']['name'];
+
+      if ((bool) db_select('users')->fields('users', array('uid'))
+        ->condition('name', db_like($form_state['values']['name']), 'LIKE')->range(0, 1)->execute()->fetchField()
+      ) {
+        form_set_error('name', t('The name %name is already taken.', array('%name' => $orig_user_name)));
+      }
     }
   }
 
@@ -122,8 +137,6 @@ function userreg_company_register_form_validate_handler(&$form, &$form_state) {
       )));
     }
   }
-
-
 }
 
 /**
@@ -134,14 +147,12 @@ function userreg_company_register_form_submit_handler(&$form, &$form_state) {
 
   $pseudo_entity = (object) $form_state['values'];
   $pseudo_entity->type = 'company';
-
-  drupal_set_message('尊敬的企业用户，您已注册成功，实习圈审核您的注册信息后，将会给您发送通知邮件。谢谢。');
   $userinfo = array(
     'name' => $form_state['values']['name'],
     'pass' => $form_state['values']['pass'],
     'mail' => $form_state['values']['mail'],
     'init' => $form_state['values']['mail'],
-    'status' => 0,
+    'status' => 1,
     'login' => REQUEST_TIME
   );
   //将用户的角色设置为企业用户，这里企业用户的role id为4
@@ -162,6 +173,8 @@ function userreg_company_register_form_submit_handler(&$form, &$form_state) {
   //user_save($user);
   node_save($pseudo_entity);
   $form_state['redirect'] = 'user/companyregister/success';
+
+  drupal_set_message('尊敬的企业用户，您已注册成功，实习圈审核您的注册信息后，将会给您发送通知邮件。谢谢。');
 }
 
 function userreg_company_register_success_page() {
@@ -197,7 +210,7 @@ function userreg_user_register_form($form, &$form_state) {
   );
   $form['pass'] = array(
     '#type' => 'password_confirm',
-    //'#title' => t('密码'),
+    '#title' => t('密码'),
     '#required' => TRUE,
     '#weight' => 98,
   );

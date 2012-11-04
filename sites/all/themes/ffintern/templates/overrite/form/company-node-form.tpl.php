@@ -7,7 +7,9 @@
  * To change this template use File | Settings | File Templates.
  */
 ?>
-<?php $nid = arg(1); ?>
+<?php $nid = arg(1);
+//  hide($form['group_group']);
+?>
 <div id="content" class="column">
   <div class="section">
     <?php print ffintern_company_center_main_header($nid);?>

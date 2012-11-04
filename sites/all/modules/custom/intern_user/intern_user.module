@@ -207,7 +207,7 @@ function intern_user_top_link_block() {
               <a href="' . base_path() . 'weibo/redirect?token=login" class="WB" title="新浪微博账号登陆"></a><a href="' . url("qq_login/response") . '" class="QQ" title="QQ账号登陆"></a>';
   }
   else {
-    $output .= '<span>Hi,&nbsp;</span> <span class="authcache-user">' . $user->name . '</span><span>&nbsp; 实习圈欢迎你！
+    $output .= '<span>Hi,&nbsp;</span> <span class="authcache-user">' . intern_user_get_user_name($user->name) . '</span><span>&nbsp; 实习圈欢迎你！
               <a  href="' . url("user") . '" class="channel-login" name="user-login" title="个人帐户管理" >我的帐户</a> |
 	          <a  href="' . url("user/logout") . '" class="channel-login" name="user-login" title="退出登录" >注销登录</a></span>';
   }
@@ -308,6 +308,7 @@ function intern_user_theme() {
  */
 function template_preprocess_intern_comment_user_picture(&$variables) {
   $variables['user_picture'] = '';
+  global $user;
   if (variable_get('user_pictures', 0)) {
     $account = $variables['account'];
     if (!empty($account->picture)) {
@@ -343,14 +344,13 @@ function template_preprocess_intern_comment_user_picture(&$variables) {
       else {
         $variables['user_picture'] = theme('image', array('path' => $filepath, 'alt' => $alt, 'title' => $alt));
       }
-      if (!empty($account->uid) && user_access('access user profiles')) {
-        $attributes = array('attributes' => array('title' => t('View user profile.')), 'html' => TRUE);
-        $variables['user_picture'] = l($variables['user_picture'], "user/$account->uid", $attributes);
-      }
+//      if (!empty($account->uid) && user_access('access user profiles') && ($user->uid==$account->uid)) {
+//        $attributes = array('attributes' => array('title' => t('View user profile.')), 'html' => TRUE);
+//        $variables['user_picture'] = l($variables['user_picture'], "user/$account->uid", $attributes);
+//      }
     }
   }
 }
-
 function intern_user_user_login(&$edit, $account) {
 
   $query = db_select('node', 'n');
@@ -370,6 +370,25 @@ function intern_user_user_login(&$edit, $account) {
   }
 }
 
-function intern_user_user($type, &$edit, &$account, $category = NULL){
+function intern_user_get_user_name($user_name) {
+  $user_name_array = explode('^', $user_name);
+  if (sizeof($user_name_array) == 2) {
+    return $user_name_array[1];
+  }
+  else {
+    return $user_name;
+  }
+}
 
+
+function intern_user_get_company_name() {
+  global $user;
+  $user_name = $user->username;
+  $user_name_array = explode('^', $user_name);
+  if (sizeof($user_name_array) == 2) {
+    return $user_name_array[0];
+  }
+  else {
+    return '';
+  }
 }

@@ -228,8 +228,9 @@ function authcache_user_login(&$edit, $account) {
     setcookie('authcache_debug', 1, $expires, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
   }
 
+
   // Required to differentiate from anonymous users
-  setcookie('drupal_user', $account->name, $expires, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
+  setcookie('drupal_user',intern_user_get_user_name($account->name), $expires, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
   setcookie('drupal_uid', $account->uid, $expires, ini_get('session.cookie_path'), ini_get('session.cookie_domain'), ini_get('session.cookie_secure') == '1');
 
   $image_vars = array('account' => $account);

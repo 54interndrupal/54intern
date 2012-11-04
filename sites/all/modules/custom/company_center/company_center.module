@@ -130,7 +130,7 @@ function company_center_get_form_block($nodetype){
 		//$form['field_shortcoming']['und'][0]['value']['#attributes'] = array('disabled'=>TRUE,);
 		//$form['og_group_ref']['und']['#value'] = $gid;
 		$company = node_load($gid);
-		$form['og_group_ref']['und'][0]['target_id']['#value'] = $company->title.' ('.$gid.')';
+		$form['og_group_ref']['und'][0]['target_id']['#value'] = intern_user_get_company_name().' ('.$gid.')';
 		$form['#action'] = url($_GET['q'],array('query' => drupal_get_destination(),));
 		//$form['og_group_ref']['und']['#default_value'] = 22;
 		//$form['og_group_ref'][und]['#attributes'] = array('disabled'=>TRUE,);

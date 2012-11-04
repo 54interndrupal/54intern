@@ -6,15 +6,15 @@
 function userreg_form_alter(&$form, $form_state, $form_id) {
   switch ($form_id) {
     case 'user_login':
-		  //用户登录表单页面
-			//我们修改表单元素name的验证函数,使其支持邮箱
-			$form['name']['#title'] = t('用户名或电子邮件地址');
+      //用户登录表单页面
+      //我们修改表单元素name的验证函数,使其支持邮箱
+      $form['name']['#title'] = t('用户名或电子邮件地址');
       $form['name']['#element_validate'][] = 'userreg_user_login_validate';
-      break; 
+      break;
 
     case 'user_login_block':
-		  //用户登录表单区块
-			$form['name']['#title'] = t('用户名或电子邮件地址');
+      //用户登录表单区块
+      $form['name']['#title'] = t('用户名或电子邮件地址');
       $form['name']['#element_validate'][] = 'userreg_user_login_validate';
       break;
   }
@@ -23,13 +23,13 @@ function userreg_form_alter(&$form, $form_state, $form_id) {
 /**
  * 验证函数.
  */
-function userreg_user_login_validate($form, &$form_state){
-	if (isset($form_state['values']['name'])) {
-	  //如果用户输入的是邮箱的话,我们通过邮箱查询得到用户名.
-	  $result = db_query("SELECT name FROM {users} WHERE LOWER(mail) = LOWER(:mail)", array(':mail' => $form_state['values']['name']));
+function userreg_user_login_validate($form, &$form_state) {
+  if (isset($form_state['values']['name'])) {
+    //如果用户输入的是邮箱的话,我们通过邮箱查询得到用户名.
+    $result = db_query("SELECT name FROM {users} WHERE LOWER(mail) = LOWER(:mail)", array(':mail' => $form_state['values']['name']));
     $name = $result->fetchField();
-		//如果查询到了用户名,就使用它;反之,就使用原来的.
-		if (!empty($name)) {
+    //如果查询到了用户名,就使用它;反之,就使用原来的.
+    if (!empty($name)) {
       $form_state['values']['name'] = $name;
     }
   }
@@ -38,58 +38,58 @@ function userreg_user_login_validate($form, &$form_state){
 /**
  * Implements hook_menu().
  */
-function userreg_menu(){
+function userreg_menu() {
 
-	$items['user/companyregister'] = array(
+  $items['user/companyregister'] = array(
     'title' => '企业用户注册',
-    'page callback'    => 'userreg_company_register_page',
-		'access arguments' => array('access content'),
+    'page callback' => 'userreg_company_register_page',
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
     'file' => 'userreg.pages.inc',
   );
-	$items['user/userregister'] = array(
+  $items['user/userregister'] = array(
     'title' => '用户注册',
-    'page callback'    => 'userreg_user_register_page',
-		'access arguments' => array('access content'),
+    'page callback' => 'userreg_user_register_page',
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
     'file' => 'userreg.pages.inc',
   );
- 	$items['user/companyregister/success'] = array(
+  $items['user/companyregister/success'] = array(
     'title' => '企业用户注册完毕',
-    'page callback'    => 'userreg_company_register_success_page',
-		'access arguments' => array('access content'),
+    'page callback' => 'userreg_company_register_success_page',
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
     'file' => 'userreg.pages.inc',
   );
-	$items['user/companyregister/check'] = array(
+  $items['user/companyregister/check'] = array(
     'title' => '企业用户邮箱验证',
-    'page callback'    => 'userreg_company_register_check_mail',
-		'access arguments' => array('access content'),
+    'page callback' => 'userreg_company_register_check_mail',
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
     'file' => 'userreg.pages.inc',
   );
- 	$items['user/userregister/success'] = array(
+  $items['user/userregister/success'] = array(
     'title' => '用户注册完毕',
-    'page callback'    => 'userreg_user_register_success_page',
-		'access arguments' => array('access content'),
+    'page callback' => 'userreg_user_register_success_page',
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
     'file' => 'userreg.pages.inc',
   );
   $items['user/userregister/check'] = array(
     'title' => '用户邮箱验证',
-    'page callback'    => 'userreg_user_register_check_mail',
-		'access arguments' => array('access content'),
+    'page callback' => 'userreg_user_register_check_mail',
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
     'file' => 'userreg.pages.inc',
   );
 
   $items['user/add/resume'] = array(
     'title' => '完善我的简历',
-    'page callback'    => 'userreg_add_resume',
-		'access arguments' => array('access content'),
+    'page callback' => 'userreg_add_resume',
+    'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
     'file' => 'userreg.pages.inc',
-  );  
+  );
   $items['admin/config/people/validate'] = array(
     'title' => '验证邮件',
     'description' => '普通用户,企业用户注册时,验证邮件内容的配置.',
@@ -98,7 +98,7 @@ function userreg_menu(){
     'access arguments' => array('administer users'),
     'file' => 'userreg.admin.inc',
     //'weight' => -10,
-  ); 	
+  );
   return $items;
 }
 
@@ -106,50 +106,50 @@ function userreg_mail($key, &$message, $params) {
   $language = $message['language'];
   switch ($key) {
     case 'user_success':
-      $login_url = url("user/userregister/check/".$params['uid']."/". md5($params['pass'].$params['mail'].$params['login']), array('absolute' => TRUE));
+      $login_url = url("user/userregister/check/" . $params['uid'] . "/" . md5($params['pass'] . $params['mail'] . $params['login']), array('absolute' => TRUE));
 
-		//	$account = $params['account'];
-			//$context = $params['context'];
-			$variables = array(
-				'[site:name]' => variable_get('site_name', 'Drupal'), 
-				'[site:url]' => $GLOBALS['base_url'],
-				'[user:name]' => $params['name'],
-				'[user:mail]' => $params['mail'],
-				'[user:one-time-login-url]' => $login_url,
-			);
+      //	$account = $params['account'];
+      //$context = $params['context'];
+      $variables = array(
+        '[site:name]' => variable_get('site_name', 'Drupal'),
+        '[site:url]' => $GLOBALS['base_url'],
+        '[user:name]' => $params['name'],
+        '[user:mail]' => $params['mail'],
+        '[user:one-time-login-url]' => $login_url,
+      );
       $subject = variable_get('userreg_mail_user_register_subject', '');
-			$subject = strtr($subject, $variables);
-			
-			$body = variable_get('userreg_mail_user_register_body', '');
-      $body = strtr($body, $variables);
-			
-      $message['subject'] = $subject;
-      $message['body'][] = drupal_html_to_text($body);
-		//	drupal_set_message($body);
-			break;
-			
-		case 'company_success':
-      $login_url = url("user/companyregister/check/".$params['uid']."/". md5($params['pass'].$params['mail'].$params['login']), array('absolute' => TRUE));
+      $subject = strtr($subject, $variables);
 
-			//$account = $params['account'];
-			//$context = $params['context'];
-			$variables = array(
-				'[site:name]' => variable_get('site_name', 'Drupal'), 
-				'[site:url]' => $GLOBALS['base_url'],
-				'[user:name]' => $params['name'],
-				'[user:mail]' => $params['mail'],
-				'[user:one-time-login-url]' => $login_url,
-			);
-      $subject = variable_get('userreg_mail_company_register_subject', '');
-			$subject = strtr($subject, $variables);
-			
-			$body = variable_get('userreg_mail_company_register_body', '');
+      $body = variable_get('userreg_mail_user_register_body', '');
       $body = strtr($body, $variables);
-			
+
       $message['subject'] = $subject;
       $message['body'][] = drupal_html_to_text($body);
-			
-			break;
+      //	drupal_set_message($body);
+      break;
+
+    case 'company_success':
+      $login_url = url("user/companyregister/check/" . $params['uid'] . "/" . md5($params['pass'] . $params['mail'] . $params['login']), array('absolute' => TRUE));
+
+      //$account = $params['account'];
+      //$context = $params['context'];
+      $variables = array(
+        '[site:name]' => variable_get('site_name', 'Drupal'),
+        '[site:url]' => $GLOBALS['base_url'],
+        '[user:name]' => $params['name'],
+        '[user:mail]' => $params['mail'],
+        '[user:one-time-login-url]' => $login_url,
+      );
+      $subject = variable_get('userreg_mail_company_register_subject', '');
+      $subject = strtr($subject, $variables);
+
+      $body = variable_get('userreg_mail_company_register_body', '');
+      $body = strtr($body, $variables);
+
+      $message['subject'] = $subject;
+      $message['body'][] = drupal_html_to_text($body);
+
+      break;
 
   }
 }
@@ -167,25 +167,26 @@ function userreg_action_info() {
     ),
   );
 }
-function userreg_send_company_email_action($node, $context){
+
+function userreg_send_company_email_action($node, $context) {
   $nid = $node->nid;
-  if($node->type == 'company'){
+  if ($node->type == 'company') {
     $uid = $node->uid;
-	$user = user_load($uid);
-	$to =  $user->mail;
-  //$values = $form_state['values'];
-    $values =array();
+    $user = user_load($uid);
+    $to = $user->mail;
+    //$values = $form_state['values'];
+    $values = array();
     $values['uid'] = $user->uid;
     $values['name'] = $user->name;
     $values['pass'] = $user->pass;
     $values['login'] = $user->login;
     $values['mail'] = $user->mail;
-	
-	$from = variable_get('site_mail', ini_get('sendmail_from'));
-	
-	//drupal_set_message('pass:'.$account->pass);
+
+    $from = variable_get('site_mail', ini_get('sendmail_from'));
+
+    //drupal_set_message('pass:'.$account->pass);
     drupal_mail('userreg', 'company_success', $to, language_default(), $values, $from);
-	//drupal_mail();
+    //drupal_mail();
   }
 }
 

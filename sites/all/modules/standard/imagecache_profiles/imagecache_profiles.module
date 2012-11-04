@@ -22,6 +22,7 @@ function imagecache_profiles_help($path, $arg) {
  * @see user-picture.tpl.php
  */
 function imagecache_profiles_preprocess_user_picture(&$variables) {
+  global $user;
   if (variable_get('user_pictures', 0)) {
     $account = $variables['account'];
     if (!empty($account->picture)) {
@@ -60,13 +61,13 @@ function imagecache_profiles_preprocess_user_picture(&$variables) {
         'alt' => $alt,
         'title' => $alt,
       ));
-      if (!empty($account->uid) && user_access('access user profiles')) {
-        $attributes = array(
-          'attributes' => array('title' => t('View user profile.')),
-          'html' => TRUE,
-        );
-        $variables['user_picture'] = l($variables['user_picture'], "user/$account->uid", $attributes);
-      }
+//      if (!empty($account->uid) && user_access('access user profiles')&& ($user->uid==$account->uid)) {
+//        $attributes = array(
+//          'attributes' => array('title' => t('View user profile.')),
+//          'html' => TRUE,
+//        );
+//        $variables['user_picture'] = l($variables['user_picture'], "user/$account->uid", $attributes);
+//      }
     }
   }
 }

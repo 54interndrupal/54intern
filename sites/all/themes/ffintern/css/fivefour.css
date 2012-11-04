@@ -205,8 +205,8 @@ div.error {
 }
 
 div.error {
-    background: #ffcfcf url(img/error.png) no-repeat 2em 1em;
-    padding: 1em 3em 1em 6em;
+    background:#FFF2F2 url(img/error.png) no-repeat 2em 1em;
+    padding: 1em 3em 1em 4em;
 }
 
 
@@ -2186,7 +2186,7 @@ div.pane-tagclouds-1{
 .pane-intern-company-company-info .pane-content .view-company-info .d-1{
     min-height: 110px;
 }
-.pane-intern-company-company-info .pane-content .view-company-info .d-1 .title{
+.pane-intern-company-company-info .pane-content .view-company-info .d-1 .title a{
     color: #006699;
     font-size: 13px;
 }
@@ -3104,6 +3104,9 @@ div.facebook-status-item .views-field-picture {
 div.facebook-status-item .views-field-body {
     min-height: 70px
 }
+#content div.fbss-comments-author{
+    color:#CCCCCC;
+}
 #content div.fbss-comments-comment{
     background-color: #ffffff;
     background: url(img/site/bg_cmt.gif) repeat-x;
@@ -3141,7 +3144,7 @@ div.statuses-textarea-wrapper textarea{
     padding: 10px 30px 10px 15px;
 }
 .views-row div.author-info {
-    width: 50px;
+    width: 60px;
     float: left;
 }
 

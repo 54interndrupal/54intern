@@ -19,6 +19,8 @@ function ffintern_preprocess_html() {
   ));
 }
 
+
+
 /**
  * Preprocesses template variables for the page template.
  */
@@ -34,6 +36,15 @@ function ffintern_preprocess_page(&$variables) {
     _ffintern_add_quicktab_css();
   }
 }
+/**
+ * Preprocesses template variables for username template.
+ */
+function ffintern_username($variables) {
+  $output = '<span' . drupal_attributes($variables['attributes_array']) . '>' . intern_user_get_user_name($variables['name']) . $variables['extra'] . '</span>';
+  return $output;
+}
+
+
 
 function _ffintern_add_quicktab_css() {
   drupal_add_css(drupal_get_path('module', 'quicktabs') . '/css/quicktabs.css');
@@ -291,6 +302,7 @@ function ffintern_review_node_form(&$variables) {
 }
 
 function ffintern_menu_link__main_menu(array $variables) {
+
   $element = $variables['element'];
 //    print_r($element);
   $sub_menu = '';
@@ -321,8 +333,11 @@ function ffintern_menu_link__main_menu(array $variables) {
         else {
           if ($mlid == 1436 && $params[2] == 'article') {
             $attributes['class'][] = 'active';
+          }elseif (intern_user_is_company_user()&& ($mlid == 638) && ($params[2]=='node' || arg(0)=='user')){
+            $attributes['class'][] = 'active';
           }
         }
+
       }
     }
   }

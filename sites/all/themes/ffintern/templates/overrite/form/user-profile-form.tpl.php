@@ -31,7 +31,7 @@ $uid = $user->uid;
         </div>
         <div class="basic-info-content">
           <div class="form-item"><label>用户名</label><span
-            style="display:inline-block;padding-top: 4px;font-size: 14px"><?php print $form["account"]["name"]["#value"];?></span>
+            style="display:inline-block;padding-top: 4px;font-size: 14px"><?php print intern_user_get_user_name($form["account"]["name"]["#value"]);?></span>
           </div>
           <!--          --><?php //print_r($form)?>
           <?php print drupal_render($form["field_real_name"])?>

@@ -121,10 +121,9 @@ function intern_job_form_node_form_alter(&$form, $form_state) {
   Global $user;
 
   if ($type == 'job' && intern_user_is_company_user()) {
-    //非网站编辑，不能编辑Group Audience字段
-    if (!in_array(6, array_keys($user->roles))) {
-      $form['og_group_ref']['und'][0]['target_id']['#type'] = 'hidden';
-    }
+
+    $form['og_group_ref']['und'][0]['target_id']['#type'] = 'hidden';
+
     hide($form["actions"]["delete"]);
     hide($form["field_job_sub_status"]);
 
@@ -292,7 +291,7 @@ function intern_job_flags($jobId) {
     $output .= '<span class="resume">';
     $path = 'node/add/resume';
     if (!empty($_SESSION['user_resume_id'])) {
-        $path = 'node/' . $_SESSION['user_resume_id'] . '/edit';
+      $path = 'node/' . $_SESSION['user_resume_id'] . '/edit';
     }
     $output .= l('填写简历', $path);
     $output .= '</span>';

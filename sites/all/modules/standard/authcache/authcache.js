@@ -40,13 +40,14 @@ Authcache.init.preprocess = function() {
   if(jQuery.cookie("drupal_user_picture"))
   jQuery(".authcache-user-picture").html(jQuery.cookie("drupal_user_picture").replace(/\+/g,' '));
   // Display logged-in username
-  jQuery(".authcache-user").html(jQuery.cookie("drupal_user"));
+  if(jQuery.cookie("drupal_user"))
+  jQuery(".authcache-user").html(jQuery.cookie("drupal_user").replace(/\+/g,' '));
 
   // Display username linked to profile
   // Example usage: <a href="" class="authcache-user-link">Welcome, !username</a>
   jQuery("a.authcache-user-link").each(function() {
     $this = jQuery(this);
-    $this.html($this.html().replace('!username', jQuery.cookie("drupal_user")))
+    $this.html($this.html().replace('!username', jQuery.cookie("drupal_user").replace(/\+/g,' ')))
          .attr("href", Drupal.settings.basePath + 'user');
   });
 

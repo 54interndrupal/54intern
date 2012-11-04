@@ -72,6 +72,7 @@ function hint_form_alter(&$form, $form_state, $form_id) {
         break;
       case 'user_login':
       case 'user_login_block':
+
         hint_set_hint($form['name']);
         hint_set_hint($form['pass']);
         break;

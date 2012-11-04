@@ -95,23 +95,29 @@ function shixiquan_search_form_submit(&$form, &$form_state) {
   //node_save($micro);
 }
 
-function shixiquan_companylogin_form() {
+function shixiquan_companylogin_form($form, &$form_state) {
 
   $form['company_name'] = array(
+    '#title' =>t('企业名称'),
     '#type' => 'textfield',
-    //'#title' => t('企业名称'),
+    '#required' => TRUE,
     '#hint' => t('企业名称'),
+    '#hint_remove_title' => TRUE,
   );
   $form['name'] = array(
+    '#title' =>t('用户名或电子邮件地址'),
     '#type' => 'textfield',
-    //  '#title' => t('用户名或电子邮件地址'),
+    '#required' => TRUE,
     '#hint' => t('用户名或电子邮件地址'),
+    '#hint_remove_title' => TRUE,
   );
   $form['name']['#element_validate'][] = 'userreg_user_login_validate';
   $form['pass'] = array(
+    '#title' =>t('密码'),
     '#type' => 'password',
-    // '#title' => t('密码'),
+    '#required' => TRUE,
     '#hint' => t('密码'),
+    '#hint_remove_title' => TRUE,
   );
 
   $form['remember_me'] = array(
@@ -141,6 +147,9 @@ function shixiquan_companylogin_form() {
 function shixquan_company_user_login_submit($form, &$form_state) {
   global $user;
   $user = user_load($form_state['uid']);
+//  $user_name_array = explode("\^",$user->name);
+//  $user->name =  $user_name_array[1];
+//  print_r($user_name_array);
   $form_state['redirect'] = 'companycenter';
 
   user_login_finalize($form_state);
@@ -149,15 +158,23 @@ function shixquan_company_user_login_submit($form, &$form_state) {
 //我们在Drupal自带的验证函数中，加入了自己的一个验证函数
 function shixiquan_login_default_validators() {
   return array(
-    'user_login_name_validate',
-    'user_login_authenticate_validate',
-    'shixiquan_companylogin_companyname_validate',
+    'shixiquan_company_user_login_validate',
     'user_login_final_validate'
   );
 }
 
-//企业名称的验证函数
-function shixiquan_companylogin_companyname_validate(&$form, &$form_state) {
+//企业用户验证
+function shixiquan_company_user_login_validate(&$form, &$form_state) {
+  $orig_user_name = $form_state['values']['name'];
+  $form_state['values']['name'] = $form_state['values']['company_name'].'^'.$form_state['values']['name'];
+
+  if (isset($form_state['values']['name']) && user_is_blocked($form_state['values']['name'])) {
+    // Blocked in user administration.
+    form_set_error('name', t('The username %name has not been activated or is blocked.', array('%name' => $orig_user_name)));
+  }
+
+  user_login_authenticate_validate($form, $form_state);
+
   if (!empty($form_state['uid'])) {
     //检查该用户是否创建了企业节点，且企业名字和输入的相同
     $query = new EntityFieldQuery();
@@ -166,11 +183,12 @@ function shixiquan_companylogin_companyname_validate(&$form, &$form_state) {
 
     $query->propertyCondition('uid', $form_state['uid']);
     $query->propertyCondition('title', $form_state['values']['company_name']);
+    $query->propertyCondition('status', 1);
     $query->range(0, 1);
     $result = (bool) $query->count()->execute();
     //如果不存在这样的企业节点，则表示企业名称输入有误
     if (empty($result)) {
-      form_set_error('company_name', t('无效的企业名称'));
+      form_set_error('company_name', t('无效的企业名称,或企业注册尚未通过审核。'));
     }
   }
 }
