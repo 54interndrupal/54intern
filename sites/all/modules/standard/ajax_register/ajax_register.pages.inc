@@ -40,7 +40,7 @@ function ajax_register_page_callback($form_type, $js) {
       $commands = ctools_modal_form_wrapper('user_register_form', $form_state);
     }
     elseif ($form_type == 'login') {
-          // Show USER LOGIN form.
+      // Show USER LOGIN form.
 //      $form_state['title'] = t('Log In');
       $commands = ctools_modal_form_wrapper('user_login', $form_state);
     }
@@ -80,7 +80,7 @@ function ajax_register_page_callback($form_type, $js) {
       }
       elseif ($form_type == 'login') {
         // Set message about successfull login.
-        drupal_set_message(t('Login was successfull. Page has been reloaded.'));
+//        drupal_set_message(t('Login was successfull. Page has been reloaded.'));
 //        $commands[] = ctools_modal_command_display('', theme('status_messages'));
 
         // Redirect user after login to user provided url.
@@ -88,20 +88,22 @@ function ajax_register_page_callback($form_type, $js) {
 //        $redirect_url = variable_get('ajax_register_login_form_redirect', '');
 //        $commands[] = ctools_ajax_command_redirect($redirect_url);
         $commands[] = ctools_ajax_command_reload();
+
+
       }
       elseif ($form_type == 'companylogin') {
         // Set message about successfull login.
-        drupal_set_message(t('Login was successfull. Page has been reloaded.'));
+//        drupal_set_message(t('Login was successfull. Page has been reloaded.'));
 //        $commands[] = ctools_modal_command_display('', theme('status_messages'));
 
         // Redirect user after login to user provided url.
         // If redirect url is empty page will be reloaded.
 //        $redirect_url = variable_get('ajax_register_login_form_redirect', '');
 //        $commands[] = ctools_ajax_command_redirect($redirect_url);
-        $commands[] = ctools_ajax_command_reload();
+        $commands[] = ctools_ajax_command_redirect('/companycenter');
       }
       elseif ($form_type == 'profile') {
-        $commands[] = ctools_modal_command_display('', theme('status_messages').'<script>jQuery(".authcache-user-picture").html(jQuery.cookie("drupal_user_picture").replace(/\+/g," "));jQuery(".authcache-user").html(jQuery.cookie("drupal_user"));</script>');
+        $commands[] = ctools_modal_command_display('', theme('status_messages') . '<script>jQuery(".authcache-user-picture").html(jQuery.cookie("drupal_user_picture").replace(/\+/g," "));jQuery(".authcache-user").html(jQuery.cookie("drupal_user"));</script>');
       }
     }
 
