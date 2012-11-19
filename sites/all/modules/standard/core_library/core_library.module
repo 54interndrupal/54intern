@@ -1,0 +1,534 @@
+<?php
+
+/**
+ * @file
+ * Core Library module.
+ */
+
+/**
+ * Aggregate file on all pages.
+ */
+define('LIBRARY_AGGREGATE_ALL', 1);
+
+/**
+ * Aggregate file on a per-path basis.
+ */
+define('LIBRARY_AGGREGATE_PATH', 2);
+
+/**
+ * Let core follow its own rules for this file aggregation.
+ */
+define('LIBRARY_AGGREGATE_DEFAULT', 3);
+
+/**
+ * Site admin defined aggregation rules.
+ */
+define('LIBRARY_MODE_MANUAL', 1);
+
+/**
+ * Learn and aggregate all files in anonymous browsing.
+ */
+define('LIBRARY_MODE_LEARNING_ANONYMOUS', 2);
+
+/**
+ * Learn and aggregate all files in browsing, admin pages excluded.
+ */
+define('LIBRARY_MODE_LEARNING_NO_ADMIN', 3);
+
+/**
+ * Learn and aggregate all files.
+ */
+define('LIBRARY_MODE_LEARNING_ALL', 4);
+
+/**
+ * Do not, ever, let the core aggregate files, and use the latest one whatever
+ * happens. This means all new files will be ignored.
+ */
+define('LIBRARY_MODE_BYPASS', 5);
+
+/**
+ * Group CSS in 2 groups, all around in one side, theme specifics on the other.
+ */
+define('LIBRARY_CSS_GROUP_DUAL', 1);
+
+/**
+ * Implements hook_menu().
+ */
+function core_library_menu() {
+  $items = array();
+  $items['admin/config/development/library'] = array(
+    'title' => "Library",
+    'description' => "Manage external JS and CSS libraries and allows to set different aggregation rules.",
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('core_library_admin_settings'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'core_library.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Get JSMin path.
+ * 
+ * FIXME: Sorry, this is hardcoded right now, will change in the future.
+ * 
+ * @return string
+ *   Found library, NULL if not found.
+ */
+function core_library_js_minify_library_path() {
+  if ($path = variable_get('core_library_jsmin_path', NULL)) {
+    return $path;
+  }
+  else {
+    return 'sites/all/libraries/jsmin/jsmin.php';
+  }
+}
+
+/**
+ * Minify given JS if not already done.
+ */
+function core_library_js_minify(&$options) {
+  static $minified, $included = FALSE;
+
+  if (!isset($minified)) {
+    $minified = variable_get('core_library_js_minified', array());
+  }
+
+  // Code readability, my friend.
+  $source = $options['data'];
+
+  // We should allow exclusion here, user configured. 
+  if (!array_key_exists($source, $minified)) {
+    
+    // Do not compress already compressed files.
+    if (!strpos($source, '.min.js')) {
+
+      // Attempt to use jsmin library if present.
+      if (!$included) {
+        $libpath = core_library_js_minify_library_path();
+        require_once DRUPAL_ROOT . '/' . $libpath;
+        $included = TRUE;
+      }
+  
+      // Why does this functions is not wrapped in file.inc? It should, since we
+      // are supposed to manipulate every file using stream wrappers.
+      $buf = file_get_contents($source);
+      $buf = JSMin::minify($buf);
+  
+      // Compute new filename.
+      $parts = explode('/', $source);
+      $filename = end($parts);
+      $file_uri = 'public://static/' . str_replace('.js', '.min.js', $filename);
+  
+      // Save it.
+      if ($file_uri = file_unmanaged_save_data($buf, $file_uri, FILE_EXISTS_REPLACE)) {
+        if ($wrapper = file_stream_wrapper_get_instance_by_uri($file_uri)) {
+          // Protected getTarget() function emulation.
+          list($scheme, $target) = explode('://', $file_uri, 2);
+          $target = trim($target, '\/');
+          $file_uri = $wrapper->getDirectoryPath() . '/' . $target;
+        }
+  
+        watchdog('core_library', "File '@src' minified successfully to '@dest'.", array(
+          '@src' => $source,
+          '@dest' => $file_uri,
+        ));
+  
+        // Save is ok, put the new filename in the $options array
+        $options['data'] = $file_uri;
+  
+        // Tell the system we minified a new file.
+        $minified[$source] = $file_uri;
+        variable_set('core_library_js_minified', $minified);
+      }
+    }
+  }
+  else {
+    // We have already minified this file in the past, let's reuse the cached
+    // result path for alteration.
+    $options['data'] = $minified[$source];
+  }
+}
+
+/**
+ * Modify the given JavaScript description to enforce it to go into the main
+ * libraries group, so the core will create only one big aggregated file.
+ */
+function core_library_defaults_js(&$data) {
+  // Custom override.
+  static $minify_enabled = NULL, $defaults = array(
+    'every_page' => TRUE,
+    'preprocess' => TRUE,
+    'cache' => TRUE,
+    'defer' => FALSE,
+    'type' => 'file',
+    'scope' => 'header',
+  );
+
+  // Ignore 'inline' or 'external' content.
+  // Not set type means we are getting this entry from our own cache.
+  if (isset($data['type']) && 'file' !== $data['type']) {
+    return;
+  }
+
+  // Prepare some variables at first hit.
+  if (!isset($minify_enabled)) {
+    $minify_enabled = variable_get('core_library_js_minify', FALSE);
+  }
+
+  // Set default weight for every file. If we don't drupal_get_css() will
+  // fail at uasort() time on custom added JS files.
+  if (!array_key_exists('weight', $data)) {
+    $data['weight'] = 0;
+  }
+
+  // First thing to do is to force the current group to be libraries one.
+  if (!array_key_exists('group', $data) || $data['group'] != JS_LIBRARY) {
+    $data['group'] = JS_LIBRARY;
+
+    // Once we done that, we have to alter weight to ensure no outsider will
+    // take precedence over real libraries.
+    $data['weight'] += 1000;
+  }
+
+  // Override data.
+  foreach ($defaults as $name => $value) {
+    $data[$name] = $value;
+  }
+
+  // Minify, if enabled.
+  if ($minify_enabled) {
+    core_library_js_minify($data);
+  }
+}
+
+/**
+ * Modify the given CSS description to enforce it to go into the main
+ * system group, so the core will create only one big aggregated file.
+ */
+function core_library_defaults_css(&$data) {
+  // Defaults won't handle the 'media' key. Modules and libraries do specify
+  // their own value for this (we only set the 'all' value when no value is
+  // given).
+  static $please_group_css, $defaults = array(
+    'type' => 'file',
+    'every_page' => TRUE,
+    'preprocess' => TRUE,
+  );
+
+  // Ignore 'inline' or 'external' content.
+  // Not set type means we are getting this entry from our own cache.
+  if (isset($data['type']) && 'file' !== $data['type']) {
+    return;
+  }
+
+  // Statically initialize variables used for the rest of the algorithm.
+  if (!isset($please_group_css)) {
+    $css_grouping_mode = variable_get('core_library_css_group', FALSE);
+    $please_group_css = (bool) $css_grouping_mode;
+  }
+
+  // Assign a default group for files that does not have any. This can happen
+  // within our own execution workflow because we override a lot of stuff from
+  // core.
+  if (!array_key_exists('group', $data)) {
+    $data['group'] = CSS_DEFAULT;
+  }
+
+  // In some case, browsers are not specified, which make the aggregation
+  // algorithm to have a specific group for those. We don't want that, no
+  // browser specified means all browsers, like any other files.
+  // This is a weird behavior since it happens only for some core files
+  // included with the drupal_add_css() $every_page parameter set to TRUE,
+  // see system_init() implementation for example.
+  if (empty($data['browsers'])) {
+    $data['browsers'] = array(
+      'IE' => TRUE,
+      '!IE' => TRUE,
+    );
+  }
+  // Same bug as above, for media.
+  if (empty($data['media'])) {
+    $data['media'] = 'all';
+  }
+
+  // Set default weight for every file. If we don't drupal_get_css() will
+  // fail at uasort() time on custom added JS files.
+  if (!array_key_exists('weight', $data)) {
+    $data['weight'] = 0;
+  }
+
+  // First thing to do is to force the current group to be libraries one.
+  if ($please_group_css) {
+    if ($data['group'] != CSS_THEME) {
+      $data['group'] = CSS_SYSTEM;
+
+      // Once we done that, we have to alter weight to ensure no outsider will
+      // take precedence over real libraries.
+      $data['weight'] += 1000;
+    }
+  }
+
+  // Override data.
+  foreach ($defaults as $name => $value) {
+    $data[$name] = $value;
+  }
+}
+
+function core_library_bypass_mode() {
+  // Compat fix with overlay module.
+  // FIXME: A better solution should be developped here.
+  if (module_exists('overlay') && user_access('access-overlay')) {
+    return NULL;
+  }
+
+  return variable_get('core_library_bypass', NULL);
+}
+
+/**
+ * Implements hook_element_info_alter().
+ * 
+ * Depending on the actual aggregation mode we are, we will change the current
+ * JS / CSS aggregation functions to ensure Drupal won't ever, ever attempt any
+ * file_exists() or hash compute while we are sure our CSS and JS files are
+ * stable and cover the full site.
+ */
+function core_library_element_info_alter(&$type) {
+  // Change the 'style' element type rendering if needed.
+  if (core_library_bypass_mode() == LIBRARY_MODE_BYPASS) {
+
+    // Force our file to be included if needed.
+    require_once drupal_get_path('module', 'core_library') . '/core_library.bypass.inc';
+
+    $type['styles'] = array(
+      '#items' => array(),
+      '#pre_render' => array('core_library_element_style_pre_render'),
+    );
+  }
+}
+
+/**
+ * Implements hook_init(). 
+ */
+function core_library_init() {
+  // We will aggregate libraries files only if are not in learning mode.
+  // Learning mode will find them as classic files, without having to known
+  // if they are part of a library or not.
+  if (core_library_bypass_mode() == LIBRARY_MODE_MANUAL) {
+    require_once drupal_get_path('module', 'core_library') . '/core_library.manual.inc';
+    core_library_manual_init();
+  }
+}
+
+/**
+ * Single point where all exclusion rules happen.
+ *
+ * @param string $type
+ *   Library type (e.g. 'js' or 'css').
+ * @param string $file
+ *   Original library key in libraries array.
+ * @param array $options
+ *   Original library options.
+ *
+ * @return bool
+ *   TRUE if should not preprocess this file ourselves.
+ */
+function _core_library_must_exclude($type, $file, $options) {
+  static $respectful_preprocess;
+
+  if (!isset($js_respect_preprocess)) {
+    $respectful_preprocess = variable_get('core_library_respectful_preprocess', TRUE);
+  }
+
+  if ($respectful_preprocess && isset($options['preprocess']) && !$options['preprocess']) {
+    return TRUE;
+  }
+
+  return FALSE;
+}
+
+/**
+ * Merge the given array using the given type.
+ * 
+ * This is the magic function where all learning happens.
+ */
+function _core_library_merge(&$array, $type) {
+  global $theme_key;
+
+  // Following static variables are pure optimization.
+  static $do_learn, $base_themes_paths;
+
+  // Set the current learning mode.
+  if (!isset($do_learn)) {
+    switch (core_library_bypass_mode()) {
+
+      case LIBRARY_MODE_LEARNING_ANONYMOUS:
+        $do_learn = user_is_anonymous();
+        break;
+
+      case LIBRARY_MODE_LEARNING_NO_ADMIN:
+        $do_learn = !drupal_match_path($_GET['q'], "admin\nadmin/*");
+        break;
+
+      case LIBRARY_MODE_LEARNING_ALL:
+        $do_learn = TRUE;
+        break;
+
+      case LIBRARY_MODE_BYPASS:
+        // In bypass mode, we still need libraries to be ordered in order for
+        // our custom style pre_render function to build correct CSS files.
+        $do_learn = FALSE;
+        break;;
+
+      default:
+        // We should never get here, but always keep a fallback.
+        $exclude_path = "*";
+        break;
+    }
+
+    // Find all base theme an theme path, needed for CSS inclusion check.
+    $base_themes_paths = array();
+    $themes = list_themes();
+    $current_theme = $themes[$theme_key];
+    do {
+      $base_themes_paths[] = dirname($current_theme->filename);
+      if (isset($current_theme->base_theme) && isset($themes[$current_theme->base_theme])) {
+        $current_theme = $themes[$current_theme->base_theme];
+      }
+      else {
+        $current_theme = NULL;
+      }
+    } while (isset($current_theme));
+  }
+
+  $orphans = variable_get('library_aggregation_orphans', array());
+
+  // Callback for defaults.
+  $function = 'core_library_defaults_' . $type;
+
+  // Failsafe.
+  if (!is_callable($function)) {
+    return;
+  }
+  if (!isset($orphans[$type])) {
+    // array_diff_key() will require an array here when in learning mode, else
+    // the function will fail returning an empty result.
+    $orphans[$type] = array();
+  }
+
+  // In case we are in learning mode, add the new file to manual override
+  // and save result. The few first hit will cause some SQL overhead and
+  // some cache rebuild while users browse, but when all files will be
+  // found, this won't happen anymore.
+  // Once the maximum files are being found, you should then switch to manual
+  // mode, it will use the exact same variables we are being populating here
+  // and will won't attempt to do the array difference here.
+  // We do it before the real file alteration to ensure that newly found files
+  // will also be aggregated the first hit.
+  if ($do_learn) {
+    $unknown = array_diff_key($array, $orphans[$type]);
+
+    // Avoid to store JS settings array, this could cause some unwanted JS
+    // settings to displayed on wrong pages.
+    unset($unknown['settings']);
+
+    // Proceed only if array is not empty.
+    if (!empty($unknown)) {
+      foreach ($unknown as $file => $options) {
+        $data = array(
+          'mode' => LIBRARY_AGGREGATE_ALL,
+          'group' => $options['group'],
+          'exclude' => _core_library_must_exclude($type, $file, $options),
+        );
+        // No exclusion mode forces us to keep the full original options
+        // instead of allowing us to override it. This also means that the
+        // file will still always be included whatever happens.
+        if ($data['exclude']) {
+          $data += $options;
+        }
+        $orphans[$type][$file] = $data;
+      }
+
+      // Save new orphans.
+      variable_set('library_aggregation_orphans', $orphans);
+    }
+  }
+
+  // Merge array with our own values.
+  foreach ($orphans[$type] as $file => $options) {
+    if ('css' === $type && isset($options['group']) && CSS_THEME === $options['group']) {
+      // Whatever happens, do not include files from another themes. This is due
+      // to learning mecanism that will learn files from all themes. We must let
+      // base themes files pass.
+      $matches_theme = FALSE;
+      foreach ($base_themes_paths as $theme_path) {
+        if (0 === strpos($file, $theme_path)) {
+          $matches_theme = TRUE;
+          continue;
+        }
+      }
+      if (!$matches_theme) {
+        unset($array[$file]);
+        // Force upper foreach to continue to next file.
+        continue;
+      }
+    }
+
+    // If entry does not already exists, add it in order for the core to use
+    // it for full aggregation.
+    if (!isset($array[$file])) {
+      $array[$file] = $options + array('data' => $file);
+    }
+
+    if (!$options['exclude']) {
+      // Merge already loaded with our own options to force aggregation.
+      $function($array[$file]);
+
+      // File destination may have changed.
+      if ($array[$file]['data'] != $file) {
+        $array[$array[$file]['data']] = $array[$file];
+        unset($array[$file]);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_js_alter().
+ */
+function core_library_js_alter(&$javascript) {
+  // We are going to use this hook instead of the hook_init() implementation
+  // in order to force some settings, because other drupal_add_js() calls will
+  // override our changes.
+  if (core_library_bypass_mode()) {
+    _core_library_merge($javascript, 'js');
+  }
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function core_library_css_alter(&$css) {
+  // We are going to use this hook instead of the hook_init() implementation
+  // in order to force some settings, because other drupal_add_js() calls will
+  // override our changes.
+  if (core_library_bypass_mode()) {
+    _core_library_merge($css, 'css');
+  }
+}
+
+/**
+ * Implements hook_help().
+ */
+function core_library_help($path, $arg) {
+  switch ($path) {
+    case 'admin/config/development/library':
+      $messages[] = t("This page allows you to configure advanced CSS and JS files aggregation rules. The Core Library module assumes that aggregating all CSS and JS files together on every page -even if they are not being always used- will provide better CSS and JS files cache hit over a long term usage and save more bandwith than core conditional aggregation algorithm.");
+      $messages[] = t("Notice that when changing the aggregation mode you need to refresh your aggressive cache page, if enabled. The module won't do it by itself and will let you do so to ensure it won't happen during frequentation pikes.");
+      if (variable_get('core_library_updated', FALSE)) {
+        drupal_set_message(t("The Core Library module has been updated and requires you to reset the learnt files so far. If you don't experience PHP notices, CSS malfunctions, or JS errors you can safely ignore this message."), 'error');
+      }
+      break;
+  }
+}

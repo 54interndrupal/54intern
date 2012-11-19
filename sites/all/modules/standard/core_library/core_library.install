@@ -1,0 +1,100 @@
+<?php
+
+/**
+ * @file
+ * Core Library module schema.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function core_library_schema() {
+  $schema = array();
+  $schema['core_library_stat'] = array(
+    'fields' => array(
+      'lid' => array(
+        'description' => 'Primary identifier',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'file' => array(
+        'description' => 'File path',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'hits' => array(
+        'description' => 'Hits count',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'hits_anonymous' => array(
+        'description' => 'Anonymous hit',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'hits_admin' => array(
+        'description' => 'Admin hit',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'module' => array(
+        'description' => 'Module name, full path will be determined using its path',
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'type' => array(
+        'description' => 'File type, can be CSS or JS, maybe something else',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('lid'),
+    'unique keys' => array('file' => array('file')),
+  );
+  $schema['core_library_pages'] = array(
+    'fields' => array(
+      'lid' => array(
+        'description' => 'Primary identifier',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'path' => array(
+        'description' => 'Drupal path',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('lid', 'path'),
+  );
+  return $schema;
+}
+
+/**
+ * Add the 'exclude' flag into already learnt files to avoid PHP warnings.
+ */
+function core_library_update_7001() {
+  variable_set('core_library_updated', TRUE);
+
+  $files = variable_get('library_aggregation_orphans', array());
+  if (!empty($files)) {
+    foreach ($files as $type => $array) {
+      foreach ($array as $file => $options) {
+        $files[$type][$file]['exclude'] = FALSE;
+      }
+    }
+    variable_set('library_aggregation_orphans', $files);
+  }
+}

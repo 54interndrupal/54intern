@@ -1,0 +1,15 @@
+name = Core Library
+description = Extends Drupal core and allows you to override other modules' libraries definition and aggregation rules.
+package = Performance
+version = VERSION
+core = 7.x
+configure = admin/config/development/library
+; Module files.
+files[] = core_library.module
+files[] = core_library.admin.inc
+; Information added by drupal.org packaging script on 2012-04-02
+version = "7.x-1.0-beta12"
+core = "7.x"
+project = "core_library"
+datestamp = "1333360860"
+

@@ -1,0 +1,260 @@
+<?php
+
+/**
+ * @file
+ * Core Library advanced UI module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function core_library_ui_menu() {
+  $items = array();
+  $items['admin/config/development/library/options'] = array(
+    'title' => "Settings",
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+  );
+  $items['admin/config/development/library/libraries'] = array(
+    'title' => "Libraries",
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('core_library_admin_libraries'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'core_library_ui.admin.inc',
+  );
+  $items['admin/config/development/library/orphans'] = array(
+    'title' => "Orphans",
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('core_library_admin_orphans'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'core_library_ui.admin.inc',
+  );
+  // Profile handling.
+  $items['admin/config/development/library/profile/export'] = array(
+    'title' => "Current profile export",
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('core_library_admin_export_form', 'core_library_profile_export_current'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_CALLBACK,
+    'file' => 'core_library_ui.admin.inc',
+  );
+  $items['admin/config/development/library/files/export'] = array(
+    'title' => "Known files export",
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('core_library_admin_export_form', 'core_library_known_file_export'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_CALLBACK,
+    'file' => 'core_library_ui.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function core_library_ui_theme() {
+  $items = array();
+  $items['core_library_admin_libraries'] = array(
+    'file' => 'core_library_ui.admin.inc',
+    'render element' => 'form',
+  );
+  $items['core_library_admin_orphans'] = array(
+    'file' => 'core_library_ui.admin.inc',
+    'render element' => 'form',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function core_library_ui_form_core_library_admin_settings_alter(&$form, &$form_state) {
+  $form['advanced']['core_library_collect'] = array(
+    '#type' => 'checkbox',
+    '#title' => t("Collect statistics"),
+    '#default_value' => variable_get('core_library_collect', FALSE),
+    '#description' => t("This will collect statistics on JS and CSS files usage. Please do not enable this in production, it could have a major performance impact."),
+  );
+  if (module_exists('core_library_ui')) {
+    $form['actions']['export_profile'] = array(
+      '#type' => 'markup',
+      '#markup' => l(t("Export profile"), 'admin/config/development/library/profile/export'),
+    );
+  }
+}
+
+/**
+ * Find file owner.
+ * 
+ * This function may be unperformant, because we use the module list and theme
+ * list from Drupal core, and store them statically, which means we are using
+ * huge arrays duplicated in memory.
+ * 
+ * I'm not quite happy with this function, but at least it works.
+ * 
+ * @param string &$filename
+ *   Complete filename relative to Drupal root.
+ * 
+ * @return array
+ *   Indexed values array:
+ *    - First value is the owner name, from system table
+ *    - Second value is the munge filename, relative to owner path, third value
+ *    - Third value is the owner type ('theme', 'module', or 'core')
+ */
+function _core_library_find_owner($filepath) {
+  static $modules, $themes;
+
+  // Build static cache.
+  if (!isset($modules)) {
+    // First, load module list.
+    $modules = array();
+    foreach(module_list() as $module) {
+      $modules[$module] = drupal_get_path('module', $module);
+    }
+    // Also check for themes.
+    $themes = array();
+    foreach (list_themes() as $theme => $info) {
+      $themes[$theme] = drupal_get_path('theme', $theme);
+    }
+  }
+
+  // Prep. variables.
+  $owner = $owner_type = NULL;
+
+  // Ok, so we are treating an existing file, let's find out what is its real
+  // module behind, it may be either a module, a theme, or the core itself.
+  foreach ($modules as $module => $path) {
+    if (substr($filepath, 0, strlen($path)) == $path) {
+      $owner = $module;
+      $owner_type = 'module';
+      $filepath = substr($filepath, strlen($path) + 1);
+      break;
+    }
+  }
+  // Second, test with theme.
+  if (!$owner) {
+    foreach ($themes as $theme => $path) {
+      if (substr($filepath, 0, strlen($path)) == $path) {
+        $owner = $theme;
+        $owner_type = 'theme';
+        $filepath = substr($filepath, strlen($path) + 1);
+        break;
+      }
+    }
+  }
+  // If we have no module, consider this file belongs to core itself as
+  // a misc. file.
+  if (!$owner) {
+    $owner = $owner_type = 'core';
+  }
+
+  // Build return array.
+  return array($owner, $filepath, $owner_type);
+}
+
+/**
+ * Update statistics for given library file.
+ * 
+ * This function seems to be really slow to run, this is probably due to the
+ * number of update or insert requests being done. We are working on a varchar
+ * indexed table which makes those requests even slower when using MySQL with
+ * the InnoDB engine.
+ * 
+ * In order to provide a powerful and usable statistic counter, we need to
+ * rework this part.
+ * 
+ * Maybe doing bulk insert at hook_exit() time would be better.
+ */
+function core_library_update_stats($file, $data, $type = 'unknown') {
+  static $done = array(), $known;
+
+  // Skip settings.
+  if ($file == 'settings') {
+    return;
+  }
+
+  // Do not proceed the same file twice.
+  if (isset($done[$file])) {
+    return;
+  }
+
+  // Prepare some stuff.
+  if (!isset($known)) {
+    // This is a pure performance patch, load full list in order to avoid one
+    // SQL query per file. The choice of consumming more memory in order to keep
+    // performances have been made here.
+    $known = array();
+    $results = db_select('core_library_stat', 'cls')
+      ->fields('cls', array('file', 'module', 'lid'))
+      ->execute()
+      ->fetchAll();
+    foreach ($results as $data) {
+      $known[$data->module][$data->file] = $data->lid;
+    }
+  }
+
+  // Find owner.
+  list($owner, $file) = _core_library_find_owner($file);
+
+  $is_admin = drupal_match_path($_GET['q'], "admin\nadmin/*");
+  $is_anonymous = user_is_anonymous();
+
+  // Insert new file record, if not already set.
+  if (!isset($known[$owner][$file])) {
+    $record = array(
+      'file' => $file,
+      'hits' => 1,
+      'hits_anonymous' => $is_anonymous ? 1 : 0,
+      'hits_admin' => $is_admin ? 1 : 0,
+      'module' => $owner,
+      'type' => $type,
+    );
+    drupal_write_record('core_library_stat', $record);
+    $lid = $record['lid'];
+    $known[$owner][$file] = $lid;
+  }
+  else {
+    $lid = $known[$owner][$file];
+    // Increment the counter if the file already exists.
+    $sets = array();
+    $sets[] = "hits = hits + 1";
+    if ($is_anonymous) {
+      $sets[] = "hits_anonymous = hits_anonymous + 1";
+    }
+    if ($is_admin) {
+      $sets[] = "hits_admin = hits_admin + 1";
+    }
+    db_query("UPDATE {core_library_stat} SET " . implode(", ", $sets) . " WHERE lid = :lid", array(':lid' => $lid));
+  }
+
+  $done[$file] = TRUE;
+}
+
+/**
+ * Implements hook_js_alter().
+ */
+function core_library_ui_js_alter(&$javascript) {
+  // Aggregate statistics if configured for.
+  if (variable_get('core_library_collect', FALSE)) {
+    foreach ($javascript as $file => $data) {
+      if ('file' === $data['type']) {
+        core_library_update_stats($file, $data, 'js');
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function core_library_ui_css_alter(&$css) {
+  // Aggregate statistics if configured for.
+  if (variable_get('core_library_collect', FALSE)) {
+    foreach ($css as $file => $data) {
+      if ('file' === $data['type']) {
+        core_library_update_stats($file, $data, 'css');
+      }
+    }
+  }
+}

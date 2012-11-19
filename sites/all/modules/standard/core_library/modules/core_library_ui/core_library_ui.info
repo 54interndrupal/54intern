@@ -1,0 +1,16 @@
+name = Core Library Advanced UI
+description = Provide configuration screens for the Core Library module. You should enable this module the first time you use it, then disable it once in production.
+package = Performance
+version = VERSION
+core = 7.x
+configure = admin/config/development/library
+; Module files.
+files[] = core_library_ui.module
+files[] = core_library_ui.admin.inc
+
+; Information added by drupal.org packaging script on 2012-04-02
+version = "7.x-1.0-beta12"
+core = "7.x"
+project = "core_library"
+datestamp = "1333360860"
+
