@@ -3,7 +3,6 @@ description = 54 intern theme.
 version = VERSION
 core = 7.x
 
-stylesheets[screen][] = css/colorbox_default_style.css
 stylesheets[screen][] = css/fivefour.css
 stylesheets[screen][] = css/changed.css
 stylesheets[screen][] = css/iitgl.css

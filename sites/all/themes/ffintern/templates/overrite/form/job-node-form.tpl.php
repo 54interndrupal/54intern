@@ -38,8 +38,9 @@
           <?php print drupal_render($form['field_deadline']["und"][0]["value"]["date"]);?>
           <?php print drupal_render($form["field_study_years"])?>
           <?php print drupal_render($form["field_education_requirement"])?>
-          <?php print drupal_render($form["body"])?>
 
+          <?php print drupal_render($form["body"])?>
+          <?php print drupal_render($form["field_email"])?>
         </div>
       </div>
       <!--      --><?php //print_r($form["actions"]);?>

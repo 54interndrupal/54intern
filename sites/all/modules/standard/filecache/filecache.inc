@@ -91,9 +91,12 @@ class DrupalFileCache implements DrupalCacheInterface {
   }
 
   function get($cid) {
+
+//    watchdog('filecache',$cid.','.REQUEST_TIME.',');
+
     $filename = $this->prefix . $this->encode_cid($cid);
 
-    watchdog('filecache',$cid.','.REQUEST_TIME.',');
+
 
     // XXX should be in getMultiple() and get() to call getMultiple()
     $this->delete_flushed();
@@ -182,6 +185,8 @@ class DrupalFileCache implements DrupalCacheInterface {
   }
 
   function set($cid, $data, $expire = CACHE_PERMANENT) {
+//    watchdog('filecache',$cid.','.REQUEST_TIME.',');
+
     $filename = $this->prefix . $this->encode_cid($cid);
 
     // Open file for that entry, handling errors that may arise

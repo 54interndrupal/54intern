@@ -67,7 +67,7 @@ function authcache_example_block_info() {
     'weight' => 10,
     'status' => 1,
     'region' => 'left',
-    'cache' => BLOCK_NO_CACHE,
+    'cache' => DRUPAL_NO_CACHE,
   );
 
   return $blocks;

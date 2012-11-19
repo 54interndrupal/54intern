@@ -109,11 +109,18 @@ function _intern_job_republish(&$node) {
  * approve job
  */
 function _intern_job_approve(&$node) {
-  $sub_status = $node->field_job_sub_status[LANGUAGE_NONE][0]["value"];
   $node->status = NODE_PUBLISHED;
   $node->field_job_sub_status[LANGUAGE_NONE][0]["value"] = JOB_SUB_STATUS_PUBLISHED;
   $node->field_content_approval[LANGUAGE_NONE][0]["value"] = 0;
-  _intern_job_refresh($node);
+}
+
+/**
+ * @param $node
+ * expire job
+ */
+function _intern_job_expire(&$node) {
+  $node->status = NODE_NOT_PUBLISHED;
+  $node->field_job_sub_status[LANGUAGE_NONE][0]["value"] = JOB_SUB_STATUS_EXPIRED;
 }
 
 function intern_job_form_node_form_alter(&$form, $form_state) {
@@ -126,7 +133,9 @@ function intern_job_form_node_form_alter(&$form, $form_state) {
 
     hide($form["actions"]["delete"]);
     hide($form["field_job_sub_status"]);
-
+    if (empty($form['field_email']['und'][0]['value']['#default_value'])) {
+      $form['field_email']['und'][0]['value']['#default_value'] = $user->mail;
+    }
     $form["actions"]["submit"]["#value"] = t('提交发布');
     $form["actions"]["draft"] = array(
       '#type' => 'submit',
@@ -143,6 +152,14 @@ function intern_job_form_node_form_alter(&$form, $form_state) {
 function intern_job_node_form_ant_submit($form, &$form_state) {
   $values = $form_state['values'];
   $op = isset($values['op']) ? $values['op'] : '';
+
+  $field_deadline = $form_state['values']['field_deadline'][LANGUAGE_NONE][0]["value"];
+  if (isset($field_deadline) && !empty($field_deadline)) {
+    if ($field_deadline <= time()) {
+      form_set_error("field_deadline", "截止日期必须大于当前日期。");
+    }
+  }
+
 
   if ($op == t('保存草稿')) {
     $form_state['values']["field_job_sub_status"][LANGUAGE_NONE][0]['value'] = JOB_SUB_STATUS_DRAFT;
@@ -232,44 +249,22 @@ function intern_job_cron() {
     ':entity_type' => 'job'
   ))->fetchCol();
   if (!empty($nids)) {
-    db_update('field_data_field_job_sub_status')
-      ->fields(array('field_job_sub_status_value' => 2))
-      ->condition('entity_id', $nids, 'IN')
-      ->execute();
-    db_update('field_revision_field_job_sub_status')
-      ->fields(array('field_job_sub_status_value' => 2))
-      ->condition('entity_id', $nids, 'IN')
-      ->execute();
-    db_update('node')
-      ->fields(array('status' => 0))
-      ->condition('nid', $nids, 'IN')
-      ->execute();
+    $jobs = node_load_multiple($nids);
+    foreach ($jobs as $job) {
+      _intern_job_expire($job);
+      node_save($job);
+    }
   }
-  $nids = db_query('SELECT ca.entity_id FROM {field_data_field_content_approval} ca INNER JOIN {node} n ON ca.entity_id = n.nid  WHERE n.status=1 AND ca.field_content_approval_value = :need_approval AND ca.bundle = :entity_type', array(
+  $nids = db_query('SELECT ca.entity_id FROM {field_data_field_content_approval} ca INNER JOIN {node} n ON ca.entity_id = n.nid  WHERE n.status=0 AND ca.field_content_approval_value = :need_approval AND ca.bundle = :entity_type', array(
     ':need_approval' => 1,
     ':entity_type' => 'job'
   ))->fetchCol();
   if (!empty($nids)) {
-    db_update('field_data_field_job_sub_status')
-      ->fields(array('field_job_sub_status_value' => JOB_SUB_STATUS_PUBLISHED))
-      ->condition('entity_id', $nids, 'IN')
-      ->execute();
-    db_update('field_revision_field_job_sub_status')
-      ->fields(array('field_job_sub_status_value' => JOB_SUB_STATUS_PUBLISHED))
-      ->condition('entity_id', $nids, 'IN')
-      ->execute();
-    db_update('field_data_field_content_approval')
-      ->fields(array('field_content_approval_value' => 0))
-      ->condition('entity_id', $nids, 'IN')
-      ->execute();
-    db_update('field_revision_field_content_approval')
-      ->fields(array('field_content_approval_value' => 0))
-      ->condition('entity_id', $nids, 'IN')
-      ->execute();
-    db_update('node')
-      ->fields(array('status' => 1))
-      ->condition('nid', $nids, 'IN')
-      ->execute();
+    $jobs = node_load_multiple($nids);
+    foreach ($jobs as $job) {
+      _intern_job_approve($job);
+      node_save($job);
+    }
   }
 }
 
@@ -285,7 +280,14 @@ function intern_job_flags($jobId) {
     if (in_array(4, array_keys($user->roles))) {
     }
     else {
-      $output .= flag_create_link('apply', $jobId);
+      if ($_SESSION['user_resume_finish_percent'] > 0) {
+        $output .= flag_create_link('apply', $jobId);
+      }
+      else {
+        $output .= '<span class="flag-wrapper flag-apply flag-apply-44312">
+      <a href="javascript:alert(\'您还没有填写简历，请先完善简历。\')" title="" class="ctools-use-modal ctools-modal-ctools-ajax-register-style flag flag-action flag-link-normal" rel="nofollow">申请职位</a>
+    </span>';
+      }
     }
 
     $output .= '<span class="resume">';
@@ -298,4 +300,33 @@ function intern_job_flags($jobId) {
   }
 
   return $output;
+}
+
+function intern_job_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'job_apply':
+//      $login_url = url("user/userregister/check/" . $params['uid'] . "/" . md5($params['pass'] . $params['mail'] . $params['login']), array('absolute' => TRUE));
+
+      //	$account = $params['account'];
+      //$context = $params['context'];
+      $variables = array(
+        '[site:name]' => variable_get('site_name', 'Drupal'),
+        '[user:name]' => $params['user_name'],
+        '[user:resume]' => $params['resume'],
+        '[job:title]' => $params['job_title'],
+        '[company:title]' => $params['company_title'],
+        '[apply:date]' => $params['apply_date'],
+      );
+      $subject = '(54intern.com)申请贵公司[job:title] - [user:name]';
+      $subject = strtr($subject, $variables);
+
+      $body = '应聘职位：[job:title]<br>应聘公司：[company:title]<br>投递时间：[apply:date]<p>[user:resume]';
+      $body = strtr($body, $variables);
+
+      $message['subject'] = $subject;
+      $message['body'][] = $body;
+      drupal_set_message($body);
+      break;
+
+  }
 }

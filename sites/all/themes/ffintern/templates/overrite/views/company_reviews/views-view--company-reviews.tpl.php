@@ -58,13 +58,8 @@
   <div id="review-form" class="form">
 	<h2 class="title"><?php print t('我来评价'); ?></h2>
 	
-	<?php 
-	if(ffintern_access_company_content_form(arg(1))){
-	print company_center_get_form_block('review'); 
-	}else{
-	  print t('您只有关注了本企业以后，才能参与评价');
-	}	
-	
+	<?php
+	print company_center_get_form_block('review');
 	?>
 	</div>
 	

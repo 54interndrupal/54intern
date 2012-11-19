@@ -136,9 +136,10 @@ function userreg_mail($key, &$message, $params) {
       $variables = array(
         '[site:name]' => variable_get('site_name', 'Drupal'),
         '[site:url]' => $GLOBALS['base_url'],
-        '[user:name]' => $params['name'],
+        '[user:name]' => intern_user_get_user_name($params['name']),
         '[user:mail]' => $params['mail'],
         '[user:one-time-login-url]' => $login_url,
+        '[company:title]' => $params['company_title'],
       );
       $subject = variable_get('userreg_mail_company_register_subject', '');
       $subject = strtr($subject, $variables);

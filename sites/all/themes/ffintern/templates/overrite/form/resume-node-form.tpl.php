@@ -81,9 +81,9 @@
       </div>
       <?php  print(views_embed_view("usercenter_user_info", 'panel_pane_1', $user->uid))?>
       </div>
-
-      <?php $follow_block = views_embed_view('usercenter_user_followed', 'panel_pane_1',  $user->uid);?>
-      <?php print $follow_block?>
+<!---->
+<!--      --><?php //$follow_block = views_embed_view('usercenter_user_followed', 'panel_pane_1',  $user->uid);?>
+<!--      --><?php //print $follow_block?>
     </div>
   </div>
 

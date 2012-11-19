@@ -1,2 +1,97 @@
 <?php
+/**
+ * Created by JetBrains PhpStorm.
+ * User: Edison
+ * Date: 12-5-27
+ * Time: 下午4:47
+ * To change this template use File | Settings | File Templates.
+ */
+
+function intern_core_node_insert($node) {
+  _intern_core_expire_node($node);
+}
+
+function intern_core_node_update($node) {
+  _intern_core_expire_node($node);
+}
+
+function intern_core_node_delete($node) {
+  _intern_core_expire_node($node);
+}
+
+function intern_core_comment_insert($comment) {
+  if (!empty($comment->nid)) {
+    $node = node_load($comment->nid);
+    if ($node) {
+      _intern_core_expire_node($node);
+    }
+  }
+}
+
+/**
+ * Implements hook_comment_update().
+ *
+ * Acts on comments updates.
+ */
+function intern_core_comment_update($comment) {
+  if (!empty($comment->nid)) {
+    $node = node_load($comment->nid);
+    if ($node) {
+      _intern_core_expire_node($node);
+    }
+  }
+}
+
+/**
+ * Implements hook_comment_update().
+ *
+ * Acts on comments updates.
+ */
+function intern_core_comment_delete($comment) {
+  if (!empty($comment->nid)) {
+    $node = node_load($comment->nid);
+    if ($node) {
+      _intern_core_expire_node($node);
+    }
+  }
+}
+
+function _intern_core_expire_node($node) {
+
+  global $user, $base_path,$base_root;
+  if ($node->type == 'review') {
+    $cache_key = $key = _authcache_key($user) . $_SERVER['HTTP_REFERER'];
+  }
+  else {
+    if ($node->type == 'company' || $node->type == 'article') {
+      $cache_key = $key = _authcache_key($user) .$base_root. $base_path .$node->type . '/' . $node->nid;
+    }
+  }
+
+  if (isset($cache_key)) {
+    //  watchdog('expire node',$cache_key);
+    cache_clear_all($cache_key, 'cache_page');
+  }
+}
+
+function i_title($nid){
+  $title = db_select('node', 'm')
+    ->fields('m', array('title'))
+    ->condition('nid', $nid)
+    ->range(0, 1)
+    ->execute()
+    ->fetchField();
+  return $title;
+}
+
+function i_field($nid,$field_name){
+  $field_value = db_select('field_data_'.$field_name, 'm')
+    ->fields('m', array($field_name.'_value'))
+    ->condition('entity_id', $nid)
+    ->range(0, 1)
+    ->execute()
+    ->fetchField();
+  return $field_value;
+}
+
 

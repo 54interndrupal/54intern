@@ -7,8 +7,8 @@
  * @addtogroup rules
  * @{
  */
- 
- /**
+
+/**
  * Implements hook_rules_action_info().
  */
 function shixiquan_rules_action_info() {
@@ -89,7 +89,7 @@ function shixiquan_rules_action_info() {
     'base' => 'shixiquan_rules_create_apply',
     'access callback' => 'shixiquan_rules_integration_access',
   );
- 
+
   $items['shixiquan_delete_apply'] = array(
     'label' => t('删除apply对象'),
     'group' => t('Entities'),
@@ -115,7 +115,7 @@ function shixiquan_rules_action_info() {
     'base' => 'shixiquan_rules_delete_apply',
     'access callback' => 'shixiquan_rules_integration_access',
   );
-  
+
   return $items;
 }
 
@@ -129,7 +129,7 @@ function shixiquan_rules_add_entity_to_group(EntityDrupalWrapper $user, EntityDr
     'entity' => $user->value(),
   );
   og_group('node', $group->getIdentifier(), $values);
-  
+
 }
 
 /**
@@ -137,65 +137,81 @@ function shixiquan_rules_add_entity_to_group(EntityDrupalWrapper $user, EntityDr
  */
 function shixiquan_rules_remove_entity_from_group(EntityDrupalWrapper $user, EntityDrupalWrapper $group) {
 //print debug($user->getIdentifier());
-  og_ungroup('node', $group->getIdentifier(), 'user',$user->getIdentifier());
+  og_ungroup('node', $group->getIdentifier(), 'user', $user->getIdentifier());
 }
 
 /**
  * Action: Remove entity from group.
  */
 function shixiquan_rules_create_apply(EntityDrupalWrapper $user, EntityDrupalWrapper $job) {
-//print debug($user->getIdentifier());
- // og_ungroup('node', $group->getIdentifier(), 'user',$user->getIdentifier());
- 
-   //global $language;
-  //$langcode = $language->language;
-	$langcode = 'und';
-	
+  $langcode = 'und';
+
   $job_id = $job->getIdentifier();
   $uid = $user->getIdentifier();
-  
+  $user = user_load($uid);
+  $user_name = $user->field_real_name['und'][0]['safe_value'];
+
+  //通知邮件
+  $email = db_select('field_data_field_email', 'm')
+    ->fields('m', array('field_email_value'))
+    ->condition('bundle', 'job')
+    ->condition('entity_id', $job_id)
+    ->range(0, 1)
+    ->execute()
+    ->fetchField();
+
   //公司 ID
-  	$company_id = 0;
-	$company_id = db_select('og_membership','m')
-	->fields('m',array('gid'))
-	->condition('entity_type','node')
-	->condition('etid',$job_id)
-	->condition('group_type','node')
-	//->condition('field_name','og_group_ref')
-	->range(0,1)
-	->execute()
-	->fetchField();
-	
+  $company_id = db_select('og_membership', 'm')
+    ->fields('m', array('gid'))
+    ->condition('entity_type', 'node')
+    ->condition('etid', $job_id)
+    ->condition('group_type', 'node')
+  //->condition('field_name','og_group_ref')
+    ->range(0, 1)
+    ->execute()
+    ->fetchField();
+
 //简历 ID
-    $resume_id = 0;
-	$resume_id = db_select('node','n')
-	->fields('n',array('nid'))
-	->condition('type','resume')
-	->condition('uid',$uid)
-	->range(0,1)
-	->execute()
-	->fetchField();
-	
-	if(empty($resume_id)){
-	  return;
-	}
-	//$resume_id = $form_state['values']['resume_id'];
-	//$company_id = $form_state['values']['company_id'];
-	$created = time();
-	$apply = new stdClass();
-	$apply->uid = $uid;
-	$apply->created = $created;
-	$apply->entity_type = 'apply';
-	$apply->type = 'apply';
-	$apply->bundle = 'apply';
-	$apply->field_resume_id[$langcode][]['target_id'] = $resume_id;
-	$apply->field_resume_id[$langcode][]['target_type'] = 'node';
-	
-	$apply->field_job_id[$langcode][]['target_id'] = $job_id;
-	$apply->field_job_id[$langcode][]['target_type'] = 'node';
-	$apply->field_company_id[$langcode][]['target_id'] = $company_id;
-	$apply->field_company_id[$langcode][]['target_type'] = 'node';
-	entity_save('apply',$apply);
+  $resume_id = $_SESSION['user_resume_id'];
+  $resume_node = node_load($resume_id);
+  $elements = node_view($resume_node, 'full');
+  $resume = drupal_render($elements);
+
+  $job_title = i_title($job_id);
+  $company_title = i_title($company_id);
+  $apply_date = date('Y-m-d');
+
+  if (empty($resume_id)) {
+    return;
+  }
+
+  $created = time();
+  $apply = new stdClass();
+  $apply->uid = $uid;
+  $apply->created = $created;
+  $apply->entity_type = 'apply';
+  $apply->type = 'apply';
+  $apply->bundle = 'apply';
+  $apply->field_resume_id[$langcode][]['target_id'] = $resume_id;
+  $apply->field_resume_id[$langcode][]['target_type'] = 'node';
+
+  $apply->field_job_id[$langcode][]['target_id'] = $job_id;
+  $apply->field_job_id[$langcode][]['target_type'] = 'node';
+  $apply->field_company_id[$langcode][]['target_id'] = $company_id;
+  $apply->field_company_id[$langcode][]['target_type'] = 'node';
+  entity_save('apply', $apply);
+
+  if (isset($email) && !empty($email)) {
+    $values = array();
+    $values['uid'] = $user->uid;
+    $values['user_name'] = $user_name;
+    $values['job_title'] = $job_title;
+    $values['company_title'] = $company_title;
+    $values['apply_date'] = $apply_date;
+    $values['resume'] = $resume;
+    $from =  'resume@54intern.com';
+    drupal_mail('intern_job', 'job_apply', $email, language_default(), $values, $from);
+  }
 }
 
 /**
@@ -205,21 +221,21 @@ function shixiquan_rules_delete_apply(EntityDrupalWrapper $user, EntityDrupalWra
 //print debug($user->getIdentifier());
 //  og_ungroup('node', $group->getIdentifier(), 'user',$user->getIdentifier());
 //找到对应的apply_ids
-	$query = new EntityFieldQuery();
-	$query->entityCondition('entity_type', 'apply');
-	$query->entityCondition('bundle', 'apply');
-	
-	$query->propertyCondition('uid', $user->getIdentifier());
-	$query->fieldCondition('field_job_id', 'target_id', $job->getIdentifier());
-	//$query->range(0,1);
-	$result = $query->execute();
-    $apply_ids = array();
-	
-	//删除对应的applys
-	if(!empty($result) && isset($result['apply'])){
-		$apply_ids = array_keys($result['apply']);
-        entity_delete_multiple('apply',$apply_ids);
-	}
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'apply');
+  $query->entityCondition('bundle', 'apply');
+
+  $query->propertyCondition('uid', $user->getIdentifier());
+  $query->fieldCondition('field_job_id', 'target_id', $job->getIdentifier());
+  //$query->range(0,1);
+  $result = $query->execute();
+  $apply_ids = array();
+
+  //删除对应的applys
+  if (!empty($result) && isset($result['apply'])) {
+    $apply_ids = array_keys($result['apply']);
+    entity_delete_multiple('apply', $apply_ids);
+  }
 
 }
 

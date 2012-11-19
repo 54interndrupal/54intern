@@ -290,7 +290,7 @@ function userreg_user_register_form_submit(&$form, &$form_state) {
 
   //drupal_set_message('pass:'.$account->pass);
   drupal_mail('userreg', 'user_success', $to, language_default(), $values, $from);
-  $form_state['redirect'] = 'user/userregister/success';
+//  $form_state['redirect'] = 'user/userregister/success';
 }
 
 function userreg_user_register_success_page() {
@@ -369,7 +369,7 @@ function userreg_company_register_check_mail() {
   // Check if the user is already logged in. The back button is often the culprit here.
   if ($user->uid) {
     drupal_set_message(t('你现在已经登录，所以不需要再使用这个链接了。'));
-    drupal_goto('user/' . $user->uid);
+    drupal_goto('companycenter/');
   }
   else {
 
@@ -413,9 +413,9 @@ function userreg_company_register_check_mail() {
       //drupal_goto('node/add/resume',array("query" => array('destination'=>'user/'.$user->uid)));
 
 
-      $output = t('您的帐户已经通过了验证，欢迎成为我们的企业用户.');
 
-      return $output;
+
+      drupal_goto('companycenter/');
 
 
     }

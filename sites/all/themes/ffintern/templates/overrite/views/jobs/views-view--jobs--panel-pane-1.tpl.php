@@ -45,7 +45,7 @@
 <?php if ($header): ?>
 <h1 class="title" id="page-title"><?php print $header; ?></h1>
 <?php endif; ?> -->
-<div id="quicktabs-front_main_tabs" class="quicktabs-wrapper quicktabs-style-intern">
+<div id="quicktabs-jobs_main_tabs" class="quicktabs-wrapper quicktabs-style-intern">
   <div class="item-list">
     <ul class="quicktabs-tabs quicktabs-style-intern">
       <li

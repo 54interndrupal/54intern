@@ -42,8 +42,9 @@ Drupal.flagLink = function(context) {
     $wrapper.after($newLink).remove();
     Drupal.attachBehaviors($newLink.get(0));
 
-    $('.flag-message', $newLink).fadeIn();
-    setTimeout(function(){ $('.flag-message', $newLink).fadeOut() }, 3000);
+//    $('.flag-message', $newLink).fadeIn();
+//    setTimeout(function(){ $('.flag-message', $newLink).fadeOut() }, 3000);
+   showMessage($('.flag-message', $newLink).text());
     return $newLink.get(0);
   }
 
@@ -94,6 +95,12 @@ Drupal.flagLink = function(context) {
         alert('An HTTP error '+ xmlhttp.status +' occurred.\n'+ element.href);
         $wrapper.removeClass('flag-waiting');
       }
+//        error: function(XMLHttpRequest, textStatus, errorThrown) {
+//            alert(XMLHttpRequest.status);
+//            alert(XMLHttpRequest.readyState);
+//            alert(textStatus);
+//            alert(errorThrown);
+//        }
     });
     return false;
   }

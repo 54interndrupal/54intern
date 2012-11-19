@@ -6,6 +6,7 @@ function _authcache_intern_company_flags(vars) {
 }
 
 function authcacheInternCompanyFlagsInit() {
+//    alert(1);
     ajaxJson = {
         'intern_company_flags[companyId]' : jQuery("#companyId").val(),
 

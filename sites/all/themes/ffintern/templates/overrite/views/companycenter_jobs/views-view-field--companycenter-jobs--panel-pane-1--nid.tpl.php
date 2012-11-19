@@ -28,7 +28,7 @@ $str = explode('^', trim($output));
 $nid = $str[1];
 $sub_status = $str[0];
 $destination = drupal_get_destination();
-$output = '';
+$output ='';
 if ($sub_status == JOB_SUB_STATUS_PUBLISHED) {
 //  $output.= '<a href="' . url('job/actions/' . JOB_ACTION_REFRESH . '/' . $nid) . '?'.$_SERVER["QUERY_STRING"].'">刷新</a>  ';
      print l("刷新 ",'job/actions/'.JOB_ACTION_REFRESH.'/'.$nid,array('query' => drupal_get_destination()));

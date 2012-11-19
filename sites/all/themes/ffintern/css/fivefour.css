@@ -198,15 +198,14 @@ textarea {
 div.messages,
 div.notice,
 div.error {
-    background: #fffbcf url(img/message.png) no-repeat 2em 1em;
-    padding: 1em 3em 1em 5em;
+    background: #fffbcf url(img/message.png) no-repeat 15px 13px;
+    padding: 15px 20px 15px 45px;
     border: #9a9a9a dotted 1px;
     margin: 1em 0;
 }
 
 div.error {
-    background:#FFF2F2 url(img/error.png) no-repeat 2em 1em;
-    padding: 1em 3em 1em 4em;
+    background:#FFF2F2 url(img/error.png) no-repeat 15px 13px;
 }
 
 
@@ -330,18 +329,43 @@ form.comment-form input.form-submit{
 }
 
 .item-list ul.pager {
-    background: #f5f5f5;
+    background: #ffffff;
     padding: 8px 10px;
-    border: #cdcdcd 1px solid;
-    margin-top: 20px;
     font-size: 14px;
     text-align: center;
 }
 
-.item-list ul.pager li {
-    display: inline;
+
+.item-list ul.pager li.pager-item.first,
+.item-list ul.pager li.pager-item,
+.item-list ul.pager li.pager-current,
+.item-list ul.pager li.pager-next,
+.item-list ul.pager li.pager-previous,
+.item-list ul.pager li.pager-last,
+.item-list ul.pager li.pager-first{
+    display: inline-block;
     list-style-type: none;
-    padding: 0.5em;
+    height: 20px;
+    border: 1px solid #CCCCCC;
+    padding: 5px 5px;
+    font-size: 12px;
+}
+
+.item-list ul.pager li a{
+    color: #999999;
+
+}
+
+.item-list ul.pager li.pager-item.first{
+    color: #003366;
+    font-weight: bold;
+    background-color: #CCCCCC;
+}
+
+.item-list ul.pager li.pager-current{
+    background: #8DB125;
+    color: #ffffff;
+    font-weight: bolder;
 }
 
 .item-list ul.pager li.widget input{
@@ -1013,7 +1037,7 @@ body.two-sidebars #content {
 #sidebar-second .pane-content .item-list li,
 #sidebar-second .block-content .item-list li {
     list-style: none none;
-    padding: 5px 0 5px 30px;
+    padding: 5px 10px 5px 30px;
     margin-top: 10px;
     border-bottom: dashed 1px #CCC;
     background: url(img/site/s.png) no-repeat 10px;
@@ -2008,7 +2032,7 @@ div.pane-intern-company-company-center-shortcuts span.inactive{
 
 .pane-company-reviews-in-blocks .row {
     width: 22px;
-    height: 45px;
+    min-height: 45px;
     color: #ffffff;
     font-size: 24px;
     padding-left: 2px;
@@ -2029,8 +2053,8 @@ div.pane-intern-company-company-center-shortcuts span.inactive{
 
 .pane-company-reviews-in-blocks .company-comment {
     display: inline-block;
-    height: 40px;
-    padding: 5px 0 0 6px;
+    min-height: 40px;
+    padding: 5px 0 3px 6px;
     background-color: RGB(240, 251, 230);
     width: 208px;
 }
@@ -3108,8 +3132,8 @@ div.facebook-status-item .views-field-body {
     color:#CCCCCC;
 }
 #content div.fbss-comments-comment{
-    background-color: #ffffff;
-    background: url(img/site/bg_cmt.gif) repeat-x;
+
+    background:white url(img/site/bg_cmt.gif) repeat-x;
 }
 
 div.statuses-textarea-wrapper{
@@ -3131,6 +3155,14 @@ div.statuses-textarea-wrapper textarea{
     color: #858585;
     display: block;
     float: left;
+}
+
+.statuses-subitem{
+    padding: 5px;
+}
+
+.fbss-comments-form .button{
+    margin-top: -5px;
 }
 
 /*== facebook status End*/
@@ -4436,6 +4468,13 @@ html.js .fivestar-submit {
 #popupArea TD.header{
     background: url(img/site/bt_city.png) no-repeat 2px 6px;
     padding-left: 25px;
+}
+
+/*==company center jobs--*/
+.view-companycenter-jobs #edit-actionintern-job-republish-action,
+.view-companycenter-jobs #edit-actionintern-job-refresh-action,
+.view-companycenter-jobs #edit-actionintern-job-stop-action{
+    display: none;
 }
 
 

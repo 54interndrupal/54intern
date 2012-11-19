@@ -6,6 +6,7 @@ function _authcache_intern_user_resume_status(vars) {
 }
 
 function authcacheInternUserResumeStatusInit() {
+//    alert(3);
     ajaxJson = {
         // The name of the function to call, both for ajax_authcache.php and
         // this file (see function above). The cookie value will change if

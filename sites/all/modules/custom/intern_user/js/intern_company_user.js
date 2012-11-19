@@ -4,6 +4,7 @@ function _authcache_intern_company_user_info(vars) {
 }
 
 function authcacheInternCompanyUserInfoInit() {
+//    alert(2);
     ajaxJson = {
         // The name of the function to call, both for ajax_authcache.php and
         // this file (see function above). The cookie value will change if

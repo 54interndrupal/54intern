@@ -300,10 +300,10 @@ function _pagerer_tags_merge_default($theme, $tags = NULL) {
 
     default:
       $default_tags = array(
-        'first'            => t('«'),
-        'previous'         => t('<'),
-        'next'             => t('>'),
-        'last'             => t('»'),
+        'first'            => t('« first'),
+        'previous'         => t('< previous'),
+        'next'             => t('> next'),
+        'last'             => t('» last'),
         'previous_progr'   => t('-@num'),
         'next_progr'       => t('+@num'),
         'total'            => t('of @total'),

@@ -126,10 +126,10 @@ function intern_company_brief_today_block() {
   $sql = "select count(*) as count from {og_membership} og_ms,{node} nd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.type='job'and nd.status=1";
   $published_job_count = db_query($sql, array(':gid' => $gid))->fetchField();
 
-  $sql = "select count(*) as count from {og_membership} og_ms,{node} nd,{field_revision_field_deadline} fd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.nid = fd.entity_id and nd.type='job'and nd.status=1 and fd.field_deadline_value<(now()+2)";
+  $sql = "select count(*) as count from {og_membership} og_ms,{node} nd,{field_revision_field_deadline} fd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.nid = fd.entity_id and nd.type='job'and nd.status=1 and fd.field_deadline_value<(unix_timestamp()+3600*24*7)";
   $near_deadline_job_count = db_query($sql, array(':gid' => $gid))->fetchField();
 
-  $sql = "select count(*) as count from {flag_content} fc where fc.timestamp>now()-7 and fc.content_id in (select nd.nid from {og_membership} og_ms,{node} nd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.type='job')";
+  $sql = "select count(*) as count from {flag_content} fc where fc.timestamp>(unix_timestamp()-3600*24*7) and fc.content_id in (select nd.nid from {og_membership} og_ms,{node} nd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.type='job')";
   $received_resume_count = db_query($sql, array(':gid' => $gid))->fetchField();
 
   $sql = "select count(etid) as count from {og_membership} og_ms,{node} nd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.type='review'";
@@ -398,6 +398,43 @@ function intern_company_info_flags($companyId){
     }
 
     return $output;
+}
+
+/**
+ * Implements hook_action_info().
+ */
+function intern_company_action_info() {
+  return array(
+    'intern_company_approve_action' => array(
+      'type' => 'node',
+      'label' => t('审核企业'),
+      'configurable' => FALSE,
+      'behavior' => array('changes_property'),
+      'triggers' => array('node_presave'),
+    ),
+
+  );
+}
+
+function intern_company_approve_action($node, $context = array()) {
+  $node->status = NODE_PUBLISHED;
+
+  $uid = $node->uid;
+  $user = user_load($uid);
+  $to = $user->mail;
+  //$values = $form_state['values'];
+  $values = array();
+  $values['uid'] = $user->uid;
+  $values['name'] = $user->name;
+  $values['pass'] = $user->pass;
+  $values['login'] = $user->login;
+  $values['mail'] = $user->mail;
+  $values['company_title'] = $node->title;
+
+  $from = variable_get('site_mail', ini_get('sendmail_from'));
+
+  //drupal_set_message('pass:'.$account->pass);
+  drupal_mail('userreg', 'company_success', $to, language_default(), $values, $from);
 }
 
 

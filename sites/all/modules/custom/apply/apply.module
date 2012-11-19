@@ -20,7 +20,7 @@ function apply_permission() {
     ),
     'view company apply records' => array(
       'title' => t('查看公司的申请记录'),
-    ),
+    ),            $form['title']
 		
   );
 }

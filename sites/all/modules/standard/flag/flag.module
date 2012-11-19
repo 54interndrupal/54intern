@@ -755,6 +755,7 @@ function flag_page($action, $flag, $content_id) {
       'flagName' => $flag->name,
       'flagStatus' => $flag->is_flagged($content_id) ? 'flagged' : 'unflagged',
     ));
+
     exit;
   }
   else {

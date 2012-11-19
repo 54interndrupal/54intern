@@ -122,7 +122,7 @@ function shixiquan_companylogin_form($form, &$form_state) {
 
   $form['remember_me'] = array(
     '#type' => 'checkbox',
-    '#title' => t('记住密码'),
+    '#title' => t('记住我'),
   );
 
   $form['login-form-field'] = array(

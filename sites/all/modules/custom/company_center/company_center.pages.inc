@@ -53,7 +53,7 @@ function theme_company_center_center_block(){
 		$output .= '<li>'.  l('<span>'.t('活动管理').'</span>','companycenter/'.$gid.'/events', array('html' => TRUE,)). '</li>';
 		$output .= '</div>';
 		}
-	
+
 	}
 	return $output;
 }

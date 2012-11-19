@@ -158,9 +158,6 @@
       $(".view-companycenter-jobs .views-table").after( $(".view-companycenter-jobs .pager").parent(".item-list"));
       var sub_status = '<?php print $_GET["sub_status"]?>';
       var empty = $(".view-companycenter-jobs .views-table").size() == 0;
-      $("#edit-actionintern-job-republish-action").hide();
-      $("#edit-actionintern-job-refresh-action").hide();
-      $("#edit-actionintern-job-stop-action").hide();
       if(!empty && sub_status=='4'){
         $("#edit-actionintern-job-refresh-action").show();
         $("#edit-actionintern-job-stop-action").show();
