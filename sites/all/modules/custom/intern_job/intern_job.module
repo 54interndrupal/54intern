@@ -312,20 +312,90 @@ function intern_job_mail($key, &$message, $params) {
       $variables = array(
         '[site:name]' => variable_get('site_name', 'Drupal'),
         '[user:name]' => $params['user_name'],
-        '[user:resume]' => $params['resume'],
         '[job:title]' => $params['job_title'],
         '[company:title]' => $params['company_title'],
         '[apply:date]' => $params['apply_date'],
       );
       $subject = '(54intern.com)申请贵公司[job:title] - [user:name]';
       $subject = strtr($subject, $variables);
+      $resume = node_view($params['resume']);
+      $resume_real_name = $params['user_name'];
+      $resume_sex = $resume['field_sex'][0]['#title'];
+      $resume_birth_date = format_date($resume['field_birth_date']['#items'][0]['value'],'custom','Y-m-d');
+      $resume_education = $resume['field_education'][0]['#title'];
+      $resume_email = $resume['field_email'][0]['#markup'];
+      $resume_discipline = $resume['field_discipline'][0]['#title'];
+      $resume_location = $resume['field_location'][0]['#title'];
+      $resume_status = $resume['field_status'][0]['#title'];
+      $resume_school = $resume['field_school'][0]['#title'];
+      $resume_admission_date = format_date($resume['field_admission_date']['#items'][0]['value'],'custom','Y-m');
+      $resume_cell_phone = $resume['field_cell_phone'][0]['#markup'];
+      $resume_apply_letter_body = $resume['field_apply_letters'][0]['entity']['field_collection_item'][1]['field_letter_body']['#items'][0]['safe_value'];
+      $body = '<div style="width:700px;padding:10px 0 15px 0;"><span style="font-size: 20px;">应聘职位：&nbsp;'.$params['job_title'].'</span><br/><span style="font-size: 20px;">应聘公司：&nbsp;'.$params['company_title'].'</span><br/><span style="font-size: 20px;">投递时间：&nbsp;'.$params['apply_date'].'</span><br/><br/></div>';
+      $body .= '<table widht="700px" style="border:#4e963c 2px solid;padding:10px 12px 10px 12px;">
+                  <tr><td>
+                    <div style="background-color: F7FCF5;border:#b8dfae 1px solid;padding: 8px;width:675px; ">
+                       <div style="border-bottom:#b8dfae dashed 1px;padding-bottom:8px;width:100%"><span style="font-size:25px;font-weight:bold;">'.$resume_real_name.'</span></div>
+                       <div>
+                         <table>
+                           <tr>
+                             <td width="540" height="40"><div style="padding:15px 0 18px 0;"><span style="font-size:12px;color:#3c722e;font-weight:bold;">'.$resume_status.'&nbsp;|&nbsp;'.$resume_sex.'&nbsp;|&nbsp;'.$resume_birth_date.'</span></div></td>
+                             <td rowspan="2"><div style="padding-top:15px;float:right"><img typeof="foaf:Image" src="http://localhost/54intern/sites/default/files/styles/100_100/public/background/60.gif" alt="test5的头像" title="test5的头像" /></div></td>
+                           </tr>
+                           <tr><td>
+                           <div>
+                       	  <table>
+                       	    <tr><td style="width:55px;height:25px;color:#666666"><span style="font-size: 12px">居住地：</span></td><td><span style="font-size: 12px">'.$resume_location.'</span></td></tr>
+                       	    <tr><td style="width:55px;height:25px;color:#666666"><span style="font-size: 12px">电话：</span></td><td><span style="font-size: 12px">'.$resume_cell_phone.'</span></td></tr>
+                       	    <tr><td style="width:55px;height:25px;color:#666666"><span style="font-size: 12px">E-mail：</span></td><td><span style="font-size: 12px">'.$resume_email.'</span></td></tr>
+                       	  </table>
+                       </div>
+                           </td></tr>
+                         </table>
+                       </div>
 
-      $body = '应聘职位：[job:title]<br>应聘公司：[company:title]<br>投递时间：[apply:date]<p>[user:resume]';
-      $body = strtr($body, $variables);
+                    </div>
+                    <div >
+                    	<div style="padding:15px 0 8px 0;border-bottom:#b8dfae 2px solid;">
+                    		<span style="font-size:14px;font-weight:bold;color:#3c722e;">教育情况</span>
+                    	</div>
+                    	<div style="width:100%;padding:10px 0 10px 0;">
+                    		<table>
+                    			<tr><td style="width:65px;height:25px;color:#666666"><span style="font-size: 12px">所在学校：</span></td><td style="width:230px;"><span style="font-size: 12px">'.$resume_school.'</span></td>
+                    				<td style="width:65px;height:25px;color:#666666"><span style="font-size: 12px">所在专业：</span></td><td><span style="font-size: 12px">'.$resume_discipline.'</span></td>
+                    				</tr>
+                    			<tr><td style="height:25px;color:#666666"><span style="font-size: 12px">入学时间：</span></td><td><span style="font-size: 12px">'.$resume_admission_date.'</span></td>
+                    				<td style="width:65px;height:25px;color:#666666"><span style="font-size: 12px">当前学历：</span></td><td><span style="font-size: 12px">'.$resume_education.'</span></td>
+                    				</tr>
+                    	  </table>
+                      </div>
+                    </div>
+
+                    <table style="padding:0 0 10px 0;" width="676">
+                       <tr><td>
+                    	<div style="padding:10px 0 8px 0;border-bottom:#b8dfae 2px solid;">
+                    		<span style="font-size:14px;font-weight:bold;color:#3c722e;">求职信</span>
+                    	</div>
+                    	<div style="padding:10px 0 0 10px;"> <span style="font-size: 12px;width:650px;"><span>'.$resume_apply_letter_body.'</span>
+                      </div>
+                      </td></tr>
+                    </table>
+                    <div >
+                    	<div style="padding:10px 0 8px 0;border-bottom:#b8dfae 2px solid;">
+                    		<span style="font-size:14px;font-weight:bold;color:#3c722e;">简历附件</span>
+                    	</div>
+                    	<div style="padding:10px 0 0 10px;line-height:2;">
+
+                      </div>
+                    </div>
+                </td>
+                </tr>
+              </table>
+            ';
+
 
       $message['subject'] = $subject;
       $message['body'][] = $body;
-      drupal_set_message($body);
       break;
 
   }

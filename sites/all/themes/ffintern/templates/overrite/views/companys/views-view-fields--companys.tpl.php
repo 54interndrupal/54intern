@@ -61,27 +61,5 @@ $company_nid = (string) $fields['nid']->content;
   class="c-10"><?php print $fields['body']->content ?> </span>
   <?php
   print views_embed_view('company_reviews_in_blocks', 'panel_pane_1', $company_nid);?>  </div>
-<?php
-
-/*
- print l(t('关注这个企业'),'flag/flag/bookmarks/'.$fields['nid']->content,
-array(
-'attributes' => array('class' => array('follow')),
-'query' => array('token' => flag_get_token($fields['nid']->content))
-)); 
-*/
-?>
-
-<?php
-global $user;
-//企业用户不能访问
-if (in_array(4, array_keys($user->roles))) {
-}
-else {
-  // print $fields['ops']->content;
-}
-?>
-
-
 
 

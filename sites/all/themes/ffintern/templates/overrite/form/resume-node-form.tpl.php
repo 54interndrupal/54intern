@@ -1,6 +1,11 @@
 <?php //print_r($form['group_basic_information']['field_real_name']);?>
 <?php GLOBAL $user; ?>
-
+<?php
+//  $resume = node_load($_SESSION['user_resume_id']);
+//  $resume_view = node_view($resume);
+////  print_r($resume_view['field_apply_letters'][0]['entity']['field_collection_item'][1]['field_letter_body']['#items'][0]['safe_value'] );
+//   print_r($resume_view['field_birth_date']['#items'][0]['value']);
+?>
 
 <div id="content" class="column">
   <div class="section">

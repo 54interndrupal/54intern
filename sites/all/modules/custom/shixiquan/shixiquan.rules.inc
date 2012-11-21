@@ -148,8 +148,6 @@ function shixiquan_rules_create_apply(EntityDrupalWrapper $user, EntityDrupalWra
 
   $job_id = $job->getIdentifier();
   $uid = $user->getIdentifier();
-  $user = user_load($uid);
-  $user_name = $user->field_real_name['und'][0]['safe_value'];
 
   //通知邮件
   $email = db_select('field_data_field_email', 'm')
@@ -159,6 +157,9 @@ function shixiquan_rules_create_apply(EntityDrupalWrapper $user, EntityDrupalWra
     ->range(0, 1)
     ->execute()
     ->fetchField();
+  if (empty($email)) {
+    return;
+  }
 
   //公司 ID
   $company_id = db_select('og_membership', 'm')
@@ -173,17 +174,17 @@ function shixiquan_rules_create_apply(EntityDrupalWrapper $user, EntityDrupalWra
 
 //简历 ID
   $resume_id = $_SESSION['user_resume_id'];
+  if (empty($resume_id)) {
+    return;
+  }
+
   $resume_node = node_load($resume_id);
-  $elements = node_view($resume_node, 'full');
-  $resume = drupal_render($elements);
+  $resume = $resume_node;
+  $user_name = $resume->field_real_name[LANGUAGE_NONE][0]["value"];
 
   $job_title = i_title($job_id);
   $company_title = i_title($company_id);
   $apply_date = date('Y-m-d');
-
-  if (empty($resume_id)) {
-    return;
-  }
 
   $created = time();
   $apply = new stdClass();
@@ -209,7 +210,12 @@ function shixiquan_rules_create_apply(EntityDrupalWrapper $user, EntityDrupalWra
     $values['company_title'] = $company_title;
     $values['apply_date'] = $apply_date;
     $values['resume'] = $resume;
-    $from =  'resume@54intern.com';
+//    $from =  '实习圈54intern '.$user_name.'[resume@54intern.com]';
+//    $from =  'resume@54intern.com';
+    $from = array(
+      'name' => '实习圈[54intern] '.$user_name,
+      'mail' =>'resume@54intern.com',
+    );
     drupal_mail('intern_job', 'job_apply', $email, language_default(), $values, $from);
   }
 }
