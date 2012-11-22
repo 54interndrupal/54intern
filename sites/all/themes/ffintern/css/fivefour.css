@@ -648,9 +648,14 @@ form.node-resume-form div.field-name-field-contact-address input.form-text{
     width: 400px;
 }
 form.node-resume-form div.form-item div.file-widget{
-    width: 340px;
+    min-width: 340px;
     display: inline-block;
     float: left;
+    margin-bottom: 1em;
+}
+
+form.node-resume-form div.form-item div.file-widget #edit-field-attached-resumes-und-0-field-resume-attachement-und-0-remove-button{
+   margin-right: 250px;
 }
 
 form.node-resume-form div.field-name-field-resume-attachement input.form-file{

@@ -149,6 +149,16 @@ function shixiquan_rules_create_apply(EntityDrupalWrapper $user, EntityDrupalWra
   $job_id = $job->getIdentifier();
   $uid = $user->getIdentifier();
 
+  $user_picture = $_COOKIE['druapl_user_picture'];
+  if (empty($user_picture)) {
+    $account = user_load($uid);
+    $image_vars = array('account' => $account);
+    if (module_exists('imagecache_profiles')) {
+      $image_vars['user_picture_style'] = '100_100';
+    }
+    $user_picture = theme('user_picture', $image_vars);
+  }
+
   //通知邮件
   $email = db_select('field_data_field_email', 'm')
     ->fields('m', array('field_email_value'))
@@ -210,11 +220,12 @@ function shixiquan_rules_create_apply(EntityDrupalWrapper $user, EntityDrupalWra
     $values['company_title'] = $company_title;
     $values['apply_date'] = $apply_date;
     $values['resume'] = $resume;
+    $values['user_picture'] = $user_picture;
 //    $from =  '实习圈54intern '.$user_name.'[resume@54intern.com]';
 //    $from =  'resume@54intern.com';
     $from = array(
-      'name' => '实习圈[54intern] '.$user_name,
-      'mail' =>'resume@54intern.com',
+      'name' => '实习圈[54intern] ' . $user_name,
+      'mail' => 'resume@54intern.com',
     );
     drupal_mail('intern_job', 'job_apply', $email, language_default(), $values, $from);
   }

@@ -137,6 +137,7 @@ function userreg_mail($key, &$message, $params) {
         '[site:name]' => variable_get('site_name', 'Drupal'),
         '[site:url]' => $GLOBALS['base_url'],
         '[user:name]' => intern_user_get_user_name($params['name']),
+        '[user:full-name]' => intern_user_get_user_full_name($params['name']),
         '[user:mail]' => $params['mail'],
         '[user:one-time-login-url]' => $login_url,
         '[company:title]' => $params['company_title'],

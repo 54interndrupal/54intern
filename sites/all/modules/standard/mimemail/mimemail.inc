@@ -521,7 +521,7 @@ function mimemail_address($address) {
         return $address['mail'];
       }
       else {
-        return '"' . addslashes(mime_header_encode($address['name'])) . '" <' . $address['mail'] . '>';
+        return '"' . addslashes(mime_header_encode(intern_user_get_user_full_name($address['name']))) . '" <' . $address['mail'] . '>';
       }
     }
     // It's an array of address items.
@@ -538,7 +538,7 @@ function mimemail_address($address) {
       return $address->mail;
     }
     else {
-      return '"' . addslashes(mime_header_encode($address->name)) . '" <' . $address->mail . '>';
+      return '"' . addslashes(mime_header_encode(intern_user_get_user_full_name($address->name))) . '" <' . $address->mail . '>';
     }
   }
 

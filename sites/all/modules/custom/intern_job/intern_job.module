@@ -320,6 +320,7 @@ function intern_job_mail($key, &$message, $params) {
       $subject = strtr($subject, $variables);
       $resume = node_view($params['resume']);
       $resume_real_name = $params['user_name'];
+      $resume_user_picture = $params['user_picture'];
       $resume_sex = $resume['field_sex'][0]['#title'];
       $resume_birth_date = format_date($resume['field_birth_date']['#items'][0]['value'],'custom','Y-m-d');
       $resume_education = $resume['field_education'][0]['#title'];
@@ -330,7 +331,11 @@ function intern_job_mail($key, &$message, $params) {
       $resume_school = $resume['field_school'][0]['#title'];
       $resume_admission_date = format_date($resume['field_admission_date']['#items'][0]['value'],'custom','Y-m');
       $resume_cell_phone = $resume['field_cell_phone'][0]['#markup'];
-      $resume_apply_letter_body = $resume['field_apply_letters'][0]['entity']['field_collection_item'][1]['field_letter_body']['#items'][0]['safe_value'];
+      $resume_apply_index =  $resume['field_apply_letters']['#items'][0]['value'];
+      $resume_apply_letter_body = $resume['field_apply_letters'][0]['entity']['field_collection_item'][$resume_apply_index]['field_letter_body']['#items'][0]['safe_value'];
+      $resume_attached_index = $resume['field_attached_resumes']['#items'][0]['value'];
+      $resume_attached_uri = '<a style="text-decoration: none;" href="'.file_create_url($resume['field_attached_resumes'][0]['entity']['field_collection_item'][$resume_attached_index]['field_resume_attachement']['#items'][0]['uri'])
+        .'"><span style="color:#FFFFFF;font-size:13px;font-weight:bold;">简历附件下载</span></a>';
       $body = '<div style="width:700px;padding:10px 0 15px 0;"><span style="font-size: 20px;">应聘职位：&nbsp;'.$params['job_title'].'</span><br/><span style="font-size: 20px;">应聘公司：&nbsp;'.$params['company_title'].'</span><br/><span style="font-size: 20px;">投递时间：&nbsp;'.$params['apply_date'].'</span><br/><br/></div>';
       $body .= '<table widht="700px" style="border:#4e963c 2px solid;padding:10px 12px 10px 12px;">
                   <tr><td>
@@ -340,7 +345,7 @@ function intern_job_mail($key, &$message, $params) {
                          <table>
                            <tr>
                              <td width="540" height="40"><div style="padding:15px 0 18px 0;"><span style="font-size:12px;color:#3c722e;font-weight:bold;">'.$resume_status.'&nbsp;|&nbsp;'.$resume_sex.'&nbsp;|&nbsp;'.$resume_birth_date.'</span></div></td>
-                             <td rowspan="2"><div style="padding-top:15px;float:right"><img typeof="foaf:Image" src="http://localhost/54intern/sites/default/files/styles/100_100/public/background/60.gif" alt="test5的头像" title="test5的头像" /></div></td>
+                             <td rowspan="2">'.$resume_user_picture.'</td>
                            </tr>
                            <tr><td>
                            <div>
@@ -380,14 +385,18 @@ function intern_job_mail($key, &$message, $params) {
                       </div>
                       </td></tr>
                     </table>
-                    <div >
+                    <table style="padding:0 0 10px 0;" width="676">
+                       <tr><td>
                     	<div style="padding:10px 0 8px 0;border-bottom:#b8dfae 2px solid;">
                     		<span style="font-size:14px;font-weight:bold;color:#3c722e;">简历附件</span>
                     	</div>
-                    	<div style="padding:10px 0 0 10px;line-height:2;">
-
-                      </div>
-                    </div>
+                        </td></tr>
+                        <tr><td height=1></td></tr>
+                        <tr><td>
+                    	<table><tr><td style="background-color:#4E963C;color:#FFFFFF;padding:8px;10px;border:1px solid #4E963C;cursor:pointer;">'.$resume_attached_uri.'</td></tr></table>
+                        </td></tr>
+                        <tr><td height=2></td></tr>
+                    </table>
                 </td>
                 </tr>
               </table>

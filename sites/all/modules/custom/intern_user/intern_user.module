@@ -409,6 +409,16 @@ function intern_user_get_user_name($user_name) {
   }
 }
 
+function intern_user_get_user_full_name($user_name) {
+  $user_name_array = explode('^', $user_name);
+  if (sizeof($user_name_array) == 2) {
+    return $user_name_array[0].'['.$user_name_array[1].']';
+  }
+  else {
+    return $user_name;
+  }
+}
+
 
 function intern_user_get_company_name() {
   global $user;

@@ -3,7 +3,11 @@
 <?php
 //  $resume = node_load($_SESSION['user_resume_id']);
 //  $resume_view = node_view($resume);
-////  print_r($resume_view['field_apply_letters'][0]['entity']['field_collection_item'][1]['field_letter_body']['#items'][0]['safe_value'] );
+//  $resume_index =  $resume_view['field_attached_resumes']['#items'][0]['value'];
+////
+////print_r($resume_view['field_apply_letters']);
+////  print_r($resume_view['field_attached_resumes'][0]['entity']['field_collection_item'][$resume_index]['field_letter_body']['#items'][0]['safe_value'] );
+//print_r(file_create_url($resume_view['field_attached_resumes'][0]['entity']['field_collection_item'][$resume_index]['field_resume_attachement']['#items'][0]['uri']));
 //   print_r($resume_view['field_birth_date']['#items'][0]['value']);
 ?>
 
