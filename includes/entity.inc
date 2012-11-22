@@ -158,8 +158,8 @@ class DrupalDefaultEntityController implements DrupalEntityControllerInterface {
    * Implements DrupalEntityControllerInterface::load().
    */
   public function load($ids = array(), $conditions = array()) {
-    if(is_array($ids)){
-    $ids=array_filter($ids);}
+//    if(is_array($ids)){
+//    $ids=array_filter($ids);}
 
     $entities = array();
 
@@ -351,8 +351,8 @@ class DrupalDefaultEntityController implements DrupalEntityControllerInterface {
    *   Array of entities from the entity cache.
    */
   protected function cacheGet($ids, $conditions = array()) {
-    if(is_array($ids)){
-    $ids=array_filter($ids);}
+//    if(is_array($ids)){
+//    $ids=array_filter($ids);}
     $entities = array();
     // Load any available entities from the internal cache.
     if (!empty($this->entityCache)) {
