@@ -353,6 +353,7 @@ class DrupalDefaultEntityController implements DrupalEntityControllerInterface {
   protected function cacheGet($ids, $conditions = array()) {
 //    if(is_array($ids)){
 //    $ids=array_filter($ids);}
+
     $entities = array();
     // Load any available entities from the internal cache.
     if (!empty($this->entityCache)) {
