@@ -1428,6 +1428,8 @@ function form_execute_handlers($type, &$form, &$form_state) {
       $batch['has_form_submits'] = TRUE;
     }
     else {
+      if(!function_exists($function)) {
+      module_load_include('inc', 'node', 'node.pages');}
       $function($form, $form_state);
     }
     $return = TRUE;

@@ -201,9 +201,22 @@
         return false;
       });
 
+      $("#quicktabs-tab-node_company_tab-0").click(function(){
+        $(".pane-intern-company-company-node-add-review").show();
+      })
+      $("#quicktabs-tab-node_company_tab-1").click(function(){
+        $(".pane-intern-company-company-node-add-review").hide();
+      })
+
 
     });
   })(jQuery);
+
+
+  function resetReviewNodeForm(){
+    jQuery("#edit-body-und-0-value").val("");
+    Authcache.resetFormToken();
+  }
 </script>
 
 

@@ -32,6 +32,31 @@ Authcache.init = function() {
   }
 }
 
+Authcache.resetFormToken = function(){
+    // Find forms that need tokens
+    jQuery("form input[name='form_token_id']").each(function() {
+        if (Authcache.ajax["form_token_id[]"] == null) Authcache.ajax["form_token_id[]"] = new Array();
+        Authcache.ajax["form_token_id[]"].push(this.form.form_token_id.value);
+
+        // Bind submit button events to pass button name/value if needed on late submit.
+        $form = jQuery(this.form);
+        jQuery("input:submit", $form).bind("click keypress", function () {
+            jQuery(this.form).data("button", [ this.name, this.value ]);
+        });
+
+    });
+
+    // On form submit, check if token has been set
+    jQuery("form").submit(function() {
+        if (typeof this.form_token_id != "undefined" && !this.form_token.value) {
+            // Send another Ajax request to retrieve form token
+            this.form_token.className = "authcache-must-submit";
+            Authcache.ajaxRequest( {"form_token_id[]" : this.form_token_id.value} );
+            return false;
+        }
+    });
+}
+
 /**
  * Look over HTML DOM
  */

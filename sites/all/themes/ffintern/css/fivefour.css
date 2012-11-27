@@ -1,4 +1,4 @@
-/*==Basic==*/
+﻿/*==Basic==*/
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, select, textarea, p, blockquote, th, td {
     margin: 0;
     padding: 0;
@@ -2277,7 +2277,8 @@ div.pane-intern-company-company-add-review span.add-review-btn{
 /*==view-id-_jobs_in_blocks==*/
 .view-id-_jobs_in_blocks  .views-row {
     border-bottom: 2px dotted #DDD;
-    height: 60px;
+    min-height: 60px;
+    padding-bottom:10px;
 }
 
 /*==view-display-id-block_featured_companies_front==*/

@@ -3,3 +3,4 @@ name = shixiquan
 description = shixiquan 各种小功能
 core = 7.x
 package="54intern"
+dependencies[] = node

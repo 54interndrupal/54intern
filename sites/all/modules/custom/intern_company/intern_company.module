@@ -49,6 +49,9 @@ function intern_company_block_info() {
   $blocks['company center setting tabs'] = array(
     'info' => t('Intern Company -- 企业中心设置中心导航')
   );
+  $blocks['company node add review'] = array(
+    'info' => t('Intern Company -- 企业点评表单'),
+  );
   return $blocks;
 }
 
@@ -106,9 +109,26 @@ function intern_company_block_view($delta = '') {
       $block['subject'] = t('企业中心设置中心tabs');
       $block['content'] = intern_company_center_setting_tabs_block();
       break;
+    case 'company node add review':
+      $block['subject'] = t('企业点评表单');
+      $block['content'] = intern_company_node_add_review_form_block('review');
+      break;
   }
 
   return $block;
+}
+
+function intern_company_node_add_review_form_block($nodeType){
+  $gid = arg(1);
+  if(empty($gid)){
+    $gid = 0;
+  }
+  module_load_include('inc', 'node', 'node.pages');
+  $form = node_add($nodeType);
+  $form['og_group_ref']['und'][0]['target_id']['#value'] = 'OG Company ('.$gid.')';
+  $form['#action'] = url($_GET['q'],array('query' => drupal_get_destination(),));
+  $output = drupal_render($form);
+  return $output;
 }
 
 /**
@@ -363,6 +383,9 @@ function intern_company_form_node_form_alter(&$form, $form_state) {
     $form['actions']['submit']['#submit'][] = 'intern_company_company_form_post_submit';
   }
 }
+
+
+
 
 function intern_company_company_form_post_submit($form, &$form_state) {
   $nid = $form_state['nid'];

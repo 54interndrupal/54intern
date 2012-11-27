@@ -17,24 +17,3 @@
   <?php print $row; ?>
 </div>
 <?php endforeach; ?>
-<script type="text/javascript">
-  (function ($) {
-    $(document).ready(function () {
-      $(".toggleReviewDetail").toggle(
-        function () {
-          var parentNode = $(this).parent().parent().parent().parent();
-          $(".full-content",parentNode).show();
-          $(".sub-content",parentNode).hide();
-          $(this).text('收起>>');
-        },
-        function () {
-          var parentNode = $(this).parent().parent().parent().parent();
-          $(".full-content",parentNode).hide();
-          $(".sub-content",parentNode).show();
-          $(this).text('查看详细>>');
-        }
-      );
-
-    });
-  })(jQuery);
-</script>

@@ -98,14 +98,14 @@ function shixiquan_search_form_submit(&$form, &$form_state) {
 function shixiquan_companylogin_form($form, &$form_state) {
 
   $form['company_name'] = array(
-    '#title' =>t('企业名称'),
+    '#title' => t('企业名称'),
     '#type' => 'textfield',
     '#required' => TRUE,
     '#hint' => t('企业名称'),
     '#hint_remove_title' => TRUE,
   );
   $form['name'] = array(
-    '#title' =>t('用户名或电子邮件地址'),
+    '#title' => t('用户名或电子邮件地址'),
     '#type' => 'textfield',
     '#required' => TRUE,
     '#hint' => t('用户名或电子邮件地址'),
@@ -113,7 +113,7 @@ function shixiquan_companylogin_form($form, &$form_state) {
   );
   $form['name']['#element_validate'][] = 'userreg_user_login_validate';
   $form['pass'] = array(
-    '#title' =>t('密码'),
+    '#title' => t('密码'),
     '#type' => 'password',
     '#required' => TRUE,
     '#hint' => t('密码'),
@@ -139,6 +139,7 @@ function shixiquan_companylogin_form($form, &$form_state) {
   $form['#submit'][] = 'shixquan_company_user_login_submit';
   return $form;
 }
+
 /**
  * Submit handler for the login form. Load $user object and perform standard login
  * tasks. The user is then redirected to the My Account page. Setting the
@@ -166,7 +167,7 @@ function shixiquan_login_default_validators() {
 //企业用户验证
 function shixiquan_company_user_login_validate(&$form, &$form_state) {
   $orig_user_name = $form_state['values']['name'];
-  $form_state['values']['name'] = $form_state['values']['company_name'].'^'.$form_state['values']['name'];
+  $form_state['values']['name'] = $form_state['values']['company_name'] . '^' . $form_state['values']['name'];
 
   if (isset($form_state['values']['name']) && user_is_blocked($form_state['values']['name'])) {
     // Blocked in user administration.
@@ -226,35 +227,61 @@ function shixiquan_loginuser_block() {
 }
 
 
- /** * Implementation of hook_form_alter(). */
+/** * Implementation of hook_form_alter(). */
 function shixiquan_form_alter(&$form, $form_state, $form_id) {
 
 
-   if(strpos($form["#id"], 'comment-form')===0){
-     // print_r($form) ;
-      hide($form['author']);
-      hide($form['actions']['preview']);
-      $form['actions']['submit']['#value'] = t('发布评论');
-      unset($form['comment_body']['und'][0]['#title']);
-      unset($form['comment_body']['und'][0]['#format']);
+  if (strpos($form["#id"], 'comment-form') === 0) {
+    // print_r($form) ;
+    hide($form['author']);
+    hide($form['actions']['preview']);
+    $form['actions']['submit']['#value'] = t('发布评论');
+    unset($form['comment_body']['und'][0]['#title']);
+    unset($form['comment_body']['und'][0]['#format']);
 
-    }
+  }
 
-    if (isset($form['type']) && isset($form['#node'])) {
-      if ('review_node_form' == $form_id) {
-        $form['title']['#required'] = 0;
-        $form['title']['#type']='hidden';
-        global $user;
+  if (isset($form['type']) && isset($form['#node'])) {
+    if ('review_node_form' == $form_id) {
+      $form['title']['#required'] = 0;
+      $form['title']['#type'] = 'hidden';
+      global $user;
 
-        //非网站编辑，不能编辑Group Audience字段
-        if (!in_array(6, array_keys($user->roles))) {
-          $form['og_group_ref']['und'][0]['target_id']['#type']='hidden';
-        }
+      //非网站编辑，不能编辑Group Audience字段
+      if (!in_array(6, array_keys($user->roles))) {
+        $form['og_group_ref']['und'][0]['target_id']['#type'] = 'hidden';
       }
+      $form['#action']=url('node/add/review');
+      $form['actions']['submit']['#ajax'] = array(
+        'callback' => 'shixiquan_review_submit_js',
+        'wrapper' => $form['#id'],
+        'method' => 'replace',
+        'effect' => 'fade',
+      );
     }
   }
+}
+
+
+function shixiquan_review_submit_js($form, &$form_state) {
+  // Return the actual form if it contains errors.
+  if (form_get_errors()) {
+    return $form;
+  }
+
+  foreach ($_SESSION['messages']['status'] as $key => $value) {
+      unset($_SESSION['messages']['status']);
+  }
+//  print_r($form_state['values']['og_group_ref'][LANGUAGE_NONE][0]);
+
+  $result = views_embed_view('company_reviews_in_blocks','panel_pane_2',$form_state['values']['og_group_ref'][LANGUAGE_NONE][0]['target_id'] );
+  $result.='<script>resetReviewNodeForm();</script>';
+  $commands[] = ajax_command_replace('#quicktabs-tabpage-node_company_tab-0 .view-id-company_reviews_in_blocks' ,$result);
+
+  return array('#type' => 'ajax', '#commands' => $commands);
+}
 
 function shixiquan_comment_form_alter(&$form, $form_state, $form_id) {
 
-    unset($form['author']);
+  unset($form['author']);
 }
