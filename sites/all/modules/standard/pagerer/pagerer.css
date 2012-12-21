@@ -39,7 +39,7 @@ table.pagerer tbody tr td div.item-list ul.pager li.pager-next,
 table.pagerer tbody tr td div.item-list ul.pager li.pager-last {
   list-style-image: none;
   list-style-type: none;
-  margin: 0 2px 0 2px;
+  margin: 4px 2px 0 2px;
   padding: 3px 9px;
   vertical-align: middle;
 }
