@@ -474,6 +474,11 @@ span.icon-like-s{
     margin: 0 0 0 15px;
 }
 
+.post-job {
+    padding-bottom: 0px;
+    margin-bottom: 5px;
+}
+
 .post-job .job-content {
     width: 500px;
     float: left;
@@ -2278,7 +2283,6 @@ div.pane-intern-company-company-add-review span.add-review-btn{
 .view-id-_jobs_in_blocks  .views-row {
     border-bottom: 2px dotted #DDD;
     min-height: 60px;
-    padding-bottom:10px;
 }
 
 /*==view-display-id-block_featured_companies_front==*/
