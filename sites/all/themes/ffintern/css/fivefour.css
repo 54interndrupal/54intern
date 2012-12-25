@@ -481,7 +481,7 @@ span.icon-like-s{
 
 .post-job .job-content {
     width: 500px;
-    float: left;
+    display: inline-block;
 }
 
 .post-job .job-author {
@@ -2282,7 +2282,6 @@ div.pane-intern-company-company-add-review span.add-review-btn{
 /*==view-id-_jobs_in_blocks==*/
 .view-id-_jobs_in_blocks  .views-row {
     border-bottom: 2px dotted #DDD;
-    min-height: 60px;
 }
 
 /*==view-display-id-block_featured_companies_front==*/
@@ -3255,7 +3254,6 @@ div.job-list {
 
 div.job-list .views-row {
     position: relative;
-    padding-bottom: 8px;
     overflow: hidden;
 }
 
