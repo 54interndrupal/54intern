@@ -328,9 +328,10 @@ function field_sql_storage_field_storage_load($entity_type, $entities, $age, $fi
   $load_current = $age == FIELD_LOAD_CURRENT;
   watchdog("addresume",$entity_type);
   foreach ($fields as $field_id => $ids) {
-    if($field_id!="group_group"){
+
     $field = $field_info[$field_id];
     $field_name = $field['field_name'];
+    if($field_name!="group_group"){
     $table = $load_current ? _field_sql_storage_tablename($field) : _field_sql_storage_revision_tablename($field);
     watchdog("addresume",$table.','.$field_id.','.$field_name);
     $query = db_select($table, 't')
