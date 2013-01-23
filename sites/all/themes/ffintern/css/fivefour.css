@@ -2,19 +2,20 @@
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, select, textarea, p, blockquote, th, td {
     margin: 0;
     padding: 0;
-    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif;
-}
-form a,form span,form label{
-    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+    font-family: tahoma, helvetica, arial,"bitstream vera sans", sans-serif, "Microsoft Yahei";
 }
 
-form textarea{
+form a, form span, form label {
+    font-family: tahoma, helvetica, arial, "bitstream vera sans", sans-serif, "Microsoft Yahei";
+}
+
+form textarea {
     font-size: 12px;
 }
 
 h2 {
     font-size: 16px;
-    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+    font-family: tahoma, helvetica, arial, "bitstream vera sans", sans-serif, "Microsoft Yahei";
 }
 
 img {
@@ -25,7 +26,8 @@ img {
 .left {
     float: left;
 }
-.b{
+
+.b {
     font-weight: bold;
 }
 
@@ -38,7 +40,7 @@ hr {
     display: none;
 }
 
-label{
+label {
     display: inline-block;
     color: #666666;
     font-weight: normal;
@@ -79,34 +81,39 @@ a:active {
 }
 
 /*==model window Begin==*/
-div.ctools-modal-content{
+div.ctools-modal-content {
     border: 4px #4E963C solid;
 
 }
-div.ctools-modal-content .modal-header{
+
+div.ctools-modal-content .modal-header {
     background-color: #ffffff;
     height: 36px;
-    padding: 3px 8px 0 0 ;
+    padding: 3px 8px 0 0;
 }
-div.ctools-modal-content .modal-header.colored{
+
+div.ctools-modal-content .modal-header.colored {
     background-color: #f0f0f0;
 }
-div.ctools-modal-content .modal-title{
+
+div.ctools-modal-content .modal-title {
     font-weight: normal;
     color: #333333;
     padding: 5px 0 0 10px;
 }
-div.ctools-modal-content .modal-content{
+
+div.ctools-modal-content .modal-content {
     padding: 10px 8px 10px 15px;
 }
 
-div.model-header-title{
+div.model-header-title {
     display: inline-block;
     font-size: 14px;
-    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+    font-family: tahoma, helvetica, arial, "bitstream vera sans", sans-serif, "Microsoft Yahei";
     width: 300px;
 }
-div.model-header-title span.active{
+
+div.model-header-title span.active {
     display: inline-block;
     float: left;
     width: 83px;
@@ -121,72 +128,87 @@ div.model-header-title span.active{
 /*==table Begin==*/
 
 /*==table End==*/
-table.views-table{
+table.views-table {
 
 }
-table.views-table thead{
-   background-color: #7A7876;
+
+table.views-table thead {
+    background-color: #7A7876;
 }
-table.views-table thead th{
+
+table.views-table thead th {
     padding: 8px 0 8px 0;
     color: #ffffff;
 }
-table.views-table tbody tr{
+
+table.views-table tbody tr {
     border-bottom: 3px solid #ffffff;
 }
-table.views-table tbody td{
+
+table.views-table tbody td {
     padding: 12px 0 12px 0;
     background: #F1F5E6;
 }
-table.views-table .form-item.form-type-checkbox{
+
+table.views-table .form-item.form-type-checkbox {
     text-align: center;
     min-width: 20px;
 }
+
 /*==input field==*/
 input {
 
 }
-input.form-text{
-    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+
+input.form-text {
+    font-family: tahoma, helvetica, arial, "bitstream vera sans", sans-serif, "Microsoft Yahei";
     padding: 5px;
 }
-input.form-text.form-autocomplete{
-   padding: 5px;
+
+input.form-text.form-autocomplete {
+    padding: 5px;
 
 }
-HTML.js input.form-autocomplete{
+
+HTML.js input.form-autocomplete {
     background-position: 100% 10px;
 }
-input.form-button{
+
+input.form-button {
     padding: 8px 25px 8px 25px;
     background-color: rgb(78, 150, 60);
     border: 1px;
     cursor: pointer;
     color: #ffffff;
-    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+    font-family: tahoma, helvetica, arial, "bitstream vera sans", sans-serif, "Microsoft Yahei";
     font-size: 14px;
     font-weight: bold;
 }
-input.form-button-cancel{
+
+input.form-button-cancel {
     padding: 8px 25px 8px 25px;
     background-color: #7A7876;
     border: 1px;
     cursor: pointer;
     color: #ffffff;
-    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+    font-family: tahoma, helvetica, arial, "bitstream vera sans", sans-serif, "Microsoft Yahei";
     font-size: 14px;
     font-weight: bold;
 }
-select.form-select{
+
+select.form-select {
     padding: 5px;
 }
-input.form-submit{
+
+input.form-submit {
     padding: 0;
-    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+    font-family: tahoma, helvetica, arial, "bitstream vera sans", sans-serif, "Microsoft Yahei";
 }
-.hierarchical-select-wrapper{
+
+.hierarchical-select-wrapper {
     display: inline-block;
 }
+
 textarea {
     padding: 15px;
 }
@@ -195,6 +217,7 @@ textarea {
     overflow-y: auto;
     border: 2px solid #4D963B;
 }
+
 div.messages,
 div.notice,
 div.error {
@@ -205,12 +228,10 @@ div.error {
 }
 
 div.error {
-    background:#FFF2F2 url(img/error.png) no-repeat 15px 13px;
+    background: #FFF2F2 url(img/error.png) no-repeat 15px 13px;
 }
 
-
-
-input.search{
+input.search {
     background: #ffffff url(img/site/bt_search.gif) no-repeat 190px 5px;
     cursor: pointer;
 }
@@ -228,21 +249,22 @@ input.search{
     margin: 0;
 }
 
-span.flag-like a.flag-action{
+span.flag-like a.flag-action {
     background: url(img/site/bt_like_2.gif) no-repeat 7px 3px;
     padding: 5px 7px 4px 31px;
-    border:1px solid #A7CD81;
+    border: 1px solid #A7CD81;
     margin-right: 5px;
 }
-span.flag-like a.unflag-action{
+
+span.flag-like a.unflag-action {
     background: url(img/site/bt_unlike_2.gif) no-repeat 7px 3px;
     padding: 5px 7px 4px 31px;
-    border:1px solid #A7CD81;
+    border: 1px solid #A7CD81;
     margin-right: 5px;
 }
 
 /*==comments==*/
-div.comment-wrapper h2.comment-form{
+div.comment-wrapper h2.comment-form {
     background: url(img/site/bt_dp.png) no-repeat;
     padding: 3px 0 2px 30px;
     font-weight: bold;
@@ -250,38 +272,43 @@ div.comment-wrapper h2.comment-form{
     margin-bottom: 2px;
 }
 
-div.comment{
-    margin:35px 0 5px 0;
+div.comment {
+    margin: 35px 0 5px 0;
     padding: 16px 15px 20px 15px;
     border-top: 1px #EFEFEF solid;
     background: url(img/site/bg_cmt.gif) repeat-x;
 }
 
-div.comment div.attribution{
+div.comment div.attribution {
     height: 14px;
 }
 
-div.comment div.user-picture{
+div.comment div.user-picture {
     float: left;
     margin-right: 10px;
 }
-div.comment div.info{
+
+div.comment div.info {
     float: left;
 }
-div.comment div.info span.username{
+
+div.comment div.info span.username {
     color: #1F79A5;
 }
-div.comment div.links{
+
+div.comment div.links {
     float: right;
 }
-div.comment div.content{
+
+div.comment div.content {
     padding: 12px 0 0 0;
 }
 
-form.comment-form div.form-actions{
+form.comment-form div.form-actions {
     text-align: right;
 }
-form.comment-form input.form-submit{
+
+form.comment-form input.form-submit {
     font-size: 14px;
     color: #ffffff;
     text-align: center;
@@ -314,7 +341,7 @@ form.comment-form input.form-submit{
     margin-bottom: 10px;
 }
 
-.field-name-detail{
+.field-name-detail {
     float: right;
 }
 
@@ -335,14 +362,13 @@ form.comment-form input.form-submit{
     text-align: center;
 }
 
-
 .item-list ul.pager li.pager-item.first,
 .item-list ul.pager li.pager-item,
 .item-list ul.pager li.pager-current,
 .item-list ul.pager li.pager-next,
 .item-list ul.pager li.pager-previous,
 .item-list ul.pager li.pager-last,
-.item-list ul.pager li.pager-first{
+.item-list ul.pager li.pager-first {
     display: inline-block;
     list-style-type: none;
     height: 20px;
@@ -351,25 +377,25 @@ form.comment-form input.form-submit{
     font-size: 12px;
 }
 
-.item-list ul.pager li a{
+.item-list ul.pager li a {
     color: #999999;
 
 }
 
-.item-list ul.pager li.pager-item.first{
+.item-list ul.pager li.pager-item.first {
     color: #003366;
     font-weight: bold;
     background-color: #CCCCCC;
 }
 
-.item-list ul.pager li.pager-current{
+.item-list ul.pager li.pager-current {
     background: #8DB125;
     color: #ffffff;
     font-weight: bolder;
 }
 
-.item-list ul.pager li.widget input{
-    width:15px;
+.item-list ul.pager li.widget input {
+    width: 15px;
 }
 
 ul.pager .pager-current {
@@ -415,38 +441,42 @@ table {
 }
 
 /*==post-item-2==*/
-.post-item-2{
+.post-item-2 {
     display: inline-block;
     width: 546px;
     min-height: 112px;
     margin-top: -5px;
     padding-left: 8px;
 }
-.post-item-2 h2{
+
+.post-item-2 h2 {
     font-weight: normal;
 }
 
-.post-item-2 .d-1{
+.post-item-2 .d-1 {
     float: left;
     width: 390px;
     padding-top: 0px;
     padding: 6px 0 8px 0;
 
 }
-.post-item-2 .d-2{
+
+.post-item-2 .d-2 {
     float: right;
     width: 150px;
     padding: 6px 0 8px 0;
     text-align: right;
 }
-span.icon-share{
+
+span.icon-share {
     background: url("img/site/bt_share.gif") no-repeat;
-    padding:0 0 10px 20px;
+    padding: 0 0 10px 20px;
     width: 70px
 }
-span.icon-like-s{
+
+span.icon-like-s {
     background: url("img/site/bt_like_s.gif") no-repeat 0 5px;
-    padding:10px 10px 0 30px;
+    padding: 10px 10px 0 30px;
     width: 80px;
 }
 
@@ -496,7 +526,7 @@ span.icon-like-s{
     padding-right: 8px;
 }
 
-.post-job .job-company a{
+.post-job .job-company a {
     color: #666666;
 }
 
@@ -541,28 +571,34 @@ span.icon-like-s{
 
 input.form-text,
 input.form-file,
-select.form-select{
+select.form-select {
     border: 1px solid #ddd;
 }
+
 textarea.hint,
 input.hint {
     color: rgb(178, 178, 178);
     font-weight: bold;
 }
-div.form-item div.form-radios{
+
+div.form-item div.form-radios {
     display: inline-block;
 }
-div.form-item div.form-radios label{
+
+div.form-item div.form-radios label {
     float: none;
 }
-div.form-item div.form-radios div.form-item{
+
+div.form-item div.form-radios div.form-item {
     display: inline-block;
 }
-div.form-item div.description{
+
+div.form-item div.description {
     font-size: 12px;
     color: #999999;
 }
-div.form-item div.date-date{
+
+div.form-item div.date-date {
     display: inline-block;
 }
 
@@ -595,93 +631,111 @@ form.node-review-form div.form-actions input.form-submit {
     cursor: pointer;
     border: 1px;
 }
+
 /*== node-resume-form==*/
-#content form.node-resume-form div.form-item{
+#content form.node-resume-form div.form-item {
     padding: 5px 0 5px 0;
     height: 30px;
 }
-form.node-resume-form div.field-type-datestamp.form-wrapper{
+
+form.node-resume-form div.field-type-datestamp.form-wrapper {
     display: none;
 }
-form.node-resume-form div.form-item div.hierarchical-select-wrapper-processed{
-    display:inline-block;
+
+form.node-resume-form div.form-item div.hierarchical-select-wrapper-processed {
+    display: inline-block;
 }
-form.node-resume-form div.form-item.form-type-hierarchical-select{
+
+form.node-resume-form div.form-item.form-type-hierarchical-select {
     padding: 0px 0 0px 0;
 }
-form.node-resume-form div.form-item input.form-text{
+
+form.node-resume-form div.form-item input.form-text {
     height: 20px;
     width: 204px;
 }
-form.node-resume-form div.form-item select.form-select{
+
+form.node-resume-form div.form-item select.form-select {
     height: 30px;
     width: 216px;
 }
-form.node-resume-form div.form-item div.form-radios{
+
+form.node-resume-form div.form-item div.form-radios {
     display: inline-block;
 }
-form.node-resume-form div.form-item div.form-radios label{
+
+form.node-resume-form div.form-item div.form-radios label {
     float: none;
 }
-form.node-resume-form div.form-item div.form-radios div.form-item{
+
+form.node-resume-form div.form-item div.form-radios div.form-item {
     display: inline-block;
 }
-form.node-resume-form div.form-item div.description{
+
+form.node-resume-form div.form-item div.description {
     display: inline-block;
     padding-left: 15px;
 }
-form.node-resume-form label{
+
+form.node-resume-form label {
     width: 150px;
     text-align: right;
     padding-right: 15px;
     float: left;
     padding-top: 7px;
 }
-form.node-resume-form div #user-apply-letter{
+
+form.node-resume-form div #user-apply-letter {
     min-height: 260px;
 }
+
 form.node-resume-form div #user-attached-resume label,
-form.node-resume-form div #user-apply-letter label{
+form.node-resume-form div #user-apply-letter label {
     width: 90px;
 }
-form.node-resume-form div #user-apply-letter textarea{
+
+form.node-resume-form div #user-apply-letter textarea {
     display: inline-block;
     width: 550px;
 }
 
-form.node-resume-form div.field-name-field-contact-address input.form-text{
+form.node-resume-form div.field-name-field-contact-address input.form-text {
     width: 400px;
 }
-form.node-resume-form div.form-item div.file-widget{
+
+form.node-resume-form div.form-item div.file-widget {
     min-width: 340px;
     display: inline-block;
     float: left;
     margin-bottom: 1em;
 }
 
-form.node-resume-form div.form-item div.file-widget #edit-field-attached-resumes-und-0-field-resume-attachement-und-0-remove-button{
-   margin-right: 250px;
+form.node-resume-form div.form-item div.file-widget #edit-field-attached-resumes-und-0-field-resume-attachement-und-0-remove-button {
+    margin-right: 250px;
 }
 
-form.node-resume-form div.field-name-field-resume-attachement input.form-file{
+form.node-resume-form div.field-name-field-resume-attachement input.form-file {
     width: 254px;
     height: 30px;
     background-color: #ffffff;
 }
-form.node-resume-form div.field-name-field-resume-attachement input.form-submit{
+
+form.node-resume-form div.field-name-field-resume-attachement input.form-submit {
     margin-left: 10px;
     height: 30px;
     width: 60px;
 }
 
-form.node-resume-form div.field-name-field-resume-memo input.form-text{
+form.node-resume-form div.field-name-field-resume-memo input.form-text {
     width: 520px;
 }
-form.node-resume-form div.form-actions{
+
+form.node-resume-form div.form-actions {
     text-align: center;
     margin-top: 40px;
 }
-form.node-resume-form div.form-actions input.form-submit{
+
+form.node-resume-form div.form-actions input.form-submit {
     font-size: 14px;
     color: #ffffff;
     text-align: center;
@@ -708,15 +762,18 @@ form.node-resume-form div.form-actions input.form-submit{
 .c-4 {
     color: rgb(0, 102, 0);
 }
+
 .c-5 a,
 .c-5 {
     color: #999999;
 }
+
 .c-6 a,
 a.c-6,
 .c-6 {
     color: #1357A2;
 }
+
 a.c-7:visited,
 a.c-7:link,
 a.c-7,
@@ -731,35 +788,42 @@ a.c-7,
 .c-9 {
     color: #336327;
 }
+
 .c-10 {
     color: #666666;
 }
 
-.c-11{
+.c-11 {
     color: #989898;
 }
-.c-12{
-   color: #FF3300;
+
+.c-12 {
+    color: #FF3300;
 }
+
 .c-13 a:link,
 .c-13 a:active,
 .c-13 a:visited,
-.c-13{
+.c-13 {
     color: #336699;
 }
+
 .c-14 a:link,
 .c-14 a:active,
 .c-14 a:visited,
-.c-14{
+.c-14 {
     color: #006699;
 }
-.c-15{
+
+.c-15 {
     color: #CC0000;
 }
-.c-16{
+
+.c-16 {
     color: #4C963A;
 }
-.c-17{
+
+.c-17 {
     color: #333333;
 }
 
@@ -794,9 +858,11 @@ body.admin-menu {
     width: 960px;
     margin: 0 auto;
 }
-body.front #header{
-    height:200px;
+
+body.front #header {
+    height: 200px;
 }
+
 #header {
     width: 100%;
     position: relative;
@@ -888,7 +954,6 @@ body.front #header{
     cursor: pointer;
 }
 
-
 #logo {
     display: inline-block;
     float: left;
@@ -930,20 +995,17 @@ body.front #block-system-main-menu {
     float: left;
 }
 
-
-
 #block-system-main-menu ul.menu li a.active {
     display: block;
     height: 26px;
     line-height: 33px;
     color: black;
-    border-bottom:solid 2px #B0D73E;
+    border-bottom: solid 2px #B0D73E;
     overflow: hidden;
     text-indent: -999px;
 }
 
-
-#block-system-main-menu ul.menu span.menu-split{
+#block-system-main-menu ul.menu span.menu-split {
     display: inline-block;
     float: left;
     background: url(img/site/bt_mnu_split.gif) no-repeat 0 1px;
@@ -1066,55 +1128,64 @@ h1#page-title {
     margin-bottom: 14px;
 }
 
-fieldset.filter-wrapper{
+fieldset.filter-wrapper {
     display: none;
 }
+
 /*==node job Begin==*/
-body div.node-job div.content{
+body div.node-job div.content {
     background-color: #ffffff;
     border: 1px #CCCCCC solid;
     padding: 0 22px 0 22px;
 }
-body div.node-job div.content{
+
+body div.node-job div.content {
     line-height: 1.8;
 }
-body div.node-job div.d-1{
+
+body div.node-job div.d-1 {
     background-color: #F1F5E6;
 }
-body div.node-job div.content h2{
+
+body div.node-job div.content h2 {
     background-color: #F1F5E6;
     font-size: 24px;
     font-weight: normal;
-    margin:0 -22px 24px -22px;
+    margin: 0 -22px 24px -22px;
     padding: 35px 0 18px 22px;
     min-height: 45px;
 
 }
-body div.node-job div.content div.info{
+
+body div.node-job div.content div.info {
     width: 100%;
     text-align: left;
     font-size: 12px;
 }
-body div.node-job div.content div.summary{
+
+body div.node-job div.content div.summary {
     display: inline-block;
-    margin:25px -22px 15px -22px;
+    margin: 25px -22px 15px -22px;
     padding: 0 22px 18px 22px;
     border-bottom: 1px solid #CCCCCC;
     width: 100%
 }
-body div.node-job div.content div.summary table tbody{
+
+body div.node-job div.content div.summary table tbody {
     border: 0;
-    width: 100% ;
+    width: 100%;
     text-align: left;
 }
-body div.node-job div.content div.summary table tbody div.field{
+
+body div.node-job div.content div.summary table tbody div.field {
     width: 150px;
 }
-body div.node-job div.content div.field-name-body{
+
+body div.node-job div.content div.field-name-body {
     padding-bottom: 80px;
 }
 
-body div.node-job div.content div.d-1 span.flag-collect a.flag-action{
+body div.node-job div.content div.d-1 span.flag-collect a.flag-action {
     background: url(img/site/bt_fav_job_s.gif) no-repeat 4px 0px;
     width: 102px;
     height: 27px;
@@ -1123,7 +1194,8 @@ body div.node-job div.content div.d-1 span.flag-collect a.flag-action{
     margin-top: -5px;
     float: right;
 }
-body div.node-job div.content div.d-1 span.flag-collect a.unflag-action{
+
+body div.node-job div.content div.d-1 span.flag-collect a.unflag-action {
     background: url(img/site/bt_cancel_collect.gif) no-repeat 4px 0px;
     width: 117px;
     height: 29px;
@@ -1132,17 +1204,21 @@ body div.node-job div.content div.d-1 span.flag-collect a.unflag-action{
     margin-top: -5px;
     float: right;
 }
-body div.node-job div.content div.d-1 #ckepop{
+
+body div.node-job div.content div.d-1 #ckepop {
     margin-top: 5px;
 }
-body div.node-job div.content div.ops{
+
+body div.node-job div.content div.ops {
     text-align: center;
     margin-bottom: 150px;
 }
+
 body div.node-job div.content div.ops span {
-    display:inline-block;
+    display: inline-block;
 }
-body div.node-job div.content div.ops span.flag-collect a.flag-action{
+
+body div.node-job div.content div.ops span.flag-collect a.flag-action {
     background: url(img/site/bt_addfor_on.png) no-repeat;
     width: 181px;
     height: 39px;
@@ -1150,7 +1226,8 @@ body div.node-job div.content div.ops span.flag-collect a.flag-action{
     text-indent: -999px;
     margin-right: 10px;
 }
-body div.node-job div.content div.ops span.flag-collect a.unflag-action{
+
+body div.node-job div.content div.ops span.flag-collect a.unflag-action {
     background: url(img/site/bt_addfor_off.png) no-repeat;
     width: 181px;
     height: 39px;
@@ -1158,7 +1235,8 @@ body div.node-job div.content div.ops span.flag-collect a.unflag-action{
     text-indent: -999px;
     margin-right: 10px;
 }
-body div.node-job div.content div.ops span.flag-apply a{
+
+body div.node-job div.content div.ops span.flag-apply a {
     background: url(img/site/bt_apply_job.gif) no-repeat;
     width: 181px;
     height: 39px;
@@ -1166,7 +1244,8 @@ body div.node-job div.content div.ops span.flag-apply a{
     text-indent: -999px;
     margin-right: 10px;
 }
-body div.node-job div.content div.ops span.flag-apply span.unflag-action{
+
+body div.node-job div.content div.ops span.flag-apply span.unflag-action {
     background: url(img/site/bt_apply_off.png) no-repeat;
     width: 181px;
     height: 39px;
@@ -1175,7 +1254,7 @@ body div.node-job div.content div.ops span.flag-apply span.unflag-action{
     margin-right: 10px;
 }
 
-body div.node-job div.content div.ops span.resume a{
+body div.node-job div.content div.ops span.resume a {
     background: url(img/site/bt_write_resume.gif) no-repeat;
     width: 181px;
     height: 39px;
@@ -1183,12 +1262,14 @@ body div.node-job div.content div.ops span.resume a{
     text-indent: -9999px;
     margin-right: 10px;
 }
-body div.node-job div.content span.source-url{
+
+body div.node-job div.content span.source-url {
     display: inline-block;
     width: 100%;
     margin-bottom: 10px
 }
-body div.node-job div.content span.source-url a{
+
+body div.node-job div.content span.source-url a {
     float: right;
     display: block;
     background: url(img/site/bt_ss_apply.gif) no-repeat;
@@ -1196,11 +1277,13 @@ body div.node-job div.content span.source-url a{
     height: 29px;
     text-indent: -999px;
 }
-body div.node-job div.content span.follow{
+
+body div.node-job div.content span.follow {
     display: inline-block;
     float: right;
 }
-body div.node-job div.content span.follow a.flag-action{
+
+body div.node-job div.content span.follow a.flag-action {
     float: right;
     display: block;
     background: url(img/site/bt_flw_job.gif) no-repeat;
@@ -1208,7 +1291,8 @@ body div.node-job div.content span.follow a.flag-action{
     height: 29px;
     text-indent: -999px;
 }
-body div.node-job div.content span.follow a.unflag-action{
+
+body div.node-job div.content span.follow a.unflag-action {
     float: right;
     display: block;
     background: url(img/site/bt_unfollow.gif) no-repeat;
@@ -1216,96 +1300,103 @@ body div.node-job div.content span.follow a.unflag-action{
     height: 29px;
     text-indent: -999px;
 }
-body div.node-job div.content span.foot-msg{
+
+body div.node-job div.content span.foot-msg {
     text-align: right;
     display: inline-block;
     margin: 10px 0 10px 0;
     width: 100%;
     font-size: 16px;
 }
-body div.node-job div.content span.foot-msg a{
+
+body div.node-job div.content span.foot-msg a {
     text-decoration: underline;
 }
+
 /*==node job End==*/
 
 /*==node article==*/
-body div.node-article div.content{
+body div.node-article div.content {
     background-color: #F6F6F6;
     padding: 60px 25px 30px 25px;
     line-height: 1.8;
 }
 
-body div.node-article div.content{
+body div.node-article div.content {
     font-size: 14px;
 }
 
-body div.node-article div.content h2{
+body div.node-article div.content h2 {
     font-size: 28px;
     font-weight: normal;
     text-align: center;
     margin-bottom: 18px;
 }
 
-body div.node-article div.content div.info{
+body div.node-article div.content div.info {
     width: 100%;
     text-align: center;
     font-size: 12px;
 }
-body div.node-article div.content div.info a{
+
+body div.node-article div.content div.info a {
     text-decoration: underline;
 }
 
-body div.node-article div.content div.summary{
+body div.node-article div.content div.summary {
     display: inline-block;
     background-color: #FBFBFB;
     padding: 10px 15px 10px 15px;
     line-height: 1.8;
-    margin:15px 0 15px 0;
-    border:  1px dashed #ddd;
+    margin: 15px 0 15px 0;
+    border: 1px dashed #ddd;
 }
 
-
-body div.node-article div.content div.photo{
+body div.node-article div.content div.photo {
     width: 100%;
     text-align: center;
     margin: 5px;
     display: inline-block;
 }
-body div.node-article div.content .field-type-image{
+
+body div.node-article div.content .field-type-image {
     float: none;
 }
-body div.node-article div.tags div.field-items{
+
+body div.node-article div.tags div.field-items {
 
 }
-body div.node-article div.tags div.field-label{
+
+body div.node-article div.tags div.field-label {
     margin-right: 5px;
     color: #666666;
     font-weight: normal;
 }
-body div.node-article div.tags div.field-items div.field-item{
+
+body div.node-article div.tags div.field-items div.field-item {
     float: left;
     margin-right: 5px;
 }
 
-
-
 /*==pane-similar-entries==*/
-div.pane-similar-entries div.panel-pane-title{
+div.pane-similar-entries div.panel-pane-title {
     background: url(img/site/bt_sml_1.gif) no-repeat 1px 2px;
 }
-div.pane-similar-entries div.views-row{
+
+div.pane-similar-entries div.views-row {
     background-color: #E3EAE2;
     padding: 8px;
 }
-div.pane-similar-entries div.views-row .views-field-field-image{
+
+div.pane-similar-entries div.views-row .views-field-field-image {
     float: left;
     margin-right: 10px;
 }
-div.pane-similar-entries div.views-row .views-field-title{
+
+div.pane-similar-entries div.views-row .views-field-title {
     min-height: 20px;
     font-size: 12px;
 }
-
 
 /*==company-photos==*/
 #company-photos {
@@ -1314,19 +1405,21 @@ div.pane-similar-entries div.views-row .views-field-title{
 
 /*==block==*/
 /*== reg-box Begin==*/
-div.reg div.reg-title{
+div.reg div.reg-title {
     padding: 10px 0 0px 30px;
     margin: 10px 0 30px 0;
     border-bottom: 3px solid #999999;
     background: url(img/site/bt_arrow_2.gif) no-repeat 5px 10px;
 }
-div.reg div.reg-title h2{
+
+div.reg div.reg-title h2 {
     display: inline-block;
     font-size: 14px;
     color: #006600;
     padding-bottom: 10px;
 }
-div.reg span.s-t{
+
+div.reg span.s-t {
     display: block;
     font-size: 14px;
     color: #006600;
@@ -1335,26 +1428,31 @@ div.reg span.s-t{
     width: 140px;
     padding: 10px 0 8px 0;
 }
-div.reg-box{
+
+div.reg-box {
     width: 100%;
 }
-div.reg-form{
+
+div.reg-form {
     width: 52%;
     float: left;
     border-right: dashed 1px #CCCCCC;
     padding-bottom: 80px;
 }
-div.reg-showcase{
+
+div.reg-showcase {
     float: left;
     width: 45%;
-    padding: 48px 0 0 17px ;
+    padding: 48px 0 0 17px;
 }
-div.reg-showcase div.reg-showcase-title h2{
+
+div.reg-showcase div.reg-showcase-title h2 {
     font-size: 25px;
     font-weight: bold;
     color: #4C4847;
 }
-div.reg-showcase span.ss{
+
+div.reg-showcase span.ss {
     display: block;
     width: 396px;
     height: 41px;
@@ -1364,82 +1462,95 @@ div.reg-showcase span.ss{
     color: #ffffff;
     padding: 19px 0 0 71px;
 }
-div.reg-showcase span.s-1{
-     background:url(img/site/bt_cr_1.gif) no-repeat 12px 9px;
-     background-color: #A4C151;
- }
-div.reg-showcase span.s-2{
-    background:url(img/site/bt_cr_2.gif) no-repeat 12px 9px;
+
+div.reg-showcase span.s-1 {
+    background: url(img/site/bt_cr_1.gif) no-repeat 12px 9px;
+    background-color: #A4C151;
+}
+
+div.reg-showcase span.s-2 {
+    background: url(img/site/bt_cr_2.gif) no-repeat 12px 9px;
     background-color: #71AB63;
 }
-div.reg-showcase span.s-3{
-    background:url(img/site/bt_cr_3.gif) no-repeat 12px 9px;
+
+div.reg-showcase span.s-3 {
+    background: url(img/site/bt_cr_3.gif) no-repeat 12px 9px;
     background-color: #3385D6;
 }
-div.reg-showcase span.s-4{
-    background:url(img/site/bt_cr_4.gif) no-repeat 12px 9px;
+
+div.reg-showcase span.s-4 {
+    background: url(img/site/bt_cr_4.gif) no-repeat 12px 9px;
     background-color: #EC7C4E;
 }
 
-#userreg-company-register-form label{
+#userreg-company-register-form label {
     width: 140px;
     text-align: right;
     padding-right: 15px;
     float: left;
     padding-top: 7px;
 }
-#userreg-company-register-form .field-widget-taxonomy-hs{
+
+#userreg-company-register-form .field-widget-taxonomy-hs {
     height: 34px;
 }
-#userreg-company-register-form .form-radios label{
+
+#userreg-company-register-form .form-radios label {
     width: 20px;
 }
-#userreg-company-register-form div.description{
+
+#userreg-company-register-form div.description {
     display: inline-block;
     padding-left: 15px;
 }
+
 #userreg-company-register-form div.confirm-parent,
-#userreg-company-register-form div.password-parent{
+#userreg-company-register-form div.password-parent {
     clear: both;
     width: 480px;
     margin-bottom: 1em;
 }
 
-#userreg-company-register-form span.sp{
+#userreg-company-register-form span.sp {
     margin: 10px 5px 20px 5px;
-    border-bottom:  1px dashed #CCCCCC;
+    border-bottom: 1px dashed #CCCCCC;
     width: 480px;
     height: 1px;
     display: inline-block;
 }
 
 #userreg-company-register-form div.password-confirm,
-#userreg-company-register-form div.password-strength{
+#userreg-company-register-form div.password-strength {
     clear: both;
     width: 120px;
     float: right;
 }
-#userreg-company-register-form div.password-suggestions{
-   width: 185px;
-   clear: both;
-   margin-left: 116px;
-   padding-left: 18px;
+
+#userreg-company-register-form div.password-suggestions {
+    width: 185px;
+    clear: both;
+    margin-left: 116px;
+    padding-left: 18px;
 }
-#userreg-company-register-form select.form-select{
+
+#userreg-company-register-form select.form-select {
     width: 100px;
     height: 30px;
 }
-#userreg-company-register-form input.form-text{
+
+#userreg-company-register-form input.form-text {
     width: 204px;
     height: 20px;
 }
-#userreg-company-register-form div.form-actions{
+
+#userreg-company-register-form div.form-actions {
     text-align: center;
     padding-top: 40px;
 }
-#userreg-company-register-form #edit-submit{
-    border:1px;
-    background-color:#4E963C;
+
+#userreg-company-register-form #edit-submit {
+    border: 1px;
+    background-color: #4E963C;
     font-size: 14px;
     font-weight: bold;
     width: 166px;
@@ -1447,43 +1558,50 @@ div.reg-showcase span.s-4{
     color: #ffffff;
     cursor: pointer;
 }
-#userreg-company-register-form div.d-term{
+
+#userreg-company-register-form div.d-term {
     padding-left: 170px;
 }
+
 /*== reg-box End==*/
 
 /*== user-reg Begin==*/
 
-div.user-reg{
-    float:left;
-    margin-top:2px;
+div.user-reg {
+    float: left;
+    margin-top: 2px;
     font-family: "Microsoft Yahei";
     padding: 0 0 0 25px;
 }
-div.user-reg div.user-reg-title span.s-1{
+
+div.user-reg div.user-reg-title span.s-1 {
     display: inline-block;
     color: #666666;
     font-size: 18px;
     font-weight: bold;
 }
-div.user-reg div.user-reg-title span.s-2{
+
+div.user-reg div.user-reg-title span.s-2 {
     display: inline-block;
     color: #96BF40;
     font-size: 25px;
     font-weight: bold;
 }
-div.user-reg div.user-reg-title span.s-3{
+
+div.user-reg div.user-reg-title span.s-3 {
     display: block;
     color: #999999;
     font-size: 14px;
     font-weight: bold;
     padding: 12px 0 25px 0;
 }
-div.user-reg{
+
+div.user-reg {
     width: 380px;
     border-right: 1px #cccccc dashed;
 }
-div.user-reg-form div.form-item label{
+
+div.user-reg-form div.form-item label {
     width: 70px;
     text-align: right;
     padding-right: 15px;
@@ -1491,14 +1609,17 @@ div.user-reg-form div.form-item label{
     padding-top: 7px;
     font-size: 14px;
 }
-div.user-reg-form div.form-item input.form-text{
+
+div.user-reg-form div.form-item input.form-text {
     width: 237px;
     height: 20px;
 }
-div.user-reg-form div.form-actions{
+
+div.user-reg-form div.form-actions {
     padding-left: 85px;
 }
-div.user-reg-form div.form-actions input.form-submit{
+
+div.user-reg-form div.form-actions input.form-submit {
     text-indent: -999px;
     display: block;
     background: url(img/site/bt_usr_rg.gif) no-repeat;
@@ -1507,21 +1628,24 @@ div.user-reg-form div.form-actions input.form-submit{
     border: 0px;
     cursor: pointer;
 }
-div.user-reg-form div.d-term{
-    padding:10px 0 0 40px;
+
+div.user-reg-form div.d-term {
+    padding: 10px 0 0 40px;
 }
-div.company-reg-showcase{
-    float:left;
+
+div.company-reg-showcase {
+    float: left;
     padding-left: 40px;
 }
-div.company-reg-showcase .sc{
+
+div.company-reg-showcase .sc {
     background: url(img/site/bg_cpreg_sc.gif) no-repeat;
     display: block;
     width: 292px;
     height: 377px;
 }
 
-div.company-reg-showcase span.cpy-reg{
+div.company-reg-showcase span.cpy-reg {
     display: block;
     background: url(img/site/bt_cpy_rg.gif) no-repeat;
     width: 213px;
@@ -1530,27 +1654,30 @@ div.company-reg-showcase span.cpy-reg{
     cursor: pointer;
     text-indent: -999px;
 }
-div.user-reg-popup div.other-login{
-    margin:20px 0 15px 0;
+
+div.user-reg-popup div.other-login {
+    margin: 20px 0 15px 0;
     padding: 20px 0 0 0;
     border-top: 1px dashed #CCCCCC;
     width: 100%;
     display: inline-block;
 }
 
-div.user-reg-popup div.other-login span.wbxl{
+div.user-reg-popup div.other-login span.wbxl {
     display: inline-block;
     background: url(img/site/bt_wbxl.gif) no-repeat;
     width: 76px;
     height: 20px;
 }
-div.user-reg-popup div.other-login span.rrxl{
+
+div.user-reg-popup div.other-login span.rrxl {
     display: inline-block;
     background: url(img/site/bt_rrxl.gif) no-repeat;
     width: 76px;
     height: 20px;
 }
-div.user-reg-popup div.other-login span.qqxl{
+
+div.user-reg-popup div.other-login span.qqxl {
     display: inline-block;
     background: url(img/site/bt_qqxl.gif) no-repeat;
     width: 76px;
@@ -1560,26 +1687,30 @@ div.user-reg-popup div.other-login span.qqxl{
 /*== user-reg End ==*/
 
 /*== user-pass Begin ==*/
-div.user-pass-popup{
+div.user-pass-popup {
     font-family: "Microsoft Yahei";
     font-size: 14px;
     color: #666666;
     padding: 0 15px 20px 15px;
 }
-div.user-pass-popup span.s-1{
+
+div.user-pass-popup span.s-1 {
     display: block;
     color: #4D963B;
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 15px;
 }
-div.user-pass-popup span.s-2{
+
+div.user-pass-popup span.s-2 {
     margin-bottom: 10px;
 }
-div.user-pass-popup input.form-text{
+
+div.user-pass-popup input.form-text {
     width: 300px;
 }
-div.user-pass-popup input.form-submit{
+
+div.user-pass-popup input.form-submit {
     padding: 8px 25px 8px 25px;
     background: #4E963C;
     color: #FFF;
@@ -1587,31 +1718,36 @@ div.user-pass-popup input.form-submit{
     font: bold 15px;
     cursor: pointer;
 }
+
 /*== user-reg End ==*/
 
 /*== user-login Begin ==*/
-div.user-login-popup{
-    margin-top:2px;
+div.user-login-popup {
+    margin-top: 2px;
     font-family: "Microsoft Yahei";
     float: left;
     padding: 20px 0 0 0;
 }
-div.user-login-popup div.d-1 span.s-1{
+
+div.user-login-popup div.d-1 span.s-1 {
     display: block;
     margin-bottom: 25px;
 }
-form div.user-login-popup .form-item  label{
+
+form div.user-login-popup .form-item  label {
     width: 70px;
     text-align: right;
     padding-right: 15px;
     padding-top: 7px;
     font-size: 14px;
 }
-form div.user-login-popup .form-item input.form-text{
+
+form div.user-login-popup .form-item input.form-text {
     width: 237px;
     height: 20px;
 }
-form div.user-login-popup .form-actions input.form-submit{
+
+form div.user-login-popup .form-actions input.form-submit {
     text-indent: -999px;
     display: block;
     background: url(img/site/bt_login.gif) no-repeat;
@@ -1620,75 +1756,88 @@ form div.user-login-popup .form-actions input.form-submit{
     border: 0px;
     cursor: pointer;
 }
-form div.user-login-popup .form-actions{
+
+form div.user-login-popup .form-actions {
     padding-left: 89px;
     width: 110px;
     float: left;
 }
-form div.user-login-popup .form-item-remember-me{
+
+form div.user-login-popup .form-item-remember-me {
     display: inline-block;
     padding: 3px 0 0 10px;
 }
-form div.user-login-popup .form-item-remember-me label{
+
+form div.user-login-popup .form-item-remember-me label {
     font-size: 12px;
     float: none;
 }
-div.user-login-popup div.d-1{
+
+div.user-login-popup div.d-1 {
     float: left;
     width: 380px;
     padding: 0 0 0 20px;
 }
-div.user-login-popup div.d-2{
+
+div.user-login-popup div.d-2 {
     display: inline-block;
     padding: 5px 0 0 16px;
     width: 332px;
     border-left: 1px #cccccc dashed;
 }
-div.user-login-popup div.d-2 span.s-2{
+
+div.user-login-popup div.d-2 span.s-2 {
     font-size: 14px;
 }
-div.user-login-popup div.d-2 span.rrxxl{
+
+div.user-login-popup div.d-2 span.rrxxl {
     display: block;
     background: url(img/site/bt_rrxxl.gif) no-repeat;
     width: 150px;
     height: 32px;
     margin: 20px 0 0 50px;
 }
-div.user-login-popup div.d-2 span.qqxxl{
+
+div.user-login-popup div.d-2 span.qqxxl {
     display: block;
     background: url(img/site/bt_qqxxl.gif) no-repeat;
     width: 150px;
     height: 32px;
     margin: 20px 0 0 50px;
 }
-div.user-login-popup div.d-2 span.wbxxl{
+
+div.user-login-popup div.d-2 span.wbxxl {
     display: block;
     background: url(img/site/bt_wbxxl.gif) no-repeat;
     width: 150px;
     height: 32px;
     margin: 20px 0 0 50px;
 }
-div.user-login-popup div.d-2 span.zhuce{
+
+div.user-login-popup div.d-2 span.zhuce {
     display: block;
     height: 32px;
     margin: 50px 0 0 50px;
 }
-div.user-login-popup div.d-2 span.zhuce span.c-5{
+
+div.user-login-popup div.d-2 span.zhuce span.c-5 {
     float: left;
     width: 120px;
 }
 
-div.user-login-popup div.d-3{
+div.user-login-popup div.d-3 {
     display: inline-block;
     padding: 15px 0 40px 33px;
     width: 332px;
     border-left: 1px #cccccc dashed;
 }
-div.user-login-popup div.d-3 span.s-1{
-   font-size: 14px;
-   display: inline-block;
+
+div.user-login-popup div.d-3 span.s-1 {
+    font-size: 14px;
+    display: inline-block;
 }
-div.user-login-popup div.d-3 span.s-2{
+
+div.user-login-popup div.d-3 span.s-2 {
     font-size: 13px;
     display: block;
     margin-top: 16px;
@@ -1698,40 +1847,46 @@ div.user-login-popup div.d-3 span.s-2{
     padding: 11px 0 0 14px;
     line-height: 1.8;
 }
-div.user-login-popup div.d-3 span.company-register{
-    background: url(img/site/bt_cpy_reg.gif)  no-repeat;
+
+div.user-login-popup div.d-3 span.company-register {
+    background: url(img/site/bt_cpy_reg.gif) no-repeat;
     display: block;
     text-indent: -999px;
     margin-left: 43px;
     width: 213px;
     height: 48px;
 }
-div.user-login-popup div.ajax-register-links-wrapper{
+
+div.user-login-popup div.ajax-register-links-wrapper {
     /*display: none;*/
 }
-div.user-login-header{
-   display: inline-block;
-   font-size: 14px;
-   font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
-   width: 300px;
+
+div.user-login-header {
+    display: inline-block;
+    font-size: 14px;
+    font-family: tahoma, helvetica, arial, "bitstream vera sans", sans-serif, "Microsoft Yahei";
+    width: 300px;
 }
-div.user-login-header span.active{
-     display: inline-block;
-     float: left;
-     width: 83px;
-     height: 31px;
-     background: url(img/site/bt_arrow_2.gif) no-repeat 10px;
-     background-color: #ffffff;
-     padding: 9px 0 0 36px;
-     margin: 0 0 0 10px;
- }
-div.user-login-header span.inactive{
+
+div.user-login-header span.active {
+    display: inline-block;
+    float: left;
+    width: 83px;
+    height: 31px;
+    background: url(img/site/bt_arrow_2.gif) no-repeat 10px;
+    background-color: #ffffff;
+    padding: 9px 0 0 36px;
+    margin: 0 0 0 10px;
+}
+
+div.user-login-header span.inactive {
     display: inline-block;
     width: 83px;
     height: 31px;
     padding: 9px 0 0 0px;
 }
-div.user-login-header span.inactive a{
+
+div.user-login-header span.inactive a {
     color: #000000;
 }
 
@@ -1763,29 +1918,33 @@ div.pane-article-panel-pane-1 div.panel-pane-title {
 div.pane-intern-company-company-more-jobs div.panel-pane-title {
     background: url(img/site/bt_mojb.gif) no-repeat 2px 2px;
 }
-div.pane-intern-company-company-more-jobs div.views-field-changed{
+
+div.pane-intern-company-company-more-jobs div.views-field-changed {
     display: inline-block;
     float: right;
     margin-right: 5px;
 }
+
 /*==pane-intern-company-company-more-jobs 公司点评==*/
 div.pane-intern-company-company-reviews div.panel-pane-title {
     background: url(img/site/bt_gsdp.gif) no-repeat 2px 2px;
 }
+
 div.view-display-id-block_my_company_reviews div.views-row,
-div.pane-intern-company-company-reviews div.views-row{
+div.pane-intern-company-company-reviews div.views-row {
     background-color: #F1F5E6;
     padding: 10px;
     line-height: 1.8;
 }
 
 /*==view-id-company_reviews_in_blocks view-display-id-block_1 最新企业实习点评==*/
-div.view-id-company_reviews_in_blocks.view-display-id-block_1 .views-row{
+div.view-id-company_reviews_in_blocks.view-display-id-block_1 .views-row {
     background-color: #F9FDED;
     padding: 10px;
     line-height: 1.8;
 }
-div.view-id-company_reviews_in_blocks.view-display-id-block_1 .views-row .d-1{
+
+div.view-id-company_reviews_in_blocks.view-display-id-block_1 .views-row .d-1 {
     border-bottom: 1px dashed #CCCCCC;
     padding-bottom: 5px;
     margin-bottom: 5px;
@@ -1799,7 +1958,7 @@ div.pane-right-title-link-panel-pane-5 div.panel-pane-title {
 
 div.pane-right-title-link-panel-pane-5 div.pane-content .views-row {
     padding-left: 4px;
-    margin:10px 0 5px 0;
+    margin: 10px 0 5px 0;
 }
 
 /*==pane-right-title-link-panel-pane-10 热门企业==*/
@@ -1816,14 +1975,15 @@ div.pane-right-title-link-panel-pane-9 div.pane-content .views-row {
 
 /*== pane-company-info-panel-pane-2 Begin==*/
 div.pane-company-info-panel-pane-2,
-div.pane-intern-user-company-user-info{
-     margin-bottom: 20px;
+div.pane-intern-user-company-user-info {
+    margin-bottom: 20px;
 }
+
 #sidebar-second div.pane-company-info-panel-pane-2 div.panel-pane-title,
-#sidebar-second div.pane-intern-user-company-user-info div.panel-pane-title{
+#sidebar-second div.pane-intern-user-company-user-info div.panel-pane-title {
     height: 20px;
     background-color: #4E963C;
-    padding:10px;
+    padding: 10px;
     font-size: 16px;
     color: #ffffff;
     border: 0px;
@@ -1831,65 +1991,75 @@ div.pane-intern-user-company-user-info{
 }
 
 div.pane-company-info-panel-pane-2 div.pane-content,
-div.pane-intern-user-company-user-info div.pane-content{
+div.pane-intern-user-company-user-info div.pane-content {
     border: 2px solid #4D963B;
     padding: 0px;
 
 }
+
 div.pane-company-info-panel-pane-2 div.pane-content div.view,
-div.pane-intern-user-company-user-info div.pane-content div.view{
-   padding: 0 10px 0 10px;
-   margin-bottom: 0px;
+div.pane-intern-user-company-user-info div.pane-content div.view {
+    padding: 0 10px 0 10px;
+    margin-bottom: 0px;
 }
+
 div.pane-company-info-panel-pane-2 div.pane-content div.view img,
-div.pane-intern-user-company-user-info div.pane-content div.view img{
+div.pane-intern-user-company-user-info div.pane-content div.view img {
     float: left;
     margin-right: 5px;
 }
+
 div.pane-company-info-panel-pane-2 div.pane-content div.view div.views-field-title,
-div.pane-intern-user-company-user-info div.pane-content div.view div.views-field-title{
+div.pane-intern-user-company-user-info div.pane-content div.view div.views-field-title {
     min-height: 120px;
 }
 
 div.pane-company-info-panel-pane-2 div.pane-content div.d-1,
-div.pane-intern-user-company-user-info div.pane-content div.d-1{
-   line-height: 1.8;
-   border-top:1px #8DB126 dashed;
-    margin:  0 -10px 0 -10px;
+div.pane-intern-user-company-user-info div.pane-content div.d-1 {
+    line-height: 1.8;
+    border-top: 1px #8DB126 dashed;
+    margin: 0 -10px 0 -10px;
     padding: 5px 20px 10px 10px;
     background-color: #F7F9FA;
 }
 
 div.pane-company-info-panel-pane-2 div.pane-content div.d-1 span,
-div.pane-intern-user-company-user-info div.pane-content div.d-1 span{
-   display: block;
+div.pane-intern-user-company-user-info div.pane-content div.d-1 span {
+    display: block;
 }
+
 div.pane-company-info-panel-pane-2 div.pane-content div.d-1 a:link,
-div.pane-intern-user-company-user-info div.pane-content div.d-1 a:link{
-   text-decoration: underline;
+div.pane-intern-user-company-user-info div.pane-content div.d-1 a:link {
+    text-decoration: underline;
 }
+
 /*== pane-company-info-panel-pane-2 End==*/
 
 /*== pane-companycenter-jobs-panel-pane-1 , pane-companycenter-resumes-panel-pane-1Begin==*/
-div.pane-companycenter-jobs-panel-pane-1 table.views-table td.views-field-title{
+div.pane-companycenter-jobs-panel-pane-1 table.views-table td.views-field-title {
     max-width: 150px;
 }
-div.pane-companycenter-resumes-panel-pane-1 table.views-table td.views-field-field-job-id{
+
+div.pane-companycenter-resumes-panel-pane-1 table.views-table td.views-field-field-job-id {
     max-width: 100px;
 }
+
 div.pane-companycenter-jobs-panel-pane-1 table.views-table td.views-field-title a,
-div.pane-companycenter-resumes-panel-pane-1 table.views-table td.views-field-field-real-name a{
+div.pane-companycenter-resumes-panel-pane-1 table.views-table td.views-field-field-real-name a {
     color: #F0580F;
 }
-div.pane-companycenter-jobs-panel-pane-1 table.views-table td.views-field-views-bulk-operations{
-    width:30px;
+
+div.pane-companycenter-jobs-panel-pane-1 table.views-table td.views-field-views-bulk-operations {
+    width: 30px;
 }
+
 div.pane-companycenter-jobs-panel-pane-1 .item-list .pager,
-div.pane-companycenter-resumes-panel-pane-1 .item-list .pager{
+div.pane-companycenter-resumes-panel-pane-1 .item-list .pager {
     margin: 0 0 0 0;
     background-color: #CCCCCC;
 }
-div.pane-companycenter-jobs-panel-pane-1 span.add-content,add-content-job{
+
+div.pane-companycenter-jobs-panel-pane-1 span.add-content, add-content-job {
     background: url(img/site/bt_ad_jb.gif) no-repeat;
     width: 90px;
     height: 30px;
@@ -1898,8 +2068,9 @@ div.pane-companycenter-jobs-panel-pane-1 span.add-content,add-content-job{
     text-indent: -999px;
     display: block;
 }
+
 div.pane-companycenter-jobs-panel-pane-1 input.form-submit,
-div.pane-companycenter-resumes-panel-pane-1 input.form-submit{
+div.pane-companycenter-resumes-panel-pane-1 input.form-submit {
     text-indent: -999px;
     display: inline-block;
     width: 67px;
@@ -1909,126 +2080,143 @@ div.pane-companycenter-resumes-panel-pane-1 input.form-submit{
     cursor: pointer;
     margin-right: 5px;
 }
-div.pane-companycenter-jobs-panel-pane-1 input#edit-actionintern-job-refresh-action{
+
+div.pane-companycenter-jobs-panel-pane-1 input#edit-actionintern-job-refresh-action {
     background: url(img/site/bt_batch_refresh.gif) no-repeat;
 }
-div.pane-companycenter-jobs-panel-pane-1 input#edit-actionintern-job-stop-action{
+
+div.pane-companycenter-jobs-panel-pane-1 input#edit-actionintern-job-stop-action {
     background: url(img/site/bt_batch_stop.gif) no-repeat;
 }
-div.pane-companycenter-jobs-panel-pane-1 input#edit-actionintern-job-republish-action{
+
+div.pane-companycenter-jobs-panel-pane-1 input#edit-actionintern-job-republish-action {
     background: url(img/site/bt_batch_publish.gif) no-repeat;
 }
-div.pane-companycenter-resumes-panel-pane-1 input#edit-actionviews-bulk-operations-delete-item{
+
+div.pane-companycenter-resumes-panel-pane-1 input#edit-actionviews-bulk-operations-delete-item {
     background: url(img/site/bt_batch_delete_resume.gif) no-repeat;
 }
+
 div.pane-companycenter-jobs-panel-pane-1 fieldset,
-div.pane-companycenter-resumes-panel-pane-1 fieldset{
+div.pane-companycenter-resumes-panel-pane-1 fieldset {
     border: 0px;
     float: left;
     width: 400px;
     margin: 0 0 10px 0;
 }
+
 div.pane-companycenter-jobs-panel-pane-1 fieldset legend,
-div.pane-companycenter-resumes-panel-pane-1 fieldset legend{
-     display: none;
+div.pane-companycenter-resumes-panel-pane-1 fieldset legend {
+    display: none;
 }
 
-div.pane-companycenter-jobs-panel-pane-1 div.d-add-job{
+div.pane-companycenter-jobs-panel-pane-1 div.d-add-job {
     float: right;
     display: block;
     margin-bottom: 8px;
 }
 
-
 /*== pane-companycenter-jobs-panel-pane-1, pane-companycenter-resumes-panel-pane-1 End==*/
 /*== company-center-showcase begin==*/
-div.company-center-showcase{
+div.company-center-showcase {
     margin-bottom: 15px;
 }
+
 /*== company-center-showcase end==*/
 /*== pane-intern-company-company-center-shortcuts Begin ==*/
-div.pane-intern-company-company-center-shortcuts{
+div.pane-intern-company-company-center-shortcuts {
     margin-bottom: 20px;
 }
-div.pane-intern-company-company-center-shortcuts div.pane-content{
+
+div.pane-intern-company-company-center-shortcuts div.pane-content {
     padding: 12px 0 0 0;
 }
+
 div.pane-intern-company-company-center-shortcuts span,
-div.pane-intern-company-company-center-shortcuts span a{
-     color: #ffffff;
+div.pane-intern-company-company-center-shortcuts span a {
+    color: #ffffff;
 }
 
-
-div.pane-intern-company-company-center-shortcuts span.sc-add-job{
+div.pane-intern-company-company-center-shortcuts span.sc-add-job {
     display: block;
     width: 220px;
     height: 24px;
     background: url("img/site/bt_sc_aj.gif") no-repeat 16px 12px;
-    padding:8px 0 0 40px;
+    padding: 8px 0 0 40px;
     background-color: #FF9900;
     margin-bottom: 5px;
     font-weight: bold;
 }
-div.pane-intern-company-company-center-shortcuts span.sc-inbox{
+
+div.pane-intern-company-company-center-shortcuts span.sc-inbox {
     display: block;
     width: 220px;
     height: 24px;
     background: url("img/site/bt_sc_inbox.gif") no-repeat 13px 9px;
-    padding:8px 0 0 40px;
+    padding: 8px 0 0 40px;
     background-color: #7A7876;
     margin-bottom: 5px;
     font-weight: bold;
 }
-div.pane-intern-company-company-center-shortcuts span.sc-search-resume{
+
+div.pane-intern-company-company-center-shortcuts span.sc-search-resume {
     display: block;
     width: 220px;
     height: 24px;
     background: url("img/site/bt_sc_scrm.gif") no-repeat 12px 5px;
-    padding:8px 0 0 40px;
+    padding: 8px 0 0 40px;
     background-color: #F1F5E6;
     color: #C6C6BA;
     margin-bottom: 5px;
     font-weight: bold;
 }
-div.pane-intern-company-company-center-shortcuts span.active{
+
+div.pane-intern-company-company-center-shortcuts span.active {
     float: right;
     padding-right: 25px;
 }
-div.pane-intern-company-company-center-shortcuts span.inactive{
+
+div.pane-intern-company-company-center-shortcuts span.inactive {
     float: right;
     padding-right: 25px;
     font-size: 12px;
     color: #C6C6BA;
 }
+
 /*== pane-intern-company-company-center-shortcuts End ==*/
 
 /*==pane-intern-company-company-brief-today Begin==*/
-#content div.pane-intern-company-company-brief-today div.panel-pane-title{
+#content div.pane-intern-company-company-brief-today div.panel-pane-title {
     background: url("img/site/bt_mrtx.gif") no-repeat;
     padding: 5px 0 5px 25px;
     border: 0px;
 }
-#content div.pane-intern-company-company-brief-today div.panel-pane-title h2{
+
+#content div.pane-intern-company-company-brief-today div.panel-pane-title h2 {
     padding: 0px 0 0 0;
     font-size: 14px;
     color: #336326;
     font-weight: bold;
 }
-#content div.pane-intern-company-company-brief-today div.pane-content{
+
+#content div.pane-intern-company-company-brief-today div.pane-content {
     height: 130px;
     background: url(img/site/bg_mrtx.gif) no-repeat;
     padding: 35px 15px 0 25px;
     margin-bottom: 15px;
     border-bottom: 1px dashed #666666;
 }
-#content div.pane-intern-company-company-brief-today div.pane-content div{
+
+#content div.pane-intern-company-company-brief-today div.pane-content div {
     display: block;
     line-height: 1.8;
 }
-#content div.pane-intern-company-company-brief-today a{
+
+#content div.pane-intern-company-company-brief-today a {
     text-decoration: underline;
     color: #0033CC;
 }
+
 /*==pane-intern-company-company-brief-today End==*/
 
 /*==block_company_top_reviews==*/
@@ -2068,16 +2256,18 @@ div.pane-intern-company-company-center-shortcuts span.inactive{
     background-color: RGB(240, 251, 230);
     width: 208px;
 }
-.pane-company-reviews-in-blocks .company-comment span.title{
+
+.pane-company-reviews-in-blocks .company-comment span.title {
     display: inline-block;
     width: 140px;
 }
 
 /**pane-terms-in-blocks**/
-div.pane-terms-in-blocks{
-    border:1px solid  #D6E6E3 ;
+div.pane-terms-in-blocks {
+    border: 1px solid #D6E6E3;
 }
-#col-left div.pane-terms-in-blocks .panel-pane-title{
+
+#col-left div.pane-terms-in-blocks .panel-pane-title {
     background: url(img/site/bt_acl_tm.gif) no-repeat 15px 13px;
     background-color: #8CB125;
     height: 20px;
@@ -2086,68 +2276,77 @@ div.pane-terms-in-blocks{
     font-weight: normal;
     padding: 9px 0 7px 38px;
 }
-#col-left div.pane-terms-in-blocks .view{
+
+#col-left div.pane-terms-in-blocks .view {
     margin: 0px;
 }
-#col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .views-row{
+
+#col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .views-row {
     height: 25px;
     margin-bottom: 0px;
     border-bottom: 1px solid #F3F9F9;
     border-top: 1px solid #ffffff;
-    padding:5px 0 0 15px;
+    padding: 5px 0 0 15px;
     background: url("img/site/bt_arw_1.gif") no-repeat 215px 12px;
     background-color: #F6F6F6;
     cursor: pointer;
 }
-#col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .selected{
+
+#col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .selected {
     border: 2px solid #B0D73E;
     font-weight: bold;
 }
-#col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .views-row a{
-     color: #414141;
- }
-#col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .views-row a.active{
+
+#col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .views-row a {
+    color: #414141;
+}
+
+#col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .views-row a.active {
     color: #EA960B;
 }
 
 /**==pane-article-panel-pane-2==**/
-div.pane-article-panel-pane-2 .panel-pane-title{
-   background: url("img/site/bt_cmt.gif") no-repeat 0px 3px;
+div.pane-article-panel-pane-2 .panel-pane-title {
+    background: url("img/site/bt_cmt.gif") no-repeat 0px 3px;
 }
 
 /**==pane-intern-company-company-center-shortcuts==**/
-div.pane-intern-company-company-center-shortcuts .panel-pane-title{
+div.pane-intern-company-company-center-shortcuts .panel-pane-title {
     background: url("img/site/bt_sc.gif") no-repeat 6px 3px;
 }
 
 /**==wiki-welcome-pane==**/
-div.wiki-welcome-pane{
-    background-color:  #E3EAE2;
+div.wiki-welcome-pane {
+    background-color: #E3EAE2;
 }
-div.wiki-welcome-pane .pane-content{
+
+div.wiki-welcome-pane .pane-content {
     padding: 15px 28px 15px 28px;
     line-height: 1.8;
 }
-div.wiki-welcome-pane .pane-content h2{
+
+div.wiki-welcome-pane .pane-content h2 {
     margin-bottom: 10px;
     font-size: 20px;
     font-weight: normal;
-    color:#003333;
+    color: #003333;
 }
 
 /**==pane-tagclouds-1==**/
-div.pane-tagclouds-1{
-    border:1px solid  #EBEBEB ;
+div.pane-tagclouds-1 {
+    border: 1px solid #EBEBEB;
     margin-bottom: 20px;
 }
-#col-left div.pane-tagclouds-1 .panel-pane-title{
+
+#col-left div.pane-tagclouds-1 .panel-pane-title {
     background: url(img/site/bt_tag.gif) no-repeat 10px 12px;
-    border-bottom: 1px solid  #EBEBEB ;
+    border-bottom: 1px solid #EBEBEB;
     padding: 12px 0 0 40px;
     height: 32px;
     background-color: #F9FBF8;
 }
-#col-left div.pane-tagclouds-1 .pane-content{
+
+#col-left div.pane-tagclouds-1 .pane-content {
     padding: 10px;
 }
 
@@ -2178,8 +2377,7 @@ div.pane-tagclouds-1{
     margin-top: 8px;
 }
 
-.view-id-article .views-row
-{
+.view-id-article .views-row {
     padding-bottom: 15px;
     border-bottom: 2px dotted #DDD;
 }
@@ -2207,76 +2405,90 @@ div.pane-tagclouds-1{
 }
 
 /*== pane-intern-company-company-info Begin ==*/
-.pane-intern-company-company-info .pane-content{
+.pane-intern-company-company-info .pane-content {
     border: 2px solid #4D963B;
     margin-bottom: 20px;
 }
-.pane-intern-company-company-info .pane-content .view-company-info{
+
+.pane-intern-company-company-info .pane-content .view-company-info {
     margin: 6px;
 }
-.pane-intern-company-company-info .pane-content .view-company-info div.left{
+
+.pane-intern-company-company-info .pane-content .view-company-info div.left {
     padding-right: 5px;
 }
-.pane-intern-company-company-info .pane-content .view-company-info .d-1{
+
+.pane-intern-company-company-info .pane-content .view-company-info .d-1 {
     min-height: 110px;
 }
-.pane-intern-company-company-info .pane-content .view-company-info .d-1 .title a{
+
+.pane-intern-company-company-info .pane-content .view-company-info .d-1 .title a {
     color: #006699;
     font-size: 13px;
 }
-.pane-intern-company-company-info .pane-content .view-company-info .d-2{
+
+.pane-intern-company-company-info .pane-content .view-company-info .d-2 {
     margin: 0 -6px 0 -6px;
     padding: 0 6px 5px 6px;
     border-bottom: 2px dashed #8DB126;
     font-size: 13px;
 }
-.pane-intern-company-company-info .pane-content .view-company-info .d-2 .c-15{
+
+.pane-intern-company-company-info .pane-content .view-company-info .d-2 .c-15 {
     display: inline-block;
 }
-.pane-intern-company-company-info .pane-content .view-company-info .d-2 span{
+
+.pane-intern-company-company-info .pane-content .view-company-info .d-2 span {
     display: block;
     line-height: 1.8;
 }
 
-.pane-intern-company-company-info .pane-content .view-company-info .d-3{
+.pane-intern-company-company-info .pane-content .view-company-info .d-3 {
     padding: 8px 6px 6px 6px;;
     line-height: 1.8;
     margin: 0 -6px -10px -6px;
     background-color: #F7F9FA;
 }
-.pane-intern-company-company-info .pane-content .view-company-info .d-3 span{
+
+.pane-intern-company-company-info .pane-content .view-company-info .d-3 span {
     display: inline-block;
 }
-.pane-intern-company-company-info .pane-content .view-company-info .d-3 span.more{
+
+.pane-intern-company-company-info .pane-content .view-company-info .d-3 span.more {
     margin-top: 10px;
     padding-left: 120px;
 
 }
+
 /*== pane-intern-company-company-info End ==*/
 
 /*== pane-intern-company-company-add-review Begin==*/
-div.pane-intern-company-company-add-review{
+div.pane-intern-company-company-add-review {
     border: 1px solid #CCCCCC;
     padding: 22px;
     margin-bottom: 20px;
 }
-div.pane-intern-company-company-add-review span.title{
+
+div.pane-intern-company-company-add-review span.title {
     font-size: 18px;
 }
-div.pane-intern-company-company-add-review span.add-review-pic{
+
+div.pane-intern-company-company-add-review span.add-review-pic {
     background: url(img/site/bt_lsad_rv.gif) no-repeat 30px;
     width: 200px;
     height: 71px;
     display: block;
     margin-top: 25px;
 }
-div.pane-intern-company-company-add-review span.add-review-btn{
+
+div.pane-intern-company-company-add-review span.add-review-btn {
     background: url(img/site/bt_ad_rv.gif) no-repeat 20px;
     margin: 35px 0 15px 0;
     display: block;
     width: 200px;
     height: 38px;
 }
+
 /*== pane-intern-company-company-add-review End ==*/
 
 /*==view-id-_jobs_in_blocks==*/
@@ -2485,8 +2697,6 @@ div.tabs div.active {
     display: block;
 }
 
-
-
 #content .panel-pane-title {
     border-bottom: 2px solid rgb(203, 217, 200);
     padding: 0 0 10px 30px;
@@ -2533,7 +2743,6 @@ div.advanced-search {
     margin: 0 0 0 0;
     height: 185px;
 }
-
 
 div.advanced-search  #views-exposed-form-companys-panel-pane-1 .total-company-count {
     float: right;
@@ -2647,8 +2856,7 @@ div.advanced-search  #views-exposed-form-jobs-panel-pane-1 input.form-submit {
 }
 
 div.advanced-search  #views-exposed-form-jobs-panel-pane-1 input.search,
-div.advanced-search  #views-exposed-form-companys-panel-pane-1 input.search
-{
+div.advanced-search  #views-exposed-form-companys-panel-pane-1 input.search {
     background: #ffffff url(img/site/bt_search.gif) no-repeat 115px 3px;
 }
 
@@ -2874,6 +3082,7 @@ body.front #temp-showcase {
     border: none;
     text-align: center;
 }
+
 /*==user login Begin==*/
 .user-login-content input.form-submit {
     width: 112px;
@@ -2889,7 +3098,7 @@ body.front #temp-showcase {
 }
 
 .user-login-content .zhuce-title {
-    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+    font-family: tahoma, helvetica, arial, "bitstream vera sans", sans-serif, "Microsoft Yahei";
     font-size: 16px;
     padding-top: 10px;
 }
@@ -2911,7 +3120,7 @@ body.front #temp-showcase {
 }
 
 #weibo-login-text {
-    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+    font-family: tahoma, helvetica, arial, "bitstream vera sans", sans-serif, "Microsoft Yahei";
     width: 220px;
     font-size: 14px;
     color: rgb(102, 102, 102);
@@ -2980,10 +3189,11 @@ div.company-list .views-row {
     margin: 5px 0 0 0;
 }
 
-body.not-logged-in div.company-list .views-row{
+body.not-logged-in div.company-list .views-row {
     min-height: 240px;
 }
-body.logged-in div.company-list .views-row{
+
+body.logged-in div.company-list .views-row {
     min-height: 240px;
 }
 
@@ -3011,10 +3221,12 @@ div.company-list .views-row .company-info .field .field-items a {
     color: #666666;
     font-weight: bold;
 }
-div.company-list .views-row .company-info .field-name-jobs{
+
+div.company-list .views-row .company-info .field-name-jobs {
     margin-top: 10px;
 }
-div.company-list .views-row .company-info .field-name-jobs a{
+
+div.company-list .views-row .company-info .field-name-jobs a {
     background: url(img/site/bt_company_jobs.gif) no-repeat;
     padding-left: 25px;
     color: #1357A0;
@@ -3078,20 +3290,24 @@ div.group-list .field-items,
 div.company-list .field-items {
     display: inline;
 }
+
 /*== facebook status Begin ==*/
-div.statuses-update{
+div.statuses-update {
     display: block;
 }
-#content div.pane-statuses-statuses{
+
+#content div.pane-statuses-statuses {
     background-color: #F5F8F5;
     padding: 5px 12px 40px 12px;
     margin-bottom: 20px;
 }
-#content div.pane-statuses-statuses div.panel-pane-title{
+
+#content div.pane-statuses-statuses div.panel-pane-title {
     border-bottom: 0px;
     padding: 15px 0 0 2px;
     margin-bottom: -10px;
 }
+
 div.pane-statuses-statuses h2.pane-title {
     background: url(img/site/bt_status.gif) no-repeat 0 5px;
     padding-left: 20px;
@@ -3099,62 +3315,69 @@ div.pane-statuses-statuses h2.pane-title {
     font-weight: bold;
     color: #336327;
 }
-div.pane-statuses-statuses div.status-form{
+
+div.pane-statuses-statuses div.status-form {
     margin-top: -15px;
 }
-div.statuses-update div.statuses-textarea-wrapper{
+
+div.statuses-update div.statuses-textarea-wrapper {
     clear: both;
     border: 2px solid #8fbf7e;
     box-shadow: none;
     margin-bottom: 10px;
 }
 
-div.statuses-update input.statuses-submit{
+div.statuses-update input.statuses-submit {
     background-color: #4E963C;
     border: 1px;
     cursor: pointer;
     color: #ffffff;
 }
 
-div.facebook-status-item{
+div.facebook-status-item {
     min-height: 90px;
     background-color: #F7F9FA;
     border: #EBEBEB solid 1px;
     padding: 10px 30px 10px 15px;
     margin: 5px 0 0 0;
 }
-div.facebook-status-item div.statuses-comments div.fbss-comments-show-comment-form{
+
+div.facebook-status-item div.statuses-comments div.fbss-comments-show-comment-form {
     margin-top: -20px;
-     float: right;
+    float: right;
 }
+
 div.facebook-status-item .views-field-picture {
     position: absolute;
     top: 0;
     left: 0;
 }
+
 div.facebook-status-item .views-field-body {
     min-height: 70px
 }
-#content div.fbss-comments-author{
-    color:#CCCCCC;
-}
-#content div.fbss-comments-comment{
 
-    background:white url(img/site/bg_cmt.gif) repeat-x;
+#content div.fbss-comments-author {
+    color: #CCCCCC;
 }
 
-div.statuses-textarea-wrapper{
-    border:0px;
+#content div.fbss-comments-comment {
+
+    background: white url(img/site/bg_cmt.gif) repeat-x;
+}
+
+div.statuses-textarea-wrapper {
+    border: 0px;
     box-shadow: none;
 }
 
-div.statuses-textarea-wrapper textarea{
+div.statuses-textarea-wrapper textarea {
     overflow-style: auto;
     height: 68px;
 
 }
 
-#content div.fbss-comments-comment div.content{
+#content div.fbss-comments-comment div.content {
     padding: 0 0 0 0;
 }
 
@@ -3164,11 +3387,11 @@ div.statuses-textarea-wrapper textarea{
     float: left;
 }
 
-.statuses-subitem{
+.statuses-subitem {
     padding: 5px;
 }
 
-.fbss-comments-form .button{
+.fbss-comments-form .button {
     margin-top: -5px;
 }
 
@@ -3182,6 +3405,7 @@ div.statuses-textarea-wrapper textarea{
     border: #EBEBEB solid 1px;
     padding: 10px 30px 10px 15px;
 }
+
 .views-row div.author-info {
     width: 60px;
     float: left;
@@ -3197,14 +3421,15 @@ div.statuses-textarea-wrapper textarea{
     width: 85%;
     display: inline-block;
 }
-#content div.view-id-company_reviews_in_blocks .views-row  div.views-field-nid{
+
+#content div.view-id-company_reviews_in_blocks .views-row  div.views-field-nid {
     float: right;
     width: 70px;
     display: inline-block;
     margin-top: 7px;
 }
-#content div.view-id-company_reviews_in_blocks .views-row  div.views-field-gid
- {
+
+#content div.view-id-company_reviews_in_blocks .views-row  div.views-field-gid {
     float: right;
     width: 70px;
     display: inline-block;
@@ -3242,6 +3467,7 @@ div.group-list a.join {
 div.job-list div.views-row {
     border-bottom: 1px dotted #DDD;
 }
+
 div.job-list div.views-row-last {
     border-bottom: none;
 }
@@ -3676,7 +3902,7 @@ body.page-company div.form .form-item {
     padding: 2px 0 0 10px;
 }
 
-#company-center-block .block-content{
+#company-center-block .block-content {
     padding: 20px 10px;
     text-align: center;
 }
@@ -3815,13 +4041,11 @@ div.resume-list  .field-name-time {
 
 /*==/company==*/
 /*==user==*/
-#share-status{
+#share-status {
     background-color: #F5F8F5;
     padding: 10px 12px 15px 12px;
     margin-bottom: 20px;
 }
-
-
 
 #share-status .block-content {
     font-size: 14px;
@@ -3846,7 +4070,8 @@ div.resume-list  .field-name-time {
     cursor: pointer;
     color: #ffffff;
 }
-#share-status textarea{
+
+#share-status textarea {
     border: 2px #D9EBAA solid;
 }
 
@@ -3859,6 +4084,7 @@ body.user div.tabs .block {
     padding: 25px;
     clear: both;
 }
+
 /*== newest status ==*/
 #newest-status .views-row {
     padding: 0 0 30px 1px;
@@ -3866,11 +4092,13 @@ body.user div.tabs .block {
     position: relative;
     font-size: 12px;
 }
+
 #newest-status .views-field-picture {
     position: absolute;
     top: 0;
     left: 0;
 }
+
 #newest-status .views-field-body {
     min-height: 70px
 }
@@ -3880,46 +4108,51 @@ a.reply {
     top: 0;
     right: 0;
 }
+
 /*== user-center-block Begin ==*/
-#sidebar-second div.pane-usercenter-user-info-panel-pane-1  div.panel-pane-title{
+#sidebar-second div.pane-usercenter-user-info-panel-pane-1  div.panel-pane-title {
     height: 20px;
     background-color: #4E963C;
-    padding:10px;
+    padding: 10px;
     font-size: 16px;
     color: #ffffff;
     border: 0px;
     margin-bottom: 10px;
 }
-#user-center-block{
+
+#user-center-block {
     border: 2px #8DB125 solid;
 }
-#user-center-block .user-info{
+
+#user-center-block .user-info {
     background-color: #F7F9FA;
     padding: 10px 10px;
 }
-#user-center-block .user-picture{
+
+#user-center-block .user-picture {
     float: left;
     margin-right: 10px;
 }
-#user-center-block .block-content div.views-field-name{
+
+#user-center-block .block-content div.views-field-name {
     border-bottom: 2px dashed #8DB126;
     padding: 8px 0 10px 14px;
 }
-#user-center-block .block-content div.views-field-name .field-content{
+
+#user-center-block .block-content div.views-field-name .field-content {
     background: url(img/site/bt_star.gif) no-repeat 0 2px;
     padding-left: 20px;
 }
-#user-center-block div.block{
+
+#user-center-block div.block {
     margin-bottom: 0px;
     border: 0px;
 }
 
-#user-center-block .block-content{
+#user-center-block .block-content {
     line-height: 1.7;
-    padding:0;
+    padding: 0;
 }
-
-
 
 #user-center-block  .follow {
     position: relative;
@@ -3944,26 +4177,30 @@ a.reply {
 #user-center-block .views-field-follow a {
     background-position: -20px -175px;
 }
+
 /*== user-center-block End==*/
 
 /*== invite block Begin ==*/
-#invite .block-content{
+#invite .block-content {
     border: 2px #8DB125 solid;
     line-height: 1.7;
-    padding:10px 10px 15px 10px;
+    padding: 10px 10px 15px 10px;
     text-align: center;
 }
-#invite h2.block-title{
+
+#invite h2.block-title {
     border: none;
     background: url(img/site/bt_invite.gif) no-repeat;
     padding-left: 35px;
 }
-#invite #edit-email{
+
+#invite #edit-email {
     border: 2px solid #EBEBEB;
     width: 200px;
     height: 35px;
 }
-#invite .form-submit{
+
+#invite .form-submit {
     width: 86px;
     height: 30px;
     background-color: #4E963C;
@@ -3971,6 +4208,7 @@ a.reply {
     cursor: pointer;
     color: #ffffff;
 }
+
 /*== invite block End ==*/
 
 a.button {
@@ -3997,97 +4235,112 @@ a.button span {
 #user-center-block .views-field-edit a.button {
     background-position: left -30px
 }
+
 /*== page-resume Begin==*/
-#page-resume #header .resume{
+#page-resume #header .resume {
     margin-top: 30px;
 }
+
 #page-resume,
 #page-resume #main,
 #page-resume #footer,
-#page-resume #footer .section{
+#page-resume #footer .section {
     width: 680px;
     margin: 0 auto;
 }
 
-#page-resume #main-bottom{
-    margin-top:15px;
+#page-resume #main-bottom {
+    margin-top: 15px;
     text-align: center;
 }
-#page-resume #header{
+
+#page-resume #header {
     height: 70px;
     display: inline-block;
     width: 250px;
     float: left;
     padding-bottom: 20px;
 }
-body.node-type-resume div.pane-resume-node-view-panel-pane-1{
-    border:2px solid #4E963C;
+
+body.node-type-resume div.pane-resume-node-view-panel-pane-1 {
+    border: 2px solid #4E963C;
     padding: 0 12px 10px 12px;
     display: block;
     float: left;
     width: 650px;
 }
 
-div.pane-resume-node-view-panel-pane-1 .views-field{
+div.pane-resume-node-view-panel-pane-1 .views-field {
     color: #333;
 }
-div.pane-resume-node-view-panel-pane-1 .views-field .field-content{
+
+div.pane-resume-node-view-panel-pane-1 .views-field .field-content {
     display: inline;
 }
-div.pane-resume-node-view-panel-pane-1 .d-1{
+
+div.pane-resume-node-view-panel-pane-1 .d-1 {
     background-color: #F7FCF5;
     border: 1px solid #B8DFAE;
     padding: 8px;
 }
-div.pane-resume-node-view-panel-pane-1 .d-2{
+
+div.pane-resume-node-view-panel-pane-1 .d-2 {
     display: block;
     padding: 15px 0 6px 0;
     line-height: 2.2;
 }
-div.pane-resume-node-view-panel-pane-1 .d-2 label{
+
+div.pane-resume-node-view-panel-pane-1 .d-2 label {
     width: 60px;
 }
+
 div.pane-resume-node-view-panel-pane-1 .d-2 .views-field-location,
-div.pane-resume-node-view-panel-pane-1 .d-2 .views-field-cell-phone{
+div.pane-resume-node-view-panel-pane-1 .d-2 .views-field-cell-phone {
 
 }
-div.pane-resume-node-view-panel-pane-1 .d-3{
+
+div.pane-resume-node-view-panel-pane-1 .d-3 {
     display: inline-block;
     padding: 0 0 8px 0;
 }
-div.pane-resume-node-view-panel-pane-1 .d-3 .views-field{
+
+div.pane-resume-node-view-panel-pane-1 .d-3 .views-field {
     display: inline;
     color: #3C722E;
     font-weight: bold;
     padding-right: 5px;
 }
 
-div.pane-resume-node-view-panel-pane-1 .views-field.views-field-real-name{
+div.pane-resume-node-view-panel-pane-1 .views-field.views-field-real-name {
     display: block;
-    font-size:25px;
+    font-size: 25px;
     font-weight: bold;
     padding: 0 0 8px 0;
     border-bottom: 1px dashed #B8DFAE;
 }
-div.pane-resume-node-view-panel-pane-1 .views-field.views-field-picture{
+
+div.pane-resume-node-view-panel-pane-1 .views-field.views-field-picture {
     float: right;
     display: block;
 }
+
 div.pane-resume-node-view-panel-pane-1 .d-4,
-div.pane-resume-node-view-panel-pane-1 .d-5{
+div.pane-resume-node-view-panel-pane-1 .d-5 {
     margin-top: 10px;
     line-height: 2.2;
     border-bottom: 1px solid #CCCCCC;
     padding: 0 0 10px 0;
 }
-div.pane-resume-node-view-panel-pane-1 .d-6{
+
+div.pane-resume-node-view-panel-pane-1 .d-6 {
     margin-top: 10px;
     line-height: 2.2;
     padding: 0 0 10px 0;
 }
+
 div.pane-resume-node-view-panel-pane-1 .d-4 .s-1,
 div.pane-resume-node-view-panel-pane-1 .d-5 .s-1,
-div.pane-resume-node-view-panel-pane-1 .d-6 .s-1{
+div.pane-resume-node-view-panel-pane-1 .d-6 .s-1 {
     color: #3C722E;
     font-size: 14px;
     font-weight: bold;
@@ -4097,38 +4350,44 @@ div.pane-resume-node-view-panel-pane-1 .d-6 .s-1{
     margin-bottom: 10px;
     display: block;
 }
+
 div.pane-resume-node-view-panel-pane-1 .d-5 .s-1 .field-content,
-div.pane-resume-node-view-panel-pane-1 .d-6 .s-1 .field-content{
+div.pane-resume-node-view-panel-pane-1 .d-6 .s-1 .field-content {
     display: inline;
     color: #333333;
 }
-div.pane-resume-node-view-panel-pane-1 .d-4-1{
+
+div.pane-resume-node-view-panel-pane-1 .d-4-1 {
     width: 46%;
     display: inline-block;
     float: left;
 }
-div.pane-resume-node-view-panel-pane-1 .d-4-2{
+
+div.pane-resume-node-view-panel-pane-1 .d-4-2 {
     width: 48%;
     display: inline-block;
     padding-left: 20px;
     border-left: 1px solid #CCCCCC;
 }
-div.pane-resume-node-view-panel-pane-1 .d-6 .field-content{
+
+div.pane-resume-node-view-panel-pane-1 .d-6 .field-content {
     width: 48%;
     display: inline-block;
 }
-div.pane-resume-node-view-panel-pane-1 .d-6 .file{
+
+div.pane-resume-node-view-panel-pane-1 .d-6 .file {
     font-size: 14px;
     font-weight: bold;
 }
 
-div.pane-node-links{
+div.pane-node-links {
     display: inline-block;
     float: right;
     height: 20px;
     float: right;
-    padding:0px 0 5px 0;
+    padding: 0px 0 5px 0;
 }
+
 /*== page-resume End==*/
 
 #user-center-block .views-field-edit a.button span {
@@ -4136,13 +4395,15 @@ div.pane-node-links{
 }
 
 /*== followers block==*/
-#followers h2.block-title{
+#followers h2.block-title {
     background: url(img/site/bt_flw_usr.gif) no-repeat 1px 2px;
     padding-left: 30px;
 }
-#followers div.block-content{
+
+#followers div.block-content {
     padding: 10px 5px 0px 5px;
 }
+
 #followers .views-row {
     padding: 10px;
     height: 90px;
@@ -4151,136 +4412,164 @@ div.pane-node-links{
 }
 
 /*== Company Node Form Begin ==*/
-div.pane-company-node-form{
-    padding:20px 10px 20px 20px;
+div.pane-company-node-form {
+    padding: 20px 10px 20px 20px;
 }
-div.pane-company-node-form fieldset{
+
+div.pane-company-node-form fieldset {
     display: none;
 }
-div.pane-company-node-form .user-picture-info fieldset{
+
+div.pane-company-node-form .user-picture-info fieldset {
     display: block;
     border: 0px;
 }
-div.pane-company-node-form .user-picture-info legend{
+
+div.pane-company-node-form .user-picture-info legend {
     display: none;
 }
-div.pane-company-node-form .user-picture-info .user-picture{
+
+div.pane-company-node-form .user-picture-info .user-picture {
     padding: 0 0 20px 108px;
     display: inline-block;
 }
-div.pane-company-node-form .user-picture-info .form-item-picture-delete{
+
+div.pane-company-node-form .user-picture-info .form-item-picture-delete {
     display: inline-block;
     min-height: 0px;
 }
-div.pane-company-node-form .user-picture-info .form-item-picture-delete label{
+
+div.pane-company-node-form .user-picture-info .form-item-picture-delete label {
     padding-top: 0px;
 }
-div.pane-company-node-form input.form-text{
+
+div.pane-company-node-form input.form-text {
     width: 204px;
     height: 20px;
 }
-div.pane-company-node-form select.form-select{
+
+div.pane-company-node-form select.form-select {
     width: 215px;
     height: 30px;
 }
-div.pane-company-node-form .form-item label{
-   width: 90px;
-   text-align: right;
-   padding:7px 15px 0 0;
+
+div.pane-company-node-form .form-item label {
+    width: 90px;
+    text-align: right;
+    padding: 7px 15px 0 0;
     float: left;
 }
-div.pane-company-node-form .form-item{
-   display: block;
-   min-height: 34px;
-   margin-top: 0;
-}
-div.pane-company-node-form .form-item div.description{
-   display: inline-block;
-   padding-left: 5px;
+
+div.pane-company-node-form .form-item {
+    display: block;
+    min-height: 34px;
+    margin-top: 0;
 }
 
-div.pane-company-node-form .form-textarea-wrapper textarea{
+div.pane-company-node-form .form-item div.description {
+    display: inline-block;
+    padding-left: 5px;
+}
+
+div.pane-company-node-form .form-textarea-wrapper textarea {
     width: 517px;
     border: 1px solid #dddddd;
 }
+
 div.pane-company-node-form .basic-info-title,
-div.pane-company-node-form .contact-info-title{
+div.pane-company-node-form .contact-info-title {
     font-size: 14px;
     font-weight: bold;
     color: #006600;
 }
-div.pane-company-node-form .basic-info-content{
+
+div.pane-company-node-form .basic-info-content {
     padding: 10px 0 15px 0;
     border-bottom: 1px solid #dddddd;
 }
-div.pane-company-node-form .contact-info-content{
+
+div.pane-company-node-form .contact-info-content {
     padding: 15px 0 15px 0;
     border-bottom: 1px solid #dddddd;
     margin-bottom: 25px;
 }
-div.pane-company-node-form .contact-info{
-     margin-top: 15px;
+
+div.pane-company-node-form .contact-info {
+    margin-top: 15px;
 }
-div.pane-company-node-form div.form-actions{
+
+div.pane-company-node-form div.form-actions {
     text-align: center;
 }
+
 div.pane-company-node-form div.field-name-field-work-days,
-div.pane-company-node-form div.field-name-field-work-months{
+div.pane-company-node-form div.field-name-field-work-months {
     display: inline-block;
 }
+
 div.pane-company-node-form .form-item-field-work-months-und-0-value,
-div.pane-company-node-form .form-item-field-work-days-und-0-value{
+div.pane-company-node-form .form-item-field-work-days-und-0-value {
     width: 200px;
 }
+
 div.pane-company-node-form .form-item-field-work-months-und-0-value input.form-text,
-div.pane-company-node-form .form-item-field-work-days-und-0-value input.form-text{
+div.pane-company-node-form .form-item-field-work-days-und-0-value input.form-text {
     width: 40px;
 }
-div.pane-company-node-form .form-actions input.form-submit{
+
+div.pane-company-node-form .form-actions input.form-submit {
     padding: 8px 25px 8px 25px;
     background-color: rgb(78, 150, 60);
     border: 1px;
     cursor: pointer;
     color: #ffffff;
-    font-family: tahoma,helvetica,arial,"bitstream vera sans",sans-serif,"Microsoft Yahei";
+    font-family: tahoma, helvetica, arial, "bitstream vera sans", sans-serif, "Microsoft Yahei";
     font-size: 14px;
     font-weight: bold;
     margin-right: 15px;
 }
+
 div.pane-company-node-form .field-type-text,
 div.pane-company-node-form .field-type-image,
 div.pane-company-node-form .field-type-text-with-summary,
-div.pane-company-node-form .field-type-taxonomy-term-reference{
+div.pane-company-node-form .field-type-taxonomy-term-reference {
     display: inline-block;
     width: 680px;
 }
-div.pane-company-node-form .field-widget-taxonomy-hs{
+
+div.pane-company-node-form .field-widget-taxonomy-hs {
     height: 34px;
 }
-div.pane-company-node-form .field-type-taxonomy-term-reference .form-item{
+
+div.pane-company-node-form .field-type-taxonomy-term-reference .form-item {
     height: 30px;
 }
-div.pane-company-node-form div.image-widget{
-     width: 350px;
-     display: inline-block;
-     float: left;
-     min-height: 30px;
- }
-div.pane-company-node-form div.image-widget .image-widget-data{
+
+div.pane-company-node-form div.image-widget {
+    width: 350px;
+    display: inline-block;
+    float: left;
+    min-height: 30px;
+}
+
+div.pane-company-node-form div.image-widget .image-widget-data {
     display: inline-block;
 }
+
 div.pane-company-node-form div.image-widget .image-widget-data .file-size,
-div.pane-company-node-form div.image-widget .image-widget-data .file{
+div.pane-company-node-form div.image-widget .image-widget-data .file {
     display: none;
 }
-div.pane-company-node-form input.form-file{
+
+div.pane-company-node-form input.form-file {
     width: 218px;
     height: 30px;
     background-color: #ffffff;
     border: 1px solid #ddd;
 }
+
 div.pane-company-node-form div.image-widget #edit-field-logo-und-0-remove-button,
-div.pane-company-node-form div.image-widget #edit-field-logo-und-0-upload-button{
+div.pane-company-node-form div.image-widget #edit-field-logo-und-0-upload-button {
     padding: 5px 25px 5px 25px;
     background-color: #7A7876;
     border: 1px;
@@ -4293,38 +4582,45 @@ div.pane-company-node-form div.image-widget #edit-field-logo-und-0-upload-button
     display: inline-block;
     width: 100px;
 }
-div.pane-company-node-form div.user-profile-title{
+
+div.pane-company-node-form div.user-profile-title {
     padding: 10px 0 0px 30px;
     margin: 10px 0 30px 0;
     border-bottom: 3px solid #999999;
     background: url(img/site/bt_arrow_2.gif) no-repeat 5px 10px;
 }
-div.pane-company-node-form  div.user-profile-title h2{
+
+div.pane-company-node-form  div.user-profile-title h2 {
     display: inline-block;
     font-size: 14px;
     color: #006600;
     padding-bottom: 10px;
 }
-div.pane-company-node-form div.user-base-info{
+
+div.pane-company-node-form div.user-base-info {
     display: inline-block;
     float: left;
     width: 350px;
     border-right: 1px dashed #CCCCCC;
 }
-div.pane-company-node-form div.user-picture-info{
+
+div.pane-company-node-form div.user-picture-info {
     padding-left: 15px;
     display: inline-block;
     width: 350px;
     height: 300px;
 }
-div.pane-company-node-form div.user-picture-info .form-item-select-avatar{
+
+div.pane-company-node-form div.user-picture-info .form-item-select-avatar {
     float: left;
 }
+
 /*== Company Node Form End ==*/
 /*==Job Node Form　Begin ==*/
-div.pane-job-node-form  .form-actions #edit-submit{
-    background-color:#FF9900;
+div.pane-job-node-form  .form-actions #edit-submit {
+    background-color: #FF9900;
 }
+
 /*==Job Node Form　End ==*/
 /*==/user==*/
 
@@ -4342,8 +4638,6 @@ div.pane-job-node-form  .form-actions #edit-submit{
 #footer a {
     color: #333;
 }
-
-
 
 /*==fivestar==*/
 /* Plain HTML Version */
@@ -4461,17 +4755,19 @@ html.js .fivestar-submit {
     background: url(img/site/tab_on_l.gif) no-repeat;
 }
 
- /*==city select div ==*/
-#popupArea TD{
+/*==city select div ==*/
+#popupArea TD {
     padding-left: 3px;
 }
-#popupArea span{
+
+#popupArea span {
     width: 75px;
     display: inline-block;
     height: 19px;
     padding-top: 6px;
 }
-#popupArea TD.header{
+
+#popupArea TD.header {
     background: url(img/site/bt_city.png) no-repeat 2px 6px;
     padding-left: 25px;
 }
@@ -4479,8 +4775,33 @@ html.js .fivestar-submit {
 /*==company center jobs--*/
 .view-companycenter-jobs #edit-actionintern-job-republish-action,
 .view-companycenter-jobs #edit-actionintern-job-refresh-action,
-.view-companycenter-jobs #edit-actionintern-job-stop-action{
+.view-companycenter-jobs #edit-actionintern-job-stop-action {
     display: none;
 }
 
+/*==403 404 ==*/
+div.errordiv,
+div.infodiv{
+    font-family: tahoma, helvetica, arial, "bitstream vera sans", sans-serif, "Microsoft Yahei";
+    font-size: 16px;
+    margin: 20px 0 60px 200px;
+    height: 256px;
+    width: 575px;
+    background: url(img/site/inf_bg.gif) no-repeat;
+    padding: 30px 0 0 30px;
 
+}
+div.errordiv p,
+div.infodiv p{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+}
+
+div.errordiv span,
+div.infodiv span{
+    display: block;
+    margin: 0 0 0 15px;
+
+}

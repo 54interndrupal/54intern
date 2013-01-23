@@ -88,7 +88,7 @@ function userreg_company_register_form($form, &$form_state) {
 }
 
 function userreg_company_register_form_validate_handler(&$form, &$form_state) {
-  $form_state['values']["group_group"][LANGUAGE_NONE][0]['value']="1";
+  $form_state['values']["group_group"][LANGUAGE_NONE][0]['value'] = "1";
   $pseudo_entity = (object) $form_state['values'];
   $pseudo_entity->type = 'company';
   field_attach_form_validate('node', $pseudo_entity, $form, $form_state);
@@ -109,7 +109,7 @@ function userreg_company_register_form_validate_handler(&$form, &$form_state) {
     }
     else {
       $orig_user_name = $form_state['values']['name'];
-      $form_state['values']['name'] = $form_state['values']['title'].'^'.$form_state['values']['name'];
+      $form_state['values']['name'] = $form_state['values']['title'] . '^' . $form_state['values']['name'];
 
       if ((bool) db_select('users')->fields('users', array('uid'))
         ->condition('name', db_like($form_state['values']['name']), 'LIKE')->range(0, 1)->execute()->fetchField()
@@ -173,14 +173,20 @@ function userreg_company_register_form_submit_handler(&$form, &$form_state) {
   //user_save($user);
   node_save($pseudo_entity);
   $form_state['redirect'] = 'user/companyregister/success';
-
-  drupal_set_message('尊敬的企业用户，您已注册成功，实习圈审核您的注册信息后，将会给您发送通知邮件。谢谢。');
 }
 
 function userreg_company_register_success_page() {
   $output = '';
 //  TODO
   $output .= t('TODO: 注册成功页面。');
+  $output = "
+  <div class='infodiv'>
+<p >尊敬的企业用户，您已成功提交注册信息。</p>
+<br/><span>1. 我们将尽快审核您的注册信息,并邮件确认审核结果。</span>
+<br/><span>2. 审核通过后，您即可以企业用户身份登录 <a href=''>实习圈</a>。</span>
+<br/><span>3. 如果您长时间未收到确认邮件，请  <a href='mailto:service@54intern.com'>联系管理员</a>，我们将尽快为您处理。</span>
+</div>";
+
   return $output;
 }
 
@@ -411,8 +417,6 @@ function userreg_company_register_check_mail() {
       drupal_set_message(t('您的帐户已经通过了验证，欢迎成为我们的企业用户.'));
       //drupal_set_message(l('稍候完善我的简历','user/'.$user->uid));
       //drupal_goto('node/add/resume',array("query" => array('destination'=>'user/'.$user->uid)));
-
-
 
 
       drupal_goto('companycenter/');
