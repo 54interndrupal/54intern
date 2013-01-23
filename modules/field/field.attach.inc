@@ -616,6 +616,7 @@ function field_attach_form($entity_type, $entity, &$form, &$form_state, $langcod
 function field_attach_load($entity_type, $entities, $age = FIELD_LOAD_CURRENT, $options = array()) {
   $field_info = field_info_field_by_ids();
   $load_current = $age == FIELD_LOAD_CURRENT;
+
   // Merge default options.
   $default_options = array(
     'deleted' => FALSE,
