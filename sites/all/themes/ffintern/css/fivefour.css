@@ -2990,7 +2990,7 @@ body.logged-in div.company-list .views-row{
 div.company-list .views-row .company-info {
     position: absolute;
     left: 0px;
-    margin: 150px 0 0 0;
+    margin: 90px 0 0 0;
     display: block;
     padding-bottom: 5px;
 }
@@ -3048,7 +3048,6 @@ div.group-list .views-row .field-name-pic,
 div.company-list .views-row .field-name-pic {
     position: absolute;
     left: 0;
-    border: 1px solid #e0e0e0;
     padding-top: 0;
 }
 
