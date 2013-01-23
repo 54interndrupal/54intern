@@ -616,7 +616,6 @@ function field_attach_form($entity_type, $entity, &$form, &$form_state, $langcod
 function field_attach_load($entity_type, $entities, $age = FIELD_LOAD_CURRENT, $options = array()) {
   $field_info = field_info_field_by_ids();
   $load_current = $age == FIELD_LOAD_CURRENT;
-  watchdog("addresume-2",$entity_type);
   // Merge default options.
   $default_options = array(
     'deleted' => FALSE,
@@ -643,7 +642,6 @@ function field_attach_load($entity_type, $entities, $age = FIELD_LOAD_CURRENT, $
     // Build the list of cache entries to retrieve.
     $cids = array();
     foreach ($entities as $id => $entity) {
-      watchdog("addresume-2","field:$entity_type:$id");
       $cids[] = "field:$entity_type:$id";
     }
     $cache = cache_get_multiple($cids, 'cache_field');
