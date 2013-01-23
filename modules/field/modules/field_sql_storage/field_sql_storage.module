@@ -328,6 +328,7 @@ function field_sql_storage_field_storage_load($entity_type, $entities, $age, $fi
   $load_current = $age == FIELD_LOAD_CURRENT;
   watchdog("addresume",$entity_type);
   foreach ($fields as $field_id => $ids) {
+    if($field_id!="group_group"){
     $field = $field_info[$field_id];
     $field_name = $field['field_name'];
     $table = $load_current ? _field_sql_storage_tablename($field) : _field_sql_storage_revision_tablename($field);
@@ -344,6 +345,7 @@ function field_sql_storage_field_storage_load($entity_type, $entities, $age, $fi
     }
 
     $results = $query->execute();
+
     watchdog("addresume",$table.','.$field_id.','.'XX');
     $delta_count = array();
     foreach ($results as $row) {
@@ -366,6 +368,7 @@ function field_sql_storage_field_storage_load($entity_type, $entities, $age, $fi
       }
     }
     watchdog("addresume",$table.','.$field_id.','.'YY');
+    }
   }
 }
 
