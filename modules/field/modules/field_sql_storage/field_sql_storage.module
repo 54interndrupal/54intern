@@ -326,14 +326,14 @@ function field_sql_storage_field_storage_delete_field($field) {
 function field_sql_storage_field_storage_load($entity_type, $entities, $age, $fields, $options) {
   $field_info = field_info_field_by_ids();
   $load_current = $age == FIELD_LOAD_CURRENT;
-  watchdog("addresume",$entity_type);
+  watchdog("addresume",$entity_type.',');
   foreach ($fields as $field_id => $ids) {
 
     $field = $field_info[$field_id];
     $field_name = $field['field_name'];
     if($field_name!="group_group"){
     $table = $load_current ? _field_sql_storage_tablename($field) : _field_sql_storage_revision_tablename($field);
-    watchdog("addresume",$table.','.$field_id.','.$field_name);
+    watchdog("addresume",$table.','.$field_id.','.$field_name.implode("|",$ids));
     $query = db_select($table, 't')
       ->fields('t')
       ->condition('entity_type', $entity_type)
