@@ -700,7 +700,7 @@ function field_attach_load($entity_type, $entities, $age = FIELD_LOAD_CURRENT, $
     // Invoke hook_field_storage_load() on the relevant storage backends.
     foreach ($storages as $storage => $fields) {
       $storage_info = field_info_storage_types($storage);
-      //module_invoke($storage_info['module'], 'field_storage_load', $entity_type, $queried_entities, $age, $fields, $options);
+      module_invoke($storage_info['module'], 'field_storage_load', $entity_type, $queried_entities, $age, $fields, $options);
     }
 
     // Invoke field-type module's hook_field_load().
@@ -709,7 +709,7 @@ function field_attach_load($entity_type, $entities, $age = FIELD_LOAD_CURRENT, $
 
     // Invoke hook_field_attach_load(): let other modules act on loading the
     // entitiy.
-    //module_invoke_all('field_attach_load', $entity_type, $queried_entities, $age, $options);
+    module_invoke_all('field_attach_load', $entity_type, $queried_entities, $age, $options);
 
     // Build cache data.
     if ($cache_write) {
