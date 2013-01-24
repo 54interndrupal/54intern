@@ -3190,11 +3190,11 @@ div.company-list .views-row {
 }
 
 body.not-logged-in div.company-list .views-row {
-    min-height: 240px;
+    min-height: 180px;
 }
 
 body.logged-in div.company-list .views-row {
-    min-height: 240px;
+    min-height: 180px;
 }
 
 div.company-list .views-row .company-info {
