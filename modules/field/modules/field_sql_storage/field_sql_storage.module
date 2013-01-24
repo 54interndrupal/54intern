@@ -344,7 +344,6 @@ function field_sql_storage_field_storage_load($entity_type, $entities, $age, $fi
 
     $results = $query->execute();
 
-    watchdog("addresume",$table.','.$field_id.','.'XX');
     $delta_count = array();
     foreach ($results as $row) {
       if (!isset($delta_count[$row->entity_id][$row->language])) {
@@ -365,7 +364,6 @@ function field_sql_storage_field_storage_load($entity_type, $entities, $age, $fi
         $delta_count[$row->entity_id][$row->language]++;
       }
     }
-    watchdog("addresume",$table.','.$field_id.','.'YY');
     }
 
 }
