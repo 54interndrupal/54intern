@@ -492,7 +492,7 @@ function og_og_default_roles() {
 /**
  * Implements hook_node_access().
  */
-function og_node_access($node, $op, $account) {
+//function og_node_access($node, $op, $account) {
 //  $type = is_string($node) ? $node : (is_array($node) ? $node['type'] : $node->type);
 //
 //  if ($op == 'create' && og_is_group_content_type('node', $type) && variable_get('og_node_access_strict', TRUE) && !user_access('administer group')) {
@@ -538,8 +538,8 @@ function og_node_access($node, $op, $account) {
 //  }
 //
 //  return NODE_ACCESS_IGNORE;
-  return NODE_ACCESS_ALLOW;
-}
+
+//}
 
 /**
  * Implements hook_field_access().
