@@ -2505,7 +2505,8 @@ div.pane-intern-company-company-add-review span.add-review-btn {
 .view-display-id-block_featured_companies_front .views-field-nothing {
     border-left: #9a9a9a dotted 1px;
     border-bottom: #9a9a9a dotted 1px;
-    padding-bottom: 8px;
+    padding-left:2px;
+    padding-bottom:8px;
 }
 
 .view-display-id-block_featured_companies_front .company-content p {
