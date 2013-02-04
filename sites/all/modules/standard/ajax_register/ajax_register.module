@@ -364,7 +364,7 @@ function _ajax_register_include_modal() {
         'modalSize' => array(
           'type' => 'fixed',
           'width' => (int) trim(variable_get('ajax_register_modal_width', $popup_width)),
-          'height' => 140,
+          'height' => 170,
           'contentRight' => 30,
           'contentBottom' => 0,
         ),
