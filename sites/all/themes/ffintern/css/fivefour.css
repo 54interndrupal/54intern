@@ -4632,6 +4632,7 @@ div.pane-job-node-form  .form-actions #edit-submit {
 #footer .section {
     width: 960px;
     margin: 0 auto;
+    padding-bottom: 40px;
 }
 
 #footer a {
@@ -4646,7 +4647,7 @@ div.pane-job-node-form  .form-actions #edit-submit {
 
 #footer .footerLicense div{
     display: inline-block;
-    margin-left: 5px;
+    margin-left: 8px;
 }
 
 /*==fivestar==*/
