@@ -4626,18 +4626,27 @@ div.pane-job-node-form  .form-actions #edit-submit {
 /*==/user==*/
 
 #footer {
-    margin-top: 24px;
     border-top: #9a9a9a dotted 1px;
 }
 
 #footer .section {
     width: 960px;
     margin: 0 auto;
-    padding: 23px 0;
 }
 
 #footer a {
     color: #333;
+}
+
+#footer .footerLicense {
+    margin: 25px 0 0 250px;
+    display: block;
+    padding-top: 25px;
+}
+
+#footer .footerLicense div{
+    display: inline-block;
+    margin-left: 5px;
 }
 
 /*==fivestar==*/
