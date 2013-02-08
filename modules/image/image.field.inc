@@ -540,6 +540,8 @@ function image_field_formatter_view($entity_type, $entity, $field, $instance, $l
   // Check if the formatter involves a link.
   if ($display['settings']['image_link'] == 'content') {
     $uri = entity_uri($entity_type, $entity);
+    $link_node = TRUE;
+
   }
   elseif ($display['settings']['image_link'] == 'file') {
     $link_file = TRUE;
@@ -551,6 +553,13 @@ function image_field_formatter_view($entity_type, $entity, $field, $instance, $l
         'path' => file_create_url($item['uri']),
         'options' => array(),
       );
+    }elseif(isset($link_node)){
+      if(isset($entity->title)){
+      $item['alt'] = $entity-> title;
+      $item['title'] = $entity-> title;
+      }
+      $uri['options']=array('attributes' => array('target' => '_blank'));
+//      print_r($item);
     }
     $element[$delta] = array(
       '#theme' => 'image_formatter',
