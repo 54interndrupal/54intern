@@ -119,16 +119,16 @@
 
           <div class="field-items"><?php print $field_company_type[0]['taxonomy_term']->name; ?></div>
         </div>
-        <div class="field field-name-contact">
-          <label>联系人：</label>
-
-          <div class="field-items"><?php print $field_contact[0]['safe_value']; ?></div>
-        </div>
-        <div class="field field-name-website">
-          <label>企业网址：</label>
-
-          <div class="field-items"><?php print $field_website[0]['safe_value']; ?></div>
-        </div>
+<!--        <div class="field field-name-contact">-->
+<!--          <label>联系人：</label>-->
+<!---->
+<!--          <div class="field-items">--><?php //print $field_contact[0]['safe_value']; ?><!--</div>-->
+<!--        </div>-->
+<!--        <div class="field field-name-website">-->
+<!--          <label>企业网址：</label>-->
+<!---->
+<!--          <div class="field-items">--><?php //print $field_website[0]['safe_value']; ?><!--</div>-->
+<!--        </div>-->
         <div class="field field-name-body">
           <label class='c-9'>企业简介：</label>
 
