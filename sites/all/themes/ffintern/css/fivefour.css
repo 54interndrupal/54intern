@@ -4630,6 +4630,7 @@ div.pane-job-node-form  .form-actions #edit-submit {
 }
 
 #footer .section {
+    height: 20px;
     font-size: 11px;
     width: 960px;
     margin: 0 auto;
