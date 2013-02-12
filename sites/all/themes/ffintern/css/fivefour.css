@@ -377,9 +377,34 @@ form.comment-form input.form-submit {
     font-size: 11px;
 }
 
+.item-list ul.pager li.pager-item.first:hover,
+.item-list ul.pager li.pager-item:hover,
+.item-list ul.pager li.pager-current:hover,
+.item-list ul.pager li.pager-next:hover,
+.item-list ul.pager li.pager-previous:hover,
+.item-list ul.pager li.pager-last:hover,
+.item-list ul.pager li.pager-first:hover {
+    background-color: rgb(141, 177, 37);
+}
+
+.item-list ul.pager li.pager-item.first:hover a,
+.item-list ul.pager li.pager-item:hover a,
+.item-list ul.pager li.pager-current:hover a,
+.item-list ul.pager li.pager-next:hover a,
+.item-list ul.pager li.pager-previous:hover a,
+.item-list ul.pager li.pager-last:hover a,
+.item-list ul.pager li.pager-first:hover a{
+    color: #ffffff;
+    font-weight: bold;
+}
+
 .item-list ul.pager li.breaker.pager-item{
     border: none;
     padding: 2px 2px;
+}
+
+.item-list ul.pager li.breaker.pager-item:hover{
+    background: #FFFFFF;
 }
 
 .item-list ul.pager li a {
