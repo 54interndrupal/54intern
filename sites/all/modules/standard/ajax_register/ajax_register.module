@@ -239,6 +239,7 @@ function ajax_register_user_profile_form_ajax_callback($form, $form_state) {
   if (!form_get_errors()) {
     // After successfull password restore replace form with status messages.
     $commands = array();
+
     $commands[] = ajax_command_replace('#ajax-register-user-profile-wrapper', theme('status_messages'));
     return array('#type' => 'ajax', '#commands' => $commands);
   }
@@ -315,6 +316,7 @@ function ajax_register_user_register_form_ajax_callback($form, $form_state) {
       // If register form should be hidden after successfull registration
       // just replace it with status messages.
       $commands = array();
+
       $commands[] = ajax_command_replace('#ajax-register-user-register-form-wrapper', theme('status_messages'));
       return array('#type' => 'ajax', '#commands' => $commands);
     }

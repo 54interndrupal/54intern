@@ -4617,15 +4617,16 @@ div.pane-company-node-form div.user-base-info {
 div.pane-company-node-form div.user-base-info .form-item-current-pass .description{
     margin: 8px 28px 0 105px;
     background-color: #FFFFCC;
-    padding: 7px;
+    padding: 6px;
     border: solid 1px #CCCCCC;
+    line-height: 1.5;
 }
 
 div.pane-company-node-form div.user-picture-info {
     padding-left: 15px;
     display: inline-block;
     width: 350px;
-    height: 300px;
+    height: 340px;
 }
 
 div.pane-company-node-form div.user-picture-info .form-item-select-avatar {

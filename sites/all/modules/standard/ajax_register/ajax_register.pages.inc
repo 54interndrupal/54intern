@@ -103,7 +103,9 @@ function ajax_register_page_callback($form_type, $js) {
         $commands[] = ctools_ajax_command_redirect('/companycenter');
       }
       elseif ($form_type == 'profile') {
-        $commands[] = ctools_modal_command_display('', theme('status_messages') . '<script>jQuery(".authcache-user-picture").html(jQuery.cookie("drupal_user_picture").replace(/\+/g," "));jQuery(".authcache-user").html(jQuery.cookie("drupal_user"));</script>');
+        $commands[] = ctools_modal_command_display('', theme('status_messages') . '<script>jQuery(".authcache-user-picture").html(jQuery.cookie("drupal_user_picture").replace(/\+/g," "));jQuery(".authcache-user").html(jQuery.cookie("drupal_user"));showMessage("账户更新成功！")</script>');
+        $commands[] =ctools_modal_command_dismiss();
+//        ctools_modal_command_display('', theme('status_messages') . '<script>jQuery(".authcache-user-picture").html(jQuery.cookie("drupal_user_picture").replace(/\+/g," "));jQuery(".authcache-user").html(jQuery.cookie("drupal_user"));</script>');
       }
     }
 
