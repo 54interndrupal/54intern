@@ -4128,11 +4128,22 @@ a.reply {
 #user-center-block .user-info {
     background-color: #F7F9FA;
     padding: 10px 10px;
+    height: 100px;
+}
+
+#user-center-block .views-field-edit {
+   padding-top: 6px;
+}
+#user-center-block .user-info span.edt-acct{
+    background:url(img/site/bt_acct.png) no-repeat 0 3px;
+    padding:5px 0 0 23px;
+    font-size: 12px;
+
 }
 
 #user-center-block .user-picture {
     float: left;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 #user-center-block .block-content div.views-field-name {
@@ -4143,6 +4154,8 @@ a.reply {
 #user-center-block .block-content div.views-field-name .field-content {
     background: url(img/site/bt_star.gif) no-repeat 0 2px;
     padding-left: 20px;
+    height: 17px;
+    font-size: 14px;
 }
 
 #user-center-block div.block {
@@ -4151,7 +4164,7 @@ a.reply {
 }
 
 #user-center-block .block-content {
-    line-height: 1.7;
+    line-height: 1.2;
     padding: 0;
 }
 
@@ -4162,7 +4175,7 @@ a.reply {
 }
 
 #user-center-block .block-content div.views-field {
-    padding: 3px 0;
+    padding-bottom: 8px;
 }
 
 #user-center-block .views-field-follow a,
@@ -4231,10 +4244,6 @@ a.button span {
 
 #user-center-block a.button span {
     width: 90px;
-}
-
-#user-center-block .views-field-edit a.button {
-    background-position: left -30px
 }
 
 /*== page-resume Begin==*/

@@ -33,18 +33,18 @@ drupal_add_js($js_file);
 
   <div class="views-field views-field-picture user-picture authcache-user-picture"><?php if(!$_authcache_is_cacheable)print $fields['picture']->content;?></div>
   <div class="views-field">
-    <a href="<?php print base_path() . 'user?qt-user_center_tab=2#qt-user_center_tab' ?>"><span>申请的职位</span></a>
+    <a href="<?php print base_path() . 'user?qt-user_center_tab=2#qt-user_center_tab' ?>"><span style="font-size: 14px;color: #336600">申请的职位 ></span></a>
   </div>
   <div class="views-field">
-    <a href="<?php print base_path() . 'user?qt-user_center_tab=0#qt-user_center_tab' ?>"><span>关注的企业</span></a>
+    <a href="<?php print base_path() . 'user?qt-user_center_tab=0#qt-user_center_tab' ?>"><span style="font-size: 14px;color: #000033">关注的企业 ></span></a>
   </div>
   <div class="views-field">
-    <a href="<?php print base_path() . 'user?qt-user_center_tab=3#qt-user_center_tab' ?>"><span>收藏的文章</span></a>
+    <a href="<?php print base_path() . 'user?qt-user_center_tab=3#qt-user_center_tab' ?>"><span style="font-size: 14px;color: #993300">收藏的文章 ></span></a>
   </div>
   <div class="views-field views-field-edit">
     <div class="field-content">
       <a href="<?php print url("ajax_register/profile/nojs");?>"
-         class="ctools-use-modal ctools-modal-ctools-ajax-register-style"><span>帐号编辑</span></a>
+         class="ctools-use-modal ctools-modal-ctools-ajax-register-style"><span class="edt-acct">帐号编辑</span></a>
 
     </div>
   </div>
