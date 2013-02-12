@@ -86,6 +86,8 @@ else {
   unset($form['timezone']);
   unset($form['field_phone']);
   unset($form['field_cell_phone']);
+  unset($form["picture"]['picture_delete']);
+  $form["picture"]['picture_upload']['#title'] = t('上传头像');
   $form['account']['name']['#title'] = t('用户名');
   $form['account']['mail']['#title'] = t('邮箱');
 //  print_r($form);
@@ -113,6 +115,7 @@ else {
     </div>
     <div class="user-picture-info">
       <?php
+
       print drupal_render($form["picture"]);
       ?>
     </div>

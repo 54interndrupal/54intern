@@ -374,7 +374,11 @@ form.comment-form input.form-submit {
     height: 20px;
     border: 1px solid #CCCCCC;
     padding: 5px 5px;
-    font-size: 12px;
+    font-size: 11px;
+}
+
+.item-list ul.pager li.breaker.pager-item{
+    border: none;
 }
 
 .item-list ul.pager li a {
