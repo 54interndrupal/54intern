@@ -3500,6 +3500,7 @@ div.group-list a.join {
 
 div.job-list div.views-row {
     border-bottom: 1px dotted #DDD;
+    padding: 2px 0;
 }
 
 div.job-list div.views-row-last {
