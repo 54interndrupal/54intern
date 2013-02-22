@@ -46,6 +46,7 @@
 
 <head profile="<?php print $grddl_profile; ?>">
   <meta property="wb:webmaster" content="ca44a64150e6fda0" />
+  <meta property="qc:admins" content="11346737476541645266375" />
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>

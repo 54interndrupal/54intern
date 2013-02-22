@@ -86,8 +86,6 @@
 ?>
 <div id="page-wrapper"><div id="page">
 	<div id="header"><div class="section clearfix">
-      <meta property="wb:webmaster" content="ca44a64150e6fda0" />
-      <meta property="qc:admins" content="11346737476541645266375" />
 		<?php print render($page['header_top']); ?>
 		 <div style="display: inline-block;width: 100%">
 		<?php if ($logo): ?>
