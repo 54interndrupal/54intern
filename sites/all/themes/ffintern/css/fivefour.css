@@ -372,7 +372,7 @@ form.comment-form input.form-submit {
     display: inline-block;
     list-style-type: none;
     height: 20px;
-    border: 1px solid #CCCCCC;
+    border: 1px solid #4D963B;
     padding: 2px 5px;
     margin: 0 2px;
     font-size: 11px;
@@ -410,7 +410,7 @@ form.comment-form input.form-submit {
 }
 
 .item-list ul.pager li a {
-    color: #999999;
+    color: #2a623a;
 
 }
 
