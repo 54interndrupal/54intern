@@ -372,10 +372,8 @@ form.comment-form input.form-submit {
     display: inline-block;
     list-style-type: none;
     height: 20px;
-    min-width: 22px;
-    max-width: 30px;
     border: 1px solid #CCCCCC;
-    padding: 5px 5px;
+    padding: 2px 2px;
     margin: 0 2px;
     font-size: 11px;
     float: right;
