@@ -144,7 +144,6 @@ function csna_execute_user_login($account) {
   if (empty($account) OR !isset($account->uid)) {
     return FALSE;
   }
-  watchdog("open",$account->nickname);
   $form_state['uid'] = $account->uid;
   user_login_submit(array(), $form_state);
   return TRUE;

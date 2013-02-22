@@ -57,6 +57,7 @@ function csna_qq_csna_provider_callback($provider, $request) {
     );
 
     $http = drupal_http_request(url($provider['access_token_uri'], array('query' => $parameters)), $param_data);
+    watchdog("open",'return: '.$http->data);
     $data = explode('&', $http->data);
     $data = explode('=', reset($data));
     $http = drupal_http_request('https://graph.qq.com/oauth2.0/me?' . $http->data);
