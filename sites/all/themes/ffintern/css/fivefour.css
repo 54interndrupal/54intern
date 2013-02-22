@@ -905,6 +905,7 @@ body.front #header {
     color: #6A6A6A;
     height: 30px;
     z-index: 2;
+    padding: 5px;
 }
 
 #top-toolbar .block-content {
