@@ -1,0 +1,120 @@
+<?php
+
+/**
+ * @file
+ * Allows for passing an array to the watchdog command.
+ */
+
+/**
+ * Logs a system message that may include an array.
+ *
+ * @param string $type
+ *   The category to which this message belongs. Can be any string, but the
+ *   general practice is to use the name of the module calling watchdog().
+ * @param string $message
+ *   The message to store in the log. Keep $message translatable by not
+ *   concatenating dynamic values into it! Variables in the message should be
+ *   added by using placeholder strings alongside the variables argument to
+ *   declare the value of the placeholders. See t() for documentation on how
+ *   $message and $variables interact.
+ * @param array $array
+ *   Array of variables to be included in the message on display.
+ * @param array $variables
+ *   Array of variables to replace in the message on display or NULL if message
+ *   is already translated or not possible to translate.
+ * @param int $severity
+ *   The severity of the message; one of the following values as defined in
+ *   @link http://www.faqs.org/rfcs/rfc3164.html RFC 3164: @endlink
+ *   - WATCHDOG_EMERGENCY: Emergency, system is unusable.
+ *   - WATCHDOG_ALERT: Alert, action must be taken immediately.
+ *   - WATCHDOG_CRITICAL: Critical conditions.
+ *   - WATCHDOG_ERROR: Error conditions.
+ *   - WATCHDOG_WARNING: Warning conditions.
+ *   - WATCHDOG_NOTICE: (default) Normal but significant conditions.
+ *   - WATCHDOG_INFO: Informational messages.
+ *   - WATCHDOG_DEBUG: Debug-level messages.
+ * @param string $link
+ *   A link to associate with the message.
+ *
+ * @see watchdog()
+ * @see watchdog_severity_levels()
+ * @see hook_watchdog()
+ */
+function watchdog_array($type, $message = '', $array = array(), $variables = array(), $severity = WATCHDOG_NOTICE, $link = NULL) {
+  $encapsulate_array_in_pre = variable_get('watchdog_array_encapsulate_array_in_pre', TRUE);
+  $message .= (!empty($message) ? "\r\n" : '') . ($encapsulate_array_in_pre ? '<pre>' : '') . print_r($array, TRUE) . ($encapsulate_array_in_pre ? '</pre>' : '');
+
+  watchdog(
+    $type,
+    $message,
+    $variables,
+    $severity,
+    $link
+  );
+}
+
+/**
+ * Implements hook_help().
+ */
+function watchdog_array_help($path, $arg) {
+  $output = '';
+
+  switch ($path) {
+    case 'admin/help#watchdog_array':
+      $output .= '<h2>' . t('Introduction') . '</h2>';
+      $output .= '<p>' . t('Current Maintainer') . ': <a href="http://drupal.org/user/2364270">PDNagilum</a> &lt;<a href="mailto:pdnagilum@gmail.com">pdnagilum@gmail.com</a>&gt;</p>';
+      $output .= '<p>' . t('Allows for passing an array to the watchdog command.') . '</p>';
+      $output .= '<p>' . t('This module introduces an alternative to the watchdog command with an extra argument for passing an array that will be included in the message-text.') . '</p>';
+      $output .= '<h2>' . t('Example') . '</h2>';
+      $output .= '<code>watchdog_array(<br />&nbsp;&nbsp;$type,<br />&nbsp;&nbsp;$message = \'\',<br />&nbsp;&nbsp;$array = array(),<br />&nbsp;&nbsp;$variables = array(),<br />&nbsp;&nbsp;$severity = WATCHDOG_NOTICE,<br />&nbsp;&nbsp;$link = NULL);</code>';
+      $output .= '<p>' . t('The third argument is now an array() which will be added to the message-text using the <code>print_r</code> function.') . '</p>';
+      $output .= '<h2>' . t('Usage') . '</h2>';
+      $output .= '<code>watchdog_array(<br />';
+      $output .= '&nbsp;&nbsp;\'Test\',<br />';
+      $output .= '&nbsp;&nbsp;\'This is a test\',<br />';
+      $output .= '&nbsp;&nbsp;array(<br />';
+      $output .= '&nbsp;&nbsp;&nbsp;&nbsp;\'Var1\' =&gt; 1,<br />';
+      $output .= '&nbsp;&nbsp;&nbsp;&nbsp;\'Var2\' =&gt; \'Yeah\',<br />';
+      $output .= '&nbsp;&nbsp;)<br />';
+      $output .= ');</code>';
+      $output .= '<p>' . t('The above example will result in the following log-entry:') . '</p>';
+      $output .= '<blockquote>This is a test<br />';
+      $output .= '<code>Array<br />';
+      $output .= '(<br />';
+      $output .= '&nbsp;&nbsp;[Var1] =&gt; 1<br />';
+      $output .= '&nbsp;&nbsp;[Var2] =&gt; Yeah<br />';
+      $output .= ')</code></blockquote>';
+
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function watchdog_array_menu() {
+  $items = array();
+
+  $items['admin/config/development/watchdog-array'] = array(
+    'title'            => 'Watchdog Array',
+    'description'      => 'Configure the Watchdog Array module.',
+    'page callback'    => 'drupal_get_form',
+    'page arguments'   => array('watchdog_array_config'),
+    'access arguments' => array('administer watchdog_array'),
+    'file'             => 'watchdog_array.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function watchdog_array_permission() {
+  return array(
+    'administer watchdog_array' => array(
+      'title'       => t('Administer Watchdog Array'),
+      'description' => t('Perform administration tasks for Watchdog Array'),
+    ),
+  );
+}
