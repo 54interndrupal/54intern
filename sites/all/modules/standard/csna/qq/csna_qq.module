@@ -68,6 +68,7 @@ function csna_qq_csna_provider_callback($provider, $request) {
         'oauth_consumer_key' => $provider['key'],
         'openid' => $openid->openid,))));
     $info   = json_decode($http->data);
+    watchdog("open", $openid->openid.','.$info->nickname);
     return array(
       'access_token' => $data[1],
       'uid' => $openid->openid,
