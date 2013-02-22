@@ -360,7 +360,6 @@ form.comment-form input.form-submit {
     padding: 8px 10px;
     font-size: 14px;
     text-align: center;
-    height: 50px;
 }
 
 .item-list ul.pager li.pager-item.first,
@@ -370,9 +369,11 @@ form.comment-form input.form-submit {
 .item-list ul.pager li.pager-previous,
 .item-list ul.pager li.pager-last,
 .item-list ul.pager li.pager-first {
-    display: inline;
+    display: inline-block;
     list-style-type: none;
     height: 20px;
+    min-width: 22px;
+    max-width: 30px;
     border: 1px solid #CCCCCC;
     padding: 5px 5px;
     margin: 0 2px;
