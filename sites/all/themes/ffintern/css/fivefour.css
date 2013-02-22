@@ -3504,7 +3504,8 @@ div.job-list div.views-row {
     padding: 2px 0;
 }
 
-div.job-list div.views-row-last {
+div.job-list div.views-row-last,
+div.company-list div.views-row-last{
     border-bottom: none;
 }
 
