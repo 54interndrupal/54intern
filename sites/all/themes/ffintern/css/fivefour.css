@@ -542,6 +542,7 @@ span.icon-like-s {
 .post-job .job-content {
     width: 500px;
     display: inline-block;
+    float: left;
 }
 
 .post-job .job-author {
@@ -554,7 +555,7 @@ span.icon-like-s {
     width: 160px;
     font-weight: bold;
     padding-right: 8px;
-    display: inline-block;
+
 }
 
 .post-job .job-company a {
@@ -904,9 +905,9 @@ body.front #header {
     width: 100%;
     border-bottom: dashed 1px #CCC;
     color: #6A6A6A;
-    height: 20px;
+    height: 26px;
     z-index: 2;
-    padding: 5px 0;
+    padding: 2px 0;
 }
 
 #top-toolbar .block-content {
