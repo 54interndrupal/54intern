@@ -153,15 +153,15 @@ function csna_execute_user_login($account) {
  * Implements hook_form_alter().
  */
 function csna_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'user_login' || $form_id == 'user_login_block' || $form_id == 'user_register_form') {
-    $providers = csna_providers();
-    if (isset($form['submitted']['user_login_block']['#suffix']) && !empty($form['submitted']['user_login_block']['#suffix'])) {
-      $form['submitted']['user_login_block']['#suffix'] .= theme('csna_providers', $providers);
-    }
-    else {
-      $form['submitted']['user_login_block']['#suffix'] = theme('csna_providers', $providers);
-    }
-  }
+//  if ($form_id == 'user_login' || $form_id == 'user_login_block' || $form_id == 'user_register_form') {
+//    $providers = csna_providers();
+//    if (isset($form['submitted']['user_login_block']['#suffix']) && !empty($form['submitted']['user_login_block']['#suffix'])) {
+//      $form['submitted']['user_login_block']['#suffix'] .= theme('csna_providers', $providers);
+//    }
+//    else {
+//      $form['submitted']['user_login_block']['#suffix'] = theme('csna_providers', $providers);
+//    }
+//  }
 }
 
 /**
