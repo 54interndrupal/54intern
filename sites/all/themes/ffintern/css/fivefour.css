@@ -375,6 +375,7 @@ form.comment-form input.form-submit {
     border: 1px solid #CCCCCC;
     padding: 5px 5px;
     font-size: 11px;
+    float: left;
 }
 
 .item-list ul.pager li.pager-item.first:hover,
