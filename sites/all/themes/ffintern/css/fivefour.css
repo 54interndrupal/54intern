@@ -360,6 +360,7 @@ form.comment-form input.form-submit {
     padding: 8px 10px;
     font-size: 14px;
     text-align: center;
+    height: 50px;
 }
 
 .item-list ul.pager li.pager-item.first,
