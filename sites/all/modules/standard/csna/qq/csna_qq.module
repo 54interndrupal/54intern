@@ -57,7 +57,7 @@ function csna_qq_csna_provider_callback($provider, $request) {
     );
 
     watchdog("open",'query: '.drupal_http_build_query($parameters));
-    $http = drupal_http_request(url($provider['access_token_uri'], array('query' => $parameters)), $param_data);
+    $http = drupal_http_request(url($provider['access_token_uri']), $param_data);
     watchdog("open",'return access token: '.$http->data);
     $data = explode('&', $http->data);
     $data = explode('=', reset($data));
