@@ -1947,74 +1947,74 @@ function og_ungroup($group_type, $gid, $entity_type = 'user', $etid = NULL) {
  *   the given group isn't a valid group.
  */
 function og_user_access($group_type, $gid, $string, $account = NULL, $skip_alter = FALSE, $ignore_admin = FALSE) {
-  global $user;
-  $perm = &drupal_static(__FUNCTION__, array());
-  // Mark the group ID and permissions that invoked an alter.
-  $perm_alter = &drupal_static(__FUNCTION__ . '_alter', array());
-
-  if (!og_is_group($group_type, $gid)) {
-    // Not a group.
-    return NULL;
-  }
-
-
-  if (empty($account)) {
-    $account = clone $user;
-  }
-
-  // User #1 has all privileges.
-  if ($account->uid == 1) {
-    return TRUE;
-  }
-
-  // Administer group permission.
-  if (user_access('administer group', $account) && !$ignore_admin) {
-    return TRUE;
-  }
-
-  $group = entity_load_single($group_type, $gid);
-  // Group manager has all privileges (if variable is TRUE).
-  if (variable_get('og_group_manager_full_access', TRUE)) {
-    if (!empty($group->uid) && $group->uid == $account->uid) {
-      return TRUE;
-    }
-  }
-
-  $identifier = $group_type . ':' . $gid;
-
-  // To reduce the number of SQL queries, we cache the user's permissions
-  // in a static variable.
-  if (!isset($perm[$identifier][$account->uid])) {
-    $roles = og_get_user_roles($group_type, $gid, $account->uid);
-    $role_permissions = og_role_permissions($roles);
-
-    $perms = array();
-    foreach ($role_permissions as $one_role) {
-      $perms += $one_role;
-      $perm[$identifier][$account->uid] = $perms;
-    }
-  }
-
-  if (!$skip_alter && empty($perm_alter[$identifier][$account->uid][$string])) {
-    // Let modules alter the permissions. since $perm is static we create a
-    // clone of it.
-    $temp_perm = $perm[$identifier][$account->uid];
-    $context = array(
-      'string' => $string,
-      'group_type' => $group_type,
-      'group' => $group,
-      'account' => $account,
-    );
-    drupal_alter('og_user_access', $temp_perm, $context);
-
-    // Re-assing the altered permissions.
-    $perm[$identifier][$account->uid] = $temp_perm;
-
-    // Make sure alter isn't called for the same permissions.
-    $perm_alter[$identifier][$account->uid][$string] = TRUE;
-  }
-
-  return !empty($perm[$identifier][$account->uid][$string]) || (!empty($perm[$identifier][$account->uid]['administer group']) && !$ignore_admin);
+//  global $user;
+//  $perm = &drupal_static(__FUNCTION__, array());
+//  // Mark the group ID and permissions that invoked an alter.
+//  $perm_alter = &drupal_static(__FUNCTION__ . '_alter', array());
+//
+//  if (!og_is_group($group_type, $gid)) {
+//    // Not a group.
+//    return NULL;
+//  }
+//
+//
+//  if (empty($account)) {
+//    $account = clone $user;
+//  }
+//
+//  // User #1 has all privileges.
+//  if ($account->uid == 1) {
+//    return TRUE;
+//  }
+//
+//  // Administer group permission.
+//  if (user_access('administer group', $account) && !$ignore_admin) {
+//    return TRUE;
+//  }
+//
+//  $group = entity_load_single($group_type, $gid);
+//  // Group manager has all privileges (if variable is TRUE).
+//  if (variable_get('og_group_manager_full_access', TRUE)) {
+//    if (!empty($group->uid) && $group->uid == $account->uid) {
+//      return TRUE;
+//    }
+//  }
+//
+//  $identifier = $group_type . ':' . $gid;
+//
+//  // To reduce the number of SQL queries, we cache the user's permissions
+//  // in a static variable.
+//  if (!isset($perm[$identifier][$account->uid])) {
+//    $roles = og_get_user_roles($group_type, $gid, $account->uid);
+//    $role_permissions = og_role_permissions($roles);
+//
+//    $perms = array();
+//    foreach ($role_permissions as $one_role) {
+//      $perms += $one_role;
+//      $perm[$identifier][$account->uid] = $perms;
+//    }
+//  }
+//
+//  if (!$skip_alter && empty($perm_alter[$identifier][$account->uid][$string])) {
+//    // Let modules alter the permissions. since $perm is static we create a
+//    // clone of it.
+//    $temp_perm = $perm[$identifier][$account->uid];
+//    $context = array(
+//      'string' => $string,
+//      'group_type' => $group_type,
+//      'group' => $group,
+//      'account' => $account,
+//    );
+//    drupal_alter('og_user_access', $temp_perm, $context);
+//
+//    // Re-assing the altered permissions.
+//    $perm[$identifier][$account->uid] = $temp_perm;
+//
+//    // Make sure alter isn't called for the same permissions.
+//    $perm_alter[$identifier][$account->uid][$string] = TRUE;
+//  }
+//
+//  return !empty($perm[$identifier][$account->uid][$string]) || (!empty($perm[$identifier][$account->uid]['administer group']) && !$ignore_admin);
 }
 
 /**
