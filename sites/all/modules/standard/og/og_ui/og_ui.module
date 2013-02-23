@@ -787,18 +787,18 @@ function og_ui_field_access($op, $field, $entity_type, $entity, $account) {
  * Add a permission to pending users to unsubscribe form group.
  */
 function og_ui_og_user_access_alter(&$perms, $context) {
-  if ($context['string'] != 'unsubscribe' || !empty($perm['unsubscribe'])) {
-    return;
-  }
-
-  $group_type = $context['group_type'];
-  $group = $context['group'];
-
-  list($id) = entity_extract_ids($group_type, $group);
-  $og_membership = og_get_membership($group_type, $id, 'user', $context['account']->uid);
-  if (empty($og_membership) || $og_membership->state != OG_STATE_PENDING) {
-    return;
-  }
+//  if ($context['string'] != 'unsubscribe' || !empty($perm['unsubscribe'])) {
+//    return;
+//  }
+//
+//  $group_type = $context['group_type'];
+//  $group = $context['group'];
+//
+//  list($id) = entity_extract_ids($group_type, $group);
+//  $og_membership = og_get_membership($group_type, $id, 'user', $context['account']->uid);
+//  if (empty($og_membership) || $og_membership->state != OG_STATE_PENDING) {
+//    return;
+//  }
   // Allow user to unsubscribe.
   $perms['unsubscribe'] = TRUE;
 }
