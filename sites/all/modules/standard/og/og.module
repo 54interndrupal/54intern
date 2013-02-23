@@ -373,7 +373,8 @@ function og_get_field_og_membership_properties($entity, array $options, $name, $
 
   $result = $query->execute();
   $cache[$identifier] = !empty($result['og_membership']) ? array_keys($result['og_membership']) : array();
-  return $cache[$identifier];
+//  return $cache[$identifier];
+  return array();
 }
 
 /**
