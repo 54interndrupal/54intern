@@ -109,10 +109,10 @@ function intern_user_share_status_block() {
  * 企业用户信息区块
  */
 function intern_user_company_user_info_block() {
-  if(intern_user_is_company_user()){
-  drupal_add_js(drupal_get_path('module', 'intern_user') . '/js/intern_company_user.js',array('preprocess' => FALSE));
+  if (intern_user_is_company_user()) {
+    drupal_add_js(drupal_get_path('module', 'intern_user') . '/js/intern_company_user.js', array('preprocess' => FALSE));
   }
-    return '&nbsp;';
+  return '&nbsp;';
 }
 
 /**
@@ -126,7 +126,7 @@ function intern_user_resume_status_block() {
     $output .= '<div class="block-content"><div class="resume-status">';
     $output .= '</div></div></div>';
     // Use JS to retrieve block content
-    drupal_add_js(drupal_get_path('module', 'intern_user') . '/js/intern_user.js',array('preprocess' => FALSE));
+    drupal_add_js(drupal_get_path('module', 'intern_user') . '/js/intern_user.js', array('preprocess' => FALSE));
   }
   return $output;
 }
@@ -247,6 +247,13 @@ function intern_user_is_company_user() {
   }
 }
 
+function intern_user_is_scraper_user($uid) {
+  if ($uid == '9') {
+    return TRUE;
+  }
+  return FALSE;
+}
+
 /** 获取用户对应的company nid */
 function intern_user_get_company_id($uid) {
   $company_id = db_select('node', 'n')
@@ -294,7 +301,7 @@ function intern_user_form_node_form_alter(&$form, $form_state) {
       }
     }
 
-    if(empty($form['title']['#default_value'] )){
+    if (empty($form['title']['#default_value'])) {
       $form['title']['#default_value'] = '我的简历';
     }
 
@@ -309,7 +316,7 @@ function intern_user_resume_form_post_submit($form, &$form_state) {
   $nid = $form_state['nid'];
   $form_state['redirect'] = 'node/' . $nid . '/edit';
 
-  $_SESSION['user_resume_finish_percent'] = null;
+  $_SESSION['user_resume_finish_percent'] = NULL;
   $_SESSION['user_resume_id'] = $nid;
 }
 
@@ -412,7 +419,7 @@ function intern_user_get_user_name($user_name) {
 function intern_user_get_user_full_name($user_name) {
   $user_name_array = explode('^', $user_name);
   if (sizeof($user_name_array) == 2) {
-    return $user_name_array[0].'['.$user_name_array[1].']';
+    return $user_name_array[0] . '[' . $user_name_array[1] . ']';
   }
   else {
     return $user_name;
