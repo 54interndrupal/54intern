@@ -357,13 +357,13 @@ class DrupalDatabaseCache implements DrupalCacheInterface {
       watchdog('cache','table: '.db_escape_table($this->bin).' ,cid: '.$cids);
       $result = db_query('SELECT cid, data, created, expire, serialized FROM {' . db_escape_table($this->bin) . '} WHERE cid IN (:cids)', array(':cids' => $cids));
       $cache = array();
-      foreach ($result as $item) {
-        $item = $this->prepareItem($item);
-        if ($item) {
-          $cache[$item->cid] = $item;
-        }
-      }
-      $cids = array_diff($cids, array_keys($cache));
+//      foreach ($result as $item) {
+//        $item = $this->prepareItem($item);
+//        if ($item) {
+//          $cache[$item->cid] = $item;
+//        }
+//      }
+//      $cids = array_diff($cids, array_keys($cache));
       return $cache;
     }
     catch (Exception $e) {
