@@ -366,6 +366,7 @@ function og_get_field_og_membership_properties($entity, array $options, $name, $
     ->propertyCondition('entity_type', $type, '=')
     ->propertyCondition('etid', $id, '=')
     ->propertyCondition('field_name', $field_name, '=');
+  watchdog('og','entity_type->'.$type.' ,etid->'.$id.' ,field_name->'.$field_name);
 
   if ($state) {
     $query->propertyCondition('state', $state, '=');
