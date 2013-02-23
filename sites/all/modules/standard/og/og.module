@@ -294,7 +294,7 @@ function og_get_group_members_properties($entity, array $options, $name, $type) 
     $query->propertyCondition('state', $state, '=');
   }
 
-  $result = $query->execute();
+//  $result = $query->execute();
   if (!empty($result['og_membership'])) {
     $og_memberships = og_membership_load_multiple(array_keys($result['og_membership']));
     foreach ($og_memberships as $og_membership) {
