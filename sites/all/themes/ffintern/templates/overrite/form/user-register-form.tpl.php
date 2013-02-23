@@ -28,8 +28,8 @@ $form['account']['mail']['#title'] = t('邮箱');
   </div>
   <div class="other-login">
     <span style="display: inline-block;padding:0 10px 0 0;vertical-align: top">  使用合作网站账号登录 </span>
-    <a href="csna/weibo"><span class="wbxl"></span></a>
-    <!--<a href="<?php print url('qq_login/response');?>"><span class="rrxl"></span></a>-->
+    <a href="<?php print url('csna/weibo');?>"><span class="wbxl"></span></a>
     <a href="<?php print url('csna/qq');?>"><span class="qqxl"></span></a>
+    <a href="<?php print url('csna/renren');?>"><span class="rrxl"></span></a>
   </div>
 </div>
