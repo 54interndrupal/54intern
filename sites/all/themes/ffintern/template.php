@@ -323,17 +323,17 @@ function ffintern_menu_link__main_menu(array $variables) {
       $attributes['class'][] = 'active';
     }
     else {
-      if ($mlid == 624 && ($params[2] == 'company' || arg(0) == 'companys')) {
+      if ($mlid == 624 && ((isset($params[2]) && $params[2] == 'company') || arg(0) == 'companys')) {
         $attributes['class'][] = 'active';
       }
       else {
-        if ($mlid == 625 && $params[2] == 'job') {
+        if ($mlid == 625 && (isset($params[2]) && $params[2] == 'job')) {
           $attributes['class'][] = 'active';
         }
         else {
-          if ($mlid == 1436 && $params[2] == 'article') {
+          if ($mlid == 1436 && (isset($params[2]) && $params[2] == 'article')) {
             $attributes['class'][] = 'active';
-          }elseif (intern_user_is_company_user()&& ($mlid == 638) && ($params[2]=='node' || arg(0)=='user')){
+          }elseif (intern_user_is_company_user()&& ($mlid == 638) && ((isset($params[2])&&$params[2]=='node') || arg(0)=='user')){
             $attributes['class'][] = 'active';
           }
         }
