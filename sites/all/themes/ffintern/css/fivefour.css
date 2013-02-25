@@ -4211,7 +4211,7 @@ a.reply {
 }
 
 #user-center-block .block-content div.views-field {
-    padding-bottom: 8px;
+    padding: 2px 0 8px 0;
 }
 
 #user-center-block .views-field-follow a,
