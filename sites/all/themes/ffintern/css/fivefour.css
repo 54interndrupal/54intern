@@ -46,6 +46,10 @@ label {
     font-weight: normal;
 }
 
+a{
+    cursor: pointer;
+}
+
 a:link {
     color: #2A623A;
     text-decoration: none;
