@@ -47,6 +47,11 @@
 <head profile="<?php print $grddl_profile; ?>">
   <meta property="wb:webmaster" content="ca44a64150e6fda0" />
   <meta property="qc:admins" content="11346737476541645266375" />
+  <meta name="description" content="实习圈?实习圈!这里有最详尽的实习百科，每天发布大量实习机会，提供详尽真实的企业实习点评，同时为企业提供一个免费的实习生招聘平台" />
+  <meta name="keywords" content="实习机会,企业点评,实习百科,实习生招聘" />
+  <meta name="author" content="实习圈" />
+
+
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
