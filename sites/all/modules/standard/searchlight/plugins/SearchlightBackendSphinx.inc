@@ -67,7 +67,7 @@ class SearchlightBackendSphinx extends SearchlightBackend {
         'max_iops' => 0,
         'max_iosize' => 0,
         'write_buffer' => '1M',
-        'sql_range_step' => 1000,
+        'sql_range_step' => 2500,
         'sql_ranged_throttle' => 0,
       ),
     );
@@ -621,7 +621,7 @@ class SearchlightBackendSphinx extends SearchlightBackend {
    * Override of setPager().
    */
   function setPager(&$client, $offset, $limit) {
-    $limit = !empty($limit) ? $limit : 1000;
+    $limit = !empty($limit) ? $limit : 2500;
     if (!empty($offset) || !empty($limit)) {
       $client->SetLimits((int) $offset, (int) $limit);
     }
@@ -644,7 +644,7 @@ class SearchlightBackendSphinx extends SearchlightBackend {
       if (count($grants_sql)) {
         $grants_sql = implode('+', $grants_sql);
         $client->SetSelect("*, ({$grants_sql}) AS sphinx_node_access");
-        $client->SetFilterRange('sphinx_node_access', 1, 1000);
+        $client->SetFilterRange('sphinx_node_access', 1, 2500);
       }
     }
   }
@@ -1042,7 +1042,7 @@ class SearchlightBackendSphinx extends SearchlightBackend {
 
       // Assume serial ids on the base table and step by 1000.
       $sql_query_range = "SELECT MIN({$view->base_field}), MAX({$view->base_field}) FROM {$view->base_table} WHERE {$view->base_field} > 0";
-      $sql_range_step = isset($this->settings['indexer']['sql_range_step']) ? $this->settings['indexer']['sql_range_step'] : 1000;
+      $sql_range_step = isset($this->settings['indexer']['sql_range_step']) ? $this->settings['indexer']['sql_range_step'] : 2500;
       $sql_ranged_throttle = isset($this->settings['indexer']['sql_ranged_throttle']) ? $this->settings['indexer']['sql_ranged_throttle'] : 0;
       if ($delta_index_enabled) {
         $sql_query_range_delta = "SELECT IFNULL(MIN(id), 1), IFNULL(MAX(id), 1) FROM searchlight_search WHERE type = '{$view->base_table}' AND status <> -1 AND id > 0";
@@ -1239,7 +1239,7 @@ class SearchlightBackendSphinx extends SearchlightBackend {
     if (!empty($attributes)) {
       $this->sphinxIncludeClient();
       $sphinx = new SphinxClient();
-      $sphinx->SetLimits(0, 1000);
+      $sphinx->SetLimits(0, 2500);
 
       foreach ($attributes as $name => $field) {
         // Dispatch a Sphinx query to retrieve the ordinal.
@@ -1247,7 +1247,7 @@ class SearchlightBackendSphinx extends SearchlightBackend {
         $sphinx->SetGroupDistinct($name);
         $result = $sphinx->Query(NULL, $this->sphinxGetIndex($datasource));
 
-        if (!empty($result['matches']) && count($result['matches']) < 1000) {
+        if (!empty($result['matches']) && count($result['matches']) < 2500) {
           // Dispatch a Views query to retrieve the corresponding string.
           $ids = array_keys($result['matches']);
           $view = $datasource->view->copy();
