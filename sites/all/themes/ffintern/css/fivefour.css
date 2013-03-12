@@ -14,8 +14,9 @@ form textarea {
 }
 
 h2 {
-    font-size: 16px;
+    font-size: 18px;
     font-family: Lucida, Verdana, Hiragino Sans GB, STHeiti, WenQuanYi Micro Hei, "Micro Yahei", 微软雅黑, SimSun, sans-serif;
+    font-weight: bold;
 }
 
 img {
