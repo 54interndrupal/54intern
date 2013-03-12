@@ -356,8 +356,7 @@
       left: '0px',
       margin: '0px',
       background: '#000',
-      opacity: '.55'
-    }, css);
+      }, css);
 
     // Add opacity handling for IE.
 //    css.filter = 'alpha(opacity=' + (100 * css.opacity) + ')';
