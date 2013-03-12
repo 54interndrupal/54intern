@@ -360,8 +360,7 @@
     }, css);
 
     // Add opacity handling for IE.
-    css.filter = 'alpha(opacity=' + (100 * css.opacity) + ')';
-    css.filter = 'progid:DXImageTransform.Microsoft.Alpha(opacity=' + (100 * css.opacity) + ')';
+//    css.filter = 'alpha(opacity=' + (100 * css.opacity) + ')';
 
     content.hide();
 
