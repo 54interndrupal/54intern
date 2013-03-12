@@ -602,6 +602,7 @@ input.form-text,
 input.form-file,
 select.form-select {
     border: 1px solid #ddd;
+    color: #555555;
 }
 
 textarea.hint,
