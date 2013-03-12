@@ -36,10 +36,10 @@ drupal_add_js($js_file);
     <a href="<?php print base_path() . 'user?qt-user_center_tab=2#qt-user_center_tab' ?>"><span style="font-size: 12px;color: #336600">申请的职位 ></span></a>
   </div>
   <div class="views-field">
-    <a href="<?php print base_path() . 'user?qt-user_center_tab=0#qt-user_center_tab' ?>"><span style="font-size: 12px;color: #000033">关注的企业 ></span></a>
+    <a href="<?php print base_path() . 'user?qt-user_center_tab=0#qt-user_center_tab' ?>"><span style="font-size: 12px;color: #336600">关注的企业 ></span></a>
   </div>
   <div class="views-field">
-    <a href="<?php print base_path() . 'user?qt-user_center_tab=3#qt-user_center_tab' ?>"><span style="font-size: 12px;color: #993300">收藏的文章 ></span></a>
+    <a href="<?php print base_path() . 'user?qt-user_center_tab=3#qt-user_center_tab' ?>"><span style="font-size: 12px;color: #336600">收藏的文章 ></span></a>
   </div>
   <div class="views-field views-field-edit">
     <div class="field-content">
