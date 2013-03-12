@@ -46,7 +46,7 @@
         contentBottom: 45
       },
       modalOptions: {
-        opacity: .55,
+//        opacity: .55,
         background: '#fff'
       }
     };
