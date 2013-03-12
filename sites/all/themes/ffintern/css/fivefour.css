@@ -4860,6 +4860,6 @@ div.infodiv span{
 }
 
 
-#modelBackdrop{
+#modalBackdrop{
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=50)";
 }
