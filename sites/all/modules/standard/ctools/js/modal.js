@@ -356,6 +356,7 @@
       left: '0px',
       margin: '0px',
       background: '#000'
+
     }, css);
 
     // Add opacity handling for IE.

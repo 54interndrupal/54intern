@@ -369,7 +369,7 @@ function _ajax_register_include_modal() {
           'contentBottom' => 0,
         ),
         'modalOptions' => array(
-          'opacity' => (float) variable_get('ajax_register_modal_background_opacity', '0.8'),
+          //'opacity' => (float) variable_get('ajax_register_modal_background_opacity', '0.8'),
           'background-color' => '#' . variable_get('ajax_register_modal_background_color', '000000'),
         ),
         'closeText' => '',
