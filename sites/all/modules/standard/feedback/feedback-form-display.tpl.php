@@ -8,6 +8,6 @@
  */
 ?>
 <div id="block-feedback-form">
-  <h2><span class="feedback-link closed" style="cursor: pointer"><span id="feedback-form-toggle"  >[ + ] 网站反馈 </span></span></h2>
+  <h2><span id="feedback-form-toggle" class="feedback-link closed" style="cursor: pointer">[ + ] 网站反馈 </span></h2>
   <div class="content"><?php print drupal_render($content); ?></div>
 </div>
