@@ -139,6 +139,7 @@ function boxAlpha (){
 function maskLayer(){
 	var FW=document.body.scrollWidth;
 	var FH=document.body.scrollHeight;
+    if (FH>2000)FH=2000;
 	var SH=window.screen.height;
 	FH=FH<SH?SH:FH;
 	jQuery("#alphadiv").height(FH).width(FW);
