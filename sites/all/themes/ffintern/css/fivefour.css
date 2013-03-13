@@ -3,6 +3,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
     margin: 0;
     padding: 0;
     font-family: Lucida, Verdana, Hiragino Sans GB, STHeiti, WenQuanYi Micro Hei, "Micro Yahei", 微软雅黑, SimSun, sans-serif;
+
 }
 
 form a, form span, form label {
@@ -875,7 +876,7 @@ span.sticky {
 /*==/Basic==*/
 body {
     font-size: 14px;
-    color: #333;
+    color: black;
 }
 
 /*==changed by howard, add "#page-wrapper" ==*/
