@@ -70,10 +70,10 @@
             });
         }
         if (enable) {
-            $('#feedback-form-toggle', $block).html('[ - ] 网站反馈');
+            $('#feedback-form-toggle', $block).html('');
         }
         else {
-            $('#feedback-form-toggle', $block).html('');
+            $('#feedback-form-toggle', $block).html('[ &minus; ] 网站反馈');
         }
     };
 
