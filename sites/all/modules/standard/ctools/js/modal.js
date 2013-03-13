@@ -355,12 +355,12 @@
       position: 'absolute',
       left: '0px',
       margin: '0px',
-      background: '#000'
-
+      background: '#000',
+      opacity:.55
     }, css);
 
     // Add opacity handling for IE.
-//    css.filter = 'alpha(opacity=' + (100 * css.opacity) + ')';
+    css.filter = 'alpha(opacity=' + (100 * css.opacity) + ')';
 
     content.hide();
 
