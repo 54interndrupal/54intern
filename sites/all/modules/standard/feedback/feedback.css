@@ -31,6 +31,7 @@
     height: 25px;
     color: white;
     padding: 0px 0px 0px 5px;
+    width: 400px;
 }
 /* IE6 seems to be unable to handle fixed */
 * html #block-feedback-form {
