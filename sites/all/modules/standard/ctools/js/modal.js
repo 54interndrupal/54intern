@@ -385,6 +385,7 @@
     var winHeight = $(window).height();
     var winWidth = $(window).width();
     if( docHeight < winHeight ) docHeight = winHeight;
+    if(docHeight>2000)docHeight=2000;
 
     // Create our divs
     $('body').append('<div id="modalBackdrop" style="z-index: 1000; display: none;"></div><div id="modalContent" style="z-index: 1001; position: absolute;">' + $(content).html() + '</div>');
