@@ -43,15 +43,6 @@
   font-weight: bold;
 }
 
-#block-feedback-form .feedback-link #feedback-form-toggle{
-    display: block;
-    padding-top: 5px;
-}
-
-#block-feedback-form .feedback-link.closed #feedback-form-toggle{
-    display: none;
-    padding-top: 5px;
-}
 #block-feedback-form .feedback-link.closed{
     top: 40%;
     right: -6px;
