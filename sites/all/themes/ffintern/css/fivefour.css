@@ -967,21 +967,20 @@ body.front #header {
 
 #search input.form-text {
     width: 412px;
-    height: 20px;
-    min-height: 30px;
+    height: 26px;
     border: 2px solid #8DB125;
-    padding: 0px 6px 0px 6px;
+    padding: 4px 6px 4px 6px;
 }
 
 #search input.form-submit {
     width: 76px;
-    height: 34px;
+    height: 38px;
     background: #8DB125;
     color: #FFF;
     border: 2px solid #8DB125;
     font: bold 15px;
     cursor: pointer;
-    padding: 0px 6px 2px 6px;
+    padding: 3px 6px 4px 6px;
     margin-left: -2px;
 }
 
