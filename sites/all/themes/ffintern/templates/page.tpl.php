@@ -131,7 +131,7 @@
 <DIV style="DISPLAY: none" id=maskLayer><IFRAME
   style="FILTER: alpha(opacity=50)" id=maskLayer_iframe src="about:blank"
   frameBorder=0 scrolling=no></IFRAME>
-  <DIV style="FILTER: alpha(opacity=50); -moz-opacity: 0.5; opacity: 0.5;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"
+  <DIV style="FILTER: alpha(opacity=50); -moz-opacity: 0.5; opacity: 0.5;"
        id=alphadiv></DIV>
   <DIV id=drag>
     <H3 id=drag_h></H3>

@@ -4861,5 +4861,22 @@ div.infodiv span{
     margin: 0 0 0 15px;
 
 }
+/* captcha */
+.captcha .form-item-captcha-response{
+    width:220px;
+}
+.captcha image{
+    display:inline;
+    float:right;
+}
+
+.captcha .reload-captcha-wrapper{
+    float:right;
+    margin:0 80px 0 10px;
+    padding-top: 10px;
+}
+div.user-reg-form div.captcha div.form-item input.form-text{
+    width:70px;
+}
 
 
