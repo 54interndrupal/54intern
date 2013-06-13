@@ -4880,11 +4880,20 @@ div.user-reg-form div.captcha div.form-item input.form-text{
 }
 
 div.pane-intern-company-company-node-add-review div.captcha{
-    width: 380px;
+    width: 330px;
     float: left;
 }
+div.pane-intern-company-company-node-add-review div.captcha .form-item{
+    margin-top: 3px;
+}
+div.pane-intern-company-company-node-add-review div.captcha .form-item label{
+    color: #4E963C;
+    font-weight: bold;
+}
 div.pane-intern-company-company-node-add-review div.captcha input.form-text{
+    width:70px;
     border: 1px solid #4d963b;
+    height: 20px;
 }
 
 
