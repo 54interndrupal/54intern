@@ -108,24 +108,7 @@ class DrupalFileCache implements DrupalCacheInterface {
     }
     $cache = @unserialize($content);
 
-    //add logic to clear some special page caches
-    if(strpos($cid,'jobs')!=FALSE){
-      if(REQUEST_TIME>$cache->created+30*60){
-        $this->clear($cid);
-      }
-    }else if(strpos($cid,'companys')!=FALSE){
-      if(REQUEST_TIME>$cache->created+30*60){
-        $this->clear($cid);
-      }
-    }else if(strpos($cid,'search')!=FALSE){
-      if(REQUEST_TIME>$cache->created+30*60){
-        $this->clear($cid);
-      }
-    }else{
-      if(REQUEST_TIME>$cache->created+2*60*60){
-        $this->clear($cid);
-      }
-    }
+
 
 
     if ($cache === FALSE) {
@@ -145,6 +128,29 @@ class DrupalFileCache implements DrupalCacheInterface {
         unlink($filename); // remove broken file
         flock($fh, LOCK_UN);
         fclose($fh);
+        return FALSE;
+      }
+    }
+
+    //add logic to clear some special page caches
+    if(strpos($cid,'jobs')!=FALSE){
+      if(REQUEST_TIME>$cache->created+1*60){
+        $this->clear($cid);
+        return FALSE;
+      }
+    }else if(strpos($cid,'companys')!=FALSE){
+      if(REQUEST_TIME>$cache->created+1*60){
+        $this->clear($cid);
+        return FALSE;
+      }
+    }else if(strpos($cid,'search')!=FALSE){
+      if(REQUEST_TIME>$cache->created+30*60){
+        $this->clear($cid);
+        return FALSE;
+      }
+    }else{
+      if(REQUEST_TIME>$cache->created+2*60*60){
+        $this->clear($cid);
         return FALSE;
       }
     }
