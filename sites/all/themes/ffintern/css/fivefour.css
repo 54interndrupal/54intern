@@ -2310,10 +2310,10 @@ div.pane-terms-in-blocks {
 }
 
 #col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .views-row {
-    height: 25px;
+    height: 22px;
     margin-bottom: 0px;
-    border-bottom: 1px solid #F3F9F9;
-    border-top: 1px solid #ffffff;
+    border: 2px solid #F6F6F6;
+    margin-top: 1px;
     padding: 5px 0 0 15px;
     background: url("img/site/bt_arw_1.gif") no-repeat 215px 12px;
     background-color: #F6F6F6;
