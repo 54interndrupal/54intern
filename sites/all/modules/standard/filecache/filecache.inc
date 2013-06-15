@@ -154,7 +154,6 @@ class DrupalFileCache implements DrupalCacheInterface {
         return FALSE;
       }
     }
-
     // XXX Should reproduce the cache_lifetime / cache_flush_$bin logic
     $cache_flush = variable_get('filecache_flush_'. $this->bin, 0);
     if ($cache->expire != CACHE_TEMPORARY && // XXX how to handle this?
