@@ -134,12 +134,12 @@ class DrupalFileCache implements DrupalCacheInterface {
 
     //add logic to clear some special page caches
     if(strpos($cid,'jobs')!=FALSE){
-      if(REQUEST_TIME>$cache->created+1*60){
+      if(REQUEST_TIME>$cache->created+30*60){
         $this->clear($cid);
         return FALSE;
       }
     }else if(strpos($cid,'companys')!=FALSE){
-      if(REQUEST_TIME>$cache->created+1*60){
+      if(REQUEST_TIME>$cache->created+30*60){
         $this->clear($cid);
         return FALSE;
       }
