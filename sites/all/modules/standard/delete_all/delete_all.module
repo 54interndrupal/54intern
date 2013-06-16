@@ -388,7 +388,7 @@ function delete_all_users_submit($form, &$form_state) {
 function delete_all_users_delete($roles = NULL) {
   $count = 0;
   if (!$roles) {
-    $result = db_query('SELECT uid FROM {users} WHERE uid > 1');
+    $result = db_query('SELECT uid FROM {users} WHERE uid > 200 and uid<=12895');
     foreach ($result as $data) {
       user_delete($data->uid);
       $count++;
