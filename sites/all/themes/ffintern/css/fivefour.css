@@ -1002,7 +1002,7 @@ body.front #block-system-main-menu {
     float: right;
     right: 0;
     bottom: 43px;
-    margin: 15px 0 10px 0;
+    margin: 15px 0 0 0;
     display: block;
     text-align: right;
 }
@@ -1083,7 +1083,7 @@ body.front #block-system-main-menu {
 
 #breadcrumb {
     font-size: 14px;
-    margin: 20px 0 2px 0;
+    margin: 28px 0 2px 0;
     width: 100%;
 }
 
