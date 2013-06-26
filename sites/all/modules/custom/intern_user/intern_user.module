@@ -247,6 +247,16 @@ function intern_user_is_company_user() {
   }
 }
 
+function intern_user_is_editor_user() {
+  Global $user;
+  if (in_array(6, array_keys($user->roles))) {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
 function intern_user_is_scraper_user($uid) {
   if ($uid == '9') {
     return TRUE;

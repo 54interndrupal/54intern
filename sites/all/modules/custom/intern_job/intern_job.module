@@ -127,9 +127,9 @@ function intern_job_form_node_form_alter(&$form, $form_state) {
   $type = $form['#node']->type;
   Global $user;
 
-  if ($type == 'job' && intern_user_is_company_user()) {
+  if ($type == 'job' && (intern_user_is_company_user()||intern_user_is_editor_user())) {
 
-    $form['og_group_ref']['und'][0]['target_id']['#type'] = 'hidden';
+      $form['og_group_ref']['und'][0]['target_id']['#type'] = 'hidden';
 
     hide($form["actions"]["delete"]);
     hide($form["field_job_sub_status"]);
