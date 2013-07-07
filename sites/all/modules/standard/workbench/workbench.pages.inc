@@ -34,7 +34,7 @@ function workbench_content() {
     '#theme' => 'workbench_element',
   );
   // This right column is given a width of 65% by workbench.myworkbench.css.
-  $output['workbench_edited'] = array(
+  $output['workbench_myedits'] = array(
     '#view' => 'workbench_myedits',
     '#view_display' => 'block_1',
     '#attributes' => array('class' => array('right', 'clearfix')),
