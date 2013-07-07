@@ -115,7 +115,7 @@ function workbench_default_page_manager_handlers() {
     $pane->pid = 'new-3';
     $pane->panel = 'right_above';
     $pane->type = 'views';
-    $pane->subtype = 'workbench_edited';
+    $pane->subtype = 'workbench_myedits';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
