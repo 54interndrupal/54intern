@@ -2,9 +2,12 @@
 
 /* body style */
 
+body {
+    font-size: 12px;
+}
 
 #group-info .field-name-body label {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 /* Jquery UI dialog 头部样式 */
