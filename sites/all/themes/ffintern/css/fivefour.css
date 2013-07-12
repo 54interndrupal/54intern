@@ -4865,6 +4865,10 @@ div.infodiv span{
 .captcha .form-item-captcha-response{
     width:220px;
 }
+.captcha #edit-captcha-response{
+    font-size: 12px;
+}
+
 .captcha image{
     display:inline;
     float:right;
