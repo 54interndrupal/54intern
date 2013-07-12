@@ -1766,9 +1766,9 @@ div.user-login-popup div.d-1 span.s-1 {
 form div.user-login-popup .form-item  label {
     width: 70px;
     text-align: right;
-    padding-right: 15px;
-    padding-top: 7px;
-    font-size: 14px;
+    padding-right: 13px;
+    padding-top: 5px;
+    font-size: 15px;
 }
 
 form div.user-login-popup .form-item input.form-text {
