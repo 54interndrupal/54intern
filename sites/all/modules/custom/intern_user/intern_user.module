@@ -154,6 +154,7 @@ function intern_user_get_resume_finish_percent($resume) {
 function intern_user_resume_status_block_view() {
 
   global $user;
+  global $base_url;
   $output = '';
   $percent = 0;
 
@@ -174,7 +175,7 @@ function intern_user_resume_status_block_view() {
 
     $output .= '<p>完整度：<big>' . $percent . '%</big></p>';
     $output .= '<div class="status"><div style="width:' . $percent . '%;"></div></div>';
-    $output .= '<a href="' . url($path) . '">继续完善简历</a>';
+    $output .= '<a href="' . url($path) . '"><img title="继续完善简历" src="' . $base_url. '/' . drupal_get_path('theme', 'ffintern') . '/css/img/site/bt_complete_resume.png"/></a>';
 
   }
   return $output;
