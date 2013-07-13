@@ -165,6 +165,9 @@ function draglayer(){
 	osl = Math.max( bsl , osl );
 	var ost = bst + Math.floor( ( bch - och ) / 2 );
 	ost = Math.max( bst , ost );
+    if(jQuery('.toolbar').size()==1){
+        ost = ost - 150;
+    }
 
 	jQuery("#drag").css({"top":ost,"left":osl,"width":ocw}).show();
 	var theHandle = document.getElementById("drag_h");
