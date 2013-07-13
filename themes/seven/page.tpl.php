@@ -27,7 +27,16 @@
       <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
       <?php print render($page['content']); ?>
     </div>
-
+    <DIV style="DISPLAY: none" id=maskLayer><IFRAME
+      style="FILTER: alpha(opacity=50)" id=maskLayer_iframe src="about:blank"
+      frameBorder=0 scrolling=no></IFRAME>
+      <DIV style="FILTER: alpha(opacity=50); -moz-opacity: 0.5; opacity: 0.5;"
+           id=alphadiv></DIV>
+      <DIV id=drag>
+        <H3 id=drag_h></H3>
+        <DIV id=drag_con></DIV><!-- drag_con end --></DIV></DIV><!-- maskLayer end -->
+    <DIV></DIV><!-- alpha div end -->
+    <DIV style="DISPLAY: none" id=sublist></DIV>
     <div id="footer">
       <?php print $feed_icons; ?>
     </div>

@@ -113,3 +113,72 @@ function seven_css_alter(&$css) {
     $css['misc/ui/jquery.ui.theme.css']['data'] = drupal_get_path('theme', 'seven') . '/jquery.ui.theme.css';
   }
 }
+
+function seven_select($variables) {
+  $element = $variables['element'];
+//  print_r($element);
+
+  if ($element['#parents'][0] == 'field_location_tid' || $element['#parents'][0] == 'job_category'
+    || $element['#parents'][0] == 'field_location' || $element['#parents'][0] == 'field_job_category'
+    || $element['#parents'][0] == 'field_industry_tid' || $element['#parents'][0] == 'field_industry'
+  ) {
+    $selectValue = $element['#value'];
+    if (is_array($selectValue)) {
+      $selectValue = $selectValue[0];
+    }
+
+
+    $selectOption = '不限';
+    foreach ($element['#options'] as $index => $choice) {
+      if ($index == $selectValue) {
+        $selectOption = $choice;
+        break;
+      }
+
+      if (is_array($choice)) {
+      }
+      elseif (is_object($choice)) {
+        if (isset($choice->option[$selectValue])) {
+          $selectOption = $choice->option[$selectValue];
+          break;
+        }
+
+      }
+    }
+    $error_class = '';
+    if (isset($element['#parents']) && form_get_error($element)) {
+      $error_class = 'error';
+    }
+
+    drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/drag.js");
+    drupal_add_css(drupal_get_path('theme', "ffintern") . "/popups/alpha.css");
+    drupal_add_css(drupal_get_path('theme', "ffintern") . "/popups/css.css");
+    $output = '<input type="hidden" name="' . $element['#name'] . '" id="' . $element['#id'] . '" value="' . $selectValue . '">';
+    if ($element['#parents'][0] == 'field_location_tid' || $element['#parents'][0] == 'field_location') {
+      drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/city_func.js");
+      drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/city_arr.js");
+      $output .= '<div><input type="text" name="citySelect" onclick="residencySelect(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search '.$error_class.'" value="' . $selectOption . '"></div>';
+    }
+    else {
+      if ($element['#parents'][0] == 'job_category' || $element['#parents'][0] == 'field_job_category') {
+        drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/funtype_func.js");
+        drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/funtype_arr.js");
+        $output .= '<div><input type="text" name="jobCategorySelect"  onclick="funtypeSelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search '.$error_class.'" value="' . $selectOption . '"></div>';
+      }
+      else {
+        if ($element['#parents'][0] == 'field_industry_tid' || $element['#parents'][0] == 'field_industry') {
+          drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/industry_func.js");
+          drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/industry_arr.js");
+          $output .= '<div><input type="text" name="industrySelect"  onclick="IndustrySelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search '.$error_class.'" value="' . $selectOption . '"></div>';
+        }
+      }
+    }
+    return $output;
+  }
+  else {
+    element_set_attributes($element, array('id', 'name', 'size'));
+    _form_set_class($element, array('form-select'));
+    return '<select' . drupal_attributes($element['#attributes']) . '>' . form_select_options($element) . '</select>';
+  }
+
+}

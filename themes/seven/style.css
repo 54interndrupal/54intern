@@ -987,3 +987,47 @@ div.add-or-remove-shortcuts {
   -webkit-border-radius: 8px;
   border-radius: 8px;
 }
+
+
+#drag table td{
+    padding: 0;
+    margin:0;
+}
+#drag dl,
+#drag ul,
+#drag dl dd,
+#drag dl dl{
+    padding: 0;
+    margin:0;
+}
+
+#drag h3{
+    font-size: 12px;
+    margin: 0;
+    padding: 0 10px;
+}
+
+#drag h4{
+    margin: 0;
+    padding: 0;
+}
+
+#sublist dl,
+#sublist ul,
+#sublist dl dd,
+#sublist dl dl{
+    padding: 0;
+    margin:0;
+}
+
+#sublist h4{
+    font-size: 12px;
+    margin: 0;
+    padding: 0 10px;
+}
+
+
+input.search {
+    background: #ffffff url(images/bt_search.gif) no-repeat 130px 0;
+    cursor: pointer;
+}
