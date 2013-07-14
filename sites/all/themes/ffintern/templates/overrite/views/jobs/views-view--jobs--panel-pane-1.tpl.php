@@ -46,7 +46,9 @@
 <h1 class="title" id="page-title"><?php print $header; ?></h1>
 <?php endif; ?> -->
 <div id="quicktabs-jobs_main_tabs" class="quicktabs-wrapper quicktabs-style-intern">
+
   <div class="item-list">
+    <span class="city_more" onclick="residencySelect('edit-field-location-tid',true);">更多实习城市</span>
     <ul class="quicktabs-tabs quicktabs-style-intern">
       <li
         class="last <?php if (!isset($_GET['field_location_tid']) || $_GET['field_location_tid'] == 'All') print 'active';?>"><a href="javascript:resetCity('All');"
@@ -64,6 +66,7 @@
       <li class="last <?php if (isset($_GET['field_location_tid']) && $_GET['field_location_tid'] == '2002') print 'active';?>"><a href="javascript:resetCity('2002')"
                           id="quicktabs-tab-jobs_tabs-6" class="active">西安</a></li>
     </ul>
+
   </div>
   <?php if ($rows): ?>
   <div class="view-content job-list">

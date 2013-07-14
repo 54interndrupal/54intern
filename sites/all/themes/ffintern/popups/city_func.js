@@ -1,5 +1,6 @@
 var residency_hukou_flag=0;	// 居住地 / 户口所在地   开关
 var residency_element_id;
+var residency_auto_submit=false;
 var residency = {
     // 居住地输出
     Show : function(){
@@ -61,10 +62,18 @@ var residency = {
         jQuery('#sel-'+residency_element_id).val(ja[id]);
         jQuery("#sublist").hide().empty();
         boxAlpha();
+        if(residency_auto_submit){
+            jQuery('#edit-submit-jobs').click();
+        }
     }
 }
 
-function residencySelect(elementId){
+function residencySelect(elementId, autoSubmit){
+    if(!autoSubmit){
+        residency_auto_submit = false;
+    }else{
+        residency_auto_submit = autoSubmit;
+    }
     residency_element_id = elementId;
     residency_hukou_flag=0;
     var dragHtml ='<div id="residencyAlpha">';		//居住地
