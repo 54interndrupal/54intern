@@ -285,7 +285,7 @@ function intern_job_flags($jobId) {
       }
       else {
         $output .= '<span class="flag-wrapper flag-apply flag-apply-44312">
-      <a href="javascript:alert(\'您还没有填写简历，请先完善简历。\')" title="" class="ctools-use-modal ctools-modal-ctools-ajax-register-style flag flag-action flag-link-normal" rel="nofollow">申请职位</a>
+      <a href="javascript:if(confirm(\'您还没有填写简历，先去完善简历？\'))window.location=\''.url('node/add/resume').'\'" title="" class="ctools-use-modal ctools-modal-ctools-ajax-register-style flag flag-action flag-link-normal" rel="nofollow">申请职位</a>
     </span>';
       }
     }
