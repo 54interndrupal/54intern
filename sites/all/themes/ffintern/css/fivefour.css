@@ -1197,7 +1197,7 @@ body div.node-job div.content div.info {
 
 body div.node-job div.content div.summary {
     display: inline-block;
-    margin: 25px -22px 15px -22px;
+    margin: 15px -22px 15px -22px;
     padding: 0 22px 18px 22px;
     border-bottom: 1px solid #CCCCCC;
     width: 100%
@@ -4912,6 +4912,15 @@ div.pane-intern-company-company-node-add-review div.captcha input.form-text{
     height: 23px;
     color: #666666;
     cursor: pointer;
+}
+
+.jobWarnInfo{
+    display: inline-block;
+    background-color: #FBFBFB;
+    padding: 10px 15px 10px 15px;
+    line-height: 1.8;
+    margin: 15px 0 0 0;
+    border: 1px dashed #ddd;
 }
 
 

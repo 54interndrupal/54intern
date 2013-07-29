@@ -102,7 +102,9 @@
       发布时间：<?php print format_date($changed, 'custom', 'Y-m-d'); ?>  &nbsp;
       发布：实习圈
     </div>
-
+    <div class='jobWarnInfo'>
+      <span style="color:red">[特别提醒:] </span>如发现虚假招聘信息，同学可将“该招聘信息的网址，认为其信息虚假的原因”通过邮件方式发送至support@54intern.com。我们将第一时间进行处理。</span>
+     </div>
     <div class='summary'>
       <table>
         <tbody>
