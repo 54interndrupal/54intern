@@ -21,7 +21,7 @@ function setSearchValue(inputObject, objectValue) {
 }
 
 function showMessage(message) {
-    alert('xx'+message+'yy');
+    //alert('xx'+message+'yy');
     if (message && message!= '') {
         jQuery('#messages').empty();
         jQuery("#main").prepend('<div id="messages"><div class="section clearfix"><div class="messages status"><h2 class="element-invisible">状态消息</h2>' +
