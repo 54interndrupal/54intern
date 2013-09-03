@@ -456,6 +456,7 @@ table {
 }
 
 .post-item h2 a {
+    font-family: "microsoft yahei", "simhei";
     font-size: 20px;
     color: RGB(0, 102, 0);
 }
