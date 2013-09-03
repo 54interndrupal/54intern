@@ -14,12 +14,12 @@
 
   function image_click_handler() {
     $('div.user-avatar-select img').bind("click", function(){
-      $("div.user-avatar-select img.avatar-select").each(function(){
-        $(this).removeClass("avatar-select");
-        $(this).parent().children("input").attr("checked", "");
-      });
+        $("div.user-avatar-select img.avatar-select").removeClass("avatar-select");
+        $("div.user-avatar-select .user-avatar-select").attr("checked", "");
+
+
       $(this).addClass("avatar-select");
-      $(this).parent().children("input").attr("checked", "checked");
+      $(this).parent().parent().children("input").attr("checked", "checked");
     });
   }
 
