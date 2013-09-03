@@ -259,7 +259,7 @@ function intern_company_add_review_block() {
   $gid = _intern_get_company_id_from_url();
   $output = '<span class="title c-5">' . t("还没做点评，快来抢沙发吧~") . '</span>';
   $output = $output . '<span class="add-review-pic"></span>';
-  $output = $output . '<a href="' . $base_url . '/company/' . $gid . '#review-node-form"><span class="add-review-btn"></span></a>';
+  $output = $output . '<a href="' . $base_url . '/company/' . $gid . '?qt-node_company_tab=0#review-node-form"><span class="add-review-btn"></span></a>';
   return $output;
 }
 
