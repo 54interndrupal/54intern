@@ -50,7 +50,7 @@
   <meta name="description" content="实习圈?实习圈!这里有最详尽的实习百科，每天发布大量实习机会，提供详尽真实的企业实习点评，同时为企业提供一个免费的实习生招聘平台" />
   <meta name="keywords" content="实习机会,企业点评,实习百科,实习生招聘" />
   <meta name="author" content="实习圈" />
-
+  <meta http-equiv="X-UA-Compatible" content="IE=9" >
 
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
