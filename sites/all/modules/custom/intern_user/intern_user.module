@@ -77,7 +77,11 @@ function intern_user_block_view($delta = '') {
       $block['content'] = intern_user_top_link_block();
       break;
     case 'user resume status':
-      $block['subject'] = '我的简历';
+      $path = 'node/add/resume';
+      if (!empty($_SESSION['user_resume_id'])) {
+        $path = 'node/' . $_SESSION['user_resume_id'] . '/edit/preview';
+      }
+      $block['subject'] = '<a href="'.url($path).'">我的简历</a>';
       $block['content'] = intern_user_resume_status_block();
       break;
     case 'company user info':
@@ -121,8 +125,12 @@ function intern_user_company_user_info_block() {
 function intern_user_resume_status_block() {
   global $user, $is_page_authcache;
   if ($user->uid > 0) {
+    $path = 'node/add/resume';
+    if (!empty($_SESSION['user_resume_id'])) {
+      $path = 'node/' . $_SESSION['user_resume_id'] . '/edit/preview';
+    }
     $output = '<div class="block" id="resume-block">';
-    $output .= '<h2 class="block-title"><span>我的简历</span></h2>';
+    $output .= '<h2 class="block-title"><a href="'.url($path).'">我的简历</a></h2>';
     $output .= '<div class="block-content"><div class="resume-status">';
     $output .= '</div></div></div>';
     // Use JS to retrieve block content
@@ -175,7 +183,7 @@ function intern_user_resume_status_block_view() {
 
     $output .= '<p>完整度：<big>' . $percent . '%</big></p>';
     $output .= '<div class="status"><div style="width:' . $percent . '%;"></div></div>';
-    $output .= '<a href="' . url($path) . '"><img title="继续完善简历" src="' . $base_url. '/' . drupal_get_path('theme', 'ffintern') . '/css/img/site/bt_complete_resume.png"/></a>';
+    $output .= '<a href="' . url($path) . '"><img title="继续完善简历" src="' . $base_url . '/' . drupal_get_path('theme', 'ffintern') . '/css/img/site/bt_complete_resume.png"/></a>';
 
   }
   return $output;
@@ -198,15 +206,23 @@ function intern_user_center_showcase_block() {
  * 个人简历编辑 tabs block
  */
 function intern_user_resume_tabs_block() {
-  $gid = arg(1);
+  $preview = false;
+  if (arg(3) == 'preview') {
+    $preview = TRUE;
+  }
+  ;
   $output = "";
   $output .= '<ul class="quicktabs-tabs quicktabs-style-intern">';
-  $output .= '<li class="active" id="user-basic-info-tab"><a href="#">个人基本资料</a></li>';
-  $output .= '<li id="user-attached-resume-tab"><a href="#">上传简历</a></li>';
-  $output .= '<li id="user-apply-letter-tab"><a href="#">求职信</a></li>';
-
+  if ($preview==true){
+    $path = 'node/' . $_SESSION['user_resume_id'] . '/edit';
+    $output .= '<div class="more-link" style="float: right;margin-top:0px;"><a href="'. url($path).'">更新简历>></a></div>';
+    $output .= '<li class="active" id="user-basic-info-tab"><a href="#">简历预览</a></li>';
+  }else{
+    $output .= '<li class="active" id="user-basic-info-tab"><a href="#">个人基本资料</a></li>';
+    $output .= '<li id="user-attached-resume-tab"><a href="#">上传简历</a></li>';
+    $output .= '<li id="user-apply-letter-tab"><a href="#">求职信</a></li>';
+  }
   $output .= '</ul>';
-
   return $output;
 }
 
@@ -325,7 +341,7 @@ function intern_user_form_node_form_alter(&$form, $form_state) {
 
 function intern_user_resume_form_post_submit($form, &$form_state) {
   $nid = $form_state['nid'];
-  $form_state['redirect'] = 'node/' . $nid . '/edit';
+  $form_state['redirect'] = 'node/' . $nid . '/edit/preview';
 
   $_SESSION['user_resume_finish_percent'] = NULL;
   $_SESSION['user_resume_id'] = $nid;

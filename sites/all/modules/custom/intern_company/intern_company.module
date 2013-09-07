@@ -244,7 +244,7 @@ function intern_company_center_resume_tabs_block() {
 //    $output .='<div class="item-list"> ';
     $output .= '<ul class="quicktabs-tabs quicktabs-style-intern2">';
     $output .= '<li class="first active">' . l(t('收件箱'), 'companycenter/' . $gid . '/resumes', array('html' => TRUE,)) . '</li>';
-    $output .= '<li>' . l(t('搜索简历库'), 'resumes', array('html' => TRUE,)) . '</li>';
+    $output .= '<li>' . l(t('搜索简历库'), '#', array('html' => TRUE,)) . '</li>';
     $output .= '</ul>';
   }
   return $output;

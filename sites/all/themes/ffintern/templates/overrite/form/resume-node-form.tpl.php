@@ -24,7 +24,8 @@
     <?php
     $block = module_invoke('intern_user', 'block_view', 'user resume tabs');
     ?>
-    <div class="block" id="user-center-showcase">
+    <div class="quicktabs-wrapper" >
+    <div class="block" id="user-center-tabs">
       <div class="block-content">
         <?php print ($block['content']);?>
       </div>
@@ -45,56 +46,72 @@
     <?php $form['field_admission_date']["und"][0]["value"]["date"]["#required"] = 1;?>
 
 
-    <div id="user-basic-info">
-      <?php print drupal_render($form['title']);?>
-      <?php print drupal_render($form['field_real_name']);?>
-      <?php print drupal_render($form['field_sex']);?>
-      <?php print drupal_render($form['field_birth_date']["und"][0]["value"]["date"]);?>
-      <?php print drupal_render($form['field_admission_date']["und"][0]["value"]["date"]);?>
-      <?php print drupal_render($form['field_education']);?>
-      <?php print drupal_render($form['field_school']);?>
-      <?php print drupal_render($form['field_discipline']);?>
-      <?php print drupal_render($form['field_status']);?>
-      <?php print drupal_render($form['field_location']);?>
-      <?php print drupal_render($form['field_email']);?>
-      <?php print drupal_render($form['field_cell_phone']);?>
-      <?php print drupal_render($form['field_phone']);?>
-      <?php print drupal_render($form['field_contact_address']);?>
-      <?php print drupal_render($form['field_post_code']);?>
-    </div>
-    <div id="user-attached-resume" style="display: none;">
-      <?php print drupal_render($form['field_attached_resumes']["und"][0]["field_resume_name"]);?>
-      <?php print drupal_render($form['field_attached_resumes']["und"][0]["field_resume_attachement"]);?>
-      <?php print drupal_render($form['field_attached_resumes']["und"][0]["field_resume_memo"]);?>
-      <?php hide($form['field_attached_resumes']); ?>
 
-    </div>
-    <div id="user-apply-letter" style="display:none">
-      <?php print drupal_render($form['field_apply_letters']["und"][0]["field_letter_name"]);?>
-      <?php print drupal_render($form['field_apply_letters']["und"][0]["field_letter_body"]);?>
-      <?php hide($form['field_apply_letters']); ?>
-    </div>
-    <?php print drupal_render($form['field_attached_resumes']); ?>
-    <?php  print drupal_render_children($form);?>
+      <?php $readonly = (arg(3) == "preview");?>
+      <?php if ($readonly) { ?>
+      <?php
+      print views_embed_view('resume_node_view', 'panel_pane_1', $_SESSION['user_resume_id']);?>
 
 
+
+      <?php
+    }
+    else {
+      ?>
+      <div id="user-basic-info">
+
+
+        <?php print drupal_render($form['title']);?>
+        <?php print drupal_render($form['field_real_name']);?>
+        <?php print drupal_render($form['field_sex']);?>
+        <?php print drupal_render($form['field_birth_date']["und"][0]["value"]["date"]);?>
+        <?php print drupal_render($form['field_admission_date']["und"][0]["value"]["date"]);?>
+        <?php print drupal_render($form['field_education']);?>
+        <?php print drupal_render($form['field_school']);?>
+        <?php print drupal_render($form['field_discipline']);?>
+        <?php print drupal_render($form['field_status']);?>
+        <?php print drupal_render($form['field_location']);?>
+        <?php print drupal_render($form['field_email']);?>
+        <?php print drupal_render($form['field_cell_phone']);?>
+        <?php print drupal_render($form['field_phone']);?>
+        <?php print drupal_render($form['field_contact_address']);?>
+        <?php print drupal_render($form['field_post_code']);?>
+
+      </div>
+      <div id="user-attached-resume" style="display: none;">
+        <?php print drupal_render($form['field_attached_resumes']["und"][0]["field_resume_name"]);?>
+        <?php print drupal_render($form['field_attached_resumes']["und"][0]["field_resume_attachement"]);?>
+        <?php print drupal_render($form['field_attached_resumes']["und"][0]["field_resume_memo"]);?>
+        <?php hide($form['field_attached_resumes']); ?>
+
+      </div>
+      <div id="user-apply-letter" style="display:none">
+        <?php print drupal_render($form['field_apply_letters']["und"][0]["field_letter_name"]);?>
+        <?php print drupal_render($form['field_apply_letters']["und"][0]["field_letter_body"]);?>
+        <?php hide($form['field_apply_letters']); ?>
+      </div>
+      <?php print drupal_render($form['field_attached_resumes']); ?>
+      <?php print drupal_render_children($form); ?>
+      <?php }?>
+
+    </div>
   </div>
 
-  </div>
+</div>
 
-  <div id="sidebar-second" class="column sidebar">
-    <div class="section">
-      <div class="panel-pane pane-views-panes pane-usercenter-user-info-panel-pane-1" >
+<div id="sidebar-second" class="column sidebar">
+  <div class="section">
+    <div class="panel-pane pane-views-panes pane-usercenter-user-info-panel-pane-1">
       <div class="panel-pane-title">
         <h2 class="pane-title">欢迎来到实习圈</h2>
       </div>
       <?php  print(views_embed_view("usercenter_user_info", 'panel_pane_1', $user->uid))?>
-      </div>
-<!---->
-<!--      --><?php //$follow_block = views_embed_view('usercenter_user_followed', 'panel_pane_1',  $user->uid);?>
-<!--      --><?php //print $follow_block?>
     </div>
+    <!---->
+    <!--      --><?php //$follow_block = views_embed_view('usercenter_user_followed', 'panel_pane_1',  $user->uid);?>
+    <!--      --><?php //print $follow_block?>
   </div>
+</div>
 
 
 
