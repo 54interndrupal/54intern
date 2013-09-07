@@ -4303,17 +4303,15 @@ a.button span {
     padding-bottom: 20px;
 }
 
-
-div.view-resume-node-view,
-body.node-type-resume div.pane-resume-node-view-panel-pane-1 {
+div.view-resume-node-view {
     border: 2px solid #4E963C;
-    padding: 0 12px 10px 12px;
+    padding: 12px 12px 10px 12px;
     display: block;
     float: left;
     width: 650px;
 }
-div.view-resume-node-view{
-    padding: 12px 12px 10px 12px;
+
+body.page-node-edit-preview .view-resume-node-view{
     width: 670px;
 }
 form.node-resume-form div.view-resume-node-view label{
@@ -4322,30 +4320,25 @@ form.node-resume-form div.view-resume-node-view label{
     width: 60px;
     padding-right: 0px;
 }
-div.view-resume-node-view .views-field,
-div.pane-resume-node-view-panel-pane-1 .views-field {
+div.view-resume-node-view .views-field {
     color: #333;
 }
-div.view-resume-node-view .views-field .field-content,
-div.pane-resume-node-view-panel-pane-1 .views-field .field-content {
+div.view-resume-node-view .views-field .field-content{
     display: inline;
 }
 
-div.view-resume-node-view .d-1,
-div.pane-resume-node-view-panel-pane-1 .d-1 {
+div.view-resume-node-view .d-1 {
     background-color: #F7FCF5;
     border: 1px solid #B8DFAE;
     padding: 8px;
 }
-div.view-resume-node-view .d-2,
-div.pane-resume-node-view-panel-pane-1 .d-2 {
+div.view-resume-node-view .d-2{
     display: block;
     padding: 15px 0 6px 0;
     line-height: 2.2;
 }
 
-div.view-resume-node-view .d-2 label,
-div.pane-resume-node-view-panel-pane-1 .d-2 label {
+div.view-resume-node-view .d-2 label{
     width: 60px;
 }
 
@@ -4353,22 +4346,19 @@ div.pane-resume-node-view-panel-pane-1 .d-2 .views-field-location,
 div.pane-resume-node-view-panel-pane-1 .d-2 .views-field-cell-phone {
 
 }
-div.view-resume-node-view .d-3,
-div.pane-resume-node-view-panel-pane-1 .d-3 {
+div.view-resume-node-view .d-3{
     display: inline-block;
     padding: 0 0 8px 0;
 }
 
-div.view-resume-node-view .d-3 .views-field,
-div.pane-resume-node-view-panel-pane-1 .d-3 .views-field {
+div.view-resume-node-view .d-3 .views-field{
     display: inline;
     color: #3C722E;
     font-weight: bold;
     padding-right: 5px;
 }
 
-div.view-resume-node-view .views-field.views-field-real-name,
-div.pane-resume-node-view-panel-pane-1 .views-field.views-field-real-name {
+div.view-resume-node-view .views-field.views-field-real-name {
     display: block;
     font-size: 25px;
     font-weight: bold;
@@ -4376,34 +4366,27 @@ div.pane-resume-node-view-panel-pane-1 .views-field.views-field-real-name {
     border-bottom: 1px dashed #B8DFAE;
 }
 
-div.view-resume-node-view .views-field.views-field-picture,
-div.pane-resume-node-view-panel-pane-1 .views-field.views-field-picture {
+div.view-resume-node-view .views-field.views-field-picture {
     float: right;
     display: block;
 }
 
 div.view-resume-node-view .d-4,
-div.view-resume-node-view .d-5,
-div.pane-resume-node-view-panel-pane-1 .d-4,
-div.pane-resume-node-view-panel-pane-1 .d-5 {
+div.view-resume-node-view .d-5{
     margin-top: 10px;
     line-height: 2.2;
     border-bottom: 1px solid #CCCCCC;
     padding: 0 0 10px 0;
 }
 
-div.view-resume-node-view .d-6,
-div.pane-resume-node-view-panel-pane-1 .d-6 {
+div.view-resume-node-view .d-6{
     margin-top: 10px;
     line-height: 2.2;
     padding: 0 0 10px 0;
 }
 div.view-resume-node-view .d-4 .s-1,
 div.view-resume-node-view .d-5 .s-1,
-div.view-resume-node-view .d-6 .s-1,
-div.pane-resume-node-view-panel-pane-1 .d-4 .s-1,
-div.pane-resume-node-view-panel-pane-1 .d-5 .s-1,
-div.pane-resume-node-view-panel-pane-1 .d-6 .s-1 {
+div.view-resume-node-view .d-6 .s-1 {
     color: #3C722E;
     font-size: 14px;
     font-weight: bold;
@@ -4415,34 +4398,28 @@ div.pane-resume-node-view-panel-pane-1 .d-6 .s-1 {
 }
 
 div.view-resume-node-view .d-5 .s-1 .field-content,
-div.view-resume-node-view .d-6 .s-1 .field-content,
-div.pane-resume-node-view-panel-pane-1 .d-5 .s-1 .field-content,
-div.pane-resume-node-view-panel-pane-1 .d-6 .s-1 .field-content {
+div.view-resume-node-view .d-6 .s-1 .field-content {
     display: inline;
     color: #333333;
 }
-div.view-resume-node-view .d-4-1,
-div.pane-resume-node-view-panel-pane-1 .d-4-1 {
+div.view-resume-node-view .d-4-1 {
     width: 46%;
     display: inline-block;
     float: left;
 }
-div.view-resume-node-view .d-4-2,
-div.pane-resume-node-view-panel-pane-1 .d-4-2 {
+div.view-resume-node-view .d-4-2 {
     width: 48%;
     display: inline-block;
     padding-left: 20px;
     border-left: 1px solid #CCCCCC;
 }
 
-div.view-resume-node-view .d-6 .field-content,
-div.pane-resume-node-view-panel-pane-1 .d-6 .field-content {
+div.view-resume-node-view .d-6 .field-content{
     width: 48%;
     display: inline-block;
 }
 
-div.view-resume-node-view .d-6 .file,
-div.pane-resume-node-view-panel-pane-1 .d-6 .file {
+div.view-resume-node-view .d-6 .file {
     font-size: 14px;
     font-weight: bold;
 }
