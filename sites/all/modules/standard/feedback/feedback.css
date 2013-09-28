@@ -24,6 +24,7 @@
   right: 20px;
   overflow: hidden;
   z-index: 10;
+  max-width: 400px;
 }
 
 #block-feedback-form h2{
@@ -97,16 +98,6 @@
   width: 16px;
 }
 
-#block-feedback-form  input.form-submit{
-    font-size: 12px;
-    color: #ffffff;
-    text-align: center;
-    width: 86px;
-    height: 30px;
-    background-color: #4E963C;
-    border: 1px;
-    cursor: pointer;
-}
 
 /**
  * Styles for existing feedback messages.

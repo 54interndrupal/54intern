@@ -396,15 +396,26 @@ form#views-exposed-form-jobs-panel-pane-1 div.views-exposed-widget {
     padding-top: 0;
     padding-right: 0;
 }
-
-form#views-exposed-form-jobs-panel-pane-1 div.views-exposed-widget select,
-form#views-exposed-form-jobs-panel-pane-1 div.views-exposed-widget input,
-form#views-exposed-form-companys-panel-pane-1 div.views-exposed-widget input{
-    width: 132px;
+.form-item-field-location-tid .input-group{
+    width: 82px;
+}
+.form-item-field-location-tid .input-group input{
+    width: 82px;
+}
+.form-item-job-category .input-group{
+    width: 130px;
+}
+.form-item-job-category .input-group input{
+    width: 130px;
 }
 
+
 form#views-exposed-form-jobs-panel-pane-1 div.form-item-search #edit-search {
-    width: 248px;
+    height: 34px;
+    width: 240px;
+    border: 1px solid #CCC;
+    font-size: 14px;
+    padding: 6px 12px;
 }
 
 div.adv-option {
@@ -421,15 +432,20 @@ form#views-exposed-form-companys-panel-pane-1 label {
 }
 
 form#views-exposed-form-companys-panel-pane-1 #edit-search {
-    width: 400px;
+    width: 340px;
  }
 
 form#views-exposed-form-companys-panel-pane-1 div#edit-keys-wrapper {
-    padding-right: 0;
+    padding: 0;
 }
 
-form#views-exposed-form-companys-panel-pane-1 div.views-exposed-widgets {
+form#views-exposed-form-companys-panel-pane-1 div.views-exposed-widget {
+    margin-right: 15px;
     padding: 0;
+}
+
+.form-item-field-industry-tid .input-group{
+    width: 200px;
 }
 
 form#views-exposed-form-companys-panel-pane-1 div#edit-field-industry-tid-wrapper {
@@ -456,10 +472,12 @@ form#views-exposed-form-companys-panel-pane-1 div.form-item-sort-bef-combine lab
 }
 
 div.advanced-search  #views-exposed-form-companys-panel-pane-1 input.form-submit{
-    margin-top: 27px;
-    background: url(img/site/bt_cpy_search.gif) no-repeat;
+    margin-top: 25px;
+    background-color: #B0D63E;
     width: 75px;
-    height: 34px;
+    height: 36px;
+    padding: 5px 10px;
+    color: #003300;
 }
 
 /* 寻社团、找实习、企业点评台 关注按钮样式 */

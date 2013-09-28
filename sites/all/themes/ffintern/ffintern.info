@@ -3,9 +3,16 @@ description = 54 intern theme.
 version = VERSION
 core = 7.x
 
+
+
+stylesheets[screen][] = bootstrap/css/bootstrap.css
+stylesheets[screen][] = bootstrap/css/font-awesome.min.css
+stylesheets[screen][] = bootstrap/css/non-responsive.css
+stylesheets[screen][] = bootstrap/css/docs.css
 stylesheets[screen][] = css/fivefour.css
 stylesheets[screen][] = css/changed.css
 stylesheets[screen][] = css/iitgl.css
+
 scripts[] = js/jquery.jcarousel.min.js
 scripts[] = js/jquery.colorbox.js
 scripts[] = js/fivefour.js

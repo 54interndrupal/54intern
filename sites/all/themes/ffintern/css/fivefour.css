@@ -2,7 +2,7 @@
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, select, textarea, p, blockquote, th, td {
     margin: 0;
     padding: 0;
-    font-family:"Helvetica Neue", Helvetica, STHeiti, 微软雅黑, 宋体, Arial, Tahoma, sans-serif, serif;
+    font-family: "Helvetica Neue", Helvetica, STHeiti, 微 软 雅 黑, 宋 体, Arial, Tahoma, sans-serif, serif;
 
 }
 
@@ -43,7 +43,7 @@ label {
     font-weight: normal;
 }
 
-a{
+a {
     cursor: pointer;
 }
 
@@ -82,9 +82,9 @@ a:active {
 }
 
 /*==model window Begin==*/
-#modalBackdrop{
-    filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-    filter: alpha(opacity=50);
+#modalBackdrop {
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity = 50);
     opacity: 0.5;
 }
 
@@ -121,12 +121,26 @@ div.model-header-title {
 div.model-header-title span.active {
     display: inline-block;
     float: left;
-    width: 83px;
-    height: 31px;
+    height: 34px;
     background: url(img/site/bt_arrow_2.gif) no-repeat 10px;
     background-color: #ffffff;
-    padding: 9px 0 0 36px;
+    padding: 5px 15px 4px 36px;
     margin: 0 0 0 10px;
+}
+
+.ctools-modal-content .modal-header {
+    border: 0;
+}
+
+.ctools-modal-content .modal-content {
+    background-clip: content-box;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border: 0;
+    box-shadow: none;
+
 }
 
 /*==model window End==*/
@@ -189,21 +203,23 @@ input.form-button {
 }
 
 input.form-button-cancel {
-    padding: 8px 25px 8px 25px;
     background-color: #7A7876;
-    border: 1px;
-    cursor: pointer;
-    color: #ffffff;
+    border-radius: 4px;
+    color: #fcfcfc;;
+    border: 1px solid #CCCCCC;
+    padding: 5px 20px;
     font-size: 14px;
     font-weight: bold;
+    letter-spacing: 1px;
+}
+
+input.form-button-cancel:hover {
+    background-color: #918f8d;
+    color: #ffffff;
 }
 
 select.form-select {
     padding: 5px;
-}
-
-input.form-submit {
-    padding: 0;
 }
 
 .hierarchical-select-wrapper {
@@ -309,17 +325,6 @@ form.comment-form div.form-actions {
     text-align: right;
 }
 
-form.comment-form input.form-submit {
-    font-size: 14px;
-    color: #ffffff;
-    text-align: center;
-    width: 86px;
-    height: 34px;
-    background-color: #4E963C;
-    border: 1px;
-    cursor: pointer;
-}
-
 /*==tabs==*/
 .quicktabs-wrapper .more-link {
     float: right;
@@ -396,17 +401,17 @@ form.comment-form input.form-submit {
 .item-list ul.pager li.pager-next:hover a,
 .item-list ul.pager li.pager-previous:hover a,
 .item-list ul.pager li.pager-last:hover a,
-.item-list ul.pager li.pager-first:hover a{
+.item-list ul.pager li.pager-first:hover a {
     color: #ffffff;
     font-weight: bold;
 }
 
-.item-list ul.pager li.breaker.pager-item{
+.item-list ul.pager li.breaker.pager-item {
     border: none;
     padding: 2px 2px;
 }
 
-.item-list ul.pager li.breaker.pager-item:hover{
+.item-list ul.pager li.breaker.pager-item:hover {
     background: #FFFFFF;
 }
 
@@ -485,7 +490,6 @@ table {
 }
 
 .post-item-2 .d-1 {
-    float: left;
     width: 390px;
     padding-top: 0px;
     padding: 6px 0 8px 0;
@@ -499,13 +503,20 @@ table {
     text-align: right;
 }
 
-span.icon-share {
+.post-item-2 h2 a {
+    font-family: "microsoft yahei", "simhei";
+    font-size: 20px;
+    font-weight: normal;
+    color: #212121;
+}
+
+span.s-share {
     background: url("img/site/bt_share.gif") no-repeat;
     padding: 0 0 10px 20px;
     width: 70px
 }
 
-span.icon-like-s {
+span.s-like-s {
     background: url("img/site/bt_like_s.gif") no-repeat 0 5px;
     padding: 10px 10px 0 30px;
     width: 80px;
@@ -654,21 +665,23 @@ form.node-review-form div.form-actions {
     text-align: right;
 }
 
-form.node-review-form div.form-actions input.form-submit {
-    font-size: 14px;
-    color: #ffffff;
-    text-align: center;
-    width: 86px;
-    height: 34px;
-    background-color: #4E963C;
-    cursor: pointer;
-    border: 1px;
-}
-
 /*== node-resume-form==*/
 #content form.node-resume-form div.form-item {
     padding: 5px 0 5px 0;
     height: 30px;
+}
+
+form.node-resume-form .form-file {
+    display: inline;
+}
+
+form.node-resume-form .form-managed-file .form-submit {
+    padding: 3px 7px;
+
+}
+
+form.node-resume-form .input-group {
+    width: 204px;
 }
 
 form.node-resume-form div.field-type-datestamp.form-wrapper {
@@ -684,13 +697,12 @@ form.node-resume-form div.form-item.form-type-hierarchical-select {
 }
 
 form.node-resume-form div.form-item input.form-text {
-    height: 20px;
     width: 204px;
 }
 
 form.node-resume-form div.form-item select.form-select {
-    height: 30px;
-    width: 216px;
+    width: 204px;
+    height: 34px;
 }
 
 form.node-resume-form div.form-item div.form-radios {
@@ -887,37 +899,31 @@ body.admin-menu {
 }
 
 #page {
-    width: 960px;
+    width: 100%;
     margin: 0 auto;
-}
-
-body.front #header {
-    height: 200px;
 }
 
 #header {
     width: 100%;
     position: relative;
-    height: 175px;
 }
 
 #top-toolbar {
-    width: 100%;
-    border-bottom: dashed 1px #CCC;
+    float: right;
     color: #6A6A6A;
-    height: 26px;
     z-index: 2;
-    padding: 2px 0;
+    padding: 20px 0 0 0;
 }
 
 #top-toolbar .block-content {
-    padding-right: 20px;
-    float: right;
+    padding-right: 5px;
+    text-align: right;
 }
 
 #top-toolbar .block-content a:link, #top-toolbar .block-content a:visited {
     color: #FF6600;
     text-decoration: none;
+    font-size: 14px;
 }
 
 #top-toolbar .block-content a:hover {
@@ -927,9 +933,8 @@ body.front #header {
 
 #top-toolbar .block-content span {
     display: inline-block;
-    float: left;
-    line-height: 30px;
-    height: 30px;
+    height: 25px;
+
 }
 
 #top-toolbar .block-content .WB {
@@ -956,37 +961,30 @@ body.front #header {
     margin: 5px 0 2px 5px;
 }
 
-#search {
-    float: right;
-    margin-top: 63px;
-    line-height: 0;
-    display: block;
-}
-
-#search select {
-    display: none;
-
-}
-
-#search input.form-text {
-    width: 360px;
+#search-form .form-submit {
+    background: url(img/site/icon-search.png) no-repeat;
     height: 26px;
-    border: 2px solid #8DB125;
-    padding: 4px 6px 4px 6px;
-    vertical-align: top;
+    width: 28px;
+    background-color: #FFF;
+    text-indent: -999px;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding-top: 6px;
 }
 
-#search input.form-submit {
-    width: 76px;
-    height: 38px;
-    background: #8DB125;
-    color: #FFF;
-    border: 2px solid #8DB125;
-    font: bold 15px;
-    cursor: pointer;
-    padding: 4px 6px 4px 6px;
-    margin-left: -2px;
-    vertical-align: top;
+#search-form .form-text {
+    height: 26px;
+    width: 206px;
+    border: none;
+    background-color: #FFF;
+    display: inline;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: none;
+    margin-top: -9px;
 }
 
 #logo {
@@ -994,15 +992,9 @@ body.front #header {
     float: left;
     width: 308px;
     height: 78px;
-    margin-top: 35px;
-}
-
-body.front #block-system-main-menu {
-    margin-bottom: 15px;
 }
 
 #block-system-main-menu {
-    float: right;
     right: 0;
     bottom: 43px;
     margin: 15px 0 0 0;
@@ -1086,8 +1078,9 @@ body.front #block-system-main-menu {
 
 #breadcrumb {
     font-size: 14px;
-    margin: 28px 0 2px 0;
+    margin: 0 0 2px 0;
     width: 100%;
+
 }
 
 #breadcrumb h2.element-invisible {
@@ -1100,6 +1093,8 @@ body.front #block-system-main-menu {
 #breadcrumb .breadcrumb {
     display: inline;
     width: 100%;
+    background-color: #FFF;
+    padding-left: 0;
 }
 
 #main {
@@ -1213,7 +1208,7 @@ body div.node-job div.content div.summary table tbody {
 }
 
 body div.node-job div.content div.summary table tbody div.field {
-    width: 150px;
+    width: 120px;
 }
 
 body div.node-job div.content div.field-name-body {
@@ -1415,7 +1410,7 @@ body div.node-article div.tags div.field-items div.field-item {
 
 /*==pane-similar-entries==*/
 div.pane-similar-entries div.panel-pane-title {
-    background: url(img/site/bt_sml_1.gif) no-repeat 1px 2px;
+    background: url(img/site/bt_sml_1.gif) no-repeat 1px 0;
 }
 
 div.pane-similar-entries div.views-row {
@@ -1490,7 +1485,7 @@ div.reg-showcase div.reg-showcase-title h2 {
 div.reg-showcase span.ss {
     display: block;
     width: 396px;
-    height: 41px;
+    height: 61px;
     margin-top: 16px;
     font-size: 18px;
     font-weight: bold;
@@ -1570,12 +1565,13 @@ div.reg-showcase span.s-4 {
 
 #userreg-company-register-form select.form-select {
     width: 100px;
-    height: 30px;
+    height: 34px;
 }
 
-#userreg-company-register-form input.form-text {
+#userreg-company-register-form input.form-text,
+#userreg-company-register-form .input-group {
     width: 204px;
-    height: 20px;
+
 }
 
 #userreg-company-register-form div.form-actions {
@@ -1588,8 +1584,6 @@ div.reg-showcase span.s-4 {
     background-color: #4E963C;
     font-size: 14px;
     font-weight: bold;
-    width: 166px;
-    height: 30px;
     color: #ffffff;
     cursor: pointer;
 }
@@ -1636,7 +1630,7 @@ div.user-reg {
 }
 
 div.user-reg-form div.form-item label {
-    width: 70px;
+    width: 90px;
     text-align: right;
     padding-right: 15px;
     float: left;
@@ -1646,7 +1640,7 @@ div.user-reg-form div.form-item label {
 
 div.user-reg-form div.form-item input.form-text {
     width: 237px;
-    height: 20px;
+    height: 34px;
 }
 
 div.user-reg-form div.form-actions {
@@ -1767,7 +1761,7 @@ div.user-login-popup div.d-1 span.s-1 {
 }
 
 form div.user-login-popup .form-item  label {
-    width: 70px;
+    width: 90px;
     text-align: right;
     padding-right: 13px;
     padding-top: 5px;
@@ -1776,7 +1770,7 @@ form div.user-login-popup .form-item  label {
 
 form div.user-login-popup .form-item input.form-text {
     width: 237px;
-    height: 20px;
+    height: 34px;
 }
 
 form div.user-login-popup .form-actions input.form-submit {
@@ -1791,7 +1785,7 @@ form div.user-login-popup .form-actions input.form-submit {
 
 form div.user-login-popup .form-actions {
     padding-left: 89px;
-    width: 110px;
+    width: 199px;
     float: left;
 }
 
@@ -1874,7 +1868,7 @@ div.user-login-popup div.d-3 span.s-2 {
     display: block;
     margin-top: 16px;
     background: url(img/site/bg_memo.gif) no-repeat;
-    width: 255px;
+    width: 258px;
     height: 142px;
     padding: 11px 0 0 14px;
     line-height: 1.8;
@@ -1902,19 +1896,19 @@ div.user-login-header {
 div.user-login-header span.active {
     display: inline-block;
     float: left;
-    width: 83px;
-    height: 31px;
+    width: 105px;
+    height: 34px;
     background: url(img/site/bt_arrow_2.gif) no-repeat 10px;
     background-color: #ffffff;
-    padding: 9px 0 0 36px;
+    padding: 7px 0 0 36px;
     margin: 0 0 0 10px;
 }
 
 div.user-login-header span.inactive {
     display: inline-block;
-    width: 83px;
-    height: 31px;
-    padding: 9px 0 0 0px;
+    width: 86px;
+    height: 34px;
+    padding: 7px 0 0 0px;
 }
 
 div.user-login-header span.inactive a {
@@ -2012,7 +2006,6 @@ div.pane-intern-user-company-user-info {
 
 #sidebar-second div.pane-company-info-panel-pane-2 div.panel-pane-title,
 #sidebar-second div.pane-intern-user-company-user-info div.panel-pane-title {
-    height: 20px;
     background-color: #4E963C;
     padding: 10px;
     font-size: 16px;
@@ -2091,13 +2084,7 @@ div.pane-companycenter-resumes-panel-pane-1 .item-list .pager {
 }
 
 div.pane-companycenter-jobs-panel-pane-1 span.add-content, add-content-job {
-    background: url(img/site/bt_ad_jb.gif) no-repeat;
-    width: 90px;
-    height: 30px;
-    background-color: #4E963C;
-    padding-left: 20px;
-    text-indent: -999px;
-    display: block;
+    padding: 8px 15px;
 }
 
 div.pane-companycenter-jobs-panel-pane-1 input.form-submit,
@@ -2171,9 +2158,8 @@ div.pane-intern-company-company-center-shortcuts span a {
 div.pane-intern-company-company-center-shortcuts span.sc-add-job {
     display: block;
     width: 220px;
-    height: 24px;
-    background: url("img/site/bt_sc_aj.gif") no-repeat 16px 12px;
-    padding: 8px 0 0 40px;
+    background: url("img/site/bt_sc_aj.gif") no-repeat 16px 10px;
+    padding: 8px 0 6px 40px;
     background-color: #FF9900;
     margin-bottom: 5px;
     font-weight: bold;
@@ -2182,9 +2168,8 @@ div.pane-intern-company-company-center-shortcuts span.sc-add-job {
 div.pane-intern-company-company-center-shortcuts span.sc-inbox {
     display: block;
     width: 220px;
-    height: 24px;
     background: url("img/site/bt_sc_inbox.gif") no-repeat 13px 9px;
-    padding: 8px 0 0 40px;
+    padding: 8px 0 6px 40px;
     background-color: #7A7876;
     margin-bottom: 5px;
     font-weight: bold;
@@ -2193,9 +2178,8 @@ div.pane-intern-company-company-center-shortcuts span.sc-inbox {
 div.pane-intern-company-company-center-shortcuts span.sc-search-resume {
     display: block;
     width: 220px;
-    height: 24px;
     background: url("img/site/bt_sc_scrm.gif") no-repeat 12px 5px;
-    padding: 8px 0 0 40px;
+    padding: 8px 0 6px 40px;
     background-color: #F1F5E6;
     color: #C6C6BA;
     margin-bottom: 5px;
@@ -2299,9 +2283,9 @@ div.pane-terms-in-blocks {
 }
 
 #col-left div.pane-terms-in-blocks .panel-pane-title {
-    background: url(img/site/bt_acl_tm.gif) no-repeat 15px 13px;
+    background: url(img/site/bt_acl_tm.gif) no-repeat 15px 10px;
     background-color: #8CB125;
-    height: 20px;
+    height: 34px;
     color: #ffffff;
     font-size: 16px;
     font-weight: normal;
@@ -2313,7 +2297,7 @@ div.pane-terms-in-blocks {
 }
 
 #col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .views-row {
-    height: 22px;
+    height: 32px;
     margin-bottom: 0px;
     border: 2px solid #F6F6F6;
     margin-top: 1px;
@@ -2338,7 +2322,7 @@ div.pane-terms-in-blocks {
 
 /**==pane-article-panel-pane-2==**/
 div.pane-article-panel-pane-2 .panel-pane-title {
-    background: url("img/site/bt_cmt.gif") no-repeat 0px 3px;
+    background: url("img/site/bt_cmt.gif") no-repeat 0px 0px;
 }
 
 /**==pane-intern-company-company-center-shortcuts==**/
@@ -2370,9 +2354,9 @@ div.pane-tagclouds-1 {
 }
 
 #col-left div.pane-tagclouds-1 .panel-pane-title {
-    background: url(img/site/bt_tag.gif) no-repeat 10px 12px;
+    background: url(img/site/bt_tag.gif) no-repeat 10px 6px;
     border-bottom: 1px solid #EBEBEB;
-    padding: 12px 0 0 40px;
+    padding: 7px 0 0 40px;
     height: 32px;
     background-color: #F9FBF8;
 }
@@ -2536,8 +2520,8 @@ div.pane-intern-company-company-add-review span.add-review-btn {
 .view-display-id-block_featured_companies_front .views-field-nothing {
     border-left: #9a9a9a dotted 1px;
     border-bottom: #9a9a9a dotted 1px;
-    padding-left:2px;
-    padding-bottom:8px;
+    padding-left: 2px;
+    padding-bottom: 8px;
 }
 
 .view-display-id-block_featured_companies_front .company-content p {
@@ -2770,10 +2754,10 @@ div.tabs div.active {
 }
 
 div.advanced-search {
-    padding: 20px 23px 0px 23px;
+    padding: 20px 13px 0px 23px;
     background-color: #4D963B;
     margin: 0 0 0 0;
-    height: 185px;
+    height: 206px;
 }
 
 div.advanced-search  #views-exposed-form-companys-panel-pane-1 .total-company-count {
@@ -2809,15 +2793,6 @@ div.advanced-search  select {
     float: left;
 }
 
-div.advanced-search input.form-text {
-    border: 3px solid #75b13c;
-    padding: 3px;
-    width: 265px;
-    height: 20px;
-    margin-right: 10px;
-    float: left;
-}
-
 div.advanced-search input.form-submit {
     border: 0 none;
     height: 52px;
@@ -2826,9 +2801,7 @@ div.advanced-search input.form-submit {
     display: block;
     color: white;
     cursor: pointer;
-    font-size: 0;
     line-height: 0;
-    text-indent: -9999px;
 
 }
 
@@ -2869,22 +2842,23 @@ div.advanced-search  #views-exposed-form-jobs-panel-pane-1 label {
 }
 
 div.advanced-search  #views-exposed-form-jobs-panel-pane-1 div.views-exposed-widget {
-    margin-bottom: 8px;
+    margin: 0 12px 8px 0;
 }
 
 div.advanced-search  #views-exposed-form-jobs-panel-pane-1 input.form-submit {
     border: 0 none;
-    height: 34px;
+    height: 36px;
     margin-top: 24px;
     width: 75px;
-    display: block;
-    color: white;
-    background: url(img/site/bt_job_search.png) no-repeat 0 2px;
-    cursor: pointer;
-    font-size: 0;
-    line-height: 0;
-    text-indent: -9999px;
+    background-color: #B0D73E;
+    padding: 5px 10px;
+    color: #003300;
 
+}
+
+div.advanced-search  #views-exposed-form-jobs-panel-pane-1 input.form-submit:hover {
+    background-color: #b6de3f;
+    border-color: #161f29;
 }
 
 div.advanced-search  #views-exposed-form-jobs-panel-pane-1 input.search,
@@ -2899,46 +2873,70 @@ div.advanced-search  #views-exposed-form-companys-panel-pane-1 input.search {
 
 #sidebar-second  #resume-block h2.block-title {
     border-bottom: 0 none;
-    padding: 10px 0 15px 53px;
-    height: 18px;
-    background: url(img/site/bt_jlws.png) no-repeat 15px 13px;
+    padding: 10px 0 10px 53px;
+    background: url(img/site/bt_jlws.png) no-repeat 15px 8px;
     background-color: #F7F7F7;
     font-weight: bold;
     font-size: 16px;
     color: #666666;
 }
 
+#sidebar-second  #resume-block .form-submit {
+    width: 112px;
+    background-color: #0066CC;
+    padding: 8px 20px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #fcfcfc;
+}
+
+#sidebar-second  #resume-block  .form-submit:hover {
+    background-color: #0076df;
+    color: #ffffff;
+}
+
 #sidebar-second  #postjob-block h2.block-title {
-    padding: 15px 0 15px 55px;
-    height: 18px;
+    padding: 12px 0 15px 55px;
+    height: 38px;
     border-bottom: 1px solid #ddd;
-    background: url(img/site/bt_qyzc.png) no-repeat 28px 19px;
+    background: url(img/site/bt_qyzc.png) no-repeat 28px 13px;
     font-weight: bold;
     color: #FF6600;
 }
 
 #sidebar-second  #resume-block .block-content,
 #sidebar-second  #postjob-block  .block-content {
-    padding: 10px 15px 8px 15px;
+    padding: 10px 15px 20px 15px;
     line-height: 1.8;
 }
 
 #sidebar-second  #postjob-block div.company-register a {
-    display: block;
-    background: url(img/site/bt_qyyhzc.png) no-repeat left top;
-    width: 210px;
-    height: 39px;
-    color: white;
-    border: none;
-    text-align: center;
-    text-indent: -999em;
+     background-color: #EA6F3D;
+     border-radius: 6px;
+     word-spacing: 2px;
+     border: 1px solid #cccccc;
+     color: #fcfcfc;
+     padding: 5px 15px;
+     font-size: 16px;
+     width: 211px;
+     text-align: center;
+     display: block;
+     height: 39px;
+     letter-spacing: 1px;
+     color: #fcfcfc;
+     font-weight: bold;
+ }
+
+#sidebar-second  #postjob-block div.company-register a:hover {
+    background-color: #f1713e;
+    color: #fff;
 }
 
 /* 简历完成度区块 */
 div#resume-block div.status {
     margin-left: 10px;
     margin-top: 8px;
-    margin-bottom: 18px;
+    margin-bottom: 24px;
 }
 
 .resume-status p {
@@ -3063,8 +3061,27 @@ body.front #page-wrapper {
     background-image: url(img/body-front.png);
 }
 
-body.front #main-wrapper {
+body #main-wrapper {
+    width: 960px;
+    margin: 0 auto 20px auto;
     background-position: left -127px;
+}
+
+body #topBan {
+    width: 960px;
+    margin: 2px auto;
+    display: block;
+    height: 86px;
+    padding-top: 15px;
+}
+
+body #navBottom {
+    height: 5px;
+    width: 100%;
+    display: block;
+    left: 0;
+    right: 0;
+    background-color: #b0d73e;
 }
 
 body.front #temp-showcase {
@@ -3079,14 +3096,31 @@ body.front #temp-showcase {
 }
 
 #temp-login input.form-text {
-    width: 206px;
-    height: 20px;
+    width: 218px;
+    height: 36px;
     padding: 10px 5px 4px 5px;
 }
 
 .user-login-content {
     padding: 2px 8px 5px 8px;
 }
+
+.user-login-content .form-submit{
+    width: 112px;
+    background-color: #0066CC;
+    padding: 4px 20px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #fcfcfc;
+    height: 31px;
+    margin: 20px 0 15px 50px;
+    }
+
+.user-login-content .form-submit:hover {
+    background-color: #0076df;
+    color: #ffffff;
+}
+
 
 #geren-zhuce, #qiye-zhuce {
     border-bottom: dashed 1px #CCC;
@@ -3095,39 +3129,31 @@ body.front #temp-showcase {
     padding: 0 5px 10px 5px;
 }
 
+#qiye-zhuce a,
 #geren-zhuce a {
-    display: block;
-    background: url(img/site/bt_rg.gif) no-repeat left top;
+    background-color: #EB4735;
+    border-radius: 6px;
+    word-spacing: 2px;
+    border: 1px solid #cccccc;
+    color: #fcfcfc;
+    padding: 6px 15px;
+    font-size: 19px;
+    font-weight: bold;
     width: 219px;
-    height: 40px;
-    color: white;
-    border: none;
     text-align: center;
+    display: block;
+    height: 42px;
+    letter-spacing: 1px;
+    color: #fcfcfc;
 }
 
-#qiye-zhuce a {
-    display: block;
-    background: url(img/site/bt_rg.gif) no-repeat left top;
-    width: 219px;
-    height: 40px;
-    color: white;
-    border: none;
-    text-align: center;
+#qiye-zhuce a:hover,
+#geren-zhuce a:hover {
+    background-color: #f54835;
+    color: #fff;
 }
 
 /*==user login Begin==*/
-.user-login-content input.form-submit {
-    width: 112px;
-    height: 31px;
-    padding-bottom: 4px;
-    display: block;
-    margin: 20px auto 0;
-    background: url(img/site/bt_lg.gif) no-repeat;
-    color: white;
-    border: 0 none;
-    cursor: pointer;
-    text-indent: -999em;
-}
 
 .user-login-content .zhuce-title {
     font-size: 16px;
@@ -3136,9 +3162,9 @@ body.front #temp-showcase {
 
 .user-login-content .qiehuanrukou {
     font-size: 14px;
-    padding: 0 0 10px 130px;
+    float: right;
     width: 90px;
-    border-bottom: dashed 1px #CCC;
+
 }
 
 .user-login-content .qiehuanrukou a {
@@ -3146,8 +3172,10 @@ body.front #temp-showcase {
 }
 
 .other-login-type {
+    border-top: dashed 1px #CCC;
+    padding: 10px 0 5px 0;
     vertical-align: middle;
-    margin-top: 12px;
+    margin-top: 32px;
 }
 
 #weibo-login-text {
@@ -3155,6 +3183,10 @@ body.front #temp-showcase {
     font-size: 14px;
     color: rgb(102, 102, 102);
     margin-bottom: 12px;
+}
+
+.password {
+    display: block;
 }
 
 .password .form-item-remember-me {
@@ -3165,7 +3197,13 @@ body.front #temp-showcase {
 
 .password .forget-password {
     width: 60px;
-    padding-left: 165px;
+    float: right;
+    display: inline-block;
+}
+
+.password .forget-password .ctools-use-modal-processed {
+    width: 60px;
+
 }
 
 #showcase-block {
@@ -3500,7 +3538,7 @@ div.job-list div.views-row {
 }
 
 div.job-list div.views-row-last,
-div.company-list div.views-row-last{
+div.company-list div.views-row-last {
     border-bottom: none;
 }
 
@@ -4143,7 +4181,6 @@ a.reply {
 
 /*== user-center-block Begin ==*/
 #sidebar-second div.pane-usercenter-user-info-panel-pane-1  div.panel-pane-title {
-    height: 20px;
     background-color: #4E963C;
     padding: 10px;
     font-size: 16px;
@@ -4159,15 +4196,16 @@ a.reply {
 #user-center-block .user-info {
     background-color: #F7F9FA;
     padding: 10px 10px;
-    height: 100px;
+    height: 120px;
 }
 
 #user-center-block .views-field-edit {
-   margin-top: 6px;
+    margin-top: 6px;
 }
-#user-center-block .user-info span.edt-acct{
-    background:url(img/site/bt_acct.png) no-repeat 0 3px;
-    padding:5px 0 0 23px;
+
+#user-center-block .user-info span.edt-acct {
+    background: url(img/site/bt_acct.png) no-repeat 0 3px;
+    padding: 5px 0 0 23px;
     font-size: 12px;
 
 }
@@ -4245,15 +4283,6 @@ a.reply {
     height: 35px;
 }
 
-#invite .form-submit {
-    width: 86px;
-    height: 30px;
-    background-color: #4E963C;
-    border: 1px;
-    cursor: pointer;
-    color: #ffffff;
-}
-
 /*== invite block End ==*/
 
 a.button {
@@ -4311,19 +4340,22 @@ div.view-resume-node-view {
     width: 650px;
 }
 
-body.page-node-edit-preview .view-resume-node-view{
+body.page-node-edit-preview .view-resume-node-view {
     width: 670px;
 }
-form.node-resume-form div.view-resume-node-view label{
-    float:none;
+
+form.node-resume-form div.view-resume-node-view label {
+    float: none;
     text-align: left;
     width: 60px;
     padding-right: 0px;
 }
+
 div.view-resume-node-view .views-field {
     color: #333;
 }
-div.view-resume-node-view .views-field .field-content{
+
+div.view-resume-node-view .views-field .field-content {
     display: inline;
 }
 
@@ -4332,13 +4364,14 @@ div.view-resume-node-view .d-1 {
     border: 1px solid #B8DFAE;
     padding: 8px;
 }
-div.view-resume-node-view .d-2{
+
+div.view-resume-node-view .d-2 {
     display: block;
     padding: 15px 0 6px 0;
     line-height: 2.2;
 }
 
-div.view-resume-node-view .d-2 label{
+div.view-resume-node-view .d-2 label {
     width: 60px;
 }
 
@@ -4346,12 +4379,13 @@ div.pane-resume-node-view-panel-pane-1 .d-2 .views-field-location,
 div.pane-resume-node-view-panel-pane-1 .d-2 .views-field-cell-phone {
 
 }
-div.view-resume-node-view .d-3{
+
+div.view-resume-node-view .d-3 {
     display: inline-block;
     padding: 0 0 8px 0;
 }
 
-div.view-resume-node-view .d-3 .views-field{
+div.view-resume-node-view .d-3 .views-field {
     display: inline;
     color: #3C722E;
     font-weight: bold;
@@ -4372,18 +4406,19 @@ div.view-resume-node-view .views-field.views-field-picture {
 }
 
 div.view-resume-node-view .d-4,
-div.view-resume-node-view .d-5{
+div.view-resume-node-view .d-5 {
     margin-top: 10px;
     line-height: 2.2;
     border-bottom: 1px solid #CCCCCC;
     padding: 0 0 10px 0;
 }
 
-div.view-resume-node-view .d-6{
+div.view-resume-node-view .d-6 {
     margin-top: 10px;
     line-height: 2.2;
     padding: 0 0 10px 0;
 }
+
 div.view-resume-node-view .d-4 .s-1,
 div.view-resume-node-view .d-5 .s-1,
 div.view-resume-node-view .d-6 .s-1 {
@@ -4402,11 +4437,13 @@ div.view-resume-node-view .d-6 .s-1 .field-content {
     display: inline;
     color: #333333;
 }
+
 div.view-resume-node-view .d-4-1 {
     width: 46%;
     display: inline-block;
     float: left;
 }
+
 div.view-resume-node-view .d-4-2 {
     width: 48%;
     display: inline-block;
@@ -4414,7 +4451,7 @@ div.view-resume-node-view .d-4-2 {
     border-left: 1px solid #CCCCCC;
 }
 
-div.view-resume-node-view .d-6 .field-content{
+div.view-resume-node-view .d-6 .field-content {
     width: 48%;
     display: inline-block;
 }
@@ -4464,6 +4501,10 @@ div.pane-company-node-form fieldset {
     display: none;
 }
 
+div.pane-company-node-form .input-group {
+    width: 215px;
+}
+
 div.pane-company-node-form .user-picture-info fieldset {
     display: block;
     border: 0px;
@@ -4489,7 +4530,6 @@ div.pane-company-node-form .user-picture-info .form-item-picture-delete label {
 
 div.pane-company-node-form input.form-text {
     width: 204px;
-    height: 20px;
 }
 
 div.pane-company-node-form select.form-select {
@@ -4562,13 +4602,6 @@ div.pane-company-node-form .form-item-field-work-days-und-0-value input.form-tex
 }
 
 div.pane-company-node-form .form-actions input.form-submit {
-    padding: 8px 25px 8px 25px;
-    background-color: rgb(78, 150, 60);
-    border: 1px;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: bold;
     margin-right: 15px;
 }
 
@@ -4589,7 +4622,7 @@ div.pane-company-node-form .field-type-taxonomy-term-reference .form-item {
 }
 
 div.pane-company-node-form div.image-widget {
-    width: 350px;
+    width: 310px;
     display: inline-block;
     float: left;
     min-height: 30px;
@@ -4609,11 +4642,12 @@ div.pane-company-node-form input.form-file {
     height: 30px;
     background-color: #ffffff;
     border: 1px solid #ddd;
+    display: inline;
 }
 
 div.pane-company-node-form div.image-widget #edit-field-logo-und-0-remove-button,
 div.pane-company-node-form div.image-widget #edit-field-logo-und-0-upload-button {
-    padding: 5px 25px 5px 25px;
+    padding: 5px 15px 5px 15px;
     background-color: #7A7876;
     border: 1px;
     cursor: pointer;
@@ -4623,7 +4657,6 @@ div.pane-company-node-form div.image-widget #edit-field-logo-und-0-upload-button
     margin-left: 10px;
     height: 30px;
     display: inline-block;
-    width: 100px;
 }
 
 div.pane-company-node-form div.user-profile-title {
@@ -4647,8 +4680,8 @@ div.pane-company-node-form div.user-base-info {
     border-right: 1px dashed #CCCCCC;
 }
 
-div.pane-company-node-form div.user-base-info .form-item-current-pass .description{
-    margin: 8px 28px 0 105px;
+div.pane-company-node-form div.user-base-info .form-item-current-pass .description {
+    margin: 8px 28px 0 90px;
     background-color: #FFFFCC;
     padding: 6px;
     border: solid 1px #CCCCCC;
@@ -4674,9 +4707,8 @@ div.pane-job-node-form  .form-actions #edit-submit {
 
 /*==Job Node Form　End ==*/
 /*==/user==*/
-
 #footer {
-    border-top: #9a9a9a dotted 1px;
+    padding-bottom: 15px;
 }
 
 #footer .section {
@@ -4684,7 +4716,7 @@ div.pane-job-node-form  .form-actions #edit-submit {
     font-size: 11px;
     width: 960px;
     margin: 0 auto;
-    padding: 10px 0 5px 0;
+    padding: 10px 0 15px 0;
 }
 
 #footer a {
@@ -4697,7 +4729,7 @@ div.pane-job-node-form  .form-actions #edit-submit {
     padding-top: 25px;
 }
 
-#footer .footerLicense div{
+#footer .footerLicense div {
     display: inline-block;
     margin-left: 8px;
 }
@@ -4844,7 +4876,7 @@ html.js .fivestar-submit {
 
 /*==403 404 ==*/
 div.errordiv,
-div.infodiv{
+div.infodiv {
     font-size: 16px;
     margin: 20px 0 60px 200px;
     height: 256px;
@@ -4853,8 +4885,9 @@ div.infodiv{
     padding: 30px 0 0 30px;
 
 }
+
 div.errordiv p,
-div.infodiv p{
+div.infodiv p {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
@@ -4862,73 +4895,167 @@ div.infodiv p{
 }
 
 div.errordiv span,
-div.infodiv span{
+div.infodiv span {
     display: block;
     margin: 0 0 0 15px;
 
 }
+
 /* captcha */
-.captcha .form-item-captcha-response{
-    width:220px;
+.captcha .form-item-captcha-response {
+    width: 220px;
+    display: block;
 }
-.captcha #edit-captcha-response{
+
+.captcha #edit-captcha-response {
     font-size: 12px;
 }
 
-.captcha image{
-    display:inline;
-    float:right;
+.captcha image {
+    display: inline;
+    float: right;
 }
 
-.captcha .reload-captcha-wrapper{
-    float:right;
-    margin:0 80px 0 10px;
+.captcha .reload-captcha-wrapper {
+    float: right;
+    margin: 0 65px 0 10px;
     padding-top: 10px;
 }
-div.user-reg-form div.captcha div.form-item input.form-text{
-    width:70px;
+
+div.user-reg-form div.captcha div.form-item input.form-text {
+    width: 70px;
+    display: inline-block;
 }
 
 #comment-form div.captcha,
-div.pane-intern-company-company-node-add-review div.captcha{
+div.pane-intern-company-company-node-add-review div.captcha {
     width: 330px;
     float: left;
 }
+
 #comment-form div.captcha .form-item,
-div.pane-intern-company-company-node-add-review div.captcha .form-item{
+div.pane-intern-company-company-node-add-review div.captcha .form-item {
     margin-top: 3px;
 }
+
 #comment-form div.captcha .form-item label,
-div.pane-intern-company-company-node-add-review div.captcha .form-item label{
+div.pane-intern-company-company-node-add-review div.captcha .form-item label {
     color: #4E963C;
     font-weight: bold;
 }
+
 #comment-form div.captcha input.form-text,
-div.pane-intern-company-company-node-add-review div.captcha input.form-text{
-    width:70px;
+div.pane-intern-company-company-node-add-review div.captcha input.form-text {
+    width: 70px;
     border: 1px solid #4d963b;
-    height: 20px;
 }
 
-.city_more{
+.city_more {
     display: block;
     float: right;
     background: url(img/site/bt_city_mid.png) no-repeat;
-    padding:3px 3px 0 28px;
+    padding: 3px 3px 0 28px;
     height: 23px;
     color: #666666;
     cursor: pointer;
 }
 
-.jobWarnInfo{
+.jobWarnInfo {
     display: inline-block;
     padding: 10px 15px 10px 15px;
     line-height: 1.8;
     margin: 0 0 15px 0;
 }
 
-span.tagclouds-term{
+span.tagclouds-term {
     padding-right: 5px;
 }
 
+.form-text:-moz-placeholder {
+    color: #999999;
+}
+
+.form-text::-moz-placeholder {
+    color: #999999;
+}
+
+.form-text:-ms-input-placeholder {
+    color: #999999;
+}
+
+.form-text::-webkit-input-placeholder {
+    color: #999999;
+}
+
+.form-text {
+    display: inline-block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    vertical-align: middle;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.form-text:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.form-text[disabled],
+.form-text[readonly],
+fieldset[disabled] .form-control {
+    cursor: not-allowed;
+    background-color: #eeeeee;
+}
+
+textarea.form-text {
+    height: auto;
+}
+
+.input-group-addon {
+    cursor: pointer;
+}
+
+.form-submit {
+    background-color: #4E963C;
+    border-radius: 4px;
+    color: #fcfcfc;;
+    border: 1px solid #CCCCCC;
+    padding: 5px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.form-submit:hover,
+.btn-submit:focus,
+.btn-submit:active,
+.btn-submit.active,
+.open .dropdown-toggle.btn-submit {
+    color: #ffffff;
+    background-color: #569f3d;
+    border-color: #478e3d;
+}
+
+#drag h3{
+    font-size: 18px;
+}
+
+.pager li>a,.pager li>span{
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    display: inline;
+}
 

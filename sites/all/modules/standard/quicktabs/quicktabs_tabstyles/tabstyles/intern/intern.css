@@ -12,7 +12,7 @@ ul.quicktabs-tabs.quicktabs-style-intern {
     padding: 0 0 12px;
     font-size: 12px;
     list-style: none;
-    height: 21px;
+    height: 32px;
     background: transparent url(images/tab-bar.png) repeat-x left bottom;
 }
 
@@ -31,12 +31,12 @@ ul.quicktabs-tabs.quicktabs-style-intern li {
 
 ul.quicktabs-tabs.quicktabs-style-intern li a {
     font: 12px;
-    line-height: 30px;
-    height: 30px;
+    line-height: 34px;
+    height: 34px;
     font-size-adjust: none;
     display: block;
     margin: 0;
-    padding: 4px 17px 0px 11px;
+    padding: 0 17px 0px 11px;
     border-width: 0;
     text-decoration: none;
     background: transparent url(images/tab-right-ie6.png) no-repeat right -40px;

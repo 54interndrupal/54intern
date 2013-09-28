@@ -50,7 +50,7 @@
       'query' => array('og_group_ref' => arg(1)) + drupal_get_destination(),
       'html' => TRUE
     );
-    print l('<span class="add-content add-content-job">' . t('添加职位') . '</span>', 'node/add/job', $options);
+    print l('<span class="form-submit add-content add-content-job">' . t('+  新增职位') . '</span>', 'node/add/job', $options);
     ?>
   </div>
   <div id="quicktabs-front_main_tabs" class="quicktabs-wrapper quicktabs-style-intern2">

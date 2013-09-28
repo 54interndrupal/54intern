@@ -64,5 +64,10 @@
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="<?php print url(path_to_theme())?>/assets/js/jquery.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="<?php print url(path_to_theme())?>/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -125,7 +125,7 @@ var Funtype = {
             var fun_a_2 =funcategory[i][1];
             output+='<td style="width: 540px;">'
             for (var j in fun_a_2){
-                output+='<li onclick="Funtype.SubLayer2(\''+fun_a_2[j]+'\')">'+fun_a[fun_a_2[j]]+'</li>';
+                output+='<li onclick="Funtype.Chk2(\''+fun_a_2[j]+'\')">'+fun_a[fun_a_2[j]]+'</li>';
             }
             output+='</td></tr>'
         }
@@ -135,11 +135,12 @@ var Funtype = {
         // 鼠标悬停变色
         jQuery('#FuntypeAlpha li').hover(function(){jQuery(this).addClass('over')},function(){jQuery(this).removeClass('over')});
         // 点击弹出子菜单
-        if(jQuery('.toolbar').size()==1){
-            jQuery('#FuntypeList li').click(function(e){jQuery("#sublist").css({top:e.pageY-4-150,left:e.pageX-4}).hover(function(){jQuery(this).show()},function(){jQuery(this).hide()})})
-        }else{
-            jQuery('#FuntypeList li').click(function(e){jQuery("#sublist").css({top:e.pageY-4,left:e.pageX-4}).hover(function(){jQuery(this).show()},function(){jQuery(this).hide()})})
-        }
+//        if(jQuery('.toolbar').size()==1){
+//            jQuery('#FuntypeList li').click(function(e){jQuery("#sublist").css({top:e.pageY-4-150,left:e.pageX-4}).hover(function(){jQuery(this).show()},function(){jQuery(this).hide()})})
+//        }else{
+//            jQuery('#FuntypeList li').click(function(e){jQuery("#sublist").css({top:e.pageY-4,left:e.pageX-4}).hover(function(){jQuery(this).show()},function(){jQuery(this).hide()})})
+//        }
+
 
     },
     // 子职位 悬浮菜单

@@ -131,7 +131,7 @@ function shixiquan_companylogin_form($form, &$form_state) {
 
   $form['submit'] = array(
     '#type' => 'submit',
-    '#value' => t(' '),
+    '#value' => t('Log in'),
   );
 
 

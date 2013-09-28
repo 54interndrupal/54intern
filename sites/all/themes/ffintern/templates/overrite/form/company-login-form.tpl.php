@@ -8,7 +8,7 @@
  */ ?>
 <?php if($is_front){?>
 <div class='user-login-content'>
-<div id="qiye-zhuce"><a href="user/companyregister" title="没有账号？立即加入实习圈！"></a></div>
+<div id="qiye-zhuce"><a href="user/companyregister" title="没有账号？立即加入实习圈！"><span>注册实习圈</span></a></div>
 <div class="zhuce-title"><?php print '> ' . t('企业用户登录') ?></div>
 <?php  print  drupal_render($form['company_name']); ?>
 <?php  print  drupal_render($form['name']); ?>
@@ -17,8 +17,8 @@
   <?php  print  drupal_render($form['remember_me']); ?>
   <div class="forget-password"><a href="<?php print url("ajax_register/password/nojs") ?>" class="ctools-use-modal ctools-modal-ctools-ajax-pass-style"><?php print t('忘记密码');?></a></div>
 </div>
-<?php  print  drupal_render($form['submit']); ?><br/>
-<?php     print drupal_render_children($form);?>
+<?php  print  drupal_render($form['actions']['submit']); ?><br/>
+<?php     print drupal_render_children($form);?><br/>
 <div class="qiehuanrukou"><span id="normal-user-login-title"><a href="#"><?php print('>> ' . t('个人入口'))?></a></span>
 </div>
 </div>

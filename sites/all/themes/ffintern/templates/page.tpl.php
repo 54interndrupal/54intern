@@ -85,18 +85,18 @@
  */
 ?>
 <div id="page-wrapper"><div id="page">
-	<div id="header"><div class="section clearfix">
-		<?php print render($page['header_top']); ?>
-		 <div style="display: inline-block;width: 100%">
-		<?php if ($logo): ?>
-		<a href="<?php print $front_page; ?>" title="<?php print t('首页'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('首页'); ?>" /></a>
-		<?php endif; ?>
 
-      <?php print render($page['search_box']); ?>
-         </div>
+  <div id="header"><div class="section clearfix">
+    <div id="topBan" class="block">
+      <?php print render($page['header_top']); ?>
+      <?php if ($logo): ?>
+      <a href="<?php print $front_page; ?>" title="<?php print t('首页'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('首页'); ?>" /></a>
+      <?php endif; ?>
+
+    </div>
     <?php print render($page['navigation']); ?>
 
-	</div></div> <!-- /.section, /#header -->
+  </div></div> <!-- /.section, /#header -->
 
 	<?php 
 	$highlighted = render($page['highlighted']);

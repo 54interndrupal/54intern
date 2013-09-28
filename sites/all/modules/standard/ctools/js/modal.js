@@ -42,7 +42,7 @@
         addHeight: 0,
         // How much to remove from the inner content to make space for the
         // theming.
-        contentRight: 25,
+        contentRight: 10,
         contentBottom: 45
       },
       modalOptions: {
@@ -81,9 +81,10 @@
         'width': width + Drupal.CTools.Modal.currentSettings.modalSize.addWidth + 'px',
         'height': height + Drupal.CTools.Modal.currentSettings.modalSize.addHeight + 'px'
       });
+
       $('div.ctools-modal-content .modal-content', context).css({
-        'width': (width - Drupal.CTools.Modal.currentSettings.modalSize.contentRight) + 'px',
-        'height': (height - Drupal.CTools.Modal.currentSettings.modalSize.contentBottom) + 'px'
+        'width': (width - 12) + 'px',
+        'height': (height -60) + 'px'
       });
     }
 

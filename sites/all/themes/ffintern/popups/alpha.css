@@ -47,7 +47,7 @@
 	WIDTH: 492px; FLOAT: left
 }
 #residencyAlpha DD LI {
-	TEXT-INDENT: 4px; WIDTH: 82px; FLOAT: left; HEIGHT: 25px; OVERFLOW: hidden; CURSOR: pointer
+	TEXT-INDENT: 4px; WIDTH: 82px; FLOAT: left; HEIGHT: 25px; OVERFLOW: hidden; CURSOR: pointer;padding: 5px 3px;
 }
 #residencyAlpha DD LI.over {
 	BACKGROUND: #75b13c; COLOR: #fff
@@ -59,7 +59,12 @@
 	BORDER-BOTTOM: #4D963A 1px solid; TEXT-ALIGN: left; BORDER-LEFT: #4D963A 1px solid; LINE-HEIGHT: 25px; BORDER-TOP: #4D963A 1px solid; BORDER-RIGHT: #4D963A 1px solid
 }
 #sub_city H4 {
-	BORDER-BOTTOM: #ccc 1px dashed
+	BORDER-BOTTOM: #ccc 1px dashed;
+
+}
+#sub_city H4 a{
+    font-size: 14px;
+    padding: 6px 0 4px 5px;
 }
 #sub_city UL {
 	ZOOM: 1; OVERFLOW: hidden

@@ -11,7 +11,7 @@ function in_array(needle, haystack) {
 }
 
 function setSearchValue(inputObject, objectValue) {
-    var maxInputLength = (inputObject.width() - 30) / 13;
+    var maxInputLength = (inputObject.width()) / 14;
     if (objectValue.length > maxInputLength) {
         inputObject.val(objectValue.substring(0, maxInputLength) + '...');
         inputObject.attr("title", objectValue);

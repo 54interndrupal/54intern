@@ -12,10 +12,19 @@ function ffintern_preprocess_html() {
     'group' => CSS_THEME, 'browsers' =>
     array('IE' => 'IE 9', '!IE' => FALSE), 'preprocess' => FALSE
   ));
-  // Add conditional CSS for IE6.
+    // Add conditional CSS for IE6.
   drupal_add_css(path_to_theme() . '/css/ie7.css', array(
     'group' => CSS_THEME, 'browsers' =>
     array('IE' => 'lt IE 7', '!IE' => FALSE), 'preprocess' => FALSE
+  ));
+
+  drupal_add_js(path_to_theme() . '/bootstrap/assets/js/html5shiv.js', array(
+    'group' => JS_LIBRARY, 'browsers' =>
+    array('IE' => 'IE 9', '!IE' => FALSE), 'preprocess' => FALSE
+  ));
+  drupal_add_js(path_to_theme() . '/bootstrap/assets/js/respond.min.js', array(
+    'group' => JS_LIBRARY, 'browsers' =>
+    array('IE' => 'IE 9', '!IE' => FALSE), 'preprocess' => FALSE
   ));
 }
 
@@ -301,6 +310,13 @@ function ffintern_review_node_form(&$variables) {
   return $header . drupal_render_children($form);
 }
 
+function ffintern_menu_tree__main_menu($variables) {
+  $searchForm = drupal_get_form('shixiquan_search_form');
+
+  $output = drupal_render($searchForm);
+  return '<div class="navbar navbar-inverse bts-docs-nav" role="banner"><div class="container"><div class="collapse navbar-collapse bts-navbar-collapse" role="navigation"><ul class="nav navbar-nav">' . $variables['tree'] . '</ul><div class="nav navbar-nav navbar-right" style="padding:12px 5px 0 0">'.$output.'</div></div></div><div id="navBottom"></div></div>';
+}
+
 function ffintern_menu_link__main_menu(array $variables) {
 
   $element = $variables['element'];
@@ -317,24 +333,36 @@ function ffintern_menu_link__main_menu(array $variables) {
 //   print($params[2]);
   if ($mlid == 626 && arg(0) == $element['#href']) {
     $attributes['class'][] = 'active';
+    $element['#attributes']['class'][]='active';
+
   }
   else {
     if ($mlid == 638 && arg(0) == $element['#href']) {
       $attributes['class'][] = 'active';
+      $element['#attributes']['class'][]='active';
+
     }
     else {
       if ($mlid == 624 && ((isset($params[2]) && $params[2] == 'company') || arg(0) == 'companys')) {
         $attributes['class'][] = 'active';
+        $element['#attributes']['class'][]='active';
+
       }
       else {
         if ($mlid == 625 && (isset($params[2]) && $params[2] == 'job')) {
           $attributes['class'][] = 'active';
+          $element['#attributes']['class'][]='active';
+
         }
         else {
           if ($mlid == 1436 && (isset($params[2]) && $params[2] == 'article')) {
             $attributes['class'][] = 'active';
+            $element['#attributes']['class'][]='active';
+
           }elseif (intern_user_is_company_user()&& ($mlid == 638) && ((isset($params[2])&&$params[2]=='node') || arg(0)=='user')){
             $attributes['class'][] = 'active';
+            $element['#attributes']['class'][]='active';
+
           }
         }
 
@@ -348,10 +376,12 @@ function ffintern_menu_link__main_menu(array $variables) {
     'html' => TRUE,
     'attributes' => $attributes
   ));
-  if ($element['#href'] != '<front>') {
-    $output = '<span class="menu-split"></span>' . $output;
+//  print('x'.$element['#href'].'x'.','.$_GET['q']);
+  if ( $element['#href'] == $_GET['q'] || ($_GET['q'] == 'frontpage'&&$element['#href']=='<front>' && drupal_is_front_page())) {
+    $element['#attributes']['class'][] = 'active';
   }
-  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . "</li>\n";
 }
 
 function ffintern_access_company_contacts($nid) {
@@ -509,19 +539,26 @@ function ffintern_select($variables) {
     if ($element['#parents'][0] == 'field_location_tid' || $element['#parents'][0] == 'field_location') {
       drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/city_func.js");
       drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/city_arr.js");
-      $output .= '<div><input type="text" name="citySelect" onclick="residencySelect(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search '.$error_class.'" value="' . $selectOption . '"></div>';
+      $output .= '<div class="input-group">'.
+        '<input type="text" name="citySelect" onclick="residencySelect(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-control'.$error_class.'" value="' . $selectOption . '"/>'.
+        '<span class="input-group-addon"  onclick="residencySelect(\'' . $element['#id'] . '\');"><i class="icon-search"></i></span>'.
+        '</div>';
     }
     else {
       if ($element['#parents'][0] == 'job_category' || $element['#parents'][0] == 'field_job_category') {
         drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/funtype_func.js");
         drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/funtype_arr.js");
-        $output .= '<div><input type="text" name="jobCategorySelect"  onclick="funtypeSelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search '.$error_class.'" value="' . $selectOption . '"></div>';
+        $output .= '<div class="input-group"><input type="text" name="jobCategorySelect"  onclick="funtypeSelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-control '.$error_class.'" value="' . $selectOption . '">'.
+          '<span class="input-group-addon" onclick="funtypeSelect_2(\'' . $element['#id'] . '\');"><i class="icon-search"></i></span>'
+          .'</div>';
       }
       else {
         if ($element['#parents'][0] == 'field_industry_tid' || $element['#parents'][0] == 'field_industry') {
           drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/industry_func.js");
           drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/industry_arr.js");
-          $output .= '<div><input type="text" name="industrySelect"  onclick="IndustrySelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-text search '.$error_class.'" value="' . $selectOption . '"></div>';
+          $output .= '<div  class="input-group"><input type="text" name="industrySelect"  onclick="IndustrySelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-control '.$error_class.'" value="' . $selectOption . '">'.
+            '<span class="input-group-addon"  onclick="IndustrySelect_2(\'' . $element['#id'] . '\');"><i class="icon-search"></i></span>'.
+            '</div>';
         }
       }
     }
