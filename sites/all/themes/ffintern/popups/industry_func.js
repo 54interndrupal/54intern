@@ -117,7 +117,7 @@ function IndustrySelect(){
 function IndustrySelect_2(elementId){
     ind_element_id = elementId;
     var dragHtml ='<div id="IndustryAlpha">';		//行业
-    dragHtml+='		<div id="IndustryList" class="radio"></div>';//行业列表
+    dragHtml+='		<div id="IndustryList" class="industry"></div>';//行业列表
     dragHtml+='</div>';
     jQuery('#drag_h').html('<b>请选择行业</b><span onclick="boxAlpha()">[关闭]</span> &nbsp; <span onclick="IndustryReset()">[不限]</span>');
     jQuery('#drag_con').html(dragHtml);
