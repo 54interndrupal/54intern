@@ -45,6 +45,7 @@ label {
 
 a {
     cursor: pointer;
+    text-decoration: none;
 }
 
 a:link {
