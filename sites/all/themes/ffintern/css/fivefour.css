@@ -2759,6 +2759,7 @@ div.advanced-search {
     background-color: #4D963B;
     margin: 0 0 0 0;
     height: 206px;
+    display: block;
 }
 
 div.advanced-search  #views-exposed-form-companys-panel-pane-1 .total-company-count {
@@ -3614,6 +3615,8 @@ div.job-list a.join {
 body.page-companys #main-content h1#page-title {
     background: url("img/site/bt_company.png") no-repeat;
     padding-left: 30px;
+    padding-top: 0;
+    margin-top: 0px;
 }
 
 ul#company-center-tabs li {
