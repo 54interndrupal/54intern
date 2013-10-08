@@ -2270,12 +2270,12 @@ div.pane-intern-company-company-center-shortcuts span.inactive {
     min-height: 40px;
     padding: 5px 0 3px 6px;
     background-color: RGB(240, 251, 230);
-    width: 208px;
+    width: 215px;
 }
 
 .pane-company-reviews-in-blocks .company-comment span.title {
     display: inline-block;
-    width: 140px;
+    width: 148px;
 }
 
 /**pane-terms-in-blocks**/
