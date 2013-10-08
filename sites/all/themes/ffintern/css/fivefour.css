@@ -971,7 +971,8 @@ body.admin-menu {
     border: none;
     border-radius: 0;
     margin: 0;
-    padding-top: 7px;
+    padding:5px 20px 5px 5px;
+    vertical-align: middle;
 }
 
 #search-form .form-text {
@@ -985,7 +986,6 @@ body.admin-menu {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     box-shadow: none;
-    margin-top: -9px;
 }
 
 #logo {
