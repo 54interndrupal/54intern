@@ -314,7 +314,7 @@ function ffintern_menu_tree__main_menu($variables) {
   $searchForm = drupal_get_form('shixiquan_search_form');
 
   $output = drupal_render($searchForm);
-  return '<div class="navbar navbar-inverse bts-docs-nav" role="banner"><div class="container"><div class="collapse navbar-collapse bts-navbar-collapse" role="navigation"><ul class="nav navbar-nav">' . $variables['tree'] . '</ul><div class="nav navbar-nav navbar-right" style="padding:12px 5px 0 0">'.$output.'</div></div></div><div id="navBottom"></div></div>';
+  return '<div class="navbar navbar-inverse bts-docs-nav" role="banner"><div class="container"><div class="collapse navbar-collapse bts-navbar-collapse" role="navigation"><ul class="nav navbar-nav">' . $variables['tree'] . '</ul><div class="nav navbar-nav navbar-right" style="padding:7px 0 0 0">'.$output.'</div></div></div><div id="navBottom"></div></div>';
 }
 
 function ffintern_menu_link__main_menu(array $variables) {
