@@ -919,6 +919,11 @@ body.admin-menu {
 #top-toolbar .block-content {
     padding-right: 5px;
     text-align: right;
+    font-size: 14px;
+}
+
+#top-toolbar .block-content .authcache-user-link{
+    color: #6a6a6a;
 }
 
 #top-toolbar .block-content a:link, #top-toolbar .block-content a:visited {
