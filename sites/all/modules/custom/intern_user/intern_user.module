@@ -239,7 +239,13 @@ function intern_user_top_link_block() {
               <span><a href="' . base_path() . 'csna/weibo" class="WB" title="新浪微博账号登陆"></a><a href="' . url("csna/qq") . '" class="QQ" title="QQ账号登陆"></a><a href="' . url("csna/renren") . '" class="RR" title="人人账号登陆"></a></span>';
   }
   else {
-    $output .= '<span>Hi,&nbsp;' . intern_user_get_user_name($user->name) . '&nbsp; 实习圈欢迎你！</span><br>
+
+    $userName = intern_user_get_user_name($user->name);
+    if($is_page_authcache){
+        $userName = '<a class="authcache-user-link">!username</a>';
+    }
+
+    $output .= '<span>Hi,&nbsp;' . $userName . '&nbsp; 实习圈欢迎你！</span><br>
               <span><a  href="' . url("user") . '" class="channel-login" name="user-login" title="个人帐户管理" >我的帐户</a> |
 	          <a  href="' . url("user/logout") . '" class="channel-login" name="user-login" title="退出登录" >注销登录</a></span>';
   }
