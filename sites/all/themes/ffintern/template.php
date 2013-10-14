@@ -370,7 +370,7 @@ function ffintern_menu_link__main_menu(array $variables) {
     }
   }
 
-  $attributes['class'][] = 'menu-' . $element['#original_link']['mlid'];
+  $attributes['class'][] = 'menu-' . $element['#original_link']['mlid'].'-'.$params[2];
 
   $output = l($element['#title'], $element['#href'], array(
     'html' => TRUE,
