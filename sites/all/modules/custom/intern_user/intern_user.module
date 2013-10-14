@@ -337,6 +337,8 @@ function intern_user_form_node_form_alter(&$form, $form_state) {
     drupal_add_css(path_to_theme() . '/layouts/intern_layout/intern_layout.css');
     drupal_add_js(path_to_theme() . '/js/maintain_resume.js');
     $form['actions']['submit']['#submit'][] = 'intern_user_resume_form_post_submit';
+    $form['actions']['submit']['#value'] = '保存并预览';
+
 //    print_r($form);
   }
 }
