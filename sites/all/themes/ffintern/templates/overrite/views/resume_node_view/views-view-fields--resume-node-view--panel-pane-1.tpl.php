@@ -60,7 +60,7 @@
       <div class="views-field views-field-disipline"><label>所在专业：</label><?print $fields["field_discipline"]->content?>
       </div>
       <div class="views-field views-field-education">
-        <label>当前在读学历：</label><?print $fields["field_education"]->content?>
+        <label>在读学历：</label><?print $fields["field_education"]->content?>
       </div>
     </div>
   </div>
