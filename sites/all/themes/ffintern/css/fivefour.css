@@ -922,14 +922,15 @@ body.admin-menu {
     font-size: 14px;
 }
 
-#top-toolbar .block-content .authcache-user-link{
-    color: #6a6a6a;
-}
 
-#top-toolbar .block-content a:link, #top-toolbar .block-content a:visited {
+
+#top-toolbar .block-content a {
     color: #FF6600;
     text-decoration: none;
     font-size: 14px;
+}
+#top-toolbar .block-content a.authcache-user-link{
+    color: #6a6a6a;
 }
 
 #top-toolbar .block-content a:hover {
