@@ -343,23 +343,23 @@ function ffintern_menu_link__main_menu(array $variables) {
 
     }
     else {
-      if ($mlid == 624 && ((isset($params[2]) && $params[2] == 'company') || arg(0) == 'companys')) {
+      if ($mlid == 624 && ((isset($params[1]) && $params[1] == 'company') || arg(0) == 'companys')) {
         $attributes['class'][] = 'active';
         $element['#attributes']['class'][]='active';
 
       }
       else {
-        if ($mlid == 625 && (isset($params[2]) && $params[2] == 'job')) {
+        if ($mlid == 625 && (isset($params[1]) && $params[1] == 'job')) {
           $attributes['class'][] = 'active';
           $element['#attributes']['class'][]='active';
 
         }
         else {
-          if ($mlid == 1436 && (isset($params[2]) && $params[2] == 'article')) {
+          if ($mlid == 1436 && (isset($params[1]) && $params[1] == 'article')) {
             $attributes['class'][] = 'active';
             $element['#attributes']['class'][]='active';
 
-          }elseif (intern_user_is_company_user()&& ($mlid == 638) && ((isset($params[2])&&$params[2]=='node') || arg(0)=='user')){
+          }elseif (intern_user_is_company_user()&& ($mlid == 638) && ((isset($params[1])&&$params[1]=='node') || arg(0)=='user')){
             $attributes['class'][] = 'active';
             $element['#attributes']['class'][]='active';
 
@@ -370,7 +370,7 @@ function ffintern_menu_link__main_menu(array $variables) {
     }
   }
 
-  $attributes['class'][] = 'menu-' . $element['#original_link']['mlid'].'-'.$params[2];
+  $attributes['class'][] = 'menu-' . $element['#original_link']['mlid'];
 
   $output = l($element['#title'], $element['#href'], array(
     'html' => TRUE,
