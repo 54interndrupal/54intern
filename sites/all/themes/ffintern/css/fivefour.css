@@ -4315,15 +4315,10 @@ a.button span {
 }
 
 /*== page-resume Begin==*/
-body.node-type-resume #main-wrapper{
+body.node-type-resume .resume-node-view #main-wrapper{
     width: 680px;
     margin-top: 15px;
 }
-
-body.page-node-edit-preview node-type-resume #main-wrapper{
-    width: 960px;
-}
-
 
 #page-resume #header .resume {
     margin-top: 30px;
