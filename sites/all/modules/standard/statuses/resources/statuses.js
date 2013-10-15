@@ -142,6 +142,7 @@ function fbss_refresh() {
     var loaded2 = {};
 
     $.each(fbss_refreshIDs, function(i, val) {
+
       if (val && val != undefined) {
         if ($.trim(val) && loaded2[val] !== true) {
           loaded2[val] = true;
@@ -163,13 +164,10 @@ function fbss_refresh() {
       var new_data = data.replace(/<script(.|\s)*?\/script>/g, "");
 
         new_data =  new_data.replace(/<head(.|\s)*?\/head>/g, "");
-        new_data =  new_data.replace(/<html(.|\s)*?>/g, "");
-        new_data =  new_data.replace(/<body(.|\s)*?>/g, "");
-        new_data =  new_data.replace(/<!DOCTYPE(.|\s)*?>/g, "");
-        new_data =  new_data.replace(/<\/html>/g, "");
-        new_data =  new_data.replace(/<\/body>/g, "");
-
-        $(".statuses-text-main").val(new_data);
+        //new_data =  new_data.replace(/<html(.|\s)*?>/g, "");
+        //new_data =  new_data.replace(/<body(.|\s)*?>/g, "");
+        //new_data =  new_data.replace(/<!DOCTYPE(.|\s)*?>/g, "");
+        //$(".statuses-text-main").val(new_data);
       // Apparently Safari crashes with just $().
       var new_content = $('<div></div>').html(new_data);
 
