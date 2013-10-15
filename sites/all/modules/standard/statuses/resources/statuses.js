@@ -81,6 +81,7 @@ attach: function (context) {
   });
   // On document load, add a refresh link where applicable.
   if (initialLoad && fbss_refreshIDs && Drupal.settings.statuses.refreshLink) {
+
     var loaded = {};
     $.each(fbss_refreshIDs, function(i, val) {
       if (val && val != undefined) {
@@ -139,6 +140,7 @@ function fbss_refresh() {
   var loaded = {};
   if (fbss_refreshIDs && fbss_refreshIDs != undefined) {
     var loaded2 = {};
+
     $.each(fbss_refreshIDs, function(i, val) {
       if (val && val != undefined) {
         if ($.trim(val) && loaded2[val] !== true) {
@@ -156,10 +158,21 @@ function fbss_refresh() {
     }
     // IE will cache the result unless we add an identifier (in this case, the time).
     $.get(location +"ts="+ (new Date()).getTime(), function(data, textStatus) {
+
       // From load() in jQuery source. We already have the scripts we need.
       var new_data = data.replace(/<script(.|\s)*?\/script>/g, "");
+
+        new_data =  new_data.replace(/<head(.|\s)*?\/head>/g, "");
+        new_data =  new_data.replace(/<html(.|\s)*?>/g, "");
+        new_data =  new_data.replace(/<body(.|\s)*?>/g, "");
+        new_data =  new_data.replace(/<!DOCTYPE(.|\s)*?>/g, "");
+        new_data =  new_data.replace(/<\/html>/g, "");
+        new_data =  new_data.replace(/<\/body>/g, "");
+
+        $(".statuses-text-main").val(new_data);
       // Apparently Safari crashes with just $().
       var new_content = $('<div></div>').html(new_data);
+
       if (textStatus != 'error' && new_content) {
         // Replace relevant content in the viewport with the updated version.
         $.each(fbss_refreshIDs, function(i, val) {

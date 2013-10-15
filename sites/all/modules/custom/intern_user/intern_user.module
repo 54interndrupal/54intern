@@ -231,7 +231,7 @@ function intern_user_resume_tabs_block() {
  * 用户顶部链接
  */
 function intern_user_top_link_block() {
-  global $user, $is_page_authcache;
+  global $user,$is_page_authcache;
   $output = '<div id="top-toolbar" class="block">
            <div class="block-content">';
   if (!$user->uid) {
@@ -240,6 +240,9 @@ function intern_user_top_link_block() {
   }
   else {
     $userName = '<a class="authcache-user-link">!username</a>';
+    if ($user->uid && $is_page_authcache == false){
+      $userName  =intern_user_get_user_full_name($user->name);
+    }
     $output .= '<span>Hi,&nbsp;' . $userName . '&nbsp; 实习圈欢迎你！</span><br>
               <span><a  href="' . url("user") . '" class="channel-login" name="user-login" title="个人帐户管理" >我的帐户</a> |
 	          <a  href="' . url("user/logout") . '" class="channel-login" name="user-login" title="退出登录" >注销登录</a></span>';
