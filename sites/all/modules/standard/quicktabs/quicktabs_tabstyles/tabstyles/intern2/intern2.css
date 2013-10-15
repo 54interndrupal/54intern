@@ -5,13 +5,13 @@ ul.quicktabs-style-intern2.quicktabs-tabs {
 	background: url("images/tab2-bar.png") repeat-x left bottom; list-style: none; margin: 0px 0px 15px; padding: 0px 0px 12px; height: 33px; font-size: 12px;
 }
 ul.quicktabs-style-intern2.quicktabs-tabs li {
-	background: url("images/tab2-left-ie6.png") no-repeat left -40px; margin: 0  -5px 0 10px; padding: 0px 0px 0px 5px; height: 31px; line-height: 31px; float: left; color:#999;
+	background: url("images/tab2-left-ie6.png") no-repeat left -40px; margin: 0  -5px 0 10px; padding: 0px 0px 0px 5px; height: 31px; line-height: 31px; float: left; color:#333;
 }
 ul.quicktabs-style-intern2.quicktabs-tabs li a {
-	background: url("images/tab2-right-ie6.png") no-repeat right -40px; border-width: 0px; margin: 0px; padding: 4px 17px 0px 11px; height: 31px; line-height: 27px; text-decoration: none; display: block; font-size-adjust: none; color:#999;
+	background: url("images/tab2-right-ie6.png") no-repeat right -40px; border-width: 0px; margin: 0px; padding: 4px 17px 0px 11px; height: 31px; line-height: 27px; text-decoration: none; display: block; font-size-adjust: none; color:#333;
 }
 ul.quicktabs-style-intern2.quicktabs-tabs li:hover a {
-	background: url("images/tab2-right-ie6.png") no-repeat right -40px; border-width: 0px; color:#999;
+	background: url("images/tab2-right-ie6.png") no-repeat right -40px; border-width: 0px; color:#333;
 }
 quicktabs-tabs.quicktabs-style-intern2 li:hover {
 	background: url("images/tab2-left-ie6.png") no-repeat left -40px;

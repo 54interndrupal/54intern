@@ -56,16 +56,6 @@
   <div id="quicktabs-front_main_tabs" class="quicktabs-wrapper quicktabs-style-intern2">
     <div class="item-list">
       <ul class="quicktabs-tabs quicktabs-style-intern2">
-        <li class="first <?php if ($_GET['sub_status'] == '4' && empty($_GET["deadline"]["value"]["date"])) {
-          print 'active';
-        }?>"><a
-          href="javascript:resetStatus('4')"
-          id="quicktabs-tab-jobs_tabs-0" class="active">发布中职位</a></li>
-        <li class="first <?php if (!empty($_GET["deadline"]["value"]["date"])) {
-          print 'active';
-        }?>"><a
-          href="javascript:resetStatus('10')"
-          id="quicktabs-tab-jobs_tabs-10" class="active">即将到期</a></li>
         <li class="first <?php if ( $_GET['sub_status'] == '0') {
           print 'active';
         }?>"><a
@@ -76,6 +66,16 @@
         }?>"><a
           href="javascript:resetStatus('3')"
           id="quicktabs-tab-jobs_tabs-5" class="active">待审核</a></li>
+        <li class="first <?php if ($_GET['sub_status'] == '4' && empty($_GET["deadline"]["value"]["date"])) {
+          print 'active';
+        }?>"><a
+          href="javascript:resetStatus('4')"
+          id="quicktabs-tab-jobs_tabs-0" class="active">发布中职位</a></li>
+        <li class="first <?php if (!empty($_GET["deadline"]["value"]["date"])) {
+          print 'active';
+        }?>"><a
+          href="javascript:resetStatus('10')"
+          id="quicktabs-tab-jobs_tabs-10" class="active">即将到期</a></li>
         <li class="first <?php if ( $_GET['sub_status'] == '1') {
           print 'active';
         }?>"><a
@@ -92,7 +92,6 @@
           }?>"><a
           href="javascript:resetStatus('All');"
           id="quicktabs-tab-jobs_tabs-1" class="active">全部</a></li>
-
       </ul>
     </div>
     <?php if ($attachment_before): ?>
