@@ -4320,6 +4320,10 @@ body.node-type-resume #main-wrapper{
     margin-top: 15px;
 }
 
+body.page-node-edit-preview node-type-resume #main-wrapper{
+    width: 960px;
+}
+
 
 #page-resume #header .resume {
     margin-top: 30px;
