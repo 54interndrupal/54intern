@@ -339,10 +339,20 @@ function intern_user_form_node_form_alter(&$form, $form_state) {
 
     drupal_add_css(path_to_theme() . '/layouts/intern_layout/intern_layout.css');
     drupal_add_js(path_to_theme() . '/js/maintain_resume.js');
+    $form['#validate'][] = 'intern_user_resume_form_validate';
     $form['actions']['submit']['#submit'][] = 'intern_user_resume_form_post_submit';
     $form['actions']['submit']['#value'] = '保存并预览';
 
 //    print_r($form);
+  }
+}
+function intern_user_resume_form_validate(&$form, &$form_state) {
+  $cell_phone = $form_state['values']["field_cell_phone"][LANGUAGE_NONE][0]['value'];
+
+//  print_r($form);
+  //company name validate
+  if (strlen($cell_phone)!=11 || (!is_int($cell_phone)) ) {
+      form_set_error('field_cell_phone', t("手机号必须为11位数字",array()));
   }
 }
 

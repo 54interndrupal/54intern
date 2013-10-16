@@ -1392,13 +1392,6 @@ body.page-user ul.tabs.primary {
 
 /****** 编辑简历表单 ******/
 
-/* 表单元素边框颜色 */
-body.node-type-resume form#resume-node-form input,
-body.node-type-resume form#resume-node-form select,
-body.node-type-resume form#resume-node-form textarea {
-    border: 1px solid #ddd;
-}
-
 /* 隐藏输入格式 */
 body.node-type-resume form#resume-node-form fieldset.filter-wrapper {
     display: none;
