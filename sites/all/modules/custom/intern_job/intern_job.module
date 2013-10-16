@@ -406,9 +406,9 @@ function intern_job_mail($key, &$message, $params) {
             ';
       $body.= '<div style="display:inline-block; border-bottom: 1px dashed;border-top: 1px dashed;padding-top: 5px;padding-bottom: 5px;font-size: 20px;">
 
-<br><span style="font-size: 26px;font-weight: bold;">实习圈</span>，是一个基于互联网技术构建的高校学生实习主题在线平台，将专注致力于企业实习生计划实施全过程，通过在学生、高校及企业间建立在线互动及线下服务，让高效的实习生计划为您企业发展贡献价值！
-<br>您是否还未注册为实习圈<span style="font-size: 26px;font-weight: bold;color: #0000ff;">企业会员</span>？请通过以下链接快速注册会员以获取更多服务：<br>
-<a href="http://www.54intern.com/user/companyregister">http://www.54intern.com/user/companyregister</a>
+<br><span style="font-size: 26px;font-weight: bold;">实习圈</span><span style="font-size: 20px">，是一个基于互联网技术构建的高校学生实习主题在线平台，将专注致力于企业实习生计划实施全过程，通过在学生、高校及企业间建立在线互动及线下服务，让高效的实习生计划为您企业发展贡献价值！
+<br>您是否还未注册为实习圈</span><span style="font-size: 26px;font-weight: bold;color: #0000ff;">企业会员</span><span style="font-size: 20px">？请通过以下链接快速注册会员以获取更多服务：<br>
+<a href="http://www.54intern.com/user/companyregister">http://www.54intern.com/user/companyregister</a></span>
 </div>
 ';
 
