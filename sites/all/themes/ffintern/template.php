@@ -355,7 +355,7 @@ function ffintern_menu_link__main_menu(array $variables) {
 
         }
         else {
-          if ($mlid == 1436 && (isset($params[1]) && $params[1] == 'article')) {
+          if ($mlid == 1436 && (isset($params[1]) && ($params[1] == 'article'||$params[1] == 'wikis'))) {
             $attributes['class'][] = 'active';
             $element['#attributes']['class'][]='active';
 
