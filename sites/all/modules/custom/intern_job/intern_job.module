@@ -244,7 +244,7 @@ function intern_job_approve_action($node, $context = array()) {
  * Expire jobs.
  */
 function intern_job_cron() {
-  $nids = db_query('SELECT fd.entity_id FROM {field_data_field_deadline} fd INNER JOIN {node} n ON fd.entity_id = n.nid  WHERE n.status=1 AND fd.field_deadline_value <= :request_time AND fd.bundle = :entity_type limit 200', array(
+  $nids = db_query('SELECT fd.entity_id FROM {field_data_field_deadline} fd INNER JOIN {node} n ON fd.entity_id = n.nid  WHERE n.status=1 AND fd.field_deadline_value <= :request_time AND fd.bundle = :entity_type limit 500', array(
     ':request_time' => REQUEST_TIME,
     ':entity_type' => 'job'
   ))->fetchCol();
