@@ -365,7 +365,7 @@ function ffintern_menu_link__main_menu(array $variables) {
             $attributes['class'][] = 'active';
             $element['#attributes']['class'][]='active';
 
-          }elseif  (($mlid == 626) &&(isset($params[1])&&$params[1]=='node') || arg(0)=='user'){
+          }elseif  (!intern_user_is_company_user()&&($mlid == 626) &&((isset($params[1])&&$params[1]=='node'))){
             $attributes['class'][] = 'active';
             $element['#attributes']['class'][]='active';
 
