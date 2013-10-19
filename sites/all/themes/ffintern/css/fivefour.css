@@ -749,7 +749,7 @@ form.node-resume-form div.field-name-field-contact-address input.form-text {
     width: 400px;
 }
 form.node-resume-form .form-managed-file{
-    width: 500px;
+    width: 600px;
 }
 
 form.node-resume-form div.form-item div.file-widget {
@@ -758,8 +758,6 @@ form.node-resume-form div.form-item div.file-widget {
     float: left;
     margin-bottom: 1em;
 }
-
-
 form.node-resume-form div.field-name-field-resume-attachement input.form-file {
     width: 254px;
     height: 30px;
