@@ -60,7 +60,9 @@
     else {
       ?>
       <div id="user-basic-info">
-        <input type="hidden" id="userResumeUploaded" value="<?php print $_SESSION['user_resume_uploaded'];?>"/>
+
+        <input type="hidden" id="userResumeUploaded" value="<?php print $_SESSION['user_resume_uploaded']?'Y':'N';?>"/>
+
 
         <?php print drupal_render($form['title']);?>
         <?php print drupal_render($form['field_real_name']);?>
