@@ -136,9 +136,9 @@ function intern_user_resume_status_block() {
     $output .= '</div></div></div>';
 
     $resume = node_load($_SESSION['user_resume_id']);
-    $field = field_get_items('node', $resume, 'field_attached_resumes');
+    $field = field_get_items('node', $resume, 'field_apply_letters');
     print_r($field);
-    $field = field_collection_item_load($field[0]['value'])->field_resume_attachement;
+    $field = field_collection_item_load($field[0]['value'])->field_letter_body;
     print_r($field);
 
     // Use JS to retrieve block content
