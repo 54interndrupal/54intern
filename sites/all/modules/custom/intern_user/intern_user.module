@@ -137,9 +137,13 @@ function intern_user_resume_status_block() {
 
     $resume = node_load($_SESSION['user_resume_id']);
     $field = field_get_items('node', $resume, 'field_attached_resumes');
-    print_r($field);
+
     $field = field_collection_item_load($field[0]['value'])->field_resume_attachement;
+    if(!empty($field)){
     print_r($field);
+    }else{
+      print("XXXXXXXXXXXXXX");
+    }
 
     // Use JS to retrieve block content
     drupal_add_js(drupal_get_path('module', 'intern_user') . '/js/intern_user.js', array('preprocess' => FALSE));
@@ -163,7 +167,7 @@ function intern_user_get_resume_finish_percent($resume) {
 
         if ($instance['field_name'] == 'field_attached_resumes') {
           $field = field_collection_item_load($field[0]['value'])->field_resume_attachment;
-          if($field){
+          if(!empty($field)){
             $_SESSION['user_resume_uploaded'] = true;
           }else{
             $_SESSION['user_resume_uploaded'] = false;
