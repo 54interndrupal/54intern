@@ -135,18 +135,18 @@ function intern_user_resume_status_block() {
     $output .= '<div class="block-content"><div class="resume-status">';
     $output .= '</div></div></div>';
 
-    $resume = node_load($_SESSION['user_resume_id']);
+//    $resume = node_load($_SESSION['user_resume_id']);
 
-
-    $instances = field_info_instances('node', 'resume');
-
-    foreach ($instances as $name => $instance) {
-      if ($instance["display"]["default"]["type"] != 'hidden') {
-        $field = field_get_items('node', $resume, $instance['field_name']);
-        print( $instance['field_name']);
-        print_r($field);
-      }
-    }
+//
+//    $instances = field_info_instances('node', 'resume');
+//
+//    foreach ($instances as $name => $instance) {
+//      if ($instance["display"]["default"]["type"] != 'hidden') {
+//        $field = field_get_items('node', $resume, $instance['field_name']);
+//        print( $instance['field_name']);
+//        print_r($field);
+//      }
+//    }
 
     // Use JS to retrieve block content
     drupal_add_js(drupal_get_path('module', 'intern_user') . '/js/intern_user.js', array('preprocess' => FALSE));
