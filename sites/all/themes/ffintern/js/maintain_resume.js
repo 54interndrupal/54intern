@@ -39,7 +39,9 @@
             }
         })
 
-
+        if($('#userResumeUploaded').val()=='Y'){
+            $("#user-attached-resume-tab").click();
+        }
 
 
     });

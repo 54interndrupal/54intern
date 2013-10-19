@@ -281,7 +281,7 @@ function intern_job_flags($jobId) {
 
     }
     else {
-      if ($_SESSION['user_resume_uploaded'] == FALSE && $_SESSION['user_resume_finish_percent'] > 0) {
+      if ($_SESSION['user_resume_uploaded'] == false && $_SESSION['user_resume_finish_percent'] > 0) {
          $path = 'node/' . $_SESSION['user_resume_id'] . '/edit';
         $output .= '<span class="flag-wrapper flag-apply flag-apply-44312">
       <a href="javascript:if(confirm(\'您还没有上传简历，无法申请职位，是否马上去上载简历？\'))window.location=\'' . url($path) . '\'" title="" class="ctools-use-modal ctools-modal-ctools-ajax-register-style flag flag-action flag-link-normal" rel="nofollow">申请职位</a>
