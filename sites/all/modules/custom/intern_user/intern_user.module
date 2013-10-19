@@ -51,7 +51,7 @@ function intern_company_user_login_form() {
   $form['#validate'] = shixiquan_login_default_validators();
 //  $form['#validate'] = user_login_default_validators();
   $form['#submit'][] = 'user_login_submit';
-  $form['#submit']['#value'] =  t('Log in');
+  $form['#submit']['#value'] = t('Log in');
   return $form;
 }
 
@@ -82,7 +82,7 @@ function intern_user_block_view($delta = '') {
       if (!empty($_SESSION['user_resume_id'])) {
         $path = 'node/' . $_SESSION['user_resume_id'] . '/edit/preview';
       }
-      $block['subject'] = '<a href="'.url($path).'">我的简历</a>';
+      $block['subject'] = '<a href="' . url($path) . '">我的简历</a>';
       $block['content'] = intern_user_resume_status_block();
       break;
     case 'company user info':
@@ -131,23 +131,9 @@ function intern_user_resume_status_block() {
       $path = 'node/' . $_SESSION['user_resume_id'] . '/edit/preview';
     }
     $output = '<div class="block" id="resume-block">';
-    $output .= '<h2 class="block-title"><a href="'.url($path).'">我的简历</a></h2>';
+    $output .= '<h2 class="block-title"><a href="' . url($path) . '">我的简历</a></h2>';
     $output .= '<div class="block-content"><div class="resume-status">';
     $output .= '</div></div></div>';
-
-//    $resume = node_load($_SESSION['user_resume_id']);
-
-//
-//    $instances = field_info_instances('node', 'resume');
-//
-//    foreach ($instances as $name => $instance) {
-//      if ($instance["display"]["default"]["type"] != 'hidden') {
-//        $field = field_get_items('node', $resume, $instance['field_name']);
-//        print( $instance['field_name']);
-//        print_r($field);
-//      }
-//    }
-
     // Use JS to retrieve block content
     drupal_add_js(drupal_get_path('module', 'intern_user') . '/js/intern_user.js', array('preprocess' => FALSE));
   }
@@ -163,6 +149,23 @@ function intern_user_get_resume_finish_percent($resume) {
   foreach ($instances as $name => $instance) {
     if ($instance["display"]["default"]["type"] != 'hidden') {
       $field = field_get_items('node', $resume, $instance['field_name']);
+      $resume = node_load($_SESSION['user_resume_id']);
+
+      if ($instance["display"]["default"]["type"] != 'hidden') {
+        $field = field_get_items('node', $resume, $instance['field_name']);
+
+        if ($instance['field_name'] == 'field_attached_resumes') {
+          $field = field_collection_item_load($field[0]['value'])->field_resume_attachment;
+          if($field){
+            $_SESSION['user_resume_uploaded'] = true;
+          }else{
+            $_SESSION['user_resume_uploaded'] = false;
+          }
+        }else if ($instance['field_name'] == 'field_apply_letters'){
+          $field = field_collection_item_load($field[0]['value'])->field_letter_body;
+        }
+      }
+
       $j++;
       if ($field) {
         $i++;
@@ -198,7 +201,7 @@ function intern_user_resume_status_block_view() {
     }
 
 
-    $output .= '<p>CC完整度：<big>' . $percent . '%</big></p>';
+    $output .= '<p>完整度：<big>' . $percent . '%</big></p>';
     $output .= '<div class="status"><div style="width:' . $percent . '%;"></div></div>';
     $output .= '<a href="' . url($path) . '"><span class="form-submit">继续完善简历</span></a>';
 
@@ -223,18 +226,19 @@ function intern_user_center_showcase_block() {
  * 个人简历编辑 tabs block
  */
 function intern_user_resume_tabs_block() {
-  $preview = false;
+  $preview = FALSE;
   if (arg(3) == 'preview') {
     $preview = TRUE;
   }
   ;
   $output = "";
   $output .= '<ul class="quicktabs-tabs quicktabs-style-intern">';
-  if ($preview==true){
+  if ($preview == TRUE) {
     $path = 'node/' . $_SESSION['user_resume_id'] . '/edit';
-    $output .= '<div class="more-link" style="float: right;margin-top:0px;"><a href="'. url($path).'">更新简历>></a></div>';
+    $output .= '<div class="more-link" style="float: right;margin-top:0px;"><a href="' . url($path) . '">更新简历>></a></div>';
     $output .= '<li class="active" id="user-basic-info-tab"><a href="#">简历预览</a></li>';
-  }else{
+  }
+  else {
     $output .= '<li class="active" id="user-basic-info-tab"><a href="#">个人基本资料</a></li>';
     $output .= '<li id="user-attached-resume-tab"><a href="#">上传简历</a></li>';
     $output .= '<li id="user-apply-letter-tab"><a href="#">求职信</a></li>';
@@ -247,7 +251,7 @@ function intern_user_resume_tabs_block() {
  * 用户顶部链接
  */
 function intern_user_top_link_block() {
-  global $user,$_authcache_is_cacheable;
+  global $user, $_authcache_is_cacheable;
   $output = '<div id="top-toolbar" class="block">
            <div class="block-content">';
   if (!$user->uid) {
@@ -256,8 +260,8 @@ function intern_user_top_link_block() {
   }
   else {
     $userName = '<a class="authcache-user-link">!username</a>';
-    if ($user->uid && $_authcache_is_cacheable == false){
-      $userName  =intern_user_get_user_full_name($user->name);
+    if ($user->uid && $_authcache_is_cacheable == FALSE) {
+      $userName = intern_user_get_user_full_name($user->name);
     }
     $output .= '<span>Hi,&nbsp;' . $userName . '&nbsp; 实习圈欢迎你！</span><br>
               <span><a  href="' . url("user") . '" class="channel-login" name="user-login" title="个人帐户管理" >我的帐户</a> |
@@ -362,13 +366,14 @@ function intern_user_form_node_form_alter(&$form, $form_state) {
 //    print_r($form);
   }
 }
+
 function intern_user_resume_form_validate(&$form, &$form_state) {
   $cell_phone = $form_state['values']["field_cell_phone"][LANGUAGE_NONE][0]['value'];
 
 //  print_r($form);
   //company name validate
-  if (strlen($cell_phone)!=11 || (!is_numeric($cell_phone)) ) {
-      form_set_error('field_cell_phone', t("手机号必须为11位数字",array()));
+  if (strlen($cell_phone) != 11 || (!is_numeric($cell_phone))) {
+    form_set_error('field_cell_phone', t("手机号必须为11位数字", array()));
   }
 }
 

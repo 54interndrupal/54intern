@@ -17,6 +17,7 @@ scripts[] = js/jquery.jcarousel.min.js
 scripts[] = js/jquery.colorbox.js
 scripts[] = js/fivefour.js
 
+
 regions[first]                = first column
 regions[header_top]           = head top
 regions[search_box]               = search box

@@ -3101,7 +3101,8 @@ body.front #temp-showcase {
     border: 3px solid RGB(203, 217, 200);
 }
 
-#temp-login input.form-text {
+#temp-login input.form-text,
+#temp-login input.hint{
     width: 218px;
     height: 36px;
     padding: 10px 5px 4px 5px;
@@ -5075,3 +5076,9 @@ textarea.form-text {
     margin: 0;
 }
 
+.modal-body a{
+   color: blue;
+}
+.modal-content{
+    border: 4px solid #4e963c;
+}

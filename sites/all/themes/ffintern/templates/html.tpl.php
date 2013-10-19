@@ -55,7 +55,12 @@
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
+
+
+
   <?php print $scripts; ?>
+
+
 </head>
 <body class="<?php print $classes; ?> root" <?php print $attributes;?>>
   <div id="skip-link">
@@ -65,9 +70,6 @@
   <?php print $page; ?>
   <?php print $page_bottom; ?>
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="<?php print url(path_to_theme())?>/assets/js/jquery.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="<?php print url(path_to_theme())?>/js/bootstrap.min.js"></script>
+
 </body>
 </html>

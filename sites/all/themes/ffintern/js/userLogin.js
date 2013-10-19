@@ -9,10 +9,10 @@
     Drupal.behaviors.userLogin = {
         attach:function (context) {
             if ($("#user-login-header").size() > 0) {
-                if ($("div.modal-header .user-login-header").size() == 0) {
-                    $("div.modal-header").addClass("colored").append($('#user-login-header'));
+                if ($(".ctools-modal-content .modal-header .user-login-header").size() == 0) {
+                    $(".ctools-modal-content .modal-header").addClass("colored").append($('#user-login-header'));
                 } else {
-                    $("div.modal-content .user-login-header").hide();
+                    $(".ctools-modal-content .modal-content .user-login-header").hide();
                 }
             }
         }

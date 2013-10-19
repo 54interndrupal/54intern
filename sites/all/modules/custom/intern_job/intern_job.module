@@ -278,15 +278,24 @@ function intern_job_flags($jobId) {
     $output .= flag_create_link('collect', $jobId);
     //企业用户不能访问
     if (in_array(4, array_keys($user->roles))) {
+
     }
     else {
-      if ($_SESSION['user_resume_finish_percent'] > 0) {
-        $output .= flag_create_link('apply', $jobId);
+      if ($_SESSION['user_resume_uploaded'] == FALSE && $_SESSION['user_resume_finish_percent'] > 0) {
+         $path = 'node/' . $_SESSION['user_resume_id'] . '/edit';
+        $output .= '<span class="flag-wrapper flag-apply flag-apply-44312">
+      <a href="javascript:if(confirm(\'您还没有上传简历，无法申请职位，是否马上去上载简历？\'))window.location=\'' . url($path) . '\'" title="" class="ctools-use-modal ctools-modal-ctools-ajax-register-style flag flag-action flag-link-normal" rel="nofollow">申请职位</a>
+    </span>';
       }
       else {
-        $output .= '<span class="flag-wrapper flag-apply flag-apply-44312">
+        if ($_SESSION['user_resume_finish_percent'] > 0) {
+          $output .= flag_create_link('apply', $jobId);
+        }
+        else {
+          $output .= '<span class="flag-wrapper flag-apply flag-apply-44312">
       <a href="javascript:if(confirm(\'您还没有填写简历，先去完善简历？\'))window.location=\'' . url('node/add/resume') . '\'" title="" class="ctools-use-modal ctools-modal-ctools-ajax-register-style flag flag-action flag-link-normal" rel="nofollow">申请职位</a>
     </span>';
+        }
       }
     }
 
@@ -337,9 +346,9 @@ function intern_job_mail($key, &$message, $params) {
       $resume_attached_uri = '<a style="text-decoration: none;" href="' . file_create_url($resume['field_attached_resumes'][0]['entity']['field_collection_item'][$resume_attached_index]['field_resume_attachement']['#items'][0]['uri'])
         . '"><span style="color:#FFFFFF;font-size:13px;font-weight:bold;">简历附件下载</span></a>';
 
-      $body = '<div style="width:700px;padding:10px 0 15px 0;">'.
-               '<span style="font-size: 20px;">尊敬的 先生/女士 ('.$params['company_title'].'): </span><br><br><span style="font-size: 20px;">您好！本邮件是通过【实习圈】发送的贵公司实习职位申请邮件，具体如下： </span><br><br>'.
-               '<span style="font-size: 20px;">应聘职位：&nbsp;' . $params['job_title'] . '</span><br/><span style="font-size: 20px;">应聘公司：&nbsp;' . $params['company_title'] . '</span><br/><span style="font-size: 20px;">投递时间：&nbsp;' . $params['apply_date'] . '</span><br/><br/></div>';
+      $body = '<div style="width:700px;padding:10px 0 15px 0;">' .
+        '<span style="font-size: 20px;">尊敬的 先生/女士 (' . $params['company_title'] . '): </span><br><br><span style="font-size: 20px;">您好！本邮件是通过【实习圈】发送的贵公司实习职位申请邮件，具体如下： </span><br><br>' .
+        '<span style="font-size: 20px;">应聘职位：&nbsp;' . $params['job_title'] . '</span><br/><span style="font-size: 20px;">应聘公司：&nbsp;' . $params['company_title'] . '</span><br/><span style="font-size: 20px;">投递时间：&nbsp;' . $params['apply_date'] . '</span><br/><br/></div>';
       $body .= '<table widht="700px" style="border:#4e963c 2px solid;padding:10px 12px 10px 12px;">
                   <tr><td>
                     <div style="background-color: F7FCF5;border:#b8dfae 1px solid;padding: 8px;width:675px; ">
@@ -404,7 +413,7 @@ function intern_job_mail($key, &$message, $params) {
                 </tr>
               </table> <br><br>
             ';
-      $body.= '<div style="display:inline-block; border-bottom: 1px dashed;border-top: 1px dashed;padding-top: 5px;padding-bottom: 5px;font-size: 20px;">
+      $body .= '<div style="display:inline-block; border-bottom: 1px dashed;border-top: 1px dashed;padding-top: 5px;padding-bottom: 5px;font-size: 20px;">
 
 <br><span style="font-size: 26px;font-weight: bold;">实习圈</span><span style="font-size: 20px">，是一个基于互联网技术构建的高校学生实习主题在线平台，将专注致力于企业实习生计划实施全过程，通过在学生、高校及企业间建立在线互动及线下服务，让高效的实习生计划为您企业发展贡献价值！
 <br>您是否还未注册为实习圈</span><span style="font-size: 26px;font-weight: bold;color: #0000ff;">企业会员</span><span style="font-size: 20px">？请通过以下链接快速注册会员以获取更多服务：<br>

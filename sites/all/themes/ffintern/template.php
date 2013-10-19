@@ -18,6 +18,10 @@ function ffintern_preprocess_html() {
     array('IE' => 'lt IE 7', '!IE' => FALSE), 'preprocess' => FALSE
   ));
 
+  drupal_add_js(path_to_theme() . '/bootstrap/js/bootstrap.min.js', array(
+    'group' => JS_LIBRARY
+  ));
+
   drupal_add_js(path_to_theme() . '/bootstrap/assets/js/html5shiv.js', array(
     'group' => JS_LIBRARY, 'browsers' =>
     array('IE' => 'IE 9', '!IE' => FALSE), 'preprocess' => FALSE

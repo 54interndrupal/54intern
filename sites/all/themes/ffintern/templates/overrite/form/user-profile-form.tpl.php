@@ -130,7 +130,7 @@ else {
     Drupal.behaviors.userProfile = {
       attach:function (context) {
         if ($("#model-header-title").size() > 0) {
-          $("div.modal-header").addClass("colored").append($('#model-header-title'));
+          $(".ctools-modal-content .modal-header").addClass("colored").append($('#model-header-title'));
         }
       }
     }

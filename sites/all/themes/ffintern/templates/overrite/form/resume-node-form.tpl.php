@@ -13,6 +13,7 @@
 
 <div id="content" class="column">
   <div class="section">
+
     <?php
     $block = module_invoke('intern_user', 'block_view', 'user center showcase');
     ?>
@@ -110,6 +111,20 @@
     <!---->
     <!--      --><?php //$follow_block = views_embed_view('usercenter_user_followed', 'panel_pane_1',  $user->uid);?>
     <!--      --><?php //print $follow_block?>
+  </div>
+</div>
+
+<div class="modal fade" id="resume-check" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="">
+        <button class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h4>提醒</h4>
+      </div>
+      <div class="modal-body" style="font-size: 16px;">
+
+      </div>
+    </div>
   </div>
 </div>
 
