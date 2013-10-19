@@ -134,6 +134,12 @@ function intern_user_resume_status_block() {
     $output .= '<h2 class="block-title"><a href="' . url($path) . '">我的简历</a></h2>';
     $output .= '<div class="block-content"><div class="resume-status">';
     $output .= '</div></div></div>';
+
+    $resume = node_load($_SESSION['user_resume_id']);
+    $field = field_get_items('node', $resume, 'field_attached_resumes');
+    $field = field_collection_item_load($field[0]['value'])->field_resume_attachment;
+    print_r($field);
+
     // Use JS to retrieve block content
     drupal_add_js(drupal_get_path('module', 'intern_user') . '/js/intern_user.js', array('preprocess' => FALSE));
   }
