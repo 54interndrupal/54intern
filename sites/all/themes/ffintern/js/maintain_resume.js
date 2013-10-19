@@ -39,7 +39,7 @@
             }
         })
 
-        if($('#userResumeUploaded').val()=='Y'){
+        if($('#userResumeUploaded').val()=='N'){
             $("#user-attached-resume-tab").click();
         }
 
