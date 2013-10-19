@@ -134,6 +134,20 @@ function intern_user_resume_status_block() {
     $output .= '<h2 class="block-title"><a href="'.url($path).'">我的简历</a></h2>';
     $output .= '<div class="block-content"><div class="resume-status">';
     $output .= '</div></div></div>';
+
+    $resume = node_load($_SESSION['user_resume_id']);
+
+
+    $instances = field_info_instances('node', 'resume');
+
+    foreach ($instances as $name => $instance) {
+      if ($instance["display"]["default"]["type"] != 'hidden') {
+        $field = field_get_items('node', $resume, $instance['field_name']);
+        print( $instance['field_name']);
+        print_r($field);
+      }
+    }
+
     // Use JS to retrieve block content
     drupal_add_js(drupal_get_path('module', 'intern_user') . '/js/intern_user.js', array('preprocess' => FALSE));
   }
@@ -175,6 +189,7 @@ function intern_user_resume_status_block_view() {
         $resume = node_load($_SESSION['user_resume_id']);
         $percent = intern_user_get_resume_finish_percent($resume);
         $_SESSION['user_resume_finish_percent'] = $percent;
+
       }
       else {
         $percent = $_SESSION['user_resume_finish_percent'];
@@ -182,7 +197,8 @@ function intern_user_resume_status_block_view() {
 
     }
 
-    $output .= '<p>完整度：<big>' . $percent . '%</big></p>';
+
+    $output .= '<p>CC完整度：<big>' . $percent . '%</big></p>';
     $output .= '<div class="status"><div style="width:' . $percent . '%;"></div></div>';
     $output .= '<a href="' . url($path) . '"><span class="form-submit">继续完善简历</span></a>';
 
