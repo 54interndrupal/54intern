@@ -166,7 +166,7 @@ function intern_user_get_resume_finish_percent($resume) {
         $field = field_get_items('node', $resume, $instance['field_name']);
 
         if ($instance['field_name'] == 'field_attached_resumes') {
-          $field = field_collection_item_load($field[0]['value'])->field_resume_attachment;
+          $field = field_collection_item_load($field[0]['value'])->field_resume_attachement;
           if(!empty($field)){
             $_SESSION['user_resume_uploaded'] = true;
           }else{
