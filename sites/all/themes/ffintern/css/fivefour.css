@@ -1000,7 +1000,6 @@ body.admin-menu {
 
 #block-system-main-menu {
     right: 0;
-    bottom: 43px;
     margin: 15px 0 0 0;
     display: block;
     text-align: right;
@@ -1099,6 +1098,8 @@ body.admin-menu {
     width: 100%;
     background-color: #FFF;
     padding-left: 0;
+    padding-bottom: 4px;
+
 }
 
 #main {
@@ -1365,6 +1366,7 @@ body div.node-article div.content h2 {
     font-weight: normal;
     text-align: center;
     margin-bottom: 18px;
+    color: #369;
 }
 
 body div.node-article div.content div.info {
@@ -1384,6 +1386,7 @@ body div.node-article div.content div.summary {
     line-height: 1.8;
     margin: 15px 0 15px 0;
     border: 1px dashed #ddd;
+    color:#0000ff;
 }
 
 body div.node-article div.content div.photo {
@@ -1418,7 +1421,7 @@ div.pane-similar-entries div.panel-pane-title {
 }
 
 div.pane-similar-entries div.views-row {
-    background-color: #E3EAE2;
+    background-color: #FFFFE1;
     padding: 8px;
 }
 

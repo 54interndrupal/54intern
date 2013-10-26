@@ -25,6 +25,13 @@
   <?php print $row; ?>
 </div>
 <?php endforeach; ?>
+<div class="views-row views-row-suffix">
+   <div class="views-field views-field-name">
+     <span class="field-content">
+       <a class="term active" href="<?php print url('wikis/all/all')?>">所有文章</a>
+     </span>
+   </div>
+</div>
 <script type="text/javascript">
   (function ($) {
     $(document).ready(function () {
@@ -40,6 +47,8 @@
       $(".view-id-terms_in_blocks .view-content .term").each(function (i){
          if( window.location.href.indexOf($(this).attr('href') )>0){
            $(this).addClass('active');
+         }else{
+           $(this).removeClass('active');
          }
       })
     });

@@ -28,9 +28,9 @@
 }
 
 #block-feedback-form h2{
-    background-color:#4C973C;
+    background-color:#F0F0F0;
     height: 25px;
-    color: white;
+    color: #333;
     padding: 0px 0px 0px 5px;
 }
 /* IE6 seems to be unable to handle fixed */
@@ -57,7 +57,7 @@
     z-index: 100000;
     margin-left: -13px;
     text-decoration: none !important;
-    background-color: #4C973C;
+    background-color: #0066CC;
     background-repeat: no-repeat;
     /* @todo Store this image locally, and add 'Suggestion' image.  Make image localizable. */
     background-image: url(images/feedback_trans_tab.png);
@@ -70,7 +70,7 @@
   font-size: 12px;
 }
 #block-feedback-form form {
-  border: 2px solid #4C973C;
+  border: 2px solid #CCCCCC;
   padding: 6px;
   background-color: #fff;
   opacity: 1;
@@ -105,5 +105,9 @@
 #block-feedback-form .feedback-submitted {
   margin-top: 0.2em;
   font-size: 10px;
+
+}
+#block-feedback-form .form-submit{
+    background-color:  #0066CC;
 }
 
