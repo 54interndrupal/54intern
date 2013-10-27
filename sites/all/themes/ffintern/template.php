@@ -22,14 +22,14 @@ function ffintern_preprocess_html() {
     'group' => JS_LIBRARY
   ));
 
-  drupal_add_js(path_to_theme() . '/bootstrap/assets/js/html5shiv.js', array(
-    'group' => JS_LIBRARY, 'browsers' =>
-    array('IE' => 'IE 9', '!IE' => FALSE), 'preprocess' => FALSE
-  ));
-  drupal_add_js(path_to_theme() . '/bootstrap/assets/js/respond.min.js', array(
-    'group' => JS_LIBRARY, 'browsers' =>
-    array('IE' => 'IE 9', '!IE' => FALSE), 'preprocess' => FALSE
-  ));
+//  drupal_add_js(path_to_theme() . '/bootstrap/assets/js/html5shiv.js', array(
+//    'group' => JS_LIBRARY, 'browsers' =>
+//    array('IE' => 'IE 9', '!IE' => FALSE), 'preprocess' => FALSE
+//  ));
+//  drupal_add_js(path_to_theme() . '/bootstrap/assets/js/respond.min.js', array(
+//    'group' => JS_LIBRARY, 'browsers' =>
+//    array('IE' => 'IE 9', '!IE' => FALSE), 'preprocess' => FALSE
+//  ));
 }
 
 
