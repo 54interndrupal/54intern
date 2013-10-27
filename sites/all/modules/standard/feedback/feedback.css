@@ -57,7 +57,7 @@
     z-index: 100000;
     margin-left: -13px;
     text-decoration: none !important;
-    background-color: #0066CC;
+    background-color: #EA6F3D;
     background-repeat: no-repeat;
     /* @todo Store this image locally, and add 'Suggestion' image.  Make image localizable. */
     background-image: url(images/feedback_trans_tab.png);
