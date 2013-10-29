@@ -1424,6 +1424,7 @@ div.pane-similar-entries div.panel-pane-title {
 div.pane-similar-entries div.views-row {
     background-color: #FFF;
     padding: 2px 5px;
+    min-height: 70px;
 }
 
 div.pane-similar-entries div.views-row .views-field-field-image {
