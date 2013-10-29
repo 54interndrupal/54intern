@@ -1370,8 +1370,11 @@ body div.node-article div.content h2 {
     color: #369;
 }
 
-body div.node-article div.content .field-name-body{
+body div.node-article div.content .field-name-body p,
+body div.node-article div.content .field-name-body span{
     font-family: "宋体";
+    line-height: 26px;
+    color: #494949;
 }
 
 body div.node-article div.content div.info {
