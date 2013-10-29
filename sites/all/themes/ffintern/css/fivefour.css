@@ -2353,6 +2353,9 @@ div.wiki-welcome-pane .pane-content h2 {
     font-weight: normal;
     color: #003333;
 }
+div.wiki-welcome-pane .pane-content span {
+    margin-bottom: 7px;
+}
 
 /**==pane-tagclouds-1==**/
 div.pane-tagclouds-1 {
