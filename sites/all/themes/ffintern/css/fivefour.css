@@ -1423,7 +1423,7 @@ div.pane-similar-entries div.panel-pane-title {
 
 div.pane-similar-entries div.views-row {
     background-color: #FFF;
-    padding: 2px;
+    padding: 2px 5px;
 }
 
 div.pane-similar-entries div.views-row .views-field-field-image {
