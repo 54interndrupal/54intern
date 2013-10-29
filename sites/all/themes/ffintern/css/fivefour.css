@@ -2321,6 +2321,7 @@ div.pane-terms-in-blocks {
     background: url("img/site/bt_arw_1.gif") no-repeat 215px 12px;
     background-color: #F6F6F6;
     cursor: pointer;
+    font-size: 14px;
 }
 
 #col-left div.pane-terms-in-blocks .view-id-terms_in_blocks .selected {
