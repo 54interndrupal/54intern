@@ -1352,6 +1352,7 @@ body div.node-job div.content span.foot-msg a {
 
 /*==node article==*/
 body div.node-article div.content {
+    font-family: "宋体";
     background-color: #F6F6F6;
     padding: 60px 25px 30px 25px;
     line-height: 1.8;
