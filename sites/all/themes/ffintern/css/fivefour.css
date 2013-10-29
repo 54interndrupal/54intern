@@ -2355,6 +2355,7 @@ div.wiki-welcome-pane .pane-content h2 {
 }
 div.wiki-welcome-pane .pane-content span {
     margin-bottom: 7px;
+    display: inline-block;
 }
 
 /**==pane-tagclouds-1==**/
