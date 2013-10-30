@@ -1370,11 +1370,11 @@ body div.node-article div.content h2 {
     color: #369;
 }
 
-body div.node-article div.content .field-name-body p,
-body div.node-article div.content .field-name-body span{
+body div.node-article div.content .field-name-body p{
     font-family: "宋体";
     line-height: 26px;
     color: #494949;
+    margin-bottom: 25px;
 }
 
 body div.node-article div.content div.info {
@@ -2366,6 +2366,8 @@ div.wiki-welcome-pane .pane-content h2 {
 div.wiki-welcome-pane .pane-content span {
     margin-bottom: 7px;
     display: inline-block;
+    font-size: 14px;
+    line-height: 26px;
 }
 
 /**==pane-tagclouds-1==**/
