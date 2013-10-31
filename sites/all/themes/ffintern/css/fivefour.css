@@ -990,7 +990,7 @@ body.admin-menu {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     box-shadow: none;
-    padding-top: 0;
+    padding: 5px 2px;
 }
 
 #logo {
