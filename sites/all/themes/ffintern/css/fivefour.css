@@ -1431,8 +1431,8 @@ div.pane-similar-entries div.panel-pane-title {
 }
 
 div.pane-similar-entries div.views-row {
-    background-color: #FFF;
-    padding: 2px 5px;
+    background-color: #EEF4D8;
+    padding: 8px 5px;
     min-height: 70px;
 }
 
@@ -2393,12 +2393,15 @@ div.pane-tagclouds-1 {
 
 /*==articles today==*/
 body.page-wikis #col-left div.view-id-article .view-content{
-    background-color: #EEF4D8;
+    background-color: #FFF;
 
 }
+body.page-node #col-left div.view-id-article .view-content .views-row,
 body.page-wikis #col-left div.view-id-article .view-content .views-row{
-    background-color: #EEF4D8;
-    margin-bottom: 2px;
+    background-color: #F0FBE6;
+    padding: 3px 10px;
+    margin-bottom: 6px;
+    border-left: 8px solid #94B632;
 
 }
 
