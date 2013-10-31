@@ -1442,8 +1442,8 @@ div.pane-similar-entries div.views-row .views-field-field-image {
 }
 
 div.pane-similar-entries div.views-row .views-field-title {
-    min-height: 20px;
     font-size: 12px;
+    margin-bottom: 4px;
 }
 
 /*==company-photos==*/
