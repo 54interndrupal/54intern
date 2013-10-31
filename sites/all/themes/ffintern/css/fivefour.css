@@ -49,12 +49,12 @@ a {
 }
 
 a:link {
-    color: #2A623A;
+    color: #0b6b11;
     text-decoration: none;
 }
 
 a:visited {
-    color: #4F832F;
+    color: #0b6b11;
     text-decoration: none;
 }
 
@@ -2372,6 +2372,7 @@ div.wiki-welcome-pane .pane-content span {
     line-height: 26px;
 }
 
+
 /**==pane-tagclouds-1==**/
 div.pane-tagclouds-1 {
     border: 1px solid #EBEBEB;
@@ -2388,6 +2389,17 @@ div.pane-tagclouds-1 {
 
 #col-left div.pane-tagclouds-1 .pane-content {
     padding: 10px;
+}
+
+/*==articles today==*/
+body.page-wikis #col-left div.view-id-article .view-content{
+    background-color: #EEF4D8;
+
+}
+body.page-wikis #col-left div.view-id-article .view-content .views-row{
+    background-color: #EEF4D8;
+    margin-bottom: 2px;
+
 }
 
 /*==groups-in-blocks==*/
