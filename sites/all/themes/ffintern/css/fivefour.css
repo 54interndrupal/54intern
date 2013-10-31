@@ -615,6 +615,7 @@ span.s-like-s {
 
 input.form-text,
 input.form-file,
+input.hint,
 select.form-select {
     border: 1px solid #ddd;
     color: #555555;
