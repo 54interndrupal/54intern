@@ -1437,6 +1437,10 @@ div.pane-similar-entries div.views-row {
     min-height: 70px;
 }
 
+div.pane-similar-entries div.views-row .c-10{
+    font-size: 12px;
+}
+
 div.pane-similar-entries div.views-row .views-field-field-image {
     float: left;
     margin-right: 10px;
@@ -2069,6 +2073,10 @@ div.pane-company-info-panel-pane-2 div.pane-content div.d-1 span,
 div.pane-intern-user-company-user-info div.pane-content div.d-1 span {
     display: block;
 }
+div.pane-company-info-panel-pane-2 div.pane-content div.d-1 span.c-5,
+div.pane-intern-user-company-user-info div.pane-content div.d-1 span.c-5 {
+    font-size: 12px;
+}
 
 div.pane-company-info-panel-pane-2 div.pane-content div.d-1 a:link,
 div.pane-intern-user-company-user-info div.pane-content div.d-1 a:link {
@@ -2266,7 +2274,7 @@ div.pane-intern-company-company-center-shortcuts span.inactive {
     min-height: 53px;
     color: #ffffff;
     font-size: 24px;
-    padding:4px 0 0 2px;
+    padding:5px 0 0 3px;
     float: left;
     margin-right: 1px;
 }
@@ -2515,7 +2523,7 @@ body.page-wikis #col-left div.view-id-article .view-content .views-row{
 
 .pane-intern-company-company-info .pane-content .view-company-info .d-3 span.more {
     margin-top: 10px;
-    padding-left: 120px;
+    padding-left: 110px;
 
 }
 
@@ -4589,7 +4597,7 @@ div.pane-company-node-form select.form-select {
 }
 
 div.pane-company-node-form .form-item label {
-    width: 90px;
+    width: 110px;
     text-align: right;
     padding: 7px 15px 0 0;
     float: left;
