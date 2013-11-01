@@ -463,6 +463,9 @@ table {
     color: #555;
 }
 
+.post-item h2{
+    margin-bottom: 8px;
+}
 .post-item h2 a {
     font-family: "microsoft yahei", "simhei";
     font-size: 20px;
@@ -2274,7 +2277,7 @@ div.pane-intern-company-company-center-shortcuts span.inactive {
     min-height: 53px;
     color: #ffffff;
     font-size: 24px;
-    padding:5px 0 0 3px;
+    padding:7px 0 0 3px;
     float: left;
     margin-right: 1px;
 }
