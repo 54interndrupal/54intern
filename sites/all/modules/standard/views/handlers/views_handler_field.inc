@@ -651,9 +651,9 @@ class views_handler_field extends views_handler {
         '#type' => 'textarea',
         '#default_value' => $this->options['alter']['text'],
         '#description' => t('The text to display for this field. You may include HTML. You may enter data from this view as per the "Replacement patterns" below.'),
-        '#dependency' => array(
-          'edit-options-alter-alter-text' => array(1),
-        ),
+//        '#dependency' => array(
+//          'edit-options-alter-alter-text' => array(1),
+//        ),
       );
 
       $form['alter']['make_link'] = array(
@@ -835,9 +835,9 @@ If you would like to have the characters \'[\' and \']\' please use the html ent
         '#type' => 'textfield',
         '#default_value' => $this->options['alter']['max_length'],
         '#description' => t('The maximum number of characters this field can be.'),
-        '#dependency' => array(
-          'edit-options-alter-trim' => array(1),
-        ),
+//        '#dependency' => array(
+//          'edit-options-alter-trim' => array(1),
+//        ),
       );
 
       $form['alter']['word_boundary'] = array(
@@ -845,9 +845,9 @@ If you would like to have the characters \'[\' and \']\' please use the html ent
         '#title' => t('Trim only on a word boundary'),
         '#description' => t('If checked, this field be trimmed only on a word boundary. This is guaranteed to be the maximum characters stated or less. If there are no word boundaries this could trim a field to nothing.'),
         '#default_value' => $this->options['alter']['word_boundary'],
-        '#dependency' => array(
-          'edit-options-alter-trim' => array(1),
-        ),
+//        '#dependency' => array(
+//          'edit-options-alter-trim' => array(1),
+//        ),
       );
 
       $form['alter']['ellipsis'] = array(
@@ -855,9 +855,9 @@ If you would like to have the characters \'[\' and \']\' please use the html ent
         '#title' => t('Add an ellipsis'),
         '#description' => t('If checked, a "..." will be added if a field was trimmed.'),
         '#default_value' => $this->options['alter']['ellipsis'],
-        '#dependency' => array(
-          'edit-options-alter-trim' => array(1),
-        ),
+//        '#dependency' => array(
+//          'edit-options-alter-trim' => array(1),
+//        ),
       );
 
       $form['alter']['more_link'] = array(
