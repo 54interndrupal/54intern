@@ -494,11 +494,14 @@ table {
     padding-left: 8px;
 }
 
+.post-item-2 h2{
+    margin-bottom: 8px;
+}
+
 .post-item-2 .d-1 {
     width: 390px;
-    padding-top: 0px;
-    padding: 6px 0 8px 0;
-
+    padding: 0;
+    margin: 0 0 3px 0;
 }
 
 .post-item-2 .d-2 {
