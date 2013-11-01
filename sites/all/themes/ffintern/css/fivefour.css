@@ -4403,7 +4403,7 @@ body.page-node-edit-preview .view-resume-node-view {
 form.node-resume-form div.view-resume-node-view label {
     float: none;
     text-align: left;
-    width: 60px;
+    width: 80px;
     padding-right: 0px;
 }
 
@@ -4424,7 +4424,7 @@ div.view-resume-node-view .d-1 {
 div.view-resume-node-view .d-2 {
     display: block;
     padding: 15px 0 6px 0;
-    line-height: 2.2;
+    line-height: 1.5;
 }
 
 div.view-resume-node-view .d-2 label {
@@ -4464,14 +4464,14 @@ div.view-resume-node-view .views-field.views-field-picture {
 div.view-resume-node-view .d-4,
 div.view-resume-node-view .d-5 {
     margin-top: 10px;
-    line-height: 2.2;
+    line-height: 1.5;
     border-bottom: 1px solid #CCCCCC;
     padding: 0 0 10px 0;
 }
 
 div.view-resume-node-view .d-6 {
     margin-top: 10px;
-    line-height: 2.2;
+    line-height: 1.5;
     padding: 0 0 10px 0;
 }
 
