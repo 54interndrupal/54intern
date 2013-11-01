@@ -2284,10 +2284,14 @@ div.pane-intern-company-company-center-shortcuts span.inactive {
 
 .pane-company-reviews-in-blocks .company-comment {
     display: inline-block;
-    min-height: 40px;
+    min-height: 53px;
     padding: 5px 0 3px 6px;
     background-color: RGB(240, 251, 230);
     width: 215px;
+}
+
+.pane-company-reviews-in-blocks .company-comment .field-content{
+    margin-bottom: 3px;
 }
 
 .pane-company-reviews-in-blocks .company-comment span.title {
@@ -2889,7 +2893,7 @@ div.advanced-search  #views-exposed-form-jobs-panel-pane-1 div.views-exposed-wid
 div.advanced-search  #views-exposed-form-jobs-panel-pane-1 input.form-submit {
     border: 0 none;
     height: 36px;
-    margin-top: 24px;
+    margin-top: 28px;
     width: 75px;
     background-color: #B0D73E;
     padding: 5px 10px;
