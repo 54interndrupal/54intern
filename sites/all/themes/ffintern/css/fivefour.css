@@ -267,6 +267,11 @@ input.search {
     margin: 0;
 }
 
+/*--col-lef---*/
+#col-left  .field-name-title{
+    font-size: 14px;
+}
+
 span.flag-like a.flag-action {
     background: url(img/site/bt_like_2.gif) no-repeat 7px 3px;
     padding: 5px 7px 4px 31px;
@@ -1442,7 +1447,6 @@ div.pane-similar-entries div.views-row .views-field-field-image {
 }
 
 div.pane-similar-entries div.views-row .views-field-title {
-    font-size: 12px;
     margin-bottom: 4px;
 }
 
