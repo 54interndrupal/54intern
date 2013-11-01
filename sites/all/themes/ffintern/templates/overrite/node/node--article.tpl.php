@@ -98,7 +98,7 @@
     </div>
     <?php if (isset($content['body']['#items'][0][summary]) && (!empty($content['body']['#items'][0][summary]))) { ?>
     <div class='summary'>
-      <?php print('[实习圈导读:] ' . render($content['body']['#items'][0][summary]) . '<b>--- 54intern.com</b>'); ?>
+      <?php print('<b>[实习圈导读:]</b> ' . render($content['body']['#items'][0][summary]) . ' <b>--- 54intern.com</b>'); ?>
     </div>
     <?php } ?>
     <div class="photo">
