@@ -651,9 +651,9 @@ class views_handler_field extends views_handler {
         '#type' => 'textarea',
         '#default_value' => $this->options['alter']['text'],
         '#description' => t('The text to display for this field. You may include HTML. You may enter data from this view as per the "Replacement patterns" below.'),
-//        '#dependency' => array(
-//          'edit-options-alter-alter-text' => array(1),
-//        ),
+        '#dependency' => array(
+          'edit-options-alter-alter-text' => array(1),
+        ),
       );
 
       $form['alter']['make_link'] = array(
@@ -727,9 +727,9 @@ class views_handler_field extends views_handler {
         '#type' => 'textfield',
         '#default_value' => $this->options['alter']['alt'],
         '#description' => t('Text to place as "title" text which most browsers display as a tooltip when hovering over the link.'),
-        '#dependency' => array(
-          'edit-options-alter-make-link' => array(1),
-        ),
+//        '#dependency' => array(
+//          'edit-options-alter-make-link' => array(1),
+//        ),
       );
       $form['alter']['rel'] = array(
         '#title' => t('Rel Text'),
