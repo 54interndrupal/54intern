@@ -267,11 +267,6 @@ input.search {
     margin: 0;
 }
 
-/*--col-lef---*/
-#sidebar-second .views-field-title,
-#col-left  .views-field-title{
-    font-size: 14px;
-}
 
 span.flag-like a.flag-action {
     background: url(img/site/bt_like_2.gif) no-repeat 7px 3px;

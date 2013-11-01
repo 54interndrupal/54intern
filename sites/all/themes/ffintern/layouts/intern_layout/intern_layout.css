@@ -26,9 +26,4 @@
     overflow: hidden;
 }
 
-#sidebar-second  .block-content,
-#manager-block .views-row a,
-#member-block .views-row a {
-    color: #333;
-    font-size: 12px;
-}
+

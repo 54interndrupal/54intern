@@ -1,14 +1,3 @@
-/* iitgl的样式 */
-
-/* body style */
-
-body {
-    font-size: 12px;
-}
-
-#group-info .field-name-body label {
-    font-size: 12px;
-}
 
 /* Jquery UI dialog 头部样式 */
 
@@ -494,33 +483,7 @@ body.page-jobs span.flag-wrapper {
     top: 33px;
 }
 
-/* 在实习圈发布实习职位区块 */
 
-/* 首页热门社团view */
-
-div.front-page-main-wrapper div.field-name-grouptype {
-    position: relative;
-}
-
-div.front-page-main-wrapper div.field-name-grouptype label {
-    ` float: left;
-}
-
-div.front-page-main-wrapper div.field-name-grouptype div.field-items {
-    float: left;
-    position: absolute;
-    top: 3px;
-}
-
-div.front-page-main-wrapper div.field-name-location {
-    clear: both;
-}
-
-/* 关注微博 */
-
-div#sina-weibo div.block-content {
-    text-align: center;
-}
 
 /* 在实习圈发布实习职位区块 */
 
