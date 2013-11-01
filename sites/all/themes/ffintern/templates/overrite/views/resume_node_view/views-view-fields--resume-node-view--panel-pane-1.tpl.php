@@ -39,7 +39,7 @@
       </div>
       <div class="views-field views-field-location"><label>居住地：</label><?print $fields["field_location"]->content?>
       </div>
-      <div class="views-field views-field-cell-phone"><label>电话：</label> <?print $fields["field_cell_phone"]->content?>
+      <div class="views-field views-field-cell-phone"><label>电话：</label> <?printr ($fields["field_cell_phone"])?>
       </div>
       <div class="views-field views-field-email"><label>E-mail：</label>
 
