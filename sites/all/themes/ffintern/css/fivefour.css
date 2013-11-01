@@ -3093,9 +3093,6 @@ div#resume-block div.status {
     padding-left: 30px;
 }
 
-#creat-group-block {
-    background: url(img/s.png) no-repeat -240px -340px;
-}
 
 #creat-group-block a.edit {
     margin: 5px 0 10px 60px;
@@ -4751,7 +4748,7 @@ div.pane-company-node-form div.user-picture-info {
     padding-left: 15px;
     display: inline-block;
     width: 350px;
-    height: 340px;
+    height: 360px;
 }
 
 div.pane-company-node-form div.user-picture-info .form-item-select-avatar {

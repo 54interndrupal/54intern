@@ -24,7 +24,7 @@
  * @ingroup views_templates
  */
 ?>
-
+<?php print_r($fields);?>
 <div>
   <div class="d-1">
     <div class="views-field views-field-real-name"><?print $fields["field_real_name"]->content?></div>
