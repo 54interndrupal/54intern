@@ -2263,10 +2263,10 @@ div.pane-intern-company-company-center-shortcuts span.inactive {
 
 .pane-company-reviews-in-blocks .row {
     width: 22px;
-    min-height: 45px;
+    min-height: 53px;
     color: #ffffff;
     font-size: 24px;
-    padding-left: 2px;
+    padding:4px 0 0 2px;
     float: left;
     margin-right: 1px;
 }
