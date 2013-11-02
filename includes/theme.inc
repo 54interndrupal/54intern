@@ -2373,7 +2373,7 @@ function template_preprocess_html(&$variables) {
   }
   $variables['head_title_array'] = $head_title;
   if($variables['is_front']){
-    $variables['head_title'] = $head_title['name'].' | ' .$head_title['title'];
+    $variables['head_title'] = $head_title['name'].' -- ' .$head_title['title'];
   }else{
     $variables['head_title'] = implode(' | ', $head_title);
   }
