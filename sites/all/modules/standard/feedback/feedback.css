@@ -28,10 +28,10 @@
 }
 
 #block-feedback-form h2{
-    background-color:#F0F0F0;
-    height: 25px;
-    color: #333;
-    padding: 0px 0px 0px 5px;
+    background-color:#369;
+    height: 30px;
+    color: #FFF;
+    padding: 2px 0px 0px 5px;
 }
 /* IE6 seems to be unable to handle fixed */
 * html #block-feedback-form {

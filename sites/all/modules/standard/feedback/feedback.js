@@ -73,7 +73,7 @@
             $('#feedback-form-toggle', $block).html('');
         }
         else {
-            $('#feedback-form-toggle', $block).html('[ &minus; ] 网站反馈');
+            $('#feedback-form-toggle', $block).html('[ X ] 网站反馈');
         }
     };
 
