@@ -30,7 +30,7 @@ var residency = {
             jQuery('#'+Div[k]).html(output);
             k++;
         }
-        jQuery('#drag').width('580px');
+        jQuery('#drag').width('522px');
         // 鼠标悬停变色
         jQuery('#residencyAlpha li').hover(function(){jQuery(this).addClass('over')},function(){jQuery(this).removeClass()});
         // 点击弹出子菜单

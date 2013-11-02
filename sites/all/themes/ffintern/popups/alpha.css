@@ -32,16 +32,16 @@
 	BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 183px; BORDER-TOP-STYLE: none; BACKGROUND: url(btn.png) no-repeat; HEIGHT: 21px; BORDER-LEFT-STYLE: none; CURSOR: pointer
 }
 #residencyAlpha {
-	PADDING-BOTTOM: 10px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; PADDING-TOP: 10px
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; PADDING-TOP: 10px
 }
 #residencyAlpha H4 {
-	COLOR: #4D963B; FONT-SIZE: 14px
+	COLOR: #4D963B; FONT-SIZE: 14px;font-weight: bold;margin-bottom: 8px;
 }
 #residencyAlpha DL {
 	LINE-HEIGHT: 29px; ZOOM: 1; OVERFLOW: hidden
 }
 #residencyAlpha DT {
-	WIDTH: 80px; FLOAT: left; FONT-WEIGHT: bold
+	WIDTH: 80px; FLOAT: left; FONT-WEIGHT: bold;color: #333; margin-top: 3px;
 }
 #residencyAlpha DD {
 	WIDTH: 492px; FLOAT: left
@@ -142,7 +142,7 @@
 	BACKGROUND-IMAGE: url(chk_on.gif)
 }
 #IndustryAlpha {
-	PADDING-BOTTOM: 10px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; PADDING-TOP: 10px
+	padding:10px 0;
 }
 #IndustryAlpha DL {
 	BORDER-BOTTOM: #ccc 1px dashed; LINE-HEIGHT: 29px; ZOOM: 1; OVERFLOW: hidden
@@ -154,7 +154,7 @@
 	WIDTH: 450px; FLOAT: left
 }
 #IndustryAlpha UL {
-	PADDING-BOTTOM: 8px; LINE-HEIGHT: 29px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; ZOOM: 1; OVERFLOW: hidden; PADDING-TOP: 8px
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 29px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; ZOOM: 1; OVERFLOW: hidden; PADDING-TOP: 0px
 }
 #IndustryAlpha LI {
 	BACKGROUND-IMAGE: url(chk_off.gif); TEXT-INDENT: 20px; WIDTH: 220px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 6px 6px; FLOAT: left; HEIGHT: 29px; OVERFLOW: hidden; CURSOR: pointer
@@ -169,7 +169,7 @@
 	BACKGROUND-IMAGE: none
 }
 #FuntypeAlpha {
-	PADDING-BOTTOM: 10px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; PADDING-TOP: 10px
+	PADDING:10px 0;
 }
 #FuntypeAlpha DL {
 	BORDER-BOTTOM: #ccc 1px dashed; LINE-HEIGHT: 29px; ZOOM: 1; OVERFLOW: hidden

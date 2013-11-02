@@ -121,7 +121,7 @@ var Funtype = {
             } else{
                 output+='<tr>';
             }
-            output+='<td style="width: 185px;font-size: 14px;padding-left: 3px;font-weight: bold;color: #4d963b;">'+funcategory[i][0]+'</td>';
+            output+='<td style="width: 185px;font-size: 14px;padding-left: 6px;font-weight: bold;color: #4d963b;">'+funcategory[i][0]+'</td>';
             var fun_a_2 =funcategory[i][1];
             output+='<td style="width: 540px;">'
             for (var j in fun_a_2){

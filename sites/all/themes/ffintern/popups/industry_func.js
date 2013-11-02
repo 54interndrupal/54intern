@@ -75,7 +75,7 @@ var Industry = {
             } else{
                 output+='<tr>';
             }
-            output+='<td style="width: 185px;font-size: 14px;padding-left: 3px;font-weight: bold;color: #4d963b;">'+indcategory[i][0]+'</td>';
+            output+='<td style="width: 185px;font-size: 14px;padding-left: 6px;font-weight: bold;color: #4d963b;">'+indcategory[i][0]+'</td>';
             var ind_a_2 =indcategory[i][1];
             output+='<td style="width:720px;">'
             for (var j in ind_a_2){
