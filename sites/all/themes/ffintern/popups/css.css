@@ -60,7 +60,7 @@ H6 {
 	Z-INDEX: 2001; BORDER: #4e963c 6px solid; POSITION: absolute;  WIDTH: 580px; BACKGROUND: #fff;
 }
 #drag_h {
-	BORDER-BOTTOM: #babcbc 1px dashed; PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: rgb(240, 240, 240); HEIGHT: 28px; COLOR: #333; CURSOR: move; PADDING-TOP: 0px
+	BORDER-BOTTOM: #babcbc 1px dashed; PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #4e963c; HEIGHT: 28px; COLOR: #fff; CURSOR: move; PADDING-TOP: 0px
 }
 #drag H3{
     font-size: 14px;
@@ -68,7 +68,6 @@ H6 {
 
 #drag H3 B {
     font-size: 16px;
-    font-weight: normal;
 	FLOAT: left
 }
 #drag H3 SPAN {
