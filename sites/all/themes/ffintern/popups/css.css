@@ -57,7 +57,7 @@ H6 {
 	Z-INDEX: 2000; POSITION: absolute; BACKGROUND: #000
 }
 #drag {
-	Z-INDEX: 2001; BORDER: #4e963c 6px solid; POSITION: absolute;  WIDTH: 580px; BACKGROUND: #fff;
+	Z-INDEX: 2001; BORDER: #4e963c 2px solid; POSITION: absolute;  WIDTH: 580px; BACKGROUND: #fff;
 }
 #drag_h {
 	BORDER-BOTTOM: #babcbc 1px dashed; PADDING-BOTTOM: 0px; LINE-HEIGHT: 28px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #4e963c; HEIGHT: 28px; COLOR: #fff; CURSOR: move; PADDING-TOP: 0px
