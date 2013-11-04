@@ -2,7 +2,7 @@
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, select, textarea, p, blockquote, th, td {
     margin: 0;
     padding: 0;
-    font-family: "Microsoft Yahei","微软雅黑","SimHei","宋体";
+    font-family: "Microsoft Yahei","微软雅黑","宋体";
 
 }
 
@@ -534,7 +534,7 @@ span.s-like-s {
     width: 80px;
     display: inline-block;
     min-height: 132px;
-    margin-right: 10px;
+    margin:0 10px 0 10px;
 }
 
 .like-info span.comment-count {
@@ -1617,7 +1617,7 @@ div.reg-showcase span.s-4 {
 }
 
 #userreg-company-register-form div.d-term {
-    padding-left: 170px;
+    padding-left: 140px;
 }
 
 /*== reg-box End==*/
