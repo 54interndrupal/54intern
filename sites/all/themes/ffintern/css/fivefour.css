@@ -3542,7 +3542,7 @@ div.statuses-textarea-wrapper textarea {
 }
 
 #content div.view-id-company_reviews_in_blocks .views-row  div.views-field-timestamp {
-    width: 85%;
+    width: 80%;
     display: inline-block;
 }
 
@@ -3555,7 +3555,7 @@ div.statuses-textarea-wrapper textarea {
 
 #content div.view-id-company_reviews_in_blocks .views-row  div.views-field-gid {
     float: right;
-    width: 70px;
+    width: 80px;
     display: inline-block;
 }
 
