@@ -460,5 +460,19 @@ function intern_company_approve_action($node, $context = array()) {
   drupal_mail('userreg', 'company_success', $to, language_default(), $values, $from);
 }
 
+function intern_company_cron() {
+  $nids = db_query('SELECT ca.entity_id FROM {field_data_field_content_approval} ca INNER JOIN {node} n ON ca.entity_id = n.nid  WHERE n.status=0 AND ca.field_content_approval_value = :need_approval AND ca.bundle = :entity_type limit 200', array(
+    ':need_approval' => 1,
+    ':entity_type' => 'company'
+  ))->fetchCol();
+  if (!empty($nids)) {
+    $companies = node_load_multiple($nids);
+    foreach ($companies as $company) {
+       intern_company_approve_action($company);
+    }
+  }
+}
+
+
 
 
