@@ -441,7 +441,7 @@ function intern_company_action_info() {
 
 function intern_company_approve_action($node, $context = array()) {
   $node->status = NODE_PUBLISHED;
-
+  node_save($node);
   $uid = $node->uid;
   $user = user_load($uid);
   $to = $user->mail;
