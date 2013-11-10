@@ -461,9 +461,9 @@ function intern_company_approve_action($node, $context = array()) {
 }
 
 function intern_company_cron() {
-  $nids = db_query('SELECT ca.entity_id FROM {field_data_field_content_approval} ca INNER JOIN {node} n ON ca.entity_id = n.nid  WHERE n.status=0 AND ca.field_content_approval_value = :need_approval AND ca.bundle = :entity_type limit 200', array(
-    ':need_approval' => 1,
-    ':entity_type' => 'company'
+  $nids = db_query('SELECT nid from {node} where status=:status and type=:type  limit 200', array(
+    ':status' => 0,
+    ':type' => 'company'
   ))->fetchCol();
   if (!empty($nids)) {
     $companies = node_load_multiple($nids);
