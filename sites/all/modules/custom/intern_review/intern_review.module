@@ -1,0 +1,10 @@
+<?php
+
+function intern_review_form_node_form_alter(&$form, $form_state) {
+  $type = $form['#node']->type;
+  Global $user;
+
+  if ($type == 'review') {
+    $form["actions"]["submit"]["#value"] = t('提交点评');
+  }
+}

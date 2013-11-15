@@ -147,6 +147,7 @@ function intern_job_form_node_form_alter(&$form, $form_state) {
     $form['#validate'][] = 'intern_job_node_form_ant_submit';
     $form['#submit'][] = 'intern_job_node_form_post_submit';
   }
+
 }
 
 function intern_job_node_form_ant_submit($form, &$form_state) {

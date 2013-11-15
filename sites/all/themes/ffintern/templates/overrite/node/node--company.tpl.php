@@ -119,16 +119,16 @@
 
           <div class="field-items"><?php print $field_company_type[0]['taxonomy_term']->name; ?></div>
         </div>
-<!--        <div class="field field-name-contact">-->
-<!--          <label>联系人：</label>-->
-<!---->
-<!--          <div class="field-items">--><?php //print $field_contact[0]['safe_value']; ?><!--</div>-->
-<!--        </div>-->
-<!--        <div class="field field-name-website">-->
-<!--          <label>企业网址：</label>-->
-<!---->
-<!--          <div class="field-items">--><?php //print $field_website[0]['safe_value']; ?><!--</div>-->
-<!--        </div>-->
+        <!--        <div class="field field-name-contact">-->
+        <!--          <label>联系人：</label>-->
+        <!---->
+        <!--          <div class="field-items">--><?php //print $field_contact[0]['safe_value']; ?><!--</div>-->
+        <!--        </div>-->
+        <!--        <div class="field field-name-website">-->
+        <!--          <label>企业网址：</label>-->
+        <!---->
+        <!--          <div class="field-items">--><?php //print $field_website[0]['safe_value']; ?><!--</div>-->
+        <!--        </div>-->
         <div class="field field-name-body">
           <label class='c-9'>企业简介：</label>
 
@@ -190,6 +190,9 @@
 <script type="text/javascript">
   (function ($) {
     $(document).ready(function () {
+      $('.add-review').click(function () {
+        $("#reviewModal").modal('toggle');
+      })
       $('#show-detail').click(function () {
         if ($("#body-content:visible").size() == 0) {
           $('#show-detail').text('收起>>');
@@ -201,21 +204,18 @@
         return false;
       });
 
-      $("#quicktabs-tab-node_company_tab-0").click(function(){
-        $(".pane-intern-company-company-node-add-review").show();
-      })
-      $("#quicktabs-tab-node_company_tab-1").click(function(){
-        $(".pane-intern-company-company-node-add-review").hide();
-      })
-
-
     });
   })(jQuery);
 
 
-  function resetReviewNodeForm(){
-    jQuery("#edit-body-und-0-value").val("");
+  function resetReviewNodeForm() {
+    showMessage("点评添加成功");
+    jQuery("#review-node-form")[0].reset();
     Authcache.resetFormToken();
+    jQuery("#reviewModal").modal('toggle');
+    $('.add-review').click(function () {
+      $("#reviewModal").modal('toggle');
+    })
   }
 </script>
 

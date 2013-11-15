@@ -23,6 +23,10 @@ function shixiquan_block_info() {
     'info' => t('用户登录后的区块'),
     // 默认使用DRUPAL_CACHE_PER_ROLE.
   );
+  $blocks['aboutInfoBlock'] = array(
+    'info' => t('shixiquan -- 关于实习圈'),
+    // 默认使用DRUPAL_CACHE_PER_ROLE.
+  );
   return $blocks;
 }
 
@@ -46,6 +50,11 @@ function shixiquan_block_view($delta = '') {
     case 'loginuser':
       $block['subject'] = t('定制的企业用户登录区块');
       $block['content'] = shixiquan_loginuser_block();
+      break;
+
+    case 'aboutInfoBlock':
+      $block['subject'] = t('关于实习圈');
+      $block['content'] = shixiquan_aboutInfo_block();
       break;
   }
   return $block;
@@ -284,4 +293,16 @@ function shixiquan_review_submit_js($form, &$form_state) {
 function shixiquan_comment_form_alter(&$form, $form_state, $form_id) {
 
   unset($form['author']);
+}
+
+function shixiquan_aboutInfo_block(){
+  $output = '';
+  $output .='<ul>
+   <li><a href="">关于我们</a></li>
+   <li><a href="">免责声明</a></li>
+   <li><a href="">隐私条款</a></li>
+   <li><a href="">服务协议</a></li>
+   </ul>
+  ';
+  return $output;
 }

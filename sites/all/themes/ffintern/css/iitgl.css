@@ -333,15 +333,6 @@ div.job-list {
     width: 240px;
 }
 
-/* footer style */
-
-#footer {
-    width: 960px;
-    position: relative;
-    left: 50%;
-    margin-left: -480px;
-    margin-top: 0;
-}
 
 /* views */
 .views-exposed-form .views-exposed-widget {

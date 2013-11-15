@@ -1,0 +1,5 @@
+; $Id$
+name = "Intern Review"
+description = "54intern点评相关功能模块"
+core = "7.x"
+package="54intern"
