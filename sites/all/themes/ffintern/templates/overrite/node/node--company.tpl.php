@@ -88,49 +88,49 @@
     <div class="block-content">
       <div class="field field-name-pic">
         <div class="field-items">
+          <?php $content['field_logo'][0]['#image_style'] = '120_30'?>
+          <!--          --><?php //print print_r($content['field_logo']); ?>
           <?php print render($content['field_logo']); ?>
         </div>
-      </div>
-
-      <div class="company-brief-info c-1">
-        <div class="field field-name-name">
-          <div class="field-items c-9"><?php print $title; ?></div>
-        </div>
-
         <div id="company_info_ops">
           <?php if (!user_is_anonymous() && !intern_user_is_company_user()) {
           drupal_add_js(drupal_get_path('module', 'intern_company') . '/js/intern_company.js');
         }
           ?>
-
         </div>
-        <div class="field field-name-industry">
-          <label> 行业：</label>
+      </div>
 
-          <div class="field-items"><?php print $field_industry[0]['taxonomy_term']->name; ?></div>
-        </div>
-        <div class="field field-name-size">
-          <label>企业规模：</label>
 
-          <div class="field-items"><?php print $field_company_size[0]['taxonomy_term']->name; ?></div>
-        </div>
-        <div class="field field-name-nature">
-          <label>企业性质：</label>
+      <div class="company-brief-info c-1">
 
-          <div class="field-items"><?php print $field_company_type[0]['taxonomy_term']->name; ?></div>
+        <div class="field-add-review">
+          <input type="button" value="写点评" onclick='jQuery("#reviewModal").modal("toggle");' class="form-submit"/>
         </div>
-        <!--        <div class="field field-name-contact">-->
-        <!--          <label>联系人：</label>-->
-        <!---->
-        <!--          <div class="field-items">--><?php //print $field_contact[0]['safe_value']; ?><!--</div>-->
-        <!--        </div>-->
-        <!--        <div class="field field-name-website">-->
-        <!--          <label>企业网址：</label>-->
-        <!---->
-        <!--          <div class="field-items">--><?php //print $field_website[0]['safe_value']; ?><!--</div>-->
-        <!--        </div>-->
+
+        <div class="field field-name-name">
+          <div class="field-items c-9"><?php print $title; ?></div>
+        </div>
+
+        <div class="company-fields">
+          <div class="field-name-field-overall-value">
+            <?php print intern_core_get_vote_info('field_overall_value', $nid);?>
+          </div>
+          <?php if (!empty($field_industry[0]['taxonomy_term']->name)) { ?>
+
+          <div class="field field-name-industry">
+            <div class="field-items"><?php print $field_industry[0]['taxonomy_term']->name; ?></div>
+          </div>
+          <?php } ?>
+          <div class="field field-name-size">
+            <div class="field-items"><?php print $field_company_size[0]['taxonomy_term']->name; ?></div>
+          </div>
+          <div class="field field-name-nature">
+            <div class="field-items"><?php print $field_company_type[0]['taxonomy_term']->name; ?></div>
+          </div>
+        </div>
+
         <div class="field field-name-body">
-          <label class='c-9'>企业简介：</label>
+          <label class='c-1'>企业简介：</label>
 
 
           <?php
@@ -213,9 +213,7 @@
     jQuery("#review-node-form")[0].reset();
     Authcache.resetFormToken();
     jQuery("#reviewModal").modal('toggle');
-    $('.add-review').click(function () {
-      $("#reviewModal").modal('toggle');
-    })
+
   }
 </script>
 

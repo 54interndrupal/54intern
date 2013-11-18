@@ -89,6 +89,11 @@
 
 </div><?php /* class view */ ?>
 
+  <?php if (!user_is_anonymous() && !intern_user_is_company_user()) {
+  drupal_add_js(drupal_get_path('module', 'intern_review') . '/js/intern_review.js');
+}
+  ?>
+
 <script type="text/javascript">
   (function ($) {
     $(document).ready(function () {

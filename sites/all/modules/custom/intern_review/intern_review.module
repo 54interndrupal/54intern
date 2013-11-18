@@ -8,3 +8,16 @@ function intern_review_form_node_form_alter(&$form, $form_state) {
     $form["actions"]["submit"]["#value"] = t('提交点评');
   }
 }
+
+function intern_review_info_flags($reviewId){
+  global $user;
+  $_GET['destination'] = "node/" . $reviewId;
+
+  $output = '';
+  if (!user_is_anonymous() && !intern_user_is_company_user()) {
+    $output .= flag_create_link('collect', $reviewId);
+    $output .= flag_create_link('zan', $reviewId);
+  }
+
+  return $output;
+}

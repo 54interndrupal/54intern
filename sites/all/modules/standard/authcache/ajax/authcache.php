@@ -378,6 +378,17 @@ function _authcache_intern_company_flags($vars) {
   return $result;
 }
 
+function _authcache_intern_review_flags($vars) {
+  include_once './includes/common.inc';
+  drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL); // Use FULL if needed for additional functions
+
+  include_once dirname(drupal_get_filename('module', 'intern_review')) . '/intern_review.module';
+
+  $result["review_info_flags"] = intern_review_info_flags($vars["reviewId"]);
+  $result["review_id"] = $vars["reviewId"];
+  return $result;
+}
+
 function _authcache_intern_article_flags($vars) {
   include_once './includes/common.inc';
   drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL); // Use FULL if needed for additional functions

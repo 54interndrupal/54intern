@@ -3502,9 +3502,7 @@ div.statuses-textarea-wrapper textarea {
 
 /*== facebook status End*/
 #content #newest-status .views-row,
-#content #newest-status .view-empty,
-#content div.view-id-company_reviews_in_blocks .views-row,
-#content div.view-id-company_reviews_in_blocks .view-empty {
+#content #newest-status .view-empty{
     min-height: 90px;
     background-color: #F7F9FA;
     border: #EBEBEB solid 1px;
@@ -3512,9 +3510,72 @@ div.statuses-textarea-wrapper textarea {
 }
 
 .views-row div.author-info {
-    width: 60px;
+    width: 50px;
     float: left;
+    text-align: center;
+    margin-right:15px;
 }
+.views-row div.review-rating{
+    display: inline-block;
+    background-color: #F7F9FA;
+    border: #EBEBEB solid 1px;
+    width: 630px;
+    padding: 3px 5px 3px 10px;
+    margin-bottom: 15px;
+    font-size:12px;
+
+}
+.views-row div.review-rating .counter{
+    float: right;
+    font-size:12px;
+    margin-right:5px;
+}
+.views-row div.review-rating .rate-item{
+    display:inline-block;
+    margin-right: 10px;
+}
+.views-row div.review-rating .fivestar-static-form-item{
+    margin: 0 20px 0 0;
+}
+.views-row div.review-rating .field-content{
+    display: inline-block;
+}
+.views-row div.review-content{
+    display: inline-block;
+    width: 630px;
+    padding: 0 5px;
+}
+.views-row div.review-content .field-content{
+    display: inline-block;
+
+}
+.views-row div.review-content .review-evaluation{
+    margin-top: 8px;
+}
+.views-row div.review-content .review-evaluation label{
+    display: inline-block;
+}
+.views-row div.review-content .review-footer{
+    margin-top: 12px;
+    font-size:12px;
+}
+.views-row div.review-content .review-footer .field-content{
+    margin-right: 12px;
+}
+.views-row div.review-content .review-footer .ops{
+    display: inline-block;
+    margin-right: 8px;
+}
+.views-row div.review-content .review-footer .ops a{
+    color: #369;
+    padding: 0 10px;
+    border-left: 1px solid #999;
+}
+#content div.view-id-company_reviews_in_blocks .views-row,
+#content div.view-id-company_reviews_in_blocks .view-empty {
+    margin: 10px 0 30px 0;
+}
+
 
 #content div.view-id-company_reviews_in_blocks .views-row  div.views-field-nothing {
     margin: 0 0 10px 50px;
@@ -3626,7 +3687,7 @@ div.job-list a.join {
 
 /*==company==*/
 #main-content div.content #company-info {
-    padding: 10px 13px 10px 13px;
+    padding: 5px 5px 5px 5px;
     background-color: #E3EAE2;
     margin-bottom: 20px;
 }
@@ -3635,17 +3696,38 @@ div.job-list a.join {
     background-color: #FFFFFF;
     padding: 13px 10px 13px 10px;
 }
+#main-content div.content .company-brief-info .field-add-review{
+    float: right;
+}
+#main-content div.content .company-brief-info .field-add-review .form-submit{
+    font-size: 12px;
+}
 
 #main-content div.content .company-brief-info label {
     display: inline-block;
-    font-weight: normal;
-    color: rgb(51, 102, 0);
+    font-weight: 600;
+
 }
 
 #main-content div.content .company-brief-info #show-detail {
     float: right;
-    padding-right: 10px;
+    padding: 5px 10px 0 0;
     cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+
+.node-type-company #company_info_ops{
+    left: 0;
+    width: 120px;
+    text-align: center;
+
+}
+.node-type-company #company_info_ops a{
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 body.page-companys #main-content h1#page-title {
@@ -3686,20 +3768,41 @@ ul#company-center-tabs li a.active span {
 }
 
 #company-info .block-content {
-    padding-left: 145px;
+    padding-left: 135px;
+}
+
+#company-info .field-name-field-logo{
+    width: 120px;
+    margin-bottom: 10px;
+
 }
 
 #company-info .field-name-pic {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 15px;
+    left: 5px;
 }
 
-#company-info .field {
-    padding-bottom: 10px;
-    float: left;
-    width: 33%;
-    font-size: 12px;
+.company-brief-info .company-fields{
+    height: 30px;
+    margin-bottom: 5px;
+    border-bottom: 1px dotted #CCC;
+}
+
+.company-brief-info .field-name-field-overall-value{
+    width: 25%;
+    float:left;
+}
+
+.company-brief-info .company-fields .fivestar-widget span{
+    margin-left: 3px;
+    font-size: 14px;
+}
+.company-brief-info .company-fields .field {
+    padding:0 8px 0px 8px;
+    font-size: 14px;
+    float:left;
+    border-left: 2px solid #CCC;
 }
 
 #company-info .field-items {
@@ -3709,8 +3812,7 @@ ul#company-center-tabs li a.active span {
 #company-info .field-name-name {
     font-size: 20px;
     padding-bottom: 12px;
-    float: left;
-    width: 380px;
+    width: 420px;
 }
 
 #company-info .field-name-number {
@@ -3719,19 +3821,30 @@ ul#company-center-tabs li a.active span {
 
 #company-info .field-name-body {
     padding-bottom: 0;
-    font-size: 12px;
+    line-height: 24px;
+    font-family: "宋体";
+    font-size: 14px;
     float: none;
     clear: both;
     width: 100%;
 }
 
+#company-info .field-name-body p{
+    margin-bottom: 8px;
+
+}
+
+#company-info .field-name-pic{
+    width: 120px;
+    display: block;
+}
 #company-info .field-name-website {
     width: 66%;
 }
 
 #company-info .field-name-body label {
-    padding-bottom: 10px;
-    font-size: 14px;
+    padding: 5px 0 5px 0;
+    font-size: 13px;
     display: block;
 }
 
@@ -4821,8 +4934,8 @@ div.fivestar-widget-static br {
 
 div.fivestar-widget-static .star {
     float: left; /* RTL */
-    width: 17px;
-    height: 15px;
+    width: 15px;
+    height: 14px;
     overflow: hidden;
     text-indent: -999em;
     background: url(img/s.png) no-repeat 0 -125px; /* RTL */
@@ -5125,9 +5238,10 @@ textarea.form-text {
 
 .node-review-form textarea {
     border: 1px solid #ddd;
+    padding: 5px;
 }
 .node-review-form div.form-item {
-    margin: 0 0 15px 0;
+    margin: 0 0 10px 0;
 }
 .node-review-form div.form-item .form-item {
     margin: 0;
@@ -5158,6 +5272,7 @@ textarea.form-text {
 .node-review-form .form-textarea-wrapper{
     display: inline-block;
     width:400px;
+    margin-bottom: 5px;
 }
 
 .node-review-form .form-text{
@@ -5167,7 +5282,7 @@ textarea.form-text {
 
 .node-review-form span.review-tip{
     display:block;
-    margin:15px 0 15px 0;
+    margin:4px 0 20px 0;
     font-size:15px;
     color:#369;
 

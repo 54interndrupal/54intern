@@ -94,4 +94,44 @@ function i_field($nid,$field_name){
   return $field_value;
 }
 
+function intern_core_get_vote_info( $field_name,$gid){
+  $sql = "select count(*)  as count,avg(".$field_name."_rating) as rate from {field_data_".$field_name."}
+  where entity_id in (select etid from {og_membership} where gid=:gid)";
+  $record = db_query($sql, array(':gid' => $gid));
+  foreach ($record as $rec) {
+    $result = array("count"=>$rec->count,'rate'=> $rec->rate);
+  }
+  $rate = $result['rate'];
+
+  $output='<div class="fivestar-widget clearfix fivestar-widget-5">
+         <div class="star star-1 odd '.($rate>20?'on':'').'"><a></a></div>
+         <div class="star star-2 even '.($rate>40?'on':'').'"><a></a></div>
+         <div class="star star-3 odd '.($rate>60?'on':'').'"><a></a></div>
+         <div class="star star-4 even '.($rate>80?'on':'').'"><a></a></div>
+         <div class="star star-5 odd '.($rate>95?'on':'').'"><a></a></div>
+         <div><span>['.$result['count'].']</span></div>
+    </div>
+  ';
+  return $output;
+}
+
+function intern_core_render_vote($label,$vote){
+
+  $output ='';
+  if(strpos($vote,'0/5')>0){
+
+  }else if(strpos($vote,'1/5')){
+    $output = '<span class="rate-item">'.$label.'1<span class="c-11">(很差)</span></span>';
+  } else if(strpos($vote,'2/5')){
+    $output = '<span class="rate-item">'.$label.'2<span class="c-11">(一般)</span></span>';
+  }   else if(strpos($vote,'3/5')){
+    $output = '<span class="rate-item">'.$label.'3<span class="c-11">(好)</span></span>';
+  }else if(strpos($vote,'4/5')){
+    $output = '<span class="rate-item">'.$label.'4<span class="c-11">(很好)</span></span>';
+  }else if(strpos($vote,'5/5')){
+    $output = '<span class="rate-item">'.$label.'5<span class="c-11 small">(非常好)</span></span>';
+  }
+  return $output;
+}
+
 
