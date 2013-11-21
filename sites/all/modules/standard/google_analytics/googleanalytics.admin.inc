@@ -571,7 +571,7 @@ function _googleanalytics_contains_forbidden_token($token_string) {
     ':current-user:original]',
     ':fid]',
     ':mail]',
-    ':name]',
+//    ':name]',
     ':uid]',
     ':one-time-login-url]',
     ':owner]',
@@ -594,7 +594,7 @@ function _googleanalytics_contains_forbidden_token($token_string) {
     // realname.module
     ':name-raw]',
     // token.module
-    ':ip-address]',
+//    ':ip-address]',
   );
 
   return preg_match('/' . implode('|', array_map('preg_quote', $token_blacklist)) . '/i', $token_string);
