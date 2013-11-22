@@ -126,6 +126,16 @@ function ffintern_theme() {
       'render element' => 'form',
       'path' => drupal_get_path('theme', 'ffintern') . '/templates/overrite/form',
     ),
+    'intern_company_edit_company_form' => array(
+      'template' => 'company-node-form',
+      'render element' => 'form',
+      'path' => drupal_get_path('theme', 'ffintern') . '/templates/overrite/form',
+    ),
+    'intern_company_add_company_form' => array(
+      'template' => 'company-add-form',
+      'render element' => 'form',
+      'path' => drupal_get_path('theme', 'ffintern') . '/templates/overrite/form',
+    ),
     'resume_node_form' => array(
       'template' => 'resume-node-form',
       'render element' => 'form',

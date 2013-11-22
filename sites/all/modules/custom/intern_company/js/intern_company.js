@@ -9,13 +9,14 @@ function authcacheInternCompanyFlagsInit() {
 //    alert(1);
     ajaxJson = {
         'intern_company_flags[companyId]' : jQuery("#companyId").val(),
-
-        'max_age' : 0
-
+        'max_age' : null
     }
     // Perform independent Authcache ajax request
     Authcache.ajaxRequest(ajaxJson);
 }
 
-jQuery(function() {authcacheInternCompanyFlagsInit(); })
+jQuery(function() {
+    authcacheInternCompanyFlagsInit();
+
+})
 

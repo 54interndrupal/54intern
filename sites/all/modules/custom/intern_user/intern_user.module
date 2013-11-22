@@ -51,7 +51,6 @@ function intern_company_user_login_form() {
   $form['#validate'] = shixiquan_login_default_validators();
 //  $form['#validate'] = user_login_default_validators();
   $form['#submit'][] = 'user_login_submit';
-  $form['#submit']['#value'] = t('Log in');
   return $form;
 }
 
@@ -513,4 +512,12 @@ function intern_user_get_company_name() {
   else {
     return '';
   }
+}
+
+function intern_user_get_scrapper_uid(){
+   return 9;
+}
+
+function intern_user_get_company_creater_uid(){
+  return 9;
 }

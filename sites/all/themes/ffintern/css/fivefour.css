@@ -90,7 +90,7 @@ a:active {
 }
 
 div.ctools-modal-content {
-    border: 6px #4E963C solid;
+    border: 4px #4E963C solid;
 }
 
 div.ctools-modal-content .modal-header {
@@ -105,7 +105,7 @@ div.ctools-modal-content .modal-header.colored {
 
 div.ctools-modal-content .modal-title {
     font-weight: normal;
-    color: #333333;
+    color: #369;
     padding: 5px 0 0 10px;
 }
 
@@ -555,8 +555,9 @@ span.s-like-s {
 }
 
 .post-job {
-    padding-bottom: 0px;
+    padding: 2px 0;
     margin-bottom: 6px;
+    overflow:hidden;
 }
 
 .post-job .job-content {
@@ -575,6 +576,9 @@ span.s-like-s {
     font-weight: bold;
     padding-right: 8px;
 
+}
+.post-job .job-tax{
+    font-size:12px;
 }
 
 .post-job .job-company a {
@@ -909,8 +913,6 @@ body.admin-menu {
     text-align: right;
     font-size: 14px;
 }
-
-
 
 #top-toolbar .block-content a {
     color: #FF6600;
@@ -2290,7 +2292,9 @@ div.pane-intern-company-company-center-shortcuts span.inactive {
 .pane-company-reviews-in-blocks .company-comment .field-content{
     margin-bottom: 3px;
 }
-
+.pane-company-reviews-in-blocks .company-comment span{
+    font-size:12px;
+}
 .pane-company-reviews-in-blocks .company-comment span.title {
     display: inline-block;
     width: 148px;
@@ -3294,14 +3298,6 @@ div.company-list .views-row {
     margin: 5px 0 0 0;
 }
 
-body.not-logged-in div.company-list .views-row {
-    min-height: 160px;
-}
-
-body.logged-in div.company-list .views-row {
-    min-height: 160px;
-}
-
 div.company-list .views-row .company-info {
     position: absolute;
     left: 0px;
@@ -3508,7 +3504,21 @@ div.statuses-textarea-wrapper textarea {
     border: #EBEBEB solid 1px;
     padding: 10px 30px 10px 15px;
 }
-
+.company-list .view-display-id-panel_pane_1{
+    margin-bottom: 10px;
+}
+.company-list .view-display-id-panel_pane_1 .views-row{
+    padding-left:5px;
+    min-height: 85px;
+    border:0;
+}
+.company-list .view-display-id-panel_pane_1 .views-row .review-rating,
+.company-list .view-display-id-panel_pane_1 .views-row div.review-content{
+    width:450px;
+}
+.view-display-id-panel_pane_2 .views-row{
+    margin-bottom: 25px;
+}
 .views-row div.author-info {
     width: 50px;
     float: left;
@@ -3551,6 +3561,7 @@ div.statuses-textarea-wrapper textarea {
 }
 .views-row div.review-content .review-evaluation{
     margin-top: 8px;
+    font-size:12px;
 }
 .views-row div.review-content .review-evaluation label{
     display: inline-block;
@@ -3571,11 +3582,6 @@ div.statuses-textarea-wrapper textarea {
     padding: 0 10px;
     border-left: 1px solid #999;
 }
-#content div.view-id-company_reviews_in_blocks .views-row,
-#content div.view-id-company_reviews_in_blocks .view-empty {
-    margin: 10px 0 30px 0;
-}
-
 
 #content div.view-id-company_reviews_in_blocks .views-row  div.views-field-nothing {
     margin: 0 0 10px 50px;
@@ -3632,7 +3638,6 @@ div.group-list a.join {
 
 div.job-list div.views-row {
     border-bottom: 1px dotted #DDD;
-    padding: 2px 0;
 }
 
 div.job-list div.views-row-last,
@@ -3787,6 +3792,14 @@ ul#company-center-tabs li a.active span {
     height: 30px;
     margin-bottom: 5px;
     border-bottom: 1px dotted #CCC;
+}
+
+.company-brief-info .company-fields #fixCompanyInfo{
+    padding-right: 10px;
+}
+
+.company-brief-info .company-fields #fixCompanyInfo:hover{
+    color: #2A6496
 }
 
 .company-brief-info .field-name-field-overall-value{
@@ -4354,6 +4367,12 @@ a.reply {
 #user-center-block .views-field-edit {
     margin-top: 6px;
 }
+#user-center-block .views-field-edit a{
+    color: #2a6496;
+}
+#user-center-block .views-field-edit a:hover{
+    color: #428bca;
+}
 
 #user-center-block .user-info span.edt-acct {
     background: url(img/site/bt_acct.png) no-repeat 0 3px;
@@ -4650,7 +4669,7 @@ div.pane-node-links {
 
 /*== Company Node Form Begin ==*/
 div.pane-company-node-form {
-    padding: 20px 10px 20px 20px;
+    padding: 0px 10px 0px 20px;
 }
 
 div.pane-company-node-form fieldset {
@@ -5191,12 +5210,16 @@ textarea.form-text {
 .form-submit {
     background-color: #4E963C;
     border-radius: 4px;
-    color: #fcfcfc;;
+    color: #fcfcfc;
     border: 1px solid #CCCCCC;
     padding: 5px 20px;
     font-size: 14px;
     font-weight: bold;
     letter-spacing: 1px;
+}
+
+a.form-submit{
+    color:#fcfcfc;
 }
 
 .form-submit:hover,
@@ -5393,3 +5416,28 @@ textarea.form-text {
 .page-siteinfo .pane-shixiquan-aboutinfoblock .pane-content li a{
     color: #414141;
 }
+
+.company-info-edit-modal .modal-dialog{
+    width: 750px;
+}
+.company-info-edit-modal .modal-dialog .modal-body{
+}
+.company-info-edit-modal .modal-dialog .modal-body .form-control{
+    padding: 2px 3px;
+}
+
+#applyAddCompany{
+    width: 98%;
+    padding:15px 12px;
+    background-color: #f4f4f4;
+    margin-top: 15px;
+    color:#666;
+}
+
+#applyAddCompany a{
+    margin-left: 5px;
+}
+
+
+
+

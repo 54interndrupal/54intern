@@ -17,7 +17,7 @@ $form['account']['mail']['#title'] = t('邮箱');
       </div>
       <div class="user-reg-form">
         <?php print drupal_render_children($form)?>
-        <div class="c-1 d-term"><span>点击注册即表示已阅读并同意<?php print(l("《实习圈用户使用协议》", "node/127",array('attributes' => array('target' => "blank"))))?></span></div>
+        <div class="c-1 d-term"><span>点击注册即表示已阅读并同意<?php print(l("《实习圈用户使用协议》", "siteinfo/service-agreement",array('attributes' => array('target' => "blank"))))?></span></div>
       </div>
 
     </div>

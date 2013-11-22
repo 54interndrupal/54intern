@@ -25,12 +25,14 @@ function userreg_form_alter(&$form, $form_state, $form_id) {
  */
 function userreg_user_login_validate($form, &$form_state) {
   if (isset($form_state['values']['name'])) {
-    //如果用户输入的是邮箱的话,我们通过邮箱查询得到用户名.
-    $result = db_query("SELECT name FROM {users} WHERE LOWER(mail) = LOWER(:mail)", array(':mail' => $form_state['values']['name']));
-    $name = $result->fetchField();
-    //如果查询到了用户名,就使用它;反之,就使用原来的.
-    if (!empty($name)) {
-      $form_state['values']['name'] = $name;
+    if (strpos($form_state['values']['name'], '@')) {
+      //如果用户输入的是邮箱的话,我们通过邮箱查询得到用户名.
+      $result = db_query("SELECT name FROM {users} WHERE LOWER(mail) = LOWER(:mail)", array(':mail' => $form_state['values']['name']));
+      $name = $result->fetchField();
+      //如果查询到了用户名,就使用它;反之,就使用原来的.
+      if (!empty($name)) {
+        $form_state['values']['name'] = $name;
+      }
     }
   }
 }

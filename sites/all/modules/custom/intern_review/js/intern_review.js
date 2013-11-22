@@ -12,7 +12,7 @@ function authcacheInternreviewFlagsInit() {
         var reviewId = jQuery(this).val();
         ajaxJson = {
             'intern_review_flags[reviewId]' : reviewId,
-            'max_age' : 0
+            'max_age' : null
 
         }
         // Perform independent Authcache ajax request

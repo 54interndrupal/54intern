@@ -620,3 +620,13 @@ code {
 .input-group .form-control{
     display: inline-block;
 }
+.modal-header{
+    padding: 6px 10px;
+}
+
+.modal-title{
+    padding: 2px 20px 2px 10px;
+    font-size: 18px;
+    color: #369;
+    font-weight: 500;
+}

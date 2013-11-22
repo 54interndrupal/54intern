@@ -31,7 +31,7 @@ function ajax_register_menu() {
  * Check access to ajax page callback.
  */
 function ajax_register_page_access($form, $type) {
-  $allowed_forms = array('companylogin', 'login', 'register', 'password','profile');
+  $allowed_forms = array('companylogin', 'login', 'register', 'password','profile','companyAdd');
   $allowed_types = array('ajax', 'nojs');
   if (in_array($form, $allowed_forms) && in_array($type, $allowed_types) ) {
     return TRUE;
@@ -155,13 +155,14 @@ function ajax_register_menu_site_status_alter(&$menu_site_status, $path) {
 function ajax_register_form_alter(&$form, &$form_state, $form_id) {
 
   // Create array with enabled ajax links.
-  $enabled_links = array('companylogin', 'login', 'register', 'password');
+  $enabled_links = array('companylogin', 'login', 'register', 'password','companyAdd');
 
+  _ajax_register_include_modal();
   switch ($form_id) {
 //    case 'user_login_block':
 //
 //      // Include css and js for modal dialog.
-//      _ajax_register_include_modal();
+
 //
 //
 //
@@ -179,10 +180,10 @@ function ajax_register_form_alter(&$form, &$form_state, $form_id) {
     case 'user_pass':
     case 'user_profile_form':
     case 'user_register_form':
+    case 'intern_company_add_company_form':
 
 
-      // Include css and js for modal dialog.
-      _ajax_register_include_modal();
+
 
       // Do not process form with AJAX that should be processed with CTools.
       $modal_links_enabled = variable_get('ajax_register_form_enable_modal_links', TRUE);
@@ -246,7 +247,7 @@ function ajax_register_user_profile_form_ajax_callback($form, $form_state) {
   return $form;
 }
 /**
- * Ajax callback for USER LOGIN form.
+ * Ajax callback for company USER LOGIN form.
  */
 function ajax_register_intern_company_user_login_form_ajax_callback($form, $form_state) {
 
@@ -277,6 +278,25 @@ function ajax_register_user_login_ajax_callback($form, $form_state) {
     $commands[] = ctools_ajax_command_redirect($redirect_url);
     return array('#type' => 'ajax', '#commands' => $commands);
   }
+  // Reload form if it didn't pass validation.
+  return $form;
+}
+
+/**
+ * Ajax callback for company add form.
+ */
+function ajax_register_intern_company_add_company_form_ajax_callback($form, $form_state) {
+
+  if (!form_get_errors()) {
+    // Redirect user after login to user provided url.
+    // If redirect url is empty page will be reloaded.
+    $redirect_url = variable_get('ajax_register_login_form_redirect', '');
+    ctools_include('ajax');
+    $commands = array();
+    $commands[] = ctools_ajax_command_redirect($redirect_url);
+    return array('#type' => 'ajax', '#commands' => $commands);
+  }
+
   // Reload form if it didn't pass validation.
   return $form;
 }

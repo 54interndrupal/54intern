@@ -9,4 +9,4 @@
 
 <!--  --><?php //print_r($form);?>
 <?php   print drupal_render_children($form);?>
-<div class="d-term"><span>请仔细阅读<?php print(l("《实习圈用户使用协议》", "node/127",array('attributes' => array('target' => "blank"))))?></span>  </div>
+<div class="d-term"><span>请仔细阅读<?php print(l("《实习圈用户使用协议》", "siteinfo/service-agreement",array('attributes' => array('target' => "blank"))))?></span>  </div>

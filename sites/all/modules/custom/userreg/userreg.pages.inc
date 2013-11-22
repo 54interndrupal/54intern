@@ -56,7 +56,10 @@ function userreg_company_register_form($form, &$form_state) {
   hide($form["field_company_images"]);
   hide($form["field_website"]);
   hide($form["field_source_company_name"]);
-
+  $form["field_contact"]['und'][0]['value']["#required"]=1;
+  $form["field_phone"]['und'][0]['value']["#required"]=1;
+//  $form["field_phone"]['und']["#required"]=1;
+//  print_r($form["field_phone"]);
   $form['name'] = array(
     '#type' => 'textfield',
     '#title' => t('用户名'),
@@ -94,9 +97,10 @@ function userreg_company_register_form_validate_handler(&$form, &$form_state) {
   field_attach_form_validate('node', $pseudo_entity, $form, $form_state);
   //company name validate
   if (isset($form_state['values']['title'])) {
-    if ((bool) db_select('node')->fields('node', array('nid'))
-      ->condition('title', db_like($form_state['values']['title']), 'LIKE')->range(0, 1)->execute()->fetchField()
-    ) {
+    $result = db_query('SELECT nd.nid FROM {node} nd,{users_roles} ur WHERE nd.title = :title and nd.uid=ur.uid and ur.rid=4', array(':title' => $form_state['values']['title']));
+    $nid = $result->fetchField();
+
+    if (!empty($nid)) {
       form_set_error('title', t("企业 %title 已经注册，无法重复注册。", array('%title' => $form_state['values']['title'])));
     }
   }
@@ -144,9 +148,14 @@ function userreg_company_register_form_validate_handler(&$form, &$form_state) {
  *
  */
 function userreg_company_register_form_submit_handler(&$form, &$form_state) {
-
   $pseudo_entity = (object) $form_state['values'];
   $pseudo_entity->type = 'company';
+  $result = db_query('SELECT nd.nid FROM {node} nd,{users_roles} ur WHERE nd.title = :title and nd.uid=ur.uid and ur.rid<>4', array(':title' => $form_state['values']['title']));
+  $nid = $result->fetchField();
+  if (!empty($nid)) {
+    $pseudo_entity->nid = $nid;
+  }
+
   $userinfo = array(
     'name' => $form_state['values']['name'],
     'pass' => $form_state['values']['pass'],

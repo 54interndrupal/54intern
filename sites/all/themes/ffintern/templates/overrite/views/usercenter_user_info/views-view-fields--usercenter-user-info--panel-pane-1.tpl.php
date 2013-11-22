@@ -44,7 +44,7 @@ drupal_add_js($js_file);
   <div class="views-field views-field-edit">
     <div class="field-content">
       <a href="<?php print url("ajax_register/profile/nojs");?>"
-         class="ctools-use-modal ctools-modal-ctools-ajax-register-style"><span class="edt-acct">帐户编辑</span></a>
+         class="ctools-use-modal ctools-modal-ctools-ajax-register-style"><i class="icon-edit"></i> 帐户编辑</a>
 
     </div>
   </div>

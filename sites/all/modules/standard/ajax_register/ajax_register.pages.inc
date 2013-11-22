@@ -49,6 +49,11 @@ function ajax_register_page_callback($form_type, $js) {
 //      $form_state['title'] = t('Log In');
       $commands = ctools_modal_form_wrapper('intern_company_user_login_form', $form_state);
     }
+    elseif ($form_type == 'companyAdd') {
+      // Show COMPANY USER LOGIN form.
+      $form_state['title'] = t('添加企业');
+      $commands = ctools_modal_form_wrapper('intern_company_add_company_form', $form_state);
+    }
     elseif ($form_type == 'profile') {
       // Show USER profile form.
       module_load_include('pages.inc', 'user');
@@ -90,6 +95,8 @@ function ajax_register_page_callback($form_type, $js) {
         $commands[] = ctools_ajax_command_reload();
 
 
+      } elseif ($form_type == 'companyAdd') {
+        $commands[] = ctools_ajax_command_reload();
       }
       elseif ($form_type == 'companylogin') {
         // Set message about successfull login.

@@ -104,7 +104,12 @@
       <div class="company-brief-info c-1">
 
         <div class="field-add-review">
+          <?php if (!user_is_anonymous() && !intern_user_is_company_user()) { ?>
           <input type="button" value="写点评" onclick='jQuery("#reviewModal").modal("toggle");' class="form-submit"/>
+          <?php }
+        else { ?>
+          <a href="<?php print url('ajax_register/login/nojs');?>" title="" class="ctools-use-modal ctools-modal-ctools-ajax-register-style form-submit" rel="nofollow">写点评</a>
+          <?php }?>
         </div>
 
         <div class="field field-name-name">
@@ -126,6 +131,10 @@
           </div>
           <div class="field field-name-nature">
             <div class="field-items"><?php print $field_company_type[0]['taxonomy_term']->name; ?></div>
+          </div>
+
+          <div class="fix-company-info pull-right">
+            <a id="fixCompanyInfo">补充修订</a>
           </div>
         </div>
 
@@ -187,11 +196,19 @@
 <?php } ?>
 
 </div><!-- /.content -->
+
+<?php
+if(!intern_user_is_company_user()){
+print intern_company_get_data_fix_form_block($nid);}
+?>
 <script type="text/javascript">
   (function ($) {
     $(document).ready(function () {
       $('.add-review').click(function () {
         $("#reviewModal").modal('toggle');
+      })
+      $('#fixCompanyInfo').click(function () {
+        $("#companyInfoEditModal").modal('toggle');
       })
       $('#show-detail').click(function () {
         if ($("#body-content:visible").size() == 0) {

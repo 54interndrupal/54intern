@@ -14,7 +14,7 @@ function authcacheInternUserResumeStatusInit() {
         'intern_user_resume_status' : '',
 
         // Makes browser cache the Ajax response to help reduce server resources
-        'max_age' : 0
+        'max_age' : null
     }
     // Perform independent Authcache ajax request
     Authcache.ajaxRequest(ajaxJson);

@@ -118,18 +118,19 @@ function intern_company_block_view($delta = '') {
   return $block;
 }
 
-function intern_company_node_add_review_form_block($nodeType){
+function intern_company_node_add_review_form_block($nodeType) {
   $gid = arg(1);
-  if(empty($gid)){
+  if (empty($gid)) {
     $gid = 0;
   }
   module_load_include('inc', 'node', 'node.pages');
   $form = node_add($nodeType);
-  $form['og_group_ref']['und'][0]['target_id']['#value'] = 'OG Company ('.$gid.')';
-  $form['#action'] = url($_GET['q'],array('query' => drupal_get_destination(),));
+  $form['og_group_ref']['und'][0]['target_id']['#value'] = 'OG Company (' . $gid . ')';
+  $form['#action'] = url($_GET['q'], array('query' => drupal_get_destination(),));
   $output = drupal_render($form);
   return $output;
 }
+
 
 /**
  * 企业中心今日提醒Block
@@ -343,7 +344,8 @@ function _intern_get_company_id_from_url() {
 //  print(strpos($uri, '54intern'));
   if (strpos($uri, '54intern') > 0 || strpos($uri, 'dev') > 0) {
     $gid = $params[3];
-  }else{
+  }
+  else {
     $gid = $params[2];
   }
   return $gid;
@@ -373,18 +375,23 @@ function intern_company_get_company_id() {
 function intern_company_form_node_form_alter(&$form, $form_state) {
   $type = $form['#node']->type;
   Global $user;
-  if ($type == 'company' && intern_user_is_company_user()) {
-    hide($form["field_source_company_name"]);
+  if ($type == 'company') {
     hide($form["field_company_images"]);
     hide($form["field_license"]);
-    $form["title"]["#type"] = "hidden";
-    hide($form["actions"]["delete"]);
 
+    hide($form["actions"]["delete"]);
+    if (intern_user_is_company_user()) {
+      hide($form["field_source_company_name"]);
+      $form["title"]["#type"] = "hidden";
+    }
+    else {
+
+    }
+  }
+  if (intern_user_is_company_user()) {
     $form['actions']['submit']['#submit'][] = 'intern_company_company_form_post_submit';
   }
 }
-
-
 
 
 function intern_company_company_form_post_submit($form, &$form_state) {
@@ -399,7 +406,7 @@ function intern_company_get_company_review_count($company_id) {
 }
 
 function intern_company_get_company_job_count($company_id) {
-  $sql = "select count(etid) as count from {og_membership} og_ms,{node} nd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.type='job' ";
+  $sql = "select count(etid) as count from {og_membership} og_ms,{node} nd where og_ms.gid = :gid and og_ms.etid=nd.nid and nd.type='job' and nd.status=1";
   $job_count = db_query($sql, array(':gid' => $company_id))->fetchField();
   return $job_count;
 }
@@ -410,17 +417,17 @@ function intern_company_get_company_user_id($company_id) {
   return $company_user_id;
 }
 
-function intern_company_info_flags($companyId){
+function intern_company_info_flags($companyId) {
 
-    global $user;
-    $_GET['destination'] = "node/" . $companyId;
+  global $user;
+  $_GET['destination'] = "node/" . $companyId;
 
-    $output = '';
-    if (!user_is_anonymous() && !intern_user_is_company_user()) {
-      $output .= flag_create_link('bookmarks', $companyId);
-    }
+  $output = '';
+  if (!user_is_anonymous() && !intern_user_is_company_user()) {
+    $output .= flag_create_link('bookmarks', $companyId);
+  }
 
-    return $output;
+  return $output;
 }
 
 /**
@@ -468,11 +475,169 @@ function intern_company_cron() {
   if (!empty($nids)) {
     $companies = node_load_multiple($nids);
     foreach ($companies as $company) {
-       intern_company_approve_action($company);
+      intern_company_approve_action($company);
+    }
+  }
+}
+
+function intern_company_add_company_form($form, &$form_state) {
+  $form = array();
+  global $user;
+  $form['title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('公司名称'),
+    '#required' => TRUE,
+    '#attributes' => array('class' => array('company_name')),
+  );
+
+  $node = (object) array(
+    'uid' => $user->uid,
+    'name' => (isset($user->name) ? $user->name : ''),
+    'type' => 'company',
+    'language' => LANGUAGE_NONE
+  );
+  field_attach_form('node', $node, $form, $form_state);
+
+  hide($form["field_source_company_name"]);
+  hide($form['group_group']);
+  hide($form["field_contact"]);
+  hide($form["field_sex"]);
+  hide($form["field_job_position"]);
+  hide($form["field_cell_phone"]);
+  hide($form["field_email"]);
+  hide($form["field_phone"]);
+  hide($form["field_fax"]);
+  hide($form["field_company_images"]);
+  hide($form["field_license"]);
+
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('提交'),
+  );
+
+  $form['#validate'][] = 'intern_company_add_company_form_validate_handler';
+  $form['#submit'][] = 'intern_company_add_company_form_submit_handler';
+//  watchdog_array("Intern Company","Add Form Passed in",$form);
+
+  return $form;
+}
+
+function intern_company_add_company_form_validate_handler(&$form, &$form_state) {
+  $form_state['values']["group_group"][LANGUAGE_NONE][0]['value'] = "1";
+  $pseudo_entity = (object) $form_state['values'];
+  $pseudo_entity->type = 'company';
+  field_attach_form_validate('node', $pseudo_entity, $form, $form_state);
+  //company name validate
+  if (isset($form_state['values']['title'])) {
+    $result = db_query('SELECT nd.nid FROM {node} nd WHERE nd.title = :title', array(':title' => $form_state['values']['title']));
+    $nid = $result->fetchField();
+    if (!empty($nid)) {
+      form_set_error('title', t("企业 %title 已经存在，无法重复创建。", array('%title' => $form_state['values']['title'])));
     }
   }
 }
 
 
+/**
+ * Submit handler that builds and saves all profiles in the form.
+ *
+ */
+function intern_company_add_company_form_submit_handler(&$form, &$form_state) {
+  global $user;
+  $pseudo_entity = (object) $form_state['values'];
+  $pseudo_entity->type = 'company';
+  $pseudo_entity->uid = intern_user_get_company_creater_uid();
+  $pseudo_entity->language = 'zh-hans';
+  $pseudo_entity->title = $form_state['values']['title'];
 
+  watchdog_array("Intern Company", "Form Passed in", $pseudo_entity);
+  field_attach_submit('node', $pseudo_entity, $form, $form_state);
+  node_save($pseudo_entity);
+}
+
+function intern_company_edit_company_form($form, &$form_state, $nid) {
+  $form = array();
+  global $user;
+
+
+  $node = node_load($nid);
+  $form['title'] = array(
+    '#type' => 'hidden',
+    '#value' => $node->title
+  );
+  $form['nid'] = array(
+    '#type' => 'hidden',
+    '#value' => $node->nid
+  );
+  field_attach_form('node', $node, $form, $form_state);
+
+  hide($form["field_source_company_name"]);
+  hide($form['group_group']);
+  hide($form["field_contact"]);
+  hide($form["field_sex"]);
+  hide($form["field_job_position"]);
+  hide($form["field_cell_phone"]);
+  hide($form["field_email"]);
+  hide($form["field_phone"]);
+  hide($form["field_fax"]);
+  hide($form["field_company_images"]);
+  hide($form["field_license"]);
+
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('提交'),
+  );
+
+  $form['#validate'][] = 'intern_company_edit_company_form_validate_handler';
+  $form['#submit'][] = 'intern_company_edit_company_form_submit_handler';
+
+  return $form;
+}
+
+function intern_company_form_submit_callback($form, $form_state) {
+
+  if (!form_get_errors()) {
+    // After successfull password restore replace form with status messages.
+    $commands = array();
+    $commands[] = ctools_ajax_command_redirect('companys');
+
+    return array('#type' => 'ajax', '#commands' => $commands);
+  }
+  // Reload form if it didn't pass validation.
+  return $form;
+}
+
+function intern_company_edit_company_form_validate_handler(&$form, &$form_state) {
+  $form_state['values']["group_group"][LANGUAGE_NONE][0]['value'] = "1";
+  $pseudo_entity = (object) $form_state['values'];
+  $pseudo_entity->type = 'company';
+
+  field_attach_form_validate('node', $pseudo_entity, $form, $form_state);
+}
+
+
+/**
+ * Submit handler that builds and saves all profiles in the form.
+ *
+ */
+function intern_company_edit_company_form_submit_handler(&$form, &$form_state) {
+//  die('<pre>' . print_r($form_state['values'], TRUE) . '</pre>');
+  global $user;
+  $pseudo_entity = (object) $form_state['values'];
+  $pseudo_entity->type = 'company';
+  $pseudo_entity->language = 'zh-hans';
+  $pseudo_entity->uid = $user->uid;
+  $pseudo_entity->nid = $form_state['values']['nid'];
+
+  field_attach_submit('node', $pseudo_entity, $form, $form_state);
+  node_save($pseudo_entity);
+}
+
+function intern_company_get_data_fix_form_block($nid) {
+  $editCompanyform = drupal_get_form('intern_company_edit_company_form', $nid);
+  $output = drupal_render($editCompanyform);
+  return $output;
+}
 
