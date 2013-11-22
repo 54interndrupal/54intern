@@ -62,11 +62,15 @@
 </div>
 <?php endif; ?>
 <div id="applyAddCompany">
-  <span>没有找到想要的企业，请<a href="<?php print url('ajax_register/companyAdd/nojs');?>" title="" class="ctools-use-modal ctools-modal-ctools-ajax-register-style form-submit" rel="nofollow"><i class="icon-plus"></i> 添加企业</a></a></span>
-
+  <span>没有找到想要的企业，请
+    <?php if (user_is_anonymous()) { ?>
+     <a href="<?php print url('ajax_register/login/nojs');?>" title=""
+        class="ctools-use-modal ctools-modal-ctools-ajax-register-style form-submit" rel="nofollow">
+  <?php }
+    else { ?>
+    <a href="<?php print url('ajax_register/companyAdd/nojs');?>" title=""
+       class="ctools-use-modal ctools-modal-ctools-ajax-register-style form-submit" rel="nofollow">
+  <?php }?>
+    <i class="icon-plus">
+    </i> 添加企业</a></span>
 </div>
-
-
-
-
-
