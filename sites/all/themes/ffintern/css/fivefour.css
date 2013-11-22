@@ -5249,6 +5249,9 @@ a.form-submit{
     border: 4px solid #4e963c;
 }
 /*==review-node-form==*/
+.node-review-form #reviewModal{
+    width: 600px;
+}
 .node-review-form .review-node-form-header {
     margin-top: 20px;
 }
