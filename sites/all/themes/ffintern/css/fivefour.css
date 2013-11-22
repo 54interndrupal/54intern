@@ -5430,6 +5430,9 @@ a.form-submit{
     margin-bottom: 1px;
 
 }
+.page-siteinfo .pane-shixiquan-aboutinfoblock .pane-content li.active a{
+    color:#EA960B;
+}
 .page-siteinfo .pane-shixiquan-aboutinfoblock .pane-content li:hover{
     border: 2px solid #8CB125;
     cursor: pointer;

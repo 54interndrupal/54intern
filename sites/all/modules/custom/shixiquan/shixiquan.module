@@ -298,10 +298,10 @@ function shixiquan_comment_form_alter(&$form, $form_state, $form_id) {
 function shixiquan_aboutInfo_block(){
   $output = '';
   $output .='<ul>
-   <li><a href="">关于我们</a></li>
-   <li><a href="">免责声明</a></li>
-   <li><a href="">隐私条款</a></li>
-   <li><a href="">服务协议</a></li>
+   <li class="'.(arg(1)=='about-us'?'active':'').'"><a href="'.url('siteinfo/about-us').'">关于我们</a></li>
+   <li class="'.(arg(1)=='disclaimer'?'active':'').'"><a href="'.url('siteinfo/disclaimer').'">免责声明</a></li>
+   <li class="'.(arg(1)=='privacy-policy'?'active':'').'"><a href="'.url('siteinfo/privacy-policy').'">隐私条款</a></li>
+   <li class="'.(arg(1)=='service-agreement'?'active':'').'"><a href="'.url('siteinfo/service-agreement').'">服务协议</a></li>
    </ul>
   ';
   return $output;
