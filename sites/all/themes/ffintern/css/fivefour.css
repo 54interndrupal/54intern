@@ -5328,6 +5328,11 @@ a.form-submit{
     margin:0 5px 5px 0;
     display:inline-block;
 }
+.node-review-form .field-name-field-company-evaluation{
+    width: 500px;
+}
+
+
 .node-review-form .form-item .at-term-entry{
      display: inline-block;
      width:80px;
