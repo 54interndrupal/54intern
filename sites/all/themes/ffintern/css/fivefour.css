@@ -5249,7 +5249,7 @@ a.form-submit{
     border: 4px solid #4e963c;
 }
 /*==review-node-form==*/
-.node-review-form .review-modal-content{
+.node-review-form #reviewModal .modal-dialog{
     width: 680px;
 }
 .node-review-form .review-node-form-header {
