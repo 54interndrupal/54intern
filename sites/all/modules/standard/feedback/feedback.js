@@ -30,8 +30,6 @@
                 );
                 $block.find('form').hide();
                 $block.show();
-
-                $('#footerContactLink').click(function(){Drupal.feedbackFormToggle($block, true);});
             });
 
 
@@ -76,7 +74,4 @@
             $('#feedback-form-toggle', $block).html('[ X ] 网站反馈');
         }
     };
-
-
-
 })(jQuery);
