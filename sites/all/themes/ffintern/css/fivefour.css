@@ -5250,7 +5250,7 @@ a.form-submit{
 }
 /*==review-node-form==*/
 .node-review-form #reviewModal .modal-dialog{
-    width: 680px;
+    width: 600px;
 }
 .node-review-form .review-node-form-header {
     margin-top: 20px;
