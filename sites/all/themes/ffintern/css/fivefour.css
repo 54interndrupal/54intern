@@ -397,6 +397,18 @@ form.comment-form div.form-actions {
     background-color: rgb(141, 177, 37);
 }
 
+.item-list ul.pager li.pager-item.first:hover a:hover,
+.item-list ul.pager li.pager-item:hover a:hover,
+.item-list ul.pager li.pager-current:hover a:hover,
+.item-list ul.pager li.pager-next:hover a:hover,
+.item-list ul.pager li.pager-previous:hover a:hover,
+.item-list ul.pager li.pager-last:hover a:hover,
+.item-list ul.pager li.pager-first:hover a:hover {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: rgb(141, 177, 37);
+}
+
 .item-list ul.pager li.pager-item.first:hover a,
 .item-list ul.pager li.pager-item:hover a,
 .item-list ul.pager li.pager-current:hover a,
@@ -406,6 +418,7 @@ form.comment-form div.form-actions {
 .item-list ul.pager li.pager-first:hover a {
     color: #ffffff;
     font-weight: bold;
+    background-color: rgb(141, 177, 37);
 }
 
 .item-list ul.pager li.breaker.pager-item {
