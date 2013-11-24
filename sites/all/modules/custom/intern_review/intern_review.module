@@ -1,6 +1,6 @@
 <?php
 
-function intern_review_add_form($form, $form_state) {
+function intern_review_add_form($form, &$form_state) {
   $form = array();
   global $user;
 
