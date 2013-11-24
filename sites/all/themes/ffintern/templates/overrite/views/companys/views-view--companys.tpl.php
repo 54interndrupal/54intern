@@ -31,7 +31,6 @@
 
 <div id="highlighted">
 
-  <!-- �߼�����������Drupal 7�����ṩ��highlighted���� -->
   <?php if ($exposed): ?>
   <div id="search-company" class="block advanced-search">
     <div class="block-content">
@@ -69,8 +68,26 @@
   <?php }
     else { ?>
     <a href="<?php print url('ajax_register/companyAdd/nojs');?>" title=""
-       class="ctools-use-modal ctools-modal-ctools-ajax-register-style form-submit" rel="nofollow">
+       class="ctools-use-modal ctools-modal-company-modal-style form-submit" rel="nofollow">
   <?php }?>
     <i class="icon-plus">
     </i> 添加企业</a></span>
 </div>
+<?php
+if (!user_is_anonymous()) {
+  drupal_add_js(array(
+    'company-modal-style' => array(
+      'modalSize' => array(
+        'type' => 'fixed',
+        'width' => 750,
+        'height' => 550,
+      ),
+      'modalOptions' => array(
+        //'opacity' => (float) variable_get('ajax_register_modal_background_opacity', '0.8'),
+        'background-color' => '#' . variable_get('ajax_register_modal_background_color', '000000'),
+      ),
+      'closeText' => '',
+      'throbber' => theme('image', array('path' => ctools_image_path('ajax-loader.gif', 'ajax_register'))),
+    ),
+  ), 'setting');
+}

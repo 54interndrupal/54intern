@@ -47,12 +47,19 @@ function ajax_register_page_callback($form_type, $js) {
     elseif ($form_type == 'companylogin') {
       // Show COMPANY USER LOGIN form.
 //      $form_state['title'] = t('Log In');
+
       $commands = ctools_modal_form_wrapper('intern_company_user_login_form', $form_state);
     }
     elseif ($form_type == 'companyAdd') {
-      // Show COMPANY USER LOGIN form.
-      $form_state['title'] = t('添加企业');
       $commands = ctools_modal_form_wrapper('intern_company_add_company_form', $form_state);
+    }
+    elseif ($form_type == 'companyEdit') {
+      $commands = ctools_modal_form_wrapper('intern_company_edit_company_form', $form_state);
+    }
+    elseif ($form_type == 'reviewAdd') {
+
+      // Show COMPANY USER LOGIN form.
+      $commands = ctools_modal_form_wrapper('intern_review_add_form', $form_state);
     }
     elseif ($form_type == 'profile') {
       // Show USER profile form.
@@ -96,7 +103,28 @@ function ajax_register_page_callback($form_type, $js) {
 
 
       } elseif ($form_type == 'companyAdd') {
-        $commands[] = ctools_ajax_command_reload();
+        foreach ($_SESSION['messages']['status'] as $key => $value) {
+          unset($_SESSION['messages']['status']);
+        }
+        $commands[] = ctools_modal_command_display('', theme('status_messages') . '<script>;showMessage("企业添加成功！")</script>');
+        $commands[] =ctools_modal_command_dismiss();
+      }elseif ($form_type == 'companyEdit') {
+        foreach ($_SESSION['messages']['status'] as $key => $value) {
+          unset($_SESSION['messages']['status']);
+        }
+        $commands[] = ctools_modal_command_display('', theme('status_messages') . '<script>;showMessage("企业信息更新成功！")</script>');
+        $commands[] =ctools_modal_command_dismiss();
+      }
+      elseif ($form_type == 'reviewAdd') {
+        foreach ($_SESSION['messages']['status'] as $key => $value) {
+          unset($_SESSION['messages']['status']);
+        }
+//  print_r($form_state['values']['og_group_ref'][LANGUAGE_NONE][0]);
+
+        $result = views_embed_view('company_reviews_in_blocks','panel_pane_2',$form_state['values']['og_group_ref'][LANGUAGE_NONE][0]['target_id'] );
+        $commands[] = ajax_command_replace('#quicktabs-tabpage-node_company_tab-0 .view-id-company_reviews_in_blocks' ,$result);
+        $commands[] = ctools_modal_command_display('', theme('status_messages') . '<script>;showMessage("点评添加成功！")</script>');
+        $commands[] =ctools_modal_command_dismiss();
       }
       elseif ($form_type == 'companylogin') {
         // Set message about successfull login.

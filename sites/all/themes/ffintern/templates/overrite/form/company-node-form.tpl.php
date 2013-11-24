@@ -73,51 +73,68 @@
     ?>
   </div>
 </div>
-<?php }
-else { ?>
+<?php
+}
+else {
+  ?>
 <?php $nid = arg(1);
 
-  if(!empty($form["title"]["#value"])){
+  if (!empty($form["title"]["#value"])) {
     $form["title"]["#type"] = "hidden";
   }
   ?>
-<div class="modal fade company-info-edit-modal" id="companyInfoEditModal" role="dialog" ariaHidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="reviewModalTitle">帮助修正公司信息-- <span class="c-1"><?php print $form["title"]["#value"];?></span></h4>
+<div class="c-17 model-header-title" id="model-header-title">
+  <span class="active"> 修正企业信息 </span>
+</div>
+
+<div class="company-info-edit-modal" id="companyInfoEditModal" ariaHidden="true">
+
+  <div class="pane-content pane-company-node-form pane-company-node-info-edit-form">
+
+    <div class="basic-info">
+      <div class="basic-info-content">
+        <span class="modal-tip"><span style="font-size: 16px;font-weight: bold"><?php print $form["title"]["#value"];?></span> （请帮我们完善企业信息，这会帮到更多圈友：）</span>
+
+        <!--              <div class="form-item"><label>公司名称</label><span-->
+        <!--                style="display:inline-block;padding-top: 4px;font-size: 14px">-->
+          <?php //print $form["title"]["#value"];?><!--</span>-->
+        <!--              </div>-->
+        <?php print drupal_render($form["field_company_type"])?>
+        <?php print drupal_render($form["field_company_size"])?>
+        <?php print drupal_render($form["field_industry"])?>
+        <?php print drupal_render($form["field_location"])?>
+        <?php print drupal_render($form["field_contact_address"])?>
+        <?php print drupal_render($form["field_post_code"])?>
+        <?php print drupal_render($form["field_website"])?>
+        <?php print drupal_render($form["field_contact"])?>
+        <?php print drupal_render($form["field_phone"])?>
+        <?php print drupal_render($form["field_logo"])?>
+        <?php print drupal_render($form["body"])?>
       </div>
-      <div class="modal-body">
-        <div class="pane-content pane-company-node-form pane-company-node-info-edit-form">
-          <div class="basic-info">
-            <div class="basic-info-content">
-<!--              <div class="form-item"><label>公司名称</label><span-->
-<!--                style="display:inline-block;padding-top: 4px;font-size: 14px">--><?php //print $form["title"]["#value"];?><!--</span>-->
-<!--              </div>-->
-              <?php print drupal_render($form["field_company_type"])?>
-              <?php print drupal_render($form["field_company_size"])?>
-              <?php print drupal_render($form["field_industry"])?>
-              <?php print drupal_render($form["field_location"])?>
-              <?php print drupal_render($form["field_contact_address"])?>
-              <?php print drupal_render($form["field_post_code"])?>
-              <?php print drupal_render($form["field_website"])?>
-              <?php print drupal_render($form["field_contact"])?>
-              <?php print drupal_render($form["field_phone"])?>
-              <?php print drupal_render($form["field_logo"])?>
-              <?php print drupal_render($form["body"])?>
-            </div>
-            <div class="form-actions">
-              <!--          --><?php //print_r($form["actions"]);?>
-              <?php print drupal_render($form["actions"]["submit"]);?>
-              <input type="button" class="form-button-cancel" onclick="javascript:history.go(0)" value="取消">
-            </div>
-            <?php print drupal_render_children($form);?>
-          </div>
-        </div>
+      <div class="form-actions">
+        <!--          --><?php //print_r($form["actions"]);?>
+        <?php print drupal_render($form["actions"]["submit"]);?>
+
       </div>
+      <?php print drupal_render_children($form);?>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  (function ($) {
+    Drupal.behaviors.userProfile = {
+      attach:function (context) {
+        if ($("#model-header-title").size() > 0) {
+          if($(".ctools-modal-content .modal-header #model-header-title").size()>0){
+            $(".ctools-modal-content .modal-content #model-header-title").remove();
+          } else{
+            $(".ctools-modal-content .modal-header").addClass("colored").append($('#model-header-title'));
+          }
+        }
+      }
+    }
+  })(jQuery);
+</script>
 
 <?php } ?>

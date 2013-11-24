@@ -113,6 +113,14 @@ div.ctools-modal-content .modal-content {
     padding: 10px 8px 10px 15px;
 }
 
+div.ctools-modal-content .modal-content .modal-tip{
+    display:block;
+    margin:4px 0 20px 0;
+    font-size:15px;
+    color:#369;
+
+}
+
 div.model-header-title {
     display: inline-block;
     font-size: 14px;
@@ -3808,6 +3816,7 @@ ul#company-center-tabs li a.active span {
 }
 
 .company-brief-info .company-fields #fixCompanyInfo{
+    color: #428bca;
     padding-right: 10px;
 }
 
@@ -5262,9 +5271,10 @@ a.form-submit{
     border: 4px solid #4e963c;
 }
 /*==review-node-form==*/
-.node-review-form #reviewModal .modal-dialog{
-    width: 600px;
+.node-review-form{
+    padding: 20px;
 }
+
 .node-review-form .review-node-form-header {
     margin-top: 20px;
 }
@@ -5288,7 +5298,7 @@ a.form-submit{
 .node-review-form div.form-actions {
     text-align: center;
 }
-.node-review-form label{
+div.ctools-modal-content .node-review-form .form-item label{
     display: inline-block;
     width: 120px;
     text-align:right;
@@ -5344,9 +5354,11 @@ a.form-submit{
     margin:0 5px 5px 0;
     display:inline-block;
 }
-.node-review-form .field-name-field-company-evaluation{
+ .node-review-form .field-name-field-company-evaluation{
+    display: inline-block;
     width: 500px;
 }
+
 
 
 .node-review-form .form-item .at-term-entry{

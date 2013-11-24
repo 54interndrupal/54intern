@@ -105,13 +105,14 @@
 
         <div class="field-add-review">
           <?php if (!user_is_anonymous() && !intern_user_is_company_user()) { ?>
-          <input type="button" value="写点评" onclick='jQuery("#reviewModal").modal("toggle");' class="form-submit"/>
+          <a href="<?php print url('ajax_register/reviewAdd/nojs/' . $nid);?>" title=""
+             class="ctools-use-modal ctools-modal-review-modal-style form-submit" rel="nofollow">写点评</a>
           <?php
         }
         else {
           ?>
           <a href="<?php print url('ajax_register/login/nojs');?>" title=""
-             class="ctools-use-modal ctools-modal-ctools-ajax-register-style form-submit" rel="nofollow">写点评</a>
+             class="ctools-use-modal ctools-modal-ctools-ajax-register-style  form-submit" rel="nofollow">写点评</a>
           <?php }?>
         </div>
 
@@ -137,7 +138,16 @@
           </div>
           <?php if (!user_is_anonymous()) { ?>
           <div class="fix-company-info pull-right">
-            <a id="fixCompanyInfo">补充修订</a>
+            <?php if (!user_is_anonymous() && !intern_user_is_company_user()) { ?>
+            <a href="<?php print url('ajax_register/companyEdit/nojs/' . $nid);?>" title=""
+               class="ctools-use-modal ctools-modal-company-modal-style" rel="nofollow" id="fixCompanyInfo">补充修订</a>
+            <?php
+          }
+          else {
+            ?>
+            <a href="<?php print url('ajax_register/login/nojs');?>" title=""
+               class="ctools-use-modal ctools-modal-ctools-ajax-register-style" rel="nofollow" id="fixCompanyInfo">补充修订</a>
+            <?php }?>
           </div>
           <?php } ?>
         </div>
@@ -202,19 +212,43 @@
 </div><!-- /.content -->
 
 <?php
-if (!intern_user_is_company_user()) {
-  print intern_company_get_data_fix_form_block($nid);
+if (!user_is_anonymous()) {
+  drupal_add_js(array(
+    'review-modal-style' => array(
+      'modalSize' => array(
+        'type' => 'fixed',
+        'width' => 600,
+        'height' => 550,
+      ),
+      'modalOptions' => array(
+        //'opacity' => (float) variable_get('ajax_register_modal_background_opacity', '0.8'),
+        'background-color' => '#' . variable_get('ajax_register_modal_background_color', '000000'),
+      ),
+      'closeText' => '',
+      'throbber' => theme('image', array('path' => ctools_image_path('ajax-loader.gif', 'ajax_register'))),
+    ),
+  ), 'setting');
+
+  drupal_add_js(array(
+    'company-modal-style' => array(
+      'modalSize' => array(
+        'type' => 'fixed',
+        'width' => 750,
+        'height' => 550,
+      ),
+      'modalOptions' => array(
+        //'opacity' => (float) variable_get('ajax_register_modal_background_opacity', '0.8'),
+        'background-color' => '#' . variable_get('ajax_register_modal_background_color', '000000'),
+      ),
+      'closeText' => '',
+      'throbber' => theme('image', array('path' => ctools_image_path('ajax-loader.gif', 'ajax_register'))),
+    ),
+  ), 'setting');
 }
 ?>
 <script type="text/javascript">
   (function ($) {
     $(document).ready(function () {
-      $('.add-review').click(function () {
-        $("#reviewModal").modal('toggle');
-      })
-      $('#fixCompanyInfo').click(function () {
-        $("#companyInfoEditModal").modal('toggle');
-      })
       $('#show-detail').click(function () {
         if ($("#body-content:visible").size() == 0) {
           $('#show-detail').text('收起>>');
@@ -228,15 +262,6 @@ if (!intern_user_is_company_user()) {
 
     });
   })(jQuery);
-
-
-  function resetReviewNodeForm() {
-    showMessage("点评添加成功");
-    jQuery("#review-node-form")[0].reset();
-    Authcache.resetFormToken();
-    jQuery("#reviewModal").modal('toggle');
-
-  }
 </script>
 
 

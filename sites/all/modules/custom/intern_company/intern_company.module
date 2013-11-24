@@ -49,9 +49,6 @@ function intern_company_block_info() {
   $blocks['company center setting tabs'] = array(
     'info' => t('Intern Company -- 企业中心设置中心导航')
   );
-  $blocks['company node add review'] = array(
-    'info' => t('Intern Company -- 企业点评表单'),
-  );
   return $blocks;
 }
 
@@ -109,26 +106,9 @@ function intern_company_block_view($delta = '') {
       $block['subject'] = t('企业中心设置中心tabs');
       $block['content'] = intern_company_center_setting_tabs_block();
       break;
-    case 'company node add review':
-      $block['subject'] = t('企业点评表单');
-      $block['content'] = intern_company_node_add_review_form_block('review');
-      break;
   }
 
   return $block;
-}
-
-function intern_company_node_add_review_form_block($nodeType) {
-  $gid = arg(1);
-  if (empty($gid)) {
-    $gid = 0;
-  }
-  module_load_include('inc', 'node', 'node.pages');
-  $form = node_add($nodeType);
-  $form['og_group_ref']['und'][0]['target_id']['#value'] = 'OG Company (' . $gid . ')';
-  $form['#action'] = url($_GET['q'], array('query' => drupal_get_destination(),));
-  $output = drupal_render($form);
-  return $output;
 }
 
 
@@ -551,16 +531,18 @@ function intern_company_add_company_form_submit_handler(&$form, &$form_state) {
   $pseudo_entity->language = 'zh-hans';
   $pseudo_entity->title = $form_state['values']['title'];
 
-  watchdog_array("Intern Company", "Form Passed in", $pseudo_entity);
+//  watchdog_array("Intern Company", "Form Passed in", $pseudo_entity);
   field_attach_submit('node', $pseudo_entity, $form, $form_state);
   node_save($pseudo_entity);
 }
 
-function intern_company_edit_company_form($form, &$form_state, $nid) {
+function intern_company_edit_company_form($form, &$form_state) {
   $form = array();
   global $user;
-
-
+  $nid = arg(3);
+  if (empty($nid)) {
+    $nid = 0;
+  }
   $node = node_load($nid);
   $form['title'] = array(
     '#type' => 'hidden',
@@ -592,20 +574,7 @@ function intern_company_edit_company_form($form, &$form_state, $nid) {
 
   $form['#validate'][] = 'intern_company_edit_company_form_validate_handler';
   $form['#submit'][] = 'intern_company_edit_company_form_submit_handler';
-
-  return $form;
-}
-
-function intern_company_form_submit_callback($form, $form_state) {
-
-  if (!form_get_errors()) {
-    // After successfull password restore replace form with status messages.
-    $commands = array();
-    $commands[] = ctools_ajax_command_redirect('companys');
-
-    return array('#type' => 'ajax', '#commands' => $commands);
-  }
-  // Reload form if it didn't pass validation.
+//                             print_r($form);
   return $form;
 }
 
@@ -624,20 +593,20 @@ function intern_company_edit_company_form_validate_handler(&$form, &$form_state)
  */
 function intern_company_edit_company_form_submit_handler(&$form, &$form_state) {
 //  die('<pre>' . print_r($form_state['values'], TRUE) . '</pre>');
+  $form_state['values']["group_group"][LANGUAGE_NONE][0]['value'] = "1";
   global $user;
   $pseudo_entity = (object) $form_state['values'];
   $pseudo_entity->type = 'company';
   $pseudo_entity->language = 'zh-hans';
-  $pseudo_entity->uid = $user->uid;
+//  $pseudo_entity->uid = $user->uid;
   $pseudo_entity->nid = $form_state['values']['nid'];
 
+  watchdog_array("company","edit company",$pseudo_entity);
+
   field_attach_submit('node', $pseudo_entity, $form, $form_state);
+  watchdog("company","fields submitted");
   node_save($pseudo_entity);
+  watchdog("company","node saved");
 }
 
-function intern_company_get_data_fix_form_block($nid) {
-  $editCompanyform = drupal_get_form('intern_company_edit_company_form', $nid);
-  $output = drupal_render($editCompanyform);
-  return $output;
-}
 

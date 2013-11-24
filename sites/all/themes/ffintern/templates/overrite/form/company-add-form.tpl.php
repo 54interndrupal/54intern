@@ -14,10 +14,14 @@ if (!empty($form["title"]["#value"])) {
   $form["title"]["#type"] = "hidden";
 }
 ?>
+<div class="c-17 model-header-title" id="model-header-title">
+  <span class="active"> 添加企业信息 </span>
+</div>
 
 <div class="pane-content pane-company-node-form pane-company-node-info-add-form">
   <div class="basic-info">
     <div class="basic-info-content">
+      <span class="modal-tip"> （添加企业信息，帮注更多圈友了解这个企业：）</span>
       <?php print drupal_render($form["title"])?>
       <?php print drupal_render($form["field_company_type"])?>
       <?php print drupal_render($form["field_company_size"])?>
@@ -34,8 +38,23 @@ if (!empty($form["title"]["#value"])) {
     <div class="form-actions">
       <!--          --><?php //print_r($form["actions"]);?>
       <?php print drupal_render($form["actions"]["submit"]);?>
-      <input type="button" class="form-button-cancel" onclick="javascript:history.go(0)" value="取消">
     </div>
     <?php print drupal_render_children($form);?>
   </div>
 </div>
+
+<script type="text/javascript">
+  (function ($) {
+    Drupal.behaviors.userProfile = {
+      attach:function (context) {
+        if ($("#model-header-title").size() > 0) {
+          if($(".ctools-modal-content .modal-header #model-header-title").size()>0){
+            $(".ctools-modal-content .modal-content #model-header-title").remove();
+          } else{
+            $(".ctools-modal-content .modal-header").addClass("colored").append($('#model-header-title'));
+          }
+        }
+      }
+    }
+  })(jQuery);
+</script>

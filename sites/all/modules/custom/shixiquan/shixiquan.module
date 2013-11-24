@@ -250,44 +250,6 @@ function shixiquan_form_alter(&$form, $form_state, $form_id) {
 
   }
 
-  if (isset($form['type']) && isset($form['#node'])) {
-    if ('review_node_form' == $form_id) {
-      $form['title']['#required'] = 0;
-      $form['title']['#type'] = 'hidden';
-      global $user;
-
-      //非网站编辑，不能编辑Group Audience字段
-      if (!in_array(6, array_keys($user->roles))) {
-        $form['og_group_ref']['und'][0]['target_id']['#type'] = 'hidden';
-      }
-      $form['#action']=url('node/add/review');
-      $form['actions']['submit']['#ajax'] = array(
-        'callback' => 'shixiquan_review_submit_js',
-        'wrapper' => $form['#id'],
-        'method' => 'replace',
-        'effect' => 'fade',
-      );
-    }
-  }
-}
-
-
-function shixiquan_review_submit_js($form, &$form_state) {
-  // Return the actual form if it contains errors.
-  if (form_get_errors()) {
-    return $form;
-  }
-
-  foreach ($_SESSION['messages']['status'] as $key => $value) {
-      unset($_SESSION['messages']['status']);
-  }
-//  print_r($form_state['values']['og_group_ref'][LANGUAGE_NONE][0]);
-
-  $result = views_embed_view('company_reviews_in_blocks','panel_pane_2',$form_state['values']['og_group_ref'][LANGUAGE_NONE][0]['target_id'] );
-  $result.='<script>resetReviewNodeForm();</script>';
-  $commands[] = ajax_command_replace('#quicktabs-tabpage-node_company_tab-0 .view-id-company_reviews_in_blocks' ,$result);
-
-  return array('#type' => 'ajax', '#commands' => $commands);
 }
 
 function shixiquan_comment_form_alter(&$form, $form_state, $form_id) {

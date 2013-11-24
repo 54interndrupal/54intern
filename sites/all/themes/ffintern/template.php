@@ -146,7 +146,7 @@ function ffintern_theme() {
       'render element' => 'form',
       'path' => drupal_get_path('theme', 'ffintern') . '/templates/overrite/form',
     ),
-    'review_node_form' => array(
+    'intern_review_add_form' => array(
       'template' => 'review-node-form',
       'render element' => 'form',
       'path' => drupal_get_path('theme', 'ffintern') . '/templates/overrite/form',
