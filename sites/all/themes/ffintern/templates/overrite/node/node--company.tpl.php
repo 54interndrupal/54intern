@@ -106,7 +106,7 @@
         <div class="field-add-review">
           <?php if (!user_is_anonymous() && !intern_user_is_company_user()) { ?>
           <a href="<?php print url('ajax_register/reviewAdd/nojs/' . $nid);?>" title=""
-             class="ctools-use-modal ctools-modal-review-modal-style form-submit" rel="nofollow">写点评</a>
+             class="ctools-use-modal ctools-modal-ctools-ajax-register-style" rel="nofollow">写点评</a>
           <?php
         }
         else {
