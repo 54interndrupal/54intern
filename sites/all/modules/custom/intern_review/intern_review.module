@@ -24,6 +24,12 @@ function intern_review_add_form($form, &$form_state) {
     '#value' => t('提交'),
   );
 
+  hide($form["field_company_evaluation"]);
+  hide($form["field_overall_value"]);
+  hide($form["field_treatment_value"]);
+  hide($form["field_training_value"]);
+  hide($form["field_regularize_value"]);
+
   $form['#validate'][] = 'intern_review_add_review_form_validate_handler';
   $form['#submit'][] = 'intern_review_add_review_form_submit_handler';
 //  watchdog_array("Intern Company","Add Form Passed in",$form);
