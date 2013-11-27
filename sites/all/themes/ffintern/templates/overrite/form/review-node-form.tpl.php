@@ -1,4 +1,3 @@
-<!--  --><?php //print_r($form["actions"]);?>
 <div class="review-modal node-review-form" id="reviewModal" ariaHidden="true">
 
   <div class="c-17 model-header-title" id="model-header-title">
@@ -21,10 +20,6 @@
      </div>
   </div>
 </div>
-
-
-</div>
-
 <script type="text/javascript">
   (function ($) {
     Drupal.behaviors.userProfile = {
