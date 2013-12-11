@@ -30,10 +30,19 @@ function active_tags_field_widget_info() {
  */
 function active_tags_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
   $settings = $instance['widget']['settings'];
-
+//  watchdog_array("active_tag","form",$form_state);
+//  watchdog_array("active_tag","field",$field);
   $tags = array();
-  foreach ($items as $item) {
-    $tags[$item['tid']] = isset($item['taxonomy_term']) ? $item['taxonomy_term'] : taxonomy_term_load($item['tid']);
+  $field_name = $field['field_name'];
+  if (isset($form_state["input"][$field_name]['und']['terms'])) {
+//    watchdog("active_tag",$form_state["input"][$field_name]['und']['terms']);
+    $tags = explode(',', $form_state["input"][$field_name]['und']['terms']);
+  }
+  else {
+
+    foreach ($items as $item) {
+      $tags[$item['tid']] = isset($item['taxonomy_term']) ? $item['taxonomy_term'] : taxonomy_term_load($item['tid']);
+    }
   }
 
   $element += array(
@@ -45,7 +54,7 @@ function active_tags_field_widget_form(&$form, &$form_state, $field, $instance, 
     '#markup' => theme('active_tags_term_list_remove', array('terms' => $tags)),
   );
   $element['term_entry_tip'] = array(
-    '#markup' =>'<span class="term-entry-desc">'.t("按回车添加，或直接选择：").'</span>',
+    '#markup' => '<span class="term-entry-desc">' . t("按回车添加，或直接选择：") . '</span>',
   );
   $element['term_entry'] = array(
     '#type' => 'textfield',
@@ -101,7 +110,7 @@ function active_tags_field_widget_settings_form($field, $instance) {
 
   $options = array(
     'single' => t('Single mode: Include commas in tag'),
-    'csv'  => t('CSV mode: Multiple tags with comma seperation'),
+    'csv' => t('CSV mode: Multiple tags with comma seperation'),
   );
 
   $form['mode'] = array(
@@ -133,10 +142,19 @@ function active_tags_theme($existing, $type, $theme, $path) {
  * Theme a list of taxonomy terms with remove action.
  */
 function theme_active_tags_term_list_remove($variables) {
+
   $output = '<div class="at-term-list">';
+//  watchdog_array("active_tag_terms", $variables['terms']);
   foreach ($variables['terms'] as $term) {
-    // @todo add field level id for div id to prevent collisions.
-    $output .= '<div id="at-term-' . $term->tid . '" class="at-term at-term-remove"><span class="at-term-text">' . $term->name . '</span><span class="at-term-action-remove">x</span></div> ';
+//    watchdog_array("active_tag_term", $term);
+//    $output .= $term;
+    if (isset($term->tid)) {
+      // @todo add field level id for div id to prevent collisions.
+      $output .= '<div id="at-term-' . $term->tid . '" class="at-term at-term-remove"><span class="at-term-text">' . $term->name . '</span><span class="at-term-action-remove">x</span></div> ';
+    }
+    else {
+      $output .= '<div id="at-term-" class="at-term at-term-remove"><span class="at-term-text">' . $term . '</span><span class="at-term-action-remove">x</span></div> ';
+    }
   }
   $output .= '</div>';
   return $output;

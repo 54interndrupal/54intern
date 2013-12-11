@@ -217,7 +217,7 @@ if (!user_is_anonymous()) {
     'review-modal-style' => array(
       'modalSize' => array(
         'type' => 'fixed',
-        'width' => 600,
+        'width' => 800,
         'height' => 550,
       ),
       'modalOptions' => array(

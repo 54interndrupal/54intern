@@ -4024,7 +4024,7 @@ function theme_form_element_label($variables) {
   }
 
   // The leading whitespace helps visually separate fields from inline labels.
-  return ' <label' . drupal_attributes($attributes) . '>' . $t('!title !required', array('!title' => $title, '!required' => $required)) . "</label>\n";
+  return ' <label' . drupal_attributes($attributes) . '>' . $t('!required !title', array('!title' => $title, '!required' => $required)) . "</label>\n";
 }
 
 /**

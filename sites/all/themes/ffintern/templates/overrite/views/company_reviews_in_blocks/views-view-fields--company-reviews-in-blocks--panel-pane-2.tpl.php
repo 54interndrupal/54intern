@@ -33,7 +33,7 @@
   <?php print intern_core_render_vote('实习待遇', $fields['field_treatment_value']->content); ?>
   <?php print intern_core_render_vote('培训力度', $fields['field_training_value']->content); ?>
   <?php print intern_core_render_vote('转正可能', $fields['field_regularize_value']->content); ?>
-  <div class="counter c-5">#<?php print $fields['counter']->content ?></div>
+  <div class="counter c-5">#<?php print ($view->total_rows-((int)($fields['counter']->content))+1) ?></div>
 </div>
 <div class="review-content">
   <?php print $fields['body']->content ?>
@@ -43,8 +43,8 @@
   </div>
   <?php }?>
   <div class="review-footer c-5">
-    <?php print $fields['timestamp']->content ?>
-    <?php print $fields['og_group_ref']->content?>
+    提交于 <?php print $fields['timestamp']->content ?>
+<!--    --><?php //print $fields['og_group_ref']->content?>
     <input type="hidden" name="reviewId" value="<?php print($fields['nid']->content);?>"/>
     <div class="ops" id="review_info_ops_<?php print($fields['nid']->content);?>"></div>
 

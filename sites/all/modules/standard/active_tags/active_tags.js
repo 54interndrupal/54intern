@@ -144,6 +144,8 @@ Drupal.behaviors.activeTagsRemove = {
               $(this).val('');
           }
       })
+
+
   }
 
 };
@@ -172,6 +174,9 @@ Drupal.behaviors.activeTagsAdd = {
 $(window).load(function () {
   // Setup tags to be added on form submit.
   $('#node-form').submit(activeTags.addTagOnSubmit);
+
 });
 
 })(jQuery);
+
+
