@@ -3552,7 +3552,7 @@ div.statuses-textarea-wrapper textarea {
     align:center;
     max-width: 60px;
     height: 80px;
-    vertical-align: top;
+    text-align:justify;
 }
 .views-row div.review-rating{
     display: inline-block;
