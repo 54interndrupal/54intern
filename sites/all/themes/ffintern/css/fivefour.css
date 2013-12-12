@@ -3544,13 +3544,16 @@ div.statuses-textarea-wrapper textarea {
     width: 50px;
     float: left;
     text-align: center;
-    margin-right:15px;
+    margin-right:25px;
+}
+.views-row div.author-info .c-6{
+    max-width: 50px;
 }
 .views-row div.review-rating{
     display: inline-block;
     background-color: #F7F9FA;
     border: #EBEBEB solid 1px;
-    width: 630px;
+    width: 620px;
     padding: 3px 5px 3px 10px;
     margin-bottom: 15px;
     font-size:12px;
@@ -3573,7 +3576,7 @@ div.statuses-textarea-wrapper textarea {
 }
 .views-row div.review-content{
     display: inline-block;
-    width: 630px;
+    width: 620px;
     padding: 0 5px;
 }
 .views-row div.review-content .field-content{
