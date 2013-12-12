@@ -37,8 +37,8 @@
 <div class="review-content">
   <?php print $fields['body']->content ?>
   <?php if ($fields['field_company_evaluation']->content!='<div class="field-content"></div>') { ?>
-  <div class="review-evaluation c-5">
-    <label class="c-5">企业印象：</label><?php print $fields['field_company_evaluation']->content ?>
+  <div class="review-evaluation c-6">
+    <label class="c-6">企业印象：</label><?php print $fields['field_company_evaluation']->content ?>
   </div>
   <?php }?>
  </div>
