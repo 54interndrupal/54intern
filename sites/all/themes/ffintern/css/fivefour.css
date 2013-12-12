@@ -3547,6 +3547,9 @@ div.statuses-textarea-wrapper textarea {
     margin-right:25px;
 }
 .views-row div.author-info .c-6{
+    display: block;
+    width: 50px;
+    align:center;
     max-width: 50px;
 }
 .views-row div.review-rating{
