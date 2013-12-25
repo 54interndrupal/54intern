@@ -5279,6 +5279,7 @@ a.form-submit{
 /*==review-node-form==*/
 .node-review-form{
     padding: 20px;
+    font-size: 12px;
 }
 
 .node-review-form .review-node-form-header {
@@ -5318,7 +5319,7 @@ div.ctools-modal-content .node-review-form .form-item label{
 .node-review-form .form-item .description{
     display: inline-block;
     margin-left: 8px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .node-review-form #edit-body-und-0-format {
@@ -5366,18 +5367,21 @@ div.ctools-modal-content .node-review-form .form-item label{
 }
 
 
-
+.node-review-form .at-term-action-remove {
+    color:red;
+    padding-left:5px;
+}
 .node-review-form .form-item .at-term-entry{
      display: inline-block;
      width:80px;
      float: right;
-     color:#999;
+     color:#369;
  }
 .node-review-form .term-entry-desc{
     display: inline-block;
-    color: #999;
+    color: #369;
     margin-left: 8px;
-    margin-right: 344px;
+    margin-right: 368px;
     padding-top: 5px;
     float: right;
 }
@@ -5391,8 +5395,10 @@ div.ctools-modal-content .node-review-form .form-item label{
 }
 .node-review-form .form-item .popular-tags .tag-terms a{
     padding: 4px 9px;
-    color:#999;
+    color:#333;
     border: 1px solid #ccc;
+    margin:0 5px 5px 0;
+    display: inline-block;
 
 }
 .node-review-form .form-item .popular-tags .tag-terms a:hover{
