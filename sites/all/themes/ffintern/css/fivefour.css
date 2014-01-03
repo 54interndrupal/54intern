@@ -3723,6 +3723,40 @@ div.job-list a.join {
     background-color: #E3EAE2;
     margin-bottom: 20px;
 }
+#main-content div.content #company-info #company_vote_scores{
+    margin-top:8px;
+    font-size: 12px;
+}
+#main-content div.content #company-info span.vote-score{
+    display: inline-block;
+    padding: 3px 18px;
+}
+#main-content div.content #company-info span.vote-score .rate-value{
+    color: #369;
+    padding-left: 5px;
+    font-weight: bold;
+}
+
+#main-content div.content .company-evaluations{
+    font-size: 12px;
+}
+#main-content div.content .company-evaluations .tag-label{
+    float: left;
+}
+#main-content div.content .company-evaluations .tag-items{
+    display: inline-block;
+    max-width: 630px;
+    margin-bottom: 20px;
+}
+#main-content div.content .company-evaluations .tag-item{
+    display: inline-block;
+    margin: 0 3px;
+    margin-bottom: 5px;
+    padding: 6px 8px;
+    background-color:#369;
+    color: #fff;
+
+}
 
 #main-content div.content .company-brief-info {
     background-color: #FFFFFF;
@@ -5053,6 +5087,7 @@ html.js .fivestar-submit {
     float: left;
 }
 
+
 /*==/fivestar==*/
 .activeTab {
     background: url(img/site/tab_on_l.gif) no-repeat;
@@ -5278,9 +5313,19 @@ a.form-submit{
 }
 /*==review-node-form==*/
 .node-review-form{
-    padding: 20px;
+    padding: 2px 0 0 0;
     font-size: 12px;
 }
+
+.node-review-form .form-type-fivestar .form-item{
+    float: left;
+}
+
+.node-review-form .form-type-fivestar .description{
+    float: left;
+    font-family: "宋体";
+}
+
 
 .node-review-form .review-node-form-header {
     margin-top: 20px;
@@ -5305,13 +5350,20 @@ a.form-submit{
 .node-review-form div.form-actions {
     text-align: center;
 }
-div.ctools-modal-content .node-review-form .form-item label{
+.node-review-form  .form-item-field-overall-value-und-0-rating label,
+.node-review-form  .form-item-field-overall-value-und-0-rating{
+    font-weight: bold;
+}
+.node-review-form .form-item label{
     display: inline-block;
-    width: 120px;
+    width: 100px;
     text-align:right;
     padding-right: 10px;
     float:left;
+    font-family: "宋体";
 }
+
+
 .node-review-form .form-item{
       display: inline-block;
 }
@@ -5345,7 +5397,7 @@ div.ctools-modal-content .node-review-form .form-item label{
 }
 
 .node-review-form .fivestar-widget{
-    padding:4px 0 0 0;
+    margin:1px 0 0 0;
 }
 
 .node-review-form .form-item .at-term-list{
@@ -5391,7 +5443,7 @@ div.ctools-modal-content .node-review-form .form-item label{
 .node-review-form .form-item .popular-tags{
     width:600px;
     display: inline-block;
-    margin: 10px 0 5px 112px;
+    margin: 10px 0 5px 92px;
 }
 .node-review-form .form-item .popular-tags .tag-terms a{
     padding: 4px 9px;

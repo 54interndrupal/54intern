@@ -60,7 +60,7 @@ function intern_company_block_view($delta = '') {
   switch ($delta) {
     case 'company info':
       $block['subject'] = t('企业信息区块');
-      $block['content'] = intern_company_info_block();
+      $block['content'] = intern_company_info_block(NULL);
       break;
     case 'company add review':
       $block['subject'] = t('企业点评—快来抢沙发');
@@ -164,8 +164,10 @@ function _intern_company_get_company_group_id() {
  *
  * 公司信息区块Block
  */
-function intern_company_info_block() {
-  $gid = _intern_get_company_id_from_url();
+function intern_company_info_block($gid) {
+  if (!isset($gid)||$gid==null) {
+    $gid = _intern_get_company_id_from_url();
+  }
   $output = views_embed_view('company_info', 'panel_pane_4', $gid);
   return $output;
 }
@@ -324,6 +326,7 @@ function _intern_get_company_id_from_url() {
 //  print(strpos($uri, '54intern'));
   if (strpos($uri, '54intern') > 0 || strpos($uri, 'dev') > 0) {
     $gid = $params[3];
+
   }
   else {
     $gid = $params[2];
@@ -601,12 +604,28 @@ function intern_company_edit_company_form_submit_handler(&$form, &$form_state) {
 //  $pseudo_entity->uid = $user->uid;
   $pseudo_entity->nid = $form_state['values']['nid'];
 
-  watchdog_array("company","edit company",$pseudo_entity);
-
   field_attach_submit('node', $pseudo_entity, $form, $form_state);
-  watchdog("company","fields submitted");
   node_save($pseudo_entity);
-  watchdog("company","node saved");
+}
+
+function intern_company_get_evaluations($gid) {
+  $output = '';
+  $sql = "select rs.* from(
+select count(*) as cnt, t.name
+from field_data_field_company_evaluation e,taxonomy_term_data t
+where e.field_company_evaluation_tid=t.tid and e.entity_id in
+(select s.etid from og_membership s where s.gid=:gid)
+group by t.name)as rs order by rs.cnt desc";
+  $record = db_query($sql, array(':gid' => $gid));
+  foreach ($record as $rec) {
+    $result = array("count" => $rec->cnt, 'name' => $rec->name);
+    $output .= "<span class='tag-item'>" . $result["name"] . ' (' . $result["count"] . ') ' . "</span>";
+
+  }
+  if(strlen($output)>0) {
+    $output = '<span class="tag-label">大家印象：</span><div class="tag-items">'.$output."</div>";
+  }
+  return $output;
 }
 
 

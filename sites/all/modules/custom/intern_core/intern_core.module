@@ -115,6 +115,22 @@ function intern_core_get_vote_info( $field_name,$gid){
   return $output;
 }
 
+function intern_core_get_vote_score( $field_name,$gid,$label){
+  $sql = "select count(*)  as count,round(avg(".$field_name."_rating)/10,1) as rate from {field_data_".$field_name."}
+  where entity_id in (select etid from {og_membership} where gid=:gid)";
+  $record = db_query($sql, array(':gid' => $gid));
+  foreach ($record as $rec) {
+    $result = array("count"=>$rec->count,'rate'=> $rec->rate);
+  }
+  $rate = $result['rate'];
+  $count = $result['count'];
+  $output = '';
+  if($count>0){
+      $output = '<span class="vote-score">'.$label.'：<span class="rate-value">'.$rate."</span></span>";
+  }
+  return $output;
+}
+
 function intern_core_render_vote($label,$vote){
 
   $output ='';

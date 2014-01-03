@@ -32,6 +32,7 @@
   <?php print $fields['field_overall_value']->content ?>
   <?php print intern_core_render_vote('实习待遇', $fields['field_treatment_value']->content); ?>
   <?php print intern_core_render_vote('培训力度', $fields['field_training_value']->content); ?>
+  <?php print intern_core_render_vote('工作压力', $fields['field_workload_value']->content); ?>
   <?php print intern_core_render_vote('转正可能', $fields['field_regularize_value']->content); ?>
   <div class="counter c-5">#<?php print $fields['counter']->content ?></div>
 </div>

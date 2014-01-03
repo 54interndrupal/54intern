@@ -119,7 +119,9 @@ function ffintern_theme() {
       'path' => drupal_get_path('theme', 'ffintern') . '/templates',
     ),
     'review_node_form' => array(
+      'template' => 'review-node-form',
       'render element' => 'form',
+      'path' => drupal_get_path('theme', 'ffintern') . '/templates/overrite/form',
     ),
     'company_node_form' => array(
       'template' => 'company-node-form',
@@ -566,7 +568,7 @@ function ffintern_select($variables) {
       drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/city_arr.js");
       $output .= '<div class="input-group">'.
         '<input type="text" name="citySelect" onclick="residencySelect(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-control'.$error_class.'" value="' . $selectOption . '"/>'.
-        '<span class="input-group-addon"  onclick="residencySelect(\'' . $element['#id'] . '\');"><i class="icon-search"></i></span>'.
+        '<span class="input-group-addon"  onclick="jQuery(\'#sel-'.$element['#id'].'\').click()"><i class="icon-search"></i></span>'.
         '</div>';
     }
     else {
@@ -574,7 +576,7 @@ function ffintern_select($variables) {
         drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/funtype_func.js");
         drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/funtype_arr.js");
         $output .= '<div class="input-group"><input type="text" name="jobCategorySelect"  onclick="funtypeSelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-control '.$error_class.'" value="' . $selectOption . '">'.
-          '<span class="input-group-addon" onclick="funtypeSelect_2(\'' . $element['#id'] . '\');"><i class="icon-search"></i></span>'
+          '<span class="input-group-addon" onclick="jQuery(\'#sel-'.$element['#id'].'\').click()"><i class="icon-search"></i></span>'
           .'</div>';
       }
       else {
@@ -582,7 +584,7 @@ function ffintern_select($variables) {
           drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/industry_func.js");
           drupal_add_js(drupal_get_path('theme', "ffintern") . "/popups/industry_arr.js");
           $output .= '<div  class="input-group"><input type="text" name="industrySelect"  onclick="IndustrySelect_2(\'' . $element['#id'] . '\');" id="sel-' . $element['#id'] . '" class="form-control '.$error_class.'" value="' . $selectOption . '">'.
-            '<span class="input-group-addon"  onclick="IndustrySelect_2(\'' . $element['#id'] . '\');"><i class="icon-search"></i></span>'.
+            '<span class="input-group-addon" onclick="jQuery(\'#sel-'.$element['#id'].'\').click()"><i class="icon-search"></i></span>'.
             '</div>';
         }
       }
