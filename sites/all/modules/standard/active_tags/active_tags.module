@@ -153,7 +153,9 @@ function theme_active_tags_term_list_remove($variables) {
       $output .= '<div id="at-term-' . $term->tid . '" class="at-term at-term-remove"><span class="at-term-text">' . $term->name . '</span><span class="at-term-action-remove">x</span></div> ';
     }
     else {
+      if(strlen($term)>0){
       $output .= '<div id="at-term-" class="at-term at-term-remove"><span class="at-term-text">' . $term . '</span><span class="at-term-action-remove">x</span></div> ';
+      }
     }
   }
   $output .= '</div>';

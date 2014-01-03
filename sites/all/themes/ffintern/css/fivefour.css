@@ -3742,6 +3742,8 @@ div.job-list a.join {
 }
 #main-content div.content .company-evaluations .tag-label{
     float: left;
+    font-size: 12px;
+    font-weight: bold;
 }
 #main-content div.content .company-evaluations .tag-items{
     display: inline-block;
@@ -5412,6 +5414,7 @@ a.form-submit{
     background-color: #fff;
     margin:0 5px 5px 0;
     display:inline-block;
+    min-width: 70px;
 }
  .node-review-form .field-name-field-company-evaluation{
     display: inline-block;
@@ -5451,7 +5454,6 @@ a.form-submit{
     border: 1px solid #ccc;
     margin:0 5px 5px 0;
     display: inline-block;
-
 }
 .node-review-form .form-item .popular-tags .tag-terms a:hover{
     padding: 4px 9px;
