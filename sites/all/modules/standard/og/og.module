@@ -1001,6 +1001,9 @@ function og_entity_insert($entity, $entity_type) {
  * Implements hook_entity_update().
  */
 function og_entity_update($entity, $entity_type) {
+  //ignore update for 54intern
+  return;
+
   if (!og_is_group($entity_type, $entity)) {
     return;
   }
@@ -1857,6 +1860,7 @@ function og_group($group_type, $gid, $values = array()) {
     // Allow getting fields not accessible by the user.
     $field_name = og_get_best_group_audience_field($entity_type, $entity, $group_type, $group_bundle, TRUE);
     if (!$field_name) {
+      return;
       throw new OgException(t('There are no OG fields in entity %entity-type and bundle %bundle referencing %group-type - %group-bundle.', $params));
     }
   }

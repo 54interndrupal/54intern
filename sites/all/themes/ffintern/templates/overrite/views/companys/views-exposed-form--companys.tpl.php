@@ -75,7 +75,18 @@
         <?php print $reset_button; ?>
       </div>
     <?php endif; ?>
-    <div class='search-hot-review'>热门点评： 百度   谷歌   PG保洁</div>
-    <div class='search-hot-key'>热搜关键字： 薪水   福利   环境 </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  (function ($) {
+    $(document).ready(function () {
+      $('#edit-search').attr("placeholder","请输入公司名等关键词");
+      $('#edit-search').placeholder();
+    });
+  })(jQuery);
+</script>
+
+
+
+

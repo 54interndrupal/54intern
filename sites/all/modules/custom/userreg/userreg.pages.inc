@@ -148,6 +148,7 @@ function userreg_company_register_form_validate_handler(&$form, &$form_state) {
  *
  */
 function userreg_company_register_form_submit_handler(&$form, &$form_state) {
+//    die('<pre>' . print_r($form_state['values'], TRUE) . '</pre>');
   $pseudo_entity = (object) $form_state['values'];
   $pseudo_entity->type = 'company';
   $result = db_query('SELECT nd.nid FROM {node} nd,{users_roles} ur WHERE nd.title = :title and nd.uid=ur.uid and ur.rid<>4', array(':title' => $form_state['values']['title']));

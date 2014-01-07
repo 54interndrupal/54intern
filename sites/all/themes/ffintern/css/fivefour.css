@@ -82,6 +82,10 @@ a:active {
     position: relative;
 }
 
+input .placeholder{
+    color: #aaa;
+}
+
 /*==model window Begin==*/
 #modalBackdrop {
     filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
@@ -2820,31 +2824,40 @@ div.tabs div.active {
 }
 
 div.advanced-search {
-    padding: 20px 13px 0px 23px;
+    padding: 15px 13px 0px 23px;
     background-color: #4D963B;
     margin: 0 0 0 0;
-    height: 206px;
+    height: 116px;
     display: block;
 }
+.views-result-count{
+    margin: 5px 0 10px 10px;
+    color:#898989;
+}
+.views-result-count .row-count{
+    color:#ff6600;
+}
+form#views-exposed-form-companys-panel-pane-1 div.views-widget-filter-field_industry_tid{
+    margin-top: 17px;
+}
+div.advanced-search  #views-exposed-form-companys-panel-pane-1 .views-widget-filter-search,
+div.advanced-search  #views-exposed-form-companys-panel-pane-1 .views-submit-button{
+    margin-top: -10px;
+}
+
+#edit-sort-bef-combine{
+    display: none;
+}
+
 
 div.advanced-search  #views-exposed-form-companys-panel-pane-1 .total-company-count {
     float: right;
-    font-size: 20px;
+    display: block;
+    font-size: 18px;
     color: #ffffff;
+    margin-right: 20px;
 }
 
-div.advanced-search  #views-exposed-form-companys-panel-pane-1 .search-hot-review {
-    margin-top: 5px;
-    padding: 110px 0 0 5px;
-    font-size: 14px;
-    color: #ffffff;
-}
-
-div.advanced-search  #views-exposed-form-companys-panel-pane-1 .search-hot-key {
-    margin: 10px 0 0 5px;
-    font-size: 14px;
-    color: #ffffff;
-}
 
 div.advanced-search  #views-exposed-form-companys-panel-pane-1 #edit-field-company-size-tid-wrapper {
     clear: both;
@@ -3303,6 +3316,29 @@ body.front #temp-showcase {
     background: url(img/s.png) no-repeat 4.5em -340px;
 }
 
+.company-sort-bar{
+    background-color: #f2f2f2;
+    padding:4px 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.company-sort-bar .company-sorters{
+    float:right;
+}
+.company-sort-bar .company-sorters .separator{
+    margin: 0 5px;
+}
+.company-sort-bar .company-sorters .sorter{
+    display: inline-block;
+    margin-left: 5px;
+    color:#565656;
+    font-size:12px;
+}
+.company-sort-bar .company-sorters .sorter:hover{
+    color:#369;
+    cursor: pointer;
+}
+
 div.group-list,
 div.company-list {
     padding: 0 10px 0 0;
@@ -3312,8 +3348,7 @@ div.company-list {
 div.group-list .views-row,
 div.company-list .views-row {
     position: relative;
-    padding: 10px 0 0 160px;
-    min-height: 150px;
+    padding: 10px 0 15px 140px;
     _height: 135px;
     border-bottom: 1px dashed #CCCCCC;
     margin: 5px 0 0 0;
@@ -3327,8 +3362,62 @@ div.company-list .views-row .company-info {
     padding-bottom: 5px;
 }
 
-div.company-list div.company-content {
 
+div.company-list span,
+div.company-list a,
+div.company-list div{
+   font-family: '宋体';
+   font-size: 12px;
+   line-height: 1.7;
+   color: #565656;
+}
+div.company-list div.company-content{
+    width: 400px;
+}
+
+div.company-list div.company-content .field-name-title{
+    margin-bottom: 8px;
+}
+
+div.company-list div.company-content .field-name-title a{
+    font-size: 14px;
+    color: #369;
+    font-weight: 700;
+}
+
+div.company-list div.company-content .company-attributes{
+    margin-bottom: 4px;
+    color: #565656;
+}
+div.company-list div.company-content .company-scores{
+    margin-top: 10px;
+}
+div.company-list div.company-content .company-scores .vote-score{
+    color: #369;
+    display: inline-block;
+    margin-right: 6px;
+}
+div.company-list div.company-content .company-scores .rate-value{
+
+}
+div.company-list div.company-vote-info{
+    float: right;
+    padding: 25px 10px 0 0;
+    min-height: 60px;
+    text-align: center;
+    width: 120px;
+}
+div.company-list div.company-vote-info .fivestar-average-stars{
+    padding-left: 15px;
+}
+div.company-list div.company-vote-info .review-count{
+    color: #898989;
+    margin-top:8px;
+    display: block;
+}
+div.company-list div.company-vote-info .review-count a{
+    color: #369;
+    font-weight: 700;
 }
 
 div.company-list div.company-content .body-field a {
@@ -3525,17 +3614,19 @@ div.statuses-textarea-wrapper textarea {
     border: #EBEBEB solid 1px;
     padding: 10px 30px 10px 15px;
 }
-.company-list .view-display-id-panel_pane_1{
-    margin-bottom: 10px;
+.company-list  .view-display-id-panel_pane_1{
+    padding: 0;
+    margin: 0;
 }
 .company-list .view-display-id-panel_pane_1 .views-row{
-    padding-left:5px;
-    min-height: 85px;
+    padding:0;
+    min-height: 0;
+    margin: 0;
     border:0;
 }
 .company-list .view-display-id-panel_pane_1 .views-row .review-rating,
 .company-list .view-display-id-panel_pane_1 .views-row div.review-content{
-    width:450px;
+    width:400px;
 }
 .view-display-id-panel_pane_2 .views-row{
     margin-bottom: 25px;
@@ -3580,7 +3671,6 @@ div.statuses-textarea-wrapper textarea {
 .views-row div.review-content{
     display: inline-block;
     width: 620px;
-    padding: 0 5px;
 }
 .views-row div.review-content .field-content{
     display: inline-block;
@@ -3722,6 +3812,7 @@ div.job-list a.join {
     padding: 5px 5px 5px 5px;
     background-color: #E3EAE2;
     margin-bottom: 20px;
+    min-height: 120px;
 }
 #main-content div.content #company-info #company_vote_scores{
     margin-top:8px;
@@ -3729,10 +3820,10 @@ div.job-list a.join {
 }
 #main-content div.content #company-info span.vote-score{
     display: inline-block;
-    padding: 3px 18px;
+    padding: 3px 0 3px 18px;
 }
 #main-content div.content #company-info span.vote-score .rate-value{
-    color: #369;
+    color: #D10909;
     padding-left: 5px;
     font-weight: bold;
 }
@@ -3755,14 +3846,28 @@ div.job-list a.join {
     margin: 0 3px;
     margin-bottom: 5px;
     padding: 6px 8px;
-    background-color:#369;
     color: #fff;
-
+    font-size: 14px;
+    cursor: pointer;
 }
-
+#main-content div.content .company-evaluations .tag-items .odd{
+    background-color:#53AECF;
+    cursor: pointer;
+}
+#main-content div.content .company-evaluations .tag-items .odd:hover{
+    background-color:#57BEDF;
+}
+#main-content div.content .company-evaluations .tag-items .even{
+    background-color:#73CECC;
+    cursor: pointer;
+}
+#main-content div.content .company-evaluations .tag-items .even:hover{
+    background-color: #7bd7d5;
+}
 #main-content div.content .company-brief-info {
     background-color: #FFFFFF;
     padding: 13px 10px 13px 10px;
+    min-height: 220px;
 }
 #main-content div.content .company-brief-info .field-add-review{
     float: right;
@@ -3889,7 +3994,7 @@ ul#company-center-tabs li a.active span {
 #company-info .field-name-name {
     font-size: 20px;
     padding-bottom: 12px;
-    width: 420px;
+    width: 400px;
 }
 
 #company-info .field-name-number {
@@ -3993,6 +4098,9 @@ body.node-type-company div#company-photos div.jcarousel-container {
 #company-photos ul li {
     width: 138px;
     margin-right: 10px;
+}
+.view-company-reviews-in-blocks .view-filters{
+    display:none;
 }
 
 #company-reviews .block-content .views-row,
@@ -4732,6 +4840,18 @@ div.pane-node-links {
 }
 
 /*== Company Node Form Begin ==*/
+form.node-company-form{
+    font-size: 12px;
+}
+form.node-company-form span.company-tip{
+    display:block;
+    padding-bottom: 8px;
+    margin:7px 0 22px 0;
+    font-size:14px;
+    color:#369;
+    border-bottom: 1px solid #ccc;
+}
+
 div.pane-company-node-form {
     padding: 0px 10px 0px 20px;
 }
@@ -4795,7 +4915,7 @@ div.pane-company-node-form .form-item div.description {
 }
 
 div.pane-company-node-form .form-textarea-wrapper textarea {
-    width: 517px;
+    width: 560px;
     border: 1px solid #dddddd;
 }
 
@@ -5392,10 +5512,11 @@ a.form-submit{
 
 .node-review-form span.review-tip{
     display:block;
-    margin:4px 0 20px 0;
-    font-size:15px;
+    padding-bottom: 8px;
+    margin:7px 0 22px 0;
+    font-size:14px;
     color:#369;
-
+    border-bottom: 1px solid #ccc;
 }
 
 .node-review-form .fivestar-widget{

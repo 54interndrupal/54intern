@@ -16,7 +16,7 @@ stylesheets[screen][] = css/iitgl.css
 scripts[] = js/jquery.jcarousel.min.js
 scripts[] = js/jquery.colorbox.js
 scripts[] = js/fivefour.js
-
+scripts[] = js/jquery.placeholder.js
 
 regions[first]                = first column
 regions[header_top]           = head top

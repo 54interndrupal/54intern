@@ -152,8 +152,9 @@
           <?php if (!user_is_anonymous()) { ?>
           <div class="fix-company-info pull-right">
             <?php if (!user_is_anonymous() && !intern_user_is_company_user()) { ?>
-            <a href="<?php print url('ajax_register/companyEdit/nojs/' . $nid);?>" title=""
-               class="ctools-use-modal ctools-modal-company-modal-style" rel="nofollow" id="fixCompanyInfo">补充修订</a>
+
+            <a href="<?php print url('node/' . $nid.'/edit');?>" title=""
+               class="" id="fixCompanyInfo" target="_blank">补充修订</a>
             <?php
           }
           else {
@@ -279,6 +280,11 @@ if (!user_is_anonymous()) {
 
     });
   })(jQuery);
+
+  function filterCompanyEvaluation(evaluation){
+    jQuery("#edit-field-company-evaluation-tid").val(evaluation);
+    jQuery("#edit-submit-company-reviews-in-blocks").click();
+  }
 </script>
 
 

@@ -43,9 +43,26 @@
 </div>
 
 
-<?php if ($header): ?>
-<h1 class="title" id="page-title"><?php print $header; ?></h1>
-<?php endif; ?>
+
+<?php if ($view->total_rows > 0) { ?>
+<div class="views-result-count">
+    <?php if ($view->total_rows == 22*100) { ?>
+        显示前<span class="row-count"> 2200 </span>家相关公司
+    <?php }else{?>
+        共找到<span class="row-count"> <?php print $view->total_rows;?> </span>家相关公司
+    <?php }?>
+</div>
+<div class="company-sort-bar">
+  <div class="company-sorters"><span>排序: &nbsp;</span><span class="sorter"
+                                                            onclick="sortCompany('field_last_review_created_value DESC')">默认</span><span
+    class="separator">|</span><span class="sorter" onclick="sortCompany('field_review_count_value DESC')">点评数 <i
+    class="icon-arrow-down"></i></span><span class="separator">|</span><span
+    class="sorter" onclick="sortCompany('field_overall_value_rating DESC')">综合实习价值 <i
+    class="icon-arrow-down"></i></span><span class="separator">|</span><span class="sorter"
+                                                                             onclick="sortCompany('field_last_review_created_value DESC')">最近点评 <i
+    class="icon-arrow-down"></i></span></div>
+</div>
+<?php } ?>
 
 <?php if ($rows): ?>
 <div class="view-content company-list">
@@ -65,9 +82,11 @@
     <?php if (user_is_anonymous()) { ?>
      <a href="<?php print url('ajax_register/login/nojs');?>" title=""
         class="ctools-use-modal ctools-modal-ctools-ajax-register-style form-submit" rel="nofollow">
-  <?php }
-    else { ?>
-    <a href="<?php print url('ajax_register/companyAdd/nojs');?>" title=""
+  <?php
+    }
+    else {
+      ?>
+    <a href="<?php print url('node/add/company');?>" title=""
        class="ctools-use-modal ctools-modal-company-modal-style form-submit" rel="nofollow">
   <?php }?>
     <i class="icon-plus">
@@ -90,4 +109,11 @@ if (!user_is_anonymous()) {
       'throbber' => theme('image', array('path' => ctools_image_path('ajax-loader.gif', 'ajax_register'))),
     ),
   ), 'setting');
-}
+}?>
+
+<script>
+  function sortCompany(sortKey) {
+    jQuery("#edit-sort-bef-combine").val(sortKey);
+    jQuery("#edit-submit-companys").click();
+  }
+</script>
