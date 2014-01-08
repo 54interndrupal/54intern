@@ -5478,7 +5478,7 @@ a.form-submit{
 }
 .node-review-form .form-item label{
     display: inline-block;
-    width: 100px;
+    width: 110px;
     text-align:right;
     padding-right: 10px;
     float:left;
@@ -5501,7 +5501,7 @@ a.form-submit{
 }
 .node-review-form .form-textarea-wrapper{
     display: inline-block;
-    width:600px;
+    width:580px;
     margin-bottom: 5px;
 }
 
@@ -5524,7 +5524,7 @@ a.form-submit{
 }
 
 .node-review-form .form-item .at-term-list{
-    max-width:600px;
+    max-width:580px;
     margin-top:-5px;
     display: inline-block;
 }
@@ -5565,7 +5565,7 @@ a.form-submit{
     display:none;
 }
 .node-review-form .form-item .popular-tags{
-    width:600px;
+    width:580px;
     display: inline-block;
     margin: 10px 0 5px 92px;
 }
