@@ -1795,12 +1795,14 @@ function taxonomy_build_node_index($node) {
     if (!empty($tid_all)) {
       $query = db_insert('taxonomy_index')->fields(array('nid', 'tid', 'sticky', 'created'));
       foreach ($tid_all as $tid) {
+        if(isset($tid) && $tid!=null){
         $query->values(array(
           'nid' => $node->nid,
           'tid' => $tid,
           'sticky' => $sticky,
           'created' => $node->created,
         ));
+        }
       }
       $query->execute();
     }
