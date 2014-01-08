@@ -63,7 +63,7 @@ function feature_review_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'body',
       'label' => '点评内容',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'display_summary' => 0,
         'text_processing' => '0',
@@ -208,7 +208,7 @@ function feature_review_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_overall_value',
       'label' => '综合实习价值',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'allow_clear' => 0,
         'stars' => '5',
@@ -433,6 +433,74 @@ function feature_review_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-review-field_workload_value'
+  $fields['node-review-field_workload_value'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_workload_value',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'fivestar',
+      'settings' => array(
+        'axis' => 'vote',
+      ),
+      'translatable' => '0',
+      'type' => 'fivestar',
+    ),
+    'field_instance' => array(
+      'bundle' => 'review',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '评价企业的实习工作压力',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'fivestar',
+          'settings' => array(
+            'expose' => TRUE,
+            'style' => 'average',
+            'text' => 'average',
+            'widget' => array(
+              'fivestar_widget' => NULL,
+            ),
+          ),
+          'type' => 'fivestar_formatter_default',
+          'weight' => 11,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_workload_value',
+      'label' => '工作压力',
+      'required' => 0,
+      'settings' => array(
+        'allow_clear' => 0,
+        'stars' => '5',
+        'target' => 'none',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'fivestar',
+        'settings' => array(
+          'widget' => array(
+            'fivestar_widget' => 'default',
+          ),
+        ),
+        'type' => 'stars',
+        'weight' => '14',
+      ),
+    ),
+  );
+
   // Exported field: 'node-review-og_group_ref'
   $fields['node-review-og_group_ref'] = array(
     'field_config' => array(
@@ -557,9 +625,11 @@ function feature_review_field_default_fields() {
   t('企业印象');
   t('培训力度');
   t('实习待遇');
+  t('工作压力');
   t('点评内容');
   t('给实习带给您的综合价值打分');
   t('综合实习价值');
+  t('评价企业的实习工作压力');
   t('评价公司实习生转正可能性');
   t('评价公司提供的实习待遇');
   t('评价公司是否提供有价值的培训');

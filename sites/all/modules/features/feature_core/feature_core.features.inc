@@ -12,6 +12,13 @@ function feature_core_ctools_plugin_api() {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function feature_core_views_api() {
+  return array("version" => "3.0");
+}
+
+/**
  * Implements hook_flag_default_flags().
  */
 function feature_core_flag_default_flags() {
@@ -43,11 +50,11 @@ function feature_core_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'feature_core',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "关注".
   $flags['bookmarks'] = array(
@@ -79,11 +86,11 @@ function feature_core_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => 'others',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'feature_core',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "购买简历".
   $flags['buy'] = array(
@@ -114,11 +121,11 @@ function feature_core_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'feature_core',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "收藏".
   $flags['collect'] = array(
@@ -151,11 +158,11 @@ function feature_core_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'feature_core',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "Follow".
   $flags['follow'] = array(
@@ -183,11 +190,11 @@ function feature_core_flag_default_flags() {
     ),
     'show_on_profile' => 'true',
     'access_uid' => '',
-    'api_version' => 2,
     'module' => 'feature_core',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "加入社团".
   $flags['join'] = array(
@@ -216,11 +223,11 @@ function feature_core_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'feature_core',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "喜欢".
   $flags['like'] = array(
@@ -251,11 +258,11 @@ function feature_core_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => 'others',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'feature_core',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "Like".
   $flags['like_comments'] = array(
@@ -281,11 +288,11 @@ function feature_core_flag_default_flags() {
         0 => '2',
       ),
     ),
-    'api_version' => 2,
     'module' => 'feature_core',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "报告".
   $flags['report'] = array(
@@ -316,11 +323,11 @@ function feature_core_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'feature_core',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "企业用户审核".
   $flags['shenhe'] = array(
@@ -351,11 +358,11 @@ function feature_core_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'feature_core',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   // Exported flag: "赞".
   $flags['zan'] = array(
@@ -386,11 +393,11 @@ function feature_core_flag_default_flags() {
     'show_on_form' => 0,
     'access_author' => '',
     'i18n' => 0,
-    'api_version' => 2,
     'module' => 'feature_core',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 2,
   );
   return $flags;
 }
