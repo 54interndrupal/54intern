@@ -82,23 +82,43 @@ else {
   if (!empty($form["title"]["#value"])) {
     $form["title"]["#type"] = "hidden";
   }
-  hide($form["title"]);
+  if(isset($gid)){
+  hide($form["title"]);}
   hide($form["field_source_company_name"]);
   hide($form['group_group']);
   $form["actions"]["submit"]["#value"] = t('提交更新');
   ?>
-<div id="content" class="column">
+<div id="content" class="column sidebar" id="sidebar-second">
   <div class="section">
-    <span class="company-tip"><span style="font-size: 16px;font-weight: bold"><?php print $form["title"]["#value"];?></span> （请帮我们完善企业信息，这会帮到更多圈友：）</span>
+    <span class="company-tip">
+
+      <span style="font-size: 16px;font-weight: bold">
+      <?php
+        if (isset($gid)) {
+          $block = intern_company_info_block($gid)
+          ?>
+          <?php print $form["title"]["#value"]; ?>
+          <?php
+        }
+        else {
+          ?>
+          添加新企业
+          <?php }?>
+    </span> （请帮我们完善企业信息，这会帮到更多圈友：）</span>
+
     <div class="pane-content pane-company-node-form">
       <div class="basic-info">
         <div class="basic-info-title">
           <span class="title">公司基本信息</span><span></span>
         </div>
         <div class="basic-info-content">
+          <?php if(isset($gid)){?>
           <div class="form-item"><label>公司名称</label><span
             style="display:inline-block;padding-top: 4px;font-size: 14px"><?php print $form["title"]["#value"];?></span>
           </div>
+          <?php }else{?>
+          <?php print drupal_render($form["title"])?>
+          <?php }?>
           <?php print drupal_render($form["field_company_type"])?>
           <?php print drupal_render($form["field_company_size"])?>
           <?php print drupal_render($form["field_industry"])?>
@@ -126,13 +146,37 @@ else {
 <div id="sidebar-second" class="column sidebar">
   <div class="section">
     <?php
-    $block =intern_company_info_block($gid)
-    ?>
-    <div class="panel-pane pane-block pane-intern-company-company-info">
-      <div class="pane-content">
-        <?php print ($block);?>
+    if (isset($gid)) {
+      $block = intern_company_info_block($gid)
+      ?>
+      <div class="panel-pane pane-block pane-intern-company-company-info">
+        <div class="pane-content">
+          <?php print ($block);?>
+        </div>
       </div>
-    </div>
+      <?php
+    }
+    else {
+      ?>
+      <div class="panel-pane pane-views-panes pane-right-title-link-panel-pane-3">
+        <div class="panel-pane-title">
+          <h2 class="pane-title">最新收录的企业</h2>
+        </div>
+        <div class="pane-content">
+          <?php print views_embed_view('right_title_link', 'panel_pane_3'); ?>
+        </div>
+      </div>
+      <div class="panel-separator"></div>
+      <div class="panel-pane pane-views pane-company-reviews-in-blocks">
+        <div class="panel-pane-title">
+          <h2 class="pane-title">最新企业点评</h2>
+        </div>
+
+        <div class="pane-content">
+          <?php print views_embed_view('company_reviews_in_blocks', 'block_company_top_reviews'); ?>
+        </div>
+      </div>
+      <?php }?>
   </div>
 </div>
 <?php } ?>

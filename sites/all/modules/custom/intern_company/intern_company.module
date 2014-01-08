@@ -356,6 +356,9 @@ function intern_company_get_company_id() {
 }
 
 function intern_company_form_node_form_alter(&$form, $form_state) {
+  drupal_add_css(path_to_theme() . '/layouts/intern_layout/intern_layout.css');
+
+  $nid = arg(3);
   $type = $form['#node']->type;
   Global $user;
   if ($type == 'company') {
@@ -383,11 +386,17 @@ function intern_company_form_node_form_alter(&$form, $form_state) {
       hide($form["field_company_images"]);
       hide($form["field_license"]);
 
+      if(isset($nid)&&nid>0){
       $form['#validate'] = array('intern_company_edit_company_form_validate_handler');
       $form['actions']['submit']['#submit'] = array('intern_company_edit_company_form_submit_handler');
+      }else{
+        $form['#validate'] = array('intern_company_add_company_form_validate_handler');
+        $form['actions']['submit']['#submit'] = array('intern_company_add_company_form_submit_handler');
+      }
     }
   }
   if (intern_user_is_company_user()) {
+
     $form['actions']['submit']['#submit'][] = 'intern_company_company_form_post_submit';
   }
 
@@ -484,17 +493,22 @@ from {node} n,{og_membership} m,{field_data_field_overall_value} r where n.type=
 group by m.gid";
   $record = db_query($sql);
   foreach ($record as $rec) {
-    $result = array("count" => $rec->cnt, 'gid' => $rec->gid,"created"=>$rec->last_review_created,"rating"=>$rec->overall_rating);
+    $result = array(
+      "count" => $rec->cnt,
+      'gid' => $rec->gid,
+      "created" => $rec->last_review_created,
+      "rating" => $rec->overall_rating
+    );
     $gid = $result['gid'];
     $reviewCount = $result['count'];
-    $overallValue=$result["rating"];
+    $overallValue = $result["rating"];
     $lastCreated = $result["created"];
     $company = node_load($gid);
 //    if($company->field_review_count[LANGUAGE_NONE][0]["value"]<>$reviewCount){
-        $company->field_review_count[LANGUAGE_NONE][0]["value"]=$reviewCount;
-        $company->field_overall_value[LANGUAGE_NONE][0]["rating"]=$overallValue;
-        $company->field_last_review_created[LANGUAGE_NONE][0]["value"]=$lastCreated;
-        node_save($company);
+    $company->field_review_count[LANGUAGE_NONE][0]["value"] = $reviewCount;
+    $company->field_overall_value[LANGUAGE_NONE][0]["rating"] = $overallValue;
+    $company->field_last_review_created[LANGUAGE_NONE][0]["value"] = $lastCreated;
+    node_save($company);
 //    }
   }
 }
@@ -565,6 +579,7 @@ function intern_company_add_company_form_validate_handler(&$form, &$form_state) 
 function intern_company_add_company_form_submit_handler(&$form, &$form_state) {
   global $user;
   $pseudo_entity = (object) $form_state['values'];
+  $pseudo_entity->status = NODE_NOT_PUBLISHED;
   $pseudo_entity->type = 'company';
   $pseudo_entity->uid = intern_user_get_company_creater_uid();
   $pseudo_entity->language = 'zh-hans';
@@ -573,6 +588,8 @@ function intern_company_add_company_form_submit_handler(&$form, &$form_state) {
 //  watchdog_array("Intern Company", "Form Passed in", $pseudo_entity);
   field_attach_submit('node', $pseudo_entity, $form, $form_state);
   node_save($pseudo_entity);
+
+  drupal_set_message(t('企业添加成功，经审核后即会发布，感谢您在实习圈的贡献！'));
 }
 
 function intern_company_edit_company_form($form, &$form_state) {
@@ -610,12 +627,18 @@ function intern_company_edit_company_form($form, &$form_state) {
     '#type' => 'submit',
     '#value' => t('提交'),
   );
-
-  $form['#validate'][] = 'intern_company_edit_company_form_validate_handler';
-  $form['#submit'][] = 'intern_company_edit_company_form_submit_handler';
+  if ($nid > 0) {
+    $form['#validate'][] = 'intern_company_edit_company_form_validate_handler';
+    $form['#submit'][] = 'intern_company_edit_company_form_submit_handler';
+  }
+  else {
+    $form['#validate'][] = 'intern_company_add_company_form_validate_handler';
+    $form['#submit'][] = 'intern_company_add_company_form_submit_handler';
+  }
 //                             print_r($form);
   return $form;
 }
+
 
 function intern_company_edit_company_form_validate_handler(&$form, &$form_state) {
   $form_state['values']["group_group"][LANGUAGE_NONE][0]['value'] = "1";
@@ -659,10 +682,10 @@ where e.field_company_evaluation_tid=t.tid and e.entity_id in
 (select s.etid from og_membership s where s.gid=:gid)
 group by t.name)as rs order by rs.cnt desc";
   $record = db_query($sql, array(':gid' => $gid));
-  $odd = false;
+  $odd = FALSE;
   foreach ($record as $rec) {
     $result = array("count" => $rec->cnt, 'name' => $rec->name);
-    $output .= "<span class='tag-item ".($odd?"odd":"even")."' onclick='filterCompanyEvaluation(\"".$result["name"]."\")'>" . $result["name"] . ' (' . $result["count"] . ') ' . "</span>";
+    $output .= "<span class='tag-item " . ($odd ? "odd" : "even") . "' onclick='filterCompanyEvaluation(\"" . $result["name"] . "\")'>" . $result["name"] . ' (' . $result["count"] . ') ' . "</span>";
     $odd = !$odd;
   }
   if (strlen($output) > 0) {

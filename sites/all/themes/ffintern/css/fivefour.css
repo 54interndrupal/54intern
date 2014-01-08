@@ -5661,6 +5661,17 @@ a.form-submit{
     margin-left: 5px;
 }
 
+#sidebar-second .panel-pane-title {
+    border-bottom: 2px solid rgb(203, 217, 200);
+    color: RGB(100, 100, 100);
+    padding: 2px 0 6px 30px;
+}
+
+#sidebar-second h2.pane-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
 
 
 
