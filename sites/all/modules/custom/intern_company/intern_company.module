@@ -488,10 +488,17 @@ function intern_company_cron() {
     }
   }
 
+  $sql="select max(field_last_review_created_value) as last_created from {field_data_field_last_review_created} ";
+  $reviewLastCreated = db_query($sql)->fetchField();
+  if (!isset($reviewLastCreated) || empty($reviewLastCreated)) {
+      $reviewLastCreated = time() - 86400 * 30;
+  }
+
   $sql = "select m.gid,max(n.created) last_review_created,count(*) as cnt,round(avg(field_overall_value_rating)) as overall_rating
 from {node} n,{og_membership} m,{field_data_field_overall_value} r where n.type='review' and n.nid=m.etid and n.nid=r.entity_id
+and n.nid in (select nid from {node} where type='review' and created>:lastCreated)
 group by m.gid";
-  $record = db_query($sql);
+  $record = db_query($sql,array(':lastCreated' => $reviewLastCreated));
   foreach ($record as $rec) {
     $result = array(
       "count" => $rec->cnt,
