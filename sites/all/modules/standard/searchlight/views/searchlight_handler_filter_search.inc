@@ -38,7 +38,7 @@ class searchlight_handler_filter_search extends views_handler_filter {
       $this->query->set_search_options($this->options);
       $this->query->set_search_query($value);
 
-      watchdog_array("sphinx","original query",$this->query);
+      watchdog_array("sphinx","original filter query",$this->query);
     }
   }
 
