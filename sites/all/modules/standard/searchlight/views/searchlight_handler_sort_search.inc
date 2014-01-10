@@ -15,6 +15,6 @@ class searchlight_handler_sort_search extends views_handler_sort {
         }
       }
     }
-    watchdog("sphinx","original query",$this->query);
+    watchdog_array("sphinx","original query",$this->query);
   }
 }
