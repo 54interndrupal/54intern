@@ -603,7 +603,7 @@ class SearchlightBackendSphinx extends SearchlightBackend {
    * Override of setSort().
    */
   function setSort(&$client, $datasource, $sorts) {
-    watchdog("sphinx","sort begin",$sorts);
+    die('<pre>set Sort\n' . print_r($this->search_sort, TRUE) . '</pre>');
     if (!empty($sorts)) {
       $sphinx_sorts = array();
       foreach ($sorts as $sort) {
