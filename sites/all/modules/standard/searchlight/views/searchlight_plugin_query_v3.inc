@@ -193,6 +193,8 @@ class searchlight_plugin_query extends views_plugin_query_default {
 //
 //    }
 
+    die('<pre>' . print_r($this->search_sort, TRUE) . '</pre>');
+
     $this->set_search_buildmode();
 
     // Fail the rest of the build entirely if the hideEmpty option is true and
