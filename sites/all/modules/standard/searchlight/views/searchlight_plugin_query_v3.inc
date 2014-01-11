@@ -43,6 +43,7 @@ class searchlight_plugin_query extends views_plugin_query_default {
     // This flag lets others know we are a searchlight-based view.
     $this->searchlight = TRUE;
   }
+
   /**
    * Override of add_where().
    */
@@ -112,18 +113,21 @@ class searchlight_plugin_query extends views_plugin_query_default {
             $this->search_sort[] = array(
               'field' => $name,
               'direction' => $order,
-            );;
+            );
+            ;
             break;
           }
         }
       }
       // If no table was specified or found, this is probably a function.
       // Use the alias directly if it is available.
-      else if (empty($table) && isset($this->datasource->fields[$alias]) && $this->backend->canOrderBy($this->datasource->fields[$alias])) {
-        $this->search_sort[] = array(
-          'field' => $alias,
-          'direction' => $order,
-        );
+      else {
+        if (empty($table) && isset($this->datasource->fields[$alias]) && $this->backend->canOrderBy($this->datasource->fields[$alias])) {
+          $this->search_sort[] = array(
+            'field' => $alias,
+            'direction' => $order,
+          );
+        }
       }
     }
   }
@@ -178,12 +182,14 @@ class searchlight_plugin_query extends views_plugin_query_default {
 
   function build(&$view) {
 //    die('<pre>' . print_r($view, TRUE) . '</pre>');
-    if(!empty($view->exposed_raw_input)){
+    if (!empty($view->exposed_raw_input)) {
       $this->search_sort = array();
-      $this->search_sort[] = array(
-        'field' => $view->exposed_raw_input["sort_by"],
-        'direction' => $view->exposed_raw_input["sort_order"],
-      );
+      if (!empty($view->exposed_raw_input["sort_by"])) {
+        $this->search_sort[] = array(
+          'field' => $view->exposed_raw_input["sort_by"],
+          'direction' => $view->exposed_raw_input["sort_order"],
+        );
+      }
 
     }
 
