@@ -177,8 +177,13 @@ class searchlight_plugin_query extends views_plugin_query_default {
   }
 
   function build(&$view) {
-    die('<pre>' . print_r($view, TRUE) . '</pre>');
-    if(!empty($view["exposed_raw_input"])){
+//    die('<pre>' . print_r($view, TRUE) . '</pre>');
+    if(!empty($view->exposed_raw_input)){
+      $this->search_sort = array();
+      $this->search_sort[] = array(
+        'field' => $view->exposed_raw_input["sort_by"],
+        'direction' => $view->exposed_raw_input["sort_order"],
+      );
 
     }
 
