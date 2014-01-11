@@ -177,10 +177,7 @@ class searchlight_plugin_query extends views_plugin_query_default {
   }
 
   function build(&$view) {
-
-
-
-
+    die('<pre>' . print_r($this->search_sort, TRUE) . '</pre>');
     $this->set_search_buildmode();
 
     // Fail the rest of the build entirely if the hideEmpty option is true and
@@ -231,8 +228,7 @@ class searchlight_plugin_query extends views_plugin_query_default {
         }
       }
     }
-    watchdog("sphinx","build view--search sort",$this->search_sort);
-    watchdog("sphinx","build view--search filter",$this->search_filter);
+
     die('<pre>' . print_r($this->search_sort, TRUE) . '</pre>');
     // Set backend client options.
     $this->backend->setOptions($this->client, $this->datasource, $this->search_options);
