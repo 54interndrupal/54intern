@@ -177,7 +177,11 @@ class searchlight_plugin_query extends views_plugin_query_default {
   }
 
   function build(&$view) {
-    die('<pre>' . print_r($this->search_sort, TRUE) . '</pre>');
+    die('<pre>' . print_r($view["exposed_raw_input"], TRUE) . '</pre>');
+    if(!empty($view["exposed_raw_input"])){
+
+    }
+
     $this->set_search_buildmode();
 
     // Fail the rest of the build entirely if the hideEmpty option is true and
@@ -229,7 +233,7 @@ class searchlight_plugin_query extends views_plugin_query_default {
       }
     }
 
-    die('<pre>' . print_r($this->search_sort, TRUE) . '</pre>');
+//    die('<pre>' . print_r($this->search_sort, TRUE) . '</pre>');
     // Set backend client options.
     $this->backend->setOptions($this->client, $this->datasource, $this->search_options);
     $this->backend->setSort($this->client, $this->datasource, $this->search_sort);
