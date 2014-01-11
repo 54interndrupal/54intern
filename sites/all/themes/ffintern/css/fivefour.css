@@ -5674,7 +5674,7 @@ a.form-submit{
 
 
 /*search page*/
-body.page-search .reviews-result-count,
+body.page-search .views-result-count,
 body.page-search .company-sort-bar{
     display:none;
 }

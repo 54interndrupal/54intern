@@ -91,7 +91,7 @@ class searchlight_plugin_query extends views_plugin_query_default {
   }
 
   function add_orderby($table, $field, $order, $alias = '', $params = array()) {
-    watchdog("sphinx","add_orderby",array($table, $field, $order, $alias));
+//    watchdog("sphinx","add_orderby",array($table, $field, $order, $alias));
 
     // Call the parent method to add the orderby SQL side.
     parent::add_orderby($table, $field, $order, $alias, $params);

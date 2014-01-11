@@ -614,7 +614,7 @@ class SearchlightBackendSphinx extends SearchlightBackend {
           $sphinx_sorts[] = "{$sort['field']} {$sort['direction']}";
         }
       }
-      watchdog_array("sphinx","sort array",$sphinx_sorts);
+//      watchdog_array("sphinx","sort array",$sphinx_sorts);
       $client->setSortMode(SPH_SORT_EXTENDED, implode(', ', $sphinx_sorts));
     }
   }

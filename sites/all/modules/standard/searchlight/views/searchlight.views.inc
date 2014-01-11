@@ -141,6 +141,7 @@ function searchlight_views_data_alter(&$data) {
  * from the pre_query() method of the searchlight filter, argument handlers.
  */
 function searchlight_views_init_query(&$view) {
+
   // The following is a copy of the $view->query_init() method, with the only
   // difference being that we use the searchlight backend plugin rather than
   // the default views query plugin and pass the backend to the query plugin.
