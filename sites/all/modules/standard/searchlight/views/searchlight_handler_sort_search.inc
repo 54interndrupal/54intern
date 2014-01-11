@@ -5,6 +5,7 @@ class searchlight_handler_sort_search extends views_handler_sort {
    * Override of query().
    */
   function query() {
+    die('<pre>Sort Query\n' . print_r($this->search_sort, TRUE) . '</pre>');
     $this->query->add_orderby(NULL, 'searchlight_weight', $this->options['order'], 'searchlight_weight');
     if (isset($this->query->fields['searchlight_weight'])) {
       unset($this->query->fields['searchlight_weight']);
