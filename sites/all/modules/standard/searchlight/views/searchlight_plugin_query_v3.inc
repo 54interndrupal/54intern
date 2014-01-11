@@ -186,7 +186,7 @@ class searchlight_plugin_query extends views_plugin_query_default {
       if (!empty($view->exposed_raw_input["sort_by"])) {
         $this->search_sort = array();
         $this->search_sort[] = array(
-          'field' => $view->exposed_raw_input["sort_by"],
+          'field' => 'field_data_field_overall_value_field_overall_value_rating',
           'direction' => $view->exposed_raw_input["sort_order"],
         );
         die('<pre>' . print_r($this->search_sort, TRUE) . '</pre>');
