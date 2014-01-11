@@ -188,7 +188,7 @@ class searchlight_plugin_query extends views_plugin_query_default {
         $this->search_sort = array();
         $this->search_sort[] = array(
           'field' => 'field_data_field_review_count_field_review_count_value',
-          'direction' => $view->exposed_raw_input["sort_order"],
+          'direction' => 'DESC',
         );
 //        die('<pre>' . print_r($this->search_sort, TRUE) . '</pre>');
       }
