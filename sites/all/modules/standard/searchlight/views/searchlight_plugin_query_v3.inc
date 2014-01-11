@@ -182,7 +182,7 @@ class searchlight_plugin_query extends views_plugin_query_default {
 
   function build(&$view) {
 //    die('<pre>' . print_r($this->search_sort, TRUE) . '</pre>');
-    die('<pre>' . print_r($view->exposed_raw_input, TRUE) . '</pre>');
+//    die('<pre>' . print_r($view->exposed_raw_input, TRUE) . '</pre>');
     if (!empty($view->exposed_raw_input)) {
       if (!empty($view->exposed_raw_input["sort_by"])) {
         $this->search_sort = array();
@@ -190,7 +190,7 @@ class searchlight_plugin_query extends views_plugin_query_default {
           'field' => 'field_data_field_review_count_field_review_count_value',
           'direction' => $view->exposed_raw_input["sort_order"],
         );
-        die('<pre>' . print_r($this->search_sort, TRUE) . '</pre>');
+//        die('<pre>' . print_r($this->search_sort, TRUE) . '</pre>');
       }
     }
 
