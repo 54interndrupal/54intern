@@ -87,7 +87,7 @@
     else {
       ?>
     <a href="<?php print url('node/add/company');?>" title=""
-       class="ctools-use-modal ctools-modal-company-modal-style form-submit" rel="nofollow">
+       class="form-submit" target="_blank">
   <?php }?>
     <i class="icon-plus">
     </i> 添加企业</a></span>
