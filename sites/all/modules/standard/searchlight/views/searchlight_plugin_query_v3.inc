@@ -227,7 +227,8 @@ class searchlight_plugin_query extends views_plugin_query_default {
         }
       }
     }
-
+    watchdog("sphinx","build view--search sort",$this->search_sort);
+    watchdog("sphinx","build view--search filter",$this->search_filter);
     // Set backend client options.
     $this->backend->setOptions($this->client, $this->datasource, $this->search_options);
     $this->backend->setSort($this->client, $this->datasource, $this->search_sort);
