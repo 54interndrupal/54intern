@@ -184,7 +184,7 @@ class searchlight_plugin_query extends views_plugin_query_default {
 
   function build(&$view) {
 
-    die('<pre>' . print_r($view->query->orderby,true) . '</pre>');
+//    die('<pre>' . print_r($view->query->orderby,true) . '</pre>');
 //    die('<pre>' . print_r($view->exposed_raw_input, TRUE) . '</pre>');
 //    if (!empty($view->exposed_raw_input)) {
 //      if (!empty($view->exposed_raw_input["sort_by"])) {
@@ -197,7 +197,7 @@ class searchlight_plugin_query extends views_plugin_query_default {
 //      }
 //    }
 
-//    $this->search_sort = $this->query()["orderby"];
+    $this->search_sort = $view->query->orderby;
 
     $this->set_search_buildmode();
 
