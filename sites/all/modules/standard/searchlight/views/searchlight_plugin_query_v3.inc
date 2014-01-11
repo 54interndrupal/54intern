@@ -91,8 +91,10 @@ class searchlight_plugin_query extends views_plugin_query_default {
   }
 
   function add_orderby($table, $field, $order, $alias = '', $params = array()) {
+
+
     // Call the parent method to add the orderby SQL side.
-    parent::add_orderby($table, $field, $order, $alias, $params);
+   // parent::add_orderby($table, $field, $order, $alias, $params);
 
     if ($field === 'searchlight_weight') {
       $this->search_sort[] = array(
