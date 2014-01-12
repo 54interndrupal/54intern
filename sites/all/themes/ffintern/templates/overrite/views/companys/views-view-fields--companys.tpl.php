@@ -79,8 +79,11 @@ else {
     <span>公司简介:&nbsp;<?php print $fields['body']->content ?> </span>
     <?php
   }
-  else {
-    print $review_content; ?>
+  else {?>
+    <div class="review-content">
+      最新点评:&nbsp;<?php print $review_content;?>
+    </div>
+
     <div class="company-scores">
       <?php print intern_core_get_vote_score('field_treatment_value', $company_nid, '实习待遇');?>
       <?php print intern_core_get_vote_score('field_training_value', $company_nid, '培训力度');?>

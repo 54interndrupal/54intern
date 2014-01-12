@@ -24,11 +24,13 @@
  * @ingroup views_templates
  */
 ?>
-<?php $review_count = intern_company_get_company_review_count($fields['gid']->content)?>
+
+
+<?php $review_content = views_embed_view('company_reviews_in_blocks', 'panel_pane_1', $fields['nid']->content);?>
 <div>
   <div class='row row-<?php print $fields['counter']->content ?>'><?php print $fields['counter']->content ?></div>
   <div class='company-comment'>
-    <?php print $fields['og_group_ref']->content ?>
-    <p><span class='c-1 title'>"<?php print $fields['body']->content ?>" </span><span class='c-2 daycount'><?php print $review_count; ?> 条评论</span></p>
+    <?php print $fields['title']->content ?>
+    <p><span class='c-1 title'>"<?php print $review_content ?>" </span><span class='c-2 daycount'> <?php print $fields['field_review_count']->content ?> 条评论</span></p>
   </div>
 </div>

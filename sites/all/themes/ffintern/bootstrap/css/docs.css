@@ -53,7 +53,8 @@ BODY {
     padding-top: 0;
 }
 .bts-docs-nav .navbar-nav > LI > A {
-    COLOR: #eee
+    COLOR: #eee;
+    font-weight: 600;
 }
 .bts-docs-nav .navbar-nav > LI > A:hover {
     COLOR: #fff

@@ -40,3 +40,41 @@
     </div>
   </div>
 </div>
+<script>
+  var popularTagsHeight;
+  (function ($) {
+    $(document).ready(function () {
+      var popularTags = $(".popular-tags");
+      popularTagsHeight = popularTags.height();
+      if(popularTagsHeight>32){
+        popularTags.css("overflow","hidden");
+        popularTags.css("height","32");
+        popularTags.prepend("<span class='expander'><span>展开</span><i class='icon-double-angle-down'></i></span>");
+        $(".expander", popularTags).click(function () {
+
+            if($("i", this).hasClass("icon-double-angle-down")){
+              popularTags.css("height",popularTagsHeight);
+
+              $("span",this).text("收起");
+              $("i", this).removeClass("icon-double-angle-down");
+              $("i", this).addClass("icon-double-angle-up");
+            }else{
+              popularTags.css("height","32");
+              $("span",this).text("展开");
+              $("i", this).removeClass("icon-double-angle-up");
+              $("i", this).addClass("icon-double-angle-down");
+            }
+        });
+      }
+
+
+
+
+      $('#show-detail').click(function () {
+
+      });
+
+    });
+  })(jQuery);
+
+</script>

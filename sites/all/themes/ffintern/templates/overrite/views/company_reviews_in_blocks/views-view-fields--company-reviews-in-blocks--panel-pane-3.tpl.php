@@ -44,16 +44,14 @@
   </div>
   <?php }?>
   <div class="review-footer c-5">
-    <?php print $fields['timestamp']->content ?>
-    <?php print $fields['og_group_ref']->content?>
-    <input type="hidden" name="reviewId" value="<?php print($fields['nid']->content);?>"/>
     <div class="ops">
       <?php print(flag_create_link('collect', $fields['nid']->content));?>
       <?php print(flag_create_link('zan', $fields['nid']->content));?>
       <?php print(flag_create_link('report', $fields['nid']->content));?>
     </div>
-
-
+    <?php print $fields['timestamp']->content ?>
+    <?php print $fields['og_group_ref']->content?>
+    <input type="hidden" name="reviewId" value="<?php print($fields['nid']->content);?>"/>
   </div>
 </div>
 

@@ -99,10 +99,10 @@
           ?>
         </div>
         <div id="company_vote_scores">
-          <?php print intern_core_get_vote_score('field_treatment_value', $nid,'实习待遇');?>
-          <?php print intern_core_get_vote_score('field_training_value', $nid,'培训力度');?>
-          <?php print intern_core_get_vote_score('field_workload_value', $nid,'工作压力');?>
-          <?php print intern_core_get_vote_score('field_regularize_value', $nid,'转正可能');?>
+          <?php print intern_core_get_vote_score('field_treatment_value', $nid, '实习待遇');?>
+          <?php print intern_core_get_vote_score('field_training_value', $nid, '培训力度');?>
+          <?php print intern_core_get_vote_score('field_workload_value', $nid, '工作压力');?>
+          <?php print intern_core_get_vote_score('field_regularize_value', $nid, '转正可能');?>
         </div>
       </div>
 
@@ -115,7 +115,7 @@
             'query' => array('og_group_ref' => arg(1)) + drupal_get_destination(),
             'html' => TRUE,
           );
-          $options['attributes']['target']="_blank";
+          $options['attributes']['target'] = "_blank";
 
           print l('<span class="form-submit add-content add-content-review">' . t('写点评') . '</span>', 'node/add/review', $options);
           ?>
@@ -153,14 +153,15 @@
           <div class="fix-company-info pull-right">
             <?php if (!user_is_anonymous() && !intern_user_is_company_user()) { ?>
 
-            <a href="<?php print url('node/' . $nid.'/edit');?>" title=""
+            <a href="<?php print url('node/' . $nid . '/edit');?>" title=""
                class="" id="fixCompanyInfo" target="_blank">补充修订</a>
             <?php
           }
           else {
             ?>
             <a href="<?php print url('ajax_register/login/nojs');?>" title=""
-               class="ctools-use-modal ctools-modal-ctools-ajax-register-style" rel="nofollow" id="fixCompanyInfo">补充修订</a>
+               class="ctools-use-modal ctools-modal-ctools-ajax-register-style" rel="nofollow"
+               id="fixCompanyInfo">补充修订</a>
             <?php }?>
           </div>
           <?php } ?>
@@ -281,9 +282,17 @@ if (!user_is_anonymous()) {
     });
   })(jQuery);
 
-  function filterCompanyEvaluation(evaluation){
-    jQuery("#edit-field-company-evaluation-tid").val(evaluation);
-    jQuery("#edit-submit-company-reviews-in-blocks").click();
+  function filterCompanyEvaluation(evaluation, obj) {
+    if (jQuery(obj).hasClass("active")) {
+      jQuery(obj).removeClass("active");
+      jQuery("#edit-field-company-evaluation-tid").val("");
+      jQuery("#edit-submit-company-reviews-in-blocks").click();
+    } else {
+      jQuery(".tag-item",jQuery(obj).parent()).removeClass("active");
+      jQuery(obj).addClass("active");
+      jQuery("#edit-field-company-evaluation-tid").val(evaluation);
+      jQuery("#edit-submit-company-reviews-in-blocks").click();
+    }
   }
 </script>
 

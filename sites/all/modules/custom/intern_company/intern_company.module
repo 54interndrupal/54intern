@@ -692,7 +692,7 @@ group by t.name)as rs order by rs.cnt desc";
   $odd = FALSE;
   foreach ($record as $rec) {
     $result = array("count" => $rec->cnt, 'name' => $rec->name);
-    $output .= "<span class='tag-item " . ($odd ? "odd" : "even") . "' onclick='filterCompanyEvaluation(\"" . $result["name"] . "\")'>" . $result["name"] . ' (' . $result["count"] . ') ' . "</span>";
+    $output .= "<span class='tag-item " . ($odd ? "odd" : "even") . "' onclick='filterCompanyEvaluation(\"" . $result["name"] . "\",this)'>" . $result["name"] . ' (' . $result["count"] . ') ' . "</span>";
     $odd = !$odd;
   }
   if (strlen($output) > 0) {

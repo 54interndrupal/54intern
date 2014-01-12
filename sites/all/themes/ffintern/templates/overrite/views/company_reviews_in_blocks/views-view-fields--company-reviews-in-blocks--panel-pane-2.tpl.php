@@ -44,10 +44,11 @@
   </div>
   <?php }?>
   <div class="review-footer c-5">
+    <div class="ops" id="review_info_ops_<?php print($fields['nid']->content);?>"></div>
     提交于 <?php print $fields['timestamp']->content ?>
 <!--    --><?php //print $fields['og_group_ref']->content?>
     <input type="hidden" name="reviewId" value="<?php print($fields['nid']->content);?>"/>
-    <div class="ops" id="review_info_ops_<?php print($fields['nid']->content);?>"></div>
+
 
   </div>
 </div>

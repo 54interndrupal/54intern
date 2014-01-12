@@ -124,10 +124,13 @@ function intern_core_get_vote_score( $field_name,$gid,$label){
   }
   $rate = $result['rate'];
   $count = $result['count'];
-  $output = '';
+  $output = '<span class="vote-score">'.$label.'：';
   if($count>0){
-      $output = '<span class="vote-score">'.$label.'：<span class="rate-value">'.$rate."</span></span>";
+      $output.='<span class="rate-value">'.$rate."</span>";
+  } else{
+    $output.='<span class="rate-value">---</span>';
   }
+   $output.='</span>';
   return $output;
 }
 

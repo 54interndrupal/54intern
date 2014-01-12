@@ -2,7 +2,7 @@
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, select, textarea, p, blockquote, th, td {
     margin: 0;
     padding: 0;
-    font-family: "Microsoft Yahei","微软雅黑","宋体";
+    font-family: ahoma, arial, "Hiragino Sans GB", '宋体', sans-serif;
 
 }
 
@@ -902,7 +902,7 @@ span.sticky {
 
 /*==/Basic==*/
 body {
-    font-size: 14px;
+    font-size: 12px;
     color: black;
 }
 
@@ -3671,9 +3671,12 @@ div.statuses-textarea-wrapper textarea {
 .views-row div.review-content{
     display: inline-block;
     width: 620px;
+    color: #353535;
+    line-height: 1.7;
 }
 .views-row div.review-content .field-content{
     display: inline-block;
+
 
 }
 .views-row div.review-content .review-evaluation{
@@ -3693,6 +3696,7 @@ div.statuses-textarea-wrapper textarea {
 .views-row div.review-content .review-footer .ops{
     display: inline-block;
     margin-right: 8px;
+    float: right;
 }
 .views-row div.review-content .review-footer .ops a{
     color: #369;
@@ -3850,6 +3854,9 @@ div.job-list a.join {
     font-size: 14px;
     cursor: pointer;
 }
+
+
+
 #main-content div.content .company-evaluations .tag-items .odd{
     background-color:#53AECF;
     cursor: pointer;
@@ -3864,6 +3871,13 @@ div.job-list a.join {
 #main-content div.content .company-evaluations .tag-items .even:hover{
     background-color: #7bd7d5;
 }
+#main-content div.content .company-evaluations .tag-items .active{
+    background-color: #EA6F3D;
+}
+#main-content div.content .company-evaluations .tag-items .active:hover{
+    background-color: #f1713e;
+}
+
 #main-content div.content .company-brief-info {
     background-color: #FFFFFF;
     padding: 13px 10px 13px 10px;
@@ -4005,7 +4019,6 @@ ul#company-center-tabs li a.active span {
     padding-bottom: 0;
     line-height: 24px;
     font-family: "宋体";
-    font-size: 14px;
     float: none;
     clear: both;
     width: 100%;
@@ -5565,11 +5578,21 @@ a.form-submit{
     display:none;
 }
 .node-review-form .form-item .popular-tags{
+
     width:580px;
     display: inline-block;
     margin: 10px 0 5px 102px;
+    /*height: 32px;*/
+    /*overflow: hidden;*/
 }
+.node-review-form .form-item .popular-tags span.expander{
+    float: right;
+    padding:8px 6px 0 0;
+    cursor: pointer;
+}
+
 .node-review-form .form-item .popular-tags .tag-terms a{
+    float: left;
     padding: 4px 9px;
     color:#333;
     border: 1px solid #ccc;
