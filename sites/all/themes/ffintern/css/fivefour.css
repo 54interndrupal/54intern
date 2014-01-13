@@ -5591,6 +5591,10 @@ a.form-submit{
     cursor: pointer;
 }
 
+.node-review-form .form-item .popular-tags .tag-terms{
+    width:560px;
+}
+
 .node-review-form .form-item .popular-tags .tag-terms a{
     float: left;
     padding: 4px 9px;
