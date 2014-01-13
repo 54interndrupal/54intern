@@ -32,7 +32,7 @@
   <?php print $fields['field_overall_value']->content ?>
   <?php print intern_core_render_vote('实习待遇', $fields['field_treatment_value']->content); ?>
   <?php print intern_core_render_vote('培训力度', $fields['field_training_value']->content); ?>
-  <?php print intern_core_render_vote('工作压力', $fields['field_workload_value']->content); ?>
+  <?php print intern_core_render_vote('工作环境', $fields['field_workload_value']->content); ?>
   <?php print intern_core_render_vote('转正可能', $fields['field_regularize_value']->content); ?>
   <div class="counter c-5">#<?php print ($view->total_rows-((int)($fields['counter']->content))+1) ?></div>
 </div>
@@ -44,7 +44,9 @@
   </div>
   <?php }?>
   <div class="review-footer c-5">
-    <div class="ops" id="review_info_ops_<?php print($fields['nid']->content);?>"></div>
+    <a href="<?php print(url('ajax_comments/reply/'.$fields['nid']->content))?>" class="use-ajax">回复</a>
+    <div class="ops" id="review_info_ops_<?php print($fields['nid']->content);?>">
+    </div>
     提交于 <?php print $fields['timestamp']->content ?>
 <!--    --><?php //print $fields['og_group_ref']->content?>
     <input type="hidden" name="reviewId" value="<?php print($fields['nid']->content);?>"/>
@@ -52,4 +54,7 @@
 
   </div>
 </div>
+  <div id="comment-wrapper">
+    <div class="comment"></div>
+  </div>
 

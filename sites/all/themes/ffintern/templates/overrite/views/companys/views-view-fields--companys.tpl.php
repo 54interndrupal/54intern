@@ -87,7 +87,7 @@ else {
     <div class="company-scores">
       <?php print intern_core_get_vote_score('field_treatment_value', $company_nid, '实习待遇');?>
       <?php print intern_core_get_vote_score('field_training_value', $company_nid, '培训力度');?>
-      <?php print intern_core_get_vote_score('field_workload_value', $company_nid, '工作压力');?>
+      <?php print intern_core_get_vote_score('field_workload_value', $company_nid, '工作环境');?>
       <?php print intern_core_get_vote_score('field_regularize_value', $company_nid, '转正可能');?>
     </div>
     <?php }?>
