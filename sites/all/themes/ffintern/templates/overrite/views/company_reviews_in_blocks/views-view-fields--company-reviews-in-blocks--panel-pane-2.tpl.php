@@ -44,7 +44,7 @@
   </div>
   <?php }?>
   <div class="review-footer c-5">
-    <a href="<?php print(url('ajax_comments/reply/'.$fields['nid']->content))?>" class="use-ajax">回复</a>
+<!--    <a href="--><?php //print(url('ajax_comments/reply/'.$fields['nid']->content))?><!--" class="use-ajax">回复</a>-->
     <div class="ops" id="review_info_ops_<?php print($fields['nid']->content);?>">
     </div>
     提交于 <?php print $fields['timestamp']->content ?>
@@ -54,7 +54,3 @@
 
   </div>
 </div>
-  <div id="comment-wrapper">
-    <div class="comment"></div>
-  </div>
-
