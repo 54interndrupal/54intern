@@ -49,6 +49,9 @@ function intern_company_block_info() {
   $blocks['company center setting tabs'] = array(
     'info' => t('Intern Company -- 企业中心设置中心导航')
   );
+  $blocks['company user quick register'] = array(
+    'info' => t('Intern Company -- 企业用户快速注册入口')
+  );
   return $blocks;
 }
 
@@ -106,6 +109,9 @@ function intern_company_block_view($delta = '') {
       $block['subject'] = t('企业中心设置中心tabs');
       $block['content'] = intern_company_center_setting_tabs_block();
       break;
+    case 'company user quick register':
+      $block['content'] = intern_company_user_quick_register_block();
+      break;
   }
 
   return $block;
@@ -146,6 +152,17 @@ function intern_company_brief_today_block() {
   $output .= '<div>- 企业点评台有关于您公司<span class="hot"> ' . $total_review_count . '</span>条点评，最近一周有<span class="hot"> ' . $review_count_this_week . '</span>条点评 ';
   $output .= '<a href="#quicktabs-tabpage-company_center_home_tabs-1" onclick="javascript:document.getElementById(\'' . 'quicktabs-tab-company_center_home_tabs-1' . '\').click();">[@企业点评台]</a></div>';
   $output .= '</div>';
+  return $output;
+}
+
+function intern_company_user_quick_register_block(){
+   $output = '<div id="postjob-block" class="block">
+<h2 class="block-title"><span>在实习圈发布实习职位</span></h2>
+<div class="block-content" style="font-size:14px">
+	<p>只需<span style="color:#EA6E3D">1分钟</span>，企业用户注册实习圈，即可发布实习职位。</p>
+	<div class="company-register"><a href="'.url('user/companyregister').'">企业用户注册</a></div>
+</div>
+</div>';
   return $output;
 }
 

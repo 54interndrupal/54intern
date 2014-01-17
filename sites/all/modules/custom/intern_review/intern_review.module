@@ -79,9 +79,10 @@ function intern_review_info_flags($reviewId) {
   $_GET['destination'] = "node/" . $reviewId;
 
   $output = '';
-  if (!user_is_anonymous() && !intern_user_is_company_user()) {
+  if (!user_is_anonymous() ) {
+    if(!intern_user_is_company_user()){
     $output .= flag_create_link('collect', $reviewId);
-    $output .= flag_create_link('zan', $reviewId);
+    $output .= flag_create_link('zan', $reviewId);}
     $output .= flag_create_link('report', $reviewId);
   }
 

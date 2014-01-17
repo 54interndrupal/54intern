@@ -35,10 +35,13 @@
  * @see theme_comment_wrapper()
  */
 ?>
+
+<!-- start comments -->
 <div id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php if ($content['comment_form']): ?>
+  <?php if ($content['comment_form'] && $content['comment_form']['#node']->type!='review' ): ?>
   <h2 class="title comment-form"><?php print t('Add new comment'); ?></h2>
   <?php print render($content['comment_form']); ?>
   <?php endif; ?>
   <?php print render($content['comments']); ?>
 </div>
+<!-- end comments -->

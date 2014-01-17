@@ -10,7 +10,7 @@ var residency = {
             var output='<h4>主要城市：</h4>';
             var arr=maincity,area;
             if(k==1){
-                output='<h4>其他城市：</h4>';
+                output='<h4>其他省市：</h4>';
                 arr=allprov;
             }
             for (var i in arr){
@@ -80,7 +80,7 @@ function residencySelect(elementId, autoSubmit){
     dragHtml+='		<div id="maincity"></div>';	//主要城市
     dragHtml+='		<div id="allProv"></div>';	//所有省市
     dragHtml+='</div>';
-    jQuery('#drag_h').html('<b>请选择居住地</b><span onclick="boxAlpha()">[关闭]</span>&nbsp; <span onclick="jobAreaReset()">[不限]</span>');
+    jQuery('#drag_h').html('<b>请选择所在地</b><span onclick="boxAlpha()">[关闭]</span>&nbsp; <span onclick="jobAreaReset()">[不限]</span>');
     jQuery('#drag_con').html(dragHtml);
     residency.Show();
     boxAlpha();

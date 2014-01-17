@@ -2,7 +2,7 @@
 function _authcache_intern_review_flags(vars) {
 //    alert(vars['review_info_flags']);
       var reviewId = vars['review_id'];
-    jQuery("#review_info_ops_"+reviewId).html(vars['review_info_flags']);
+    jQuery("#review_info_ops_"+reviewId).append(vars['review_info_flags']);
     Drupal.behaviors.flagLink.attach();
 }
 

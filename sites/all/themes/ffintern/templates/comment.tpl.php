@@ -57,38 +57,30 @@
  * @see theme_comment()
  */
 ?>
-<div class="<?php print $classes; ?> clearfix "<?php print $attributes; ?>>
-
+<!--start comment node -->
+<div class="<?php print $classes; ?> clearfix" <?php print $attributes; ?>>
+  <?php print $picture; ?>
   <div class="attribution">
-    <?php print $picture; ?>
-    <div class="info">
-    <?php print $author; ?>
-   <span class="c-5">
-    <?php print format_date($comment->created,'custom','Y-m-d H:i'); ?>
-     </span>
-    </div>
     <div class='links'>
-    <?php print render($content['links']); ?>
+      <?php print render($content['links']); ?>
     </div>
-  </div>
+    <div class="info">
+      <?php print $author; ?>
+      <span class="c-5">
+       <?php print format_date($comment->created, 'custom', 'Y-m-d H:i'); ?>
+     </span>
 
-  <div class="comment-text c-10">
-    <div class="comment-arrow"></div>
-
-    <div class="content"<?php print $content_attributes; ?>>
-      <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['links']);
-      print render($content);
-      ?>
-      <?php if ($signature): ?>
-      <div class="user-signature clearfix">
-        <?php print $signature; ?>
+      <div class="comment-text c-10">
+        <div class="content" <?php print $content_attributes; ?>>
+          <?php
+          // We hide the comments and links now so that we can render them later.
+          hide($content['links']);
+          print render($content);
+          ?>
+        </div>
       </div>
-      <?php endif; ?>
     </div>
-    <!-- /.content -->
 
   </div>
-  <!-- /.comment-text -->
-</div>
+
+</div><!--end comment node -->

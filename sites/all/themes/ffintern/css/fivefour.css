@@ -13,6 +13,7 @@ form textarea {
 h2 {
     font-size: 18px;
     font-weight: bold;
+    font-family: "microsoft yahei", "simhei",ahoma, arial, "Hiragino Sans GB", '宋体', sans-serif;
 }
 
 img {
@@ -304,8 +305,8 @@ div.comment-wrapper h2.comment-form {
 }
 
 div.comment {
-    margin: 35px 0 5px 0;
-    padding: 16px 15px 20px 15px;
+    margin: 15px 0 5px 0;
+    padding: 12px 15px 20px 15px;
     border-top: 1px #EFEFEF solid;
     background: url(img/site/bg_cmt.gif) repeat-x;
 }
@@ -330,9 +331,14 @@ div.comment div.info span.username {
 div.comment div.links {
     float: right;
 }
+div.comment div.links a {
+    color:#369;
+}
 
 div.comment div.content {
-    padding: 12px 0 0 0;
+    padding: 6px 0 0 0;
+    display: block;
+    float: left;
 }
 
 form.comment-form div.form-actions {
@@ -3629,7 +3635,7 @@ div.statuses-textarea-wrapper textarea {
     width:400px;
 }
 .view-display-id-panel_pane_2 .views-row{
-    margin-bottom: 25px;
+    margin-bottom: 35px;
 }
 .views-row div.author-info {
     width: 50px;
@@ -3672,7 +3678,7 @@ div.statuses-textarea-wrapper textarea {
     display: inline-block;
     width: 620px;
     color: #353535;
-    line-height: 1.7;
+    line-height: 2;
 }
 .views-row div.review-content .field-content{
     display: inline-block;
@@ -3904,6 +3910,22 @@ div.job-list a.join {
     font-size: 13px;
 }
 
+.node-type-company .review-comments{
+    width:98%;
+}
+
+.node-type-company h2.comment-form{
+    display: none;
+}
+
+.node-type-company form.comment-form .form-textarea{
+    border: 1px solid #ccc;
+}
+
+.node-type-company form.comment-form .form-submit{
+    font-size:12px;
+    padding:4px 10px;
+}
 
 .node-type-company #company_info_ops{
     left: 0;
@@ -5305,24 +5327,24 @@ div.user-reg-form div.captcha div.form-item input.form-text {
     display: inline-block;
 }
 
-#comment-form div.captcha,
+.comment-form div.captcha,
 div.pane-intern-company-company-node-add-review div.captcha {
     width: 330px;
     float: left;
 }
 
-#comment-form div.captcha .form-item,
+.comment-form div.captcha .form-item,
 div.pane-intern-company-company-node-add-review div.captcha .form-item {
     margin-top: 3px;
 }
 
-#comment-form div.captcha .form-item label,
+.comment-form div.captcha .form-item label,
 div.pane-intern-company-company-node-add-review div.captcha .form-item label {
     color: #4E963C;
     font-weight: bold;
 }
 
-#comment-form div.captcha input.form-text,
+.comment-form div.captcha input.form-text,
 div.pane-intern-company-company-node-add-review div.captcha input.form-text {
     width: 70px;
     border: 1px solid #4d963b;

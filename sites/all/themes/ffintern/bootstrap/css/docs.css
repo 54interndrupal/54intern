@@ -35,6 +35,7 @@ BODY {
     margin-bottom: 10px;
 }
 .navbar-nav>li>a{
+    font-family: "microsoft yahei", "simhei",ahoma, arial, "Hiragino Sans GB", '宋体', sans-serif;
     padding: 10px 15px;
 }
 .navbar-collapse{
@@ -54,7 +55,6 @@ BODY {
 }
 .bts-docs-nav .navbar-nav > LI > A {
     COLOR: #eee;
-    font-weight: 600;
 }
 .bts-docs-nav .navbar-nav > LI > A:hover {
     COLOR: #fff
