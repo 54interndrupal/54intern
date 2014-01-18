@@ -3634,8 +3634,8 @@ div.statuses-textarea-wrapper textarea {
 .company-list .view-display-id-panel_pane_1 .views-row div.review-content{
     width:400px;
 }
-.view-id-company_reviews_in_blocks .view-display-id-panel_pane_3 .views-row,
-.view-id-company_reviews_in_blocks .view-display-id-panel_pane_2 .views-row{
+.page-user .view-display-id-panel_pane_3 .views-row,
+.node-type-company .view-display-id-panel_pane_2 .views-row{
     margin-bottom: 35px;
 }
 .views-row div.author-info {
