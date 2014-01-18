@@ -3634,7 +3634,8 @@ div.statuses-textarea-wrapper textarea {
 .company-list .view-display-id-panel_pane_1 .views-row div.review-content{
     width:400px;
 }
-.view-display-id-panel_pane_2 .views-row{
+.company-list .view-display-id-panel_pane_3 .views-row,
+.company-list .view-display-id-panel_pane_2 .views-row{
     margin-bottom: 35px;
 }
 .views-row div.author-info {
@@ -3917,12 +3918,11 @@ div.job-list a.join {
 .node-type-company h2.comment-form{
     display: none;
 }
-
-.node-type-company form.comment-form .form-textarea{
+.view-company-reviews-in-blocks form.comment-form .form-textarea{
     border: 1px solid #ccc;
 }
 
-.node-type-company form.comment-form .form-submit{
+.view-company-reviews-in-blocks form.comment-form .form-submit{
     font-size:12px;
     padding:4px 10px;
 }
