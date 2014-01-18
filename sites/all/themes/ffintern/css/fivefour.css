@@ -3369,9 +3369,9 @@ div.company-list .views-row .company-info {
 }
 
 
-div.company-list span,
-div.company-list a,
-div.company-list div{
+div.company-list .views-row span,
+div.company-list .views-row a,
+div.company-list .views-row div{
    font-family: '宋体';
    font-size: 12px;
    line-height: 1.7;
