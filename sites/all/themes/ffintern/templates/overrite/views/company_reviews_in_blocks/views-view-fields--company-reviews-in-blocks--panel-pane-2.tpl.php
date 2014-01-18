@@ -56,12 +56,14 @@
 
 
   </div>
-  <?php if ($fields['comment_count']->content != '0') { ?>
+
   <div id="comment-wrapper-<?php print $review_nid;?>" class="review-comments">
+    <?php if ($fields['comment_count']->content != '0') { ?>
     <?php $review_node = node_load($review_nid);
     comment_node_view($review_node, 'full');
     print render($review_node->content['comments']);?>
+    <?php }?>
   </div>
-  <?php }?>
+
 </div>
 <!--end review content-->
