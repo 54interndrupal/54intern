@@ -305,8 +305,8 @@ div.comment-wrapper h2.comment-form {
 }
 
 div.comment {
-    margin: 15px 0 5px 0;
-    padding: 12px 15px 20px 15px;
+    margin: 15px 0 0 0;
+    padding: 12px 15px 5px 15px;
     border-top: 1px #EFEFEF solid;
     background: url(img/site/bg_cmt.gif) repeat-x;
 }
