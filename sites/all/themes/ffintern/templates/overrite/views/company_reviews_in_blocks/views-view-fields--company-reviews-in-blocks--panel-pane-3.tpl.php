@@ -38,13 +38,14 @@
 </div>
 <div class="review-content">
   <?php print $fields['body']->content ?>
-  <?php if ($fields['field_company_evaluation']->content!='<div class="field-content"></div>') { ?>
+  <?php if ($fields['field_company_evaluation']->content != '<div class="field-content"></div>') { ?>
   <div class="review-evaluation c-6">
     <label class="c-6">企业印象：</label><?php print $fields['field_company_evaluation']->content ?>
   </div>
   <?php }?>
   <div class="review-footer c-5">
     <div class="ops">
+      <a href="<?php print(url('ajax_comments/reply/' . $fields['nid']->content))?>" class="use-ajax">回复</a>
       <?php print(flag_create_link('collect', $fields['nid']->content));?>
       <?php print(flag_create_link('zan', $fields['nid']->content));?>
       <?php print(flag_create_link('report', $fields['nid']->content));?>
@@ -52,6 +53,14 @@
     <?php print $fields['timestamp']->content ?>
     <?php print $fields['og_group_ref']->content?>
     <input type="hidden" name="reviewId" value="<?php print($fields['nid']->content);?>"/>
+  </div>
+
+  <div id="comment-wrapper-<?php print $review_nid;?>" class="review-comments">
+    <?php if ($fields['comment_count']->content != '0') { ?>
+    <?php $review_node = node_load($review_nid);
+    comment_node_view($review_node, 'full');
+    print render($review_node->content['comments']);?>
+    <?php }?>
   </div>
 </div>
 
