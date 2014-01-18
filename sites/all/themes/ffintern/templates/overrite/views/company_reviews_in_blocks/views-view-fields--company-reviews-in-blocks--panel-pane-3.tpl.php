@@ -24,6 +24,7 @@
  * @ingroup views_templates
  */
 ?>
+<?php $review_nid = $fields['nid']->content; ?>
 <div class='author-info c-6'>
   <div class='framed'><?php print $fields['picture']->content ?></div>
   <?php print $fields['name']->content ?>
@@ -45,14 +46,14 @@
   <?php }?>
   <div class="review-footer c-5">
     <div class="ops">
-      <a href="<?php print(url('ajax_comments/reply/' . $fields['nid']->content))?>" class="use-ajax">回复</a>
-      <?php print(flag_create_link('collect', $fields['nid']->content));?>
-      <?php print(flag_create_link('zan', $fields['nid']->content));?>
-      <?php print(flag_create_link('report', $fields['nid']->content));?>
+      <a href="<?php print(url('ajax_comments/reply/' . $review_nid))?>" class="use-ajax">回复</a>
+      <?php print(flag_create_link('collect', $review_nid));?>
+      <?php print(flag_create_link('zan', $review_nid));?>
+      <?php print(flag_create_link('report', $review_nid));?>
     </div>
     <?php print $fields['timestamp']->content ?>
     <?php print $fields['og_group_ref']->content?>
-    <input type="hidden" name="reviewId" value="<?php print($fields['nid']->content);?>"/>
+    <input type="hidden" name="reviewId" value="<?php print($review_nid);?>"/>
   </div>
 
   <div id="comment-wrapper-<?php print $review_nid;?>" class="review-comments">
