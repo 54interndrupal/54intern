@@ -452,6 +452,11 @@ div.advanced-search  #views-exposed-form-companys-panel-pane-1 input.form-submit
     color: #003300;
 }
 
+div.advanced-search  #views-exposed-form-companys-panel-pane-1 input.form-submit:hover {
+    background-color: #b6de3f;
+    border-color: #161f29;
+}
+
 /* 寻社团、找实习、企业点评台 关注按钮样式 */
 
 body.page-companys span.flag-wrapper {
