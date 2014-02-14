@@ -382,7 +382,7 @@ function ffintern_menu_link__main_menu(array $variables) {
             $attributes['class'][] = 'active';
             $element['#attributes']['class'][]='active';
 
-          }elseif (intern_user_is_company_user()&& ($mlid == 638) && ((isset($params[1])&&$params[1]=='node') || arg(0)=='user')){
+          }elseif (intern_user_is_company_user()&& ($mlid == 638) && ((isset($params[1])&&$params[1]=='node'&&arg(2)!='review') || arg(0)=='user')){
             $attributes['class'][] = 'active';
             $element['#attributes']['class'][]='active';
 
