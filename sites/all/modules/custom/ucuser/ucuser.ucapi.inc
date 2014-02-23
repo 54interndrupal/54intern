@@ -28,7 +28,7 @@ define('API_RETURN_FORBIDDEN', '-2');
 @define('IN_API', true);
 @define('CURSCRIPT', 'api');
 
-define('UCUSER_ROOT', drupal_get_path('module', 'ucuser').'/');
+define('UCUSER_ROOT', drupal_get_path('module', 'Intern UCenter Integration').'/');
 include_once UCUSER_ROOT.'/config.inc.php';
 
 function _ucuser_get_code($text=''){
