@@ -1,0 +1,5 @@
+; $Id$
+name = "Intern UCenter Integration"
+description = "54intern与论坛整合的模块"
+core = "7.x"
+package="54intern"

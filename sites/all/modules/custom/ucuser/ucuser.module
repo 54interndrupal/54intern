@@ -1,0 +1,274 @@
+<?php
+
+//define('UCENTER_CLIENT_ROOT', realpath(dirname(__FILE__)));
+define('UCENTER_CLIENT_ROOT', drupal_get_path('module', 'ucuser').'/');
+include_once UCENTER_CLIENT_ROOT.'/config.inc.php';
+include_once UCENTER_CLIENT_ROOT.'/uc_client/client.php';
+
+function ucuser_menu(){
+	$items['api/ucapi'] = array(
+    'title' => 'ucapi', 
+    'page callback' => 'ucuser_ucapi', 
+		//'page arguments' => array(2), 
+    'access arguments' => array('access content'), 
+    'type' => MENU_CALLBACK,
+		'file' => 'ucuser.ucapi.inc'
+  );
+  return $items;
+}
+
+//*-----------hook_user_insert-------------------*//
+function ucuser_user_insert(&$edit, $account, $category=null){
+	global $user;
+	list($uc_uid,$username,$email) = uc_get_user($account->name);
+	if(!$uc_uid){
+		$uc_uid = uc_user_register($edit['name'], $user->plan_newpass, $account->mail);
+	}
+	db_delete('ucuser_idrelation')
+		->condition('drupaluid', $account->uid)
+		->execute();
+	db_delete('ucuser_idrelation')
+		->condition('ucuid', $uc_uid)
+		->execute();
+		
+	db_insert('ucuser_idrelation')
+	->fields(array(
+		'drupaluid' => $account->uid, 
+		'ucuid' => $uc_uid, 
+	))
+	->execute();
+}
+
+//*-----------hook_user_update-------------------*//
+function ucuser_user_update(&$edit, $account, $category=null){
+	global $user;
+
+	$newemail='';
+	if($email != $account->mail){
+		$newemail=$account->mail;
+	}
+	$ignoreoldpw = 0;
+	if(user_access('administer users'))
+	{
+		$ignoreoldpw = 1;	
+	}
+	if(($edit['current_pass'] || $ignoreoldpw) && ($newemail || $edit['pass'])){
+		$re = uc_user_edit($account->name , $edit['current_pass'] , $user->plan_newpass , $newemail,$ignoreoldpw);
+	}
+
+	$user->plan_newpass = NULL;
+	return;
+}
+
+//*-----------hook_user_login-------------------*//
+function ucuser_user_login(&$edit, $account) {
+	list($uc_uid,$username,$email) = uc_get_user($account->name);
+	
+	$link=mysql_connect(UC_DBHOST,UC_DBUSER,UC_DBPW);
+	mysql_select_db(UC_DBNAME);
+	
+	$uname=$account->name;
+	$ip=$_SERVER['REMOTE_ADDR'];
+	$referer=$_SERVER['HTTP_REFERER'];
+	$uc_login_message = uc_user_synlogin($uc_uid);
+	
+	
+	$result=mysql_query("select content from ".UC_DBTABLEPRE."tongbu where uname='$uname'") or die(mysql_error());	
+	if($row=mysql_fetch_array($result,MYSQL_BOTH)){
+		mysql_query("update ".UC_DBTABLEPRE."tongbu set content='".$uc_login_message."', ip='$ip', type='login', uid='$uc_uid',isfromdrupal='$referer' where uname='$uname'");
+	} else {
+		mysql_query("insert into ".UC_DBTABLEPRE."tongbu (uid,uname,type,content,ip,isfromdrupal) value ($uc_uid, '$uname','login','".$uc_login_message."','$ip','$referer')");
+	}
+//mysql_close($link);
+	
+	//file_save_data('in'.$uc_login_message,file_build_uri('uc_login_message.txt'));
+}
+//*-----------hook_user_logout-------------------*//
+function ucuser_user_logout($account) {
+	list($uc_uid,$username,$email) = uc_get_user($account->name);
+	
+	
+	$link=mysql_connect(UC_DBHOST,UC_DBUSER,UC_DBPW);
+	mysql_select_db(UC_DBNAME);
+	
+	$uname=$account->name;
+	$ip=$_SERVER['REMOTE_ADDR'];
+	$referer=$_SERVER['HTTP_REFERER'];
+	$uc_logout_message = uc_user_synlogout($uc_uid);
+	
+	
+	$result=mysql_query("select content from ".UC_DBTABLEPRE."tongbu where uname='$uname'") or die(mysql_error());	
+	if($row=mysql_fetch_array($result,MYSQL_BOTH)){
+		mysql_query("update ".UC_DBTABLEPRE."tongbu set content='".$uc_logout_message."', ip='$ip', type='logout', uid='$uc_uid',isfromdrupal='$referer' where uname='$uname'");
+	} else {
+		mysql_query("insert into ".UC_DBTABLEPRE."tongbu (uid,uname,type,content,ip,isfromdrupal) value ($uc_uid, '$uname','logout','".$uc_logout_message."','$ip','$referer')");
+	}
+	//file_save_data('out'.$uc_logout_message, file_build_uri('uc_logout_message.txt'));
+}
+
+//*-----------hook_user_delete-------------------*//
+function ucuser_user_delete($account) {
+	//list($uc_uid,$username,$email) = uc_get_user($account->name);
+	$uc_uids = db_select('ucuser_idrelation', 'ui')
+    ->fields('ui')
+		->condition('ui.drupaluid', $account->uid,'=')
+    ->execute();
+	
+	$uc_uid = array();
+	while($uid = $uc_uids->fetchAssoc()){
+		$uc_uid[] = $uid['ucuid'];
+	}
+	$delre=uc_user_delete($uc_uid);
+
+	if($delre){
+		db_delete('ucuser_idrelation')
+      ->condition('drupaluid', $account->uid)
+      ->execute();
+	}
+}
+
+//*-----------hook_form_alter-------------------*//
+
+function ucuser_form_user_register_form_alter(&$form, &$form_state) {
+	$form['#validate'][] = 'ucuser_register_validate';
+}
+
+function ucuser_register_validate($form, &$form_state) {
+	global $user;
+	$user->plan_newpass = trim($form_state['values']['pass']);
+  // check the name with ucenter's function
+  $usr=$form_state['values']['name'];  
+
+
+  $name_result = uc_user_checkname($usr);
+
+  if ($name_result == -1) {
+    form_set_error('name', t('user name failed'));
+  }
+  else if ($name_result == -2) {
+    form_set_error('name', t('User name contains the words are not allowed'));
+  }
+  else if ($name_result == -3) {
+    form_set_error('name', t('The user name already exists'));
+  }
+  
+  // check the email with ucenter's function
+  $email_result = uc_user_checkemail($form_state['values']['mail']);
+  if ($email_result == -4) {
+    form_set_error('mail', t('Email Malformed'));
+  }
+  else if ($email_result == -5) {
+    form_set_error('mail', t('Email Not allowed to register'));
+  }
+  else if ($email_result == -6) {
+    form_set_error('mail', t('Email Has been registered'));
+  }  
+}
+
+function ucuser_form_user_profile_form_alter(&$form, &$form_state) {
+	$form['#validate'][] = 'ucuser_edit_validate';
+	$form['account']['name']['#attributes']['readonly'] = 'readonly';
+}
+
+function ucuser_edit_validate($form, &$form_state) {
+  // check the email with ucenter's function
+	global $user;
+	$user->plan_newpass = trim($form_state['values']['pass']);
+	$account = $form_state['user'];
+	if(!$form_state['values']['pass'] || ($account->mail == trim($form_state['values']['mail']))){
+		return;
+	}
+	//drupal_set_message($account->mail);
+	if(!user_access('administer users')){
+		list($uc_uid, $username, $password, $email) = uc_user_login($account->name, $form_state['values']['current_pass']);
+		if($uc_uid == -2){
+			form_set_error('current_pass', t('Your current password is missing or incorrect.'));
+		}
+	}
+
+  $email_result = uc_user_checkemail($form_state['values']['mail']);
+  if ($email_result == -4) {
+    form_set_error('mail', t('The e-mail address %mail is not valid.',array('%mail'=>$form_state['values']['mail'])));
+  }
+  else if ($email_result == -5) {
+    form_set_error('mail', t('Email Not allowed to register'));
+  }
+  else if ($email_result == -6) {
+    form_set_error('mail', t('The e-mail address is already registered.'));
+  }  
+}
+
+
+function ucuser_form_user_login_alter(&$form, &$form_state) {
+	_ucuser_form_user_login_form_alter($form, $form_state);
+}
+function ucuser_form_user_login_block_alter(&$form, &$form_state) {
+	_ucuser_form_user_login_form_alter($form, $form_state);
+}
+
+function _ucuser_form_user_login_form_alter(&$form, &$form_state) {
+	array_unshift($form['#validate'],'ucuser_login_validate');
+}
+
+function ucuser_login_validate($form, &$form_state) {
+
+  // try to login ucenter
+  $usr=trim($form_state['values']['name']);  
+	$pass = trim($form_state['values']['pass']);
+	list($uc_uid, $username, $password, $email) = uc_user_login($usr, $pass);
+
+  if ($uc_uid > 0) {
+		 $uc_uids = db_select('ucuser_idrelation', 'ui')
+						->fields('ui')
+						->condition('ui.ucuid', $uc_uid)
+						->execute()
+						->fetchAssoc();
+ 
+		 if($uc_uids['drupaluid']){
+			 $account = user_load($uc_uids['drupaluid']);
+		 }
+		 else{
+			 $account = user_load_by_name($username);
+		 }
+		$userinfo = array(
+			'name' => $form_state['values']['name'],
+			'pass' => $form_state['values']['pass'],
+			'mail' => $email,
+			'init' => $email,
+			'status' => $account ? $account->status : 1,
+      'access' => time()
+		);
+		$account = user_save($account, $userinfo);
+  }
+  elseif ($uc_uid == -1) {
+		//drupal_set_message('uc_uid:-1');
+		$uid = user_authenticate($usr, $pass);
+		if($uid){
+			//drupal_set_message('account:'.$uid);
+			$account = user_load($uid);
+			if(uc_user_checkemail($account->mail)){
+				$uc_uid = uc_user_register($account->name , $pass , $account->mail);
+					//drupal_set_message('uc_uid:'.$uc_uid);
+					db_delete('ucuser_idrelation')
+						->condition('drupaluid', $account->uid)
+						->execute();
+						
+					db_insert('ucuser_idrelation')
+					->fields(array(
+						'drupaluid' => $account->uid, 
+						'ucuid' => $uc_uid, 
+					))
+					->execute();
+			}else{
+				$msg= $usr.'&nbsp;&nbsp;'.t('Regist to user center failed,Please contact the site master.');
+				form_set_error('name', $msg);
+			}
+		}else{
+  	 $msg= $usr.'&nbsp;&nbsp;'.t('Sorry, unrecognized username or password. <a href="@password">Have you forgotten your password?</a>', array('@password' => url('user/password')));
+		 form_set_error('name', $msg);
+		}
+  }
+  elseif ($uc_uid == -2) {
+    form_set_error('pass', t('Sorry, unrecognized username or password. <a href="@password">Have you forgotten your password?</a>', array('@password' => url('user/password'))));
+  }
+}

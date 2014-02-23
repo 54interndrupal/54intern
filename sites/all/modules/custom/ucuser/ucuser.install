@@ -1,0 +1,26 @@
+<?php
+function ucuser_uninstall() {
+  db_delete('variable')->condition('name', '%%ucuser_setting%%', 'LIKE')->execute();
+}
+
+function ucuser_schema() {
+  $schema['ucuser_idrelation'] = array(
+    'description' => 'relation of drupal uid and ucenter uid',
+    'fields' => array(
+      'drupaluid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'ucuid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+  );
+
+  return $schema;
+}

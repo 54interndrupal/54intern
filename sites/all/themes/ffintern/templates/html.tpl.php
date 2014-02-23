@@ -56,7 +56,9 @@
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
 
-
+<?php //$tongbujs=ffintern_tongbu();
+///print $tongbujs;
+?>
 
   <?php print $scripts; ?>
 
@@ -70,6 +72,6 @@
   <?php print $page; ?>
   <?php print $page_bottom; ?>
 
-
+<iframe src="tongbu.php"  width=0 height=0 frameborder=0></iframe>
 </body>
 </html>
