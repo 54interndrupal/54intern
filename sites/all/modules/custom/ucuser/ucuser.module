@@ -1,7 +1,7 @@
 <?php
 
 //define('UCENTER_CLIENT_ROOT', realpath(dirname(__FILE__)));
-define('UCENTER_CLIENT_ROOT', drupal_get_path('module', 'Intern UCenter Integration').'/');
+define('UCENTER_CLIENT_ROOT', drupal_get_path('module', 'ucuser').'/');
 include_once UCENTER_CLIENT_ROOT.'/config.inc.php';
 include_once UCENTER_CLIENT_ROOT.'/uc_client/client.php';
 
