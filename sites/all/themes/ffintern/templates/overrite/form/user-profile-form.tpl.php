@@ -34,7 +34,7 @@ $uid = $user->uid;
             style="display:inline-block;padding-top: 4px;font-size: 14px"><?php print intern_user_get_user_name($form["account"]["name"]["#value"]);?></span>
           </div>
           <!--          --><?php //print_r($form)?>
-          <?php print drupal_render($form["field_real_name"])?>
+<!--          --><?php //print drupal_render($form["field_real_name"])?>
           <?php print drupal_render($form["account"]["mail"])?>
           <?php print drupal_render($form["field_phone"])?>
           <?php print drupal_render($form["field_cell_phone"])?>
@@ -101,7 +101,7 @@ else {
     <div class="user-base-info">
       <?php
       print drupal_render($form["account"]["name"]);
-      print drupal_render($form["field_real_name"]);
+//      print drupal_render($form["field_real_name"]);
       print drupal_render($form["account"]["mail"]);
       print drupal_render($form["account"]["current_pass"]);
       print drupal_render($form["account"]["pass"]);
