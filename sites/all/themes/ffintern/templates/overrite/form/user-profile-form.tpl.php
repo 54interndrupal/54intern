@@ -34,7 +34,7 @@ $uid = $user->uid;
             style="display:inline-block;padding-top: 4px;font-size: 14px"><?php print intern_user_get_user_name($form["account"]["name"]["#value"]);?></span>
           </div>
           <!--          --><?php //print_r($form)?>
-<!--          --><?php //print drupal_render($form["field_real_name"])?>
+          <?php print drupal_render($form["field_real_name"])?>
           <?php print drupal_render($form["account"]["mail"])?>
           <?php print drupal_render($form["field_phone"])?>
           <?php print drupal_render($form["field_cell_phone"])?>
@@ -87,6 +87,7 @@ else {
   unset($form['field_phone']);
   unset($form['field_cell_phone']);
   unset($form["picture"]['picture_delete']);
+  unset($form['field_real_name']);
   $form["picture"]['picture_upload']['#title'] = t('上传头像');
   $form['account']['name']['#title'] = t('用户名');
   $form['account']['mail']['#title'] = t('邮箱');
