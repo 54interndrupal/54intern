@@ -936,7 +936,7 @@ body.admin-menu {
     float: right;
     color: #6A6A6A;
     z-index: 2;
-    padding: 5px 0 0 0;
+    padding: 0 0 0 0;
 }
 
 #top-toolbar .block-content {
@@ -1024,7 +1024,7 @@ body.admin-menu {
 
 #block-system-main-menu {
     right: 0;
-    margin: 15px 0 0 0;
+    margin: 12px 0 0 0;
     display: block;
     text-align: right;
 }
@@ -3151,7 +3151,7 @@ body #topBan {
     margin: 2px auto;
     display: block;
     height: 70px;
-    padding-top: 15px;
+    padding-top: 18px;
 }
 
 body #navBottom {
