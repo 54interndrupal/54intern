@@ -76,7 +76,7 @@
         $js = $row['content'];
         $pattern = '~\<script.*?\<\/script\>~s';
         preg_match_all($pattern, $js, $content);
-        //print_r($content[0]);
+        print_r($content[0]);
         if (strpos($content[0][0], 'www.54intern.com') > 0) {
           echo $content[0][0];
         }
