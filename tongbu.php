@@ -72,18 +72,18 @@
       $result = mysql_query("select * from " . UC_DBTABLEPRE . "tongbu where isfromdrupal='$comefrom' and type='login' and ip='$ip' order by id desc") or die(mysql_error());
       //echo "ss".$comefrom;
       if ($row = mysql_fetch_array($result, MYSQL_BOTH)) {
-        echo $row['content'];
+//        echo $row['content'];
         $js = $row['content'];
         $pattern = '~\<script.*?\<\/script\>~s';
         preg_match_all($pattern, $js, $content);
-        print_r($content[0]);
+//        print_r($content[0]);
         if (strpos($content[0][0], 'www.54intern.com') > 0) {
           echo $content[0][0];
         }
         if (strpos($content[0][1], 'www.54intern.com') > 0) {
           echo $content[0][1];
         }
-//        echo '<script type="text/javascript">parent.window.location.href="http://www.54intern.com";</script>';
+        echo '<script type="text/javascript">parent.window.location.href="http://www.54intern.com";</script>';
       }
     }
   }
