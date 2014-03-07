@@ -5738,6 +5738,7 @@ body.page-search .company-sort-bar{
 
 .view-companys .views-view-grid td .field-content{
     padding: 5px 0;
+    display: block;
 }
 
 .view-companys .views-view-grid td .field-content a{
