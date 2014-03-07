@@ -5731,6 +5731,19 @@ body.page-search .company-sort-bar{
     display:none;
 }
 
+/*fortune 500*/
+.view-companys .views-view-grid td{
+   width: 33%
+}
+
+.view-companys .views-view-grid td .field-content{
+    padding: 5px 0;
+}
+
+.view-companys .views-view-grid td .field-content a{
+    color: #0066CC;
+}
+
 
 
 
