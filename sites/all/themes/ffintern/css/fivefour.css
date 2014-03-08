@@ -5746,7 +5746,7 @@ body.page-search .company-sort-bar{
     color: #0066CC;
 }
 
-.view-companys .views-view-grid h3{
+.view-companys h3 + views-view-grid  {
     font-size: 14px;
     font-weight: bold;
     color: #369;
