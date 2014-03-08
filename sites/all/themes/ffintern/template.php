@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $Id: template.php,v 1.45 2010/12/01 00:18:15 webchick Exp $
 
 
@@ -63,6 +63,37 @@ function _ffintern_add_quicktab_css() {
   drupal_add_css(drupal_get_path('module', 'quicktabs') . '/css/quicktabs.css');
   drupal_add_css(drupal_get_path('module', 'quicktabs') . '/quicktabs_tabstyles/tabstyles/intern/intern.css');
   drupal_add_css(drupal_get_path('module', 'quicktabs') . '/quicktabs_tabstyles/tabstyles/intern2/intern2.css');
+}
+
+function ffintern_tongbu() {
+	$tmp="";
+        include("/sites/all/modules/ucuser/config.inc.php");
+	$tmplink=mysql_connect(UC_DBHOST,UC_DBUSER,UC_DBPW);
+	$uname=$_COOKIE['drupal_user'];
+	$uid=$_COOKIE['uc_uid'];
+	
+	//echo $uname.$uid;
+	//exit();
+	$ip=$_SERVER['REMOTE_ADDR'];
+	if($_GET['transfer']==1){
+		mysql_query("delete from ".UC_DBTABLEPRE."tongbu where uid='$uid' or uname='$uname' ");
+	    $tmp="";
+	}
+	
+$result=mysql_query("select content, type from ".UC_DBTABLEPRE."tongbu where    ip='$ip' order by id desc ") or die(mysql_error());
+if($row=mysql_fetch_array($result,MYSQL_BOTH) and $_GET['transfer']!=1){
+	$tmp=$row['content'];
+	
+	$resulta=mysql_query("select content, type from ".UC_DBTABLEPRE."tongbu where ip='$ip' and isfromdrupal='http://forum.54intern.com/forum.php' ") or die(mysql_error());
+	if($rowa=mysql_fetch_array($resulta,MYSQL_BOTH) ){
+		$tmp.='<meta http-equiv="refresh" content="0;url=http://www.54intern.com/?transfer=1" />';
+	}
+	mysql_query("delete from ".UC_DBTABLEPRE."tongbu where (not isfromdrupal='http://forum.54intern.com/forum.php') and (uid='$uid' or uname='$uname') ");
+} 
+
+mysql_close($tmplink);
+
+		return $tmp;
 }
 
 /**
@@ -366,7 +397,7 @@ function ffintern_menu_link__main_menu(array $variables) {
 
     }
     else {
-      if ($mlid == 624 && ((isset($params[1]) && $params[1] == 'company') || arg(0) == 'companys'||arg(0) == 'fortune500' ||(arg(2)=='review'))) {
+      if ($mlid == 624 && ((isset($params[1]) && $params[1] == 'company') || arg(0) == 'companys' ||(arg(2)=='review'))) {
         $attributes['class'][] = 'active';
         $element['#attributes']['class'][]='active';
 
