@@ -5733,20 +5733,20 @@ body.page-search .company-sort-bar{
 }
 
 /*fortune 500*/
-.view-companys .pane-companys-panel-pane-3 td{
+.view-companys .views-view-grid td{
    width: 33%
 }
 
-.view-companys .pane-companys-panel-pane-3 td .field-content{
+.view-companys .views-view-grid td .field-content{
     padding: 5px 0;
     display: block;
 }
 
-.view-companys .pane-companys-panel-pane-3 td .field-content a{
+.view-companys .views-view-grid td .field-content a{
     color: #0066CC;
 }
 
-.view-companys .pane-companys-panel-pane-3 h3{
+.view-companys .views-view-grid h3{
     font-size: 14px;
     font-weight: bold;
     color: #369;
