@@ -5750,9 +5750,10 @@ body.page-search .company-sort-bar{
     font-size: 14px;
     font-weight: bold;
     color: #369;
-    margin: 15px 0;
+    margin: 20px 0 15px 0;
     display: block;
     border-bottom: 1px dashed #CCC;
+    padding: 8px
 }
 
 
