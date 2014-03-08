@@ -2030,7 +2030,8 @@ div.pane-right-title-link-panel-pane-5 div.pane-content .views-row {
 }
 
 /*==pane-right-title-link-panel-pane-10 热门企业==*/
-div.pane-right-title-link-panel-pane-9 div.panel-pane-title {
+div.pane-right-title-link-panel-pane-9 div.panel-pane-title,
+div.pane-right-title-link-panel-pane-2 div.panel-pane-title{
     background: url(img/site/bt_rmqy.png) no-repeat 0px 3px;
 }
 
