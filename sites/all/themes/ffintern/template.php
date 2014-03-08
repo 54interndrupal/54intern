@@ -366,7 +366,7 @@ function ffintern_menu_link__main_menu(array $variables) {
 
     }
     else {
-      if ($mlid == 624 && ((isset($params[1]) && $params[1] == 'company') || arg(0) == 'companys' ||(arg(2)=='review'))) {
+      if ($mlid == 624 && ((isset($params[1]) && $params[1] == 'company') || arg(0) == 'companys'||arg(0) == 'fortune500' ||(arg(2)=='review'))) {
         $attributes['class'][] = 'active';
         $element['#attributes']['class'][]='active';
 
