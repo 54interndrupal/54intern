@@ -9,12 +9,12 @@
 div.views-slideshow-ddblock-cycle-vsdupright30p div.container{background-color:#fff;width:708px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.container-inner{height:219px;position:relative;z-index:0;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slider{float:left;width:708px;}
-div.views-slideshow-ddblock-cycle-vsdupright30p div.slider-inner{background:transparent url(../images/transparent_bg.png) repeat scroll 0 0!important;height:303px;overflow:hidden;position:relative;visibility:hidden;}
+div.views-slideshow-ddblock-cycle-vsdupright30p div.slider-inner{background:transparent url(../images/transparent_bg.png) repeat scroll 0 0!important;height:219px;overflow:hidden;position:relative;visibility:hidden;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slide{display:none;height:100%;left:0;position:absolute;top:0;}
-div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-inner img{height:303px;margin:0 !important;padding:0 !important;width:708px;}
+div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-inner img{height:219px;margin:0 !important;padding:0 !important;width:708px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-text{background:transparent url(../images/transparent_bg.png) repeat scroll 0 0!important;position:absolute;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-text-horizontal{height:85px;left:0;width:708px;}
-div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-text-vertical{height:303px;width:140px;}
+div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-text-vertical{height:219px;width:140px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-text-top{top:7px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-text-right{bottom:0;right:30px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-text-bottom{bottom:7px;}
