@@ -5756,6 +5756,11 @@ body.page-search .company-sort-bar{
     padding: 8px 0;
 }
 
+/*feature slides*/
+.view-featured-sliders .container{
+    padding: 0;
+}
+
 
 
 
