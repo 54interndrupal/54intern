@@ -47,14 +47,14 @@ div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager{width:708px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager-inner{height:59px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager .custom-pager-item{float:left;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager .custom-pager-item-inner{width:156px;}
-div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager a{background-color:#fff;color:#000;display:block;float:left;font-family:Tahoma,Arial,sans-serif;font-size:.9em;font-weight:bold;height:27px;line-height:27px;text-align:center;text-decoration:none !important;width:156px;}
+div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager a{background-color:#fff;color:#000;display:block;float:left;font-family:"微软雅黑","黑体",tahoma;font-size:.9em;font-weight:bold;height:27px;line-height:27px;text-align:center;text-decoration:none !important;width:156px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager a.activeSlide{background-color:#000;color:#fff;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager a:hover{background:#111 !important;color:#f00;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager a:focus{outline:none;}
 
 /*previous next pager */
 div.views-slideshow-ddblock-cycle-vsdupright30p div.prev-next-pager{background:#000;clear:both;display:block;height:17px;left:0;position:relative;width:708px;}
-div.views-slideshow-ddblock-cycle-vsdupright30p div.prev-next-pager a{background:#000;border:none;color:#fff;display:block;float:left;font-family:Tahoma,Arial,sans-serif;font-size:.8em;font-weight:bold;height:13px;line-height:13px;margin:0 2px 0 0;text-align:center;text-decoration:none !important;width:90px;}
+div.views-slideshow-ddblock-cycle-vsdupright30p div.prev-next-pager a{background:#000;border:none;color:#fff;display:block;float:left;font-family:"微软雅黑","黑体",tahoma;font-size:.8em;font-weight:bold;height:13px;line-height:13px;margin:0 2px 0 0;text-align:center;text-decoration:none !important;width:90px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.prev-next-pager a.prev{left:0;position:absolute;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.prev-next-pager a.count{left:178px;position:absolute;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.prev-next-pager a.next{position:absolute;right:0;}
