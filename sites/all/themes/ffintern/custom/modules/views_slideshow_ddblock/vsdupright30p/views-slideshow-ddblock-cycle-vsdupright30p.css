@@ -6,14 +6,14 @@
  * http://www.gnu.org/licenses/gpl.html 
  */
 
-div.views-slideshow-ddblock-cycle-vsdupright30p div.container{background-color:#fff;width:478px;}
-div.views-slideshow-ddblock-cycle-vsdupright30p div.container-inner{height:367px;position:relative;z-index:0;}
-div.views-slideshow-ddblock-cycle-vsdupright30p div.slider{float:left;width:478px;}
+div.views-slideshow-ddblock-cycle-vsdupright30p div.container{background-color:#fff;width:708px;}
+div.views-slideshow-ddblock-cycle-vsdupright30p div.container-inner{height:219px;position:relative;z-index:0;}
+div.views-slideshow-ddblock-cycle-vsdupright30p div.slider{float:left;width:708px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slider-inner{background:transparent url(../images/transparent_bg.png) repeat scroll 0 0!important;height:303px;overflow:hidden;position:relative;visibility:hidden;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slide{display:none;height:100%;left:0;position:absolute;top:0;}
-div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-inner img{height:303px;margin:0 !important;padding:0 !important;width:478px;}
+div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-inner img{height:303px;margin:0 !important;padding:0 !important;width:708px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-text{background:transparent url(../images/transparent_bg.png) repeat scroll 0 0!important;position:absolute;}
-div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-text-horizontal{height:85px;left:0;width:478px;}
+div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-text-horizontal{height:85px;left:0;width:708px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-text-vertical{height:303px;width:140px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-text-top{top:7px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-text-right{bottom:0;right:30px;}
@@ -43,7 +43,7 @@ div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-read-more-horizontal a
 div.views-slideshow-ddblock-cycle-vsdupright30p div.slide-read-more-vertical a:hover{right:5px;}
 
 /* custom pager */
-div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager{width:478px;}
+div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager{width:708px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager-inner{height:59px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager .custom-pager-item{float:left;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager .custom-pager-item-inner{width:156px;}
@@ -53,7 +53,7 @@ div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager a:hover{backgro
 div.views-slideshow-ddblock-cycle-vsdupright30p div.custom-pager a:focus{outline:none;}
 
 /*previous next pager */
-div.views-slideshow-ddblock-cycle-vsdupright30p div.prev-next-pager{background:#000;clear:both;display:block;height:17px;left:0;position:relative;width:478px;}
+div.views-slideshow-ddblock-cycle-vsdupright30p div.prev-next-pager{background:#000;clear:both;display:block;height:17px;left:0;position:relative;width:708px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.prev-next-pager a{background:#000;border:none;color:#fff;display:block;float:left;font-family:Tahoma,Arial,sans-serif;font-size:.8em;font-weight:bold;height:13px;line-height:13px;margin:0 2px 0 0;text-align:center;text-decoration:none !important;width:90px;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.prev-next-pager a.prev{left:0;position:absolute;}
 div.views-slideshow-ddblock-cycle-vsdupright30p div.prev-next-pager a.count{left:178px;position:absolute;}
