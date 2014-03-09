@@ -5760,6 +5760,9 @@ body.page-search .company-sort-bar{
 .view-featured-sliders .container{
     padding: 0;
 }
+.pane-featured-sliders .view{
+    margin-top: 0;
+}
 
 
 
