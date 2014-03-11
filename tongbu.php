@@ -16,9 +16,6 @@
 //session_start();
   include_once 'sites/all/modules/custom/ucuser/config.inc.php';
 
-  if (user_is_anonymous()) {
-    return;
-  }
 
   $link = mysql_connect(UC_DBHOST, UC_DBUSER, UC_DBPW) or die(mysql_error());;
   mysql_select_db(UC_DBNAME) or die(mysql_error());;
@@ -83,11 +80,13 @@
 //        print_r($content[0]);
         if (strpos($content[0][0], 'www.54intern.com') > 0) {
           echo $content[0][0];
+          echo '<script type="text/javascript">parent.window.location.href="http://www.54intern.com";</script>';
         }
         if (strpos($content[0][1], 'www.54intern.com') > 0) {
           echo $content[0][1];
+          echo '<script type="text/javascript">parent.window.location.href="http://www.54intern.com";</script>';
         }
-        echo '<script type="text/javascript">parent.window.location.href="http://www.54intern.com";</script>';
+
       }
     }
   }
