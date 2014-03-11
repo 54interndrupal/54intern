@@ -16,6 +16,10 @@
 //session_start();
   include_once 'sites/all/modules/custom/ucuser/config.inc.php';
 
+  if (user_is_anonymous()) {
+    return;
+  }
+
   $link = mysql_connect(UC_DBHOST, UC_DBUSER, UC_DBPW) or die(mysql_error());;
   mysql_select_db(UC_DBNAME) or die(mysql_error());;
 
