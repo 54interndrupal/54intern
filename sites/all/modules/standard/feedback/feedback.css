@@ -20,18 +20,20 @@
 #block-feedback-form {
   display: none;
   position: fixed;
-  top: 40%;
+  top: 60%;
   right: 20px;
   overflow: hidden;
   z-index: 10;
   max-width: 400px;
 }
 
-#block-feedback-form h2{
+#block-feedback-form h2 span.opened{
+    display: block;
+    width: 100%;
     background-color:#369;
-    height: 30px;
+    height: 25px;
     color: #FFF;
-    padding: 2px 0px 0px 5px;
+    padding: 6px 0px 0px 5px;
 }
 /* IE6 seems to be unable to handle fixed */
 * html #block-feedback-form {
@@ -45,7 +47,7 @@
 }
 
 #block-feedback-form .feedback-link.closed{
-    top: 40%;
+    top: 85%;
     right: -6px;
     width: 42px;
     height: 96px;

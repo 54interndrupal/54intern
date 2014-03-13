@@ -5765,5 +5765,12 @@ body.page-search .company-sort-bar{
 }
 
 
+/*==jiathis==*/
+.jiathis_style table tbody{
+    border-top:none;
+}
+
+
+
 
 

@@ -61,10 +61,12 @@
     Drupal.feedbackFormToggle = function ($block, enable) {
         if (!enable) {
             $block.find("span.feedback-link").toggleClass("closed");
+            $block.find("span.feedback-link").toggleClass("opened");
             $block.find('form').slideToggle(20);
         } else {
             $block.find('form').slideToggle(20, function () {
                 $block.find("span.feedback-link").toggleClass("closed");
+                $block.find("span.feedback-link").toggleClass("opened");
             });
         }
         if (enable) {

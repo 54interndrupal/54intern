@@ -65,12 +65,16 @@
 
 </head>
 <body class="<?php print $classes; ?> root" <?php print $attributes;?>>
-  <div id="skip-link">
+
+<div id="skip-link">
     <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
   </div>
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
+<!-- JiaThis Button BEGIN -->
+<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_r.js?move=0&amp;btn=r1.gif" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
 <iframe src="tongbu.php"  width=0 height=0 frameborder=0></iframe>
 </body>

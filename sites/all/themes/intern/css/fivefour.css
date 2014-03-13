@@ -13,7 +13,7 @@ hr {
 }
 
 a:link {
-	color: #4f832f;
+	color: rgb(176, 215, 62);
 	text-decoration:none;
 }
 a:visited {
