@@ -513,7 +513,7 @@ function intern_company_cron() {
 
   $sql = "select m.gid,max(n.created) last_review_created,count(*) as cnt,round(avg(field_overall_value_rating)) as overall_rating
 from {node} n,{og_membership} m,{field_data_field_overall_value} r where n.type='review' and n.nid=m.etid and n.nid=r.entity_id
-and m.gid in (select om.gid from {node} no,{og_membership} om where no.nid=om.etid and no.type='review' and no.created>1387713372)
+and m.gid in (select om.gid from {node} no,{og_membership} om where no.nid=om.etid and no.type='review' and no.created>:lastCreated)
 group by m.gid";
   $record = db_query($sql,array(':lastCreated' => $reviewLastCreated));
   foreach ($record as $rec) {
@@ -533,7 +533,26 @@ group by m.gid";
     $company->field_overall_value[LANGUAGE_NONE][0]["rating"] = $overallValue;
     $company->field_last_review_created[LANGUAGE_NONE][0]["value"] = $lastCreated;
     node_save($company);
-//    }
+    //    }
+  }
+
+  $sql = "select m.gid,count(*) as cnt
+from {node} n,{og_membership} m where n.type='job' and n.status=1 and n.nid=m.etid
+and m.gid in (select om.gid from {node} no,{og_membership} om where no.nid=om.etid and no.type='job' and no.created>1387713372)
+group by m.gid";
+  $record = db_query($sql,array(':lastCreated' => $reviewLastCreated));
+  foreach ($record as $rec) {
+    $result = array(
+      "count" => $rec->cnt,
+      'gid' => $rec->gid
+    );
+    $gid = $result['gid'];
+    $jobCount = $result['count'];
+    $company = node_load($gid);
+//    if($company->field_review_count[LANGUAGE_NONE][0]["value"]<>$reviewCount){
+    $company->field_job_count[LANGUAGE_NONE][0]["value"] = $jobCount;
+    node_save($company);
+    //    }
   }
 }
 

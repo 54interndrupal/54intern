@@ -59,6 +59,7 @@ function userreg_company_register_form($form, &$form_state) {
   hide($form["field_overall_value"]);
   hide($form["field_last_review_created"]);
   hide($form["field_review_count"]);
+  hide($form["field_job_count"]);
 
   $form["field_contact"]['und'][0]['value']["#required"]=1;
   $form["field_phone"]['und'][0]['value']["#required"]=1;
