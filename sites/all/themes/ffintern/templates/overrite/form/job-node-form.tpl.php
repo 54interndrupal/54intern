@@ -5,6 +5,7 @@
   unset($form["field_job_source"]);
   unset($form["field_source_url"]);
   unset($form["field_source_classes"]);
+  unset($form["field_job_class"]);
 //   print_r($form["field_job_sub_status"]);
 //    print_r($form['field_deadline']["und"][0]["value"]["date"]);
   $form['field_deadline']["und"][0]["value"]["date"]["#title"] = '职位有效期';
