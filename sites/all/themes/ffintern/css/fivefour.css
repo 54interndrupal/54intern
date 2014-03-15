@@ -5738,7 +5738,7 @@ body.page-search .company-sort-bar{
 }
 
 .view-companys .views-view-grid td .field-content{
-    padding: 5px 0;
+    padding: 2px 0;
     display: block;
 }
 
@@ -5773,9 +5773,10 @@ body.page-search .company-sort-bar{
 /*daoyu*/
 .daoyu{
     border: 2px solid #06c;
-    padding: 5px;
+    padding: 10px;
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.8;
+    margin-bottom: 15px;
 }
 
 
