@@ -5770,6 +5770,14 @@ body.page-search .company-sort-bar{
     border-top:none;
 }
 
+/*daoyu*/
+.daoyu{
+    border: 2px solid #369;
+    padding: 5px;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
 
 
 
