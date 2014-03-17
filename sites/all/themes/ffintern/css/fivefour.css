@@ -2830,7 +2830,7 @@ div.tabs div.active {
 }
 
 div.advanced-search {
-    padding: 15px 13px 0px 23px;
+    padding: 15px 3px 0px 23px;
     background-color: #4D963B;
     margin: 0 0 0 0;
     height: 116px;
@@ -2938,7 +2938,6 @@ div.advanced-search  #views-exposed-form-jobs-panel-pane-3 input.form-submit{
     border: 0 none;
     height: 36px;
     margin-top: 25px;
-    width: 75px;
     background-color: #B0D73E;
     padding: 5px 10px;
     color: #003300;
