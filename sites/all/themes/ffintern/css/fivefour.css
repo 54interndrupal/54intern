@@ -2934,7 +2934,7 @@ div.advanced-search  #views-exposed-form-jobs-panel-pane-3 div.views-exposed-wid
 }
 
 div.advanced-search  #views-exposed-form-jobs-panel-pane-1 input.form-submit,
-div.advanced-search  #views-exposed-form-jobs-panel-pane-3 div.views-exposed-widget{
+div.advanced-search  #views-exposed-form-jobs-panel-pane-3 input.form-submit{
     border: 0 none;
     height: 36px;
     margin-top: 25px;
@@ -2946,7 +2946,7 @@ div.advanced-search  #views-exposed-form-jobs-panel-pane-3 div.views-exposed-wid
 }
 
 div.advanced-search  #views-exposed-form-jobs-panel-pane-1 input.form-submit:hover,
-div.advanced-search  #views-exposed-form-jobs-panel-pane-3 div.views-exposed-widget{
+div.advanced-search  #views-exposed-form-jobs-panel-pane-3 input.form-submit:hover{
     background-color: #b6de3f;
     border-color: #161f29;
 }
