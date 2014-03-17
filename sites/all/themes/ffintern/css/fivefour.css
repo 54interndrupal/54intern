@@ -2883,7 +2883,7 @@ div.advanced-search input.form-submit {
     border: 0 none;
     height: 52px;
     padding-bottom: 6px;
-    min-width: 94px;
+    min-width: 75px;
     display: block;
     color: white;
     cursor: pointer;
