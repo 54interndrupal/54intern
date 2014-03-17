@@ -505,17 +505,17 @@ function intern_company_cron() {
     }
   }
 
-  $sql="select max(field_last_review_created_value) as last_created from {field_data_field_last_review_created} ";
-  $reviewLastCreated = db_query($sql)->fetchField();
+  $sql="select start_stamp as last_created from {progess} where name='uc:intern_company_cron'";
+  $cronLastRunned = db_query($sql)->fetchField();
   if (!isset($reviewLastCreated) || empty($reviewLastCreated)) {
-      $reviewLastCreated = time() - 86400 * 30;
+    $cronLastRunned = time() - 86400 * 30;
   }
 
   $sql = "select m.gid,max(n.created) last_review_created,count(*) as cnt,round(avg(field_overall_value_rating)) as overall_rating
 from {node} n,{og_membership} m,{field_data_field_overall_value} r where n.type='review' and n.nid=m.etid and n.nid=r.entity_id
-and m.gid in (select om.gid from {node} no,{og_membership} om where no.nid=om.etid and no.type='review' and no.created>:lastCreated)
+and m.gid in (select om.gid from {node} no,{og_membership} om where no.nid=om.etid and no.type='review' and no.changed>:lastChanged)
 group by m.gid";
-  $record = db_query($sql,array(':lastCreated' => $reviewLastCreated));
+  $record = db_query($sql,array(':lastChanged' => $cronLastRunned));
   foreach ($record as $rec) {
     $result = array(
       "count" => $rec->cnt,
@@ -536,11 +536,12 @@ group by m.gid";
     //    }
   }
 
+
   $sql = "select m.gid,count(*) as cnt
 from {node} n,{og_membership} m where n.type='job' and n.status=1 and n.nid=m.etid
-and m.gid in (select om.gid from {node} no,{og_membership} om where no.nid=om.etid and no.type='job' and no.created>1387713372)
+and m.gid in (select om.gid from {node} no,{og_membership} om where no.nid=om.etid and no.type='job' and no.changed>:lastChanged)
 group by m.gid";
-  $record = db_query($sql,array(':lastCreated' => $reviewLastCreated));
+  $record = db_query($sql,array(':lastChanged' => $cronLastRunned));
   foreach ($record as $rec) {
     $result = array(
       "count" => $rec->cnt,
