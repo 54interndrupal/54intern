@@ -507,7 +507,7 @@ function intern_company_cron() {
 
   $sql="select start_stamp as last_created from {progress} where name='uc:intern_company_cron'";
   $cronLastRunned = db_query($sql)->fetchField();
-  if (!isset($reviewLastCreated) || empty($reviewLastCreated)) {
+  if (!isset($cronLastRunned) || empty($cronLastRunned)) {
     $cronLastRunned = time() - 86400 * 30;
   }
 
