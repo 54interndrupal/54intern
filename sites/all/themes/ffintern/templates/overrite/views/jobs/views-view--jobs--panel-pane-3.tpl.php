@@ -27,6 +27,7 @@
  * @ingroup views_templates
  */
 ?>
+<script type="text/javascript" src="http://www.54intern.com/sites/all/modules/standard/quicktabs/js/quicktabs.js?n2ooa3"></script>
 <div class="<?php print $classes; ?>">
   <?php print render($title_prefix); ?>
   <?php if ($title): ?>
