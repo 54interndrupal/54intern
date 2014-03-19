@@ -52,21 +52,15 @@
   </div>
 
 
-
+  <?php print views_embed_view('companys', 'panel_pane_3'); ?>
   <?php if ($rows): ?>
-
 
   <div class="view-content">
     <?php print $rows; ?>
   </div>
-  <?php elseif ($empty): ?>
-  <div class="view-empty">
-    <?php print $empty; ?>
 
-  </div>
-  <?php if ($view->total_rows == 0) { ?>
-    <?php print views_embed_view('companys', 'panel_pane_3'); ?>
-    <?php } ?>
+  <?php else: ?>
+  <?php print views_embed_view('companys', 'panel_pane_3'); ?>
   <?php endif; ?>
 
   <?php if ($pager): ?>
