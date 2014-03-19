@@ -60,47 +60,54 @@
     <li class="last"><a href="/fortune500?qt-fortune500_tab=1#qt-fortune500_tab" id="quicktabs-tab-fortune500_tab-1" class="active">500强职位</a></li>
   </ul></div><div id="quicktabs-container-fortune500_tab" class="quicktabs_main quicktabs-style-intern"><div  id="quicktabs-tabpage-fortune500_tab-0" class="quicktabs-tabpage ">
 
+    <?php print views_embed_view('companys','panel_pane_3'); ?>
 
-  <?php if ($rows): ?>
-
-
-  <div class="view-content">
-    <?php print $rows; ?>
-  </div>
-  <?php elseif ($empty): ?>
-  <div class="view-empty">
-    <?php print $empty; ?>
-  </div>
-  <?php endif; ?>
-
-  <?php if ($pager): ?>
-  <?php print $pager; ?>
-  <?php endif; ?>
-
-  <?php if ($attachment_after): ?>
-  <div class="attachment attachment-after">
-    <?php print $attachment_after; ?>
-  </div>
-  <?php endif; ?>
-
-  <?php if ($more): ?>
-  <?php print $more; ?>
-  <?php endif; ?>
-
-  <?php if ($footer): ?>
-  <div class="view-footer">
-    <?php print $footer; ?>
-  </div>
-  <?php endif; ?>
-
-  <?php if ($feed_icon): ?>
-  <div class="feed-icon">
-    <?php print $feed_icon; ?>
-  </div>
-  <?php endif; ?>
 
   </div>
-    </div>
+    <div  id="quicktabs-tabpage-fortune500_tab-1" class="quicktabs-tabpage quicktabs-hide">
+
+
+        <?php if ($rows): ?>
+
+
+        <div class="view-content">
+          <?php print $rows; ?>
+        </div>
+        <?php elseif ($empty): ?>
+        <div class="view-empty">
+          <?php print $empty; ?>
+        </div>
+        <?php endif; ?>
+
+        <?php if ($pager): ?>
+        <?php print $pager; ?>
+        <?php endif; ?>
+
+        <?php if ($attachment_after): ?>
+        <div class="attachment attachment-after">
+          <?php print $attachment_after; ?>
+        </div>
+        <?php endif; ?>
+
+        <?php if ($more): ?>
+        <?php print $more; ?>
+        <?php endif; ?>
+
+        <?php if ($footer): ?>
+        <div class="view-footer">
+          <?php print $footer; ?>
+        </div>
+        <?php endif; ?>
+
+        <?php if ($feed_icon): ?>
+        <div class="feed-icon">
+          <?php print $feed_icon; ?>
+        </div>
+        <?php endif; ?>
+
+      </div>
+
+  </div>
     </div>
 
 </div><?php /* class view */ ?>
