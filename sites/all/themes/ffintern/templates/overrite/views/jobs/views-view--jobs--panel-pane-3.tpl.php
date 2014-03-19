@@ -100,5 +100,7 @@
   <?php endif; ?>
 
   </div>
+    </div>
+    </div>
 
 </div><?php /* class view */ ?>
