@@ -56,7 +56,14 @@
   </div>
   <?php endif; ?>
 
+  <div  id="quicktabs-fortune500_tab" class="quicktabs-wrapper quicktabs-style-intern"><div class="item-list"><ul class="quicktabs-tabs quicktabs-style-intern"><li class="active first"><a href="/fortune500?qt-fortune500_tab=0#qt-fortune500_tab" id="quicktabs-tab-fortune500_tab-0" class="active">500强企业</a></li>
+    <li class="last"><a href="/fortune500?qt-fortune500_tab=1#qt-fortune500_tab" id="quicktabs-tab-fortune500_tab-1" class="active">500强职位</a></li>
+  </ul></div><div id="quicktabs-container-fortune500_tab" class="quicktabs_main quicktabs-style-intern"><div  id="quicktabs-tabpage-fortune500_tab-0" class="quicktabs-tabpage ">
+
+
   <?php if ($rows): ?>
+
+
   <div class="view-content">
     <?php print $rows; ?>
   </div>
@@ -91,5 +98,7 @@
     <?php print $feed_icon; ?>
   </div>
   <?php endif; ?>
+
+  </div>
 
 </div><?php /* class view */ ?>
