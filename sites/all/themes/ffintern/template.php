@@ -45,7 +45,7 @@ function ffintern_preprocess_page(&$variables) {
 //    print_r($variables['theme_hook_suggestions']);
   }
 
-  if (arg(0) == 'jobs' || arg(0) == 'companycenter' || arg(0) == 'node') {
+  if (arg(0) == 'jobs' || arg(0) == 'companycenter' || arg(0) == 'node'|| arg(0) == 'fortune500') {
     _ffintern_add_quicktab_css();
   }
 }
