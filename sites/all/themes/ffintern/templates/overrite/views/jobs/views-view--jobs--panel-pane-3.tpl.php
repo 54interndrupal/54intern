@@ -51,15 +51,7 @@
     <?php endif; ?>
   </div>
 
-  <?php if ($attachment_before): ?>
-  <div class="attachment attachment-before">
-    <?php print $attachment_before; ?>
-  </div>
-  <?php endif; ?>
 
-
-
-  <?php print views_embed_view('companys', 'panel_pane_3'); ?>
 
   <?php if ($rows): ?>
 
@@ -70,18 +62,17 @@
   <?php elseif ($empty): ?>
   <div class="view-empty">
     <?php print $empty; ?>
+
   </div>
+  <?php if ($view->total_rows == 0) { ?>
+    <?php print views_embed_view('companys', 'panel_pane_3'); ?>
+    <?php } ?>
   <?php endif; ?>
 
   <?php if ($pager): ?>
   <?php print $pager; ?>
   <?php endif; ?>
 
-  <?php if ($attachment_after): ?>
-  <div class="attachment attachment-after">
-    <?php print $attachment_after; ?>
-  </div>
-  <?php endif; ?>
 
   <?php if ($more): ?>
   <?php print $more; ?>
@@ -90,12 +81,6 @@
   <?php if ($footer): ?>
   <div class="view-footer">
     <?php print $footer; ?>
-  </div>
-  <?php endif; ?>
-
-  <?php if ($feed_icon): ?>
-  <div class="feed-icon">
-    <?php print $feed_icon; ?>
   </div>
   <?php endif; ?>
 
