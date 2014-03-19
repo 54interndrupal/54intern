@@ -52,7 +52,6 @@
   </div>
 
 
-  <?php print views_embed_view('companys', 'panel_pane_3'); ?>
   <?php if ($rows): ?>
 
   <div class="view-content">
