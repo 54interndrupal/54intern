@@ -100,11 +100,11 @@
 
 <script type="text/javascript">
   function changeTab(tabName, tab){
-    $(".quicktabs-tabpage").hide();
-    $('#'+tabName).show();
-    $(".active",$("#quicktabs-fortune500_main_tabs")).removeClass("active");
-    $(tab).addClass("active");
-    $(tab).parent("li").addClass("active");
+    jQuery(".quicktabs-tabpage").hide();
+    jQuery('#'+tabName).show();
+    jQuery(".active",jQuery("#quicktabs-fortune500_main_tabs")).removeClass("active");
+    jQuery(tab).addClass("active");
+    jQuery(tab).parent("li").addClass("active");
   }
 
 </script>
