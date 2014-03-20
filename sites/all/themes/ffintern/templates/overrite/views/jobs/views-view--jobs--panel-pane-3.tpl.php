@@ -70,7 +70,7 @@ if(!empty($_GET['field_location_tid'])){
         <?php print views_embed_view('companys', 'panel_pane_3'); ?>
       </div>
 
-      <div id="quicktabs-tabpage-fortune500_main_tabs1" class="quicktabs-tabpage <?php if($isShowCompany){ ?>"quicktabs-hide<?php }?>">
+      <div id="quicktabs-tabpage-fortune500_main_tabs-1" class="quicktabs-tabpage <?php if($isShowCompany){ ?>"quicktabs-hide<?php }?>">
         <?php if ($rows): ?>
 
         <div class="view-content">
