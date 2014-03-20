@@ -51,31 +51,49 @@
     <?php endif; ?>
   </div>
 
+  <div id="quicktabs-front_main_tabs" class="quicktabs-wrapper quicktabs-style-intern">
+    <div class="item-list">
+      <ul class="quicktabs-tabs quicktabs-style-intern">
+        <li class="active first"><a href="/frontpage?qt-front_main_tabs=0#qt-front_main_tabs"
+                                    id="quicktabs-tab-front_main_tabs-0" class="active">热门文章</a></li>
+        <li class="last"><a href="/frontpage?qt-front_main_tabs=1#qt-front_main_tabs"
+                            id="quicktabs-tab-front_main_tabs-1" class="active">最新实习职位</a></li>
+      </ul>
+    </div>
+    <div id="quicktabs-container-front_main_tabs" class="quicktabs_main quicktabs-style-intern">
+      <div id="quicktabs-tabpage-front_main_tabs-0" class="quicktabs-tabpage ">
+        <?php print views_embed_view('companys', 'panel_pane_3'); ?>
+      </div>
 
-  <?php if ($rows): ?>
+      <div id="quicktabs-tabpage-front_main_tabs-1" class="quicktabs-tabpage ">
+        <?php if ($rows): ?>
 
-  <div class="view-content">
-    <?php print $rows; ?>
+        <div class="view-content">
+          <?php print $rows; ?>
+        </div>
+
+        <?php else: ?>
+
+        <?php endif; ?>
+
+        <?php if ($pager): ?>
+        <?php print $pager; ?>
+        <?php endif; ?>
+
+
+        <?php if ($more): ?>
+        <?php print $more; ?>
+        <?php endif; ?>
+
+        <?php if ($footer): ?>
+        <div class="view-footer">
+          <?php print $footer; ?>
+        </div>
+        <?php endif; ?>
+
+      </div>
+
+
+    </div>
   </div>
-
-  <?php else: ?>
-  <?php print views_embed_view('companys', 'panel_pane_3'); ?>
-  <?php endif; ?>
-
-  <?php if ($pager): ?>
-  <?php print $pager; ?>
-  <?php endif; ?>
-
-
-  <?php if ($more): ?>
-  <?php print $more; ?>
-  <?php endif; ?>
-
-  <?php if ($footer): ?>
-  <div class="view-footer">
-    <?php print $footer; ?>
-  </div>
-  <?php endif; ?>
-
-
 </div><?php /* class view */ ?>
