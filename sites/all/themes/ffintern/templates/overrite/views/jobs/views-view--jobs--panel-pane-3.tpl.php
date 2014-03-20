@@ -27,7 +27,12 @@
  * @ingroup views_templates
  */
 ?>
-
+<?php
+$isShowCompany = true;
+if(!empty($_GET['field_location_tid'])){
+  $isShowCompany = false;
+}
+?>
 <div class="<?php print $classes; ?>">
   <?php print render($title_prefix); ?>
   <?php if ($title): ?>
@@ -54,18 +59,18 @@
   <div id="quicktabs-fortune500_main_tabs" class="quicktabs-wrapper quicktabs-style-intern">
     <div class="item-list">
       <ul class="quicktabs-tabs quicktabs-style-intern">
-        <li class="active first"><a href="#" onclick="changeTab('quicktabs-tabpage-fortune500_main_tabs-0',this)"
-                                    id="quicktabs-tab-front_main_tabs-0" class="active">500强企业</a></li>
-        <li class="last"><a href="#" onclick="changeTab('quicktabs-tabpage-fortune500_main_tabs-1',this)"
-                            id="quicktabs-tab-front_main_tabs-1" class="active">500强职位</a></li>
+        <li class="<?php if($isShowCompany){ ?>active<?php }?> first"><a href="#" onclick="changeTab('quicktabs-tabpage-fortune500_main_tabs-0',this)"
+                                    id="quicktabs-tab-front_main_tabs-0" <?php if($isShowCompany){ ?>class="active"<?php }?>>500强企业</a></li>
+        <li class="<?php if($isShowCompany){ ?>active<?php }?> last"><a href="#" onclick="changeTab('quicktabs-tabpage-fortune500_main_tabs-1',this)"
+                            id="quicktabs-tab-front_main_tabs-1" <?php if(!$isShowCompany){ ?>class="active"<?php }?>>500强职位</a></li>
       </ul>
     </div>
     <div id="quicktabs-container-fortune500_main_tabs" class="quicktabs_main quicktabs-style-intern">
-      <div id="quicktabs-tabpage-fortune500_main_tabs-0" class="quicktabs-tabpage ">
+      <div id="quicktabs-tabpage-fortune500_main_tabs-0" class="quicktabs-tabpage <?php if(!$isShowCompany){ ?>"quicktabs-hide<?php }?>">
         <?php print views_embed_view('companys', 'panel_pane_3'); ?>
       </div>
 
-      <div id="quicktabs-tabpage-fortune500_main_tabs1" class="quicktabs-tabpage ">
+      <div id="quicktabs-tabpage-fortune500_main_tabs1" class="quicktabs-tabpage <?php if($isShowCompany){ ?>"quicktabs-hide<?php }?>">
         <?php if ($rows): ?>
 
         <div class="view-content">
@@ -100,8 +105,8 @@
 
 <script type="text/javascript">
   function changeTab(tabName, tab){
-    jQuery(".quicktabs-tabpage").hide();
-    jQuery('#'+tabName).show();
+    jQuery(".quicktabs-tabpage").addClass("quicktabs-hide");
+    jQuery('#'+tabName).removeClass("quicktabs-hide");
     jQuery(".active",jQuery("#quicktabs-fortune500_main_tabs")).removeClass("active");
     jQuery(tab).addClass("active");
     jQuery(tab).parent("li").addClass("active");
