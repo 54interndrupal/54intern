@@ -936,7 +936,7 @@ body.admin-menu {
     float: right;
     color: #6A6A6A;
     z-index: 2;
-    padding: 0 0 0 0;
+    padding: 5px 0 0 0;
 }
 
 #top-toolbar .block-content {
