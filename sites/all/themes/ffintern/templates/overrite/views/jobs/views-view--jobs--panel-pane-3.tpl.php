@@ -51,21 +51,21 @@
     <?php endif; ?>
   </div>
 
-  <div id="quicktabs-front_main_tabs" class="quicktabs-wrapper quicktabs-style-intern">
+  <div id="quicktabs-fortune500_main_tabs" class="quicktabs-wrapper quicktabs-style-intern">
     <div class="item-list">
       <ul class="quicktabs-tabs quicktabs-style-intern">
-        <li class="active first"><a href="/frontpage?qt-front_main_tabs=0#qt-front_main_tabs"
-                                    id="quicktabs-tab-front_main_tabs-0" class="active">热门文章</a></li>
-        <li class="last"><a href="/frontpage?qt-front_main_tabs=1#qt-front_main_tabs"
-                            id="quicktabs-tab-front_main_tabs-1" class="active">最新实习职位</a></li>
+        <li class="active first"><a href="#" onclick="changeTab('quicktabs-tabpage-fortune500_main_tabs-0',this)"
+                                    id="quicktabs-tab-front_main_tabs-0" class="active">500强企业</a></li>
+        <li class="last"><a href="#" onclick="changeTab('quicktabs-tabpage-fortune500_main_tabs-1',this)"
+                            id="quicktabs-tab-front_main_tabs-1" class="active">500强职位</a></li>
       </ul>
     </div>
-    <div id="quicktabs-container-front_main_tabs" class="quicktabs_main quicktabs-style-intern">
-      <div id="quicktabs-tabpage-front_main_tabs-0" class="quicktabs-tabpage ">
+    <div id="quicktabs-container-fortune500_main_tabs" class="quicktabs_main quicktabs-style-intern">
+      <div id="quicktabs-tabpage-fortune500_main_tabs-0" class="quicktabs-tabpage ">
         <?php print views_embed_view('companys', 'panel_pane_3'); ?>
       </div>
 
-      <div id="quicktabs-tabpage-front_main_tabs-1" class="quicktabs-tabpage ">
+      <div id="quicktabs-tabpage-fortune500_main_tabs1" class="quicktabs-tabpage ">
         <?php if ($rows): ?>
 
         <div class="view-content">
@@ -97,3 +97,14 @@
     </div>
   </div>
 </div><?php /* class view */ ?>
+
+<script type="text/javascript">
+  function changeTab(tabName, tab){
+    $(".quicktabs-tabpage").hide();
+    $('#'+tabName).show();
+    $(".active",$("#quicktabs-fortune500_main_tabs")).removeClass("active");
+    $(tab).addClass("active");
+    $(tab).parent("li").addClass("active");
+  }
+
+</script>
