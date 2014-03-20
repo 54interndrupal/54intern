@@ -38,6 +38,37 @@ function intern_job_menu() {
   return $items;
 }
 
+function intern_job_block_info() {
+  $blocks['fortune500 ads'] = array(
+    'info' => t('Intern Job -- Fortune500广告')
+  );
+
+  return $blocks;
+}
+
+function intern_job_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'fortune500 ads':
+      $block['subject'] = '';
+      $block['content'] = intern_job_fortune500_ads_block();
+      break;
+
+  }
+
+  return $block;
+}
+
+function intern_job_fortune500_ads_block(){
+  global $base_url;
+
+  $output = '<a href="/fortune">';
+  $output .= '<img src="'. $base_url . '/' . drupal_get_path('theme', 'ffintern') . '/css/img/site/fortune500.png'.' alt="500强专区"/>';
+  $output .= '</a>';
+
+  return $output;
+}
+
 function intern_job_action_page($action_type, $nid) {
   $node = node_load($nid);
   if ($action_type == JOB_ACTION_REFRESH) {
