@@ -62,7 +62,7 @@ function intern_job_block_view($delta = '') {
 function intern_job_fortune500_ads_block(){
   global $base_url;
 
-  $output = '<a href="/fortune">';
+  $output = '<a href="/fortune500">';
   $output .= '<img src="'. $base_url . '/' . drupal_get_path('theme', 'ffintern') . '/css/img/site/fortune500.png"'.' alt="500强专区"/>';
   $output .= '</a>';
 
