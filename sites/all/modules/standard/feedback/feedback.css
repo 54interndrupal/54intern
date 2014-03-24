@@ -20,7 +20,7 @@
 #block-feedback-form {
   display: none;
   position: fixed;
-  top: 60%;
+  bottom: 120px;
   right: 20px;
   overflow: hidden;
   z-index: 10;
