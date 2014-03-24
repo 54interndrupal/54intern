@@ -26,7 +26,12 @@
 ?>
 
 
-<?php $review_content = views_embed_view('company_reviews_in_blocks', 'panel_pane_1', $fields['nid']->content);?>
+<?php $review_content = views_embed_view('company_reviews_in_blocks', 'panel_pane_1', $fields['nid']->content);
+ if(length($review_content)>10){
+    $review_content = substr($review_content,0,10);
+ }
+?>
+
 <div>
   <div class='row row-<?php print $fields['counter']->content ?>'><?php print $fields['counter']->content ?></div>
   <div class='company-comment'>

@@ -1971,6 +1971,11 @@ div.user-login-header span.inactive a {
 .view-display-id-block_top_featured_article .views-field-title  a {
     color: RGB(0, 51, 51);
     font-size: 20px;
+    font-family: "microsoft yahei", "simhei";
+}
+
+.view-display-id-block_top_featured_article .views-field-body  a {
+    color: #333;
 }
 
 .view-display-id-block_top_featured_article .views-field-name {
@@ -3183,11 +3188,15 @@ body.front #temp-showcase {
 #temp-login input.hint{
     width: 218px;
     height: 36px;
-    padding: 10px 5px 4px 5px;
 }
 
 .user-login-content {
     padding: 2px 8px 5px 8px;
+}
+
+.user-login-content .form-text{
+    font-size: 16px;
+    padding: 5px;
 }
 
 .user-login-content .form-submit{
@@ -5772,6 +5781,10 @@ body.page-search .company-sort-bar{
 /*==jiathis==*/
 .jiathis_style table tbody{
     border-top:none;
+}
+
+.jiathis_style .jiadiv_02 .jiatitle{
+    box-sizing: content-box;
 }
 
 /*daoyu*/
