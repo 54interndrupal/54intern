@@ -30,7 +30,7 @@
 #block-feedback-form h2 span.opened{
     display: block;
     width: 100%;
-    background-color:#369;
+    background-color:#EA6F3D;
     height: 25px;
     color: #FFF;
     padding: 6px 0px 0px 5px;
@@ -110,6 +110,6 @@
 
 }
 #block-feedback-form .form-submit{
-    background-color:  #369;
+    background-color:  #EA6F3D;
 }
 
