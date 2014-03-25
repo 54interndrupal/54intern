@@ -28,7 +28,7 @@
 
 <?php $review_content = views_embed_view('company_reviews_in_blocks', 'panel_pane_1', $fields['nid']->content);
  if(drupal_strlen($review_content)>10){
-    $review_content = drupal_substr($review_content,0,10)+"...";
+    $review_content = drupal_substr($review_content,0,10)."...";
  }
 ?>
 
