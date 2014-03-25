@@ -2324,6 +2324,7 @@ div.pane-intern-company-company-center-shortcuts span.inactive {
     padding: 5px 0 3px 6px;
     background-color: RGB(240, 251, 230);
     width: 215px;
+    cursor: pointer;
 }
 
 .pane-company-reviews-in-blocks .company-comment .field-content{

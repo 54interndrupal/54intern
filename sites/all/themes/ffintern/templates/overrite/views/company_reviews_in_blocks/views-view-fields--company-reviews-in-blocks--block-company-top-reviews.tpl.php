@@ -34,8 +34,9 @@
 
 <div>
   <div class='row row-<?php print $fields['counter']->content ?>'><?php print $fields['counter']->content ?></div>
-  <a href="/company/<?php print $fields['nid']->content?>"><div class='company-comment'>
+
+  <div class='company-comment' onclick='window.open("/company/<?php print $fields['nid']->content?>")'>
     <?php print $fields['title']->content ?>
     <p><span class='c-1 title'>"<?php print $review_content ?>" </span><span class='c-2 daycount'> <?php print $fields['field_review_count']->content ?> 条评论</span></p>
-  </div></a>
+  </div>
 </div>
