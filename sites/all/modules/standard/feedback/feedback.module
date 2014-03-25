@@ -75,7 +75,7 @@ function feedback_entity_info() {
  */
 function feedback_uri($entry) {
   return array(
-    'path' => 'admin/reports/feedback/' . $entry->fid,
+    'path' => 'admin/workbench/feedback/' . $entry->fid,
   );
 }
 
@@ -110,14 +110,14 @@ function feedback_menu() {
     'access arguments' => array('view feedback messages'),
     'file' => 'feedback.admin.inc',
   );
-  $items['admin/reports/feedback/%feedback'] = array(
+  $items['admin/workbench/feedback/%feedback'] = array(
     'title' => 'Feedback entry',
     'page callback' => 'feedback_view',
     'page arguments' => array(3),
     'access arguments' => array('view feedback messages'),
     'file' => 'feedback.admin.inc',
   );
-  $items['admin/reports/feedback/%feedback/delete'] = array(
+  $items['admin/workbench/feedback/%feedback/delete'] = array(
     'title' => 'Delete feedback entry',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('feedback_delete_confirm', 3),

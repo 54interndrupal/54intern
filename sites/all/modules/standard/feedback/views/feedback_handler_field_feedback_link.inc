@@ -38,7 +38,7 @@ class feedback_handler_field_feedback_link extends views_handler_field {
 
   function render_link($data, $values) {
     $this->options['alter']['make_link'] = TRUE;
-    $this->options['alter']['path'] = "admin/reports/feedback/$data";
+    $this->options['alter']['path'] = "admin/workbench/feedback/$data";
     $text = !empty($this->options['text']) ? $this->options['text'] : t('view');
     return $text;
   }

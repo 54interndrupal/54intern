@@ -81,12 +81,12 @@ class FeedbackTestCase extends DrupalWebTestCase {
 
     // Verify a delete link is shown.
     $this->drupalGet('admin/reports/feedback');
-    $this->assertLinkByHref('admin/reports/feedback/1/delete');
+    $this->assertLinkByHref('admin/workbench/feedback/1/delete');
 
     // Verify deletion.
-    $this->drupalPost('admin/reports/feedback/1/delete', array(), t('Delete'));
+    $this->drupalPost('admin/workbench/feedback/1/delete', array(), t('Delete'));
     $this->assertRaw(t('The feedback entry was deleted'), t('Feedback deletion message shown.'));
-    $this->assertNoLinkByHref('admin/reports/feedback/1/delete');
+    $this->assertNoLinkByHref('admin/workbench/feedback/1/delete');
     $this->assertNoRaw(check_plain($message), t('Message not found.'));
   }
 }

@@ -58,7 +58,7 @@ function feedback_admin_view_form($form, &$form_state) {
         $form['feedback-messages'][$status][$fid]['date'] = array('#markup' => format_date($entry->timestamp, 'small'));
         $form['feedback-messages'][$status][$fid]['user'] = array('#markup' => check_plain(format_username($entry)));
         $form['feedback-messages'][$status][$fid]['message'] = feedback_format_message($entry);
-        $form['feedback-messages'][$status][$fid]['delete'] = array('#type' => 'link', '#title' => t('delete'), '#href' => "admin/reports/feedback/$fid/delete");
+        $form['feedback-messages'][$status][$fid]['delete'] = array('#type' => 'link', '#title' => t('delete'), '#href' => "admin/workbench/feedback/$fid/delete");
       }
     }
   }

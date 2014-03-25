@@ -221,7 +221,7 @@ function feedback_views_default_views() {
   $handler->display->display_options['fields']['fid']['alter']['alter_text'] = 1;
   $handler->display->display_options['fields']['fid']['alter']['text'] = ' delete';
   $handler->display->display_options['fields']['fid']['alter']['make_link'] = 1;
-  $handler->display->display_options['fields']['fid']['alter']['path'] = 'admin/reports/feedback/[fid]/delete';
+  $handler->display->display_options['fields']['fid']['alter']['path'] = 'admin/workbench/feedback/[fid]/delete';
   $handler->display->display_options['fields']['fid']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['fid']['alter']['external'] = 0;
   $handler->display->display_options['fields']['fid']['alter']['replace_spaces'] = 0;
@@ -301,7 +301,7 @@ function feedback_views_default_views() {
     t('Date'),
     t('Message'),
     t(' delete'),
-    t('admin/reports/feedback/[fid]/delete'),
+    t('admin/workbench/feedback/[fid]/delete'),
     t('.'),
     t('Page'),
     t('Attachment'),
