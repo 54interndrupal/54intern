@@ -667,6 +667,7 @@ textarea.hint,
 input.hint {
     color: rgb(178, 178, 178);
     font-weight: bold;
+    padding-left: 5px;
 }
 
 div.form-item div.form-radios {

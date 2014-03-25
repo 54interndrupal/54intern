@@ -39,7 +39,7 @@
    <?php foreach ($views_slideshow_ddblock_pager_items as $pager_item): ?>
     <div class="<?php print $settings['pager'] ?>-item <?php print $settings['pager'] ?>-item-<?php print $item_counter ?>">
      <div class="<?php print $settings['pager'] ?>-item-inner"> 
-      <a href="#" title="navigate to topic" class="pager-link"><?php print $pager_item['pager_text']; ?> </a>
+      <a href="#" title="navigate to topic" class="pager-link"><?php print $item_counter+1 ?> </a>
      </div>
     </div> <!-- /custom-pager-item -->
     <?php $item_counter++; if ($item_counter % $number_of_items_per_row == 0):?>
