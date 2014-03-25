@@ -27,9 +27,9 @@
 
 
 <?php $review_content = views_embed_view('company_reviews_in_blocks', 'panel_pane_1', $fields['nid']->content);
- if(length($review_content)>10){
-    $review_content = substr($review_content,0,10);
- }
+// if(length($review_content)>10){
+//    $review_content = substr($review_content,0,10);
+// }
 ?>
 
 <div>
