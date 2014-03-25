@@ -142,7 +142,7 @@ function feedback_admin_settings_form($form, &$form_state) {
   $form['feedback_excluded_paths'] = array(
     '#type' => 'textarea',
     '#title' => t('Paths to exclude from feedback display'),
-    '#default_value' => variable_get('feedback_excluded_paths', 'admin/reports/feedback'),
+    '#default_value' => variable_get('feedback_excluded_paths', 'admin/workbench/feedback/'),
     '#description' => t("Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>')),
   );
   return system_settings_form($form);
@@ -250,7 +250,7 @@ function feedback_delete_confirm($form, &$form_state, $entry) {
   $form['fid'] = array('#type' => 'value', '#value' => $entry->fid);
   $output = confirm_form($form,
     t('Are you sure you want to delete the feedback entry?'),
-    'admin/reports/feedback',
+    'admin/workbench/feedback/',
     NULL,
     t('Delete'));
   return $output;
@@ -263,5 +263,5 @@ function feedback_delete_confirm_submit($form, &$form_state) {
   feedback_delete($form_state['values']['fid']);
   drupal_set_message(t('The feedback entry was deleted.'));
 
-  $form_state['redirect'] = 'admin/reports/feedback';
+  $form_state['redirect'] = 'admin/workbench/feedback/';
 }

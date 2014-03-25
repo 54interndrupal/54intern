@@ -102,7 +102,7 @@ function feedback_permission() {
  * Implements hook_menu().
  */
 function feedback_menu() {
-  $items['admin/reports/feedback'] = array(
+  $items['admin/workbench/feedback/'] = array(
     'title' => 'Feedback messages',
     'description' => 'View feedback messages.',
     'page callback' => 'drupal_get_form',
@@ -156,7 +156,7 @@ function feedback_init() {
  * Implements hook_page_build().
  */
 function feedback_page_build(&$page) {
-  if (user_access('access feedback form') && !feedback_match_path(variable_get('feedback_excluded_paths', 'admin/reports/feedback'))) {
+  if (user_access('access feedback form') && !feedback_match_path(variable_get('feedback_excluded_paths', 'admin/workbench/feedback/'))) {
     $page['page_bottom']['feedback'] = array(
       '#theme' => 'feedback_form_display',
       '#title' => t('Site Feedback'),

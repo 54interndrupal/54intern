@@ -40,7 +40,7 @@ class FeedbackTestCase extends DrupalWebTestCase {
 
     // Verify the message was recorded.
     $this->drupalLogin($this->admin_user);
-    $this->drupalGet('admin/reports/feedback');
+    $this->drupalGet('admin/workbench/feedback/');
     $this->assertRaw(check_plain($message), t('Message found.'));
     $this->assertText('node', t('Originating system path found.'));
     $this->assertLinkByHref(url('node', array('absolute' => TRUE)), 0, t('Originating absolute URL found.'));
@@ -80,7 +80,7 @@ class FeedbackTestCase extends DrupalWebTestCase {
     $this->drupalPost('node', $edit, t('Send feedback'));
 
     // Verify a delete link is shown.
-    $this->drupalGet('admin/reports/feedback');
+    $this->drupalGet('admin/workbench/feedback/');
     $this->assertLinkByHref('admin/workbench/feedback/1/delete');
 
     // Verify deletion.
