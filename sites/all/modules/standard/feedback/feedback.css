@@ -20,7 +20,7 @@
 #block-feedback-form {
   display: none;
   position: fixed;
-  bottom: 120px;
+  bottom: 20px;
   right: 20px;
   overflow: hidden;
   z-index: 10;
@@ -47,7 +47,7 @@
 }
 
 #block-feedback-form .feedback-link.closed{
-    top: 85%;
+    bottom:30px;
     right: -6px;
     width: 42px;
     height: 96px;
