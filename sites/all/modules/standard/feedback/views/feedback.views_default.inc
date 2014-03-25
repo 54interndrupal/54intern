@@ -255,7 +255,7 @@ function feedback_views_default_views() {
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Feedback messages';
   $handler->display->display_options['menu']['description'] = 'View feedback messages.';
-  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['weight'] = '50';
   $handler->display->display_options['menu']['name'] = 'management';
 
   /* Display: Attachment */
