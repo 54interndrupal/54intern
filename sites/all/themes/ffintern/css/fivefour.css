@@ -2327,7 +2327,8 @@ div.pane-intern-company-company-center-shortcuts span.inactive {
 }
 
 .pane-company-reviews-in-blocks .company-comment .field-content{
-    margin-bottom: 3px;
+    display: block;
+    margin-bottom: 5px;
 }
 .pane-company-reviews-in-blocks .company-comment span{
     font-size:12px;
