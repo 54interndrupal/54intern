@@ -30,7 +30,7 @@
 ?>
 <!-- custom pager with text. -->
 <?php if ($settings['pager_position'] == 'bottom'): ?>
- <div class="spacer-horizontal"><b></b></div>
+<!-- <div class="spacer-horizontal"><b></b></div>-->
 <?php endif; ?>
 <div id="views-slideshow-ddblock-custom-pager-<?php print $settings['delta'] ?>" class="<?php print $settings['pager'] ?> clear-block border">
  <div  class="<?php print $settings['pager'] ?>-inner clear-block border">
@@ -44,10 +44,10 @@
     </div> <!-- /custom-pager-item -->
     <?php $item_counter++; if ($item_counter % $number_of_items_per_row == 0):?>
      <?php if ($item_counter <> $number_of_items): ?>
-       <div class="spacer-horizontal"><b></b></div>
+<!--       <div class="spacer-horizontal"><b></b></div>-->
      <?php endif; ?>  
     <?php else: ?>
-     <div class="spacer-vertical"></div>
+<!--     <div class="spacer-vertical"></div>-->
     <?php endif; ?>
    <?php endforeach; ?>
   <?php endif; ?>
