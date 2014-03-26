@@ -540,27 +540,27 @@ group by m.gid";
   }
 
 
-  $sql = "select m.gid,count(*) as cnt
-from {node} n,{og_membership} m where n.type='job' and  n.nid=m.etid
-and m.gid in (select om.gid from {node} no,{og_membership} om where no.nid=om.etid and no.type='job' and no.changed>:lastChanged)
-group by m.gid";
-  $record = db_query($sql,array(':lastChanged' => $cronLastRunned));
-  foreach ($record as $rec) {
-    $result = array(
-      "count" => $rec->cnt,
-      'gid' => $rec->gid
-    );
-    $gid = $result['gid'];
-    $jobCount = $result['count'];
-    if($jobCount == 0){
-      $jobCount = null;
-    }
-    $company = node_load($gid);
-//    if($company->field_review_count[LANGUAGE_NONE][0]["value"]<>$reviewCount){
-    $company->field_job_count[LANGUAGE_NONE][0]["value"] = $jobCount;
-    node_save($company);
+//  $sql = "select m.gid,count(*) as cnt
+//from {node} n,{og_membership} m where n.type='job' and  n.nid=m.etid
+//and m.gid in (select om.gid from {node} no,{og_membership} om where no.nid=om.etid and no.type='job' and no.changed>:lastChanged)
+//group by m.gid";
+//  $record = db_query($sql,array(':lastChanged' => $cronLastRunned));
+//  foreach ($record as $rec) {
+//    $result = array(
+//      "count" => $rec->cnt,
+//      'gid' => $rec->gid
+//    );
+//    $gid = $result['gid'];
+//    $jobCount = $result['count'];
+//    if($jobCount == 0){
+//      $jobCount = null;
+//    }
+//    $company = node_load($gid);
+////    if($company->field_review_count[LANGUAGE_NONE][0]["value"]<>$reviewCount){
+//    $company->field_job_count[LANGUAGE_NONE][0]["value"] = $jobCount;
+//    node_save($company);
     //    }
-  }
+//  }
 }
 
 function intern_company_add_company_form($form, &$form_state) {
