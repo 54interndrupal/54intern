@@ -778,7 +778,7 @@ function entityreference_autocomplete_callback($type, $field_name, $entity_type,
 
   if (!empty($tag_last)) {
     // Get an array of matching entities.
-    $entity_labels = $handler->getReferencableEntities($tag_last, $instance['widget']['settings']['match_operator'], 10);
+    $entity_labels = $handler->getReferencableEntities($tag_last, $instance['widget']['settings']['match_operator'], 50);
 
     // Loop through the products and convert them into autocomplete output.
     foreach ($entity_labels as $entity_id => $label) {
