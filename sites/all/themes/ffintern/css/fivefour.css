@@ -5762,6 +5762,11 @@ body.page-search .company-sort-bar{
     color: #00B0F0;
 }
 
+.view-companys .views-view-grid .views-field-field-job-count{
+    display: inline-block;
+    color: #EA6F3D;
+}
+
 .page-fortune500 .view-id-companys  h3{
     font-size: 14px;
     font-weight: bold;
