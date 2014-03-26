@@ -403,7 +403,7 @@ function ffintern_menu_link__main_menu(array $variables) {
 
       }
       else {
-        if (($mlid == 625 && (isset($params[1]) && $params[1] == 'job')) || arg(0) == 'fortune500') {
+        if ($mlid == 625 && ((isset($params[1]) && $params[1] == 'job') || arg(0) == 'fortune500')) {
           $attributes['class'][] = 'active';
           $element['#attributes']['class'][]='active';
 
