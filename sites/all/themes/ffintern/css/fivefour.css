@@ -5752,7 +5752,9 @@ body.page-search .company-sort-bar{
 .view-companys .views-view-grid td{
    width: 33%
 }
-
+.view-companys .views-view-grid td .views-field-title{
+    display: inline-block;
+}
 .view-companys .views-view-grid td .field-content{
     padding: 2px 0;
     display: block;
