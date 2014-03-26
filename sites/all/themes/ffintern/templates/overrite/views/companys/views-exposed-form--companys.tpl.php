@@ -81,7 +81,7 @@
 <script type="text/javascript">
   (function ($) {
     $(document).ready(function () {
-      $('#edit-search').attr("placeholder","请输入公司名等关键词");
+      $('#edit-search').attr("placeholder","请输入公司名称关键词");
       $('#edit-search').placeholder();
     });
   })(jQuery);
