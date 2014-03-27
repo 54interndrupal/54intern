@@ -58,7 +58,11 @@ function feedback_admin_view_form($form, &$form_state) {
         $form['feedback-messages'][$status][$fid]['date'] = array('#markup' => format_date($entry->timestamp, 'small'));
         $form['feedback-messages'][$status][$fid]['user'] = array('#markup' => check_plain(format_username($entry)));
         $form['feedback-messages'][$status][$fid]['message'] = feedback_format_message($entry);
-        $form['feedback-messages'][$status][$fid]['delete'] = array('#type' => 'link', '#title' => t('delete'), '#href' => "admin/workbench/feedback/$fid/delete");
+        $form['feedback-messages'][$status][$fid]['delete'] = array(
+          '#type' => 'link',
+          '#title' => t('delete'),
+          '#href' => "admin/workbench/feedback/$fid/delete"
+        );
       }
     }
   }
@@ -143,8 +147,13 @@ function feedback_admin_settings_form($form, &$form_state) {
     '#type' => 'textarea',
     '#title' => t('Paths to exclude from feedback display'),
     '#default_value' => variable_get('feedback_excluded_paths', 'admin/workbench/feedback/'),
-    '#description' => t("Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>')),
+    '#description' => t("Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array(
+      '%blog' => 'blog',
+      '%blog-wildcard' => 'blog/*',
+      '%front' => '<front>'
+    )),
   );
+
   return system_settings_form($form);
 }
 
@@ -254,6 +263,52 @@ function feedback_delete_confirm($form, &$form_state, $entry) {
     NULL,
     t('Delete'));
   return $output;
+}
+
+function feedback_reply_form($form, &$form_state, $entry) {
+  $form = array();
+  $form['fid'] = array('#type' => 'value', '#value' => $entry->fid);
+  $form['recipient'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Recipient'),
+    '#default_value' => $entry -> name,
+    '#maxlength' => '254',
+    '#description' => t('The email address to which the message should be sent OR enter [node:author:mail], [comment:author:mail], etc. if you would like to send an e-mail to the author of the original post.'),
+  );
+  $form['subject'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Subject'),
+    '#default_value' => 'feedback reply',
+    '#maxlength' => '254',
+    '#description' => t('The subject of the message.'),
+  );
+  $form['message'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Message'),
+    '#default_value' => $entry->message,
+    '#cols' => '80',
+    '#rows' => '20',
+    '#description' => t('The message that should be sent. You may include placeholders like [node:title], [user:name], and [comment:body] to represent data that will be different each time message is sent. Not all placeholders will be available in all contexts.'),
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Reply'),
+  );
+
+  $form['#submit'][] = 'feedback_reply_form_submit_handler';
+
+  return $form;
+}
+
+function feedback_reply_form_submit_handler(&$form, &$form_state){
+  $to =  $form_state['values']['recipient'];
+  $params["subject"] = $form_state['values']['subject'];
+  $params["message"] = $form_state['values']['message'];
+  drupal_mail('feedback', 'feedback_reply', $to, language_default(), $params, $form);
+  drupal_set_message(t('Reply successfully。'));
+  $form_state['redirect'] = 'admin/workbench/feedback/';
 }
 
 /**

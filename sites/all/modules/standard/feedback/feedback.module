@@ -124,6 +124,13 @@ function feedback_menu() {
     'access arguments' => array('view feedback messages'),
     'file' => 'feedback.admin.inc',
   );
+  $items['admin/workbench/feedback/%feedback/reply'] = array(
+    'title' => 'Reply feedback entry',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('feedback_reply_form',3),
+    'access arguments' => array('reply feedback message'),
+    'file' => 'feedback.admin.inc',
+  );
   $items['admin/config/user-interface/feedback'] = array(
     'title' => 'Feedback',
     'description' => 'Administer feedback settings.',
@@ -549,4 +556,15 @@ function feedback_views_api() {
     'api' => 3.0,
     'path' => drupal_get_path('module', 'feedback') . '/views',
   );
+}
+
+function feedback_mail($key, &$message, $params) {
+
+  switch ($key) {
+    case 'feedback_reply':
+      $message['subject'] .=$params['subject'];
+      $message['body'][] = $params['message'];
+      break;
+  }
+
 }
