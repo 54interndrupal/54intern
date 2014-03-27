@@ -269,6 +269,12 @@ function feedback_reply_form($form, &$form_state, $entry) {
 
   $receiver =  user_load_by_name($entry->name);
   $to = $receiver->mail;
+
+  $message =   "
+
+  ------------------------------------------------------------------------------------------------------------------------------
+  ".$entry->message."
+  ".check_plain(check_plain($entry->useragent)) ;
 //  print_r($receiver);
 //  die();
   $form = array();
@@ -290,7 +296,7 @@ function feedback_reply_form($form, &$form_state, $entry) {
   $form['message'] = array(
     '#type' => 'textarea',
     '#title' => t('Message'),
-    '#default_value' => $entry->message,
+    '#default_value' => $message,
     '#cols' => '80',
     '#rows' => '20',
     '#description' => t('Input messages for reply'),
@@ -309,11 +315,15 @@ function feedback_reply_form($form, &$form_state, $entry) {
 
 function feedback_reply_form_submit_handler(&$form, &$form_state){
 
+  $entry = feedback_load( $form_state['values']['fid']);
   $params["subject"] = $form_state['values']['subject'];
   $params["message"] = $form_state['values']['message'];
   $from = variable_get('site_mail', ini_get('sendmail_from'));
   drupal_mail('feedback', 'feedback_reply', 'edison_cyh@hotmail.com', language_default(), $params,$from);
   drupal_set_message(t('Reply successfully。'));
+  $entry->status = ($entry->status == FEEDBACK_OPEN ? FEEDBACK_PROCESSED : FEEDBACK_OPEN);
+  feedback_save($entry);
+
   $form_state['redirect'] = 'admin/workbench/feedback/';
 }
 
