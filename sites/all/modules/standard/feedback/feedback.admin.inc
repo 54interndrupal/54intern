@@ -306,7 +306,8 @@ function feedback_reply_form_submit_handler(&$form, &$form_state){
   $to =  $form_state['values']['recipient'];
   $params["subject"] = $form_state['values']['subject'];
   $params["message"] = $form_state['values']['message'];
-  drupal_mail('feedback', 'feedback_reply', $to, language_default(), $params);
+  $from = variable_get('site_mail', ini_get('sendmail_from'));
+  drupal_mail('feedback', 'feedback_reply', $to, language_default(), $params,$from);
   drupal_set_message(t('Reply successfully。'));
   $form_state['redirect'] = 'admin/workbench/feedback/';
 }
