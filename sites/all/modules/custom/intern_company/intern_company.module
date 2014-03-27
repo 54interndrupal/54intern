@@ -155,12 +155,12 @@ function intern_company_brief_today_block() {
   return $output;
 }
 
-function intern_company_user_quick_register_block(){
-   $output = '<div id="postjob-block" class="block">
+function intern_company_user_quick_register_block() {
+  $output = '<div id="postjob-block" class="block">
 <h2 class="block-title"><span>在实习圈发布实习职位</span></h2>
 <div class="block-content" style="font-size:14px">
 	<p>只需<span style="color:#EA6E3D">1分钟</span>，企业用户注册实习圈，即可发布实习职位。</p>
-	<div class="company-register"><a href="'.url('user/companyregister').'">企业用户注册</a></div>
+	<div class="company-register"><a href="' . url('user/companyregister') . '">企业用户注册</a></div>
 </div>
 </div>';
   return $output;
@@ -403,10 +403,11 @@ function intern_company_form_node_form_alter(&$form, $form_state) {
       hide($form["field_company_images"]);
       hide($form["field_license"]);
 
-      if(isset($nid)&&nid>0){
-      $form['#validate'] = array('intern_company_edit_company_form_validate_handler');
-      $form['actions']['submit']['#submit'] = array('intern_company_edit_company_form_submit_handler');
-      }else{
+      if (isset($nid) && nid > 0) {
+        $form['#validate'] = array('intern_company_edit_company_form_validate_handler');
+        $form['actions']['submit']['#submit'] = array('intern_company_edit_company_form_submit_handler');
+      }
+      else {
         $form['#validate'] = array('intern_company_add_company_form_validate_handler');
         $form['actions']['submit']['#submit'] = array('intern_company_add_company_form_submit_handler');
       }
@@ -505,11 +506,12 @@ function intern_company_cron() {
     }
   }
 
-  $sql="select start_stamp as last_created from {progress} where name='uc:intern_company_cron'";
+  $sql = "select start_stamp as last_created from {progress} where name='uc:intern_company_cron'";
   $cronLastRunned = db_query($sql)->fetchField();
   if (!isset($cronLastRunned) || empty($cronLastRunned)) {
     $cronLastRunned = time() - 86400 * 30;
-  }else{
+  }
+  else {
     $cronLastRunned = $cronLastRunned - 86400 * 30;
   }
 //  $cronLastRunned = 1373595008;
@@ -518,7 +520,7 @@ function intern_company_cron() {
 from {node} n,{og_membership} m,{field_data_field_overall_value} r where n.type='review' and n.nid=m.etid and n.nid=r.entity_id
 and m.gid in (select om.gid from {node} no,{og_membership} om where no.nid=om.etid and no.type='review' and no.changed>:lastChanged)
 group by m.gid";
-  $record = db_query($sql,array(':lastChanged' => $cronLastRunned));
+  $record = db_query($sql, array(':lastChanged' => $cronLastRunned));
   foreach ($record as $rec) {
     $result = array(
       "count" => $rec->cnt,
@@ -540,27 +542,26 @@ group by m.gid";
   }
 
 
-//  $sql = "select m.gid,count(*) as cnt
-//from {node} n,{og_membership} m where n.type='job' and  n.nid=m.etid
-//and m.gid in (select om.gid from {node} no,{og_membership} om where no.nid=om.etid and no.type='job' and no.changed>:lastChanged)
-//group by m.gid";
-//  $record = db_query($sql,array(':lastChanged' => $cronLastRunned));
-//  foreach ($record as $rec) {
-//    $result = array(
-//      "count" => $rec->cnt,
-//      'gid' => $rec->gid
-//    );
-//    $gid = $result['gid'];
-//    $jobCount = $result['count'];
-//    if($jobCount == 0){
-//      $jobCount = null;
-//    }
-//    $company = node_load($gid);
-////    if($company->field_review_count[LANGUAGE_NONE][0]["value"]<>$reviewCount){
-//    $company->field_job_count[LANGUAGE_NONE][0]["value"] = $jobCount;
-//    node_save($company);
-    //    }
-//  }
+  $sql = "select m.gid,count(*) as cnt
+from {field_data_field_company_size} c, {node} n,{og_membership} m where c.bundle='company'
+and c.field_company_class_tid=46 and c.entity_id=m.gid and n.status=1 and n.type='job' and  n.nid=m.etid group by m.gid";
+  $record = db_query($sql, array(':lastChanged' => $cronLastRunned));
+  foreach ($record as $rec) {
+    $result = array(
+      "count" => $rec->cnt,
+      'gid' => $rec->gid
+    );
+    $gid = $result['gid'];
+    $jobCount = $result['count'];
+    if ($jobCount == 0) {
+      $jobCount = NULL;
+    }
+    $company = node_load($gid);
+//    if($company->field_review_count[LANGUAGE_NONE][0]["value"]<>$reviewCount){
+    $company->field_job_count[LANGUAGE_NONE][0]["value"] = $jobCount;
+    node_save($company);
+
+  }
 }
 
 function intern_company_add_company_form($form, &$form_state) {
