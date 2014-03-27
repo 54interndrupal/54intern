@@ -267,16 +267,18 @@ function feedback_delete_confirm($form, &$form_state, $entry) {
 
 function feedback_reply_form($form, &$form_state, $entry) {
 
-//  print_r($entry);
+  $receiver =  user_load_by_name($entry->name);
+  $to = $receiver->mail;
+//  print_r($receiver);
 //  die();
   $form = array();
   $form['fid'] = array('#type' => 'value', '#value' => $entry->fid);
   $form['recipient'] = array(
     '#type' => 'textfield',
     '#title' => t('Recipient'),
-    '#default_value' => $entry -> name,
+    '#default_value' => $to,
     '#maxlength' => '254',
-    '#description' => t('The email address to which the message should be sent OR enter [node:author:mail], [comment:author:mail], etc. if you would like to send an e-mail to the author of the original post.'),
+    '#description' => t('The email address to send to'),
   );
   $form['subject'] = array(
     '#type' => 'textfield',
@@ -291,7 +293,7 @@ function feedback_reply_form($form, &$form_state, $entry) {
     '#default_value' => $entry->message,
     '#cols' => '80',
     '#rows' => '20',
-    '#description' => t('The message that should be sent. You may include placeholders like [node:title], [user:name], and [comment:body] to represent data that will be different each time message is sent. Not all placeholders will be available in all contexts.'),
+    '#description' => t('Input messages for reply'),
   );
 
   $form['actions'] = array('#type' => 'actions');
@@ -306,7 +308,7 @@ function feedback_reply_form($form, &$form_state, $entry) {
 }
 
 function feedback_reply_form_submit_handler(&$form, &$form_state){
-  $to =  $form_state['values']['recipient'];
+
   $params["subject"] = $form_state['values']['subject'];
   $params["message"] = $form_state['values']['message'];
   $from = variable_get('site_mail', ini_get('sendmail_from'));
