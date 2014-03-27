@@ -266,6 +266,9 @@ function feedback_delete_confirm($form, &$form_state, $entry) {
 }
 
 function feedback_reply_form($form, &$form_state, $entry) {
+
+//  print_r($entry);
+//  die();
   $form = array();
   $form['fid'] = array('#type' => 'value', '#value' => $entry->fid);
   $form['recipient'] = array(
@@ -307,7 +310,7 @@ function feedback_reply_form_submit_handler(&$form, &$form_state){
   $params["subject"] = $form_state['values']['subject'];
   $params["message"] = $form_state['values']['message'];
   $from = variable_get('site_mail', ini_get('sendmail_from'));
-  drupal_mail('feedback', 'feedback_reply', $to, language_default(), $params,$from);
+  drupal_mail('feedback', 'feedback_reply', 'edison_cyh@hotmail.com', language_default(), $params,$from);
   drupal_set_message(t('Reply successfully。'));
   $form_state['redirect'] = 'admin/workbench/feedback/';
 }
