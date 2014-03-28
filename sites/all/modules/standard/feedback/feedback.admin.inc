@@ -319,7 +319,7 @@ function feedback_reply_form_submit_handler(&$form, &$form_state){
   $params["subject"] = $form_state['values']['subject'];
   $params["message"] = $form_state['values']['message'];
   $from = variable_get('site_mail', ini_get('sendmail_from'));
-  $to = $form['values']['recipient'];
+  $to = $form_state['values']['recipient'];
   drupal_mail('feedback', 'feedback_reply', $to, language_default(), $params,$from);
   drupal_set_message(t('Reply successfully。'));
   $entry->status = ($entry->status == FEEDBACK_OPEN ? FEEDBACK_PROCESSED : FEEDBACK_OPEN);
