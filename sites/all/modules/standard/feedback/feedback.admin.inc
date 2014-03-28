@@ -267,14 +267,14 @@ function feedback_delete_confirm($form, &$form_state, $entry) {
 
 function feedback_reply_form($form, &$form_state, $entry) {
 
-  $receiver =  user_load_by_name($entry->name);
+  $receiver = user_load_by_name($entry->name);
   $to = $receiver->mail;
 
-  $message =   "
+  $message = "
 
   ------------------------------------------------------------------------------------------------------------------------------
-  ".$entry->message."
-  ".check_plain(check_plain($entry->useragent)) ;
+  " . $entry->message . "
+  " . check_plain(check_plain($entry->useragent));
 //  print_r($receiver);
 //  die();
   $form = array();
@@ -313,17 +313,19 @@ function feedback_reply_form($form, &$form_state, $entry) {
   return $form;
 }
 
-function feedback_reply_form_submit_handler(&$form, &$form_state){
+function feedback_reply_form_submit_handler(&$form, &$form_state) {
 
-  $entry = feedback_load( $form_state['values']['fid']);
+  $entry = feedback_load($form_state['values']['fid']);
   $params["subject"] = $form_state['values']['subject'];
   $params["message"] = $form_state['values']['message'];
   $from = variable_get('site_mail', ini_get('sendmail_from'));
   $to = $form_state['values']['recipient'];
-  drupal_mail('feedback', 'feedback_reply', $to, language_default(), $params,$from);
+  drupal_mail('feedback', 'feedback_reply', $to, language_default(), $params, $from);
   drupal_set_message(t('Reply successfully。'));
-  $entry->status = ($entry->status == FEEDBACK_OPEN ? FEEDBACK_PROCESSED : FEEDBACK_OPEN);
-  feedback_save($entry);
+  if ($entry->status == FEEDBACK_OPEN) {
+    $entry->status = FEEDBACK_PROCESSED;
+    feedback_save($entry);
+  }
 
   $form_state['redirect'] = 'admin/workbench/feedback/';
 }
