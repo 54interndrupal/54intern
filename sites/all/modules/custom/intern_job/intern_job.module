@@ -149,6 +149,16 @@ function _intern_job_approve(&$node) {
 
 /**
  * @param $node
+ * discard job
+ */
+function _intern_job_discard(&$node) {
+  $node->status = NODE_NOT_PUBLISHED;
+  $node->field_job_sub_status[LANGUAGE_NONE][0]["value"] = JOB_SUB_STATUS_DISCARDED;
+  $node->field_content_approval[LANGUAGE_NONE][0]["value"] = 0;
+}
+
+/**
+ * @param $node
  * expire job
  */
 function _intern_job_expire(&$node) {
@@ -259,6 +269,13 @@ function intern_job_action_info() {
       'behavior' => array('changes_property'),
       'triggers' => array('node_presave'),
     ),
+    'intern_job_discard_action' => array(
+      'type' => 'node',
+      'label' => t('废弃职位'),
+      'configurable' => FALSE,
+      'behavior' => array('changes_property'),
+      'triggers' => array('node_presave'),
+    ),
 
   );
 }
@@ -282,6 +299,10 @@ function intern_job_republish_action($node, $context = array()) {
 
 function intern_job_approve_action($node, $context = array()) {
   _intern_job_approve($node);
+}
+
+function intern_job_discard_action($node, $context = array()) {
+  _intern_job_discard($node);
 }
 
 /**
