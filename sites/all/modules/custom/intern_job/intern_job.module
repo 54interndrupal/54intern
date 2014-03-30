@@ -16,6 +16,8 @@ define("JOB_SUB_STATUS_EXPIRED", 2);
 define("JOB_SUB_STATUS_REQUIRE_APPROVAL", 3);
 //发布中
 define("JOB_SUB_STATUS_PUBLISHED", 4);
+//已废弃
+define("JOB_SUB_STATUS_DISCARDED", 5);
 //即将到期
 define("JOB_SUB_STATUS_NEARLY_EXPIRED", 10);
 
@@ -195,12 +197,23 @@ function intern_job_node_form_ant_submit($form, &$form_state) {
 
 
   if ($op == t('保存草稿')) {
-    $form_state['values']["field_job_sub_status"][LANGUAGE_NONE][0]['value'] = JOB_SUB_STATUS_DRAFT;
+    if($form_state['values']["field_job_sub_status"][LANGUAGE_NONE][0]['value']!=JOB_SUB_STATUS_DISCARDED ){
+       $form_state['values']["field_job_sub_status"][LANGUAGE_NONE][0]['value'] = JOB_SUB_STATUS_DRAFT;
+    }
     $form_state['values']['status'] = NODE_NOT_PUBLISHED;
   }
   else {
     if ($op == t('提交发布')) {
-      $form_state['values']["field_job_sub_status"][LANGUAGE_NONE][0]['value'] = JOB_SUB_STATUS_REQUIRE_APPROVAL;
+      if(intern_user_is_editor_user()){
+        if($form_state['values']["field_job_sub_status"][LANGUAGE_NONE][0]['value']==JOB_SUB_STATUS_DISCARDED ){
+          $form_state['values']['status'] = NODE_NOT_PUBLISHED;
+        }else{
+          $form_state['values']["field_job_sub_status"][LANGUAGE_NONE][0]['value'] = JOB_SUB_STATUS_PUBLISHED;
+          $form_state['values']['status'] = NODE_PUBLISHED;
+        }
+      }else{
+        $form_state['values']["field_job_sub_status"][LANGUAGE_NONE][0]['value'] = JOB_SUB_STATUS_REQUIRE_APPROVAL;
+      }
     }
   }
 }
