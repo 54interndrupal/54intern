@@ -161,9 +161,10 @@ function intern_job_form_node_form_alter(&$form, $form_state) {
   if ($type == 'job' && (intern_user_is_company_user() || intern_user_is_editor_user())) {
     if (intern_user_is_company_user()) {
       $form['og_group_ref']['und'][0]['target_id']['#type'] = 'hidden';
+      hide($form["actions"]["delete"]);
+      hide($form["field_job_sub_status"]);
     }
-    hide($form["actions"]["delete"]);
-    hide($form["field_job_sub_status"]);
+
     if (empty($form['field_email']['und'][0]['value']['#default_value'])) {
       $form['field_email']['und'][0]['value']['#default_value'] = $user->mail;
     }
