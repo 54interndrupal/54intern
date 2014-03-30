@@ -114,7 +114,7 @@ function feedback_menu() {
     'title' => 'Feedback entry',
     'page callback' => 'feedback_view',
     'page arguments' => array(3),
-    'access arguments' => array('view feedback messages'),
+    'access arguments' => array('View feedback messages'),
     'file' => 'feedback.admin.inc',
   );
   $items['admin/workbench/feedback/%feedback/delete'] = array(
