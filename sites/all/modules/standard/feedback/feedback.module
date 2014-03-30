@@ -128,7 +128,7 @@ function feedback_menu() {
     'title' => 'Reply feedback entry',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('feedback_reply_form',3),
-    'access arguments' => array('reply feedback message'),
+    'access arguments' => array('view feedback message'),
     'file' => 'feedback.admin.inc',
   );
   $items['admin/config/user-interface/feedback'] = array(
