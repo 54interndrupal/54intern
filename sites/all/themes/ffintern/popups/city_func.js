@@ -35,7 +35,7 @@ var residency = {
         jQuery('#residencyAlpha li').hover(function(){jQuery(this).addClass('over')},function(){jQuery(this).removeClass()});
         // 点击弹出子菜单
         if(jQuery('.toolbar').size()>=1){
-            jQuery('#allProv li').click(function(e){jQuery("#sublist").css({top:e.pageY-4-250,left:e.pageX}).hover(function(){jQuery(this).show()},function(){jQuery(this).hide()})})
+            jQuery('#allProv li').click(function(e){jQuery("#sublist").css({top:e.pageY-4-150,left:e.pageX-50}).hover(function(){jQuery(this).show()},function(){jQuery(this).hide()})})
         }else{
             jQuery('#allProv li').click(function(e){jQuery("#sublist").css({top:e.pageY-4,left:e.pageX-4}).hover(function(){jQuery(this).show()},function(){jQuery(this).hide()})})
         }
