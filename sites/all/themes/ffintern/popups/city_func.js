@@ -34,7 +34,7 @@ var residency = {
         // 鼠标悬停变色
         jQuery('#residencyAlpha li').hover(function(){jQuery(this).addClass('over')},function(){jQuery(this).removeClass()});
         // 点击弹出子菜单
-        if(jQuery('.toolbar').size()==1){
+        if(jQuery('.toolbar').size()>=1){
             jQuery('#allProv li').click(function(e){jQuery("#sublist").css({top:e.pageY-4-250,left:e.pageX}).hover(function(){jQuery(this).show()},function(){jQuery(this).hide()})})
         }else{
             jQuery('#allProv li').click(function(e){jQuery("#sublist").css({top:e.pageY-4,left:e.pageX-4}).hover(function(){jQuery(this).show()},function(){jQuery(this).hide()})})
