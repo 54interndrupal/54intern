@@ -44,10 +44,10 @@
 	WIDTH: 80px; FLOAT: left; FONT-WEIGHT: bold;color: #333; margin-top: 3px;
 }
 #residencyAlpha DD {
-	WIDTH: 492px; FLOAT: left
+	WIDTH: 552px; FLOAT: left
 }
 #residencyAlpha DD LI {
-	TEXT-INDENT: 4px; WIDTH: 82px; FLOAT: left; HEIGHT: 29px; OVERFLOW: hidden; CURSOR: pointer;padding: 5px 3px;
+	TEXT-INDENT: 4px; WIDTH: 82px; FLOAT: left;OVERFLOW: hidden; CURSOR: pointer;padding: 5px 3px;
 }
 #residencyAlpha DD LI.over {
 	BACKGROUND: #75b13c; COLOR: #fff
