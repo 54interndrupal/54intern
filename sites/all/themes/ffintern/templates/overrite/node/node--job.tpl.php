@@ -164,7 +164,7 @@
     </div>
     <?php }?>
     <div class='jobWarnInfo'>
-      <span style="color:red">[特别提醒:] </span>如发现虚假招聘信息，同学可将“该招聘信息的网址，认为其信息虚假的原因”通过邮件方式发送至support@54intern.com。我们将第一时间进行处理。</span>
+      <span style="color:red">[特别提醒:] </span>如发现虚假招聘信息，同学可将“该招聘信息的网址，认为其信息虚假的原因”通过邮件方式发送至service@shixiquan.com。我们将第一时间进行处理。</span>
     </div>
     <?php $source_url = trim($field_source_url[0]['value']);?>
     <?php if(!empty($source_url)){?>
@@ -177,7 +177,7 @@
          <?php  print flag_create_link('bookmarks', $nid); ?>
       </span>
       <span class="foot-msg">
-         ---- <?php print l('54intern.com',$bath_root)?>
+         ---- <?php print l('shixiquan.com',$bath_root)?>
       </span>
   </div>
 

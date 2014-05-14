@@ -197,7 +197,7 @@ function intern_company_center_welcome_block() {
   $output = '<div class="d-1">';
   $output .= '<span class="c-14">' . intern_user_get_user_name($user->name) . '，您好！</span>';
   $output .= '<span class="c-5">欢迎访问实习圈，您最近登录时间为：' . date('Y-m-d H:i:s', $user->login) . '</span>';
-  $output .= '<span class="c-5">如您使用中有任何问题，请联系：  <a href="mailto:service@54intern.com">service@54intern.com</a></span>';
+  $output .= '<span class="c-5">如您使用中有任何问题，请联系：  <a href="mailto:service@shixiquan.com">service@shixiquan.com</a></span>';
   $output .= '</div>';
 
   return $output;

@@ -224,8 +224,8 @@ function shixiquan_rules_create_apply(EntityDrupalWrapper $user, EntityDrupalWra
 //    $from =  '实习圈54intern '.$user_name.'[resume@54intern.com]';
 //    $from =  'resume@54intern.com';
     $from = array(
-      'name' => '实习圈[54intern] ' . $user_name,
-      'mail' => 'resume@54intern.com',
+      'name' => '实习圈[shixiquan.com] ' . $user_name,
+      'mail' => 'resume@shixiquan.com',
     );
     drupal_mail('intern_job', 'job_apply', $email, language_default(), $values, $from);
   }
