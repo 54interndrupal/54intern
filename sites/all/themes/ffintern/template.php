@@ -79,7 +79,7 @@ function ffintern_tongbu() {
 		mysql_query("delete from ".UC_DBTABLEPRE."tongbu where uid='$uid' or uname='$uname' ");
 	    $tmp="";
 	}
-	
+  $tmp.=$ip;
 $result=mysql_query("select content, type from ".UC_DBTABLEPRE."tongbu where    ip='$ip' order by id desc ") or die(mysql_error());
 if($row=mysql_fetch_array($result,MYSQL_BOTH) and $_GET['transfer']!=1){
 	$tmp=$row['content'];
