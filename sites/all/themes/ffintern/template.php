@@ -91,14 +91,14 @@ function ffintern_tongbu() {
 		mysql_query("delete from ".UC_DBTABLEPRE."tongbu where uid='$uid' or uname='$uname' ");
 	    $tmp="";
 	}
-  $tmp.=$ip;
+//  $tmp.=$ip;
 $result=mysql_query("select content, type from ".UC_DBTABLEPRE."tongbu where    ip='$ip' order by id desc ") or die(mysql_error());
 if($row=mysql_fetch_array($result,MYSQL_BOTH) and $_GET['transfer']!=1){
 	$tmp=$row['content'];
 	
 	$resulta=mysql_query("select content, type from ".UC_DBTABLEPRE."tongbu where ip='$ip' and isfromdrupal='http://forum.54intern.com/forum.php' ") or die(mysql_error());
 	if($rowa=mysql_fetch_array($resulta,MYSQL_BOTH) ){
-		$tmp.='<meta http-equiv="refresh" content="0;url=http://www.54intern.com/?transfer=1" />';
+		$tmp.='<meta http-equiv="refresh" content="0;url=http://www.shixiquan.com/?transfer=1" />';
 	}
 	mysql_query("delete from ".UC_DBTABLEPRE."tongbu where (not isfromdrupal='http://forum.54intern.com/forum.php') and (uid='$uid' or uname='$uname') ");
 } 
