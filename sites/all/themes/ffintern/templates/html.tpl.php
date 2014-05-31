@@ -56,8 +56,8 @@
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
 
-<?php //$tongbujs=ffintern_tongbu();
-///print $tongbujs;
+<?php $tongbujs=ffintern_tongbu();
+print $tongbujs;
 ?>
 
   <?php print $scripts; ?>
