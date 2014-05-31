@@ -57,7 +57,9 @@
   <?php print $styles; ?>
 
 <?php $tongbujs=ffintern_tongbu();
-print $tongbujs;
+  print '<!--begin tongbu-->';
+  print $tongbujs;
+  print '<!--end tongbu-->';
 ?>
 
   <?php print $scripts; ?>
