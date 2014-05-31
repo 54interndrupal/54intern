@@ -65,6 +65,18 @@ function _ffintern_add_quicktab_css() {
   drupal_add_css(drupal_get_path('module', 'quicktabs') . '/quicktabs_tabstyles/tabstyles/intern2/intern2.css');
 }
 
+function getIP(){
+  global $ip;
+  if (getenv("HTTP_CLIENT_IP"))
+    $ip = getenv("HTTP_CLIENT_IP");
+  else if(getenv("HTTP_X_FORWARDED_FOR"))
+    $ip = getenv("HTTP_X_FORWARDED_FOR");
+  else if(getenv("REMOTE_ADDR"))
+    $ip = getenv("REMOTE_ADDR");
+  else $ip = "Unknow";
+  return $ip;
+}
+
 function ffintern_tongbu() {
 	$tmp="";
         include("/sites/all/modules/ucuser/config.inc.php");
@@ -74,7 +86,7 @@ function ffintern_tongbu() {
 	
 	//echo $uname.$uid;
 	//exit();
-	$ip=$_SERVER['REMOTE_ADDR'];
+	$ip=getIP();
 	if($_GET['transfer']==1){
 		mysql_query("delete from ".UC_DBTABLEPRE."tongbu where uid='$uid' or uname='$uname' ");
 	    $tmp="";
