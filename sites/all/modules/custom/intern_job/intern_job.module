@@ -392,7 +392,7 @@ function intern_job_mail($key, &$message, $params) {
         '[company:title]' => $params['company_title'],
         '[apply:date]' => $params['apply_date'],
       );
-      $subject = '(54intern.com)申请贵公司[job:title] - [user:name]';
+      $subject = '(shixiquan.com)申请贵公司[job:title] - [user:name]';
       $subject = strtr($subject, $variables);
       $resume = node_view($params['resume']);
       $resume_real_name = $params['user_name'];
@@ -484,7 +484,7 @@ function intern_job_mail($key, &$message, $params) {
 
 <br><span style="font-size: 26px;font-weight: bold;">实习圈</span><span style="font-size: 20px">，是一个基于互联网技术构建的高校学生实习主题在线平台，将专注致力于企业实习生计划实施全过程，通过在学生、高校及企业间建立在线互动及线下服务，让高效的实习生计划为您企业发展贡献价值！
 <br>您是否还未注册为实习圈</span><span style="font-size: 26px;font-weight: bold;color: #0000ff;">企业会员</span><span style="font-size: 20px">？请通过以下链接快速注册会员以获取更多服务：<br>
-<a href="http://www.54intern.com/user/companyregister">http://www.54intern.com/user/companyregister</a></span>
+<a href="http://www.shixiquan.com/user/companyregister">http://www.shixiquan.com/user/companyregister</a></span>
 </div>
 ';
 
