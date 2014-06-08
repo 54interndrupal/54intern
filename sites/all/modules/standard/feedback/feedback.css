@@ -113,3 +113,7 @@
     background-color:  #EA6F3D;
 }
 
+#block-feedback-form .form-item-captcha-response .form-text{
+    width: 100px;
+}
+
