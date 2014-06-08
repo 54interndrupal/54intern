@@ -178,8 +178,8 @@ function intern_job_form_node_form_alter(&$form, $form_state) {
     }
 
     if(intern_user_is_editor_user())  {
-        $form['body']['und'][0]['format'] = 'fitered_html_with_editor';
-        print_r($form['body']);
+        $form['body']['zh-hans'][0]['format'] = 'fitered_html_with_editor';
+//        print_r($form['body']);
     }
 
     if (empty($form['field_email']['und'][0]['value']['#default_value'])) {
