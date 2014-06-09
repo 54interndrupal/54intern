@@ -332,6 +332,7 @@ function feedback_form_ajax_callback($form, &$form_state) {
  *   A feedback object.
  */
 function feedback_format_message($entry) {
+  global $base_url;
   $message = check_plain($entry->message);
   if (!empty($entry->useragent)) {
     if (module_exists('browscap')) {
@@ -350,7 +351,7 @@ function feedback_format_message($entry) {
   }
   else {
     $links['delete'] = array('title' => t('delete'), 'href' => $uri['path'] . '/delete');
-    $links['back'] = array('title' => t('back'), 'href' => url('admin/workbench/feedback/'));
+    $links['back'] = array('title' => t('back'), 'href' => url($base_url.'/admin/workbench/feedback/'));
   }
   $elements['message'] = array('#markup' => $message);
   $elements['links'] = array('#theme' => 'links__feedback_message', '#links' => $links);
