@@ -350,6 +350,7 @@ function feedback_format_message($entry) {
   }
   else {
     $links['delete'] = array('title' => t('delete'), 'href' => $uri['path'] . '/delete');
+    $links['back'] = array('title' => t('back'), 'href' => url('admin/workbench/feedback/'));
   }
   $elements['message'] = array('#markup' => $message);
   $elements['links'] = array('#theme' => 'links__feedback_message', '#links' => $links);
