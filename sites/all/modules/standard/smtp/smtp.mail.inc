@@ -454,7 +454,8 @@ class SmtpMailSystem implements MailSystemInterface {
     // If username and password are given, use SMTP authentication.
     if ($username != '' && $password != '') {
       $mailer->SMTPAuth = TRUE;
-      $mailer->Username = $username;
+      if($mailer -> Sender == NULL || $mailer -> Sender ==''){
+      $mailer->Username = $username;}else{$mailer->Username =$mailer -> Sender;}
       $mailer->Password = $password;
     }
 
