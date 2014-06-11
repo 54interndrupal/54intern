@@ -115,7 +115,7 @@ class SmtpMailSystem implements MailSystemInterface {
     $mailer->FromName = $from_name;
     $mailer->Sender   = $from;
 
-
+    drupal_set_message(t('The submitted from address (@from) ,(@from_name) .', array('@from' => $from,'@from_name'=>$from_name)));
     // Create the list of 'To:' recipients.
     $torecipients = explode(',', $to);
     foreach ($torecipients as $torecipient) {
@@ -454,10 +454,10 @@ class SmtpMailSystem implements MailSystemInterface {
     // If username and password are given, use SMTP authentication.
     if ($username != '' && $password != '') {
       $mailer->SMTPAuth = TRUE;
-//      if($mailer -> Sender == NULL || $mailer -> Sender ==''){
-//      $mailer->Username = $username;}else{$mailer->Username =$mailer -> Sender;}
+      if($mailer -> Sender == NULL || $mailer -> Sender ==''){
+      $mailer->Username = $username;}else{$mailer->Username =$mailer -> Sender;}
 
-      $mailer->Username = $username;
+//      $mailer->Username = $username;
       $mailer->Password = $password;
     }
 
