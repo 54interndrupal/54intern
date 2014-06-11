@@ -318,8 +318,9 @@ function feedback_reply_form_submit_handler(&$form, &$form_state) {
   $entry = feedback_load($form_state['values']['fid']);
   $params["subject"] = $form_state['values']['subject'];
   $params["message"] = $form_state['values']['message'];
-  $from = variable_get('site_mail', ini_get('sendmail_from'));
-//  $from ="support@shixiquan.com";
+//  $from = variable_get('site_mail', ini_get('sendmail_from'));
+  $from ="online_feedback@shixiquan.com";
+
   $to = $form_state['values']['recipient'];
 
   drupal_mail('feedback', 'feedback_reply', $to, language_default(), $params, $from);
