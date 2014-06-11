@@ -30,7 +30,7 @@
 #block-feedback-form h2 span.opened{
     display: block;
     width: 100%;
-    background-color:#EA6F3D;
+    background-color:#EA423D;
     height: 25px;
     color: #FFF;
     padding: 6px 0px 0px 5px;
@@ -49,7 +49,7 @@
 #block-feedback-form .feedback-link.closed{
     bottom:30px;
     right: -6px;
-    width: 42px;
+    width: 34px;
     height: 96px;
     color: #FFF;
     cursor:pointer;
@@ -59,7 +59,7 @@
     z-index: 100000;
     margin-left: -13px;
     text-decoration: none !important;
-    background-color: #EA6F3D;
+    background-color: #EA423D;
     background-repeat: no-repeat;
     /* @todo Store this image locally, and add 'Suggestion' image.  Make image localizable. */
     background-image: url(images/feedback_trans_tab.png);
@@ -110,7 +110,7 @@
 
 }
 #block-feedback-form .form-submit{
-    background-color:  #EA6F3D;
+    background-color:  #EA423D;
 }
 
 #block-feedback-form .form-item-captcha-response .form-text{
