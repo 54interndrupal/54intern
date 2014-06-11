@@ -148,7 +148,7 @@ function drupal_mail($module, $key, $to, $language, $params = array(), $from = N
     $headers['From'] = $headers['Sender'] = $headers['Return-Path'] = $default_from;
   }
   if ($from) {
-    $headers['From'] = $from;
+    $headers['From'] = $headers['Sender'] = $headers['Return-Path'] = $from;
   }
   $message['headers'] = $headers;
 
