@@ -482,20 +482,17 @@ class SmtpMailSystem implements MailSystemInterface {
     $mailer->Port   = variable_get('smtp_port', '25');
     $mailer->Mailer = 'smtp';
 
-    print_r($mailer);
-//    drupal_set_message(t('The submitted from address (@from) ,(@from_name) .', array('@from' =>$mailer->From.'-'.$mailer-> FromName,'@from_name'=>$mailer-> Sender.'-'.$mailer->Username)));
-
     // Let the people know what is going on.
     watchdog('smtp', 'Sending mail to: @to', array('@to' => $to));
 
     // Try to send e-mail. If it fails, set watchdog entry.
-//    if (!$mailer->Send()) {
-//      watchdog('smtp', 'Error sending e-mail from @from to @to : !error_message', array('@from' => $from, '@to' => $to, '!error_message' => $mailer->ErrorInfo), WATCHDOG_ERROR);
-//      return FALSE;
-//    }
+    if (!$mailer->Send()) {
+      watchdog('smtp', 'Error sending e-mail from @from to @to : !error_message', array('@from' => $from, '@to' => $to, '!error_message' => $mailer->ErrorInfo), WATCHDOG_ERROR);
+      return FALSE;
+    }
 
-//    $mailer->SmtpClose();
-//    return TRUE;
+    $mailer->SmtpClose();
+    return TRUE;
   }
   /**
    * Splits the input into parts based on the given boundary.
