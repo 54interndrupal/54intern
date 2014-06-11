@@ -73,7 +73,7 @@ class SmtpMailSystem implements MailSystemInterface {
     //Hack to fix reply-to issue.
     $properfrom = variable_get('site_mail', '');
     if (!empty($properfrom)) {
-//      $headers['From'] = $properfrom;
+      $headers['From'] = $properfrom;
     }
     if (!isset($headers['Reply-To']) || empty($headers['Reply-To'])) {
       if (strpos($from, '<')) {
@@ -114,6 +114,7 @@ class SmtpMailSystem implements MailSystemInterface {
     $mailer->From     = $from;
     $mailer->FromName = $from_name;
     $mailer->Sender   = $from;
+    $headers['From'] =  $from;
 
 //    drupal_set_message(t('The submitted from address (@from) ,(@from_name) .', array('@from' => $from,'@from_name'=>$from_name)));
     // Create the list of 'To:' recipients.
