@@ -273,7 +273,7 @@ function feedback_reply_form($form, &$form_state, $entry) {
   $message = "
 
   ------------------------------------------------------------------------------------------------------------------------------
-  " . $entry->message . "
+  " . $entry->message . "\n
   " . check_plain(check_plain($entry->useragent));
 //  print_r($receiver);
 //  die();
