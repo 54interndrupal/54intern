@@ -67,7 +67,7 @@ if(!empty($_GET['field_location_tid'])){
     </div>
     <div id="quicktabs-container-fortune500_main_tabs" class="quicktabs_main quicktabs-style-intern">
       <div id="quicktabs-tabpage-fortune500_main_tabs-0" class="quicktabs-tabpage <?php if(!$isShowCompany){ ?>quicktabs-hide<?php }?>">
-        <?php print views_embed_view('companys', 'panel_pane_3'); ?>
+        <?php print views_embed_view('companys', 'panel_pane_6'); ?>
       </div>
 
       <div id="quicktabs-tabpage-fortune500_main_tabs-1" class="quicktabs-tabpage <?php if($isShowCompany){ ?>quicktabs-hide<?php }?>">
