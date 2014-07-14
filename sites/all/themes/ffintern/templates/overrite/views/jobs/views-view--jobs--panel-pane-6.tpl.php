@@ -60,9 +60,9 @@ if(!empty($_GET['field_location_tid'])){
     <div class="item-list">
       <ul class="quicktabs-tabs quicktabs-style-intern">
         <li class="<?php if($isShowCompany){ ?>active<?php }?> first"><a href="#" onclick="changeTab('quicktabs-tabpage-fortune500_main_tabs-0',this)"
-                                    id="quicktabs-tab-front_main_tabs-0" <?php if($isShowCompany){ ?>class="active"<?php }?>>500强企业</a></li>
+                                    id="quicktabs-tab-front_main_tabs-0" <?php if($isShowCompany){ ?>class="active"<?php }?>>金融企业</a></li>
         <li class="<?php if(!$isShowCompany){ ?>active<?php }?> last"><a href="#" onclick="changeTab('quicktabs-tabpage-fortune500_main_tabs-1',this)"
-                            id="quicktabs-tab-front_main_tabs-1" <?php if(!$isShowCompany){ ?>class="active"<?php }?>>500强职位</a></li>
+                            id="quicktabs-tab-front_main_tabs-1" <?php if(!$isShowCompany){ ?>class="active"<?php }?>>金融职位</a></li>
       </ul>
     </div>
     <div id="quicktabs-container-fortune500_main_tabs" class="quicktabs_main quicktabs-style-intern">
