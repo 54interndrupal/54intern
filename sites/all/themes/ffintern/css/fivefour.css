@@ -2928,7 +2928,8 @@ body.page-jobs div.advanced-search {
 }
 
 div.advanced-search  #views-exposed-form-jobs-panel-pane-1 label,
-div.advanced-search  #views-exposed-form-jobs-panel-pane-3 label{
+div.advanced-search  #views-exposed-form-jobs-panel-pane-3 label,
+div.advanced-search  #views-exposed-form-jobs-panel-pane-6 label{
     background: url(img/site/bt_arrow.png) no-repeat 0 5px;
     margin-bottom: 8px;
     padding-left: 10px;
@@ -2936,12 +2937,14 @@ div.advanced-search  #views-exposed-form-jobs-panel-pane-3 label{
 }
 
 div.advanced-search  #views-exposed-form-jobs-panel-pane-1 div.views-exposed-widget,
-div.advanced-search  #views-exposed-form-jobs-panel-pane-3 div.views-exposed-widget{
+div.advanced-search  #views-exposed-form-jobs-panel-pane-3 div.views-exposed-widget,
+div.advanced-search  #views-exposed-form-jobs-panel-pane-6 div.views-exposed-widget{
     margin: 0 12px 8px 0;
 }
 
 div.advanced-search  #views-exposed-form-jobs-panel-pane-1 input.form-submit,
-div.advanced-search  #views-exposed-form-jobs-panel-pane-3 input.form-submit{
+div.advanced-search  #views-exposed-form-jobs-panel-pane-3 input.form-submit,
+div.advanced-search  #views-exposed-form-jobs-panel-pane-6 input.form-submit{
     border: 0 none;
     height: 36px;
     margin-top: 25px;
@@ -2952,14 +2955,16 @@ div.advanced-search  #views-exposed-form-jobs-panel-pane-3 input.form-submit{
 }
 
 div.advanced-search  #views-exposed-form-jobs-panel-pane-1 input.form-submit:hover,
-div.advanced-search  #views-exposed-form-jobs-panel-pane-3 input.form-submit:hover{
+div.advanced-search  #views-exposed-form-jobs-panel-pane-3 input.form-submit:hover,
+div.advanced-search  #views-exposed-form-jobs-panel-pane-6 input.form-submit:hover{
     background-color: #b6de3f;
     border-color: #161f29;
 }
 
 div.advanced-search  #views-exposed-form-jobs-panel-pane-1 input.search,
 div.advanced-search  #views-exposed-form-companys-panel-pane-1 input.search,
-div.advanced-search  #views-exposed-form-jobs-panel-pane-3 input.search{
+div.advanced-search  #views-exposed-form-jobs-panel-pane-3 input.search,
+div.advanced-search  #views-exposed-form-jobs-panel-pane-6 input.search{
     background: #ffffff url(img/site/bt_search.gif) no-repeat 115px 3px;
 }
 
