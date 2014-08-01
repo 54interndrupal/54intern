@@ -5754,6 +5754,7 @@ body.page-search .company-sort-bar{
 
 /*fortune 500*/
 .view-companys .views-view-grid td{
+   padding:5px;
    width: 33%
 }
 .view-companys .views-view-grid td .views-field-title{
