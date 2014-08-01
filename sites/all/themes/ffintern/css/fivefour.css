@@ -5754,9 +5754,15 @@ body.page-search .company-sort-bar{
 
 /*fortune 500*/
 .view-companys .views-view-grid td{
-   padding:5px;
+   padding:2px 0;
    width: 33%
 }
+
+.view-companys .views-view-grid .views-field-field-logo{
+   text-align: center;
+   padding-top: 7px;
+}
+
 .view-companys .views-view-grid td .views-field-title{
     display: inline-block;
 }
