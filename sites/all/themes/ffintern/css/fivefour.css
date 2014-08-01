@@ -5760,7 +5760,7 @@ body.page-search .company-sort-bar{
 
 .view-companys .views-view-grid .views-field-field-logo{
    text-align: center;
-   padding-top: 7px;
+   padding: 15px 0 7px 0;
 }
 
 .view-companys .views-view-grid td .views-field-title{
