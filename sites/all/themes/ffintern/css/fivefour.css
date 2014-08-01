@@ -5771,6 +5771,10 @@ body.page-search .company-sort-bar{
     display: block;
 }
 
+.view-finance-company .views-view-grid td .field-content{
+   text-align: center;
+}
+
 .view-companys .views-view-grid td .field-content a{
     color: #0066CC;
 }
