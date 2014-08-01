@@ -5771,8 +5771,12 @@ body.page-search .company-sort-bar{
     display: block;
 }
 
-.view-finance-company .views-view-grid td .field-content{
+.view-finance-company .views-view-grid td .views-field-title{
    text-align: center;
+}
+
+.view-finance-company .view-filters{
+    display: none;
 }
 
 .view-companys .views-view-grid td .field-content a{
