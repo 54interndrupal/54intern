@@ -544,7 +544,7 @@ group by m.gid";
 
   $sql = "select m.gid,count(*) as cnt
 from {field_data_field_company_size} c, {node} n,{og_membership} m where c.bundle='company'
-and c.field_company_size_tid=46 and c.entity_id=m.gid and n.status=1 and n.type='job' and  n.nid=m.etid group by m.gid";
+and (c.field_company_size_tid=46 or c.field_company_size_tid=10335) and c.entity_id=m.gid and n.status=1 and n.type='job' and  n.nid=m.etid group by m.gid";
   $record = db_query($sql);
   foreach ($record as $rec) {
     $result = array(
